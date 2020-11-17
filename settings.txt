@@ -1,0 +1,7 @@
+FULLSCREEN = 1
+FREE_PLAY = 1
+ROM_DIR = C:\emulators\roms
+OPTIONS = -skip_gameinfo -video gdi -keepaspect -nounevenstretch -cfg_directory C:\temp -nvram_directory C:\temp
+EMU_1 = C:\emulators\mame\mame64 <OPTIONS> -rompath <ROM_DIR>
+EMU_2 = C:\emulators\hbmame\hbmame64 <OPTIONS> -rompath <ROM_DIR>
+EMU_3 = C:\emulators\wolfmame\mame64 -record <NAME>.inp <OPTIONS> -rompath <ROM_DIR>

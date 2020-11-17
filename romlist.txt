@@ -1,0 +1,26 @@
+Rom Name  |Sub Folder     |Description                   |IconX|IconY|Emu|Load|
+----------+---------------+------------------------------+-----+-----+---|----|
+dkong     |trainer        |DK Trainer                    |2    |226  |1  |    |
+dkongst2  |springs2       |DK Springs                    |146  |157  |2  |1   |
+dkong     |original       |Donkey Kong                   |57   |226  |3  |    |
+dkong     |randomized     |DK Randomized                 |82   |161  |1  |    |
+dkong     |skipstart      |DK Skip Start                 |195  |198  |1  |    |
+dkong     |intothedark    |DK Into the Dark              |18   |165  |1  |    |
+dkong     |reverse        |DK Reverse                    |114  |193  |1  |    |
+dkong     |freerun        |DK Free Run                   |194  |66   |1  |    |
+dkong     |crazybarrels   |DK Crazy Barrels              |4    |62   |1  |    |
+dkongx11  |spooky         |DK Spooky Remix               |50   |189  |1  |    |
+dkong     |ontherun       |DK On the Run                 |194  |132  |1  |    |
+dkongx11  |dk2            |DK2 Jumpman Returns           |210  |87   |1  |    |
+dkongx11  |xmas           |DK Xmas Remix                 |98   |126  |1  |    |
+dkongpe   |               |DK Pauline Ed.                |111  |62   |1  |    |
+ckong     |               |Crazy Kong                    |99   |94   |1  |    |
+dkongjr   |               |DK Junior                     |113  |225  |1  |    |
+dkong3    |               |DK 3                          |2    |186  |1  |    |
+dkongex   |foundry        |DK Foundry                    |50   |97   |2  |    |
+----------+---------------+------------------------------+-----+-----+---|----|
+galaga    |               |Galaga                        |146  |223  |1  |    |
+10yardj   |               |10 Yard Fight                 |50   |123  |3  |    |
+mspacman  |               |Ms. Pac-Man                   |211  |219  |1  |    |
+pacman    |               |Pac-Man                       |211  |153  |1  |    |
+rallyx    |               |Rally X                       |2    |120  |1  |    |
