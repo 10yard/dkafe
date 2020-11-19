@@ -29,12 +29,12 @@ COIN_SPEED = 1.6             # Number of pixels to move coin per display update.
 COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
-# Emulator and rom paths
-OPTIONS = "-skip_gameinfo -video gdi -keepaspect -nounevenstretch"
-ROM_DIR = ""
-EMU_1 = ""                   # MAME      e.g. 'C:\\mame\\mame64 <OPTIONS> -rompath <ROM_DIR>'
-EMU_2 = ""                   # HBMAME    e.g. 'C:\\hbmame\\hbmame64 <OPTIONS> -rompath <ROM_DIR>'
-EMU_3 = ""                   # WOLFMAME  e.g. 'C:\\wolfmame\\mame64 -record <NAME>.inp <OPTIONS> -rompath <ROM_DIR>'
+# Emulator and rom path defaults
+OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
+ROM_DIR = 'C:\\emus\\roms'
+EMU_1 = 'C:\\emus\\mame\\mame64 <OPTIONS> -rompath <ROM_DIR>'
+EMU_2 = 'C:\\emus\\hbmame\\hbmame64 <OPTIONS> -rompath <ROM_DIR>'
+EMU_3 = 'C:\\emus\\wolfmame\\mame64 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>'
 
 ROOT_DIR = os.getcwd()
 

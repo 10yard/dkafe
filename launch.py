@@ -310,7 +310,7 @@ def launch_rom(info):
     # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
     # rom to avoid CRC fail.
     subfolder, name, emu, load = info
-    emu_command = f'{(EMU_1, EMU_2, EMU_3)[emu - 1]}'.replace("<NAME>", name)
+    emu_command = f'{(EMU_1, EMU_2, EMU_3)[emu - 1]}'.replace("<NAME>", name).replace("<DATETIME>", _s.get_datetime())
     shell_command = f'{emu_command} {name}'
     if subfolder:
         if subfolder == "shell":     # Launch shell script / batch file
