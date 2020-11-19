@@ -3,8 +3,7 @@ import pygame_menu
 import os
 
 # Graphic Config
-TARGET_SIZE = (224, 256)     # x, y resolution of target display (x, y)
-FULLSCREEN = True            # Use full screen display. Boolean
+TARGET_SIZE = (224, 256)     # x, y resolution of game (x, y)
 CLOCK_RATE = 60              # Clock rate/timing. Integer
 FRAME_DELAY = 23             # Default delay for screen update. Integer
 
@@ -97,8 +96,8 @@ LADDER_ZONES = [
 # Relative pixels for jump
 JUMP_PIXELS = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
-COIN_INFO = [' HEY JUMPMAN!', '', ' COLLECT COINS', ' TO PLAY GAMES', '', ' PUSH COIN 2', ' FOR GAME INFO', '']
-FREE_INFO = [' HEY JUMPMAN!', '', ' ALL MACHINES', ' ARE FREE TO PLAY', '', ' PUSH COIN 2', ' FOR GAME INFO', '']
+COIN_INFO = [' HEY JUMPMAN!', '', ' COLLECT COINS', ' TO PLAY GAMES', '', ' PUSH COIN', ' FOR GAME INFO', '']
+FREE_INFO = [' HEY JUMPMAN!', '', ' ALL MACHINES', ' ARE FREE TO PLAY', '', ' PUSH COIN', ' FOR GAME INFO', '']
 
 INSTRUCTION = """
 
@@ -164,7 +163,7 @@ dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
 pl_font = pygame.font.Font('fonts/tiny.ttf', 6)
 clock = pygame.time.Clock()
 
-screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN * int(FULLSCREEN))
+screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN | pygame.SCALED)
 pygame.mouse.set_visible(False)
 screenmap = screen.copy()
 screen_with_icons = screen.copy()

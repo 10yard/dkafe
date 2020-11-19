@@ -1,3 +1,4 @@
+import sys
 import glob
 import shutil
 import dk_global as _g
@@ -18,10 +19,10 @@ def clear_screen(frame_delay=0, colour=BLACK, and_quit_program=False, and_reset_
     _screen.fill(colour)
     update_screen(frame_delay)
     if and_reset_display:
-        _screen = pygame.display.set_mode(TARGET_SIZE, pygame.FULLSCREEN * int(FULLSCREEN))
+        _screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN | pygame.SCALED)
     if and_quit_program:
         pygame.quit()
-        exit()
+        sys.exit()
 
 
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj=False):
@@ -258,7 +259,7 @@ def animate_jumpman(direction=None, reset=False):
                 _g.ready = True
 
     if direction == "j":
-        if "BLOCKED_LEFT" not in map_info and "BLOCKED_RIGHT" not in map_info and not "FOOT_UNDER_PLATFORM" in map_info:
+        if "BLOCKED_LEFT" not in map_info and "BLOCKED_RIGHT" not in map_info and "FOOT_UNDER_PLATFORM" not in map_info:
             if _g.jumping_seq == 1:
                 sound_file = f"sounds/jump.wav"
             sprite_file = sprite_file.replace("<I>", str(_g.facing))
@@ -277,7 +278,7 @@ def animate_jumpman(direction=None, reset=False):
 
 
 def build_menu():
-    _g.menu = pygame_menu.Menu(TARGET_SIZE[1]-4, TARGET_SIZE[0]-4, 'SELECT A GAME', mouse_visible=False,
+    _g.menu = pygame_menu.Menu(TARGET_SIZE[1]-2, TARGET_SIZE[0]-2, 'SELECT A GAME', mouse_visible=False,
                                mouse_enabled=False, menu_position=(2, 2), theme=dkafe_theme, onclose=close_menu)
     for name, sub, desc, icx, icy, emu, load in read_romlist():
         _g.icons.append((int(icx), int(icy), name, sub, desc, emu, load))
@@ -546,10 +547,10 @@ def main():
 
         # Check for inactivity
         if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
-            if ((pygame.time.get_ticks() - _g.pause_ticks) % 20000) < 3000:
-                screen.blit(pygame.image.load(f"artwork/intro/f{pygame.time.get_ticks() % 2}.png").convert(), [0, 0])
+            if ((pygame.time.get_ticks() - _g.pause_ticks) % 25000) < 3000:
+                screen.blit(pygame.image.load(f"artwork/intro/f{randint(0,1)}.png").convert(), [0, 0])
             else:
-                lines = (INSTRUCTION, CONTROLS)[(pygame.time.get_ticks() - _g.pause_ticks) % 20000 > 11000]
+                lines = (INSTRUCTION, CONTROLS)[(pygame.time.get_ticks() - _g.pause_ticks) % 25000 > 14000]
                 for i, line in enumerate(lines.split("\n")):
                     write_text(line+(" "*28), x=0, y=20 + (i * 9), fg=CYAN, bg=BLACK, font=dk_font)
             write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 700 < 350], bg=None)

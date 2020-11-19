@@ -1,4 +1,3 @@
-FULLSCREEN = 1
 FREE_PLAY = 1
 ROM_DIR = C:\emulators\roms
 OPTIONS = -skip_gameinfo -video gdi -keepaspect -nounevenstretch -cfg_directory C:\temp -nvram_directory C:\temp
