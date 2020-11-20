@@ -12,7 +12,7 @@ copy settings.txt dist\ /Y
 copy readme.md dist\ /Y
 
 echo **** build the exe in virtual environment ****
-venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+venv\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
 
 echo **** clean up
 rmdir build /s /Y

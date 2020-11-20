@@ -34,13 +34,21 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
         screen.blit(img, (_x, y))
 
         if box or bubble:
-            pygame.draw.rect(screen, fg, (_x - 1, y - 1, w + 2, h + 1), 1)
+            w += 1
+            pygame.draw.rect(screen, fg, (_x - 2, y - 1, w + 2, h + 2), 1)
+            pygame.draw.line(screen, bg, (_x - 1, y), (_x - 1, y + 5))
             if bubble:
-                # make box into a speech bubble
-                for point in ((_x - 1, y - 1), (_x + w, y - 1), (_x - 1, y + h - 1), (_x + w, y + h - 1)):
+                for point in ((_x - 2, y - 1), (_x + w, y - 1), (_x - 2, y + h), (_x + w, y + h)):
                     screen.set_at(point, BLACK)
-                pygame.draw.polygon(screen, bg, [(_x - 1, y + 2), (_x - 6, y + 3), (_x - 1, y + 4)])
-                pygame.draw.lines(screen, fg, False, [(_x - 1, y + 2), (_x - 6, y + 3), (_x - 1, y + 4)], 1)
+                pygame.draw.polygon(screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
+                pygame.draw.lines(screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
+
+
+def get_image(image_key):
+    # Load image or get prevously loaded image from cache
+    if image_key not in _g.image_cache:
+        _g.image_cache[image_key] = pygame.image.load(image_key).convert_alpha()
+    return _g.image_cache[image_key]
 
 
 def check_for_input():
@@ -84,7 +92,7 @@ def play_sound_effect(effect=None, stop=False):
 
 
 def intro_screen():
-    screen.blit(pygame.image.load("artwork/intro/launch.png").convert(), [0, 0])
+    screen.blit(get_image("artwork/intro/launch.png"), [0, 0])
     update_screen(500)
     play_sound_effect(effect="sounds/jump.wav", stop=True)
 
@@ -95,7 +103,7 @@ def intro_screen():
             _g.skip = True
             play_sound_effect(stop=True)
             break
-        screen.blit(pygame.image.load("artwork/intro/f%s.png" % (str(i % 2) if i <= 40 else "1")).convert(), [0, 0])
+        screen.blit(get_image("artwork/intro/f%s.png" % (str(i % 2) if i <= 40 else "1")), [0, 0])
         update_screen(40)
 
 
@@ -110,7 +118,7 @@ def climb_animation():
             break
 
         # display the current frame
-        frame = pygame.image.load(png_file).convert()
+        frame = get_image(png_file)
         screen.blit(frame, [0, 0])
 
         # play sound if required for frame
@@ -178,14 +186,14 @@ def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=Fal
                     icon_image = os.path.join("artwork/icon/default_machine.png")
                 if smash:
                     icon_image = f"artwork/sprite/smash{str(randint(0,3))}.png"
-                img = pygame.image.load(icon_image).convert_alpha()
+                img = get_image(icon_image)
                 w, h = img.get_width(), img.get_height()
                 if (icx < _g.xpos + 9 < icx + w) and (int(_g.ypos) + 8 > icy and int(_g.ypos) + 9 < icy + h):
                     # Pauline to announce the game found near Jumpman.  Return the game launch information.
                     if not int(FREE_PLAY) and _g.score < PLAY_COST and _g.timer.duration % 2 < 1:
                         write_text(f' ${str(PLAY_COST)} TO PLAY ', x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                     else:
-                        write_text(f' {desc.upper()} ', x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+                        write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                     proximity = (sub, name, emu, load)
                 if _g.showinfo and not no_info:
                     # Show game info above icons
@@ -259,15 +267,16 @@ def animate_jumpman(direction=None, reset=False):
                 _g.ready = True
 
     if direction == "j":
-        if "BLOCKED_LEFT" not in map_info and "BLOCKED_RIGHT" not in map_info and "FOOT_UNDER_PLATFORM" not in map_info:
+        if "BLOCKED_LEFT" not in map_info and "BLOCKED_RIGHT" not in map_info:
             if _g.jumping_seq == 1:
                 sound_file = f"sounds/jump.wav"
             sprite_file = sprite_file.replace("<I>", str(_g.facing))
             _g.xpos += (_g.right * 1) + (_g.left * -1)
-        _g.ypos += JUMP_PIXELS[_g.jumping_seq]
+            if "FOOT_UNDER_PLATFORM" not in map_info or JUMP_PIXELS[_g.jumping_seq] < 0:
+                _g.ypos += JUMP_PIXELS[_g.jumping_seq]
 
     if "<I>" not in sprite_file:
-        img = pygame.image.load(sprite_file).convert_alpha()
+        img = get_image(sprite_file)
     else:
         img = _g.last_img
     screen.blit(img, (_g.xpos, int(_g.ypos)))
@@ -410,16 +419,16 @@ def graphic_interrupts():
         for repeat in range(0, 3):
             for i in range(0, 6):
                 if i <= 3 or repeat == 2:
-                    backimg = pygame.image.load(f"artwork/background.png").convert_alpha()
+                    backimg = get_image(f"artwork/background.png")
                     screen.blit(backimg, (_g.xpos, int(_g.ypos)), (_g.xpos, int(_g.ypos), 16, 16))
                     
-                    img = pygame.image.load(f"artwork/sprite/out{int(i)}.png").convert_alpha()
+                    img = get_image(f"artwork/sprite/out{int(i)}.png")
                     screen.blit(img, (_g.xpos, int(_g.ypos)))
                 
                     # Display items that don't get updated in this loop
                     write_text("1UP", font=dk_font, x=25, y=0, fg=RED, bg=None)
                     write_text(" 000", font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
-                    img = pygame.image.load("artwork/sprite/dk0.png").convert_alpha()
+                    img = get_image("artwork/sprite/dk0.png")
                     screen.blit(img, (11, 52))
                     update_screen(120)
         pygame.time.delay(1500)
@@ -438,10 +447,10 @@ def graphic_interrupts():
 
     for i, mod in enumerate((500, 1000, 1500)):
         if ticks % 5000 < mod:
-            img = pygame.image.load(f"artwork/sprite/{prefix}{str(i + 1)}.png").convert_alpha()
+            img = get_image(f"artwork/sprite/{prefix}{str(i + 1)}.png")
             screen.blit(img, (11, 52))
             if _g.grab:
-                coin_img = pygame.image.load(f"artwork/sprite/coin{_g.cointype}3.png").convert_alpha()
+                coin_img = get_image(f"artwork/sprite/coin{_g.cointype}3.png")
                 screen.blit(coin_img, ((12, 38, 64)[i], 74))
             break
 
@@ -455,13 +464,13 @@ def graphic_interrupts():
         if ticks % 5000 > 4500:
             _g.grab = randint(1, COIN_FREQUENCY) == 1
         # Default DK sprite
-        img = pygame.image.load(f"artwork/sprite/{prefix}0.png").convert_alpha()
+        img = get_image(f"artwork/sprite/{prefix}0.png")
         screen.blit(img, (11, 52))
 
     # Animate rolling coins
     for i, coin in enumerate(_g.coins):
         coinx, coiny, coinid, coindir, use_ladder, cointype = coin
-        img = pygame.image.load(f"artwork/sprite/coin{str(cointype)}{str(int(coinid % 4))}.png").convert_alpha()
+        img = get_image(f"artwork/sprite/coin{str(cointype)}{str(int(coinid % 4))}.png")
         screen.blit(img, (int(coinx), int(coiny)))
 
         if (coinx - 8 <= _g.xpos < coinx + 8) and (coiny >= _g.ypos > coiny - 10):
@@ -497,6 +506,11 @@ def graphic_interrupts():
 
 def main():
     pygame.display.set_caption('DONKEY KONG ARCADE FE')
+
+    # Store the background as a frame and make the screen map for collision detection
+    background_image = get_image("artwork/background.png")
+    background_map = get_image("artwork/map.png")
+    screenmap.blit(background_map, [0, 0])
 
     # launch front end
     build_menu()
@@ -548,11 +562,11 @@ def main():
         # Check for inactivity
         if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
             if ((pygame.time.get_ticks() - _g.pause_ticks) % 25000) < 3000:
-                screen.blit(pygame.image.load(f"artwork/intro/f{randint(0,1)}.png").convert(), [0, 0])
+                screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), [0, 0])
             else:
                 lines = (INSTRUCTION, CONTROLS)[(pygame.time.get_ticks() - _g.pause_ticks) % 25000 > 14000]
                 for i, line in enumerate(lines.split("\n")):
-                    write_text(line+(" "*28), x=0, y=20 + (i * 9), fg=CYAN, bg=BLACK, font=dk_font)
+                    write_text(line+(" "*28), x=0, y=20 + (i * 8), fg=CYAN, bg=BLACK, font=dk_font)
             write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 700 < 350], bg=None)
             write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
             if _g.active:

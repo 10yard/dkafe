@@ -96,10 +96,11 @@ LADDER_ZONES = [
 # Relative pixels for jump
 JUMP_PIXELS = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
-COIN_INFO = [' HEY JUMPMAN!', '', ' COLLECT COINS', ' TO PLAY GAMES', '', ' PUSH COIN', ' FOR GAME INFO', '']
-FREE_INFO = [' HEY JUMPMAN!', '', ' ALL MACHINES', ' ARE FREE TO PLAY', '', ' PUSH COIN', ' FOR GAME INFO', '']
+COIN_INFO = ['HEY JUMPMAN!', '', 'COLLECT COINS', 'TO PLAY GAMES', '', 'PUSH COIN', 'FOR GAME INFO', '']
+FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH COIN', 'FOR GAME INFO', '']
 
 INSTRUCTION = """
+
 
 Donkey Kong has captured
 Pauline and carried her to
@@ -115,19 +116,23 @@ scattered around the
 platforms.
 
 Yes, the plot is a bit thin
-and I can't explain why Kong 
-has decided to throw coins 
-instead of barrels. 
+and I can't explain why 
+Donkey Kong has decided to 
+throw coins instead of 
+barrels. 
 
 Anyway, the coins must be 
 collected by Jumpman so that
 he has money to play all of 
 the arcade machines.
 
+
 """
 
 CONTROLS = """
+
 The Controls are as follows
+
 
 Left/   -  Move Jumpman 
 Right      along the 
@@ -140,8 +145,9 @@ Down       and down ladders.
 
 Jump/   -  Play the arcade
 P1 Start   machine that 
-           Jumpman is facing
-
+           Jumpman is facing.
+           Jump also jumps :)
+         
 P2 Start-  Quickly select 
            from a game list
 
@@ -169,9 +175,9 @@ screenmap = screen.copy()
 screen_with_icons = screen.copy()
 
 # Store the background as a frame and make the screen map for collision detection
-background_image = pygame.image.load("artwork/background.png").convert()
-background_map = pygame.image.load("artwork/map.png").convert()
-screenmap.blit(background_map, [0, 0])
+#background_image = get_image("artwork/background.png")
+#background_map = get_image("artwork/map.png")
+#screenmap.blit(background_map, [0, 0])
 
 # menu theme
 dkafe_theme = pygame_menu.themes.THEME_DEFAULT.copy()
