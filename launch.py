@@ -1,10 +1,10 @@
 import sys
-import glob
 import shutil
 import dk_global as _g
 import dk_system as _s
 from dk_config import *
 from random import randint
+from glob import glob
 
 
 def update_screen(frame_delay=0):
@@ -45,7 +45,7 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
 
 
 def get_image(image_key):
-    # Load image or get prevously loaded image from cache
+    # Load image or read prevously loaded image from the dictionary/cache
     if image_key not in _g.image_cache:
         _g.image_cache[image_key] = pygame.image.load(image_key).convert_alpha()
     return _g.image_cache[image_key]
@@ -64,7 +64,6 @@ def check_for_input():
                 clear_screen(and_quit_program=True)
             if event.key == CONTROL_P2_START:
                 open_menu()
-                _g.left, _g.right, _g.up, _g.down, _g.jump, _g.start = (False,) * 6
             if event.key == CONTROL_COIN:
                 _g.showinfo = not _g.showinfo
                 display_icons()
@@ -91,61 +90,49 @@ def play_sound_effect(effect=None, stop=False):
         pygame.mixer.Sound(effect).play()
 
 
-def intro_screen():
-    screen.blit(get_image("artwork/intro/launch.png"), [0, 0])
-    update_screen(500)
-    play_sound_effect(effect="sounds/jump.wav", stop=True)
-
-    # Flash the DK Logo
-    for i in range(0, 100): 
+def play_intro_animation():
+    for _key in list(range(0, 100)) + list(sorted(glob("artwork/scene/scene_*.png"))):
         check_for_input()
         if _g.start or _g.jump or _g.skip:
             _g.skip = True
             play_sound_effect(stop=True)
             break
-        screen.blit(get_image("artwork/intro/f%s.png" % (str(i % 2) if i <= 40 else "1")), [0, 0])
+
+        if type(_key) is int:
+            # Flash the DK Logo
+            screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), [0, 0])
+        else:
+            # Show DK climb scene.
+            screen.blit(get_image(_key), [0, 0])
+            current_scene = int(_key.split("scene_")[1][:4])
+
+            # play sound if required for the current frame
+            for scene_number, scene_sound in SCENE_SOUNDS:
+                if current_scene == scene_number:
+                    play_sound_effect(scene_sound)
+
+            # display nearby icons as girders are broken
+            for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
+                if from_scene < current_scene < to_scene:
+                    display_icons(below_ypos=below_y, above_ypos=above_y, smash=current_scene < smash_scene)
+
+            # Change text to show "What game will you play?"
+            if 855 < current_scene < 1010:
+                write_text("WHAT GAME WILL YOU PLAY ?", font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
+
+            # Title
+            write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
+            write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
+
         update_screen(40)
-
-
-def climb_animation():
-    # Animate DK climb scene.
-    for png_file in sorted(glob.glob("artwork/scene/scene_*.png")):
-        scene = int(png_file.split("scene_")[1][:4])
-        check_for_input()
-        if _g.start or _g.jump or _g.skip:
-            _g.skip = True
-            play_sound_effect(stop=True)
-            break
-
-        # display the current frame
-        frame = get_image(png_file)
-        screen.blit(frame, [0, 0])
-
-        # play sound if required for frame
-        for scene_id, scene_sound in SCENE_SOUNDS:
-            if scene == scene_id:
-                play_sound_effect(scene_sound)
-
-        # display icons as girders are broken
-        for from_scene, to_scene, below, above, smash_scene in SCENE_ICONS:
-            if from_scene < scene < to_scene:
-                display_icons(below_ypos=below, above_ypos=above, smash=scene < smash_scene)
-
-        # What game will you play scenes
-        if 855 < scene < 1010:
-            write_text("WHAT GAME WILL YOU PLAY ?", font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
-
-        # Title
-        write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
-        write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
-
-        update_screen(40 * (scene <= 1009))
-    return
 
 
 def read_map(x, y):
     # Return R colour value from pixel at provided x, y position on the screen map
-    return _g.screen_map.get_at((int(x), int(y)))[0]
+    try:
+        return _g.screen_map.get_at((int(x), int(y)))[0]
+    except IndexError:
+        return 254
 
 
 def get_map_info(direction=None, x=0, y=0):
@@ -153,12 +140,11 @@ def get_map_info(direction=None, x=0, y=0):
     map_info = []
     _x = int(x) if x else int(_g.xpos) + SPRITE_HALF
     _y = int(y) if y else int(_g.ypos) + SPRITE_FULL
-
     try:
         # Check for blocks on the screen map
-        if read_map(_x - SPRITE_HALF, _y) == 254 or _g.xpos < 2:
+        if read_map(_x - SPRITE_HALF, _y) == 254:
             map_info.append("BLOCKED_LEFT")
-        if read_map(_x + SPRITE_HALF, _y) == 254 or _g.xpos > 206:
+        if read_map(_x + SPRITE_HALF, _y) == 254:
             map_info.append("BLOCKED_RIGHT")
         if read_map(_x, _y) == 236:
             map_info.append("FOOT_UNDER_PLATFORM")
@@ -203,40 +189,41 @@ def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=Fal
     return proximity
 
 
-def animate_jumpman(direction=None, reset=False):
+def adjust_jumpman():
+    # Adjust Jumpman's vertical position with the sloping platform
+    map_info = get_map_info("l")
+    if "FOOT_UNDER_PLATFORM" in map_info:
+        _g.ypos += -1
+    elif "FOOT_ABOVE_PLATFORM" in map_info:
+        _g.ypos += +1
+
+
+def animate_jumpman(direction=None, horizontal_movement=1):
     sprite_file = f"artwork/sprite/jm{direction}<I>.png"
     sound_file = None
 
     map_info = get_map_info(direction)
-    if direction in ("l", "r") and not reset:
+    if direction in ("l", "r"):
         _g.ready = False
-        if "LADDER_DETECTED" in map_info and "END_OF_LADDER" not in map_info:
+        ladder_info = get_map_info("u") + get_map_info("d")
+        if "LADDER_DETECTED" in ladder_info and "END_OF_LADDER" not in ladder_info:
             screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
 
         if direction == "l" and "BLOCKED_LEFT" not in map_info:
             _g.facing = 0
-            _g.xpos += -1
+            _g.xpos += horizontal_movement * -1
         elif direction == "r" and "BLOCKED_RIGHT" not in map_info:
             _g.facing = 1
-            _g.xpos += 1
+            _g.xpos += horizontal_movement
         else:
             screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
 
-    # Adjust Jumpman's vertical position with the sloping platform
-    if direction in ("l", "r"):
-        if "FOOT_UNDER_PLATFORM" in map_info:
-            _g.ypos += -1
-        elif "FOOT_ABOVE_PLATFORM" in map_info:
-            _g.ypos += +1
+        adjust_jumpman()
 
         _g.sprite_index += 0.5
-        # Update Jumpman walking sprites and sounds
-        if reset:
-            sprite_file = sprite_file.replace("<I>", "0")
-        else:
-            sprite_file = sprite_file.replace("<I>", str(int(_g.sprite_index) % 3))
+        sprite_file = sprite_file.replace("<I>", str(int(_g.sprite_index) % 3))
         for walk in (1, "0"), (5, "1"), (9, "2"):
             if _g.sprite_index % 12 == walk[0]:
                 sound_file = f"sounds/walk{walk[1]}.wav"
@@ -245,7 +232,6 @@ def animate_jumpman(direction=None, reset=False):
         if "LADDER_DETECTED" in map_info:
             if "END_OF_LADDER" in map_info:
                 sprite_file = sprite_file.replace("<I>", "0")
-                _g.halfstep = True
             elif "NEARING_END_OF_LADDER" in map_info:
                 sprite_file = sprite_file.replace("<I>", "3")
             elif "APPROACHING_END_OF_LADDER" in map_info:
@@ -270,12 +256,12 @@ def animate_jumpman(direction=None, reset=False):
         # Jumpman is jumping.  Check for landing platform and blocks
         if _g.jumping_seq == 1:
             sound_file = f"sounds/jump.wav"
-        if "BLOCKED_LEFT" not in map_info and "BLOCKED_RIGHT" not in map_info:
+        if "BLOCKED_LEFT" in map_info or "BLOCKED_RIGHT" in map_info:
+            # Jump into a block so drop down
+            sprite_file = f'artwork/sprite/jm{("l", "r")[_g.facing]}0.png'
+        else:
             sprite_file = sprite_file.replace("<I>", str(_g.facing))
             _g.xpos += _g.right + (_g.left * -1)
-        else:
-            _g.xpos += (_g.right * -1) + _g.left
-
         if "FOOT_UNDER_PLATFORM" not in map_info or JUMP_PIXELS[_g.jumping_seq] < 0:
             _g.ypos += JUMP_PIXELS[_g.jumping_seq]
 
@@ -283,9 +269,6 @@ def animate_jumpman(direction=None, reset=False):
         img = get_image(sprite_file)
     else:
         img = _g.last_image
-
-    if DEBUG:
-        screen.set_at((_g.xpos, int(_g.ypos)), WHITE)
 
     screen.blit(img, (_g.xpos, int(_g.ypos)))
     _g.last_image = img
@@ -309,6 +292,7 @@ def open_menu():
     _g.menu.enable()
     _g.menu.mainloop(screen)
     pygame.event.clear()
+    _g.left, _g.right, _g.up, _g.down, _g.jump, _g.start = (False,) * 6
 
 
 def close_menu():
@@ -513,7 +497,7 @@ def graphic_interrupts():
 
 
 def main():
-    pygame.display.set_caption('DONKEY KONG ARCADE FE')
+    pygame.display.set_caption(TITLE)
 
     # Store screen map for collision detection
     _g.screen_map = screen.copy()
@@ -521,24 +505,23 @@ def main():
 
     # launch front end
     build_menu()
-    intro_screen()
-    climb_animation()
+    play_intro_animation()
 
     # Start background music
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
     music_channel.set_volume(1.5)
-        
-    # loop the game
-    _g.timer.reset()
 
     # Build the screen with icons to use as background
     screen.blit(get_image("artwork/background.png"), [0, 0])
     display_icons(no_info=True)
     _g.screen_icons = screen.copy()
 
+    # Initialise Jumpman
     animate_jumpman("r")
     _g.lastmove = 0
+    _g.timer.reset()
 
+    # loop the game
     while True:
         if _g.active:
             screen.blit(_g.screen_icons, (0, 0))
@@ -561,12 +544,14 @@ def main():
             animate_jumpman()
         elif (_g.jump and _g.timer.duration > 0.25) or _g.jumping:
             # Jumpman has started a jump or is actively jumping
-            _g.jumping = True
-            _g.jumping_seq += 1
-            if _g.jumping_seq >= len(JUMP_PIXELS):
-                _g.jumping = False
-                _g.jumping_seq = 0
-                animate_jumpman(("l", "r")[_g.facing], reset=True)
+            ladder_info = get_map_info(direction="d") + get_map_info(direction="u")
+            if not(_g.jumping_seq == 0 and "LADDER_DETECTED" in ladder_info and "END_OF_LADDER" not in ladder_info):
+                _g.jumping = True
+                _g.jumping_seq += 1
+                if _g.jumping_seq >= len(JUMP_PIXELS):
+                    _g.jumping = False
+                    _g.jumping_seq, _g.sprite_index = 0, 0
+                    animate_jumpman(("l", "r")[_g.facing], horizontal_movement=0)
 
         # Check for inactivity
         if _g.timer.duration - _g.lastmove > INACTIVE_TIME:

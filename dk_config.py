@@ -3,7 +3,7 @@ import pygame_menu
 import os
 
 # Graphic Config
-FULLSCREEN = True
+TITLE = 'DONKEY KONG ARCADE FE'
 TARGET_SIZE = (224, 256)     # x, y resolution of game (x, y)
 CLOCK_RATE = 60              # Clock rate/timing. Integer
 FRAME_DELAY = 23             # Default delay for screen update. Integer
@@ -20,7 +20,6 @@ CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
 
 # Options
-DEBUG = True
 INACTIVE_TIME = 15           # Screensaver with game instructions after period (in seconds) of inactivity
 TIMER_START = 5000           # Timer starts countdown from
 PLAY_COST = 100              # How much it cost to play an arcade machine.  Jumpman must have collected enough coins.
@@ -32,6 +31,7 @@ COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
 # Emulator and rom path defaults
+FULLSCREEN = True
 OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
 ROM_DIR = 'C:\\emus\\roms'
 EMU_1 = 'C:\\emus\\mame\\mame64 <OPTIONS> -rompath <ROM_DIR>'
@@ -98,7 +98,7 @@ LADDER_ZONES = [
 # Sprite helpers
 SPRITE_FULL = 15
 SPRITE_HALF = 8
-JUMP_PIXELS = [-1,] * 13 + [1,] * 13
+JUMP_PIXELS = [-1, ] * 13 + [1, ] * 12
 
 # In game messages and instructions
 COIN_INFO = ['HEY JUMPMAN!', '', 'COLLECT COINS', 'TO PLAY GAMES', '', 'PUSH COIN', 'FOR GAME INFO', '']
