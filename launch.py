@@ -19,7 +19,7 @@ def clear_screen(frame_delay=0, colour=BLACK, and_quit_program=False, and_reset_
     _screen.fill(colour)
     update_screen(frame_delay)
     if and_reset_display:
-        _screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN | pygame.SCALED)
+        _screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     if and_quit_program:
         pygame.quit()
         sys.exit()
@@ -145,28 +145,28 @@ def climb_animation():
 
 def read_map(x, y):
     # Return R colour value from pixel at provided x, y position on the screen map
-    return screenmap.get_at((x, y))[0]
+    return _g.screen_map.get_at((int(x), int(y)))[0]
 
 
-def get_map_info(direction=None, x=None, y=None, x_offset=None, y_offset=None):
+def get_map_info(direction=None, x=0, y=0):
     # Return information from map e.g. ladders and obstacles preventing movement in intended direction
     map_info = []
-    if not x and not y and not x_offset and not y_offset:
-        # Assume defaults when parameters are not provided
-        x, y, x_offset, y_offset = _g.xpos, int(_g.ypos), 8, 15
+    _x = int(x) if x else int(_g.xpos) + SPRITE_HALF
+    _y = int(y) if y else int(_g.ypos) + SPRITE_FULL
+
     try:
         # Check for blocks on the screen map
-        if read_map(x - 1, y + y_offset) == 254 or _g.xpos < 2:
+        if read_map(_x - SPRITE_HALF, _y) == 254 or _g.xpos < 2:
             map_info.append("BLOCKED_LEFT")
-        if read_map(x + x_offset * 2, y + y_offset) == 254 or _g.xpos > 206:
+        if read_map(_x + SPRITE_HALF, _y) == 254 or _g.xpos > 206:
             map_info.append("BLOCKED_RIGHT")
-        if read_map(x + x_offset, y + y_offset) == 236:
+        if read_map(_x, _y) == 236:
             map_info.append("FOOT_UNDER_PLATFORM")
-        if read_map(x + x_offset, y + y_offset + 1) == 0:
+        if read_map(_x, _y + 1) == 0:
             map_info.append("FOOT_ABOVE_PLATFORM")
 
         # ladder detection based on direction of travel
-        _r = read_map(x + x_offset - 1, y + y_offset + (direction == "d"))
+        _r = read_map(_x - 2, _y + (direction == "d"))
         for zone in LADDER_ZONES:
             if _r in zone[1]:
                 map_info.append(zone[0])
@@ -178,9 +178,9 @@ def get_map_info(direction=None, x=None, y=None, x_offset=None, y_offset=None):
 def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=False, no_info=False):
     proximity = None
     # display icons and return icon in proximity to jumpman.  Alternate between looping forwards and reverse.
-    for icx, icy, name, sub, desc, emu, load in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
-        if icx and icy:
-            if not below_ypos or not above_ypos or (below_ypos >= icy >= above_ypos):
+    for _x, _y, name, sub, desc, emu, load in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
+        if _x and _y:
+            if not below_ypos or not above_ypos or (below_ypos >= _y >= above_ypos):
                 icon_image = os.path.join("artwork/icon", sub, name + ".png")
                 if not os.path.exists(icon_image):
                     icon_image = os.path.join("artwork/icon/default_machine.png")
@@ -188,7 +188,7 @@ def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=Fal
                     icon_image = f"artwork/sprite/smash{str(randint(0,3))}.png"
                 img = get_image(icon_image)
                 w, h = img.get_width(), img.get_height()
-                if (icx < _g.xpos + 9 < icx + w) and (int(_g.ypos) + 8 > icy and int(_g.ypos) + 9 < icy + h):
+                if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                     # Pauline to announce the game found near Jumpman.  Return the game launch information.
                     if not int(FREE_PLAY) and _g.score < PLAY_COST and _g.timer.duration % 2 < 1:
                         write_text(f' ${str(PLAY_COST)} TO PLAY ', x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
@@ -197,9 +197,9 @@ def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=Fal
                     proximity = (sub, name, emu, load)
                 if _g.showinfo and not no_info:
                     # Show game info above icons
-                    write_text(desc, x=icx, y=icy - 6, fg=MAGENTA, bg=WHITE, box=True, rj=icx > 180)
+                    write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj=_x > 180)
                 if not detect_only:
-                    screen.blit(img, (icx, icy))
+                    screen.blit(img, (_x, _y))
     return proximity
 
 
@@ -211,7 +211,7 @@ def animate_jumpman(direction=None, reset=False):
     if direction in ("l", "r") and not reset:
         _g.ready = False
         if "LADDER_DETECTED" in map_info and "END_OF_LADDER" not in map_info:
-            screen.blit(_g.last_img, (_g.xpos, int(_g.ypos)))
+            screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
 
         if direction == "l" and "BLOCKED_LEFT" not in map_info:
@@ -221,10 +221,10 @@ def animate_jumpman(direction=None, reset=False):
             _g.facing = 1
             _g.xpos += 1
         else:
-            screen.blit(_g.last_img, (_g.xpos, int(_g.ypos)))
+            screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
 
-    # Adjust jumpmans vertical position with the sloping platform
+    # Adjust Jumpman's vertical position with the sloping platform
     if direction in ("l", "r"):
         if "FOOT_UNDER_PLATFORM" in map_info:
             _g.ypos += -1
@@ -232,7 +232,7 @@ def animate_jumpman(direction=None, reset=False):
             _g.ypos += +1
 
         _g.sprite_index += 0.5
-        # update jumpman walking sprites and sounds
+        # Update Jumpman walking sprites and sounds
         if reset:
             sprite_file = sprite_file.replace("<I>", "0")
         else:
@@ -267,20 +267,28 @@ def animate_jumpman(direction=None, reset=False):
                 _g.ready = True
 
     if direction == "j":
+        # Jumpman is jumping.  Check for landing platform and blocks
+        if _g.jumping_seq == 1:
+            sound_file = f"sounds/jump.wav"
         if "BLOCKED_LEFT" not in map_info and "BLOCKED_RIGHT" not in map_info:
-            if _g.jumping_seq == 1:
-                sound_file = f"sounds/jump.wav"
             sprite_file = sprite_file.replace("<I>", str(_g.facing))
-            _g.xpos += (_g.right * 1) + (_g.left * -1)
-            if "FOOT_UNDER_PLATFORM" not in map_info or JUMP_PIXELS[_g.jumping_seq] < 0:
-                _g.ypos += JUMP_PIXELS[_g.jumping_seq]
+            _g.xpos += _g.right + (_g.left * -1)
+        else:
+            _g.xpos += (_g.right * -1) + _g.left
+
+        if "FOOT_UNDER_PLATFORM" not in map_info or JUMP_PIXELS[_g.jumping_seq] < 0:
+            _g.ypos += JUMP_PIXELS[_g.jumping_seq]
 
     if "<I>" not in sprite_file:
         img = get_image(sprite_file)
     else:
-        img = _g.last_img
+        img = _g.last_image
+
+    if DEBUG:
+        screen.set_at((_g.xpos, int(_g.ypos)), WHITE)
+
     screen.blit(img, (_g.xpos, int(_g.ypos)))
-    _g.last_img = img
+    _g.last_image = img
 
     if sound_file:
         play_sound_effect(sound_file)
@@ -296,7 +304,7 @@ def build_menu():
 
 
 def open_menu():
-    _g.screenshot = screen.copy()
+    _g.screen_grab = screen.copy()
     pygame.mixer.pause()
     _g.menu.enable()
     _g.menu.mainloop(screen)
@@ -305,7 +313,7 @@ def open_menu():
 
 def close_menu():
     _g.menu.disable()
-    screen.blit(_g.screenshot, [0, 0])
+    screen.blit(_g.screen_grab, [0, 0])
     update_screen()
     pygame.mouse.set_visible(False)
     _g.active = True
@@ -335,7 +343,7 @@ def launch_rom(info):
         shell_command += f' -state {load.strip()}'
 
     _g.menu.disable()                      # Close menu if open
-    _g.screenshot = screen.copy()
+    _g.screen_grab = screen.copy()
 
     if int(FREE_PLAY) or _g.score >= PLAY_COST:
         music_channel.pause()
@@ -362,7 +370,7 @@ def launch_rom(info):
 
     # Redraw the screen
     clear_screen(and_reset_display=True)
-    screen.blit(_g.screenshot, [0, 0])
+    screen.blit(_g.screen_grab, [0, 0])
     update_screen()
     music_channel.unpause()
 
@@ -473,12 +481,12 @@ def graphic_interrupts():
         img = get_image(f"artwork/sprite/coin{str(cointype)}{str(int(coinid % 4))}.png")
         screen.blit(img, (int(coinx), int(coiny)))
 
-        if (coinx - 8 <= _g.xpos < coinx + 8) and (coiny >= _g.ypos > coiny - 10):
+        if (coinx - SPRITE_HALF <= _g.xpos < coinx + SPRITE_HALF) and (coiny >= _g.ypos > coiny - SPRITE_HALF):
             _g.score += COIN_VALUES[cointype]  # Jumpman collected the coin
             play_sound_effect("sounds/getitem.wav")
             coinx = -999
 
-        map_info = get_map_info(direction="d", x=int(coinx), y=int(coiny), x_offset=(7, 3)[coindir == 1], y_offset=9)
+        map_info = get_map_info(direction="d", x=int(coinx + 6), y=int(coiny + 9))
 
         # Toggle ladders.  Virtual ladders are always active.
         if "APPROACHING_LADDER" in map_info:
@@ -507,16 +515,15 @@ def graphic_interrupts():
 def main():
     pygame.display.set_caption('DONKEY KONG ARCADE FE')
 
-    # Store the background as a frame and make the screen map for collision detection
-    background_image = get_image("artwork/background.png")
-    background_map = get_image("artwork/map.png")
-    screenmap.blit(background_map, [0, 0])
+    # Store screen map for collision detection
+    _g.screen_map = screen.copy()
+    _g.screen_map.blit(get_image("artwork/map.png"), [0, 0])
 
     # launch front end
     build_menu()
     intro_screen()
     climb_animation()
-    
+
     # Start background music
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
     music_channel.set_volume(1.5)
@@ -525,16 +532,16 @@ def main():
     _g.timer.reset()
 
     # Build the screen with icons to use as background
-    screen.blit(background_image, [0, 0])
+    screen.blit(get_image("artwork/background.png"), [0, 0])
     display_icons(no_info=True)
-    _g.screen_with_icons = screen.copy()
+    _g.screen_icons = screen.copy()
 
     animate_jumpman("r")
     _g.lastmove = 0
 
     while True:
         if _g.active:
-            screen.blit(_g.screen_with_icons, (0, 0))
+            screen.blit(_g.screen_icons, (0, 0))
 
         if _g.jumping:
             animate_jumpman("j")
@@ -546,18 +553,20 @@ def main():
                     break
 
         if (_g.jump or _g.start) and _g.ready:
+            # Jumpman wants to launch a game
             proximity = display_icons(detect_only=True)
             if proximity:
                 launch_rom(proximity)
+            _g.jump = False
             animate_jumpman()
-        elif (_g.jump and _g.timer.duration > 0.25) or _g.jumping:    # Jumpman not to jump when screen starts
+        elif (_g.jump and _g.timer.duration > 0.25) or _g.jumping:
+            # Jumpman has started a jump or is actively jumping
             _g.jumping = True
             _g.jumping_seq += 1
             if _g.jumping_seq >= len(JUMP_PIXELS):
                 _g.jumping = False
                 _g.jumping_seq = 0
-                for _ in (0, 1):
-                    animate_jumpman(("l", "r")[_g.facing], reset=True)
+                animate_jumpman(("l", "r")[_g.facing], reset=True)
 
         # Check for inactivity
         if _g.timer.duration - _g.lastmove > INACTIVE_TIME:

@@ -3,6 +3,7 @@ import pygame_menu
 import os
 
 # Graphic Config
+FULLSCREEN = True
 TARGET_SIZE = (224, 256)     # x, y resolution of game (x, y)
 CLOCK_RATE = 60              # Clock rate/timing. Integer
 FRAME_DELAY = 23             # Default delay for screen update. Integer
@@ -19,6 +20,7 @@ CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
 
 # Options
+DEBUG = True
 INACTIVE_TIME = 15           # Screensaver with game instructions after period (in seconds) of inactivity
 TIMER_START = 5000           # Timer starts countdown from
 PLAY_COST = 100              # How much it cost to play an arcade machine.  Jumpman must have collected enough coins.
@@ -93,9 +95,12 @@ LADDER_ZONES = [
     ("VIRTUAL_LADDER", (180, 190)),
     ("APPROACHING_LADDER", (200,))]
 
-# Relative pixels for jump
-JUMP_PIXELS = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+# Sprite helpers
+SPRITE_FULL = 15
+SPRITE_HALF = 8
+JUMP_PIXELS = [-1,] * 13 + [1,] * 13
 
+# In game messages and instructions
 COIN_INFO = ['HEY JUMPMAN!', '', 'COLLECT COINS', 'TO PLAY GAMES', '', 'PUSH COIN', 'FOR GAME INFO', '']
 FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH COIN', 'FOR GAME INFO', '']
 
@@ -169,15 +174,8 @@ dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
 pl_font = pygame.font.Font('fonts/tiny.ttf', 6)
 clock = pygame.time.Clock()
 
-screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN | pygame.SCALED)
+screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
 pygame.mouse.set_visible(False)
-screenmap = screen.copy()
-screen_with_icons = screen.copy()
-
-# Store the background as a frame and make the screen map for collision detection
-#background_image = get_image("artwork/background.png")
-#background_map = get_image("artwork/map.png")
-#screenmap.blit(background_map, [0, 0])
 
 # menu theme
 dkafe_theme = pygame_menu.themes.THEME_DEFAULT.copy()
