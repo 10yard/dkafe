@@ -1,10 +1,18 @@
 import sys
-import shutil
 import dk_global as _g
 import dk_system as _s
 from dk_config import *
 from random import randint
 from glob import glob
+from shutil import copy
+
+
+def initialise_screen(reset=False):
+    flags = pygame.FULLSCREEN * int(FULLSCREEN) | pygame.NOFRAME * int(not FULLSCREEN) | pygame.SCALED
+    _g.screen = pygame.display.set_mode(TARGET_SIZE, flags=flags)
+    if not reset:
+        _g.screen_map = _g.screen.copy()
+        _g.screen_map.blit(get_image("artwork/map.png"), [0, 0])
 
 
 def update_screen(frame_delay=0):
@@ -14,34 +22,41 @@ def update_screen(frame_delay=0):
 
 
 def clear_screen(frame_delay=0, colour=BLACK, and_quit_program=False, and_reset_display=False):
-    from dk_config import screen as _screen
     pygame.mouse.set_visible(False)
-    _screen.fill(colour)
+    _g.screen.fill(colour)
     update_screen(frame_delay)
     if and_reset_display:
-        _screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
+        initialise_screen(reset=True)
     if and_quit_program:
         pygame.quit()
         sys.exit()
 
 
-def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj=False):
+def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
     # Write text to screen at given position using fg and bg colour (None for transparent)
     if text:
         img = font.render(text, False, fg, bg)
         w, h = img.get_width(), img.get_height()
-        _x = x - ((w - 12) * rj)  # align x left or right
-        screen.blit(img, (_x, y))
+        _x = x - w + rj_adjust if rj_adjust else x  # align x left or right
+        _g.screen.blit(img, (_x, y))
 
         if box or bubble:
             w += 1
-            pygame.draw.rect(screen, fg, (_x - 2, y - 1, w + 2, h + 2), 1)
-            pygame.draw.line(screen, bg, (_x - 1, y), (_x - 1, y + 5))
+            pygame.draw.rect(_g.screen, fg, (_x - 2, y - 1, w + 2, h + 2), 1)
+            pygame.draw.line(_g.screen, bg, (_x - 1, y), (_x - 1, y + 5))
             if bubble:
                 for point in ((_x - 2, y - 1), (_x + w, y - 1), (_x - 2, y + h), (_x + w, y + h)):
-                    screen.set_at(point, BLACK)
-                pygame.draw.polygon(screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
-                pygame.draw.lines(screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
+                    _g.screen.set_at(point, BLACK)
+                pygame.draw.polygon(_g.screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
+                pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
+
+
+def flash_message(message, x, y):
+    clear_screen()
+    for i in (0, 1, 2) * 7:
+        write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED)[i])
+        update_screen(FRAME_DELAY * 2)
+    clear_screen()
 
 
 def get_image(image_key):
@@ -100,10 +115,10 @@ def play_intro_animation():
 
         if type(_key) is int:
             # Flash the DK Logo
-            screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), [0, 0])
+            _g.screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), [0, 0])
         else:
             # Show DK climb scene.
-            screen.blit(get_image(_key), [0, 0])
+            _g.screen.blit(get_image(_key), [0, 0])
             current_scene = int(_key.split("scene_")[1][:4])
 
             # play sound if required for the current frame
@@ -124,7 +139,7 @@ def play_intro_animation():
             write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
             write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
 
-        update_screen(40)
+        update_screen(frame_delay=int(FRAME_DELAY * 2))
 
 
 def read_map(x, y):
@@ -164,7 +179,7 @@ def get_map_info(direction=None, x=0, y=0):
 def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=False, no_info=False):
     proximity = None
     # display icons and return icon in proximity to jumpman.  Alternate between looping forwards and reverse.
-    for _x, _y, name, sub, desc, emu, load in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
+    for _x, _y, name, sub, desc, emu, state in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
         if _x and _y:
             if not below_ypos or not above_ypos or (below_ypos >= _y >= above_ypos):
                 icon_image = os.path.join("artwork/icon", sub, name + ".png")
@@ -180,12 +195,12 @@ def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=Fal
                         write_text(f' ${str(PLAY_COST)} TO PLAY ', x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                     else:
                         write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
-                    proximity = (sub, name, emu, load)
+                    proximity = (sub, name, emu, state)
                 if _g.showinfo and not no_info:
                     # Show game info above icons
-                    write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj=_x > 180)
+                    write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
                 if not detect_only:
-                    screen.blit(img, (_x, _y))
+                    _g.screen.blit(img, (_x, _y))
     return proximity
 
 
@@ -207,7 +222,7 @@ def animate_jumpman(direction=None, horizontal_movement=1):
         _g.ready = False
         ladder_info = get_map_info("u") + get_map_info("d")
         if "LADDER_DETECTED" in ladder_info and "END_OF_LADDER" not in ladder_info:
-            screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
+            _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
 
         if direction == "l" and "BLOCKED_LEFT" not in map_info:
@@ -217,7 +232,7 @@ def animate_jumpman(direction=None, horizontal_movement=1):
             _g.facing = 1
             _g.xpos += horizontal_movement
         else:
-            screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
+            _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
 
         adjust_jumpman()
@@ -270,7 +285,7 @@ def animate_jumpman(direction=None, horizontal_movement=1):
     else:
         img = _g.last_image
 
-    screen.blit(img, (_g.xpos, int(_g.ypos)))
+    _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
     _g.last_image = img
 
     if sound_file:
@@ -280,24 +295,22 @@ def animate_jumpman(direction=None, horizontal_movement=1):
 def build_menu():
     _g.menu = pygame_menu.Menu(TARGET_SIZE[1]-2, TARGET_SIZE[0]-2, 'SELECT A GAME', mouse_visible=False,
                                mouse_enabled=False, menu_position=(2, 2), theme=dkafe_theme, onclose=close_menu)
-    for name, sub, desc, icx, icy, emu, load in read_romlist():
-        _g.icons.append((int(icx), int(icy), name, sub, desc, emu, load))
-        _g.menu.add_button(desc, launch_rom, (sub, name, emu, load))
+    for name, sub, desc, icx, icy, emu, state in read_romlist():
+        _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state))
+        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state))
     _g.menu.add_button('Close Menu', close_menu)
 
 
 def open_menu():
-    _g.screen_grab = screen.copy()
     pygame.mixer.pause()
     _g.menu.enable()
-    _g.menu.mainloop(screen)
+    _g.menu.mainloop(_g.screen)
     pygame.event.clear()
     _g.left, _g.right, _g.up, _g.down, _g.jump, _g.start = (False,) * 6
 
 
 def close_menu():
     _g.menu.disable()
-    screen.blit(_g.screen_grab, [0, 0])
     update_screen()
     pygame.mouse.set_visible(False)
     _g.active = True
@@ -305,12 +318,12 @@ def close_menu():
 
 
 def launch_rom(info):
-    # Receives subfolder (optional), name, emulator and load state
+    # Receives subfolder (optional), name, emulator and rom state
     # A homebew emulator is preferred for rom hacks but a good alternative is to provide a subfolder which holds a
     # variant of the main rom e.g. roms/skipstart/dkong.zip is a variant of roms/dkong.zip.  If mame emulator supports
     # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
     # rom to avoid CRC fail.
-    subfolder, name, emu, load = info
+    subfolder, name, emu, state = info
     emu_command = f'{(EMU_1, EMU_2, EMU_3)[emu - 1]}'.replace("<NAME>", name).replace("<DATETIME>", _s.get_datetime())
     shell_command = f'{emu_command} {name}'
     if subfolder:
@@ -322,12 +335,11 @@ def launch_rom(info):
             rom_source = os.path.join(ROM_DIR, subfolder, name + ".zip")
             rom_target = os.path.join(ROM_DIR, name + ".zip")
             if os.path.exists(rom_source):
-                shutil.copy(rom_source, rom_target)
-    if load:
-        shell_command += f' -state {load.strip()}'
+                copy(rom_source, rom_target)
+    if state:
+        shell_command += f' -state {state.strip()}'
 
     _g.menu.disable()                      # Close menu if open
-    _g.screen_grab = screen.copy()
 
     if int(FREE_PLAY) or _g.score >= PLAY_COST:
         music_channel.pause()
@@ -338,26 +350,16 @@ def launch_rom(info):
         # Pause timer. Show "recording" message if emulator is recording gameplay (i.e. Wolfmame)
         _g.timer.stop()
         if "-record" in shell_command:
-            for i in ([0, 1] * 17):
-                write_text("R E C O R D I N G", font=dk_font, x=40, y=120, fg=(BLACK, RED)[i], bg=None)
-                update_screen(40)
-        clear_screen()
-
-        # Launch the rom
+            flash_message("R E C O R D I N G", x=40, y=120)
         os.system(shell_command)
         _g.timer.start()
     else:
-        for i in ([0, 1] * 12):
-            clear_screen()
-            write_text("YOU DON'T HAVE ENOUGH COINS !!", font=dk_font, x=4, y=120, bg=BLACK, fg=(BLACK, RED)[i])
-            update_screen(40)
+        flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
 
     # Redraw the screen
     clear_screen(and_reset_display=True)
-    screen.blit(_g.screen_grab, [0, 0])
     update_screen()
     music_channel.unpause()
-
     os.chdir(ROOT_DIR)
     _g.skip = True
 
@@ -369,11 +371,11 @@ def read_romlist():
         with open("romlist.txt", "r") as rl:
             for rom_line in rl.readlines()[1:]:  # ignore the first/header line
                 if rom_line.count("|") == 7:
-                    name, subfolder, desc, icx, icy, emu, load, *_ = [x.strip() for x in rom_line.split("|")]
+                    name, subfolder, desc, icx, icy, emu, state, *_ = [x.strip() for x in rom_line.split("|")]
                     if name and desc and icx and icy:
                         target = name + (".sh", ".bat")[_s.is_windows()] if subfolder == "shell" else name + ".zip"
                         if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
-                            romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), load))
+                            romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state))
     return romlist
 
 
@@ -412,17 +414,17 @@ def graphic_interrupts():
             for i in range(0, 6):
                 if i <= 3 or repeat == 2:
                     backimg = get_image(f"artwork/background.png")
-                    screen.blit(backimg, (_g.xpos, int(_g.ypos)), (_g.xpos, int(_g.ypos), 16, 16))
+                    _g.screen.blit(backimg, (_g.xpos, int(_g.ypos)), (_g.xpos, int(_g.ypos), 16, 16))
                     
                     img = get_image(f"artwork/sprite/out{int(i)}.png")
-                    screen.blit(img, (_g.xpos, int(_g.ypos)))
+                    _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
                 
                     # Display items that don't get updated in this loop
                     write_text("1UP", font=dk_font, x=25, y=0, fg=RED, bg=None)
                     write_text(" 000", font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
                     img = get_image("artwork/sprite/dk0.png")
-                    screen.blit(img, (11, 52))
-                    update_screen(120)
+                    _g.screen.blit(img, (11, 52))
+                    update_screen(FRAME_DELAY * 3)
         pygame.time.delay(1500)
         
         # Set out of time event and restart the regular background music loop
@@ -440,10 +442,10 @@ def graphic_interrupts():
     for i, mod in enumerate((500, 1000, 1500)):
         if ticks % 5000 < mod:
             img = get_image(f"artwork/sprite/{prefix}{str(i + 1)}.png")
-            screen.blit(img, (11, 52))
+            _g.screen.blit(img, (11, 52))
             if _g.grab:
                 coin_img = get_image(f"artwork/sprite/coin{_g.cointype}3.png")
-                screen.blit(coin_img, ((12, 38, 64)[i], 74))
+                _g.screen.blit(coin_img, ((12, 38, 64)[i], 74))
             break
 
     # If DK grabbed a coin then it will start rolling
@@ -457,20 +459,20 @@ def graphic_interrupts():
             _g.grab = randint(1, COIN_FREQUENCY) == 1
         # Default DK sprite
         img = get_image(f"artwork/sprite/{prefix}0.png")
-        screen.blit(img, (11, 52))
+        _g.screen.blit(img, (11, 52))
 
     # Animate rolling coins
     for i, coin in enumerate(_g.coins):
         coinx, coiny, coinid, coindir, use_ladder, cointype = coin
         img = get_image(f"artwork/sprite/coin{str(cointype)}{str(int(coinid % 4))}.png")
-        screen.blit(img, (int(coinx), int(coiny)))
+        _g.screen.blit(img, (int(coinx), int(coiny)))
 
         if (coinx - SPRITE_HALF <= _g.xpos < coinx + SPRITE_HALF) and (coiny >= _g.ypos > coiny - SPRITE_HALF):
             _g.score += COIN_VALUES[cointype]  # Jumpman collected the coin
             play_sound_effect("sounds/getitem.wav")
             coinx = -999
 
-        map_info = get_map_info(direction="d", x=int(coinx + 6), y=int(coiny + 9))
+        map_info = get_map_info(direction="d", x=int(coinx + (9, 4)[coindir == 1]), y=int(coiny + 9))
 
         # Toggle ladders.  Virtual ladders are always active.
         if "APPROACHING_LADDER" in map_info:
@@ -499,9 +501,7 @@ def graphic_interrupts():
 def main():
     pygame.display.set_caption(TITLE)
 
-    # Store screen map for collision detection
-    _g.screen_map = screen.copy()
-    _g.screen_map.blit(get_image("artwork/map.png"), [0, 0])
+    initialise_screen()
 
     # launch front end
     build_menu()
@@ -512,9 +512,9 @@ def main():
     music_channel.set_volume(1.5)
 
     # Build the screen with icons to use as background
-    screen.blit(get_image("artwork/background.png"), [0, 0])
+    _g.screen.blit(get_image("artwork/background.png"), [0, 0])
     display_icons(no_info=True)
-    _g.screen_icons = screen.copy()
+    _g.screen_icons = _g.screen.copy()
 
     # Initialise Jumpman
     animate_jumpman("r")
@@ -524,7 +524,7 @@ def main():
     # loop the game
     while True:
         if _g.active:
-            screen.blit(_g.screen_icons, (0, 0))
+            _g.screen.blit(_g.screen_icons, (0, 0))
 
         if _g.jumping:
             animate_jumpman("j")
@@ -556,7 +556,7 @@ def main():
         # Check for inactivity
         if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
             if ((pygame.time.get_ticks() - _g.pause_ticks) % 25000) < 3000:
-                screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), [0, 0])
+                _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), [0, 0])
             else:
                 lines = (INSTRUCTION, CONTROLS)[(pygame.time.get_ticks() - _g.pause_ticks) % 25000 > 14000]
                 for i, line in enumerate(lines.split("\n")):

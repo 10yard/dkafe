@@ -8,7 +8,6 @@ def is_windows():
     # Is this a Windows OS?
     return "windows" in platform().lower()
 
+
 def get_datetime():
     return datetime.now().strftime("%d%m%Y-%H%M%S")
-
-

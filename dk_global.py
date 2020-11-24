@@ -41,7 +41,7 @@ pause_ticks = 0
 image_cache = {}
 
 # Screen buffers
-screen_map, screen_icons, screen_grab, last_image = (None,) * 4
+screen, screen_map, screen_icons, last_image = (None,) * 4
 
 # Menu
 menu = None

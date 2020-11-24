@@ -45,9 +45,14 @@ if os.path.exists("settings.txt"):
     with open("settings.txt", 'r') as sf:
         for setting in sf.readlines():
             if setting.count("=") == 1:
-                key, value = setting.split("=")
+                key, value = setting.replace("\n", "").split("=")
+                key = key.strip()
+                value = value.strip()
                 try:
-                    globals()[key.strip()] = value.replace("<OPTIONS>", OPTIONS).replace("<ROM_DIR>", ROM_DIR).strip()
+                    if value.isnumeric():
+                        globals()[key] = int(value)
+                    else:
+                        globals()[key] = value.replace("<OPTIONS>", OPTIONS).replace("<ROM_DIR>", ROM_DIR)
                 except KeyError:
                     print(f'Unknown setting "{key.strip()}" in settings.txt file')
                     pygame.quit()
@@ -174,7 +179,6 @@ dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
 pl_font = pygame.font.Font('fonts/tiny.ttf', 6)
 clock = pygame.time.Clock()
 
-screen = pygame.display.set_mode(TARGET_SIZE, flags=pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
 pygame.mouse.set_visible(False)
 
 # menu theme
