@@ -56,7 +56,7 @@ def flash_message(message, x, y):
     for i in (0, 1, 2) * 7:
         write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED)[i])
         update_screen(FRAME_DELAY * 2)
-    # clear_screen()
+    clear_screen()
 
 
 def get_image(image_key):
@@ -130,7 +130,7 @@ def play_intro_animation():
             # display nearby icons as girders are broken
             for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
                 if from_scene < current_scene < to_scene:
-                    display_icons(below_ypos=below_y, above_ypos=above_y, smash=current_scene < smash_scene)
+                    display_icons(below_y=below_y, above_y=above_y, smash=current_scene < smash_scene)
 
             # Change text to show "What game will you play?"
             if 855 < current_scene < 1010:
@@ -298,8 +298,8 @@ def build_menu():
         _g.menu.add_button(desc, launch_rom, (sub, name, emu, state))
     _g.menu.add_button('Close Menu', close_menu)
 
-
 def open_menu():
+    pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
     _g.menu.enable()
@@ -309,6 +309,7 @@ def open_menu():
 
 
 def close_menu():
+    pygame.mouse.set_visible(False)
     intermission_channel.stop()
     _g.menu.disable()
     update_screen()
@@ -379,7 +380,7 @@ def read_romlist():
     return romlist
 
 
-def graphic_interrupts():
+def process_interrupts():
     ticks = pygame.time.get_ticks()
     event = None
 
@@ -498,6 +499,35 @@ def graphic_interrupts():
     return event
 
 
+def check_for_inactivity():
+    if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
+        if ((pygame.time.get_ticks() - _g.pause_ticks) % 25000) < 3000:
+            _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), [0, 0])
+        else:
+            lines = (INSTRUCTION, CONTROLS)[(pygame.time.get_ticks() - _g.pause_ticks) % 25000 > 14000]
+            for i, line in enumerate(lines.split("\n")):
+                write_text(line+(" "*28), x=0, y=20 + (i * 8), fg=CYAN, bg=BLACK, font=dk_font)
+        write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 700 < 350], bg=None)
+        write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
+        if _g.active:
+            _g.timer.stop()
+            _g.pause_ticks = pygame.time.get_ticks()
+            pygame.mixer.pause()
+        _g.active = False
+
+
+def check_for_activity():
+    if _g.active:
+        _g.timer.start()
+        pygame.mixer.unpause()
+
+        event = process_interrupts()
+        if event == "OUTOFTIME":
+            _g.coins = []             # Reset the coins
+            _g.timer.reset()          # Reset the bonus timer
+        display_icons(detect_only=True)
+
+
 def main():
     pygame.display.set_caption(TITLE)
     initialise_screen()
@@ -524,14 +554,14 @@ def main():
         if _g.active:
             _g.screen.blit(_g.screen_icons, (0, 0))
 
-        if _g.jumping:
-            animate_jumpman("j")
-        else:
+        if not _g.jumping:
             check_for_input()
             for direction in (_g.right, "r"), (_g.left, "l"), (_g.up, "u"), (_g.down, "d"), (True, ""):
                 if direction[0]:
                     animate_jumpman(direction[1])
                     break
+        elif _g.jumping:
+            animate_jumpman("j")
 
         if (_g.jump or _g.start) and _g.ready:
             # Jumpman wants to launch a game
@@ -551,32 +581,8 @@ def main():
                     _g.jumping_seq, _g.sprite_index = 0, 0
                     animate_jumpman(("l", "r")[_g.facing], horizontal_movement=0)
 
-        # Check for inactivity
-        if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
-            if ((pygame.time.get_ticks() - _g.pause_ticks) % 25000) < 3000:
-                _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), [0, 0])
-            else:
-                lines = (INSTRUCTION, CONTROLS)[(pygame.time.get_ticks() - _g.pause_ticks) % 25000 > 14000]
-                for i, line in enumerate(lines.split("\n")):
-                    write_text(line+(" "*28), x=0, y=20 + (i * 8), fg=CYAN, bg=BLACK, font=dk_font)
-            write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 700 < 350], bg=None)
-            write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
-            if _g.active:
-                _g.timer.stop()
-                _g.pause_ticks = pygame.time.get_ticks()
-                pygame.mixer.pause()
-            _g.active = False
-
-        if _g.active:
-            _g.timer.start()
-            pygame.mixer.unpause()
-
-            event = graphic_interrupts()
-            if event == "OUTOFTIME":
-                _g.coins = []             # Reset the coins
-                _g.timer.reset()          # Reset the bonus timer
-            display_icons(detect_only=True)
-
+        check_for_inactivity()
+        check_for_activity()
         update_screen(FRAME_DELAY)
 
 
