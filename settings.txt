@@ -1,4 +1,4 @@
-FULLSCREEN = 0
+FULLSCREEN = 1
 FREE_PLAY = 0
 ROM_DIR = C:\emus\roms
 OPTIONS = -skip_gameinfo -video gdi -keepaspect -unevenstretch -cfg_directory C:\emus\cfg -nvram_directory C:\emus\nvram

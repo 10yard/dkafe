@@ -8,8 +8,10 @@ from shutil import copy
 
 
 def initialise_screen(reset=False):
+    clock.tick(CLOCK_RATE)
     flags = pygame.FULLSCREEN * int(FULLSCREEN) | pygame.NOFRAME * int(not FULLSCREEN) | pygame.SCALED
-    _g.screen = pygame.display.set_mode(TARGET_SIZE, flags=flags)
+    _g.screen = pygame.display.set_mode(GRAPHICS, flags=flags)
+    pygame.mouse.set_visible(False)
     if not reset:
         _g.screen_map = _g.screen.copy()
         _g.screen_map.blit(get_image("artwork/map.png"), [0, 0])
@@ -18,11 +20,9 @@ def initialise_screen(reset=False):
 def update_screen(frame_delay=0):
     pygame.display.update()
     pygame.time.delay(frame_delay)
-    clock.tick(CLOCK_RATE)
 
 
 def clear_screen(frame_delay=0, colour=BLACK, and_quit_program=False, and_reset_display=False):
-    pygame.mouse.set_visible(False)
     _g.screen.fill(colour)
     update_screen(frame_delay)
     if and_reset_display:
@@ -56,7 +56,7 @@ def flash_message(message, x, y):
     for i in (0, 1, 2) * 7:
         write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED)[i])
         update_screen(FRAME_DELAY * 2)
-    clear_screen()
+    # clear_screen()
 
 
 def get_image(image_key):
@@ -106,6 +106,7 @@ def play_sound_effect(effect=None, stop=False):
 
 
 def play_intro_animation():
+    play_sound_effect(effect="sounds/jump.wav", stop=True)
     for _key in list(range(0, 100)) + list(sorted(glob("artwork/scene/scene_*.png"))):
         check_for_input()
         if _g.start or _g.jump or _g.skip:
@@ -133,7 +134,7 @@ def play_intro_animation():
 
             # Change text to show "What game will you play?"
             if 855 < current_scene < 1010:
-                write_text("WHAT GAME WILL YOU PLAY ?", font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
+                write_text(QUESTION, font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
 
             # Title
             write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
@@ -176,12 +177,12 @@ def get_map_info(direction=None, x=0, y=0):
     return map_info
 
 
-def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=False, no_info=False):
+def display_icons(detect_only=False, below_y=None, above_y=None, smash=False, no_info=False):
     proximity = None
     # display icons and return icon in proximity to jumpman.  Alternate between looping forwards and reverse.
     for _x, _y, name, sub, desc, emu, state in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
         if _x and _y:
-            if not below_ypos or not above_ypos or (below_ypos >= _y >= above_ypos):
+            if not below_y or not above_y or (below_y >= _y >= above_y):
                 icon_image = os.path.join("artwork/icon", sub, name + ".png")
                 if not os.path.exists(icon_image):
                     icon_image = os.path.join("artwork/icon/default_machine.png")
@@ -192,9 +193,8 @@ def display_icons(detect_only=False, below_ypos=None, above_ypos=None, smash=Fal
                 if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                     # Pauline to announce the game found near Jumpman.  Return the game launch information.
                     if not int(FREE_PLAY) and _g.score < PLAY_COST and _g.timer.duration % 2 < 1:
-                        write_text(f' ${str(PLAY_COST)} TO PLAY ', x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
-                    else:
-                        write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+                        desc = f'${str(PLAY_COST)} TO PLAY'
+                    write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                     proximity = (sub, name, emu, state)
                 if _g.showinfo and not no_info:
                     # Show game info above icons
@@ -280,21 +280,19 @@ def animate_jumpman(direction=None, horizontal_movement=1):
         if "FOOT_UNDER_PLATFORM" not in map_info or JUMP_PIXELS[_g.jumping_seq] < 0:
             _g.ypos += JUMP_PIXELS[_g.jumping_seq]
 
-    if "<I>" not in sprite_file:
-        img = get_image(sprite_file)
-    else:
+    if "<I>" in sprite_file:
         img = _g.last_image
-
+    else:
+        img = get_image(sprite_file)
     _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
     _g.last_image = img
-
-    if sound_file:
-        play_sound_effect(sound_file)
+    play_sound_effect(sound_file)
 
 
 def build_menu():
-    _g.menu = pygame_menu.Menu(TARGET_SIZE[1]-2, TARGET_SIZE[0]-2, 'SELECT A GAME', mouse_visible=False,
-                               mouse_enabled=False, menu_position=(2, 2), theme=dkafe_theme, onclose=close_menu)
+    _g.menu = pygame_menu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
+                               theme=dkafe_theme, onclose=close_menu)
+    _g.menu.add_vertical_margin(5)
     for name, sub, desc, icx, icy, emu, state in read_romlist():
         _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state))
         _g.menu.add_button(desc, launch_rom, (sub, name, emu, state))
@@ -303,6 +301,7 @@ def build_menu():
 
 def open_menu():
     pygame.mixer.pause()
+    intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
     _g.menu.enable()
     _g.menu.mainloop(_g.screen)
     pygame.event.clear()
@@ -310,9 +309,9 @@ def open_menu():
 
 
 def close_menu():
+    intermission_channel.stop()
     _g.menu.disable()
     update_screen()
-    pygame.mouse.set_visible(False)
     _g.active = True
     _g.lastmove = _g.timer.duration
 
@@ -437,7 +436,7 @@ def graphic_interrupts():
     prefix = ("dk", "dkg")[_g.grab]
     if _g.grab and _g.cointype == 0:
         # Determine next coin to be grabbed by DK. Higher value coins are released less frequenly
-        _g.cointype = (randint(0, 1) * randint(0, 1) * randint(0, 1)) + 1
+        _g.cointype = int(randint(1, 3) == 1) + 1
 
     for i, mod in enumerate((500, 1000, 1500)):
         if ticks % 5000 < mod:
@@ -500,7 +499,6 @@ def graphic_interrupts():
 
 def main():
     pygame.display.set_caption(TITLE)
-
     initialise_screen()
 
     # launch front end
@@ -509,7 +507,6 @@ def main():
 
     # Start background music
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
-    music_channel.set_volume(1.5)
 
     # Build the screen with icons to use as background
     _g.screen.blit(get_image("artwork/background.png"), [0, 0])

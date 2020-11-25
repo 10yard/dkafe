@@ -4,9 +4,8 @@ import os
 
 # Graphic Config
 TITLE = 'DONKEY KONG ARCADE FE'
-TARGET_SIZE = (224, 256)     # x, y resolution of game (x, y)
-CLOCK_RATE = 60              # Clock rate/timing. Integer
-FRAME_DELAY = 23             # Default delay for screen update. Integer
+GRAPHICS = (224, 256)        # internal x, y resolution of game graphics
+CLOCK_RATE = 60              # Clock rate/timing
 
 # Controls
 CONTROL_LEFT = pygame.K_LEFT
@@ -20,6 +19,7 @@ CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
 
 # Options
+FRAME_DELAY = 22             # Default delay after each screen update. Integer
 INACTIVE_TIME = 15           # Screensaver with game instructions after period (in seconds) of inactivity
 TIMER_START = 5000           # Timer starts countdown from
 PLAY_COST = 100              # How much it cost to play an arcade machine.  Jumpman must have collected enough coins.
@@ -103,9 +103,10 @@ LADDER_ZONES = [
 # Sprite helpers
 SPRITE_FULL = 15
 SPRITE_HALF = 8
-JUMP_PIXELS = [-1, ] * 13 + [1, ] * 12
+JUMP_PIXELS = [-1, ] * 15 + [1, ] * 14
 
 # In game messages and instructions
+QUESTION = "WHAT GAME WILL YOU PLAY ?"
 COIN_INFO = ['HEY JUMPMAN!', '', 'COLLECT COINS', 'TO PLAY GAMES', '', 'PUSH COIN', 'FOR GAME INFO', '']
 FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH COIN', 'FOR GAME INFO', '']
 
@@ -173,13 +174,11 @@ Good luck!
 # pygame setup
 pygame.mixer.init(frequency=48000)
 music_channel = pygame.mixer.Channel(0)
+intermission_channel = pygame.mixer.Channel(1)
 pygame.init()
-pygame.mouse.set_visible(False)
 dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
 pl_font = pygame.font.Font('fonts/tiny.ttf', 6)
 clock = pygame.time.Clock()
-
-pygame.mouse.set_visible(False)
 
 # menu theme
 dkafe_theme = pygame_menu.themes.THEME_DEFAULT.copy()
@@ -187,16 +186,22 @@ dkafe_theme.widget_font = 'fonts/PressStart2P-vaV7.ttf'
 dkafe_theme.title_font = 'fonts/PressStart2P-vaV7.ttf'
 dkafe_theme.title_font_size = 8
 dkafe_theme.widget_font_size = 8
-dkafe_theme.background_color = RED
-dkafe_theme.title_background_color = BLACK
-dkafe_theme.widget_font_color = CYAN
+
+dkafe_theme.background_color = BLACK
+dkafe_theme.title_background_color = WHITE
+dkafe_theme.title_font_color = RED
 dkafe_theme.title_bar_style = pygame_menu.widgets.MENUBAR_STYLE_UNDERLINE
-dkafe_theme.title_offset = (2, 2)
-dkafe_theme.scrollbar_thick = 2
-dkafe_theme.widget_margin = (0, -0.01)
-dkafe_theme.widget_selection_effect = \
-    pygame_menu.widgets.LeftArrowSelection(arrow_size=(10, 15), arrow_right_margin=5, arrow_vertical_offset=-1)
+dkafe_theme.title_offset = (12, 1)
+
+dkafe_theme.scrollbar_color = BLACK
+dkafe_theme.scrollbar_slider_color = BLACK
+
+dkafe_theme.selection_color = RED
+dkafe_theme.widget_font_color = PINK
+dkafe_theme.widget_margin = (0, 4)
+dkafe_theme.widget_selection_effect = pygame_menu.widgets.LeftArrowSelection(arrow_right_margin=15, arrow_vertical_offset=-1)
+dkafe_theme.widget_selection_effect = pygame_menu.widgets.HighlightSelection(border_width=3, margin_x=3, margin_y=1)
 
 # Override the default pygame-menu keys
 pygame_menu.controls.KEY_APPLY = CONTROL_JUMP
-pygame_menu.controls.KEY_CLOSE_MENU = CONTROL_P2_START
+pygame_menu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
