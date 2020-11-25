@@ -14,17 +14,18 @@ Controls
 ========
 The Controls are as follows.
 
-Left/Right    - Move Jumpman along the platforms.
+Left/Right - Move Jumpman along the platforms.
 
-Up/Down       - Move Jumpman up and down ladders. Up also faces Jumpman towards an arcade machine he wants to play.
+Up/Down    - Move Jumpman up and down ladders. Up also faces Jumpman towards an arcade machine he wants to play.
 
-Jump/P1 Start - Play the arcade machine that Jumpman is facing.
+Jump or    - Play the arcade machine that Jumpman is facing. Jump also jumps :)
+P1 Start
 
-P2 Start      - Display useful game information above the arcade machines.
+P2 Start   - Quickly launch chosen game from a list.
 
-Coin          - Quickly launch game from a list.
+Coin       - Display useful game information above the arcade machines.
 
-Esc           - Exit
+Esc        - Exit
 
 How to set up?
 ==============

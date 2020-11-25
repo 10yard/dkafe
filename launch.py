@@ -353,6 +353,7 @@ def launch_rom(info):
         os.system(shell_command)
         _g.timer.start()
     else:
+        play_sound_effect("sounds/error.wav")
         flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
 
     # Redraw the screen
