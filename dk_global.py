@@ -44,4 +44,4 @@ image_cache = {}
 screen, screen_map, screen_icons, last_image = (None,) * 4
 
 # Menu
-menu = None
+menu, exitmenu = (None,) * 2

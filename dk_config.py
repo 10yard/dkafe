@@ -1,5 +1,5 @@
 import pygame
-import pygame_menu
+import pygame_menu as pymenu
 import os
 
 # Graphic Config
@@ -7,18 +7,19 @@ TITLE = 'DONKEY KONG ARCADE FE'
 GRAPHICS = (224, 256)        # internal x, y resolution of game graphics
 CLOCK_RATE = 60              # Clock rate/timing
 
-# Controls
+# Default Controls
 CONTROL_LEFT = pygame.K_LEFT
 CONTROL_RIGHT = pygame.K_RIGHT
 CONTROL_UP = pygame.K_UP
 CONTROL_DOWN = pygame.K_DOWN
 CONTROL_JUMP = pygame.K_LCTRL
-CONTROL_P1_START = pygame.K_1
-CONTROL_P2_START = pygame.K_2
-CONTROL_COIN = pygame.K_5
+CONTROL_START = pygame.K_1
+CONTROL_MENU = pygame.K_2
+CONTROL_INFO = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
 
 # Options
+CONFIRM_EXIT = True
 FRAME_DELAY = 22             # Default delay after each screen update. Integer
 INACTIVE_TIME = 15           # Screensaver with game instructions after period (in seconds) of inactivity
 TIMER_START = 5000           # Timer starts countdown from
@@ -44,12 +45,14 @@ ROOT_DIR = os.getcwd()
 if os.path.exists("settings.txt"):
     with open("settings.txt", 'r') as sf:
         for setting in sf.readlines():
-            if setting.count("=") == 1:
+            if setting.count("=") == 1 and not setting.startswith("#"):
                 key, value = setting.replace("\n", "").split("=")
                 key = key.strip()
                 value = value.strip()
                 try:
-                    if value.isnumeric():
+                    if key.startswith("CONTROL_"):
+                        globals()[key] = pygame.key.key_code(value)
+                    elif value.isnumeric():
                         globals()[key] = int(value)
                     else:
                         globals()[key] = value.replace("<OPTIONS>", OPTIONS).replace("<ROM_DIR>", ROM_DIR)
@@ -98,7 +101,9 @@ LADDER_ZONES = [
     ("TOP_OF_BROKEN_LADDER", (170, 180)),
     ("TOP_OF_VIRTUAL_LADDER", (180,)),
     ("VIRTUAL_LADDER", (180, 190)),
-    ("APPROACHING_LADDER", (200,))]
+    ("APPROACHING_LADDER", (200,)),
+    ("ANY_LADDER", (20, 30, 60, 90, 160, 170, 180, 190, 240)),
+    ("TOP_OF_ANY_LADDER", (60, 170, 180))]
 
 # Sprite helpers
 SPRITE_FULL = 15
@@ -154,12 +159,12 @@ Down       and down ladders.
            Up faces Jumpman
            towards a machine
 
-Jump/   -  Play the arcade
-P1 Start   machine that 
+Jump/P1 -  Play the arcade
+           machine that 
            Jumpman is facing.
            Jump also jumps :)
          
-P2 Start-  Quickly select 
+P2      -  Quickly select 
            from a game list
 
 Coin    -  Show game info
@@ -181,7 +186,7 @@ pl_font = pygame.font.Font('fonts/tiny.ttf', 6)
 clock = pygame.time.Clock()
 
 # menu theme
-dkafe_theme = pygame_menu.themes.THEME_DEFAULT.copy()
+dkafe_theme = pymenu.themes.THEME_DEFAULT.copy()
 dkafe_theme.widget_font = 'fonts/PressStart2P-vaV7.ttf'
 dkafe_theme.title_font = 'fonts/PressStart2P-vaV7.ttf'
 dkafe_theme.title_font_size = 8
@@ -190,7 +195,7 @@ dkafe_theme.widget_font_size = 8
 dkafe_theme.background_color = BLACK
 dkafe_theme.title_background_color = WHITE
 dkafe_theme.title_font_color = RED
-dkafe_theme.title_bar_style = pygame_menu.widgets.MENUBAR_STYLE_UNDERLINE
+dkafe_theme.title_bar_style = pymenu.widgets.MENUBAR_STYLE_UNDERLINE
 dkafe_theme.title_offset = (12, 1)
 
 dkafe_theme.scrollbar_color = BLACK
@@ -199,9 +204,9 @@ dkafe_theme.scrollbar_slider_color = BLACK
 dkafe_theme.selection_color = RED
 dkafe_theme.widget_font_color = PINK
 dkafe_theme.widget_margin = (0, 4)
-dkafe_theme.widget_selection_effect = pygame_menu.widgets.LeftArrowSelection(arrow_right_margin=15, arrow_vertical_offset=-1)
-dkafe_theme.widget_selection_effect = pygame_menu.widgets.HighlightSelection(border_width=3, margin_x=3, margin_y=1)
+dkafe_theme.widget_selection_effect = pymenu.widgets.LeftArrowSelection(arrow_right_margin=15, arrow_vertical_offset=-1)
+dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_width=3, margin_x=3, margin_y=1)
 
 # Override the default pygame-menu keys
-pygame_menu.controls.KEY_APPLY = CONTROL_JUMP
-pygame_menu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
+pymenu.controls.KEY_APPLY = CONTROL_JUMP
+pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
