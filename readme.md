@@ -29,6 +29,7 @@ Esc        - Exit
 
 Controls can be customised in the settings.txt file e.g.
 
+<<<<<<< HEAD
 ```
 CONTROL_LEFT = left
 CONTROL_RIGHT = right
@@ -40,6 +41,10 @@ CONTROL_MENU = 2
 CONTROL_INFO = 5
 CONTROL_EXIT = escape
 ```
+=======
+CONTROL_LEFT = left
+CONTROL_JUMP = x
+>>>>>>> 37e1946b5fb5592048890bcb6da8016fcd53a6dd
 
 How to set up?
 ==============
