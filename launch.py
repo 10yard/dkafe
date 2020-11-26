@@ -103,6 +103,7 @@ def get_map_info(direction=None, x=0, y=0):
 
 
 def check_for_input():
+    _g.jump = False
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             _g.active = True
@@ -146,7 +147,7 @@ def play_intro_animation():
     play_sound_effect(effect="sounds/jump.wav", stop=True)
     for _key in list(range(0, 100)) + list(sorted(glob("artwork/scene/scene_*.png"))):
         check_for_input()
-        if _g.start or _g.jump or _g.skip:
+        if _g.jump or _g.start or _g.skip:
             _g.skip = True
             play_sound_effect(stop=True)
             break
@@ -312,8 +313,6 @@ def open_menu(menu):
     intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
     menu.enable()
     menu.mainloop(_g.screen)
-    pygame.event.clear()
-    _g.left, _g.right, _g.up, _g.down, _g.jump, _g.start = (False,) * 6
 
 
 def close_menu():
@@ -347,6 +346,8 @@ def launch_rom(info):
     # variant of the main rom e.g. roms/skipstart/dkong.zip is a variant of roms/dkong.zip.  If mame emulator supports
     # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
     # rom to avoid a CRC check fail.
+    if not info:
+        return
     subfolder, name, emu, state = info
     emu_command = f'{(EMU_1, EMU_2, EMU_3)[emu - 1]}'.replace("<NAME>", name).replace("<DATETIME>", _s.get_datetime())
     shell_command = f'{emu_command} {name}'
@@ -363,21 +364,20 @@ def launch_rom(info):
     if state:
         shell_command += f' -state {state.strip()}'
 
-    _g.menu.disable()                      # Close menu if open
+    _g.menu.disable()  # Close menu if open
 
     if int(FREE_PLAY) or _g.score >= PLAY_COST:
         music_channel.pause()
         intermission_channel.stop()
         _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]
         play_sound_effect("sounds/coin.wav")
-        clear_screen()
 
-        # Pause timer. Show "recording" message if emulator is recording gameplay (i.e. Wolfmame)
-        _g.timer.stop()
+        clear_screen()
+        _g.timer.stop()  # Stop the timer while playing rom
         if "-record" in shell_command:
-            flash_message("R E C O R D I N G", x=40, y=120)
+            flash_message("R E C O R D I N G", x=40, y=120)  # Gameplay recording (i.e. Wolfmame)
         os.system(shell_command)
-        _g.timer.start()
+        _g.timer.start()  # Restart the timer
     else:
         play_sound_effect("sounds/error.wav")
         flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
@@ -405,7 +405,7 @@ def process_interrupts():
 
     # Bonus timer - starts above 5000 so we see the 5000 bonus for a time
     bonus_timer = TIMER_START + 100 - (_g.timer.duration * 50)
-    bonus_display = str(int(bonus_timer)).rjust(4)[:2] + "00"      # rightmost 2 digits set as zero
+    bonus_display = str(int(bonus_timer)).rjust(4)[:2] + "00"
 
     bonus_colour = CYAN
     if bonus_timer < 1000:
@@ -564,22 +564,17 @@ def main():
         if _g.active:
             _g.screen.blit(_g.screen_icons, (0, 0))
 
-        if not _g.jumping:
+        if _g.jumping:
+            animate_jumpman("j")
+        else:
             check_for_input()
             for direction in (_g.right, "r"), (_g.left, "l"), (_g.up, "u"), (_g.down, "d"), (True, ""):
                 if direction[0]:
                     animate_jumpman(direction[1])
                     break
-        elif _g.jumping:
-            animate_jumpman("j")
 
         if (_g.jump or _g.start) and _g.ready:
-            # Jumpman wants to launch a game
-            proximity = display_icons(detect_only=True)
-            if proximity:
-                launch_rom(proximity)
-            _g.jump = False
-            animate_jumpman()
+            launch_rom(display_icons(detect_only=True))
         elif (_g.jump and _g.timer.duration > 0.25) or _g.jumping:
             # Jumpman has started a jump or is actively jumping
             ladder_info = get_map_info(direction="d") + get_map_info(direction="u")
