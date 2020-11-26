@@ -12,7 +12,7 @@ Yes, the plot is a bit thin and I can't explain why Donkey Kong has decided to t
 
 Controls
 ========
-The Controls are as follows.
+The default controls are as follows.
 
 Left/Right - Move Jumpman along the platforms.
 
@@ -27,13 +27,18 @@ Coin       - Display useful game information above the arcade machines.
 
 Esc        - Exit
 
+Controls can be customised in the settings.txt file e.g.
+
+CONTROL_LEFT = left
+CONTROL_JUMP = x
+
 How to set up?
 ==============
 Requires Python3 (recommended v3.7) with installed packages from requirements.txt
 
 The application requires romlist.txt and settings.txt to be present in the installation folder along with dependant folders/resources.
  
-The settings.txt contains the emulator and rom path configuration.
+The settings.txt contains the emulator, rom path, controls and other configuration.
 
 The romlist.txt contains the roms and information about where they appear in the frontend and how they are launched.  You must set up your own roms.
 

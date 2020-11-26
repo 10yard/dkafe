@@ -7,6 +7,11 @@ from glob import glob
 from shutil import copy
 
 
+def exit_program():
+    pygame.quit()
+    sys.exit()
+
+
 def initialise_screen(reset=False):
     clock.tick(CLOCK_RATE)
     flags = pygame.FULLSCREEN * int(FULLSCREEN) | pygame.NOFRAME * int(not FULLSCREEN) | pygame.SCALED
@@ -22,14 +27,11 @@ def update_screen(frame_delay=0):
     pygame.time.delay(frame_delay)
 
 
-def clear_screen(frame_delay=0, colour=BLACK, and_quit_program=False, and_reset_display=False):
+def clear_screen(frame_delay=0, colour=BLACK, and_reset_display=False):
     _g.screen.fill(colour)
     update_screen(frame_delay)
     if and_reset_display:
         initialise_screen(reset=True)
-    if and_quit_program:
-        pygame.quit()
-        sys.exit()
 
 
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
@@ -66,24 +68,59 @@ def get_image(image_key):
     return _g.image_cache[image_key]
 
 
+def read_map(x, y):
+    # Return R colour value from pixel at provided x, y position on the screen map
+    try:
+        return _g.screen_map.get_at((int(x), int(y)))[0]
+    except IndexError:
+        return 254
+
+
+def get_map_info(direction=None, x=0, y=0):
+    # Return information from map e.g. ladders and obstacles preventing movement in intended direction
+    map_info = []
+    _x = int(x) if x else int(_g.xpos) + SPRITE_HALF
+    _y = int(y) if y else int(_g.ypos) + SPRITE_FULL
+    try:
+        # Check for blocks on the screen map
+        if read_map(_x - SPRITE_HALF, _y) == 254:
+            map_info.append("BLOCKED_LEFT")
+        if read_map(_x + SPRITE_HALF, _y) == 254:
+            map_info.append("BLOCKED_RIGHT")
+        if read_map(_x, _y) == 236:
+            map_info.append("FOOT_UNDER_PLATFORM")
+        if read_map(_x, _y + 1) == 0:
+            map_info.append("FOOT_ABOVE_PLATFORM")
+
+        # ladder detection based on direction of travel
+        _r = read_map(_x - 2, _y + (direction == "d"))
+        for zone in LADDER_ZONES:
+            if _r in zone[1]:
+                map_info.append(zone[0])
+    except IndexError:
+        map_info.append("ERROR_READING_SCREEN_MAP")
+    return map_info
+
+
 def check_for_input():
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            clear_screen(and_quit_program=True)
-
         if event.type == pygame.KEYDOWN:
             _g.active = True
             _g.lastmove = _g.timer.duration
 
             if event.key == CONTROL_EXIT:
-                clear_screen(and_quit_program=True)
-            if event.key == CONTROL_P2_START:
-                open_menu()
-            if event.key == CONTROL_COIN:
+                if CONFIRM_EXIT:
+                    open_menu(_g.exitmenu)
+                else:
+                    exit_program()
+            if event.key == CONTROL_MENU:
+                open_menu(_g.menu)
+            if event.key == CONTROL_INFO:
                 _g.showinfo = not _g.showinfo
                 display_icons()
+
             _g.jump = True if event.key == CONTROL_JUMP else _g.jump
-            _g.start = True if event.key == CONTROL_P1_START else _g.start
+            _g.start = True if event.key == CONTROL_START else _g.start
             _g.left = True if event.key == CONTROL_LEFT else _g.left
             _g.right = True if event.key == CONTROL_RIGHT else _g.right
             _g.up = True if event.key == CONTROL_UP else _g.up
@@ -91,7 +128,7 @@ def check_for_input():
 
         if event.type == pygame.KEYUP:
             _g.jump = False if event.key == CONTROL_JUMP else _g.jump
-            _g.start = False if event.key == CONTROL_P1_START else _g.start
+            _g.start = False if event.key == CONTROL_START else _g.start
             _g.left = False if event.key == CONTROL_LEFT else _g.left
             _g.right = False if event.key == CONTROL_RIGHT else _g.right
             _g.up = False if event.key == CONTROL_UP else _g.up
@@ -141,40 +178,6 @@ def play_intro_animation():
             write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
 
         update_screen(frame_delay=int(FRAME_DELAY * 2))
-
-
-def read_map(x, y):
-    # Return R colour value from pixel at provided x, y position on the screen map
-    try:
-        return _g.screen_map.get_at((int(x), int(y)))[0]
-    except IndexError:
-        return 254
-
-
-def get_map_info(direction=None, x=0, y=0):
-    # Return information from map e.g. ladders and obstacles preventing movement in intended direction
-    map_info = []
-    _x = int(x) if x else int(_g.xpos) + SPRITE_HALF
-    _y = int(y) if y else int(_g.ypos) + SPRITE_FULL
-    try:
-        # Check for blocks on the screen map
-        if read_map(_x - SPRITE_HALF, _y) == 254:
-            map_info.append("BLOCKED_LEFT")
-        if read_map(_x + SPRITE_HALF, _y) == 254:
-            map_info.append("BLOCKED_RIGHT")
-        if read_map(_x, _y) == 236:
-            map_info.append("FOOT_UNDER_PLATFORM")
-        if read_map(_x, _y + 1) == 0:
-            map_info.append("FOOT_ABOVE_PLATFORM")
-
-        # ladder detection based on direction of travel
-        _r = read_map(_x - 2, _y + (direction == "d"))
-        for zone in LADDER_ZONES:
-            if _r in zone[1]:
-                map_info.append(zone[0])
-    except IndexError:
-        map_info.append("ERROR_READING_SCREEN_MAP")
-    return map_info
 
 
 def display_icons(detect_only=False, below_y=None, above_y=None, smash=False, no_info=False):
@@ -259,7 +262,7 @@ def animate_jumpman(direction=None, horizontal_movement=1):
             if int(_g.sprite_index % 9) == 5:
                 sound_file = "sounds/walk0.wav"
             _g.sprite_index += 1
-        
+
         elif direction == "u":
             proximity = display_icons(detect_only=True)
             if proximity:
@@ -289,21 +292,26 @@ def animate_jumpman(direction=None, horizontal_movement=1):
     play_sound_effect(sound_file)
 
 
-def build_menu():
-    _g.menu = pygame_menu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
-                               theme=dkafe_theme, onclose=close_menu)
+def build_menus():
+    _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
+                          theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
     for name, sub, desc, icx, icy, emu, state in read_romlist():
         _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state))
         _g.menu.add_button(desc, launch_rom, (sub, name, emu, state))
     _g.menu.add_button('Close Menu', close_menu)
+    _g.exitmenu = pymenu.Menu(70, 200, "Really want to leave ?", mouse_visible=False, mouse_enabled=False,
+                              theme=dkafe_theme, onclose=close_menu)
+    _g.exitmenu.add_button('Take me back', close_menu)
+    _g.exitmenu.add_button('Exit', exit_program)
 
-def open_menu():
+
+def open_menu(menu):
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
-    _g.menu.enable()
-    _g.menu.mainloop(_g.screen)
+    menu.enable()
+    menu.mainloop(_g.screen)
     pygame.event.clear()
     _g.left, _g.right, _g.up, _g.down, _g.jump, _g.start = (False,) * 6
 
@@ -312,17 +320,33 @@ def close_menu():
     pygame.mouse.set_visible(False)
     intermission_channel.stop()
     _g.menu.disable()
+    _g.exitmenu.disable()
     update_screen()
     _g.active = True
     _g.lastmove = _g.timer.duration
 
 
+def read_romlist():
+    # read romlist and return info about available roms (and shell scripts)
+    romlist = []
+    if os.path.exists("romlist.txt"):
+        with open("romlist.txt", "r") as rl:
+            for rom_line in rl.readlines()[1:]:  # ignore the first/header line
+                if rom_line.count("|") == 7:
+                    name, subfolder, desc, icx, icy, emu, state, *_ = [x.strip() for x in rom_line.split("|")]
+                    if name and desc and icx and icy:
+                        target = name + (".sh", ".bat")[_s.is_windows()] if subfolder == "shell" else name + ".zip"
+                        if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
+                            romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state))
+    return romlist
+
+
 def launch_rom(info):
-    # Receives subfolder (optional), name, emulator and rom state
+    # Receives subfolder (optional), name, emulator and rom state from info
     # A homebew emulator is preferred for rom hacks but a good alternative is to provide a subfolder which holds a
     # variant of the main rom e.g. roms/skipstart/dkong.zip is a variant of roms/dkong.zip.  If mame emulator supports
     # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
-    # rom to avoid CRC fail.
+    # rom to avoid a CRC check fail.
     subfolder, name, emu, state = info
     emu_command = f'{(EMU_1, EMU_2, EMU_3)[emu - 1]}'.replace("<NAME>", name).replace("<DATETIME>", _s.get_datetime())
     shell_command = f'{emu_command} {name}'
@@ -343,6 +367,7 @@ def launch_rom(info):
 
     if int(FREE_PLAY) or _g.score >= PLAY_COST:
         music_channel.pause()
+        intermission_channel.stop()
         _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]
         play_sound_effect("sounds/coin.wav")
         clear_screen()
@@ -363,21 +388,6 @@ def launch_rom(info):
     music_channel.unpause()
     os.chdir(ROOT_DIR)
     _g.skip = True
-
-
-def read_romlist():
-    # read romlist and return info about available roms (and shell scripts)
-    romlist = []
-    if os.path.exists("romlist.txt"):
-        with open("romlist.txt", "r") as rl:
-            for rom_line in rl.readlines()[1:]:  # ignore the first/header line
-                if rom_line.count("|") == 7:
-                    name, subfolder, desc, icx, icy, emu, state, *_ = [x.strip() for x in rom_line.split("|")]
-                    if name and desc and icx and icy:
-                        target = name + (".sh", ".bat")[_s.is_windows()] if subfolder == "shell" else name + ".zip"
-                        if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
-                            romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state))
-    return romlist
 
 
 def process_interrupts():
@@ -416,10 +426,10 @@ def process_interrupts():
                 if i <= 3 or repeat == 2:
                     backimg = get_image(f"artwork/background.png")
                     _g.screen.blit(backimg, (_g.xpos, int(_g.ypos)), (_g.xpos, int(_g.ypos), 16, 16))
-                    
+
                     img = get_image(f"artwork/sprite/out{int(i)}.png")
                     _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
-                
+
                     # Display items that don't get updated in this loop
                     write_text("1UP", font=dk_font, x=25, y=0, fg=RED, bg=None)
                     write_text(" 000", font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
@@ -427,11 +437,11 @@ def process_interrupts():
                     _g.screen.blit(img, (11, 52))
                     update_screen(FRAME_DELAY * 3)
         pygame.time.delay(1500)
-        
+
         # Set out of time event and restart the regular background music loop
         event = "OUTOFTIME"
         music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
-        
+
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
 
     # animated DK,  sometimes DK will grab a coin
@@ -458,41 +468,41 @@ def process_interrupts():
             _g.cointype = 0
         if ticks % 5000 > 4500:
             _g.grab = randint(1, COIN_FREQUENCY) == 1
-        # Default DK sprite
         img = get_image(f"artwork/sprite/{prefix}0.png")
         _g.screen.blit(img, (11, 52))
 
     # Animate rolling coins
     for i, coin in enumerate(_g.coins):
-        coinx, coiny, coinid, coindir, use_ladder, cointype = coin
-        img = get_image(f"artwork/sprite/coin{str(cointype)}{str(int(coinid % 4))}.png")
-        _g.screen.blit(img, (int(coinx), int(coiny)))
+        co_x, co_y, co_id, co_dir, co_ladder, co_type = coin
+        img = get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_id % 4))}.png")
+        _g.screen.blit(img, (int(co_x), int(co_y)))
 
-        if (coinx - SPRITE_HALF <= _g.xpos < coinx + SPRITE_HALF) and (coiny >= _g.ypos > coiny - SPRITE_HALF):
-            _g.score += COIN_VALUES[cointype]  # Jumpman collected the coin
+        if (co_x - SPRITE_HALF <= _g.xpos < co_x + SPRITE_HALF) and (co_y >= _g.ypos > co_y - SPRITE_HALF):
+            # Jumpman collected the coin
+            _g.score += COIN_VALUES[co_type]
             play_sound_effect("sounds/getitem.wav")
-            coinx = -999
+            co_x = -999
 
-        map_info = get_map_info(direction="d", x=int(coinx + (9, 4)[coindir == 1]), y=int(coiny + 9))
+        map_info = get_map_info(direction="d", x=int(co_x + (9, 4)[co_dir == 1]), y=int(co_y + 9))
 
         # Toggle ladders.  Virtual ladders are always active.
         if "APPROACHING_LADDER" in map_info:
-            use_ladder = not randint(1, LADDER_CHANCE) == 1
-        elif "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and use_ladder:
+            co_ladder = not randint(1, LADDER_CHANCE) == 1
+        elif "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
             map_info = []
 
         # Move the coin along the platform and down ladders
         if "FOOT_ABOVE_PLATFORM" in map_info:
-            coiny += 1  # coin moves down the sloped girder to touch the platform
-        elif "LADDER_DETECTED" in map_info or "BROKEN_LADDER" in map_info or "VIRTUAL_LADDER" in map_info:
-            if "TOP_OF_LADDER" in map_info or "TOP_OF_BROKEN_LADDER" in map_info or "TOP_OF_VIRTUAL_LADDER" in map_info:
-                coindir = coindir * -1  # Flip the horizontal movement direction
-            coiny += COIN_SPEED
+            co_y += 1  # coin moves down the sloped girder to touch the platform
+        elif "ANY_LADDER" in map_info:
+            if "TOP_OF_ANY_LADDER" in map_info:
+                co_dir = co_dir * -1  # Flip horizontal movement
+            co_y += COIN_SPEED
         else:
-            coinx += coindir * COIN_SPEED  # Increment the horizontal movement
+            co_x += co_dir * COIN_SPEED  # Increment horizontal movement
 
-        coinid += coindir * COIN_CYCLE
-        _g.coins[i] = coinx, coiny, coinid, coindir, use_ladder, cointype  # Update coin data
+        co_id += co_dir * COIN_CYCLE
+        _g.coins[i] = co_x, co_y, co_id, co_dir, co_ladder, co_type  # Update coin data
 
     # Purge coins
     _g.coins = [i for i in _g.coins if i[0] > -10]
@@ -533,7 +543,7 @@ def main():
     initialise_screen()
 
     # launch front end
-    build_menu()
+    build_menus()
     play_intro_animation()
 
     # Start background music
