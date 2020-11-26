@@ -7,9 +7,12 @@ from glob import glob
 from shutil import copy
 
 
-def exit_program():
-    pygame.quit()
-    sys.exit()
+def exit_program(confirm=False):
+    if confirm:
+        open_menu(_g.exitmenu)
+    else:
+        pygame.quit()
+        sys.exit()
 
 
 def initialise_screen(reset=False):
@@ -103,37 +106,25 @@ def get_map_info(direction=None, x=0, y=0):
 
 
 def check_for_input():
-    _g.jump = False
+    _g.jump = False  # don't string jumps when key is pressed down
     for event in pygame.event.get():
+        # General jumpman controls
+        if event.type in (pygame.KEYDOWN, pygame.KEYUP):
+            for attr, control in CONTROL_ASSIGNMENTS:
+                if event.key == control:
+                    setattr(_g, attr, event.type == pygame.KEYDOWN)
+
+        # Special controls
         if event.type == pygame.KEYDOWN:
             _g.active = True
             _g.lastmove = _g.timer.duration
-
             if event.key == CONTROL_EXIT:
-                if CONFIRM_EXIT:
-                    open_menu(_g.exitmenu)
-                else:
-                    exit_program()
+                exit_program(confirm=CONFIRM_EXIT)
             if event.key == CONTROL_MENU:
                 open_menu(_g.menu)
             if event.key == CONTROL_INFO:
                 _g.showinfo = not _g.showinfo
                 display_icons()
-
-            _g.jump = True if event.key == CONTROL_JUMP else _g.jump
-            _g.start = True if event.key == CONTROL_START else _g.start
-            _g.left = True if event.key == CONTROL_LEFT else _g.left
-            _g.right = True if event.key == CONTROL_RIGHT else _g.right
-            _g.up = True if event.key == CONTROL_UP else _g.up
-            _g.down = True if event.key == CONTROL_DOWN else _g.down
-
-        if event.type == pygame.KEYUP:
-            _g.jump = False if event.key == CONTROL_JUMP else _g.jump
-            _g.start = False if event.key == CONTROL_START else _g.start
-            _g.left = False if event.key == CONTROL_LEFT else _g.left
-            _g.right = False if event.key == CONTROL_RIGHT else _g.right
-            _g.up = False if event.key == CONTROL_UP else _g.up
-            _g.down = False if event.key == CONTROL_DOWN else _g.down
 
 
 def play_sound_effect(effect=None, stop=False):

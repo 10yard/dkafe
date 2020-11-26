@@ -71,6 +71,19 @@ MAGENTA = (236, 49, 148)
 WHITE = (254, 252, 255)
 PINK = (255, 188, 160)
 
+# Control assignments. Links the global variables to the event data.  These shouldn't be changed.
+CONTROL_ASSIGNMENTS = [
+  ("left", CONTROL_LEFT),
+  ("right", CONTROL_RIGHT),
+  ("up", CONTROL_UP),
+  ("down", CONTROL_DOWN),
+  ("jump", CONTROL_JUMP),
+  ("start", CONTROL_START)
+#  ("menu", CONTROL_MENU)
+#  ("info", CONTROL_INFO)
+#  ("exit", CONTROL_EXIT)
+]
+
 # Defines scene numbers when sounds should be played
 SCENE_SOUNDS = [
     (160, "sounds/climb.wav"),
