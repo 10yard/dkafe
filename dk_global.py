@@ -16,9 +16,9 @@ start = False
 active = True    # Jumpman is active - see INACTIVE_TIME
 jumping = False  # Jumpman is currently jumping
 jumping_seq = 0  # Sequence number of jump
-lastmove = 0
+lastmove = 0     # Time of last movement
 facing = 1       # Direction Jumpman is facing 0=Left, Right=1
-score = 0
+score = 0        # Jumpman's score
 
 # Toggle display options
 showinfo = False    # Press coin2 to show description above the icons
@@ -41,7 +41,7 @@ pause_ticks = 0
 image_cache = {}
 
 # Screen buffers
-screen, screen_map, screen_icons, last_image = (None,) * 4
+screen, screen_map, screen_copy, last_image = (None,) * 4
 
 # Menu
 menu, exitmenu = (None,) * 2

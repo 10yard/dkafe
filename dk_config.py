@@ -4,8 +4,8 @@ import os
 
 # Graphic Config
 TITLE = 'DONKEY KONG ARCADE FE'
-GRAPHICS = (224, 256)        # internal x, y resolution of game graphics
-CLOCK_RATE = 60              # Clock rate/timing
+GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
+CLOCK_RATE = 60        # Clock rate/timing
 
 # Default Controls
 CONTROL_LEFT = pygame.K_LEFT
@@ -13,35 +13,37 @@ CONTROL_RIGHT = pygame.K_RIGHT
 CONTROL_UP = pygame.K_UP
 CONTROL_DOWN = pygame.K_DOWN
 CONTROL_JUMP = pygame.K_LCTRL
-CONTROL_START = pygame.K_1
-CONTROL_MENU = pygame.K_2
-CONTROL_INFO = pygame.K_5
+CONTROL_ACTION = pygame.K_LALT
+CONTROL_P1 = pygame.K_1
+CONTROL_P2 = pygame.K_2
+CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
 
 # Options
 CONFIRM_EXIT = True
-FRAME_DELAY = 22             # Default delay after each screen update. Integer
-INACTIVE_TIME = 15           # Screensaver with game instructions after period (in seconds) of inactivity
-TIMER_START = 5000           # Timer starts countdown from
-PLAY_COST = 100              # How much it cost to play an arcade machine.  Jumpman must have collected enough coins.
+FULLSCREEN = True
 FREE_PLAY = True             # Jumpman does not have to pay to play
-COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin
-COIN_FREQUENCY = 3           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
+ENABLE_MENU = True           # Allow selection from the quick access game list
+
+TIMER_START = 5000           # Timer starts countdown from. Integer
+INACTIVE_TIME = 15           # Screensaver with game instructions after period in seconds of inactivity. Integer
+PLAY_COST = 100              # How much it cost to play an arcade machine. Integer
+FRAME_DELAY = 22             # Default delay after each screen update. Integer
+LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
+COIN_FREQUENCY = 2           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_SPEED = 1.6             # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
-
-# Emulator and rom path defaults
-FULLSCREEN = True
-OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
-ROM_DIR = 'C:\\emus\\roms'
-EMU_1 = 'C:\\emus\\mame\\mame64 <OPTIONS> -rompath <ROM_DIR>'
-EMU_2 = 'C:\\emus\\hbmame\\hbmame64 <OPTIONS> -rompath <ROM_DIR>'
-EMU_3 = 'C:\\emus\\wolfmame\\mame64 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>'
 
 ROOT_DIR = os.getcwd()
 
-# Defaults can be overridden in the settings.txt files
+# Emulator and rom path defaults
+OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
+ROM_DIR = 'C:\\emus\\roms'
+EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 8
+
+# Defaults can be overridden in the settings.txt file
 if os.path.exists("settings.txt"):
     with open("settings.txt", 'r') as sf:
         for setting in sf.readlines():
@@ -78,10 +80,7 @@ CONTROL_ASSIGNMENTS = [
   ("up", CONTROL_UP),
   ("down", CONTROL_DOWN),
   ("jump", CONTROL_JUMP),
-  ("start", CONTROL_START)
-#  ("menu", CONTROL_MENU)
-#  ("info", CONTROL_INFO)
-#  ("exit", CONTROL_EXIT)
+  ("start", CONTROL_P1)
 ]
 
 # Defines scene numbers when sounds should be played
@@ -121,7 +120,7 @@ LADDER_ZONES = [
 # Sprite helpers
 SPRITE_FULL = 15
 SPRITE_HALF = 8
-JUMP_PIXELS = [-1, ] * 15 + [1, ] * 14
+JUMP_PIXELS = [-1, ] * 15 + [1, ] * 15
 
 # In game messages and instructions
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
@@ -152,9 +151,9 @@ barrels.
 
 Anyway, the coins must be 
 collected by Jumpman so that
-he has money to play all of 
-the arcade machines.
-
+he has money to unlock and 
+play all of the arcade 
+machines.
 
 """
 
@@ -172,13 +171,13 @@ Down       and down ladders.
            Up faces Jumpman
            towards a machine
 
-Jump/P1 -  Play the arcade
-           machine that 
+P1 or   -  Play the arcade
+Jump       machine that 
            Jumpman is facing.
            Jump also jumps :)
          
-P2      -  Quickly select 
-           from a game list
+P2 or   -  Calls up the quick  
+Action     access game list
 
 Coin    -  Show game info
            above machines

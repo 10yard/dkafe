@@ -1,6 +1,6 @@
 import sys
-import dk_global as _g
 import dk_system as _s
+import dk_global as _g
 from dk_config import *
 from random import randint
 from glob import glob
@@ -44,13 +44,11 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
         w, h = img.get_width(), img.get_height()
         _x = x - w + rj_adjust if rj_adjust else x  # align x left or right
         _g.screen.blit(img, (_x, y))
-
         if box or bubble:
-            w += 1
-            pygame.draw.rect(_g.screen, fg, (_x - 2, y - 1, w + 2, h + 2), 1)
+            pygame.draw.rect(_g.screen, fg, (_x - 2, y - 1, w + 3, h + 2), 1)
             pygame.draw.line(_g.screen, bg, (_x - 1, y), (_x - 1, y + 5))
             if bubble:
-                for point in ((_x - 2, y - 1), (_x + w, y - 1), (_x - 2, y + h), (_x + w, y + h)):
+                for point in ((_x - 2, y - 1), (_x + w + 1, y - 1), (_x - 2, y + h), (_x + w + 1, y + h)):
                     _g.screen.set_at(point, BLACK)
                 pygame.draw.polygon(_g.screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
@@ -97,12 +95,17 @@ def get_map_info(direction=None, x=0, y=0):
 
         # ladder detection based on direction of travel
         _r = read_map(_x - 2, _y + (direction == "d"))
-        for zone in LADDER_ZONES:
-            if _r in zone[1]:
-                map_info.append(zone[0])
+        for zone_name, zone_values in LADDER_ZONES:
+            if _r in zone_values:
+                map_info.append(zone_name)
     except IndexError:
         map_info.append("ERROR_READING_SCREEN_MAP")
     return map_info
+
+
+def clear_inputs():
+    for attr, control in CONTROL_ASSIGNMENTS:
+        setattr(_g, attr, False)
 
 
 def check_for_input():
@@ -120,9 +123,9 @@ def check_for_input():
             _g.lastmove = _g.timer.duration
             if event.key == CONTROL_EXIT:
                 exit_program(confirm=CONFIRM_EXIT)
-            if event.key == CONTROL_MENU:
+            if (event.key == CONTROL_P2 or event.key == CONTROL_ACTION) and ENABLE_MENU:
                 open_menu(_g.menu)
-            if event.key == CONTROL_INFO:
+            if event.key == CONTROL_COIN:
                 _g.showinfo = not _g.showinfo
                 display_icons()
 
@@ -144,10 +147,10 @@ def play_intro_animation():
             break
 
         if type(_key) is int:
-            # Flash the DK Logo
+            # Flash DK Logo
             _g.screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), [0, 0])
         else:
-            # Show DK climb scene.
+            # Show DK climb scene
             _g.screen.blit(get_image(_key), [0, 0])
             current_scene = int(_key.split("scene_")[1][:4])
 
@@ -159,9 +162,9 @@ def play_intro_animation():
             # display nearby icons as girders are broken
             for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
                 if from_scene < current_scene < to_scene:
-                    display_icons(below_y=below_y, above_y=above_y, smash=current_scene < smash_scene)
+                    display_icons(below_y=below_y, above_y=above_y, intro=True, smash=current_scene < smash_scene)
 
-            # Change text to show "What game will you play?"
+            # Change message text to show "What game will you play?"
             if 855 < current_scene < 1010:
                 write_text(QUESTION, font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
 
@@ -172,30 +175,31 @@ def play_intro_animation():
         update_screen(frame_delay=int(FRAME_DELAY * 2))
 
 
-def display_icons(detect_only=False, below_y=None, above_y=None, smash=False, no_info=False):
+def display_icons(detect_only=False, below_y=None, above_y=None, intro=False, smash=False):
     proximity = None
     # display icons and return icon in proximity to jumpman.  Alternate between looping forwards and reverse.
-    for _x, _y, name, sub, desc, emu, state in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
-        if _x and _y:
-            if not below_y or not above_y or (below_y >= _y >= above_y):
-                icon_image = os.path.join("artwork/icon", sub, name + ".png")
-                if not os.path.exists(icon_image):
-                    icon_image = os.path.join("artwork/icon/default_machine.png")
-                if smash:
-                    icon_image = f"artwork/sprite/smash{str(randint(0,3))}.png"
-                img = get_image(icon_image)
-                w, h = img.get_width(), img.get_height()
-                if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
-                    # Pauline to announce the game found near Jumpman.  Return the game launch information.
-                    if not int(FREE_PLAY) and _g.score < PLAY_COST and _g.timer.duration % 2 < 1:
-                        desc = f'${str(PLAY_COST)} TO PLAY'
-                    write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
-                    proximity = (sub, name, emu, state)
-                if _g.showinfo and not no_info:
-                    # Show game info above icons
-                    write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
-                if not detect_only:
-                    _g.screen.blit(img, (_x, _y))
+    for _x, _y, name, sub, desc, emu, state, unlock in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
+        if _g.score < unlock and UNLOCK_MODE and not intro:
+            continue
+        if not below_y or not above_y or (below_y >= _y >= above_y):
+            icon_image = os.path.join("artwork/icon", sub, name + ".png")
+            if smash:
+                icon_image = f"artwork/sprite/smash{str(randint(0,3))}.png"
+            if not os.path.exists(icon_image):
+                icon_image = os.path.join("artwork/icon/default_machine.png")
+            img = get_image(icon_image)
+            w, h = img.get_width(), img.get_height()
+            if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
+                # Pauline to announce the game found near Jumpman.  Return the game launch information.
+                if not int(FREE_PLAY) and _g.timer.duration % 2 < 1:
+                    desc = f'${str(PLAY_COST)} TO PLAY'
+                write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+                proximity = (sub, name, emu, state, unlock)
+            if _g.showinfo:
+                # Show game info above icons
+                write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
+            if not detect_only:
+                _g.screen.blit(img, (_x, _y))
     return proximity
 
 
@@ -211,8 +215,8 @@ def adjust_jumpman():
 def animate_jumpman(direction=None, horizontal_movement=1):
     sprite_file = f"artwork/sprite/jm{direction}<I>.png"
     sound_file = None
-
     map_info = get_map_info(direction)
+
     if direction in ("l", "r"):
         _g.ready = False
         ladder_info = get_map_info("u") + get_map_info("d")
@@ -229,14 +233,13 @@ def animate_jumpman(direction=None, horizontal_movement=1):
         else:
             _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
-
         adjust_jumpman()
-
         _g.sprite_index += 0.5
+
         sprite_file = sprite_file.replace("<I>", str(int(_g.sprite_index) % 3))
-        for walk in (1, "0"), (5, "1"), (9, "2"):
-            if _g.sprite_index % 12 == walk[0]:
-                sound_file = f"sounds/walk{walk[1]}.wav"
+        for interval, walk_sprite in (1, "0"), (5, "1"), (9, "2"):
+            if _g.sprite_index % 12 == interval:
+                sound_file = f"sounds/walk{walk_sprite}.wav"
 
     if direction in ("u", "d"):
         if "LADDER_DETECTED" in map_info:
@@ -285,13 +288,16 @@ def animate_jumpman(direction=None, horizontal_movement=1):
 
 
 def build_menus():
+    # Game selection menu
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
-    for name, sub, desc, icx, icy, emu, state in read_romlist():
-        _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state))
-        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state))
+    for name, sub, desc, icx, icy, emu, state, unlock in read_romlist():
+        _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock))
+        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock))
     _g.menu.add_button('Close Menu', close_menu)
+
+    # Exit menu
     _g.exitmenu = pymenu.Menu(70, 200, "Really want to leave ?", mouse_visible=False, mouse_enabled=False,
                               theme=dkafe_theme, onclose=close_menu)
     _g.exitmenu.add_button('Take me back', close_menu)
@@ -299,6 +305,7 @@ def build_menus():
 
 
 def open_menu(menu):
+    clear_inputs()
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
@@ -323,11 +330,11 @@ def read_romlist():
         with open("romlist.txt", "r") as rl:
             for rom_line in rl.readlines()[1:]:  # ignore the first/header line
                 if rom_line.count("|") == 7:
-                    name, subfolder, desc, icx, icy, emu, state, *_ = [x.strip() for x in rom_line.split("|")]
+                    name, subfolder, desc, icx, icy, emu, state, unlock, *_ = [x.strip() for x in rom_line.split("|")]
                     if name and desc and icx and icy:
                         target = name + (".sh", ".bat")[_s.is_windows()] if subfolder == "shell" else name + ".zip"
                         if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
-                            romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state))
+                            romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state, int(unlock)))
     return romlist
 
 
@@ -339,8 +346,10 @@ def launch_rom(info):
     # rom to avoid a CRC check fail.
     if not info:
         return
-    subfolder, name, emu, state = info
-    emu_command = f'{(EMU_1, EMU_2, EMU_3)[emu - 1]}'.replace("<NAME>", name).replace("<DATETIME>", _s.get_datetime())
+    subfolder, name, emu, state, unlock = info
+
+    emu_command = f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu - 1]}'
+    emu_command = emu_command.replace("<NAME>", name).replace("<DATETIME>", _s.get_datetime())
     shell_command = f'{emu_command} {name}'
     if subfolder:
         if subfolder == "shell":     # Launch shell script / batch file
@@ -356,7 +365,6 @@ def launch_rom(info):
         shell_command += f' -state {state.strip()}'
 
     _g.menu.disable()  # Close menu if open
-
     if int(FREE_PLAY) or _g.score >= PLAY_COST:
         music_channel.pause()
         intermission_channel.stop()
@@ -391,7 +399,7 @@ def process_interrupts():
         write_text(message[int(_g.timer.duration) % len(message)], x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
 
     # Flashing 1UP and score
-    write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[ticks % 700 < 350], bg=None)
+    write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[ticks % 500 < 250], bg=None)
     write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
 
     # Bonus timer - starts above 5000 so we see the 5000 bonus for a time
@@ -469,8 +477,7 @@ def process_interrupts():
         _g.screen.blit(img, (int(co_x), int(co_y)))
 
         if (co_x - SPRITE_HALF <= _g.xpos < co_x + SPRITE_HALF) and (co_y >= _g.ypos > co_y - SPRITE_HALF):
-            # Jumpman collected the coin
-            _g.score += COIN_VALUES[co_type]
+            _g.score += COIN_VALUES[co_type]  # Jumpman collected the coin
             play_sound_effect("sounds/getitem.wav")
             co_x = -999
 
@@ -500,7 +507,7 @@ def process_interrupts():
     return event
 
 
-def check_for_inactivity():
+def inactivity_check():
     if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
         if ((pygame.time.get_ticks() - _g.pause_ticks) % 25000) < 3000:
             _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), [0, 0])
@@ -517,7 +524,7 @@ def check_for_inactivity():
         _g.active = False
 
 
-def check_for_activity():
+def activity_check():
     if _g.active:
         _g.timer.start()
         pygame.mixer.unpause()
@@ -542,26 +549,27 @@ def main():
 
     # Build the screen with icons to use as background
     _g.screen.blit(get_image("artwork/background.png"), [0, 0])
-    display_icons(no_info=True)
-    _g.screen_icons = _g.screen.copy()
+    _g.screen_copy = _g.screen.copy()
+    display_icons()
 
     # Initialise Jumpman
-    animate_jumpman("r")
+    animate_jumpman("r", horizontal_movement=0)
     _g.lastmove = 0
     _g.timer.reset()
 
     # loop the game
     while True:
         if _g.active:
-            _g.screen.blit(_g.screen_icons, (0, 0))
+            _g.screen.blit(_g.screen_copy, (0, 0))
+            display_icons()
 
         if _g.jumping:
             animate_jumpman("j")
         else:
             check_for_input()
-            for direction in (_g.right, "r"), (_g.left, "l"), (_g.up, "u"), (_g.down, "d"), (True, ""):
-                if direction[0]:
-                    animate_jumpman(direction[1])
+            for _key, direction in (_g.right, "r"), (_g.left, "l"), (_g.up, "u"), (_g.down, "d"), (True, ""):
+                if _key:
+                    animate_jumpman(direction)
                     break
 
         if (_g.jump or _g.start) and _g.ready:
@@ -575,10 +583,11 @@ def main():
                 if _g.jumping_seq >= len(JUMP_PIXELS):
                     _g.jumping = False
                     _g.jumping_seq, _g.sprite_index = 0, 0
+                    adjust_jumpman()
                     animate_jumpman(("l", "r")[_g.facing], horizontal_movement=0)
 
-        check_for_inactivity()
-        check_for_activity()
+        inactivity_check()
+        activity_check()
         update_screen(FRAME_DELAY)
 
 

@@ -1,6 +1,6 @@
 echo **** remove existing build folders ****
-rmdir build /s /Y
-rmdir dist /s /Y
+rmdir build /s /Q
+rmdir dist /s /Q
 
 echo **** copy program resources ****
 xcopy artwork dist\artwork /S /i /Y
@@ -15,5 +15,5 @@ echo **** build the exe in virtual environment ****
 venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
 
 echo **** clean up
-rmdir build /s /Y
+rmdir build /s /Q
 del *.spec

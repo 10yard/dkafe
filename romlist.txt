@@ -1,26 +1,28 @@
-Rom Name  |Sub Folder     |Description                   |IconX|IconY|Emu|State|
-----------+---------------+------------------------------+-----+-----+---|-----|
-dkong     |trainer        |DK Trainer                    |2    |226  |1  |     |
-dkongst2  |springs2       |DK Springs                    |146  |157  |2  |1    |
-dkong     |original       |Donkey Kong                   |57   |226  |3  |     |
-dkong     |randomized     |DK Randomized                 |82   |161  |1  |     |
-dkong     |skipstart      |DK Skip Start                 |195  |198  |1  |     |
-dkong     |intothedark    |DK Into the Dark              |18   |165  |1  |     |
-dkong     |reverse        |DK Reverse                    |114  |193  |1  |     |
-dkong     |freerun        |DK Free Run                   |194  |66   |1  |     |
-dkong     |crazybarrels   |DK Crazy Barrels              |4    |62   |1  |     |
-dkongx11  |spooky         |DK Spooky Remix               |50   |189  |1  |     |
-dkong     |ontherun       |DK On the Run                 |194  |132  |1  |     |
-dkongx11  |dk2            |DK2 Jumpman Returns           |210  |86   |1  |     |
-dkongx11  |xmas           |DK Xmas Remix                 |95   |126  |1  |     |
-dkongpe   |               |DK Pauline Ed.                |111  |62   |1  |     |
-ckong     |               |Crazy Kong                    |99   |94   |1  |     |
-dkongjr   |               |DK Junior                     |113  |225  |1  |     |
-dkong3    |               |DK 3                          |2    |186  |1  |     |
-dkongex   |foundry        |DK Foundry                    |50   |97   |2  |     |
-----------+---------------+------------------------------+-----+-----+---|-----|
-galaga    |               |Galaga                        |146  |223  |1  |     |
-10yardj   |               |10 Yard Fight                 |50   |123  |3  |     |
-mspacman  |               |Ms. Pac-Man                   |211  |219  |1  |     |
-pacman    |               |Pac-Man                       |211  |153  |1  |     |
-rallyx    |               |Rally X                       |2    |120  |1  |     |
+Rom Name  |Sub Folder     |Description                   |IconX|IconY|Emu|State|Unlock
+----------|---------------|------------------------------|-----|-----|---|-----|------
+dkong_nes |shell          |NES                           |016  |232  |0  |     |2600
+dkong     |trainer        |DK Trainer                    |002  |226  |1  |     |0
+dkong     |original       |Donkey Kong                   |057  |226  |3  |     |0
+dkongjr   |               |DK Junior                     |113  |225  |1  |     |100
+galaga    |               |Galaga                        |146  |223  |1  |     |200
+mspacman  |               |Ms. Pac-Man                   |211  |219  |1  |     |300
+dkong     |skipstart      |DK Skip Start                 |195  |198  |1  |     |400
+dkong     |reverse        |DK Reverse                    |114  |193  |1  |     |500
+dkongx11  |spooky         |DK Spooky Remix               |050  |189  |1  |     |600
+dkong3    |               |DK 3                          |002  |186  |1  |     |700
+dkong     |intothedark    |DK Into the Dark              |018  |165  |1  |     |800
+dkong     |randomized     |DK Randomized                 |082  |161  |1  |     |900
+dkongst2  |springs2       |DK Springs                    |146  |157  |2  |1    |1000
+pacman    |               |Pac-Man                       |211  |153  |1  |     |1100
+dkong     |ontherun       |DK On the Run                 |194  |132  |1  |     |1200
+dkongx11  |xmas           |DK Xmas Remix                 |095  |126  |1  |     |1300
+10yardj   |               |10 Yard Fight                 |050  |123  |3  |     |1400
+rallyx    |               |Rally X                       |002  |120  |1  |     |1500
+dkongex   |foundry        |DK Foundry                    |050  |097  |2  |     |1600
+ckong     |               |Crazy Kong                    |099  |094  |1  |     |1700
+dkongx11  |dk2            |DK2 Jumpman Returns           |210  |086  |1  |     |1800
+dkong     |freerun        |DK Free Run                   |194  |066  |1  |     |1900
+dkong     |crazybarrels   |DK Crazy Barrels              |004  |062  |1  |     |2000
+dkongpe   |               |DK Pauline Ed.                |111  |062  |1  |     |2100
+dkong_vcs |shell          |VCS                           |088  |032  |0  |     |2200
+dkong_gb  |shell          |GB                            |060  |015  |0  |     |2300

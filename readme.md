@@ -8,39 +8,44 @@ Instructions
 ============
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent to the top has revealed many hidden old arcade machines from the 1980's era and they are scattered around the platforms.
 
-Yes, the plot is a bit thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman so that he has money to play all of the arcade machines.
+Yes, the plot is a bit thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman so that he has money to unlock and play all of the arcade machines.
 
 Controls
 ========
 The default controls are as follows.
 
+```
 Left/Right - Move Jumpman along the platforms.
 
 Up/Down    - Move Jumpman up and down ladders. Up also faces Jumpman towards an arcade machine he wants to play.
 
-Jump or    - Play the arcade machine that Jumpman is facing. Jump also jumps :)
-P1 Start
+P1 Start   - Play the arcade machine that Jumpman is facing. Jump also jumps :)
+or Jump
 
-P2 Start   - Quickly launch chosen game from a list.
+P2 Start   - Calls up the quick access game list.
+or Action
 
 Coin       - Display useful game information above the arcade machines.
 
 Esc        - Exit
+```
 
-Controls can be customised in the settings.txt file e.g.
+Controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
+
+The default controls are set as follows.
 
 ```
 CONTROL_LEFT = left
 CONTROL_RIGHT = right
 CONTROL_UP = up
 CONTROL_DOWN = down
-CONTROL_JUMP = x
+CONTROL_JUMP = left ctrl
+CONTROL_ACTION = left alt
 CONTROL_START = 1
 CONTROL_MENU = 2
 CONTROL_INFO = 5
 CONTROL_EXIT = escape
 ```
-
 
 How to set up?
 ==============
@@ -50,7 +55,7 @@ The application requires romlist.txt and settings.txt to be present in the insta
  
 The settings.txt contains the emulator, rom path, controls and other configuration.
 
-The romlist.txt contains the roms and information about where they appear in the frontend and how they are launched.  You must set up your own roms.
+The romlist.txt contains the roms and information about where they appear in the frontend and how they are unlocked and launched.  You must set up your own roms.
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
@@ -59,6 +64,13 @@ The launch emulator is specified in the settings.txt and the romlist.txt.  Refer
 Mamedev maintains a list of free roms at:
 
 https://www.mamedev.org/roms/
+
+How to build?
+=============
+Pyinstaller is required to build the application on Windows
+  - pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+
+See build.bat for an example build script making use of a venv (virtual environment for Python)
 
 Emulator recommendation
 =======================
@@ -97,12 +109,6 @@ All roms should also have a similarly named image as a .png file in the /artwork
 
 Hopefully that all makes sense.  Refer to the example romlist.txt
 
-How to build?
-=============
-Pyinstaller is required to build the application on Windows
-  - pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
-
-See build.bat for an example build script making use of a venv (virtual environment for Python)
 
 Motivations?
 ============
