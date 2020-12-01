@@ -1,0 +1,1 @@
+C:\emus\mesen\mesen c:\emus\roms\dkong_nes.nes -fullscreen
