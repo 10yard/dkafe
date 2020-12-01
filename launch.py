@@ -5,6 +5,7 @@ from dk_config import *
 from random import randint
 from glob import glob
 from shutil import copy
+import pygetwindow
 
 
 def exit_program(confirm=False):
@@ -35,6 +36,10 @@ def clear_screen(frame_delay=0, colour=BLACK, and_reset_display=False):
     update_screen(frame_delay)
     if and_reset_display:
         initialise_screen(reset=True)
+        if FULLSCREEN:
+            _g.window.maximize()
+        else:
+            _g.window.activate()
 
 
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
@@ -189,15 +194,15 @@ def display_icons(detect_only=False, below_y=None, above_y=None, intro=False, sm
                 icon_image = os.path.join("artwork/icon/default_machine.png")
             img = get_image(icon_image)
             w, h = img.get_width(), img.get_height()
+            if _g.showinfo:
+                # Show game info above icons
+                write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game launch information.
                 if not int(FREE_PLAY) and _g.timer.duration % 2 < 1:
                     desc = f'${str(PLAY_COST)} TO PLAY'
                 write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 proximity = (sub, name, emu, state, unlock)
-            if _g.showinfo:
-                # Show game info above icons
-                write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
     return proximity
@@ -539,6 +544,8 @@ def activity_check():
 def main():
     pygame.display.set_caption(TITLE)
     initialise_screen()
+    pygame.display.set_icon(get_image("artwork/dkafe.ico"))
+    _g.window = pygetwindow.getWindowsWithTitle(TITLE)[0]
 
     # launch front end
     build_menus()

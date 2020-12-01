@@ -1,6 +1,5 @@
 echo **** remove existing build folders ****
 rmdir build /s /Q
-rmdir dist /s /Q
 
 echo **** copy program resources ****
 xcopy artwork dist\artwork /S /i /Y
@@ -12,7 +11,7 @@ copy settings.txt dist\ /Y
 copy readme.md dist\ /Y
 
 echo **** build the exe in virtual environment ****
-venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+venv\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
 
 echo **** clean up
 rmdir build /s /Q
