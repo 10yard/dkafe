@@ -23,6 +23,8 @@ ckong     |               |Crazy Kong                    |099  |094  |1  |     |
 dkongx11  |dk2            |DK2 Jumpman Returns           |210  |086  |1  |     |1800
 dkong     |freerun        |DK Free Run                   |194  |066  |1  |     |1900
 dkong     |crazybarrels   |DK Crazy Barrels              |004  |062  |1  |     |2000
-dkongpe   |               |DK Pauline Ed.                |111  |062  |1  |     |2100
-dkong_vcs |shell          |VCS                           |088  |032  |0  |     |2200
-dkong_gb  |shell          |GB                            |060  |015  |0  |     |2300
+dkongpe   |               |DK Pauline Ed.                |91   |062  |1  |     |2100
+fixitfelix|shell          |Fix-It Felix                  |110  |052  |0  |Hide |2200
+dkong_vcs |shell          |VCS                           |088  |032  |0  |     |2300
+dkong_gb  |shell          |GB                            |060  |015  |0  |     |2400
+dkadvanced|shell          |DK Advanced                   |076  |022  |0  |     |2500

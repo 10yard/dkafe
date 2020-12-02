@@ -42,6 +42,7 @@ def clear_screen(frame_delay=0, colour=BLACK, and_reset_display=False):
             _g.window.activate()
 
 
+
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
     # Write text to screen at given position using fg and bg colour (None for transparent)
     if text:
@@ -380,7 +381,12 @@ def launch_rom(info):
         _g.timer.stop()  # Stop the timer while playing rom
         if "-record" in shell_command:
             flash_message("R E C O R D I N G", x=40, y=120)  # Gameplay recording (i.e. Wolfmame)
+        if state.lower() == "hide":
+            # Hide frontend temporarily so the calling program gets focusxx
+            _g.window.hide()
         os.system(shell_command)
+        if state.lower() == "hide":
+            _g.window.restore()
         _g.timer.start()  # Restart the timer
     else:
         play_sound_effect("sounds/error.wav")
