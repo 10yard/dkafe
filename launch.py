@@ -128,6 +128,8 @@ def check_for_input():
             if event.key == CONTROL_COIN:
                 _g.showinfo = not _g.showinfo
                 display_icons()
+        if event.type == pygame.QUIT:
+            exit_program()
 
 
 def play_sound_effect(effect=None, stop=False):
