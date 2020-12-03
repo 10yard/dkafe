@@ -13,17 +13,16 @@ jump = False
 start = False
 
 # Jumpman status
-active = True    # Jumpman is active - see INACTIVE_TIME
-jumping = False  # Jumpman is currently jumping
-jumping_seq = 0  # Sequence number of jump
-lastmove = 0     # Time of last movement
-facing = 1       # Direction Jumpman is facing 0=Left, Right=1
-score = 0        # Jumpman's score
+active = True      # Jumpman is active - see INACTIVE_TIME
+jump_sequence = 0  # Sequence number of jump.  0 = Not jumping.
+lastmove = 0       # Time of last movement
+facing = 1         # Direction Jumpman is facing 0=Left, Right=1
+score = 0          # Jumpman's score
 
 # Toggle display options
 showinfo = False    # Press coin2 to show description above the icons
 skip = False        # Skip the animation
-countdown = False   # Coundown timer active
+warning = False     # Warning timer active
 ready = False       # Jumpman is ready to play a game
 grab = False        # DK grabbed a coin
 cointype = 0        # Type of coin being grabbed by DK (0=No Coin, 1 Low Value, 2=High Value)

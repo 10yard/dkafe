@@ -1,10 +1,10 @@
 # Front End Settings
-FULLSCREEN = 1
+FULLSCREEN = 0
 FREE_PLAY = 1
 UNLOCK_MODE = 0
 ENABLE_MENU = 1
 CONFIRM_EXIT = 1
-FRAME_DELAY = 22
+FRAME_DELAY = 21
 
 # Emulator Settings
 ROM_DIR = C:\emus\roms

@@ -5,7 +5,7 @@ import os
 # Graphic Config
 TITLE = 'DONKEY KONG ARCADE FE'
 GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
-CLOCK_RATE = 60        # Clock rate/timing
+CLOCK_RATE = 45        # Clock rate/timing
 
 # Default Controls
 CONTROL_LEFT = pygame.K_LEFT
@@ -29,7 +29,6 @@ ENABLE_MENU = True           # Allow selection from the quick access game list
 TIMER_START = 5000           # Timer starts countdown from. Integer
 INACTIVE_TIME = 15           # Screensaver with game instructions after period in seconds of inactivity. Integer
 PLAY_COST = 100              # How much it cost to play an arcade machine. Integer
-FRAME_DELAY = 22             # Default delay after each screen update. Integer
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 2           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
@@ -80,15 +79,19 @@ CONTROL_ASSIGNMENTS = [
   ("up", CONTROL_UP),
   ("down", CONTROL_DOWN),
   ("jump", CONTROL_JUMP),
-  ("start", CONTROL_P1)
-]
+  ("start", CONTROL_P1)]
 
 # Defines scene numbers when sounds should be played
-SCENE_SOUNDS = [
-    (160, "sounds/climb.wav"),
-    (481, "sounds/stomp.wav"),
-    (712, "sounds/roar.wav"),
-    (856, "sounds/howhigh.wav")]
+SCENE_SOUNDS = {
+  160: "sounds/climb.wav",
+  481: "sounds/stomp.wav",
+  712: "sounds/roar.wav",
+  856: "sounds/howhigh.wav"}
+
+WALK_SOUNDS = {
+  1: "sounds/walk0.wav",
+  5: "sounds/walk1.wav",
+  9: "sounds/walk2.wav"}
 
 # Defines when icons should be displayed on the climb intro.  The entries relate to the various platforms.
 # data is: appear from scene, appear to scene, below y, above y, smash animation to scene)
@@ -129,7 +132,6 @@ FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH C
 
 INSTRUCTION = """
 
-
 Donkey Kong has captured
 Pauline and carried her to
 the top of an abandoned
@@ -162,27 +164,27 @@ CONTROLS = """
 The Controls are as follows
 
 
-Left/   -  Move Jumpman 
-Right      along the 
-           platforms
+Left/  —  Move Jumpman 
+Right     along the 
+          platforms
 
-Up/     -  Move Jumpman up
-Down       and down ladders. 
-           Up faces Jumpman
-           towards a machine
+Up/    —  Move Jumpman up
+Down      and down ladders. 
+          Up faces Jumpman
+          towards a machine
 
-P1 or   -  Play the arcade
-Jump       machine that 
-           Jumpman is facing.
-           Jump also jumps :)
+P1 or  —  Play the arcade
+Jump      machine that 
+          Jumpman is facing.
+          Jump also jumps :)
          
-P2 or   -  Calls up the quick  
-Action     access game list
+P2 or  —  Calls up the quick  
+Action    access game list
 
-Coin    -  Show game info
-           above machines
+Coin   -  Show game info
+          above machines
                       
-Esc     -  Exit
+Esc    -  Exit
 
 
 Good luck!
