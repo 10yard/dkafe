@@ -1,0 +1,8 @@
+-- Set and retrieve player name and highscore via mame script engine
+emu.register_stop(function()
+	cpu = manager:machine().devices[":maincpu"]
+	mem = cpu.spaces["program"]
+	scrfile = io.open("c:\\temp\\test.txt", "w+")
+	scrfile:write(mem:read_i8(0xc7641) .. mem:read_i8(0xc7621) .. mem:read_i8(0xc7601) .. mem:read_i8(0xc75e1) .. mem:read_i8(0xc75c1) .. mem:read_i8(0xc75a1))
+	scrfile:close()
+end)

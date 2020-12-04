@@ -5,6 +5,7 @@ import os
 # Graphic Config
 TITLE = 'DONKEY KONG ARCADE FE'
 GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
+TOPLEFT = (0, 0)       # position of top left corner
 CLOCK_RATE = 45        # Clock rate/timing
 
 # Default Controls
@@ -156,6 +157,8 @@ collected by Jumpman so that
 he has money to unlock and 
 play all of the arcade 
 machines.
+
+
 
 """
 

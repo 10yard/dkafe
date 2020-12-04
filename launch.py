@@ -15,12 +15,13 @@ def exit_program(confirm=False):
 
 
 def initialise_screen(reset=False):
-    flags = pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED
-    _g.screen = pygame.display.set_mode(GRAPHICS, flags=flags)
+    _g.screen = pygame.display.set_mode(GRAPHICS, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     pygame.mouse.set_visible(False)
     if not reset:
         _g.screen_map = _g.screen.copy()
-        _g.screen_map.blit(get_image("artwork/map.png"), [0, 0])
+        _g.screen_map.blit(get_image("artwork/map.png"), TOPLEFT)
+    pygame.display.set_caption(TITLE)
+    pygame.display.set_icon(get_image("artwork/dkafe.ico"))
 
 
 def clear_screen(colour=BLACK, and_reset_display=False):
@@ -149,10 +150,10 @@ def play_intro_animation():
 
         if type(_key) is int:
             # Flash DK Logo
-            _g.screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), [0, 0])
+            _g.screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), TOPLEFT)
         else:
             # Show DK climb scene
-            _g.screen.blit(get_image(_key), [0, 0])
+            _g.screen.blit(get_image(_key), TOPLEFT)
             current = int(_key.split("scene_")[1][:4])
 
             # play sound if required for the current frame
@@ -172,10 +173,12 @@ def play_intro_animation():
         update_screen(delay_ms=40)
 
 
-def display_icons(detect_only=False, below_y=None, above_y=None, intro=False, smash=False):
+def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
+    if with_background:
+        _g.screen.blit(get_image("artwork/background.png"), TOPLEFT)
     nearby = None
     # Display icons and return icon that is near to Jumpman.  Alternate between looping the list forwards and reversed.
-    for _x, _y, name, sub, desc, emu, state, unlock in [_g.icons, reversed(_g.icons)][_g.timer.duration % 3 < 1.5]:
+    for _x, _y, name, sub, desc, emu, state, unlock in [_g.icons, reversed(_g.icons)][_g.timer.duration % 2 < 1]:
         if _g.score < unlock and UNLOCK_MODE and not intro:
             continue
         if not below_y or not above_y or (below_y >= _y >= above_y):
@@ -320,27 +323,24 @@ def launch_rom(info):
         shell_command, hide_window = _s.build_shell_command(info)
 
         if int(FREE_PLAY) or _g.score >= PLAY_COST:
-            _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]
+            _g.timer.stop()                                       # Stop timer while playing arcade
+            _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
-
             clear_screen()
-            _g.timer.stop()  # Stop timer while playing arcade
             if "-record" in shell_command:
-                flash_message("R E C O R D I N G", x=40, y=120)  # Gameplay recording (i.e. Wolfmame)
+                flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
             if hide_window:
-                _g.window.hide()  # For some games we need to hide frontend window to give the game focus
+                _g.window.hide()                                  # Hide frontend window to give game focus id needed
             os.system(shell_command)
             if hide_window:
-                _g.window.restore()
+                _g.window.restore()                               # Restore focus to frontend
             reset_all_inputs()
             _g.timer.start()  # Restart the timer
         else:
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
 
-        # Redraw the screen
-        clear_screen(and_reset_display=True)
-        update_screen()
+        clear_screen(and_reset_display=True)                      # Reset the screen
         music_channel.unpause()
         os.chdir(ROOT_DIR)
         _g.skip = True
@@ -370,8 +370,7 @@ def process_interrupts():
             for repeat in range(0, 3):
                 for i in range(0, 6):
                     if i <= 3 or repeat == 2:
-                        _g.screen.blit(_g.screen_copy, (0, 0))
-                        display_icons()
+                        display_icons(with_background=True)
                         _g.screen.blit(get_image(f"artwork/sprite/out{int(i)}.png"), (_g.xpos, int(_g.ypos)))
 
                         # Display items that don't get updated in this loop
@@ -450,7 +449,7 @@ def inactivity_check():
     if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
         pause_mod = (pygame.time.get_ticks() - _g.pause_ticks) % 21000
         if pause_mod < 3000:
-            _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), [0, 0])
+            _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), TOPLEFT)
         else:
             lines = (INSTRUCTION, CONTROLS)[pause_mod > 12000]
             for i, line in enumerate(lines.split("\n")):
@@ -472,22 +471,13 @@ def activity_check():
 
 
 def main():
-    pygame.display.set_caption(TITLE)
     initialise_screen()
-    pygame.display.set_icon(get_image("artwork/dkafe.ico"))
     _g.window = pygetwindow.getWindowsWithTitle(TITLE)[0]
 
     # launch front end
     build_menus()
     play_intro_animation()
-
-    # Start background music
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
-
-    # Build the screen with icons to use as background
-    _g.screen.blit(get_image("artwork/background.png"), [0, 0])
-    _g.screen_copy = _g.screen.copy()
-    display_icons()
 
     # Initialise Jumpman
     animate_jumpman("r", horizontal_movement=0)
@@ -497,8 +487,7 @@ def main():
     # loop the game
     while True:
         if _g.active:
-            _g.screen.blit(_g.screen_copy, (0, 0))
-            display_icons()
+            display_icons(with_background=True)
 
         if _g.jump_sequence:
             animate_jumpman(["l", "r"][_g.facing], midjump=True)
