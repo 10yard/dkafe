@@ -44,6 +44,7 @@ def build_shell_command(info):
     emu_command = f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu - 1]}'
     emu_command = emu_command.replace("<NAME>", name).replace("<DATETIME>", get_datetime())
     shell_command = f'{emu_command} {name}'
+    emu_directory = os.path.dirname(emu_command.split(" ")[0])
 
     if subfolder:
         if subfolder == "shell":
@@ -58,9 +59,17 @@ def build_shell_command(info):
             rom_target = os.path.join(ROM_DIR, name + ".zip")
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
+
+    #test
+    if "-record" not in shell_command:
+        print(name)
+        from dk_interface import lua_interface
+        if lua_interface(name):
+            shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
+
     if state:
         shell_command += f' -state {state.strip()}'
-    return shell_command, state.lower() == "hide"
+    return shell_command, emu_directory, state.lower() == "hide"
 
 
 def calculate_bonus(duration):
@@ -70,3 +79,27 @@ def calculate_bonus(duration):
     warning = bonus_timer < 1000
     return bonus_display, (CYAN, MAGENTA)[warning], warning, bonus_timer <= -200
 
+
+def hex2dec(_hex):
+    return str(int(_hex, 16))
+
+
+def format_numeric_data(top_scores, width=6, first_only=False):
+    data = ""
+    for score in top_scores:
+        for char in score.zfill(width)[:width]:
+            data += char + ","
+        if first_only:
+            break
+    return data.strip(",")
+
+
+def format_hex_data(player_names, width=3):
+    data = ""
+    for player in player_names:
+        for char in player.center(width)[:width]:
+            if char in DK_CHARMAP:
+                data += hex2dec(DK_CHARMAP[char]) + ","
+            else:
+                data += "16,"
+    return data.strip(",")

@@ -320,7 +320,7 @@ def launch_rom(info):
         _g.menu.disable()
         intermission_channel.stop()
         music_channel.pause()
-        shell_command, hide_window = _s.build_shell_command(info)
+        shell_command, emu_directory, hide_window = _s.build_shell_command(info)
 
         if int(FREE_PLAY) or _g.score >= PLAY_COST:
             _g.timer.stop()                                       # Stop timer while playing arcade
@@ -331,7 +331,9 @@ def launch_rom(info):
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
             if hide_window:
                 _g.window.hide()                                  # Hide frontend window to give game focus id needed
+            os.chdir(emu_directory)
             os.system(shell_command)
+            os.chdir(ROOT_DIR)
             if hide_window:
                 _g.window.restore()                               # Restore focus to frontend
             reset_all_inputs()

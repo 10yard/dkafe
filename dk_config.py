@@ -193,6 +193,25 @@ Esc    -  Exit
 Good luck!
 """
 
+DK_ROM_TITLE_ADDR = "0xc36b4,0xc36b5,0xc36b6,0xc36b7,0xc36b8,0xc36b9,0xc36ba,0xc36bb,0xc36bc,0xc36bd"
+DK_RAM_HIGH_ADDR = "0xc7641,0xc7621,0xc7601,0xc75e1,0xc75c1,0xc75a1"
+DK_RAM_SCORES_ADDR = """0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,
+0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,
+0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,
+0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,
+0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194"""
+DK_RAM_PLAYERS_ADDR = """0xc610f,0xc6110,0xc6111,
+0xc6131,0xc6132,0xc6133,
+0xc6153,0xc6154,0xc6155,
+0xc6175,0xc6176,0xc6177,
+0xc6197,0xc6198,0xc6199"""
+DK_CHARMAP = {' ': '10', 'A': '11', 'B': '12', 'C': '13', 'D': '14', 'E': '15', 'F': '16', 'G': '17', 'H': '18',
+              'I': '19', 'J': '1A', 'K': '1B', 'L': '1C', 'M': '1D', 'N': '1E', 'O': '1F', 'P': '20', 'Q': '21',
+              'R': '22', 'S': '23', 'T': '24', 'U': '25', 'V': '26', 'W': '27', 'X': '28', 'Y': '29', 'Z': '2A',
+              '.': '2B', '-': '35', '<': '30', '>': '31', '=': '34', '!': '38', "'": '3A', ',': '43', '0': '80',
+              '1': '81', '2': '82', '3': '83', '4': '84', '5': '85', '6': '86', '7': '87', '8': '88', '9': '89',
+              '?': 'FB', '*': 'FF'}
+
 # pygame setup
 pygame.mixer.init(frequency=48000)
 music_channel = pygame.mixer.Channel(0)
@@ -227,3 +246,5 @@ dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_w
 # Override the default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
+
+#print(dict((v, k) for k, v in (DK_CHARMAP)))
