@@ -3,21 +3,27 @@ from dk_config import *
 
 
 def lua_interface(rom=None):
+    data_file = f'{os.path.join(ROOT_DIR, "interface", rom + ".txt")}'
     preset=False
     if "dkong" in rom:
         preset=True
-        scores = ["030000", "020000", "010000", "010000", "010000"]
+        scores = ["001000", "001000", "001000", "001000", "001000"]
         players = ["D  ", "K  ", "A  ", "F  ", "E  "]
-        title = ["YOU NEED"]
 
-        os.environ["DK_RAM_HIGH_ADDR"] = DK_RAM_HIGH_ADDR
-        os.environ["DK_RAM_HIGH_DATA"] = _s.format_numeric_data(scores, first_only=True)
-        os.environ["DK_RAM_SCORES_ADDR"] = DK_RAM_SCORES_ADDR
-        os.environ["DK_RAM_SCORES_DATA"] = _s.format_numeric_data(scores)
-        os.environ["DK_RAM_PLAYERS_DATA"] = _s.format_hex_data(players)
-        os.environ["DK_RAM_PLAYERS_ADDR"] = DK_RAM_PLAYERS_ADDR
-        os.environ["DK_ROM_TITLE_ADDR"] = DK_ROM_TITLE_ADDR
-        os.environ["DK_ROM_TITLE_DATA"] = _s.format_hex_data(title, width=10)
+        # Data
+        high_score = scores[0]
+        os.environ["DATA_FILE"] = data_file
+        os.environ["DATA_HIGH"] = _s.format_numeric_data(scores, first_only=True)
+        os.environ["DATA_HIGH_DBL"] = _s.format_double_data(high_score)
+        os.environ["DATA_SCORES"] = _s.format_numeric_data(scores)
+        os.environ["DATA_PLAYERS"] = _s.format_hex_data(players)
+
+        # Memory addresses
+        os.environ["RAM_HIGH"] = RAM_HIGH
+        os.environ["RAM_HIGH_DBL"] = RAM_HIGH_DBL
+        os.environ["RAM_SCORES"] = RAM_SCORES
+        os.environ["RAM_PLAYERS"] = RAM_PLAYERS
+        os.environ["ROM_SCORES"] = ROM_SCORES
     return preset
 
 

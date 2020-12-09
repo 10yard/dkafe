@@ -11,10 +11,11 @@ function string:split(sep)
 	return fields
 end
    
-function get_env(var_name)
+function get_formatted_data(var_name)
 	content = os.getenv(var_name)
 	if content ~= nil then
 		content = content:split(",")
+	else content = {}
 	end
 	return content
 end   
@@ -23,79 +24,80 @@ function get_loaded()
 	return emu["loaded"]
 end   
 
-
-function show_info()
-	scr:draw_text(10, 10, "You need to beat 10,000 to unlock the next level!");
-	--scr:draw_box(20, 20, 80, 80, 0, 0xff00ffff); -- (x0, y0, x1, y1, fill-color, line-color)
-	--scr:draw_line(20, 20, 80, 80, 0xff00ffff); -- (x0, y0, x1, y1, line-color)
+function query_highscore()
+	highscore = ""
+	for key, value in pairs(ram_high) do
+		highscore = highscore .. mem:read_i8(value)
+	end	
+	if highscore == "161616161616" then 
+		highscore = "000000" 
+	end
+	return highscore
 end
 
---Read data from DKAFE
-ram_high_addr = get_env("DK_RAM_HIGH_ADDR")
-ram_high_data = get_env("DK_RAM_HIGH_DATA")
-ram_scores_addr = get_env("DK_RAM_SCORES_ADDR")
-ram_scores_data = get_env("DK_RAM_SCORES_DATA")
-ram_players_addr = get_env("DK_RAM_PLAYERS_ADDR")
-ram_players_data = get_env("DK_RAM_PLAYERS_DATA")
-rom_title_addr = get_env("DK_ROM_TITLE_ADDR")
-rom_title_data = get_env("DK_ROM_TITLE_DATA")
+-- Get data from DKAFE
+data_file = os.getenv("DATA_FILE")
+data_scores = get_formatted_data("DATA_SCORES")
+data_high = get_formatted_data("DATA_HIGH")
+data_high_dbl = get_formatted_data("DATA_HIGH_DBL")
+data_scores = get_formatted_data("DATA_SCORES")
+data_players = get_formatted_data("DATA_PLAYERS")
 
---File to export results when finishedd
-data_file = "dkong_out.txt"
+-- Get ROM addresses
+rom_scores = get_formatted_data("ROM_SCORES")
 
---Check ram is ready to be written
-ram_ready = ram_players_addr[1]
+-- Get RAM addresses
+ram_high = get_formatted_data("RAM_HIGH")
+ram_high_dbl = get_formatted_data("RAM_HIGH_DBL")
+ram_scores = get_formatted_data("RAM_SCORES")
+ram_players = get_formatted_data("RAM_PLAYERS")
 
+-- Memory state
 cpu = manager:machine().devices[":maincpu"]
 mem = cpu.spaces["program"]
-scr = manager:machine().screens[":screen"]
-
 
 emu.register_frame(function()
 	status, loaded = pcall(get_loaded)
-		
+	
 	if loaded == nil then
-		emu.register_frame_done(show_info, "frame")
-		-- Update ROM
+		-- Update ROM on start
 		emu["loaded"] = 1
-		if rom_title_addr ~= nil and rom_title_data ~= nil then
-			for key, value in pairs(rom_title_addr) do
-				mem:write_direct_i8(value, rom_title_data[key])
-			end
+		for key, value in pairs(rom_scores) do
+			mem:write_direct_i8(value, data_scores[key])				
 		end
 	end
 
 	if loaded == 1 then
-		-- Update RAM
-		if mem:read_i8(ram_ready) > 0 then
+		-- Update RAM when ready	
+		if mem:read_i8(ram_players[1]) > 0 then
 			emu["loaded"] = 2
-			if ram_high_addr ~= nil and ram_high_data ~= nil then
-				for key, value in pairs(ram_high_addr) do
-					mem:write_i8(value, ram_high_data[key])				
-				end						
+			for key, value in pairs(ram_high) do
+				mem:write_i8(value, data_high[key])				
+			end						
+			for key, value in pairs(ram_high_dbl) do
+				mem:write_i8(value, data_high_dbl[key])				
+			end						
+			for key, value in pairs(ram_scores) do
+				mem:write_i8(value, data_scores[key])				
 			end
-			if ram_scores_addr ~= nil and ram_scores_data ~= nil then
-				for key, value in pairs(ram_scores_addr) do
-					mem:write_i8(value, ram_scores_data[key])				
-				end
-			end
-			if ram_players_addr ~= nil and ram_players_data ~= nil then
-				for key, value in pairs(ram_players_addr) do
-					mem:write_i8(value, ram_players_data[key])				
-				end
+			for key, value in pairs(ram_players) do
+				mem:write_i8(value, data_players[key])				
 			end
 		end
+		emu["target"] = tonumber(query_highscore())
 	end
+	
+	--if loaded == 2 then
+	--	if tonumber(query_highscore()) > emu.target then
+	--		emu.print_info("Reached Target")
+	--	end
+	--end
 end)
 
 emu.register_stop(function()
 	-- Export data file
-	if ram_high_addr ~= nil and ram_high_data ~= nil then
-		file = io.open(data_file, "w+")
-		for key, value in pairs(ram_high_addr) do
-			file:write(mem:read_i8(value))
-		end
-		file:write("\n")
-		file:close()
-	end
+	file = io.open(data_file, "w+")
+	file:write(query_highscore())
+	file:write("\n")
+	file:close()
 end)

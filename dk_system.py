@@ -62,9 +62,9 @@ def build_shell_command(info):
 
     #test
     if "-record" not in shell_command:
-        print(name)
         from dk_interface import lua_interface
         if lua_interface(name):
+            shell_command += ' -fontpath c:\\dkafe\\fonts'
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
 
     if state:
@@ -82,6 +82,13 @@ def calculate_bonus(duration):
 
 def hex2dec(_hex):
     return str(int(_hex, 16))
+
+
+def format_double_data(score, width=6):
+    data = ""
+    for i in range(0, 6, 2):
+        data += str(int(score[i:i+2], 16)) + ","
+    return data.strip(",")
 
 
 def format_numeric_data(top_scores, width=6, first_only=False):
