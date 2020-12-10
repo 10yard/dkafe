@@ -1,0 +1,20 @@
+DKAFE Builds a basic frontend using patches of the original arcade rom
+(not provided with the software).
+
+By Paul Goes at https://donkeykonghacks.net/
+  dkongcb: Crazy Barrels
+  dkongce: Championship Edition
+  dkongfr: Free Run
+  dkongitd: Into the Dark
+  dkongl05: Skip Start
+  dkongotr: On the Run
+  dkongrev: Reverse
+  dkongrnd: Randomized
+
+dkongwbh: Wild Barrel Hack
+dkongtrainer: Trainer
+dkongpe: Pauline Edition
+
+Some patches require supplemetary files.  These supplementary files are added to the patched rom ZIP.
+dkongdk2: Jumpman Returns
+dkongfoundry: Foundry
