@@ -23,8 +23,9 @@ score = 0          # Jumpman's score
 showinfo = False    # Press coin2 to show description above the icons
 skip = False        # Skip the animation
 warning = False     # Warning timer active
-ready = False       # Jumpman is ready to play a game
 grab = False        # DK grabbed a coin
+ready = False       # Jumpman is ready to play a game
+competing = False   # Jumpman is chasing a minimum score to gain points on the current game
 cointype = 0        # Type of coin being grabbed by DK (0=No Coin, 1 Low Value, 2=High Value)
 
 # Sprites

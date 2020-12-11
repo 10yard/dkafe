@@ -1,23 +1,23 @@
-#Rom Name,Sub Folder,Description,IconX,IconY,Emu,State,Unlock,OK,Good,Great
-dkong,dkongtrn,DK Trainer,002,226,1,,0,50000,100000,200000
-dkong,,Donkey Kong,057,226,1,,0,50000,100000,200000
-dkongjr,,DK Junior,113,225,1,,1000,50000,100000,200000
-dkong3,,DK 3,162,222,1,,1500,50000,100000,200000
-dkongx11,dkongdk2,DK2,211,218,1,,2000,30000,50000,100000
-dkong,dkongl05,DK Skip Start,195,198,1,,2500,30000,80000,150000
-dkongx11,dkongspooky,DK Spooky Remix,050,189,1,,3000,25000,50000,100000
-dkonghrd,dkonghard,DK Hard,002,186,1,,4500,25000,50000,100000
-dkong,dkongce,DK Champ Edition,114,193,1,,5000,50000,100000,200000
-dkong,dkongitd,DK Into the Dark,018,165,1,,5000,25000,50000,100000
-dkong,dkongrnd,DK Randomized,082,161,1,,5000,30000,50000,100000
-dkongf,dkongst2,DK Springs,146,157,1,,5000,10000,20000,30000
-dkong,dkongrainbow,DK Rainbow,211,153,1,,5000,50000,100000,200000
-dkong,dkongotr,DK On the Run,194,132,1,,5000,30000,50000,100000
-dkongx11,dkongxmas,DK Xmas Remix,095,126 ,1,,5000,25000,50000,100000
-dkong,dkongrev,DK Reverse,050,123,1,,5000,30000,50000,100000
-dkong,dkongwbh,DK Wild Barrrel,002,120,1,,5000,10000,20000,50000
-dkongf,dkongf,DK Foundry,050,097,1,,5000,25000,50000,100000
-ckong,,Crazy Kong,099,094,1,,5000,25000,50000,100000
-dkong,dkongfr,DK Free Run,194,066,1,,5000,25000,50000,100000
-dkong,dkongcb,DK Crazy Barrels,004,062,1,,5000,10000,20000,50000
-dkongpe,dkongpe,DK Pauline Ed.,091,062,1,,5000,50000,100000,200000
+#Rom Name,Sub Folder,Description,IconX,IconY,Emu,State,Unlock,Min Score,Bonus Score
+dkong,dkongtrn,DK Trainer,2,226,1,,0,,
+dkong,,Donkey Kong,57,226,1,,0,10000,20000
+dkongjr,,DK Junior,113,225,1,,1000,50000,100000
+dkong3,,DK 3,162,222,1,,1500,50000,100000
+dkongx11,dkongdk2,DK2,211,218,1,,2000,30000,50000
+dkong,dkongl05,DK Skip Start,195,198,1,,2500,30000,50000
+dkongx11,dkongspooky,DK Spooky Remix,50,189,1,,3000,25000,50000
+dkonghrd,dkonghard,DK Hard,2,186,1,,4500,25000,50000
+dkong,dkongce,DK Champ Edition,114,193,1,,5000,50000,100000
+dkong,dkongitd,DK Into the Dark,18,165,1,,5000,25000,50000
+dkong,dkongrnd,DK Randomized,82,161,1,,5000,30000,50000
+dkongf,dkongst2,DK Springs,146,157,1,,5000,10000,20000
+dkong,dkongrainbow,DK Rainbow,211,153,1,,5000,50000,100000
+dkong,dkongotr,DK On the Run,194,132,1,,5000,30000,50000
+dkongx11,dkongxmas,DK Xmas Remix,95,126 ,1,,5000,25000,50000
+dkong,dkongrev,DK Reverse,50,123,1,,5000,30000,50000
+dkong,dkongwbh,DK Wild Barrrel,2,120,1,,5000,100000,20000
+dkongf,dkongf,DK Foundry,50,97,1,,5000,25000,50000
+ckong,,Crazy Kong,99,94,1,,5000,25000,50000
+dkong,dkongfr,DK Free Run,194,66,1,,5000,25000,50000
+dkong,dkongcb,DK Crazy Barrels,4,62,1,,5000,10000,25000
+dkongpe,dkongpe,DK Pauline Ed.,91,62,1,,5000,50000,100000

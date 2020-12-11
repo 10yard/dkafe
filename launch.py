@@ -181,7 +181,8 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         _g.screen.blit(get_image("artwork/background.png"), TOPLEFT)
     nearby = None
     # Display icons and return icon that is near to Jumpman.  Alternate between looping the list forwards and reversed.
-    for _x, _y, name, sub, desc, emu, state, unlock in [_g.icons, reversed(_g.icons)][_g.timer.duration % 2 < 1]:
+    for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in \
+            [_g.icons, reversed(_g.icons)][_g.timer.duration % 2 < 1]:
         unlocked = True
         if _g.score < unlock and UNLOCK_MODE and not intro:
             unlocked = False
@@ -195,16 +196,21 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
             w, h = img.get_width(), img.get_height()
             if _g.showinfo:
                 # Show game info above icons
-                write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
+                write_text(des, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
-                if not unlocked:
-                    desc = f"UNLOCK at {unlock}"
+                if not unlocked and _g.timer.duration % 2 < 1:
+                    des = f"UNLOCK at {unlock}"
+                elif int(UNLOCK_MODE) and unlocked:
+                        if _g.timer.duration % 4 < 1:
+                            des = f'{_s.format_K(_min)} Minimum'
+                        elif _g.timer.duration % 4 < 2:
+                            des = f'{_s.format_K(bonus)} Bonus!'
                 elif not int(FREE_PLAY) and _g.timer.duration % 2 < 1:
-                    desc = f'${str(PLAY_COST)} TO PLAY'
-                write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+                    des = f'${str(PLAY_COST)} TO PLAY'
+                write_text(des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
-                    nearby = (sub, name, emu, state, unlock)
+                    nearby = (sub, name, emu, state, unlock, _min, bonus)
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
     return nearby
@@ -291,9 +297,9 @@ def build_menus():
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
-    for name, sub, desc, icx, icy, emu, state, unlock in _s.read_romlist():
-        _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock))
-        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock))
+    for name, sub, desc, icx, icy, emu, state, unlock, _min, bonus in _s.read_romlist():
+        _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, _min, bonus))
+        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, _min, bonus))
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
@@ -327,7 +333,7 @@ def launch_rom(info):
         _g.menu.disable()
         intermission_channel.stop()
         music_channel.pause()
-        shell_command, emu_directory, hide_window = _s.build_shell_command(info)
+        shell_command, emu_directory, competing, hide_window = _s.build_shell_command(info)
 
         if int(FREE_PLAY) or _g.score >= PLAY_COST:
             _g.timer.stop()                                       # Stop timer while playing arcade
@@ -344,6 +350,9 @@ def launch_rom(info):
             os.chdir(ROOT_DIR)
             if hide_window:
                 _g.window.restore()                               # Restore focus to frontend
+            if competing:
+                # Check to see if Jumpman achieved minimum or bonus scores and award earned points
+                pass
             reset_all_inputs()
             _g.timer.start()  # Restart the timer
         else:

@@ -24,12 +24,12 @@ def read_romlist():
     romlist = []
     with open("romlist.csv", "r") as rl:
         for rom_line in rl.readlines()[1:]:  # ignore the first/header line
-            if not rom_line.startswith("#") and rom_line.count(",") == 10:
-                name, subfolder, desc, icx, icy, emu, state, unlock, *_ = [x.strip() for x in rom_line.split(",")]
-                if name and desc and icx and icy:
+            if not rom_line.startswith("#") and rom_line.count(",") == 9:
+                name, sub, des, icx, icy, emu, state, unlock, _min, bonus, *_ = [x.strip() for x in rom_line.split(",")]
+                if name and des and icx and icy:
                     # target = name + (".sh", ".bat")[is_windows()] if subfolder == "shell" else name + ".zip"
                     # if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
-                    romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state, int(unlock)))
+                    romlist.append((name, sub, des, int(icx), int(icy), int(emu), state, int(unlock), _min, bonus))
     return romlist
 
 
@@ -39,23 +39,24 @@ def build_shell_command(info):
     # variant of the main rom e.g. roms/skipstart/dkong.zip is a variant of roms/dkong.zip.  If mame emulator supports
     # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
     # rom to avoid a CRC check fail.
-    subfolder, name, emu, state, unlock = info
+    competing = False
+    sub, name, emu, state, unlock, _min, bonus = info
     emu_command = f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu - 1]}'
     emu_command = emu_command.replace("<NAME>", name).replace("<DATETIME>", get_datetime())
     shell_command = f'{emu_command} {name}'
     emu_directory = os.path.dirname(emu_command.split(" ")[0])
 
-    if subfolder:
-        if subfolder == "shell":
+    if sub:
+        if sub == "shell":
             # Launch shell script / batch file
             shell_command = os.path.join(ROOT_DIR, "shell", name + (".sh", ".bat")[is_windows()])
             emu_directory = None
         elif "-rompath" in emu_command:
             # Launch rom and provide rom path
-            shell_command = f'{emu_command}{os.sep}{subfolder} {name}'
+            shell_command = f'{emu_command}{os.sep}{sub} {name}'
         else:
             # Copy rom to the fixed rom path. Useful for emulators like advmame when -rompath argument is not supported.
-            rom_source = os.path.join(ROM_DIR, subfolder, name + ".zip")
+            rom_source = os.path.join(ROM_DIR, sub, name + ".zip")
             rom_target = os.path.join(ROM_DIR, name + ".zip")
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
@@ -63,12 +64,13 @@ def build_shell_command(info):
     # testing of the MAME/LUA interface
     if "-record" not in shell_command:
         from dk_interface import lua_interface
-        if lua_interface(name):
+        if lua_interface(name, _min):
+            competing = True
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
 
     if state:
         shell_command += f' -state {state.strip()}'
-    return shell_command, emu_directory, state.lower() == "hide"
+    return shell_command, emu_directory, competing, state.lower() == "hide"
 
 
 def calculate_bonus(duration):
@@ -109,3 +111,8 @@ def format_hex_data(player_names, width=3):
             else:
                 data += "16,"
     return data.strip(",")
+
+
+def format_K(text):
+    return (text, text[:-3] + "K")[text.endswith("000")]
+

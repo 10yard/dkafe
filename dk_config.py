@@ -27,7 +27,7 @@ FREE_PLAY = True             # Jumpman does not have to pay to play
 UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = True           # Allow selection from the quick access game list
 
-AWARDS = [500, 1000, 2000]   # Points awared for reaching the target score thresholds in a game (Ok, Good, Great)
+AWARDS = [1000, 2000]        # Points awared for reaching the minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
 INACTIVE_TIME = 15           # Screensaver with game instructions after period in seconds of inactivity. Integer
 TIMER_START = 5000           # Timer starts countdown from. Integer
