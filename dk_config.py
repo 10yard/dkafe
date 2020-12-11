@@ -27,20 +27,21 @@ FREE_PLAY = True             # Jumpman does not have to pay to play
 UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = True           # Allow selection from the quick access game list
 
-TIMER_START = 5000           # Timer starts countdown from. Integer
+AWARDS = [500, 1000, 2000]   # Points awared for reaching the target score thresholds in a game (Ok, Good, Great)
+PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
 INACTIVE_TIME = 15           # Screensaver with game instructions after period in seconds of inactivity. Integer
-PLAY_COST = 100              # How much it cost to play an arcade machine. Integer
-LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+TIMER_START = 5000           # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 2           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_SPEED = 1.6             # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
+LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
 ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults
 OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
-ROM_DIR = 'C:\\emus\\roms'
+ROM_DIR = 'C:\\dkafe\\roms'
 EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 8
 
 # Defaults can be overridden in the settings.txt file

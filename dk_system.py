@@ -22,15 +22,14 @@ def intro_frames():
 def read_romlist():
     # read romlist and return info about available roms (and shell scripts)
     romlist = []
-    if os.path.exists("romlist.txt"):
-        with open("romlist.txt", "r") as rl:
-            for rom_line in rl.readlines()[1:]:  # ignore the first/header line
-                if rom_line.count("|") == 7:
-                    name, subfolder, desc, icx, icy, emu, state, unlock, *_ = [x.strip() for x in rom_line.split("|")]
-                    if name and desc and icx and icy:
-                        target = name + (".sh", ".bat")[is_windows()] if subfolder == "shell" else name + ".zip"
-                        if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
-                            romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state, int(unlock)))
+    with open("romlist.csv", "r") as rl:
+        for rom_line in rl.readlines()[1:]:  # ignore the first/header line
+            if not rom_line.startswith("#") and rom_line.count(",") == 10:
+                name, subfolder, desc, icx, icy, emu, state, unlock, *_ = [x.strip() for x in rom_line.split(",")]
+                if name and desc and icx and icy:
+                    # target = name + (".sh", ".bat")[is_windows()] if subfolder == "shell" else name + ".zip"
+                    # if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
+                    romlist.append((name, subfolder, desc, int(icx), int(icy), int(emu), state, int(unlock)))
     return romlist
 
 
@@ -50,21 +49,21 @@ def build_shell_command(info):
         if subfolder == "shell":
             # Launch shell script / batch file
             shell_command = os.path.join(ROOT_DIR, "shell", name + (".sh", ".bat")[is_windows()])
+            emu_directory = None
         elif "-rompath" in emu_command:
             # Launch rom and provide rom path
             shell_command = f'{emu_command}{os.sep}{subfolder} {name}'
         else:
-            # Copy rom from subfolder to the fixed rom path
+            # Copy rom to the fixed rom path. Useful for emulators like advmame when -rompath argument is not supported.
             rom_source = os.path.join(ROM_DIR, subfolder, name + ".zip")
             rom_target = os.path.join(ROM_DIR, name + ".zip")
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
 
-    #test
+    # testing of the MAME/LUA interface
     if "-record" not in shell_command:
         from dk_interface import lua_interface
         if lua_interface(name):
-            shell_command += ' -fontpath c:\\dkafe\\fonts'
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
 
     if state:

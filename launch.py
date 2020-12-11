@@ -63,11 +63,14 @@ def flash_message(message, x, y):
     clear_screen()
 
 
-def get_image(image_key):
+def get_image(image_key, fade=False):
     # Load image or read prevously loaded image from the dictionary/cache
-    if image_key not in _g.image_cache:
-        _g.image_cache[image_key] = pygame.image.load(image_key).convert_alpha()
-    return _g.image_cache[image_key]
+    _key = image_key + str(fade)
+    if _key not in _g.image_cache:
+        _g.image_cache[_key] = pygame.image.load(image_key).convert_alpha()
+        if fade:
+            _g.image_cache[_key].set_alpha(100)
+    return _g.image_cache[_key]
 
 
 def read_map(x, y):
@@ -179,25 +182,29 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     nearby = None
     # Display icons and return icon that is near to Jumpman.  Alternate between looping the list forwards and reversed.
     for _x, _y, name, sub, desc, emu, state, unlock in [_g.icons, reversed(_g.icons)][_g.timer.duration % 2 < 1]:
+        unlocked = True
         if _g.score < unlock and UNLOCK_MODE and not intro:
-            continue
+            unlocked = False
         if not below_y or not above_y or (below_y >= _y >= above_y):
             icon_image = os.path.join("artwork/icon", sub, name + ".png")
             if smash:
                 icon_image = f"artwork/sprite/smash{str(randint(0,3))}.png"
             if not os.path.exists(icon_image):
                 icon_image = os.path.join("artwork/icon/default_machine.png")
-            img = get_image(icon_image)
+            img = get_image(icon_image, fade=not unlocked)
             w, h = img.get_width(), img.get_height()
             if _g.showinfo:
                 # Show game info above icons
                 write_text(desc, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
-                if not int(FREE_PLAY) and _g.timer.duration % 2 < 1:
+                if not unlocked:
+                    desc = f"UNLOCK at {unlock}"
+                elif not int(FREE_PLAY) and _g.timer.duration % 2 < 1:
                     desc = f'${str(PLAY_COST)} TO PLAY'
                 write_text(desc.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
-                nearby = (sub, name, emu, state, unlock)
+                if unlocked:
+                    nearby = (sub, name, emu, state, unlock)
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
     return nearby
@@ -331,7 +338,8 @@ def launch_rom(info):
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
             if hide_window:
                 _g.window.hide()                                  # Hide frontend window to give game focus id needed
-            os.chdir(emu_directory)
+            if emu_directory:
+                os.chdir(emu_directory)
             os.system(shell_command)
             os.chdir(ROOT_DIR)
             if hide_window:

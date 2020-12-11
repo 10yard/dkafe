@@ -1,20 +1,55 @@
-DKAFE Builds a basic frontend using patches of the original arcade rom
-(not provided with the software).
+DKAFE builds the default frontend using patches of the original arcade rom. 
 
-By Paul Goes at https://donkeykonghacks.net/
-  dkongcb: Crazy Barrels
-  dkongce: Championship Edition
-  dkongfr: Free Run
-  dkongitd: Into the Dark
-  dkongl05: Skip Start
-  dkongotr: On the Run
-  dkongrev: Reverse
-  dkongrnd: Randomized
+The .ips patches are included with the software.
+The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip, dkong3.zip and ckong.zip into the dkafe/roms folder too.  
+DKAFE will then apply patches and generate the following hacked version of Donkey Kong automaticalluy for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
-dkongwbh: Wild Barrel Hack
-dkongtrainer: Trainer
-dkongpe: Pauline Edition
+By Paul Goes, https://donkeykonghacks.net/
+ - Donkey Kong Crazy Barrels Edition (dkongcb)
+ - Donkey Kong Championship Edition (dkongce)
+ - Donkey Kong Randomized Edition (dkongrnd)
+ - Donkey Kong Freerun Edition (dkongfr)
+ - Donkey Kong Into The Dark (dkongitd)
+ - Donkey Kong Skip Start (dkongl05)
+ - Donkey Kong On The Run (dkongotr)
+ - Donkey Kong Reverse (dkongrev)
 
-Some patches require supplemetary files.  These supplementary files are added to the patched rom ZIP.
-dkongdk2: Jumpman Returns
-dkongfoundry: Foundry
+By John Kowalski (Sock Master) 
+ - Donkey Kong Spooky Remix (dkongspooky)
+ - Donkey Kong Christmas Remix (dkongxmas)
+ - Donkey Kong Springs Trainer (dkongst2)
+ - Donkey Kong Trainer (dkongtrn)
+ - Donkey Kong Rainbow (dkongrainbow)
+
+By Jeff Kulczycki, http://www.jeffsromhack.com/products/d2k.htm
+ - Donkey Kong 2 Jumpman Returns (dkongdk2)
+ - Donkey Kong Foundry (dkongf)
+ - Donkey Kong Barrel Control Colouring (dkongbcc)
+
+By Mike Mika
+ - Donkey Kong Pauline Edition (dkongpe)
+
+By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
+ - Donkey Kong Kill Screen Fix (dkongksfix)
+
+Donkey Kong Wild Barrel Hack (dkongwbh)
+Donkey Kong 2 Marios (dkong2m)
+Donkey Kong Hard (dkonghrd)
+Donkey Kong Pace (dkongpace)
+
+
+----
+To make a complete patch file for a hack you need to:
+ 1. add/replace all files related to the hack into a copy of dkong.zip (you may need to rename some files so that they overwrite originals.  It should be obvious when the files are replacements.)
+ 2. use IPS patch tool to create a patch of the differences between original dkong.zip and the modified dkong.zip
+ 3. save the .ips file to patch folder
+
+All completed hacks will be named dkong.zip and placed into a unique folder under /hacks
+e.g. dkongspooky.ips will create "<ROM_DIR>/hacks/dkongspooky/dkong.zip"
+----
+
+
+
+
+
+

@@ -28,9 +28,10 @@ def lua_interface(rom=None):
 
 
 if __name__ == "__main__":
+    pass
     # for interactive testing
-    if lua_interface("dkong"):
-        os.chdir('c:\\emus\\mame')
-        os.system("mame64 -rompath c:\\emus\\roms -console -autoboot_script c:\\dkafe\\interface\\dkong.lua dkong")
+    #if lua_interface("dkong"):
+    #    os.chdir('c:\\emus\\mame')
+    #    os.system("mame64 -rompath c:\\emus\\roms -console -autoboot_script c:\\dkafe\\interface\\dkong.lua dkong")
 
 
