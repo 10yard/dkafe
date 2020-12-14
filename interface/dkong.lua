@@ -26,18 +26,28 @@ end
 
 function query_highscore()
 	highscore = ""
-	for key, value in pairs(ram_high) do
-		highscore = highscore .. mem:read_i8(value)
-	end	
-	if highscore == "161616161616" then 
-		highscore = "000000" 
+	if emu.romname() == "dkongx11" then
+		for key, value in pairs(ram_scores) do
+			if key <= 7 then
+				highscore = highscore .. mem:read_i8(value)
+			end
+		end	
+	else
+		for key, value in pairs(ram_high) do
+			highscore = highscore .. mem:read_i8(value)
+		end	
+		if highscore == "161616161616" then 
+			highscore = "000000" 
+		end
 	end
 	return highscore
 end
 
+
 -- Get data from DKAFE
 data_file = os.getenv("DATA_FILE")
 data_scores = get_formatted_data("DATA_SCORES")
+data_scores_dbl = get_formatted_data("DATA_SCORES_DBL")
 data_high = get_formatted_data("DATA_HIGH")
 data_high_dbl = get_formatted_data("DATA_HIGH_DBL")
 data_scores = get_formatted_data("DATA_SCORES")
@@ -50,6 +60,7 @@ rom_scores = get_formatted_data("ROM_SCORES")
 ram_high = get_formatted_data("RAM_HIGH")
 ram_high_dbl = get_formatted_data("RAM_HIGH_DBL")
 ram_scores = get_formatted_data("RAM_SCORES")
+ram_scores_dbl = get_formatted_data("RAM_SCORES_DBL")
 ram_players = get_formatted_data("RAM_PLAYERS")
 
 -- Memory state
@@ -74,14 +85,22 @@ emu.register_frame(function()
 			for key, value in pairs(ram_high) do
 				mem:write_i8(value, data_high[key])				
 			end						
+
 			for key, value in pairs(ram_high_dbl) do
 				mem:write_i8(value, data_high_dbl[key])				
-			end						
-			for key, value in pairs(ram_scores) do
-				mem:write_i8(value, data_scores[key])				
 			end
+				
+			for key, value in pairs(ram_scores) do
+				mem:write_i8(value, data_scores[key])
+			end
+			
+			
+			for key, value in pairs(ram_scores_dbl) do
+				mem:write_i8(value, data_scores_dbl[key])				
+			end	
+					
 			for key, value in pairs(ram_players) do
-				mem:write_i8(value, data_players[key])				
+				mem:write_i8(value, data_players[key])
 			end
 		end
 		emu["target"] = tonumber(query_highscore())
@@ -96,11 +115,14 @@ end)
 
 emu.register_stop(function()
 	-- Export data file
+	--high score on first line
 	file = io.open(data_file, "w+")
 	file:write(query_highscore())
 	file:write("\n")
+	--rom name
 	file:write(emu.romname())
 	file:write("\n")
+	--rom descripton
 	file:write(emu.gamename())
 	file:close()
 end)

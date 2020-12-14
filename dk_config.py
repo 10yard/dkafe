@@ -27,10 +27,10 @@ FREE_PLAY = True             # Jumpman does not have to pay to play
 UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = True           # Allow selection from the quick access game list
 
-AWARDS = [1000, 2000]        # Points awared for reaching the minimum and bonus scores when competing
+AWARDS = [0, 1000, 2000]     # Points awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
 INACTIVE_TIME = 15           # Screensaver with game instructions after period in seconds of inactivity. Integer
-TIMER_START = 5000           # Timer starts countdown from. Integer
+TIMER_START = 5000            # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 2           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_SPEED = 1.6             # Number of pixels to move coin per display update. Decimal
@@ -154,10 +154,10 @@ throw coins instead of
 barrels. 
 
 Anyway, the coins must be 
-collected by Jumpman so that
-he has money to unlock and 
-play all of the arcade 
-machines.
+collected by Jumpman and he 
+must play games well to earn
+money to unlock and play all 
+of the arcade machines.
 
 
 
@@ -194,34 +194,6 @@ Esc    -  Exit
 Good luck!
 """
 
-ROM_SCORES = """0xc356c,0xc356d,0xc356e,0xc356f,0xc3570,0xc3571,
-0xc358e,0xc358f,0xc3590,0xc3591,0xc3592,0xc3593,
-0xc35b0,0xc35b1,0xc35b2,0xc35b3,0xc35b4,0xc35b5,
-0xc35d2,0xc35d3,0xc35d4,0xc35d5,0xc35d6,0xc35d7,
-0xc35f4,0xc35f5,0xc35f6,0xc35f7,0xc35f8,0xc35f9"""
-
-RAM_SCORES = """0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,
-0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,
-0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,
-0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,
-0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194"""
-
-RAM_HIGH = "0xc7641,0xc7621,0xc7601,0xc75e1,0xc75c1,0xc75a1"
-RAM_HIGH_DBL = "0xc60BA,0xc60B9,0xc60B8"
-
-RAM_PLAYERS = """0xc610f,0xc6110,0xc6111,
-0xc6131,0xc6132,0xc6133,
-0xc6153,0xc6154,0xc6155,
-0xc6175,0xc6176,0xc6177,
-0xc6197,0xc6198,0xc6199"""
-
-DK_CHARMAP = {' ': '10', 'A': '11', 'B': '12', 'C': '13', 'D': '14', 'E': '15', 'F': '16', 'G': '17', 'H': '18',
-              'I': '19', 'J': '1A', 'K': '1B', 'L': '1C', 'M': '1D', 'N': '1E', 'O': '1F', 'P': '20', 'Q': '21',
-              'R': '22', 'S': '23', 'T': '24', 'U': '25', 'V': '26', 'W': '27', 'X': '28', 'Y': '29', 'Z': '2A',
-              '.': '2B', '-': '35', '<': '30', '>': '31', '=': '34', '!': '38', "'": '3A', ',': '43', '0': '70',
-              '1': '71', '2': '72', '3': '73', '4': '74', '5': '75', '6': '76', '7': '77', '8': '78', '9': '79',
-              '?': 'FB', '*': 'FF'}
-
 # pygame setup
 pygame.mixer.init(frequency=48000)
 music_channel = pygame.mixer.Channel(0)
@@ -256,5 +228,3 @@ dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_w
 # Override the default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
-
-#print(dict((v, k) for k, v in (DK_CHARMAP)))

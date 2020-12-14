@@ -1,58 +1,126 @@
-import dk_system as _s
-from dk_config import *
+import os
+from dk_config import ROOT_DIR, AWARDS
+
+# Memory addresses for scores and players data
+# 6 Bytes per group
+ROM_SCORES = "0xc356c,0xc356d,0xc356e,0xc356f,0xc3570,0xc3571,0xc358e,0xc358f,0xc3590,0xc3591,0xc3592,0xc3593,0xc35b0,0xc35b1,0xc35b2,0xc35b3,0xc35b4,0xc35b5,0xc35d2,0xc35d3,0xc35d4,0xc35d5,0xc35d6,0xc35d7,0xc35f4,0xc35f5,0xc35f6,0xc35f7,0xc35f8,0xc35f9"""
+RAM_SCORES = "0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194"""
+RAM_HIGH = "0xc7641,0xc7621,0xc7601,0xc75e1,0xc75c1,0xc75a1"
+
+# 7 bytes per group
+RAM_SCORES_X11 = "0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,0xc610d,0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,0xc612f,0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,0xc6151,0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,0xc6173,0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194,0xc6194"
+
+# 3 bytes per group with 2 digits (DBL) per byte
+RAM_SCORES_DBL = "0xc611f,0xc611e,0xc611d,0xc6141,0xc6140,0xc613f,0xc6163,0xc6162,0xc6161,0xc6185,0xc6184,0xc6183,0xc61A7,0xc61A6,0xc61A5"
+RAM_HIGH_DBL = "0xc60ba,0xc60b9,0xc60b8"
+
+# 4 bytes per group with 2 digits (DBL) per byte
+RAM_SCORES_DBL_X11 = "0xc611f,0xc611e,0xc611d,0xc611c,0xc6141,0xc6140,0xc613f,0xc613e,0xc6163,0xc6162,0xc6161,0xc6160,0xc6185,0xc6184,0xc6183,0xc6182,0xc61a7,0xc61a6,0xc61a5,0xc61a4"
+RAM_HIGH_DBL_X11 = "0xc60ba,0xc60b9,0xc60b8,0xc60b7"
+
+# Memory addresses for players
+RAM_PLAYERS = "0xc610f,0xc6110,0xc6111,0xc6131,0xc6132,0xc6133,0xc6153,0xc6154,0xc6155,0xc6175,0xc6176,0xc6177,0xc6197,0xc6198,0xc6199"
+DATA_PLAYERS = "20,16,16,27,16,16,17,16,16,22,16,16,21,16,16"
 
 
 def lua_interface(rom=None, min_score=None):
-    preset=False
+    preset = False
     if min_score:
         # Remove compete file if it still exists
         compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
         if os.path.exists(compete_file):
             os.remove(compete_file)
+        os.environ["DATA_FILE"] = compete_file
 
         # We are only concerned with the minimum score at this stage so we can set the default highscore and
-        # establish it has been beaten.
-        if "dkong" in rom:
-            preset=True
-            scores = [min_score.zfill(6)] * 5
-            players = ["D  ", "K  ", "A  ", "F  ", "E  "]
+        # establish if it has been beaten.
+        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx11"):
+            preset = True
+            score_width, double_width = 6, 6
+            if rom == "dkongx11":
+                score_width, double_width = 7, 8
+            scores = [min_score.zfill(score_width)] * 5
 
             # Data
-            high_score = scores[0]
-            os.environ["DATA_FILE"] = compete_file
-            os.environ["DATA_HIGH"] = _s.format_numeric_data(scores, first_only=True)
-            os.environ["DATA_HIGH_DBL"] = _s.format_double_data(high_score)
-            os.environ["DATA_SCORES"] = _s.format_numeric_data(scores)
-            os.environ["DATA_PLAYERS"] = _s.format_hex_data(players)
+            os.environ["DATA_HIGH"] = format_numeric_data(scores, first_only=True)
+            os.environ["DATA_HIGH_DBL"] = format_double_data(scores, width=double_width, first_only=True)
+            os.environ["DATA_SCORES"] = format_numeric_data(scores, width=score_width)
+            os.environ["DATA_SCORES_DBL"] = format_double_data(scores, width=double_width)
+            os.environ["DATA_PLAYERS"] = DATA_PLAYERS
 
             # Memory addresses
             os.environ["RAM_HIGH"] = RAM_HIGH
             os.environ["RAM_HIGH_DBL"] = RAM_HIGH_DBL
             os.environ["RAM_SCORES"] = RAM_SCORES
+            os.environ["RAM_SCORES_DBL"] = RAM_SCORES_DBL
             os.environ["RAM_PLAYERS"] = RAM_PLAYERS
             os.environ["ROM_SCORES"] = ROM_SCORES
+
+            # Adjustments based on ROM
+            if rom == "dkongx11":
+                os.environ["RAM_HIGH_DBL"] = RAM_HIGH_DBL_X11
+                os.environ["RAM_SCORES"] = RAM_SCORES_X11
+                os.environ["RAM_SCORES_DBL"] = RAM_SCORES_DBL_X11
+                os.environ["RAM_PLAYERS"] = adjust_addresses(RAM_PLAYERS, 1)
+                # Unused addresses are blanked
+                os.environ["ROM_SCORES"] = ""
+                os.environ["RAM_HIGH"] = ""
+            elif rom == "dkongjr":
+                os.environ["RAM_PLAYERS"] = adjust_addresses(RAM_PLAYERS, 4)
+
         return preset
 
 
-def read_compete_file(rom, min_score):
+def adjust_addresses(array, offset):
+    # adjust all the memory addresses in the array by a given offset
+    new_array = ""
+    for address in array.replace("\n", "").split(","):
+        new_array += str(int(address, 16) + offset) + ","
+    return new_array.strip(",")
+
+
+def get_score(rom, _min, bonus):
     # Read data from the compete.dat file to detemine if points should be awarded to Jumpman.
     compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
     score = 0
     if os.path.exists(compete_file):
-        with open(compete_file, "r") as cf:
-            for line in cf.readlines():
-                score = line
-                break
-        os.remove(compete_file)
-    return score
+        try:
+            with open(compete_file, "r") as cf:
+                for line in cf.readlines():
+                    score = int(line.replace("\n", ""))
+                    break
+            os.remove(compete_file)
+        except Exception:
+            score = 0
+        if score > int(bonus):
+            return AWARDS[2]
+        elif score > int(_min):
+            return AWARDS[1]
+        else:
+            return AWARDS[0]
+    return 0
+
+
+def format_double_data(scores, width=6, first_only=False):
+    data = ""
+    for score in scores:
+        score_text = score.ljust(width).replace(" ", "0")
+        for i in range(0, width, 2):
+            data += str(int(score_text[i:i+2], 16)) + ","
+        if first_only:
+            break
+    return data.strip(",")
+
+
+def format_numeric_data(top_scores, width=6, first_only=False):
+    data = ""
+    for score in top_scores:
+        for char in score.zfill(width)[:width]:
+            data += char + ","
+        if first_only:
+            break
+    return data.strip(",")
 
 
 if __name__ == "__main__":
     pass
-    #print(read_compete_file("dkong", "10000"))
-    # for interactive testing
-    #if lua_interface("dkong"):
-    #    os.chdir('c:\\emus\\mame')
-    #    os.system("mame64 -rompath c:\\emus\\roms -console -autoboot_script c:\\dkafe\\interface\\dkong.lua dkong")
-
-

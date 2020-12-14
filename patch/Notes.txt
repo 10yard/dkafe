@@ -1,7 +1,7 @@
 DKAFE builds the default frontend using patches of the original arcade rom. 
 
 The .ips patches are included with the software.
-The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip, dkong3.zip and ckong.zip into the dkafe/roms folder too.  
+The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder too.  
 DKAFE will then apply patches and generate the following hacked version of Donkey Kong automaticalluy for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
 By Paul Goes, https://donkeykonghacks.net/

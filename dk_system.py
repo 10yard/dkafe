@@ -61,8 +61,8 @@ def build_shell_command(info):
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
 
-    # testing of the MAME/LUA interface
-    if "-record" not in shell_command:
+    # MAME/LUA interface
+    if "-record" not in shell_command and "DISABLED" not in _min:
         from dk_interface import lua_interface
         if lua_interface(name, _min):
             competing = True
@@ -79,38 +79,6 @@ def calculate_bonus(duration):
     bonus_display = " 000" if bonus_timer <= 100 else str(int(bonus_timer)).rjust(4)[:2] + "00"
     warning = bonus_timer < 1000
     return bonus_display, (CYAN, MAGENTA)[warning], warning, bonus_timer <= -200
-
-
-def hex2dec(_hex):
-    return str(int(_hex, 16))
-
-
-def format_double_data(score, width=6):
-    data = ""
-    for i in range(0, 6, 2):
-        data += str(int(score[i:i+2], 16)) + ","
-    return data.strip(",")
-
-
-def format_numeric_data(top_scores, width=6, first_only=False):
-    data = ""
-    for score in top_scores:
-        for char in score.zfill(width)[:width]:
-            data += char + ","
-        if first_only:
-            break
-    return data.strip(",")
-
-
-def format_hex_data(player_names, width=3):
-    data = ""
-    for player in player_names:
-        for char in player.center(width)[:width]:
-            if char in DK_CHARMAP:
-                data += hex2dec(DK_CHARMAP[char]) + ","
-            else:
-                data += "16,"
-    return data.strip(",")
 
 
 def format_K(text):

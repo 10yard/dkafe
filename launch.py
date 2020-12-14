@@ -2,6 +2,7 @@ import sys
 import dk_system as _s
 import dk_global as _g
 from dk_config import *
+from dk_interface import get_score
 from random import randint
 import pygetwindow
 
@@ -117,17 +118,17 @@ def check_for_input():
     for event in pygame.event.get():
         # General jumpman controls
         if event.type in (pygame.KEYDOWN, pygame.KEYUP):
+            _g.active = True
+            _g.lastmove = _g.timer.duration
             for attr, control in CONTROL_ASSIGNMENTS:
                 if event.key == control:
                     setattr(_g, attr, event.type == pygame.KEYDOWN)
 
-        # Special controls
         if event.type == pygame.KEYDOWN:
-            _g.active = True
-            _g.lastmove = _g.timer.duration
             if event.key == CONTROL_EXIT:
                 exit_program(confirm=CONFIRM_EXIT)
             if event.key in (CONTROL_P2, CONTROL_ACTION) and ENABLE_MENU:
+                build_menus()
                 open_menu(_g.menu)
             if event.key == CONTROL_COIN:
                 _g.showinfo = not _g.showinfo
@@ -179,6 +180,8 @@ def play_intro_animation():
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
     if with_background:
         _g.screen.blit(get_image("artwork/background.png"), TOPLEFT)
+        show_score()
+
     nearby = None
     # Display icons and return icon that is near to Jumpman.  Alternate between looping the list forwards and reversed.
     for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in \
@@ -199,14 +202,14 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 write_text(des, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
-                if not unlocked and _g.timer.duration % 2 < 1:
+                if not unlocked and since_last_move() % 4 > 2:
                     des = f"UNLOCK at {unlock}"
                 elif int(UNLOCK_MODE) and unlocked:
-                        if _g.timer.duration % 4 < 1:
-                            des = f'{_s.format_K(_min)} Minimum'
-                        elif _g.timer.duration % 4 < 2:
-                            des = f'{_s.format_K(bonus)} Bonus!'
-                elif not int(FREE_PLAY) and _g.timer.duration % 2 < 1:
+                    if since_last_move() % 4 > 3:
+                        des = f'{_s.format_K(_min)} Minimum'
+                    elif since_last_move() % 4 > 2:
+                        des = f'{_s.format_K(bonus)} Bonus!'
+                elif not int(FREE_PLAY) and since_last_move() % 4 > 2:
                     des = f'${str(PLAY_COST)} TO PLAY'
                 write_text(des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
@@ -298,8 +301,8 @@ def build_menus():
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
     for name, sub, desc, icx, icy, emu, state, unlock, _min, bonus in _s.read_romlist():
+        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, "DISABLED", "DISABLED"))
         _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, _min, bonus))
-        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, _min, bonus))
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
@@ -330,12 +333,14 @@ def close_menu():
 
 def launch_rom(info):
     if info:
+        sub, name, emu, state, unlock, _min, bonus = info
+
         _g.menu.disable()
         intermission_channel.stop()
         music_channel.pause()
         shell_command, emu_directory, competing, hide_window = _s.build_shell_command(info)
 
-        if int(FREE_PLAY) or _g.score >= PLAY_COST:
+        if FREE_PLAY or _g.score >= PLAY_COST:
             _g.timer.stop()                                       # Stop timer while playing arcade
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
@@ -352,7 +357,9 @@ def launch_rom(info):
                 _g.window.restore()                               # Restore focus to frontend
             if competing:
                 # Check to see if Jumpman achieved minimum or bonus scores and award earned points
-                pass
+                scored = get_score(name, _min, bonus)
+                if scored > 0:
+                    _g.score += scored
             reset_all_inputs()
             _g.timer.start()  # Restart the timer
         else:
@@ -365,6 +372,12 @@ def launch_rom(info):
         _g.skip = True
 
 
+def show_score():
+    # Flashing 1UP and score
+    write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 550 < 275], bg=None)
+    write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
+
+
 def process_interrupts():
     ticks = pygame.time.get_ticks()
 
@@ -372,10 +385,7 @@ def process_interrupts():
     if not _g.lastmove:
         message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY)]
         write_text(message[int(_g.timer.duration) % len(message)], x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
-
-    # Flashing 1UP and score
-    write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[ticks % 500 < 250], bg=None)
-    write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
+    show_score()
 
     # Bonus timer
     previous_warning = _g.warning
@@ -473,13 +483,16 @@ def inactivity_check():
             lines = (INSTRUCTION, CONTROLS)[pause_mod > 12000]
             for i, line in enumerate(lines.split("\n")):
                 write_text(line+(" "*28), x=0, y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
-        write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 700 < 350], bg=None)
-        write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
+        show_score()
         if _g.active:
             _g.timer.stop()
             _g.pause_ticks = pygame.time.get_ticks()
             pygame.mixer.pause()
         _g.active = False
+
+
+def since_last_move():
+    return _g.timer.duration - _g.lastmove
 
 
 def activity_check():

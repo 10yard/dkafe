@@ -8,7 +8,7 @@ Instructions
 ============
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent to the top has revealed many hidden old arcade machines from the 1980's era and they are scattered around the platforms.
 
-Yes, the plot is a bit thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman so that he has money to unlock and play all of the arcade machines.
+Yes, the plot is a bit thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well to earn money to unlock and play all of the arcade machines.
 
 Controls
 ========
@@ -101,9 +101,9 @@ The subfolder is useful when you have multiple roms with the same name e.g. ther
 
 The special subfolder name "shell" can be used when you want to launch a batch file or shell script.  Create a file named <romname>.bat on Windows or <romname>.sh elsewhere inside the shell subfolder of dkafe.
 
-Multiple emulators can be configured in settings.txt and the launch emulator (0, 1 or 2) can be set in the emu column. If blank the default 0 will be used.
+Multiple emulators can be configured in settings.txt and the launch emulator can be set in the emu column. If blank the default 0 will be used.
 
-All roms in the list should be given an X, Y position of where they should appear on the level and a basic description.  Screen size is 224x256.
+All roms in the list should be given an X, Y position of where their icon should appear on the level and a basic descriptive name.
 
 All roms should also have a similarly named image as a .png file in the /artwork/icons folder or subfolder.  You can use the default_machine.png as a template.
 
