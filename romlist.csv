@@ -1,8 +1,9 @@
 #Rom Name,Sub Folder,Description,IconX,IconY,Emu,State,Unlock,Min Score,Bonus Score
-dkong,dkongtrn,DK Trainer,2,226,1,,0,,
+#dkong,dkongtrn,DK Trainer,2,226,1,,,,
+dkong,,DK Wolfmame,2,226,2,,0,,
 dkong,,Donkey Kong,57,226,1,,0,1000,2000
-dkongjr,,DK Junior,113,225,1,,250,8000,10000
-dkong3,,DK 3,162,222,1,,1500,50000,100000
+dkongjr,,DK Junior,113,225,1,,1000,40000,80000
+dkong3,,DK 3,162,222,1,,2000,50000,100000
 dkongx11,dkongdk2,DK2,211,218,1,,2000,30000,50000
 dkong,dkongl05,DK Skip Start,195,198,1,,2500,30000,50000
 dkongf,dkongrdemo,DK Remix Demo,146,193,1,,3000,30000,50000

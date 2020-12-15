@@ -84,20 +84,17 @@ def get_score(rom, _min, bonus):
     compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
     score = 0
     if os.path.exists(compete_file):
-        try:
-            with open(compete_file, "r") as cf:
-                for line in cf.readlines():
-                    score = int(line.replace("\n", ""))
-                    break
-            os.remove(compete_file)
-        except Exception:
-            score = 0
-        if score > int(bonus):
-            return AWARDS[2]
-        elif score > int(_min):
-            return AWARDS[1]
-        else:
-            return AWARDS[0]
+        with open(compete_file, "r") as cf:
+            score = cf.readline().replace("\n","")
+            name = cf.readline().replace("\n","")
+        os.remove(compete_file)
+        if rom == name:
+            if int(score) > int(bonus):
+                return AWARDS[2]
+            elif int(score) > int(_min):
+                return AWARDS[1]
+            else:
+                return AWARDS[0]
     return 0
 
 

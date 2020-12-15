@@ -5,12 +5,14 @@ from dk_config import *
 from dk_interface import get_score
 from random import randint
 import pygetwindow
+import pickle
 
 
 def exit_program(confirm=False):
     if confirm:
         open_menu(_g.exitmenu)
     else:
+        pickle.dump(_g.score, open("save.p", "wb"))
         pygame.quit()
         sys.exit()
 
@@ -56,12 +58,14 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
 
 
-def flash_message(message, x, y):
-    clear_screen()
-    for i in (0, 1, 2) * 7:
-        write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED)[i])
+def flash_message(message, x, y, clear=True, bright=False, cycles=7):
+    if clear:
+        clear_screen()
+    for i in (0, 1, 2) * cycles:
+        write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED, BROWN, WHITE, CYAN)[i + (bright * 3)])
         update_screen(delay_ms=40)
-    clear_screen()
+    if clear:
+        clear_screen()
 
 
 def get_image(image_key, fade=False):
@@ -174,6 +178,7 @@ def play_intro_animation():
             write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
             write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
 
+        write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
         update_screen(delay_ms=40)
 
 
@@ -204,11 +209,13 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
                     des = f"UNLOCK at {unlock}"
-                elif int(UNLOCK_MODE) and unlocked:
+                elif int(UNLOCK_MODE) and unlocked and _min and bonus:
                     if since_last_move() % 4 > 3:
                         des = f'{_s.format_K(_min)} Minimum'
                     elif since_last_move() % 4 > 2:
                         des = f'{_s.format_K(bonus)} Bonus!'
+                elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
+                    des = 'WITH RECORDING!'
                 elif not int(FREE_PLAY) and since_last_move() % 4 > 2:
                     des = f'${str(PLAY_COST)} TO PLAY'
                 write_text(des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
@@ -345,7 +352,13 @@ def launch_rom(info):
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
             clear_screen()
-            if "-record" in shell_command:
+            if competing:
+                clear_screen()
+                flash_message(f"Beat {_s.format_K(_min)} for {AWARDS[1]} coins", x=15, y=80, clear=False)
+                flash_message(f"Beat {_s.format_K(bonus)} for {AWARDS[2]} coins", x=15, y=100, clear=False)
+                flash_message("G O   F O R   I T !", x=40, y=140, clear=False, cycles=15, bright=True)
+                clear_screen()
+            elif "-record" in shell_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
             if hide_window:
                 _g.window.hide()                                  # Hide frontend window to give game focus id needed
@@ -359,7 +372,11 @@ def launch_rom(info):
                 # Check to see if Jumpman achieved minimum or bonus scores and award earned points
                 scored = get_score(name, _min, bonus)
                 if scored > 0:
-                    _g.score += scored
+                    play_sound_effect("sounds/win.wav")
+                    for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
+                        _g.coins.append((0, i * 2, 2, 1, True, len(COIN_VALUES) - 1))
+                        pygame.time.delay(20)
+                    _g.timer.reset()
             reset_all_inputs()
             _g.timer.start()  # Restart the timer
         else:
@@ -505,6 +522,11 @@ def activity_check():
 def main():
     initialise_screen()
     _g.window = pygetwindow.getWindowsWithTitle(TITLE)[0]
+    # Load previous progress
+    try:
+        _g.score = pickle.load(open("save.p", "rb"))
+    except FileNotFoundError:
+        _g.score = 0
 
     # launch front end
     build_menus()

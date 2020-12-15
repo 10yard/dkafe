@@ -33,6 +33,10 @@ def read_romlist():
     return romlist
 
 
+def get_emulator(emu_number):
+    return f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu_number - 1]}'
+
+
 def build_shell_command(info):
     # Receives subfolder (optional), name, emulator and rom state from info
     # A homebew emulator is preferred for rom hacks but a good alternative is to provide a subfolder which holds a
@@ -41,8 +45,7 @@ def build_shell_command(info):
     # rom to avoid a CRC check fail.
     competing = False
     sub, name, emu, state, unlock, _min, bonus = info
-    emu_command = f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu - 1]}'
-    emu_command = emu_command.replace("<NAME>", name).replace("<DATETIME>", get_datetime())
+    emu_command = get_emulator(emu).replace("<NAME>", name).replace("<DATETIME>", get_datetime())
     shell_command = f'{emu_command} {name}'
     emu_directory = os.path.dirname(emu_command.split(" ")[0])
 
@@ -82,5 +85,10 @@ def calculate_bonus(duration):
 
 
 def format_K(text):
-    return (text, text[:-3] + "K")[text.endswith("000")]
+    if text.endswith("000000"):
+        return text[:-6] + "M"
+    elif text.endswith("000"):
+        return text[:-3] + "K"
+    else:
+        return text
 
