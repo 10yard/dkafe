@@ -52,7 +52,7 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
             pygame.draw.rect(_g.screen, fg, (_x - 2, y - 1, w + 3, h + 2), 1)
             pygame.draw.line(_g.screen, bg, (_x - 1, y), (_x - 1, y + 5))
             if bubble:
-                for point in ((_x - 2, y - 1), (_x + w + 1, y - 1), (_x - 2, y + h), (_x + w + 1, y + h)):
+                for point in ((_x - 2, y - 1), (_x + w, y - 1), (_x - 2, y + h), (_x + w, y + h)):
                     _g.screen.set_at(point, BLACK)
                 pygame.draw.polygon(_g.screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
@@ -211,9 +211,9 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     des = f"UNLOCK at {unlock}"
                 elif int(UNLOCK_MODE) and unlocked and _min and bonus:
                     if since_last_move() % 4 > 3:
-                        des = f'{_s.format_K(_min)} Minimum'
+                        des = f'{_s.format_K(bonus)} Bonus'
                     elif since_last_move() % 4 > 2:
-                        des = f'{_s.format_K(bonus)} Bonus!'
+                        des = f'{_s.format_K(_min)} Minimum'
                 elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
                     des = 'WITH RECORDING!'
                 elif not int(FREE_PLAY) and since_last_move() % 4 > 2:
@@ -356,7 +356,7 @@ def launch_rom(info):
                 clear_screen()
                 flash_message(f"Beat {_s.format_K(_min)} for {AWARDS[1]} coins", x=15, y=80, clear=False)
                 flash_message(f"Beat {_s.format_K(bonus)} for {AWARDS[2]} coins", x=15, y=100, clear=False)
-                flash_message("G O   F O R   I T !", x=40, y=140, clear=False, cycles=15, bright=True)
+                flash_message("G O   F O R   I T !", x=30, y=140, clear=False, cycles=15, bright=True)
                 clear_screen()
             elif "-record" in shell_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
@@ -384,7 +384,6 @@ def launch_rom(info):
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
 
         clear_screen(and_reset_display=True)                      # Reset the screen
-        music_channel.unpause()
         os.chdir(ROOT_DIR)
         _g.skip = True
 
@@ -437,7 +436,7 @@ def process_interrupts():
     prefix = ("dk", "dkg")[_g.grab]
     if _g.grab and _g.cointype == 0:
         # Determine next coin to be grabbed by DK. Higher value coins are released less frequenly
-        _g.cointype = int(randint(1, 3) == 1) + 1
+        _g.cointype = int(randint(1, COIN_HIGH) == 1) + 1
 
     for i, mod in enumerate((500, 1000, 1500)):
         if ticks % 5000 < mod:

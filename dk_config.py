@@ -33,6 +33,7 @@ INACTIVE_TIME = 15           # Screensaver with game instructions after period i
 TIMER_START = 5000            # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 2           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+COIN_HIGH = 4                # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_SPEED = 1.6             # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
