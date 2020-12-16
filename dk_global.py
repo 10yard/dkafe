@@ -26,6 +26,7 @@ warning = False     # Warning timer active
 grab = False        # DK grabbed a coin
 ready = False       # Jumpman is ready to play a game
 competing = False   # Jumpman is chasing a minimum score to gain points on the current game
+awarded = False     # Awarded coins are dropped and in play
 cointype = 0        # Type of coin being grabbed by DK (0=No Coin, 1 Low Value, 2=High Value)
 
 # Sprites

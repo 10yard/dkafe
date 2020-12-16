@@ -34,7 +34,8 @@ def lua_interface(rom=None, min_score=None):
 
         # We are only concerned with the minimum score at this stage so we can set the default highscore and
         # establish if it has been beaten.
-        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx11"):
+        # tested working - dkong, dkongx11, dkongjr
+        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11"):
             preset = True
             score_width, double_width = 6, 6
             if rom == "dkongx11":
@@ -63,8 +64,8 @@ def lua_interface(rom=None, min_score=None):
                 os.environ["RAM_SCORES_DBL"] = RAM_SCORES_DBL_X11
                 os.environ["RAM_PLAYERS"] = adjust_addresses(RAM_PLAYERS, 1)
                 # Unused addresses are blanked
-                os.environ["ROM_SCORES"] = ""
-                os.environ["RAM_HIGH"] = ""
+                os.environ["ROM_SCORES"] = ""  # ROM_SCORES
+                os.environ["RAM_HIGH"] = ""  # RAM_HIGH
             elif rom == "dkongjr":
                 os.environ["RAM_PLAYERS"] = adjust_addresses(RAM_PLAYERS, 4)
 

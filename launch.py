@@ -4,8 +4,8 @@ import dk_global as _g
 from dk_config import *
 from dk_interface import get_score
 from random import randint
-import pygetwindow
 import pickle
+import pygetwindow
 
 
 def exit_program(confirm=False):
@@ -141,11 +141,11 @@ def check_for_input():
             exit_program()
 
 
-def play_sound_effect(effect=None, stop=False):
+def play_sound_effect(effect=None, stop=False, repeat_times=0):
     if stop:
         pygame.mixer.stop()
     elif effect:
-        pygame.mixer.Sound(effect).play()
+        pygame.mixer.Sound(effect).play(loops=repeat_times)
 
 
 def play_intro_animation():
@@ -372,10 +372,11 @@ def launch_rom(info):
                 # Check to see if Jumpman achieved minimum or bonus scores and award earned points
                 scored = get_score(name, _min, bonus)
                 if scored > 0:
-                    play_sound_effect("sounds/win.wav")
+                    _g.awarded = True
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
-                        _g.coins.append((0, i * 2, 2, 1, True, len(COIN_VALUES) - 1))
-                        pygame.time.delay(20)
+                        drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=True)
+                        pygame.time.delay(100)
+                    play_sound_effect("sounds/win.wav")
                     _g.timer.reset()
             reset_all_inputs()
             _g.timer.start()  # Restart the timer
@@ -394,6 +395,11 @@ def show_score():
     write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
 
 
+def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=False):
+    # Drop a coin at x, y location, rotate sprite no, movement direction, use ladders?, coin type id, coin was awarded?
+    _g.coins.append((x, y, rotate, movement, use_ladders, coin_type, awarded))
+
+
 def process_interrupts():
     ticks = pygame.time.get_ticks()
 
@@ -410,7 +416,7 @@ def process_interrupts():
         if not previous_warning:
             music_channel.play(pygame.mixer.Sound('sounds/countdown.wav'), -1)
         if out_of_time:
-            music_channel.stop()
+            music_channel.pause()
             play_sound_effect("sounds/timeup.wav")
             for repeat in range(0, 3):
                 for i in range(0, 6):
@@ -425,10 +431,10 @@ def process_interrupts():
                         update_screen(delay_ms=110)
             pygame.time.delay(1500)
 
-            # Reset timer and coins then restart the regular background music loop
+            # Reset timer and coins
             _g.timer.reset()
             _g.coins = []
-            music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
+            # music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
 
@@ -449,7 +455,7 @@ def process_interrupts():
     if ticks % 5000 >= 1500:
         if ticks % 5000 < 2000:
             if _g.grab:
-                _g.coins.append((67, 73, 2, 1, True, _g.cointype))  # x, y, sprite no, x direction, use Ladders, type
+                drop_coin(coin_type=_g.cointype)
             _g.grab = False
             _g.cointype = 0
         if ticks % 5000 > 4500:
@@ -457,9 +463,12 @@ def process_interrupts():
         _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11, 52))
 
     # Animate rolling coins
+    _g.awarded = False
     for i, coin in enumerate(_g.coins):
-        co_x, co_y, co_id, co_dir, co_ladder, co_type = coin
-        _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_id % 4))}.png"), (int(co_x), int(co_y)))
+        co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
+        if co_awarded:
+            _g.awarded = True
+        _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_rot % 4))}.png"), (int(co_x), int(co_y)))
 
         if (co_x - SPRITE_HALF <= _g.xpos < co_x + SPRITE_HALF) and (co_y >= _g.ypos > co_y - SPRITE_HALF):
             _g.score += COIN_VALUES[co_type]  # Jumpman collected the coin
@@ -483,8 +492,8 @@ def process_interrupts():
             co_y += COIN_SPEED
         else:
             co_x += co_dir * COIN_SPEED  # Increment horizontal movement
-        co_id += co_dir * COIN_CYCLE
-        _g.coins[i] = co_x, co_y, co_id, co_dir, co_ladder, co_type  # Update coin data
+        co_rot += co_dir * COIN_CYCLE
+        _g.coins[i] = co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded  # Update coin data
 
     # Purge coins
     _g.coins = [i for i in _g.coins if i[0] > -10]
