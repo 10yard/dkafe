@@ -144,7 +144,7 @@ def check_for_input():
 def play_sound_effect(effect=None, stop=False, repeat_times=0):
     if stop:
         pygame.mixer.stop()
-    elif effect:
+    if effect:
         pygame.mixer.Sound(effect).play(loops=repeat_times)
 
 
@@ -242,8 +242,6 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
     if midjump:
         # Jumpman is jumping.  Check for landing platform and blocks
-        if _g.jump_sequence == 1:
-            sound_file = f"sounds/jump.wav"
         if "BLOCKED_LEFT" in map_info or "BLOCKED_RIGHT" in map_info:
             sprite_file = sprite_file.replace("#", "0")
         else:
@@ -342,18 +340,17 @@ def launch_rom(info):
     if info:
         sub, name, emu, state, unlock, _min, bonus = info
 
+        _g.timer.stop()  # Stop timer while playing arcade
         _g.menu.disable()
         intermission_channel.stop()
         music_channel.pause()
         shell_command, emu_directory, competing, hide_window = _s.build_shell_command(info)
 
         if FREE_PLAY or _g.score >= PLAY_COST:
-            _g.timer.stop()                                       # Stop timer while playing arcade
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
             clear_screen()
             if competing:
-                clear_screen()
                 flash_message(f"Beat {_s.format_K(_min)} for {AWARDS[1]} coins", x=15, y=80, clear=False)
                 flash_message(f"Beat {_s.format_K(bonus)} for {AWARDS[2]} coins", x=15, y=100, clear=False)
                 flash_message("G O   F O R   I T !", x=30, y=140, clear=False, cycles=15, bright=True)
@@ -378,7 +375,6 @@ def launch_rom(info):
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"), -1)
             reset_all_inputs()
-            _g.timer.start()  # Restart the timer
         else:
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
@@ -386,6 +382,7 @@ def launch_rom(info):
         clear_screen(and_reset_display=True)                      # Reset the screen
         os.chdir(ROOT_DIR)
         _g.skip = True
+        _g.timer.start()  # Restart the timer
 
 
 def show_score():
@@ -433,6 +430,7 @@ def process_interrupts():
             # Reset timer and coins
             _g.timer.reset()
             _g.coins = []
+            music_channel.unpause()
             # music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
@@ -553,6 +551,8 @@ def main():
             display_icons(with_background=True)
 
         if _g.jump_sequence:
+            if _g.jump_sequence == 1:
+                play_sound_effect("sounds/jump.wav", stop=True)
             animate_jumpman(["l", "r"][_g.facing], midjump=True)
         else:
             check_for_input()

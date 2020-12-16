@@ -67,7 +67,7 @@ def build_shell_command(info):
     # MAME/LUA interface
     if "-record" not in shell_command and "DISABLED" not in _min:
         from dk_interface import lua_interface
-        if lua_interface(name, _min):
+        if lua_interface(name, sub, _min):
             competing = True
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
 

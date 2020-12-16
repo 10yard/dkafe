@@ -26,7 +26,7 @@ end
 
 function query_highscore()
 	highscore = ""
-	if emu.romname() == "dkongx11" then
+	if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
 		for key, value in pairs(ram_scores) do
 			if key <= 7 then
 				highscore = highscore .. mem:read_i8(value)
@@ -46,6 +46,7 @@ end
 
 -- Get data from DKAFE
 data_file = os.getenv("DATA_FILE")
+data_subfolder = os.getenv("DATA_SUBFOLDER")
 data_scores = get_formatted_data("DATA_SCORES")
 data_scores_dbl = get_formatted_data("DATA_SCORES_DBL")
 data_high = get_formatted_data("DATA_HIGH")
@@ -119,10 +120,8 @@ emu.register_stop(function()
 	file = io.open(data_file, "w+")
 	file:write(query_highscore())
 	file:write("\n")
-	--rom name
 	file:write(emu.romname())
 	file:write("\n")
-	--rom descripton
-	file:write(emu.gamename())
-	file:close()
+	file:write(data_subfolder)
+	file:write("\n")
 end)
