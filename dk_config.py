@@ -29,8 +29,8 @@ ENABLE_MENU = True           # Allow selection from the quick access game list
 
 AWARDS = [0, 1000, 2000]     # Points awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
-INACTIVE_TIME = 15           # Screensaver with game instructions after period in seconds of inactivity. Integer
-TIMER_START = 5000            # Timer starts countdown from. Integer
+INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
+TIMER_START = 5000           # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 2           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_HIGH = 4                # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
@@ -199,6 +199,7 @@ Good luck!
 pygame.mixer.init(frequency=48000)
 music_channel = pygame.mixer.Channel(0)
 intermission_channel = pygame.mixer.Channel(1)
+award_channel = pygame.mixer.Channel(2)
 pygame.init()
 dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
 pl_font = pygame.font.Font('fonts/tiny.ttf', 6)

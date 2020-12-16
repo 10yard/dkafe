@@ -375,9 +375,8 @@ def launch_rom(info):
                     _g.awarded = True
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
                         drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=True)
-                        pygame.time.delay(100)
-                    play_sound_effect("sounds/win.wav")
                     _g.timer.reset()
+                    award_channel.play(pygame.mixer.Sound("sounds/win.wav"), -1)
             reset_all_inputs()
             _g.timer.start()  # Restart the timer
         else:
@@ -523,7 +522,9 @@ def since_last_move():
 def activity_check():
     if _g.active:
         _g.timer.start()
-        pygame.mixer.unpause()
+        if not _g.awarded:
+            award_channel.stop()
+            pygame.mixer.unpause()
         process_interrupts()
 
 
