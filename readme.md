@@ -8,7 +8,7 @@ Instructions
 ============
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent to the top has revealed many hidden old arcade machines from the 1980's era and they are scattered around the platforms.
 
-Yes, the plot is a bit thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well to earn money to unlock and play all of the arcade machines.
+Yes, the plot is a bit thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well, to win coins, so he can unlock and play all of the arcade machines.
 
 Controls
 ========
@@ -79,11 +79,12 @@ For Windows
 1. No nag Mame64 v0226 build here:
    - https://insertmorecoins.es/mame-mameui-0-226-32-64-bits-no-nag-including-mess/
 
-2. HB Mame v0226 (for Hacks and Homebrew) here: 
+2. Wolfmame v0226 (for competition/recording) here:
+   - https://github.com/mahlemiut/wolfmame/releases/tag/wolf226
+
+3. HB Mame v0226 (Dedicated to hacks and homebrew) here: 
    - http://www.progettosnaps.net/download?tipo=arcade_bin&file=/arcade/packs/ARCADE64_226_28102020.7z
 
-3. Wolfmame v0226 (for competition/recording) here:
-   - https://github.com/mahlemiut/wolfmame/releases/tag/wolf226
 
 For Raspberry Pi
 ----------------
@@ -97,7 +98,7 @@ How to use romlist.txt
 ======================
 The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
 
-The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  I recommend that the original rom is placed into /original subfolder to prevent it being overwritten.
+The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into /original subfolder to prevent it being overwritten.
 
 The special subfolder name "shell" can be used when you want to launch a batch file or shell script.  Create a file named <romname>.bat on Windows or <romname>.sh elsewhere inside the shell subfolder of dkafe.
 
@@ -107,12 +108,23 @@ All roms in the list should be given an X, Y position of where their icon should
 
 All roms should also have a similarly named image as a .png file in the /artwork/icons folder or subfolder.  You can use the default_machine.png as a template.
 
-Hopefully that all makes sense.  Refer to the example romlist.txt
+Hopefully that all makes sense.  Refer to the example romlist.csv
 
 
 Motivations?
 ============
 This application was made for my own DIY Donkey Kong arcade machine as a replacement for a 60-in-1 board.  The front end is rendered at 224x256 pixels and is graphically in keeping with the era.
 I aim to Install to Raspberry Pi with Jamma connectivity.
+
+Thanks to:
+
+The community at Donkey Kong Forum
+https://donkeykongforum.com/
+
+The Donkey Kong rom hacking resource helped me understand how default scores are read and moved around RAM in the Donkey Kong and Donkey Kong Junior roms.
+https://github.com/furrykef/dkdasm 
+
+An excellent set of Donkey Kong rom hacks and hacking reference material from Paul Goes.
+https://donkeykonghacks.net/
 
 Jon

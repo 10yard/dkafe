@@ -197,9 +197,9 @@ Good luck!
 
 # pygame setup
 pygame.mixer.init(frequency=48000)
-music_channel = pygame.mixer.Channel(0)
-intermission_channel = pygame.mixer.Channel(1)
-award_channel = pygame.mixer.Channel(2)
+music_channel = pygame.mixer.Channel(1)
+intermission_channel = pygame.mixer.Channel(2)
+award_channel = pygame.mixer.Channel(3)
 pygame.init()
 dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
 pl_font = pygame.font.Font('fonts/tiny.ttf', 6)

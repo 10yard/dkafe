@@ -88,21 +88,25 @@ def adjust_addresses(array, offset):
     return new_array.strip(",")
 
 
+# noinspection PyBroadException
 def get_score(rom, _min, bonus):
     # Read data from the compete.dat file to detemine if points should be awarded to Jumpman.
     compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
-    if os.path.exists(compete_file):
-        with open(compete_file, "r") as cf:
-            score = cf.readline().replace("\n","")
-            name = cf.readline().replace("\n","")
-        os.remove(compete_file)
-        if rom == name and score.isnumeric():
-            if int(score) > int(bonus):
-                return AWARDS[2]
-            elif int(score) > int(_min):
-                return AWARDS[1]
-            else:
-                return AWARDS[0]
+    try:
+        if os.path.exists(compete_file):
+            with open(compete_file, "r") as cf:
+                score = cf.readline().replace("\n", "")
+                name = cf.readline().replace("\n", "")
+            os.remove(compete_file)
+            if rom == name and score.isnumeric():
+                if int(score) > int(bonus):
+                    return AWARDS[2]
+                elif int(score) > int(_min):
+                    return AWARDS[1]
+                else:
+                    return AWARDS[0]
+    except Exception:
+        return 0
     return 0
 
 

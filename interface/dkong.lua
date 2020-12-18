@@ -118,10 +118,7 @@ emu.register_stop(function()
 	-- Export data file
 	--high score on first line
 	file = io.open(data_file, "w+")
-	file:write(query_highscore())
-	file:write("\n")
-	file:write(emu.romname())
-	file:write("\n")
-	file:write(data_subfolder)
+	file:write(query_highscore() .. "\n")
+	file:write(emu.romname() .. "\n")
 	file:write("\n")
 end)

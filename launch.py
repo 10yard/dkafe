@@ -5,7 +5,7 @@ from dk_config import *
 from dk_interface import get_score
 from random import randint
 import pickle
-import pygetwindow
+# import pygetwindow
 
 
 def exit_program(confirm=False):
@@ -32,7 +32,7 @@ def clear_screen(colour=BLACK, and_reset_display=False):
     update_screen()
     if and_reset_display:
         initialise_screen(reset=True)
-        _g.window.maximize() if FULLSCREEN else _g.window.activate()
+        # _g.window.maximize() if FULLSCREEN else _g.window.activate()
 
 
 def update_screen(delay_ms=0):
@@ -141,11 +141,12 @@ def check_for_input():
             exit_program()
 
 
-def play_sound_effect(effect=None, stop=False, repeat_times=0):
+# noinspection PyArgumentList
+def play_sound_effect(effect=None, stop=False):
     if stop:
         pygame.mixer.stop()
     if effect:
-        pygame.mixer.Sound(effect).play(loops=repeat_times)
+        pygame.mixer.Sound.play(pygame.mixer.Sound(effect))
 
 
 def play_intro_animation():
@@ -188,9 +189,8 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         show_score()
 
     nearby = None
-    # Display icons and return icon that is near to Jumpman.  Alternate between looping the list forwards and reversed.
-    for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in \
-            [_g.icons, reversed(_g.icons)][_g.timer.duration % 2 < 1]:
+    # Display icons and return icon that is near to Jumpman
+    for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in _g.icons:
         unlocked = True
         if _g.score < unlock and UNLOCK_MODE and not intro:
             unlocked = False
@@ -202,9 +202,6 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 icon_image = os.path.join("artwork/icon/default_machine.png")
             img = get_image(icon_image, fade=not unlocked)
             w, h = img.get_width(), img.get_height()
-            if _g.showinfo:
-                # Show game info above icons
-                write_text(des, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
@@ -223,6 +220,21 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     nearby = (sub, name, emu, state, unlock, _min, bonus)
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
+                if "-record" in _s.get_emulator(emu) and not _g.showinfo:
+                    # Show recording text above icon
+                    write_text("REC", x=_x, y=_y - 6, fg=(BLACK, RED)[_g.timer.duration % 2 < 1], bg=None)
+    if _g.showinfo:
+        # Show game info above icons
+        # TODO - This replicates codes from above when all we need to retain is the width (w).  This has to
+        # TODO - happen after the previous loop
+        for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in _g.icons:
+            if not below_y or not above_y or (below_y >= _y >= above_y):
+                icon_image = os.path.join("artwork/icon", sub, name + ".png")
+                if not os.path.exists(icon_image):
+                    icon_image = os.path.join("artwork/icon/default_machine.png")
+                img = get_image(icon_image)
+                w, h = img.get_width(), img.get_height()
+                write_text(des, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
     return nearby
 
 
@@ -241,6 +253,8 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     map_info = get_map_info(direction)
 
     if midjump:
+        if _g.jump_sequence == 8:
+            sound_file = "sounds/jump.wav"
         # Jumpman is jumping.  Check for landing platform and blocks
         if "BLOCKED_LEFT" in map_info or "BLOCKED_RIGHT" in map_info:
             sprite_file = sprite_file.replace("#", "0")
@@ -357,14 +371,14 @@ def launch_rom(info):
                 clear_screen()
             elif "-record" in shell_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
-            if hide_window:
-                _g.window.hide()                                  # Hide frontend window to give game focus id needed
+            # if hide_window:
+            #     _g.window.hide()                                  # Hide frontend window to give game focus id needed
             if emu_directory:
                 os.chdir(emu_directory)
             os.system(shell_command)
             os.chdir(ROOT_DIR)
-            if hide_window:
-                _g.window.restore()                               # Restore focus to frontend
+            # if hide_window:
+            #     _g.window.restore()                               # Restore focus to frontend
             if competing:
                 # Check to see if Jumpman achieved minimum or bonus scores and award earned points
                 scored = get_score(name, _min, bonus)
@@ -412,7 +426,7 @@ def process_interrupts():
         if not previous_warning:
             music_channel.play(pygame.mixer.Sound('sounds/countdown.wav'), -1)
         if out_of_time:
-            music_channel.pause()
+            music_channel.stop()
             play_sound_effect("sounds/timeup.wav")
             for repeat in range(0, 3):
                 for i in range(0, 6):
@@ -430,8 +444,7 @@ def process_interrupts():
             # Reset timer and coins
             _g.timer.reset()
             _g.coins = []
-            music_channel.unpause()
-            # music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
+            music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
 
@@ -528,7 +541,7 @@ def activity_check():
 
 def main():
     initialise_screen()
-    _g.window = pygetwindow.getWindowsWithTitle(TITLE)[0]
+    # _g.window = pygetwindow.getWindowsWithTitle(TITLE)[0]
     # Load previous progress
     try:
         _g.score = pickle.load(open("save.p", "rb"))
@@ -551,8 +564,6 @@ def main():
             display_icons(with_background=True)
 
         if _g.jump_sequence:
-            if _g.jump_sequence == 1:
-                play_sound_effect("sounds/jump.wav", stop=True)
             animate_jumpman(["l", "r"][_g.facing], midjump=True)
         else:
             check_for_input()
