@@ -82,7 +82,7 @@ emu.register_frame(function()
 
 	if loaded == 1 then
 		-- Update RAM when ready	
-		if mem:read_i8(ram_players[1]) > 0 then
+		if mem:read_i8(ram_players[1]) > 0 and ( emu.romname() ~= "dkongx" or mem:read_i8("0xc0000") < 0 ) then
 			emu["loaded"] = 2
 			for key, value in pairs(ram_high) do
 				mem:write_i8(value, data_high[key])				
