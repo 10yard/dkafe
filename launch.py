@@ -58,7 +58,7 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
 
 
-def flash_message(message, x, y, clear=True, bright=False, cycles=7):
+def flash_message(message, x, y, clear=True, bright=False, cycles=6):
     if clear:
         clear_screen()
     for i in (0, 1, 2) * cycles:
@@ -367,7 +367,7 @@ def launch_rom(info):
             if competing:
                 flash_message(f"Beat {_s.format_K(_min)} for {AWARDS[1]} coins", x=15, y=80, clear=False)
                 flash_message(f"Beat {_s.format_K(bonus)} for {AWARDS[2]} coins", x=15, y=100, clear=False)
-                flash_message("G O   F O R   I T !", x=30, y=140, clear=False, cycles=15, bright=True)
+                flash_message("G O   F O R   I T !", x=30, y=140, clear=False, bright=True, cycles=9)
                 clear_screen()
             elif "-record" in shell_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)

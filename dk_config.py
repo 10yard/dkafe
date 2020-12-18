@@ -29,6 +29,7 @@ ENABLE_MENU = True           # Allow selection from the quick access game list
 
 AWARDS = [0, 1000, 2000]     # Points awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
+CREDITS = 1                  # Automatically set credits in MAME at start of game - when using interface
 INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
 TIMER_START = 5000           # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer

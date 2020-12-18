@@ -1,5 +1,5 @@
 import os
-from dk_config import ROOT_DIR, AWARDS
+from dk_config import ROOT_DIR, AWARDS, CREDITS
 
 # Memory addresses for scores and players data
 # 6 Bytes per group
@@ -35,6 +35,7 @@ def lua_interface(rom=None, subfolder=None, min_score=None):
             os.remove(compete_file)
         os.environ["DATA_FILE"] = compete_file
         os.environ["DATA_SUBFOLDER"] = subfolder
+        os.environ["DATA_CREDITS"] = str(CREDITS)
 
         # We are only concerned with minimum score to set the game highscore and to later establish if it was beaten.
         # tested working - dkong, dkongx11, dkongjr, dkongpe, dkonghrd
@@ -43,7 +44,7 @@ def lua_interface(rom=None, subfolder=None, min_score=None):
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
             preset = True
             score_width, double_width = 6, 6
-            if rom == "dkongx11" or subfolder == "dkongrdemo":
+            if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
                 score_width, double_width = 7, 8
             scores = [min_score.zfill(score_width)] * 5
 
@@ -66,7 +67,7 @@ def lua_interface(rom=None, subfolder=None, min_score=None):
             if rom == "dkongf":
                 os.environ["ROM_SCORES"] = ""
 
-            if rom == "dkongx11" or subfolder == "dkongrdemo":
+            if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
                 os.environ["RAM_HIGH_DBL"] = RAM_HIGH_DBL_X11
                 os.environ["RAM_SCORES"] = RAM_SCORES_X11
                 os.environ["RAM_SCORES_DBL"] = RAM_SCORES_DBL_X11

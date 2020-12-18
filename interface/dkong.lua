@@ -47,6 +47,7 @@ end
 -- Get data from DKAFE
 data_file = os.getenv("DATA_FILE")
 data_subfolder = os.getenv("DATA_SUBFOLDER")
+data_credits = os.getenv("DATA_CREDITS")
 data_scores = get_formatted_data("DATA_SCORES")
 data_scores_dbl = get_formatted_data("DATA_SCORES_DBL")
 data_high = get_formatted_data("DATA_HIGH")
@@ -104,14 +105,16 @@ emu.register_frame(function()
 				mem:write_i8(value, data_players[key])
 			end
 		end
-		emu["target"] = tonumber(query_highscore())
 	end
 	
-	--if loaded == 2 then
-	--	if tonumber(query_highscore()) > emu.target then
-	--		emu.print_info("Reached Target")
-	--	end
-	--end
+	if loaded == 2 then
+		-- automatically set number of coins in the machine
+		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
+			-- Insert credits if required 
+			mem:write_i8(0x6001, data_credits)
+		end
+		emu["loaded"] = 3
+	end
 end)
 
 emu.register_stop(function()
