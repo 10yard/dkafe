@@ -4,6 +4,7 @@
 --Useful function reference at:
 --  https://code.google.com/archive/p/mame-rr/wikis/LuaScriptingFunctions.wiki
 
+
 function string:split(sep)
 	local sep, fields = sep or ":", {}
 	local pattern = string.format("([^%s]+)", sep)
@@ -11,8 +12,9 @@ function string:split(sep)
 	return fields
 end
    
+   
 function get_formatted_data(var_name)
-	content = os.getenv(var_name)
+	local content = os.getenv(var_name)
 	if content ~= nil then
 		content = content:split(",")
 	else content = {}
@@ -20,12 +22,14 @@ function get_formatted_data(var_name)
 	return content
 end   
 
+
 function get_loaded()
 	return emu["loaded"]
 end   
 
+
 function query_highscore()
-	highscore = ""
+	local highscore = ""
 	if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
 		for key, value in pairs(ram_scores) do
 			if key <= 7 then
@@ -49,9 +53,9 @@ data_file = os.getenv("DATA_FILE")
 data_subfolder = os.getenv("DATA_SUBFOLDER")
 data_credits = os.getenv("DATA_CREDITS")
 data_scores = get_formatted_data("DATA_SCORES")
-data_scores_dbl = get_formatted_data("DATA_SCORES_DBL")
+data_scores_DOUBLE = get_formatted_data("DATA_SCORES_DOUBLE")
 data_high = get_formatted_data("DATA_HIGH")
-data_high_dbl = get_formatted_data("DATA_HIGH_DBL")
+data_high_DOUBLE = get_formatted_data("DATA_HIGH_DOUBLE")
 data_scores = get_formatted_data("DATA_SCORES")
 data_players = get_formatted_data("DATA_PLAYERS")
 
@@ -60,14 +64,15 @@ rom_scores = get_formatted_data("ROM_SCORES")
 
 -- Get RAM addresses
 ram_high = get_formatted_data("RAM_HIGH")
-ram_high_dbl = get_formatted_data("RAM_HIGH_DBL")
+ram_high_DOUBLE = get_formatted_data("RAM_HIGH_DOUBLE")
 ram_scores = get_formatted_data("RAM_SCORES")
-ram_scores_dbl = get_formatted_data("RAM_SCORES_DBL")
+ram_scores_DOUBLE = get_formatted_data("RAM_SCORES_DOUBLE")
 ram_players = get_formatted_data("RAM_PLAYERS")
 
 -- Memory state
 cpu = manager:machine().devices[":maincpu"]
 mem = cpu.spaces["program"]
+
 
 emu.register_frame(function()
 	status, loaded = pcall(get_loaded)
@@ -88,8 +93,8 @@ emu.register_frame(function()
 				mem:write_i8(value, data_high[key])				
 			end						
 
-			for key, value in pairs(ram_high_dbl) do
-				mem:write_i8(value, data_high_dbl[key])				
+			for key, value in pairs(ram_high_DOUBLE) do
+				mem:write_i8(value, data_high_DOUBLE[key])				
 			end
 				
 			for key, value in pairs(ram_scores) do
@@ -97,8 +102,8 @@ emu.register_frame(function()
 			end
 			
 			
-			for key, value in pairs(ram_scores_dbl) do
-				mem:write_i8(value, data_scores_dbl[key])				
+			for key, value in pairs(ram_scores_DOUBLE) do
+				mem:write_i8(value, data_scores_DOUBLE[key])				
 			end	
 					
 			for key, value in pairs(ram_players) do
@@ -110,12 +115,13 @@ emu.register_frame(function()
 	if loaded == 2 then
 		-- automatically set number of coins in the machine
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
-			-- Insert credits if required 
+			-- Insert credit(s) if required 
 			mem:write_i8(0x6001, data_credits)
 		end
 		emu["loaded"] = 3
 	end
 end)
+
 
 emu.register_stop(function()
 	-- Export data file

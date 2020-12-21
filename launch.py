@@ -2,7 +2,7 @@ import sys
 import dk_system as _s
 import dk_global as _g
 from dk_config import *
-from dk_interface import get_score
+from dk_interface import get_award
 from random import randint
 import pickle
 # import pygetwindow
@@ -49,10 +49,11 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
         _x = x - w + rj_adjust if rj_adjust else x
         _g.screen.blit(img, (_x, y))
         if box or bubble:
-            pygame.draw.rect(_g.screen, fg, (_x - 2, y - 1, w + 3, h + 2), 1)
+            pygame.draw.line(_g.screen, bg, (_x - 1, y - 1), (_x + w, y - 1))
+            pygame.draw.rect(_g.screen, fg, (_x - 2, y - 2, w + 3, h + 3), 1)
             pygame.draw.line(_g.screen, bg, (_x - 1, y), (_x - 1, y + 5))
             if bubble:
-                for point in ((_x - 2, y - 1), (_x + w, y - 1), (_x - 2, y + h), (_x + w, y + h)):
+                for point in ((_x - 2, y - 2), (_x + w, y - 2), (_x - 2, y + h), (_x + w, y + h)):
                     _g.screen.set_at(point, BLACK)
                 pygame.draw.polygon(_g.screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
@@ -136,7 +137,8 @@ def check_for_input():
                 open_menu(_g.menu)
             if event.key == CONTROL_COIN:
                 _g.showinfo = not _g.showinfo
-                display_icons()
+            if event.key == CONTROL_SLOTS:
+                _g.showslots = not _g.showslots
         if event.type == pygame.QUIT:
             exit_program()
 
@@ -183,6 +185,13 @@ def play_intro_animation():
         update_screen(delay_ms=40)
 
 
+def display_slots():
+    for i, slot in enumerate(SLOTS):
+        _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
+        write_text("  ", pl_font, SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
+        write_text(str(i + 1).zfill(2), pl_font, SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK, fg=WHITE)
+
+
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
     if with_background:
         _g.screen.blit(get_image("artwork/background.png"), TOPLEFT)
@@ -199,7 +208,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
             if smash:
                 icon_image = f"artwork/sprite/smash{str(randint(0,3))}.png"
             if not os.path.exists(icon_image):
-                icon_image = os.path.join("artwork/icon/default_machine.png")
+                icon_image = os.path.join("artwork/icon/default.png")
             img = get_image(icon_image, fade=not unlocked)
             w, h = img.get_width(), img.get_height()
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
@@ -225,13 +234,13 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     write_text("REC", x=_x, y=_y - 6, fg=(BLACK, RED)[_g.timer.duration % 2 < 1], bg=None)
     if _g.showinfo:
         # Show game info above icons
-        # TODO - This replicates codes from above when all we need to retain is the width (w).  This has to
+        # TODO - This replicates code from above when all we need to retain is the width (w).  This has to
         # TODO - happen after the previous loop
-        for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in _g.icons:
+        for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in [_g.icons, reversed(_g.icons)][_g.timer.duration % 4 < 2]:
             if not below_y or not above_y or (below_y >= _y >= above_y):
                 icon_image = os.path.join("artwork/icon", sub, name + ".png")
                 if not os.path.exists(icon_image):
-                    icon_image = os.path.join("artwork/icon/default_machine.png")
+                    icon_image = os.path.join("artwork/icon/default.png")
                 img = get_image(icon_image)
                 w, h = img.get_width(), img.get_height()
                 write_text(des, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
@@ -381,7 +390,7 @@ def launch_rom(info):
             #     _g.window.restore()                               # Restore focus to frontend
             if competing:
                 # Check to see if Jumpman achieved minimum or bonus scores and award earned points
-                scored = get_score(name, _min, bonus)
+                scored = get_award(name, _min, bonus)
                 if scored > 0:
                     _g.awarded = True
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
@@ -562,6 +571,8 @@ def main():
     while True:
         if _g.active:
             display_icons(with_background=True)
+            if _g.showslots:
+                display_slots()
 
         if _g.jump_sequence:
             animate_jumpman(["l", "r"][_g.facing], midjump=True)

@@ -1,0 +1,14 @@
+/venv
+/sta
+/inp
+/dist
+/build
+/__pycache__
+/.idea
+/notes.txt
+/venv_notes.txt
+/roms/dkong.zip
+/roms
+/romlist_example.txt
+/interface/compete.dat
+/save.p

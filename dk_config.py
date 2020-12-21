@@ -19,6 +19,7 @@ CONTROL_P1 = pygame.K_1
 CONTROL_P2 = pygame.K_2
 CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
+CONTROL_SLOTS = pygame.K_s
 
 # Options
 CONFIRM_EXIT = True
@@ -75,6 +76,17 @@ CYAN = (20, 243, 255)
 MAGENTA = (236, 49, 148)
 WHITE = (254, 252, 255)
 PINK = (255, 188, 160)
+
+
+# Slot locations for arcade machines (x, y)
+SLOTS = [
+    (2, 226), (34, 226), (50, 226), (66, 226), (98, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
+    (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
+    (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
+    (194, 132), (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
+    (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (210, 87),
+    (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62)
+]
 
 # Control assignments. Links the global variables to the event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = [
@@ -203,7 +215,7 @@ intermission_channel = pygame.mixer.Channel(2)
 award_channel = pygame.mixer.Channel(3)
 pygame.init()
 dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
-pl_font = pygame.font.Font('fonts/tiny.ttf', 6)
+pl_font = pygame.font.Font('fonts/tom-thumb.bdf', 5)
 clock = pygame.time.Clock()
 
 # menu theme

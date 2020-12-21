@@ -24,12 +24,13 @@ def read_romlist():
     romlist = []
     with open("romlist.csv", "r") as rl:
         for rom_line in rl.readlines()[1:]:  # ignore the first/header line
-            if not rom_line.startswith("#") and rom_line.count(",") == 9:
-                name, sub, des, icx, icy, emu, state, unlock, _min, bonus, *_ = [x.strip() for x in rom_line.split(",")]
-                if name and des and icx and icy:
+            if not rom_line.startswith("#") and rom_line.count(",") == 8:
+                name, sub, des, slot, emu, state, unlock, _min, bonus, *_ = [x.strip() for x in rom_line.split(",")]
+                if name and des and SLOTS[int(slot) - 1]:
+                    icx, icy = SLOTS[int(slot) - 1]
                     # target = name + (".sh", ".bat")[is_windows()] if subfolder == "shell" else name + ".zip"
                     # if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
-                    romlist.append((name, sub, des, int(icx), int(icy), int(emu), state, int(unlock), _min, bonus))
+                    romlist.append((name, sub, des, icx, icy, int(emu), state, int(unlock), _min, bonus))
     return romlist
 
 

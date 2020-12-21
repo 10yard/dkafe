@@ -1,23 +1,22 @@
-#Rom Name,Sub Folder,Description,IconX,IconY,Emu,State,Unlock,Min Score,Bonus Score
-#dkong,dkongtrn,DK Trainer,2,226,1,,,,
-dkong,,DK Wolfmame,2,226,2,,0,,
-dkong,,Donkey Kong,57,226,1,,0,1000,2000
-dkongjr,,DK Junior,113,225,1,,1000,1000,2000
-dkongf,dkongrdemo,DK Remix Demo,162,222,1,,500,500,1000
-dkongx,dkongdk2,DK2,211,218,1,,2000,30000,50000
-dkong,dkongl05,DK Skip Start,195,198,1,,2500,30000,50000
-dkongx11,dkongspooky,DK Spooky Remix,50,189,1,,3000,1000,2000
-dkonghrd,dkonghrd,DK Hard,2,186,1,,4500,500,1000
-dkong,dkongce,DK Champ Edition,114,193,1,,5000,50000,100000
-dkong,dkongitd,DK Into the Dark,18,165,1,,5000,25000,50000
-dkong,dkongrnd,DK Randomized,82,161,1,,5000,30000,50000
-dkongf,dkongst2,DK Springs,146,157,1,,5000,500,1000
-dkong,dkongrainbow,DK Rainbow,211,153,1,,5000,50000,100000
-dkong,dkongotr,DK On the Run,194,132,1,,5000,30000,50000
-dkongx11,dkongxmas,DK Xmas Remix,95,126 ,1,,5000,1000,2000
-dkong,dkongrev,DK Reverse,50,123,1,,5000,30000,50000
-dkong,dkongwbh,DK Wild Barrrel,2,120,1,,5000,10000,20000
-dkongf,dkongf,DK Foundry,50,97,1,,5000,500,1000
-dkong,dkongfr,DK Free Run,194,66,1,,5000,25000,50000
-dkong,dkongcb,DK Crazy Barrels,4,62,1,,5000,10000,25000
-dkongpe,dkongpe,DK Pauline Ed.,91,62,1,,5000,500,1000
+#Rom Name,Sub Folder,Description,Slot,Emu,State,Unlock,Min Score,Bonus Score
+dkong,,DK Wolf,1,2,,0,,
+dkong,,Donkey Kong,3,1,,0,1000,2000
+dkongjr,,DK Junior,4,1,,1000,1000,2000
+dkongf,dkongrdemo,DK Remix,8,1,,500,500,1000
+dkongx,dkongdk2,DK2,10,1,,2000,1000,2000
+dkong,dkongl05,DK Skip Start,11,1,,2500,30000,50000
+dkongx11,dkongspooky,DK Spooky Remix,13,1,,3000,1000,2000
+dkonghrd,dkonghrd,DK Hard,15,1,,4500,500,1000
+dkong,dkongce,DK Champ Ed.,17,1,,5000,50000,100000
+dkong,dkongitd,DK Into the Dark,19,1,,5000,25000,50000
+dkong,dkongrnd,DK Randomized,21,1,,5000,30000,50000
+dkongf,dkongst2,DK Springs,23,1,,5000,500,1000
+dkong,dkongrainbow,DK Rainbow,25,1,,5000,50000,100000
+dkong,dkongotr,DK On the Run,27,1,,5000,30000,50000
+dkongx11,dkongxmas,DK Xmas Remix,29,1,,5000,1000,2000
+dkong,dkongrev,DK Reverse,31,1,,5000,30000,50000
+dkong,dkongwbh,DK Wild Barrel,33,1,,5000,10000,20000
+dkongf,dkongf,DK Foundry,35,1,,5000,500,1000
+dkong,dkongfr,DK Free Run,37,1,,5000,25000,50000
+dkong,dkongcb,DK Crazy Barrels,39,1,,5000,10000,25000
+dkongpe,dkongpe,DK Pauline Ed.,41,1,,5000,500,1000

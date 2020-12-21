@@ -104,7 +104,7 @@ The special subfolder name "shell" can be used when you want to launch a batch f
 
 Multiple emulators can be configured in settings.txt and the launch emulator can be set in the emu column. If blank the default 0 will be used.
 
-All roms in the list should be given an X, Y position of where their icon should appear on the level and a basic descriptive name.
+All roms in the list should be given a slot position (between 1 and 46) of where the icon should appear and a basic descriptive name.
 
 All roms should also have a similarly named image as a .png file in the /artwork/icons folder or subfolder.  You can use the default_machine.png as a template.
 

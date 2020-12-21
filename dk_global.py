@@ -21,6 +21,7 @@ score = 0          # Jumpman's score
 
 # Toggle display options
 showinfo = False    # Press coin2 to show description above the icons
+showslots = False   # Press S to show the arcade machine slots (to assist with front end setup)
 skip = False        # Skip the animation
 warning = False     # Warning timer active
 grab = False        # DK grabbed a coin
