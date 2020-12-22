@@ -74,7 +74,7 @@ def build_shell_command(info):
 
     if state:
         shell_command += f' -state {state.strip()}'
-    return shell_command, emu_directory, competing, state.lower() == "hide"
+    return shell_command, emu_directory, competing
 
 
 def calculate_bonus(duration):

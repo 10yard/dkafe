@@ -76,9 +76,10 @@ CYAN = (20, 243, 255)
 MAGENTA = (236, 49, 148)
 WHITE = (254, 252, 255)
 PINK = (255, 188, 160)
+GREY = (128, 128, 128)
 
 
-# Slot locations for arcade machines (x, y)
+# Sequential list of arcade machine slot locations (x, y).  First location is slot 1.
 SLOTS = [
     (2, 226), (34, 226), (50, 226), (66, 226), (98, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
@@ -139,7 +140,7 @@ LADDER_ZONES = [
 # Sprite helpers
 SPRITE_FULL = 15
 SPRITE_HALF = 8
-JUMP_PIXELS = [-1, ] * 15 + [1, ] * 15
+JUMP_PIXELS = [-1, ] * 15 + [1, ] * 13
 
 # In game messages and instructions
 QUESTION = "WHAT GAME WILL YOU PLAY ?"

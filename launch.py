@@ -5,7 +5,6 @@ from dk_config import *
 from dk_interface import get_award
 from random import randint
 import pickle
-# import pygetwindow
 
 
 def exit_program(confirm=False):
@@ -32,7 +31,6 @@ def clear_screen(colour=BLACK, and_reset_display=False):
     update_screen()
     if and_reset_display:
         initialise_screen(reset=True)
-        # _g.window.maximize() if FULLSCREEN else _g.window.activate()
 
 
 def update_screen(delay_ms=0):
@@ -87,7 +85,7 @@ def read_map(x, y):
         return 254
 
 
-def get_map_info(direction=None, x=0, y=0):
+def get_map_info(direction=None, x=0, y=0, platforms_only=False):
     # Return information from map e.g. ladders and obstacles preventing movement in intended direction
     map_info = []
     _x = int(x) if x else int(_g.xpos) + SPRITE_HALF
@@ -99,7 +97,7 @@ def get_map_info(direction=None, x=0, y=0):
             map_info.append("BLOCKED_RIGHT")
         if read_map(_x, _y) == 236:
             map_info.append("FOOT_UNDER_PLATFORM")
-        if read_map(_x, _y + 1) == 0:
+        if read_map(_x, _y + 1) in [0, 90] or (platforms_only and read_map(_x, _y + 1) in [20, 100]):
             map_info.append("FOOT_ABOVE_PLATFORM")
 
         # ladder detection based on direction of travel
@@ -198,6 +196,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         show_score()
 
     nearby = None
+    info_list = []
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in _g.icons:
         unlocked = True
@@ -214,7 +213,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
-                    des = f"UNLOCK at {unlock}"
+                    des = f"Unlock at {unlock}"
                 elif int(UNLOCK_MODE) and unlocked and _min and bonus:
                     if since_last_move() % 4 > 3:
                         des = f'{_s.format_K(bonus)} Bonus'
@@ -232,28 +231,26 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 if "-record" in _s.get_emulator(emu) and not _g.showinfo:
                     # Show recording text above icon
                     write_text("REC", x=_x, y=_y - 6, fg=(BLACK, RED)[_g.timer.duration % 2 < 1], bg=None)
+            if _g.showinfo:
+                info_list.append((des, _x, _y, w, unlocked))
     if _g.showinfo:
-        # Show game info above icons
-        # TODO - This replicates code from above when all we need to retain is the width (w).  This has to
-        # TODO - happen after the previous loop
-        for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in [_g.icons, reversed(_g.icons)][_g.timer.duration % 4 < 2]:
-            if not below_y or not above_y or (below_y >= _y >= above_y):
-                icon_image = os.path.join("artwork/icon", sub, name + ".png")
-                if not os.path.exists(icon_image):
-                    icon_image = os.path.join("artwork/icon/default.png")
-                img = get_image(icon_image)
-                w, h = img.get_width(), img.get_height()
-                write_text(des, x=_x, y=_y - 6, fg=MAGENTA, bg=WHITE, box=True, rj_adjust=(_x > 180) * w)
+        # Show game info above icons.  Done as last step so that icons do not overwrite the text.
+        for des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
+            write_text(des, x=x, y=y - 6, fg=[BLACK, MAGENTA][unlocked], bg=[GREY, WHITE][unlocked], box=True,
+                       rj_adjust=(x > 175) * w)
     return nearby
 
 
 def adjust_jumpman():
     # Adjust Jumpman's vertical position with the sloping platform
-    map_info = get_map_info("l")
-    if "FOOT_UNDER_PLATFORM" in map_info or "TOP_OF_ANY_LADDER" in map_info:
-        _g.ypos += -1
-    elif "FOOT_ABOVE_PLATFORM" in map_info:
-        _g.ypos += +1
+    for i in range(0, 4):
+        map_info = get_map_info(platforms_only=True)
+        if "FOOT_UNDER_PLATFORM" in map_info or "TOP_OF_ANY_LADDER" in map_info:
+            _g.ypos += -1
+        elif "FOOT_ABOVE_PLATFORM" in map_info and "TOP_OF_ANY_LADDER" not in map_info:
+            _g.ypos += +1
+        else:
+            break
 
 
 def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
@@ -367,7 +364,7 @@ def launch_rom(info):
         _g.menu.disable()
         intermission_channel.stop()
         music_channel.pause()
-        shell_command, emu_directory, competing, hide_window = _s.build_shell_command(info)
+        shell_command, emu_directory, competing = _s.build_shell_command(info)
 
         if FREE_PLAY or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
@@ -380,14 +377,10 @@ def launch_rom(info):
                 clear_screen()
             elif "-record" in shell_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
-            # if hide_window:
-            #     _g.window.hide()                                  # Hide frontend window to give game focus id needed
             if emu_directory:
                 os.chdir(emu_directory)
             os.system(shell_command)
             os.chdir(ROOT_DIR)
-            # if hide_window:
-            #     _g.window.restore()                               # Restore focus to frontend
             if competing:
                 # Check to see if Jumpman achieved minimum or bonus scores and award earned points
                 scored = get_award(name, _min, bonus)
@@ -550,7 +543,7 @@ def activity_check():
 
 def main():
     initialise_screen()
-    # _g.window = pygetwindow.getWindowsWithTitle(TITLE)[0]
+
     # Load previous progress
     try:
         _g.score = pickle.load(open("save.p", "rb"))
@@ -564,6 +557,7 @@ def main():
 
     # Initialise Jumpman
     animate_jumpman("r", horizontal_movement=0)
+    pygame.time.delay(150)
     _g.lastmove = 0
     _g.timer.reset()
 
@@ -585,7 +579,7 @@ def main():
 
         if (_g.jump or _g.start) and _g.ready:
             launch_rom(display_icons(detect_only=True))
-        elif (_g.jump or _g.jump_sequence) and _g.timer.duration > 0.2:
+        elif (_g.jump or _g.jump_sequence) and _g.timer.duration > 0.5:
             # Jumpman has started a jump or is actively jumping
             ladder_info = get_map_info(direction="d") + get_map_info(direction="u")
             if _g.jump_sequence or "LADDER_DETECTED" not in ladder_info or "END_OF_LADDER" in ladder_info:

@@ -1,7 +1,7 @@
 from stopwatch import Stopwatch
 
 # Jumpman start position
-xpos = 39
+xpos = 33
 ypos = 232
 
 # Controls input are received
