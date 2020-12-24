@@ -73,7 +73,7 @@ def get_image(image_key, fade=False):
     if _key not in _g.image_cache:
         _g.image_cache[_key] = pygame.image.load(image_key).convert_alpha()
         if fade:
-            _g.image_cache[_key].set_alpha(100)
+            _g.image_cache[_key].set_alpha(FADE_LEVEL)
     return _g.image_cache[_key]
 
 
@@ -243,7 +243,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
 def adjust_jumpman():
     # Adjust Jumpman's vertical position with the sloping platform
-    for i in range(0, 4):
+    for i in range(0, 10):
         map_info = get_map_info(platforms_only=True)
         if "FOOT_UNDER_PLATFORM" in map_info or "TOP_OF_ANY_LADDER" in map_info:
             _g.ypos += -1
@@ -389,7 +389,7 @@ def launch_rom(info):
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
                         drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=True)
                     _g.timer.reset()
-                    award_channel.play(pygame.mixer.Sound("sounds/win.wav"), -1)
+                    award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
             reset_all_inputs()
         else:
             play_sound_effect("sounds/error.wav")
@@ -412,6 +412,23 @@ def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, a
     _g.coins.append((x, y, rotate, movement, use_ladders, coin_type, awarded))
 
 
+def show_timeup_animation(sprite_number, loss=0):
+    # Show coins during the out of time animation
+    display_icons(with_background=True)
+    _g.screen.blit(get_image(f"artwork/sprite/out{sprite_number}.png"), (_g.xpos, int(_g.ypos)))
+
+    # Display items that don't get updated in this loop
+    write_text("1UP", font=dk_font, x=25, y=0, fg=RED, bg=None)
+    write_text(" 000", font=dk_font, x=177, y=48, fg=MAGENTA, bg=None)
+    _g.screen.blit(get_image("artwork/sprite/dk0.png"), (11, 52))
+
+    if loss > 0:
+        write_text(f"-{str(loss)}", x=_g.xpos, y=_g.ypos - 10, fg=WHITE, bg=RED, box=True)
+
+    animate_rolling_coins(out_of_time=True)
+    update_screen(delay_ms=22)
+
+
 def process_interrupts():
     ticks = pygame.time.get_ticks()
 
@@ -428,24 +445,30 @@ def process_interrupts():
         if not previous_warning:
             music_channel.play(pygame.mixer.Sound('sounds/countdown.wav'), -1)
         if out_of_time:
+            # Jumpman drops some coins.  Drops multiples of the lowest value coins if he can afford it.
+
+            loss = 0
+            for i, coin in enumerate(range(0, LIFE_COST, COIN_VALUES[1])):
+               if _g.score >= COIN_VALUES[1]:
+                   loss += COIN_VALUES[1]
+                   _g.score -= COIN_VALUES[1]
+                   movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
+                   drop_coin(x=_g.xpos, y=_g.ypos + i, coin_type=1, movement=movement)
+
+            # Show time up animation
             music_channel.stop()
             play_sound_effect("sounds/timeup.wav")
             for repeat in range(0, 3):
                 for i in range(0, 6):
                     if i <= 3 or repeat == 2:
-                        display_icons(with_background=True)
-                        _g.screen.blit(get_image(f"artwork/sprite/out{int(i)}.png"), (_g.xpos, int(_g.ypos)))
+                        for coin_update in range(0, 5):
+                            show_timeup_animation(sprite_number=int(i), loss=loss)
+            # Delay for 1500ms while Jumpman is dazed.  Ensure rolling coins continue to update
+            for coin_update in range(0, 75):
+                show_timeup_animation(sprite_number=5, loss=loss)
 
-                        # Display items that don't get updated in this loop
-                        write_text("1UP", font=dk_font, x=25, y=0, fg=RED, bg=None)
-                        write_text(" 000", font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
-                        _g.screen.blit(get_image("artwork/sprite/dk0.png"), (11, 52))
-                        update_screen(delay_ms=110)
-            pygame.time.delay(1500)
-
-            # Reset timer and coins
+            # Reset timer and music
             _g.timer.reset()
-            _g.coins = []
             music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
@@ -475,6 +498,13 @@ def process_interrupts():
         _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11, 52))
 
     # Animate rolling coins
+    animate_rolling_coins()
+
+    # Purge coins
+    _g.coins = [i for i in _g.coins if i[0] > -10]
+
+
+def animate_rolling_coins(out_of_time=False):
     _g.awarded = False
     for i, coin in enumerate(_g.coins):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
@@ -483,9 +513,10 @@ def process_interrupts():
         _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_rot % 4))}.png"), (int(co_x), int(co_y)))
 
         if (co_x - SPRITE_HALF <= _g.xpos < co_x + SPRITE_HALF) and (co_y >= _g.ypos > co_y - SPRITE_HALF):
-            _g.score += COIN_VALUES[co_type]  # Jumpman collected the coin
-            play_sound_effect("sounds/getitem.wav")
-            co_x = -999
+            if not out_of_time and _g.timer.duration > 0.2:  # Jumpman cannot collect coins immediately after start/out of time
+                _g.score += COIN_VALUES[co_type]  # Jumpman collected the coin
+                play_sound_effect("sounds/getitem.wav")
+                co_x = -999
 
         map_info = get_map_info(direction="d", x=int(co_x + (9, 4)[co_dir == 1]), y=int(co_y + 9))
 
@@ -506,9 +537,6 @@ def process_interrupts():
             co_x += co_dir * COIN_SPEED  # Increment horizontal movement
         co_rot += co_dir * COIN_CYCLE
         _g.coins[i] = co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded  # Update coin data
-
-    # Purge coins
-    _g.coins = [i for i in _g.coins if i[0] > -10]
 
 
 def inactivity_check():
@@ -577,7 +605,11 @@ def main():
                     animate_jumpman(direction)
                     break
 
-        if (_g.jump or _g.start) and _g.ready:
+        if _g.jump and _s.get_bonus_timer(_g.timer.duration) <= -165:
+            # Block jump button when almost out of time
+            _g.jump = False
+        elif (_g.jump or _g.start) and _g.ready:
+            # Launch a game
             launch_rom(display_icons(detect_only=True))
         elif (_g.jump or _g.jump_sequence) and _g.timer.duration > 0.5:
             # Jumpman has started a jump or is actively jumping

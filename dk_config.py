@@ -30,6 +30,7 @@ ENABLE_MENU = True           # Allow selection from the quick access game list
 
 AWARDS = [0, 1000, 2000]     # Points awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
+LIFE_COST = 150              # How many coins Jumpman loses for a life
 CREDITS = 1                  # Automatically set credits in MAME at start of game - when using interface
 INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
 TIMER_START = 5000           # Timer starts countdown from. Integer
@@ -78,6 +79,8 @@ WHITE = (254, 252, 255)
 PINK = (255, 188, 160)
 GREY = (128, 128, 128)
 
+# Alpha value for faded/locked arcade machines
+FADE_LEVEL = 85
 
 # Sequential list of arcade machine slot locations (x, y).  First location is slot 1.
 SLOTS = [

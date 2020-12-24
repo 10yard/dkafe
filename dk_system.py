@@ -77,9 +77,13 @@ def build_shell_command(info):
     return shell_command, emu_directory, competing
 
 
+def get_bonus_timer(duration):
+    return TIMER_START + 100 - (duration * 50)
+
+
 def calculate_bonus(duration):
     # return bonus_display, colour, warning status, end of countdown
-    bonus_timer = TIMER_START + 100 - (duration * 50)
+    bonus_timer = get_bonus_timer(duration)
     bonus_display = " 000" if bonus_timer <= 100 else str(int(bonus_timer)).rjust(4)[:2] + "00"
     warning = bonus_timer < 1000
     return bonus_display, (CYAN, MAGENTA)[warning], warning, bonus_timer <= -200

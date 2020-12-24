@@ -7,8 +7,8 @@ dkongf,dkongrdemo,DK Remix,10,1,,4000,40000,80000
 dkong,dkongrev,DK Reverse,11,1,,6000,40000,80000
 dkongf,dkongst2,DK Springs,14,1,,8000,20000,30000
 dkong,dkongce,DK Champ Ed,16,1,,8000,50000,100000
-dkong,dkongwbh,DK Wild Barrel,18,1,,10000,1500,5000
-dkong,dkongitd,DK IntoTheDark,19,1,,12000,30000,60000
+dkong,dkongwbh,DK Wild Barrel,18,1,,10000,2500,5000
+dkong,dkongitd,DK IntoTheDark,19,1,,12000,25000,50000
 dkongx11,dkongspooky,DK Spooky Remix,21,1,,14000,25000,50000
 dkong,dkongbcc,DK Barrel Ctrl,23,1,,14000,,
 dkongx,dkongdk2,DK 2,25,1,,16000,40000,80000
@@ -22,4 +22,4 @@ dkong,dkongotr,DK OnTheRun,37,1,,30000,25000,50000
 dkong,dkongfr,DK Free Run,40,1,,32000,25000,50000
 dkong,dkongcb,DK CrazyBarrels,42,1,,34000,15000,30000
 dkongpe,dkongpe,DK Pauline Ed,45,1,,36000,50000,100000
-dkong,dkongksfix,KS Fix,46,1,,40000,50000,100000
+dkong,dkongksfix,KS Fix,46,1,,40000,100000,200000
