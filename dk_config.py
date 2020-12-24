@@ -27,10 +27,12 @@ FULLSCREEN = True
 FREE_PLAY = True             # Jumpman does not have to pay to play
 UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = True           # Allow selection from the quick access game list
+ENABLE_CLOCKS = False        # Show clocks instead of hammers.  Clocks can be used to add time in exchange for coins
+
 
 AWARDS = [0, 1000, 2000]     # Points awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
-LIFE_COST = 150              # How many coins Jumpman loses for a life
+LIFE_COST = 150              # How many coins Jumpman loses when time runs out
 CREDITS = 1                  # Automatically set credits in MAME at start of game - when using interface
 INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
 TIMER_START = 5000           # Timer starts countdown from. Integer
@@ -82,7 +84,7 @@ GREY = (128, 128, 128)
 # Alpha value for faded/locked arcade machines
 FADE_LEVEL = 85
 
-# Sequential list of arcade machine slot locations (x, y).  First location is slot 1.
+# Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = [
     (2, 226), (34, 226), (50, 226), (66, 226), (98, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
@@ -92,7 +94,7 @@ SLOTS = [
     (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62)
 ]
 
-# Control assignments. Links the global variables to the event data.  These shouldn't be changed.
+# Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = [
   ("left", CONTROL_LEFT),
   ("right", CONTROL_RIGHT),
@@ -101,17 +103,18 @@ CONTROL_ASSIGNMENTS = [
   ("jump", CONTROL_JUMP),
   ("start", CONTROL_P1)]
 
-# Defines scene numbers when sounds should be played
+# Sounds that are played during walk sequence. Not all steps will trigger a sound.
+WALK_SOUNDS = {
+  1: "sounds/walk0.wav",
+  5: "sounds/walk1.wav",
+  9: "sounds/walk2.wav"}
+
+# Defines scene numbers in the intro when sounds should be played
 SCENE_SOUNDS = {
   160: "sounds/climb.wav",
   481: "sounds/stomp.wav",
   712: "sounds/roar.wav",
   856: "sounds/howhigh.wav"}
-
-WALK_SOUNDS = {
-  1: "sounds/walk0.wav",
-  5: "sounds/walk1.wav",
-  9: "sounds/walk2.wav"}
 
 # Defines when icons should be displayed on the climb intro.  The entries relate to the various platforms.
 # data is: appear from scene, appear to scene, below y, above y, smash animation to scene)
@@ -124,7 +127,7 @@ SCENE_ICONS = [
     (679, 856, 999, 200, 700),
     (700, 856, 999, 0, 0)]
 
-# Ladder zone detection
+# Ladder zone detection. The R red from screen map determines were jumpman is relative to a ladder
 LADDER_ZONES = [
     ("LADDER_DETECTED", (20, 30, 60, 90, 240)),
     ("END_OF_LADDER", (60, 90)),
@@ -212,17 +215,21 @@ Esc    -  Exit
 Good luck!
 """
 
-# pygame setup
+# Sound setup
 pygame.mixer.init(frequency=48000)
 music_channel = pygame.mixer.Channel(1)
 intermission_channel = pygame.mixer.Channel(2)
 award_channel = pygame.mixer.Channel(3)
+
+# Initialisation
 pygame.init()
-dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
-pl_font = pygame.font.Font('fonts/tom-thumb.bdf', 5)
 clock = pygame.time.Clock()
 
-# menu theme
+# Font setup
+dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
+pl_font = pygame.font.Font('fonts/tom-thumb.bdf', 5)
+
+# Menu theme setup
 dkafe_theme = pymenu.themes.THEME_DEFAULT.copy()
 dkafe_theme.widget_font = 'fonts/PressStart2P-vaV7.ttf'
 dkafe_theme.title_font = 'fonts/PressStart2P-vaV7.ttf'
@@ -244,6 +251,6 @@ dkafe_theme.widget_margin = (0, 4)
 dkafe_theme.widget_selection_effect = pymenu.widgets.LeftArrowSelection(arrow_right_margin=15, arrow_vertical_offset=-1)
 dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_width=3, margin_x=3, margin_y=1)
 
-# Override the default pygame-menu keys
+# Override default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT

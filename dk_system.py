@@ -85,8 +85,7 @@ def calculate_bonus(duration):
     # return bonus_display, colour, warning status, end of countdown
     bonus_timer = get_bonus_timer(duration)
     bonus_display = " 000" if bonus_timer <= 100 else str(int(bonus_timer)).rjust(4)[:2] + "00"
-    warning = bonus_timer < 1000
-    return bonus_display, (CYAN, MAGENTA)[warning], warning, bonus_timer <= -200
+    return bonus_display, (CYAN, MAGENTA)[bonus_timer < 1000], bonus_timer < 1000, bonus_timer <= -200
 
 
 def format_K(text):

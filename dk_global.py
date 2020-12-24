@@ -37,6 +37,7 @@ sprite_index = 0
 
 # Game Timer
 timer = Stopwatch()
+timer_adjust = 0
 pause_ticks = 0
 
 # Image cache for performance

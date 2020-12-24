@@ -11,7 +11,9 @@ def exit_program(confirm=False):
     if confirm:
         open_menu(_g.exitmenu)
     else:
-        pickle.dump(_g.score, open("save.p", "wb"))
+        # Save frontend state and exit
+        _g.timer_adjust = _g.timer.duration + _g.timer_adjust
+        pickle.dump([_g.score, _g.timer_adjust], open("save.p", "wb"))
         pygame.quit()
         sys.exit()
 
@@ -137,6 +139,7 @@ def check_for_input():
                 _g.showinfo = not _g.showinfo
             if event.key == CONTROL_SLOTS:
                 _g.showslots = not _g.showslots
+
         if event.type == pygame.QUIT:
             exit_program()
 
@@ -179,7 +182,7 @@ def play_intro_animation():
             write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
             write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
 
-        write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
+        show_score()
         update_screen(delay_ms=40)
 
 
@@ -193,6 +196,7 @@ def display_slots():
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
     if with_background:
         _g.screen.blit(get_image("artwork/background.png"), TOPLEFT)
+        show_clocks()
         show_score()
 
     nearby = None
@@ -401,6 +405,11 @@ def launch_rom(info):
         _g.timer.start()  # Restart the timer
 
 
+def show_clocks():
+    for position in [(16, 98), (167, 190)]:
+        _g.screen.blit(get_image(f"artwork/sprite/{['hammer', 'clock'][ENABLE_CLOCKS]}.png"), position)
+
+
 def show_score():
     # Flashing 1UP and score
     write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 550 < 275], bg=None)
@@ -418,7 +427,7 @@ def show_timeup_animation(sprite_number, loss=0):
     _g.screen.blit(get_image(f"artwork/sprite/out{sprite_number}.png"), (_g.xpos, int(_g.ypos)))
 
     # Display items that don't get updated in this loop
-    write_text("1UP", font=dk_font, x=25, y=0, fg=RED, bg=None)
+    show_score()
     write_text(" 000", font=dk_font, x=177, y=48, fg=MAGENTA, bg=None)
     _g.screen.blit(get_image("artwork/sprite/dk0.png"), (11, 52))
 
@@ -440,7 +449,7 @@ def process_interrupts():
 
     # Bonus timer
     previous_warning = _g.warning
-    bonus_display, bonus_colour, _g.warning, out_of_time = _s.calculate_bonus(_g.timer.duration)
+    bonus_display, bonus_colour, _g.warning, out_of_time = _s.calculate_bonus(_g.timer.duration + _g.timer_adjust)
     if _g.warning:
         if not previous_warning:
             music_channel.play(pygame.mixer.Sound('sounds/countdown.wav'), -1)
@@ -469,6 +478,7 @@ def process_interrupts():
 
             # Reset timer and music
             _g.timer.reset()
+            _g.timer_adjust = 0
             music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
@@ -572,11 +582,11 @@ def activity_check():
 def main():
     initialise_screen()
 
-    # Load previous progress
     try:
-        _g.score = pickle.load(open("save.p", "rb"))
+        # Load frontend state
+        _g.score, _g.timer_adjust = pickle.load(open("save.p", "rb"))
     except FileNotFoundError:
-        _g.score = 0
+        _g.score, _g.timer_adjust = 0, 0
 
     # launch front end
     build_menus()
@@ -605,7 +615,7 @@ def main():
                     animate_jumpman(direction)
                     break
 
-        if _g.jump and _s.get_bonus_timer(_g.timer.duration) <= -165:
+        if _g.jump and _s.get_bonus_timer(_g.timer.duration + _g.timer_adjust) <= -165:
             # Block jump button when almost out of time
             _g.jump = False
         elif (_g.jump or _g.start) and _g.ready:
