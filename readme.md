@@ -2,7 +2,7 @@
 
 Donkey Kong Arcade Front End
 
-A Python based arcade game launcher
+A multiplatform arcade game launcher.
 
 Instructions
 ============
@@ -51,19 +51,22 @@ How to set up?
 ==============
 Requires Python3 (recommended v3.7) with installed packages from requirements.txt
 
-The application requires romlist.txt and settings.txt to be present in the installation folder along with dependant folders/resources.
+The application requires romlist.csv and settings.txt to be present in the installation folder along with other resources.
  
 The settings.txt contains the emulator, rom path, controls and other configuration.
 
-The romlist.txt contains the roms and information about where they appear in the frontend and how they are unlocked and launched.  You must set up your own roms.
-
-The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
-
-The launch emulator is specified in the settings.txt and the romlist.txt.  Refer to example files.  You must configure your own based on your available roms.
+The romlist.csv contains information about the roms and where the arcade machines should appear in the frontend and how they can be unlocked and launched.  You must provide your own roms.
 
 Mamedev maintains a list of free roms at:
 
 https://www.mamedev.org/roms/
+
+The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
+
+The default set up simply requires you to provide a dkong.zip and dkongjr.zip rom and place them into the roms subfolder.  
+
+The launch emulator is specified in the settings.txt and the romlist.txt.
+
 
 How to build?
 =============
@@ -117,6 +120,9 @@ This application was made for my own DIY Donkey Kong arcade machine as a replace
 I aim to Install to Raspberry Pi with Jamma connectivity.
 
 Thanks to:
+
+The MAMEdev team
+https://docs.mamedev.org/
 
 The community at Donkey Kong Forum
 https://donkeykongforum.com/

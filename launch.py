@@ -196,7 +196,7 @@ def display_slots():
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
     if with_background:
         _g.screen.blit(get_image("artwork/background.png"), TOPLEFT)
-        show_clocks()
+        show_hammers()
         show_score()
 
     nearby = None
@@ -405,9 +405,10 @@ def launch_rom(info):
         _g.timer.start()  # Restart the timer
 
 
-def show_clocks():
-    for position in [(16, 98), (167, 190)]:
-        _g.screen.blit(get_image(f"artwork/sprite/{['hammer', 'clock'][ENABLE_CLOCKS]}.png"), position)
+def show_hammers():
+    if ENABLE_HAMMERS:
+        for position in [(16, 98), (167, 190)]:
+            _g.screen.blit(get_image(f"artwork/sprite/hammer.png"), position)
 
 
 def show_score():
@@ -454,15 +455,16 @@ def process_interrupts():
         if not previous_warning:
             music_channel.play(pygame.mixer.Sound('sounds/countdown.wav'), -1)
         if out_of_time:
-            # Jumpman drops some coins.  Drops multiples of the lowest value coins if he can afford it.
-
-            loss = 0
-            for i, coin in enumerate(range(0, LIFE_COST, COIN_VALUES[1])):
-               if _g.score >= COIN_VALUES[1]:
-                   loss += COIN_VALUES[1]
-                   _g.score -= COIN_VALUES[1]
-                   movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
-                   drop_coin(x=_g.xpos, y=_g.ypos + i, coin_type=1, movement=movement)
+            # Jumpman drops coins if he can afford it.
+            loss, i = 0, 0
+            for coin_type in [2, 1]:
+                for coin in range(loss, LIFE_COST, COIN_VALUES[coin_type]):
+                    if _g.score >= COIN_VALUES[coin_type] and loss + COIN_VALUES[coin_type] <= LIFE_COST:
+                        loss += COIN_VALUES[coin_type]
+                        _g.score -= COIN_VALUES[coin_type]
+                        movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
+                        drop_coin(x=_g.xpos, y=_g.ypos + i, coin_type=coin_type, movement=movement)
+                        i += 1
 
             # Show time up animation
             music_channel.stop()

@@ -1,5 +1,5 @@
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS
+from dk_config import ROOT_DIR, AWARDS, CREDITS, HACK_PORTAL, HACK_NOHAMMERS
 
 # Memory addresses for scores and players data
 # 6 Bytes per score
@@ -30,15 +30,17 @@ def lua_interface(rom=None, subfolder=None, min_score=None):
     preset = False
     if min_score:
         # Remove compete file if it still exists
-        compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
+        compete_file = os.path.join(ROOT_DIR, "interface", "compete.dat")
         if os.path.exists(compete_file):
             os.remove(compete_file)
+        os.environ["DATA_INCLUDES"] = os.path.join(ROOT_DIR, "interface")
         os.environ["DATA_FILE"] = compete_file
         os.environ["DATA_SUBFOLDER"] = subfolder
         os.environ["DATA_CREDITS"] = str(CREDITS)
+        os.environ["HACK_PORTAL"] = str(HACK_PORTAL)
+        os.environ["HACK_NOHAMMERS"] = str(HACK_NOHAMMERS)
 
         # We are only concerned with minimum score to set the game highscore and to later establish if it was beaten.
-        #
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
             preset = True
             score_width, double_width = 6, 6

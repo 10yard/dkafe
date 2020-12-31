@@ -1,9 +1,10 @@
+import os
 from platform import platform
 from datetime import datetime
 from glob import glob
-from dk_config import *
 from shutil import copy
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+from dk_config import *
 
 
 def is_windows():

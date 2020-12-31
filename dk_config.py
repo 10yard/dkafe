@@ -1,6 +1,6 @@
+import os
 import pygame
 import pygame_menu as pymenu
-import os
 
 # Graphic Config
 TITLE = 'DONKEY KONG ARCADE FE'
@@ -27,10 +27,9 @@ FULLSCREEN = True
 FREE_PLAY = True             # Jumpman does not have to pay to play
 UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = True           # Allow selection from the quick access game list
-ENABLE_CLOCKS = False        # Show clocks instead of hammers.  Clocks can be used to add time in exchange for coins
+ENABLE_HAMMERS = True        # Show hammers.  At the moment they don't do anything.
 
-
-AWARDS = [0, 1000, 2000]     # Points awared for competing. Fail, minimum and bonus scores when competing
+AWARDS = [0, 1000, 2000]     # Coins awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150              # How many coins Jumpman loses when time runs out
 CREDITS = 1                  # Automatically set credits in MAME at start of game - when using interface
@@ -43,6 +42,11 @@ COIN_SPEED = 1.6             # Number of pixels to move coin per display update.
 COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
+# Hacks
+HACK_PORTAL = 1              # Hack DK memory to open a portal between hammers
+HACK_NOHAMMERS = 0           # Hack DK memory to remove hammers
+
+# Root directory of frontend
 ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults

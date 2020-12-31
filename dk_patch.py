@@ -1,6 +1,7 @@
+import os
 from ips_util import Patch
 from glob import glob
-from dk_config import *
+from dk_config import ROM_DIR, ROOT_DIR
 
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 PATCH_DIR = os.path.join(ROOT_DIR, "patch")
