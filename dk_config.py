@@ -43,7 +43,7 @@ COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
 # Hacks
-HACK_PORTAL = 1              # Hack DK memory to open a portal between hammers
+HACK_PORTAL = 0              # Hack DK memory to open a portal between hammers
 HACK_NOHAMMERS = 0           # Hack DK memory to remove hammers
 
 # Root directory of frontend

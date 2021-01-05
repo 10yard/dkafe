@@ -12,7 +12,7 @@ dofile(data_includes.."/globals.lua")
 
 emu.register_frame(function()
 	status, loaded = pcall(get_loaded)
-	
+		
 	if loaded == nil then
 		-- Update ROM on start
 		emu["loaded"] = 1

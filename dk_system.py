@@ -66,6 +66,9 @@ def build_shell_command(info):
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
 
+    if not FULLSCREEN:
+        shell_command += " -window"
+
     # MAME/LUA interface
     if "-record" not in shell_command and "DISABLED" not in _min:
         from dk_interface import lua_interface
