@@ -5,6 +5,7 @@ from glob import glob
 from shutil import copy
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from dk_config import *
+from dk_interface import lua_interface
 
 
 def is_windows():
@@ -16,8 +17,8 @@ def get_datetime():
     return datetime.now().strftime("%d%m%Y-%H%M%S")
 
 
-def intro_frames():
-    return list(range(0, 100)) + list(sorted(glob("artwork/scene/scene_*.png")))
+def intro_frames(climb_scene_only=False):
+    return list(range(0, 100 * int(not climb_scene_only))) + list(sorted(glob("artwork/scene/scene_*.png")))
 
 
 def read_romlist():
@@ -70,8 +71,7 @@ def build_shell_command(info):
         shell_command += " -window"
 
     # MAME/LUA interface
-    if "-record" not in shell_command and "DISABLED" not in _min:
-        from dk_interface import lua_interface
+    if "-record" not in shell_command:
         if lua_interface(name, sub, _min):
             competing = True
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
@@ -99,4 +99,3 @@ def format_K(text):
         return text[:-3] + "K"
     else:
         return text
-

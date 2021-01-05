@@ -154,6 +154,11 @@ def play_sound_effect(effect=None, stop=False):
 
 def play_intro_animation():
     play_sound_effect(effect="sounds/jump.wav")
+
+    # Preload images
+    for _key in _s.intro_frames(climb_scene_only=True):
+        get_image(_key)
+
     for _key in _s.intro_frames():
         check_for_input()
         if _g.jump or _g.start or _g.skip:
@@ -224,7 +229,9 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     elif since_last_move() % 4 > 2:
                         des = f'{_s.format_K(_min)} Minimum'
                 elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
-                    des = 'WITH RECORDING!'
+                    des = 'FOR RECORDING!'
+                elif not _min.strip() and since_last_move() % 4 > 2:
+                    des = 'FOR PRACTICE!'
                 elif not int(FREE_PLAY) and since_last_move() % 4 > 2:
                     des = f'${str(PLAY_COST)} TO PLAY'
                 write_text(des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
@@ -330,7 +337,8 @@ def build_menus():
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
     for name, sub, desc, icx, icy, emu, state, unlock, _min, bonus in _s.read_romlist():
-        _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, "DISABLED", "DISABLED"))
+        if _g.score >= unlock or not UNLOCK_MODE:
+            _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, _min, bonus))
         _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, _min, bonus))
     _g.menu.add_button('Close Menu', close_menu)
 
@@ -581,6 +589,20 @@ def activity_check():
         process_interrupts()
 
 
+def portal_jump_between_hammers():
+    if pygame.time.get_ticks() - _g.portal_ticks > 700:
+        if 163 <= _g.xpos <= 170 and 188 <= _g.ypos <= 195:
+            _g.xpos = 14
+            _g.ypos = 91 - (190 - _g.ypos)
+            _g.portal_ticks = pygame.time.get_ticks()
+        elif 11 <= _g.xpos <= 16 and 91 <= _g.ypos <= 100:
+            _g.xpos = 165
+            _g.ypos = 188 - (92 - _g.ypos)
+            _g.portal_ticks = pygame.time.get_ticks()
+    if pygame.time.get_ticks() - _g.portal_ticks < 1000:
+        write_text("PORTAL JUMP", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+
+
 def main():
     initialise_screen()
 
@@ -625,6 +647,7 @@ def main():
             launch_rom(display_icons(detect_only=True))
         elif (_g.jump or _g.jump_sequence) and _g.timer.duration > 0.5:
             # Jumpman has started a jump or is actively jumping
+            portal_jump_between_hammers()
             ladder_info = get_map_info(direction="d") + get_map_info(direction="u")
             if _g.jump_sequence or "LADDER_DETECTED" not in ladder_info or "END_OF_LADDER" in ladder_info:
                 _g.jump_sequence += 1

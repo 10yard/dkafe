@@ -39,6 +39,7 @@ sprite_index = 0
 timer = Stopwatch()
 timer_adjust = 0
 pause_ticks = 0
+portal_ticks = 0
 
 # Image cache for performance
 image_cache = {}
