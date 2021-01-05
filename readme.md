@@ -6,9 +6,11 @@ A multiplatform arcade game launcher.
 
 Instructions
 ============
-Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent to the top has uncovered many hidden old arcade machines from the 1980's era and they are scattered around the platforms.
+Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the area. 
 
-Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well, to win coins, and works his way to the top unlocking all of the arcade machines.  The girl loves the guy that can beat all of the machines.
+Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well, winning coins and working up  the building unlocking all of the arcade machines along the way.  
+
+Pauline will love it when you beat all of the machines
 
 Controls
 ========
@@ -69,11 +71,11 @@ The launch emulator is specified in the settings.txt and the romlist.txt.
 
 Automativally generated roms
 ============================
-DKAFE builds the default frontend using patches of the original "skong.zip" arcade rom. 
+DKAFE builds the default frontend using patches of the original "dkong.zip" arcade rom. 
 
-Rom patches are included with the software.
+The patches are included with the software in the patch folder.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder.  
-DKAFE will then apply patches and generate the following hacked version of Donkey Kong automaticalluy for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
+DKAFE can apply patches and generate the following hacked Donkey Kong roms automaticalluy for you.  The hacked versions will be organised into subfolders under the roms folder.  The folder name is shown in brackets.
 
 By Paul Goes, https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -104,8 +106,11 @@ By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
 
 Donkey Kong Wild Barrel Hack (dkongwbh)
+
 Donkey Kong 2 Marios (dkong2m)
+
 Donkey Kong Hard (dkonghrd)
+
 Donkey Kong Pace (dkongpace)
 
 How to build?

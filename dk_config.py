@@ -159,32 +159,33 @@ FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH C
 
 INSTRUCTION = """
 
-Donkey Kong has captured
+Donkey Kong has captured 
 Pauline and carried her to
 the top of an abandoned
 construction site. 
 
 The shock of shaking up the 
-building during his climb to
-the top has uncovered many
-hidden arcade machines from 
-the 1980's era and they are 
-scattered around the 
-platforms.
+building during his ascent
+has uncovered many hidden 
+arcade machines from the 
+1980's era and they are 
+scattered around the area. 
 
-Yes, the plot is a bit thin
-and I can't explain why 
-Donkey Kong has decided to 
-throw coins instead of 
-barrels. 
+Yes, the plot is thin and I
+can't explain why Donkey
+Kong has decided to throw
+coins instead of barrels. 
 
 Anyway, the coins must be 
-collected by Jumpman and he 
-must play games well to earn
-money to unlock and play all 
-of the arcade machines.
+collected by Jumpman and he
+must play games well, 
+winning coins and working up 
+the building unlocking all  
+of the arcade machines along
+the way.  
 
-
+Pauline will love it when
+you beat all of the machines
 
 """
 
