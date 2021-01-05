@@ -1,7 +1,7 @@
--- Portal Hack 
--- Perform hack to portal between the 2 hammers changing Jumpman's position
+-- Teleport Hack 
+-- Perform hack to teleport between hammers changing Jumpman's position
 
-function update_portal_ram(_x, _y, _ly)
+function update_teleport_ram(_x, _y, _ly)
     -- force 0 to disable the hammer
 	mem:write_i8(0xc6217, 0)
 	mem:write_i8(0xc6218, 0)
@@ -39,35 +39,35 @@ if grab ~= 00 and stage ~= 3 then
 		if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
 			-- jumps for remix
 			if jumpman_y > - 80 then
-				update_portal_ram(210, 140, -110)
+				update_teleport_ram(210, 140, -110)
 			else
-				update_portal_ram(210, 192, -46)
+				update_teleport_ram(210, 192, -46)
 			end
 		else
 			-- jumps for regular dkong
 			if jumpman_y < 0 then
-				update_portal_ram(36, 100, 113)
+				update_teleport_ram(36, 100, 113)
 			else
-				update_portal_ram(187, 192, -46)
+				update_teleport_ram(187, 192, -46)
 			end
 		end
 	elseif stage == 2 then
 		if jumpman_y < -100 then
-			update_portal_ram(124, 180, -45)
+			update_teleport_ram(124, 180, -45)
 		else
-			update_portal_ram(27, 140, -96)
+			update_teleport_ram(27, 140, -96)
 		end
 	elseif stage == 4 then 
 		if jumpman_y > 100 then
-			update_portal_ram(33, -110, -96)
+			update_teleport_ram(33, -110, -96)
 		else
-			update_portal_ram(126, 106, 120)
+			update_teleport_ram(126, 106, 120)
 		end
 	elseif stage == 5 then 
 		if jumpman_y > -40 then
-			update_portal_ram(90, -78, -65)
+			update_teleport_ram(90, -78, -65)
 		else
-			update_portal_ram(65, -30, -17)
+			update_teleport_ram(65, -30, -17)
 		end
 	end
 end

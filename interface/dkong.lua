@@ -53,8 +53,8 @@ emu.register_frame(function()
 	
 	if loaded == 3 then
 		-- Include optional Hacks
-		if os.getenv("HACK_PORTAL") == "1" then
-			dofile(data_includes.."/hack_portal.lua")
+		if os.getenv("HACK_TELEPORT") == "1" then
+			dofile(data_includes.."/hack_teleport.lua")
 		elseif os.getenv("HACK_NOHAMMERS") == "1" then
 			dofile(data_includes.."/hack_nohammers.lua")
 		end

@@ -589,18 +589,19 @@ def activity_check():
         process_interrupts()
 
 
-def portal_jump_between_hammers():
-    if pygame.time.get_ticks() - _g.portal_ticks > 700:
-        if 163 <= _g.xpos <= 170 and 188 <= _g.ypos <= 195:
-            _g.xpos = 14
-            _g.ypos = 91 - (190 - _g.ypos)
-            _g.portal_ticks = pygame.time.get_ticks()
-        elif 11 <= _g.xpos <= 16 and 91 <= _g.ypos <= 100:
-            _g.xpos = 165
-            _g.ypos = 188 - (92 - _g.ypos)
-            _g.portal_ticks = pygame.time.get_ticks()
-    if pygame.time.get_ticks() - _g.portal_ticks < 1000:
-        write_text("PORTAL JUMP", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+def teleport_between_hammers():
+    if ENABLE_HAMMERS:
+        if pygame.time.get_ticks() - _g.teleport_ticks > 700:
+            if 163 <= _g.xpos <= 170 and 188 <= _g.ypos <= 195:
+                _g.xpos = 14
+                _g.ypos = 91 - (190 - _g.ypos)
+                _g.teleport_ticks = pygame.time.get_ticks()
+            elif 11 <= _g.xpos <= 16 and 91 <= _g.ypos <= 100:
+                _g.xpos = 165
+                _g.ypos = 188 - (92 - _g.ypos)
+                _g.teleport_ticks = pygame.time.get_ticks()
+        if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
+            write_text("TELEPORT JUMP!", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
 
 
 def main():
@@ -647,7 +648,7 @@ def main():
             launch_rom(display_icons(detect_only=True))
         elif (_g.jump or _g.jump_sequence) and _g.timer.duration > 0.5:
             # Jumpman has started a jump or is actively jumping
-            portal_jump_between_hammers()
+            teleport_between_hammers()
             ladder_info = get_map_info(direction="d") + get_map_info(direction="u")
             if _g.jump_sequence or "LADDER_DETECTED" not in ladder_info or "END_OF_LADDER" in ladder_info:
                 _g.jump_sequence += 1
