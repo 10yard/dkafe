@@ -4,13 +4,15 @@ Donkey Kong Arcade Front End
 
 A multiplatform arcade game launcher.
 
+
 Instructions
 ============
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the area. 
 
 Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well, winning coins and working up  the building unlocking all of the arcade machines along the way.  
 
-Pauline will love it when you beat all of the machines
+Pauline will love it when you beat all of the machines.
+
 
 Controls
 ========
@@ -28,6 +30,8 @@ P2 Start   - Calls up the quick access game list.
 or Action
 
 Coin       - Display useful game information above the arcade machines.
+
+Service    - Show slot numbers.
 
 Esc        - Exit
 ```
@@ -49,15 +53,14 @@ CONTROL_EXIT = escape
 
 Controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
 
+
 How to set up?
 ==============
-Requires Python3 (from v3.7) with installed packages from requirements.txt
-
 The application requires romlist.csv and settings.txt to be present in the installation folder along with other resources.
  
 The settings.txt contains the emulator, rom path, controls and other configuration.
 
-The romlist.csv contains information about the roms and where the arcade machines should appear in the frontend and how they can be unlocked and launched.  You must provide your own roms.
+The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.  You must provide your own roms.
 
 Mamedev maintains a list of free roms at:
 
@@ -65,17 +68,16 @@ https://www.mamedev.org/roms/
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches - which are included with the software.  See the full list below. 
+The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the DKAFE roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches - which are included with the software.  See the full list of patches below. 
 
-The launch emulator is specified in the settings.txt and the romlist.txt.
 
 Automativally generated roms
 ============================
-DKAFE builds the default frontend using patches of the original "dkong.zip" arcade rom. 
+DKAFE builds a default frontend using various patches of the original "dkong.zip" arcade rom. 
 
 The patches are included with the software in the patch folder.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder.  
-DKAFE can apply patches and generate the following hacked Donkey Kong roms automaticalluy for you.  The hacked versions will be organised into subfolders under the roms folder.  The folder name is shown in brackets.
+DKAFE can apply patches and generate the following hacked Donkey Kong roms automaticalluy for you.  The hacked versions will be organised into subfolders.  The folder name is given in brackets.
 
 By Paul Goes, https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -113,12 +115,6 @@ Donkey Kong Hard (dkonghrd)
 
 Donkey Kong Pace (dkongpace)
 
-How to build?
-=============
-Pyinstaller is required to build the application on Windows
-  - pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
-
-See build.bat for an example build script making use of a venv (virtual environment for Python)
 
 Emulator recommendation
 =======================
@@ -141,6 +137,7 @@ I get along best with advance mame:
 
 on top of dietpi lightweight OS:
   - https://dietpi.com/
+  
 
 How to use romlist.txt
 ======================
@@ -159,12 +156,23 @@ All roms should also have a similarly named image as a .png file in the /artwork
 Hopefully that all makes sense.  Refer to the example romlist.csv
 
 
+How to build?
+=============
+Requires Python3 (from v3.7) with installed packages from requirements.txt
+
+Pyinstaller is required to build the application on Windows.
+  - pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+
+See build.bat for an example build script making use of venv (virtual environment for Python)
+
+
 Motivations?
 ============
 This application was made for my own DIY Donkey Kong arcade machine as a replacement for a 60-in-1 board.  I was looking for something more in keeping with the era (graphics are rendered at 224x256) that would look and feel relevant to the early 80's.  Bringing together all of the Donkey Kong roms and rom hacks into one place with an incentive to play them and tools to aid progression (trainers) and .inp recording capability for score submission.  I want something to startup quickly and be capable of running on multiple platforms (Windows, Mac, Rasp Pi, Android).
 
-Thanks to:
-==========
+
+Thanks to
+=========
 
 The MAMEdev team
 https://docs.mamedev.org/
@@ -180,5 +188,10 @@ https://donkeykonghacks.net/
 
 Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika and Don Hodges.
 
+
+Feedback
+========
+
+Please send feedback to jon123wilson@hotmail.com
 
 Jon

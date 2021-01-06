@@ -133,7 +133,7 @@ def check_for_input():
             if event.key == CONTROL_EXIT:
                 exit_program(confirm=CONFIRM_EXIT)
             if event.key in (CONTROL_P2, CONTROL_ACTION) and ENABLE_MENU:
-                build_menus()
+                build_menus(initial=False)
                 open_menu(_g.menu)
             if event.key == CONTROL_COIN:
                 _g.showinfo = not _g.showinfo
@@ -331,7 +331,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     play_sound_effect(sound_file)
 
 
-def build_menus():
+def build_menus(initial=False):
     # Game selection menu
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
@@ -339,7 +339,8 @@ def build_menus():
     for name, sub, desc, icx, icy, emu, state, unlock, _min, bonus in _s.read_romlist():
         if _g.score >= unlock or not UNLOCK_MODE:
             _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, _min, bonus))
-        _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, _min, bonus))
+        if initial:
+            _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, _min, bonus))
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
@@ -614,7 +615,7 @@ def main():
         _g.score, _g.timer_adjust = 0, 0
 
     # launch front end
-    build_menus()
+    build_menus(initial=True)
     play_intro_animation()
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 

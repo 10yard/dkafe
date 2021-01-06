@@ -58,6 +58,9 @@ emu.register_frame(function()
 		elseif os.getenv("HACK_NOHAMMERS") == "1" then
 			dofile(data_includes.."/hack_nohammers.lua")
 		end
+		if os.getenv("HACK_PENALTYPOINTS") == "1" then
+			dofile(data_includes.."/hack_penaltypoints.lua")
+		end
 	end
 end)
 

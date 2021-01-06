@@ -6,7 +6,7 @@ import pygame_menu as pymenu
 TITLE = 'DONKEY KONG ARCADE FE'
 GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
 TOPLEFT = (0, 0)       # position of top left corner
-CLOCK_RATE = 45        # Clock rate/timing
+CLOCK_RATE = 45        # Clock rate/timing - tweak this to get the right speed
 
 # Default Controls
 CONTROL_LEFT = pygame.K_LEFT
@@ -19,7 +19,7 @@ CONTROL_P1 = pygame.K_1
 CONTROL_P2 = pygame.K_2
 CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
-CONTROL_SLOTS = pygame.K_s
+CONTROL_SLOTS = pygame.K_9
 
 # Options
 CONFIRM_EXIT = True
@@ -45,6 +45,7 @@ LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always
 # Hacks
 HACK_TELEPORT = 0            # Hack DK memory to allow teleport between hammers
 HACK_NOHAMMERS = 0           # Hack DK memory to remove hammers
+HACK_PENALTYPOINTS = 1       # Hack DK memory to lose points instead of lives
 
 # Root directory of frontend
 ROOT_DIR = os.getcwd()
@@ -131,7 +132,7 @@ SCENE_ICONS = [
     (679, 856, 999, 200, 700),
     (700, 856, 999, 0, 0)]
 
-# Ladder zone detection. The R red from screen map determines were jumpman is relative to a ladder
+# Ladder zone detection. The R read from screen map determines were jumpman is relative to a ladder
 LADDER_ZONES = [
     ("LADDER_DETECTED", (20, 30, 60, 90, 240)),
     ("END_OF_LADDER", (60, 90)),
@@ -194,17 +195,15 @@ CONTROLS = """
 The Controls are as follows
 
 
-Left/  —  Move Jumpman 
-Right     along the 
-          platforms
+Left/  —  Move Jumpman along
+Right     the platforms
 
 Up/    —  Move Jumpman up
 Down      and down ladders. 
           Up faces Jumpman
           towards a machine
 
-P1 or  —  Play the arcade
-Jump      machine that 
+P1 or  —  Play machine that 
           Jumpman is facing.
           Jump also jumps :)
          
@@ -214,6 +213,8 @@ Action    access game list
 Coin   -  Show game info
           above machines
                       
+Service-  Show slot numbers
+
 Esc    -  Exit
 
 
