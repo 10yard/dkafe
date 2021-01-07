@@ -24,3 +24,9 @@ ram_players = get_formatted_data("RAM_PLAYERS")
 -- Memory state
 cpu = manager:machine().devices[":maincpu"]
 mem = cpu.spaces["program"]
+
+-- Optional hacks
+hack_teleport = os.getenv("HACK_TELEPORT")
+hack_nohammers = os.getenv("HACK_NOHAMMERS")
+hack_lava = os.getenv("HACK_LAVA")
+hack_penaltypoints = os.getenv("HACK_PENALTYPOINTS")

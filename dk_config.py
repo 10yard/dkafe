@@ -43,9 +43,10 @@ COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
 # Hacks
-HACK_TELEPORT = 0            # Hack DK memory to allow teleport between hammers
-HACK_NOHAMMERS = 0           # Hack DK memory to remove hammers
-HACK_PENALTYPOINTS = 1       # Hack DK memory to lose points instead of lives
+HACK_TELEPORT = 0            # Hack DK to allow teleport between hammers. 0 or 1
+HACK_NOHAMMERS = 0           # Hack DK to remove hammers.  0 or 1
+HACK_PENALTYPOINTS = 0       # Hack DK to lose points instead of lives.  0 or set penalty as 1-9 in tens of thousands.
+HACK_LAVA = 0                # Hack DK to limit time for ascending the level due to rising lava. 0 or 1.
 
 # Root directory of frontend
 ROOT_DIR = os.getcwd()

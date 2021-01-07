@@ -1,45 +1,66 @@
 -- Penalty Points Hack
 -- Lose a set number of points instead of lives
 
-penalty_intot = 3                       -- life cost in tens of thousands (1 - 9)
-game_mode = mem:read_i8(0xc6005)        -- 3 = playing the game
-lives_remaining = mem:read_i8(0xc6228)
+if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 
---Force lives to 2
-mem:write_i8(0xc6020, 2)	
-mem:write_i8(0xc6040, 2)	
-mem:write_i8(0xc6228, 2)
+	score_intot = mem:read_i8(0xc60B4)            -- score in tens of thousands part
+	penalty_points = tonumber(hack_penaltypoints) -- penalty points to lose (in tens of thousands)
+	game_mode = mem:read_i8(0xc6005)              -- 3 = playing the game
+	game_mode2 = mem:read_i8(0xc600a)             -- state indicator of current game
+	jumpman_status = mem:read_i8(0xc6200)         -- 1 = alive, 0 = dead
 
--- Clear the standard bonus life award as not needed
-mem:write_i8(0xc6021, 0)	
+	--Force remaining lives to 2
+	mem:write_i8(0xc6020, 2)	
 
--- Check if life was lost and sufficient points for penalty
-if game_mode == 3 and lives_remaining < 2 then
-    -- deduct penalty from score
-	score_intot = mem:read_i8(0xc60B4)
-	if score_intot >= penalty_intot then
-		-- score is held in #6084, #6083, #6082
-		-- we are only concerned with tens of thousands in first byte
-		mem:write_i8(0xc60B4, score_intot - penalty_intot)
+	-- Clear the standard bonus life award as it's not needed
+	mem:write_i8(0xc6021, 0)	
 
-		-- display score appears in #7781, #7761, #7741, #7721, #7701, #76E1
-		-- we are only concerned with first 2 bytes
-		digits = string.format("%02d", score_intot - penalty_intot)
-   	    mem:write_i8(0xc7781, string.sub(digits, 1, 1))
-	    mem:write_i8(0xc7761, string.sub(digits, 2, 2))
-	else
-mem:write_i8(0xc6020, 1)	
-mem:write_i8(0xc6040, 1)	
-mem:write_i8(0xc6228, 1)
+	-- Check if life was lost and sufficient points for penalty
+	if game_mode == 3 and game_mode2 >= 0xC and jumpman_status == 0 then	
+		-- deduct penalty from score
+		if score_intot >= penalty_points then
+			-- score is held in #6084, #6083, #6082
+			-- we are only concerned with tens of thousands in first byte
+			mem:write_i8(0xc60B4, score_intot - penalty_points)
+
+			-- display score appears in #7781, #7761, #7741, #7721, #7701, #76E1
+			-- we are only concerned with first 2 bytes
+			digits = string.format("%02d", score_intot - penalty_points)
+			mem:write_i8(0xc7781, string.sub(digits, 1, 1))
+			mem:write_i8(0xc7761, string.sub(digits, 2, 2))
+			
+   	        --set jumpman status to alive instead of dead
+			mem:write_i8(0xc6200, 1)
+			
+			--set remaining lives to 2
+			mem:write_i8(0xc6228, 2)			
+		else
+			--Force Game over
+			--set remaining lives to 1
+			mem:write_i8(0xc6228, 1)			
+		end
 	end
-end
 
--- Display jumpman penalty instead of the remaining lives
-mem:write_i8(0xc77A3, 255) -- Jumpman icon
-mem:write_i8(0xc7783, 52)  -- Equals sign
-mem:write_i8(0xc7763, penalty_intot)
-mem:write_i8(0xc7743, 00)  -- 0
-mem:write_i8(0xc7723, 27)  -- K
-mem:write_i8(0xc7703, 10)  --
-mem:write_i8(0xc76E3, 10)  --
+	-- Display jumpman penalty instead of the remaining lives
+	-- Flash when the penalty is greater than score to indicate player won't survive
+	blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 	
+	if score_intot >= penalty_points or blink_toggle ~= 16 then
+		mem:write_i8(0xc77A3, 255)
+		mem:write_i8(0xc7783, 52)  -- Equals sign
+		mem:write_i8(0xc7763, penalty_points)
+		mem:write_i8(0xc7743, 00)  -- 0
+		mem:write_i8(0xc7723, 27)  -- K
+		mem:write_i8(0xc7703, 10)  --
+		mem:write_i8(0xc76E3, 10)  --
+	else
+		mem:write_i8(0xc77A3, 10)
+		mem:write_i8(0xc7783, 10)
+		mem:write_i8(0xc7763, 10)
+		mem:write_i8(0xc7743, 10) 
+		mem:write_i8(0xc7723, 10) 
+		mem:write_i8(0xc7703, 10)
+		mem:write_i8(0xc76E3, 10)
+	end
+
+end
 

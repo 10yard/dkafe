@@ -1,5 +1,5 @@
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS, HACK_TELEPORT, HACK_NOHAMMERS, HACK_PENALTYPOINTS
+from dk_config import ROOT_DIR, AWARDS, CREDITS, HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTYPOINTS
 
 # Memory addresses for scores and players data
 # 6 Bytes per score
@@ -39,7 +39,8 @@ def lua_interface(rom=None, subfolder=None, min_score=None):
         os.environ["DATA_CREDITS"] = str(CREDITS)
         os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
         os.environ["HACK_NOHAMMERS"] = str(HACK_NOHAMMERS)
-        os.environ["HACK_PENALTYPOINTS"] = str(HACK_PENALTYPOINTS)
+        os.environ["HACK_LAVA"] = str(HACK_LAVA) if rom == "dkong" else "0"
+        os.environ["HACK_PENALTYPOINTS"] = str(HACK_PENALTYPOINTS) if rom == "dkong" else "0"
 
         # We are only concerned with minimum score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):

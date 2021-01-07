@@ -51,15 +51,20 @@ emu.register_frame(function()
 		emu["loaded"] = 3
 	end
 	
-	if loaded == 3 then
+	if loaded ~= nil and loaded >= 3 then
 		-- Include optional Hacks
-		if os.getenv("HACK_TELEPORT") == "1" then
+		if hack_teleport == "1" then
 			dofile(data_includes.."/hack_teleport.lua")
-		elseif os.getenv("HACK_NOHAMMERS") == "1" then
+		elseif hack_nohammers == "1" then
 			dofile(data_includes.."/hack_nohammers.lua")
 		end
-		if os.getenv("HACK_PENALTYPOINTS") == "1" then
-			dofile(data_includes.."/hack_penaltypoints.lua")
+		if hack_lava == "1" then
+			dofile(data_includes.."/hack_lava.lua")
+		end
+		if hack_penaltypoints ~= nil then
+			if tonumber(hack_penaltypoints) >= 1 and tonumber(hack_penaltypoints) <= 9 then
+				dofile(data_includes.."/hack_penaltypoints.lua")
+			end
 		end
 	end
 end)
