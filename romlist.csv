@@ -1,25 +1,26 @@
 #Rom Name,Sub Folder,Description,Slot,Emu,State,Unlock,Min Score,Bonus Score
 dkong,,DK Wolf,1,2,,0,,
 dkong,,Donkey Kong,3,1,,0,50000,100000
-dkong,dkongtrn,DK Trainer,5,1,,2000,,
+dkong,dkongtrn,DK Trainer,5,1,,0,,
 dkongjr,,DK Junior,8,1,,2000,20000,50000
-dkongf,dkongrdemo,DK Remix,10,1,,4000,40000,80000
+dkongx11,dkongspooky,DK Spooky,10,1,,4000,25000,50000
 dkong,dkongrev,DK Reverse,11,1,,6000,40000,80000
 dkongf,dkongst2,DK Springs,14,1,,8000,20000,30000
 dkong,dkongce,DK Champ Ed,16,1,,10000,50000,100000
 dkong,dkongwbh,DK Wild Barrel,18,1,,12000,2500,5000
-dkong,dkongitd,DK IntoTheDark,19,1,,14000,25000,50000
-dkongx11,dkongspooky,DK Spooky Remix,21,1,,16000,25000,50000
-dkong,dkongbcc,DK Barrel Ctrl,23,1,,16000,,
-dkongx,dkongdk2,DK 2,25,1,,18000,40000,80000
-dkong,dkongl05,DK SkipStart,26,1,,20000,40000,80000
-dkongx11,dkongxmas,DK Xmas Remix,29,1,,22000,25000,50000
-dkong,dkongrnd,DK Random,31,1,,24000,40000,80000
-dkongf,dkongf,DK Foundry,33,1,,26000,30000,60000
-dkong,dkongrainbow,DK Rainbow,34,1,,28000,50000,100000
-dkonghrd,dkonghrd,DK Hard,35,1,,30000,20000,40000
-dkong,dkongotr,DK OnTheRun,37,1,,32000,25000,50000
-dkong,dkongfr,DK Free Run,40,1,,34000,25000,50000
-dkong,dkongcb,DK CrazyBarrels,42,1,,36000,15000,30000
-dkongpe,dkongpe,DK Pauline Ed,45,1,,38000,50000,100000
-dkong,dkongksfix,KS Fix,46,1,,40000,100000,200000
+dkong,dkonglava,DK Lava,19,1,,14000,25000,50000
+dkongx11,dkongxmas,DK Xmas,20,1,,16000,25000,50000
+dkong,dkongitd,DK IntoTheDark,21,1,,18000,25000,50000
+dkong,dkongbcc,DK Barrel Ctrl,23,1,,18000,,
+dkongx,dkongdk2,DK 2,25,1,,20000,40000,80000
+dkong,dkongl05,DK SkipStart,26,1,,22000,40000,80000
+dkongf,dkongrdemo,DK Remix Demo,29,1,,24000,40000,80000
+dkong,dkongrnd,DK Random,31,1,,26000,40000,80000
+dkongf,dkongf,DK Foundry,33,1,,28000,30000,60000
+dkong,dkongrainbow,DK Rainbow,34,1,,30000,50000,100000
+dkonghrd,dkonghrd,DK Hard,35,1,,32000,20000,40000
+dkong,dkongotr,DK OnTheRun,37,1,,34000,25000,50000
+dkong,dkongfr,DK Free Run,40,1,,36000,25000,50000
+dkong,dkongcb,DK CrazyBarrels,42,1,,38000,15000,30000
+dkongpe,dkongpe,DK Pauline Ed,45,1,,40000,50000,100000
+dkong,dkongksfix,KS Fix,46,1,,42000,100000,200000

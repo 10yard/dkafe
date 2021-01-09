@@ -23,6 +23,11 @@ RAM_PLAYERS = "0xc610f,0xc6110,0xc6111,0xc6131,0xc6132,0xc6133,0xc6153,0xc6154,0
 DATA_PLAYERS = "20,16,16,27,16,16,17,16,16,22,16,16,21,16,16"
 
 
+def apply_rom_specific_hacks(rom=None, subfolder=None):
+    if rom == "dkong" and subfolder == "dkonglava":
+        os.environ["HACK_LAVA"] = "1"
+
+
 def lua_interface(rom=None, subfolder=None, min_score=None):
     # receive rom name, subfolder name and the target minimum score
     # Logic is mostly driven by the rom name but there are some exceptions were the subfolder name of a specific
@@ -37,10 +42,15 @@ def lua_interface(rom=None, subfolder=None, min_score=None):
         os.environ["DATA_FILE"] = compete_file
         os.environ["DATA_SUBFOLDER"] = subfolder
         os.environ["DATA_CREDITS"] = str(CREDITS)
+
+        # Apply hacks based on front end settings
         os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
         os.environ["HACK_NOHAMMERS"] = str(HACK_NOHAMMERS)
         os.environ["HACK_LAVA"] = str(HACK_LAVA) if rom == "dkong" else "0"
         os.environ["HACK_PENALTYPOINTS"] = str(HACK_PENALTYPOINTS) if rom == "dkong" else "0"
+
+        # Apply rom specific Lua hacks such as the lava hack in dkonglava
+        apply_rom_specific_hacks(rom, subfolder)
 
         # We are only concerned with minimum score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):

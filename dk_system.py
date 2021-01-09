@@ -75,6 +75,7 @@ def build_shell_command(info):
         if lua_interface(name, sub, _min):
             competing = True
             shell_command += f' -console -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
+            shell_command += " -fontpath c:/dkafe/fonts -debugger_font_size 11 -uifont gohufont-14.bdf"
 
     if state:
         shell_command += f' -state {state.strip()}'
