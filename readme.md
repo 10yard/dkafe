@@ -73,7 +73,7 @@ The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip
 
 Automativally generated roms
 ============================
-DKAFE builds a default frontend using various patches of the original "dkong.zip" arcade rom. 
+DKAFE builds a default frontend using various patches of the original "dkong.zip" (US Set 1) arcade rom. 
 
 The patches are included with the software in the patch folder.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder.  
@@ -107,13 +107,14 @@ By Mike Mika
 By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
 
-Donkey Kong Wild Barrel Hack (dkongwbh)
+By Jon Wilson (me)
+ - Donkey Kong Lava Panic
 
-Donkey Kong 2 Marios (dkong2m)
-
-Donkey Kong Hard (dkonghrd)
-
-Donkey Kong Pace (dkongpace)
+By unknown others
+ - Donkey Kong Wild Barrel Hack (dkongwbh)
+ - Donkey Kong 2 Marios (dkong2m)
+ - Donkey Kong Hard (dkonghrd)
+ - Donkey Kong Pace (dkongpace)
 
 
 Emulator recommendation

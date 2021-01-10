@@ -232,9 +232,11 @@ award_channel = pygame.mixer.Channel(3)
 pygame.init()
 clock = pygame.time.Clock()
 
-# Font setup
+# Font setup (pygame)
 dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
 pl_font = pygame.font.Font('fonts/tom-thumb.bdf', 5)
+# Font setup (lua)
+ui_font = 'gohufont.bdf'
 
 # Menu theme setup
 dkafe_theme = pymenu.themes.THEME_DEFAULT.copy()

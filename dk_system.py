@@ -74,8 +74,8 @@ def build_shell_command(info):
     if "-record" not in shell_command:
         if lua_interface(name, sub, _min):
             competing = True
-            shell_command += f' -console -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
-            shell_command += " -fontpath c:/dkafe/fonts -debugger_font_size 11 -uifont gohufont-14.bdf"
+            shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
+            shell_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'
 
     if state:
         shell_command += f' -state {state.strip()}'
