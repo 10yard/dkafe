@@ -11,17 +11,70 @@ function calc_sprite_top(sprite)
 	return _y
 end
 
---function display_text(start_position, text_list, clear)
---	x_byte = start_position
---	for key, value in pairs(text_list) do
---		if clear ~= 1 then
---			mem:write_i8(x_byte, value)
---		else
---			mem:write_i8(x_byte, 0x10)
---		end
---		x_byte = x_byte - 0x20
---	end
---end
+function display_text(text, x, y, color, gap)
+	_len = string.len(text)
+	_y = y
+	s = manager:machine().screens[":screen"]
+	for i=1, _len do 
+		_char = string.sub(text, i, i)
+		if _char == "A" then
+			s:draw_text(x, _y, "$$$$$$ ", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$ ", color) _y = _y + gap
+		end
+		if _char == "C" then
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+		end
+		if _char == "D" then
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+		end
+		if _char == "I" then
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+		end
+		if _char == "N" then
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "    $  ", color) _y = _y + gap
+			s:draw_text(x, _y, "   $   ", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+		end
+		if _char == "O" then
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+		end
+		if _char == "P" then
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "    $$ ", color) _y = _y + gap
+		end
+		if _char == "T" then
+			s:draw_text(x, _y, "      $", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "      $", color) _y = _y + gap
+		end
+		if _char == "'" then
+			s:draw_text(x, _y, "     $$", color) _y = _y + gap
+		end
+		if _char == "!" then
+			s:draw_text(x, _y, "$$ $$$$", color) _y = _y + gap
+		end
+		if _char == " " then
+			_y = _y + (gap * 4)
+		end
+		_y = _y + (gap * 2)
+	end
+end
 
 function draw_lava()
 	mode1 = mem:read_i8(0xc6005)
@@ -52,49 +105,9 @@ function draw_lava()
 				blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
 				if blink_toggle == 16 then
 					mem:write_i8(0xc7d86, 1)
-					manager:machine().screens[":screen"]:draw_text(100, 45, "$$$$$$$", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 48, "$     $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 51, "$     $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 54, " $$$$$ ", flame_yellow)
-					
-					manager:machine().screens[":screen"]:draw_text(100, 60, " $$$$$ ", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 63, "$     $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 66, "$     $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 69, " $$$$$ ", flame_yellow)
-
-					manager:machine().screens[":screen"]:draw_text(100, 75, "$$$$$$$", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 78, "    $  ", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 81, "   $   ", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 84, "$$$$$$$", flame_yellow)
-
-					manager:machine().screens[":screen"]:draw_text(100, 90, "     $$", flame_yellow)
-
-					manager:machine().screens[":screen"]:draw_text(100, 96, "      $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 99, "$$$$$$$", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 102, "      $", flame_yellow)
-
-					manager:machine().screens[":screen"]:draw_text(100, 114, "$$$$$$$", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 117, "   $  $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 120, "   $  $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 123, "    $$ ", flame_yellow)
-					
-					manager:machine().screens[":screen"]:draw_text(100, 129, "$$$$$$$", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 132, "   $  $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 135, "   $  $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 138, "$$$$$$$", flame_yellow)
-					
-					manager:machine().screens[":screen"]:draw_text(100, 144, "$$$$$$$", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 147, "    $  ", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 150, "   $   ", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 153, "$$$$$$$", flame_yellow)
-					
-					manager:machine().screens[":screen"]:draw_text(100, 159, "$$$$$$$", flame_yellow)
-					
-					manager:machine().screens[":screen"]:draw_text(100, 165, " $$$$$ ", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 168, "$     $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 171, "$     $", flame_yellow)
-					manager:machine().screens[":screen"]:draw_text(100, 174, "$     $", flame_yellow)
+					display_text("DON'T PANIC !!", 108, 3, flame_yellow, 3)
 				else
+					display_text("DON'T PANIC !!", 108, 3, flame_red, 3)
 					mem:write_i8(0xc7d86, 0)
 				end
 			else
