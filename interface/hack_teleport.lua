@@ -1,6 +1,8 @@
 -- Teleport Hack 
 -- Perform hack to teleport between hammers changing Jumpman's position
 
+-- Idea - Jumpman has regenerated as the next Dr Who.
+
 function update_teleport_ram(_x, _y, _ly)
     -- force 0 to disable the hammer
 	mem:write_i8(0xc6217, 0)
@@ -21,6 +23,40 @@ function update_teleport_ram(_x, _y, _ly)
 	
 end   
 
+
+function draw_tardis()
+	mode1 = mem:read_i8(0xc6005)
+	mode2 = mem:read_i8(0xc600a)
+	if mode1 == 3 and (mode2 == 11 or mode2 == 12) then
+		if stage == 1 then
+			--box
+			manager:machine().screens[":screen"]:draw_box(55, 166, 70, 179, 0xff0000ff, 0)
+			--windows
+			manager:machine().screens[":screen"]:draw_box(64, 168, 67, 172, 0xffffbd2e, 0)
+			manager:machine().screens[":screen"]:draw_box(64, 173, 67, 177, 0xffffbd2e, 0)
+			manager:machine().screens[":screen"]:draw_box(60, 168, 63, 172, 0xff000000, 0)
+			manager:machine().screens[":screen"]:draw_box(60, 173, 63, 177, 0xff000000, 0)
+			manager:machine().screens[":screen"]:draw_box(56, 168, 59, 172, 0xff000000, 0)
+			manager:machine().screens[":screen"]:draw_box(56, 173, 59, 177, 0xff000000, 0)
+			--bottom
+			manager:machine().screens[":screen"]:draw_line(55, 165, 55, 180, 0xff0000ff, 0)	
+			--flashing light
+			blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
+			if blink_toggle == 16 then
+				manager:machine().screens[":screen"]:draw_box(70, 172, 71, 173, 0xffffbd2e, 0)
+			else
+				manager:machine().screens[":screen"]:draw_box(70, 172, 71, 173, 0xffff0000, 0)
+			end
+		end
+	end
+end
+
+if loaded == 3 then
+	if teleport_hack_started ~= 1 then
+		emu.register_frame_done(draw_tardis, "frame")
+	end
+	teleport_hack_started = 1
+end
 
 stage = mem:read_i8(0xc6227)      -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets, 5-bonus)	
 grab = mem:read_i8(0xc6218)

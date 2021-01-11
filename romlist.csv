@@ -1,5 +1,6 @@
 #Rom Name,Sub Folder,Description,Slot,Emu,State,Unlock,Min Score,Bonus Score
 dkong,,DK Wolf,1,2,,0,,
+dkong,dkongwho,DK Who,2,1,,0,25000,50000
 dkong,,Donkey Kong,3,1,,0,50000,100000
 dkong,dkongtrn,DK Trainer,5,1,,0,,
 dkongjr,,DK Junior,8,1,,2000,20000,50000

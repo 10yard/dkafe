@@ -1,6 +1,7 @@
 ﻿-- Rising Lava and Flames Hack
 -- Lava rises up the level 
 
+
 function calc_sprite_top(sprite)
 	-- calculate the Y position of Jumpman
 	_y = mem:read_i8(0xc6205)
@@ -11,70 +12,6 @@ function calc_sprite_top(sprite)
 	return _y
 end
 
-function display_text(text, x, y, color, gap)
-	_len = string.len(text)
-	_y = y
-	s = manager:machine().screens[":screen"]
-	for i=1, _len do 
-		_char = string.sub(text, i, i)
-		if _char == "A" then
-			s:draw_text(x, _y, "$$$$$$ ", color) _y = _y + gap
-			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
-			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
-			s:draw_text(x, _y, "$$$$$$ ", color) _y = _y + gap
-		end
-		if _char == "C" then
-			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-		end
-		if _char == "D" then
-			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
-		end
-		if _char == "I" then
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-		end
-		if _char == "N" then
-			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
-			s:draw_text(x, _y, "    $  ", color) _y = _y + gap
-			s:draw_text(x, _y, "   $   ", color) _y = _y + gap
-			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
-		end
-		if _char == "O" then
-			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-			s:draw_text(x, _y, "$     $", color) _y = _y + gap
-			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
-		end
-		if _char == "P" then
-			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
-			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
-			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
-			s:draw_text(x, _y, "    $$ ", color) _y = _y + gap
-		end
-		if _char == "T" then
-			s:draw_text(x, _y, "      $", color) _y = _y + gap
-			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
-			s:draw_text(x, _y, "      $", color) _y = _y + gap
-		end
-		if _char == "'" then
-			s:draw_text(x, _y, "     $$", color) _y = _y + gap
-		end
-		if _char == "!" then
-			s:draw_text(x, _y, "$$ $$$$", color) _y = _y + gap
-		end
-		if _char == " " then
-			_y = _y + (gap * 4)
-		end
-		_y = _y + (gap * 2)
-	end
-end
 
 function draw_lava()
 	mode1 = mem:read_i8(0xc6005)
@@ -98,6 +35,9 @@ function draw_lava()
 	jumpman_y = calc_sprite_top()
 
 	if mode1 == 3 then
+		-- draw rising lava
+		manager:machine().screens[":screen"]:draw_box(0, 0, lava_y, 224, 0xddff0000, 0)
+		
 		if mode2 == 12 then			
 			-- issue warning to Jumpman
 			if lava_y + 9 > jumpman_y then
@@ -105,10 +45,10 @@ function draw_lava()
 				blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
 				if blink_toggle == 16 then
 					mem:write_i8(0xc7d86, 1)
-					display_text("DON'T PANIC !!", 108, 3, flame_yellow, 3)
+					block_text("DON'T PANIC !!", 111, 1, color_yellow, 3)
 				else
-					display_text("DON'T PANIC !!", 108, 3, flame_red, 3)
 					mem:write_i8(0xc7d86, 0)
+					block_text("DON'T PANIC !!", 105, 5, color_red, 3)
 				end
 			else
 				-- revert to default
@@ -127,10 +67,7 @@ function draw_lava()
 				lava_y = lava_y + 1
 			end
 		end
-		
-		-- draw rising lava 
-		manager:machine().screens[":screen"]:draw_box(0, 0, lava_y, 224, 0xddff0000, 0)
-		
+				
 		-- workaround Lua bug which prevent rightmost pixel being drawn
 		-- the pixel is blacked out with a text block
 		for i=0, 256 do	
@@ -144,9 +81,9 @@ function draw_lava()
 			if math.fmod(i, 14) == 0 then
 				adjust_y = math.random(-4, 4)
 				if adjust_y >= 0 then
-					flame_color = flame_yellow
+					flame_color = color_yellow
 				else
-					flame_color = flame_red
+					flame_color = color_red
 				end
 				tweak_y = lava_y + adjust_y
 				if tweak_y > 0 then
@@ -160,8 +97,8 @@ end
 if loaded == 3 then
 	if lava_hack_started ~= 1 then
 		--initialise some variables
-		flame_yellow = 0xffffbd2e
-		flame_red =  0xffff0000 
+		color_yellow = 0xffffbd2e
+		color_red =  0xffff0000 
 		lava_y = -7
 		--register the frame drawing callback
 		emu.register_frame_done(draw_lava, "frame")

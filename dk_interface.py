@@ -24,8 +24,11 @@ DATA_PLAYERS = "20,16,16,27,16,16,17,16,16,22,16,16,21,16,16"
 
 
 def apply_rom_specific_hacks(rom=None, subfolder=None):
-    if rom == "dkong" and subfolder == "dkonglava":
-        os.environ["HACK_LAVA"] = "1"
+    if rom == "dkong":
+        if subfolder == "dkonglava":
+            os.environ["HACK_LAVA"] = "1"
+        elif subfolder == "dkongwho":
+            os.environ["HACK_TELEPORT"] = "1"
 
 
 def lua_interface(rom=None, subfolder=None, min_score=None):

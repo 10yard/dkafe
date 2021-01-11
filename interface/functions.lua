@@ -47,3 +47,74 @@ function sleep(n)  -- seconds
    while clock() - t0 <= n do
    end
 end
+
+
+function block_text(text, x, y, color, gap)
+	_len = string.len(text)
+	_y = y
+	s = manager:machine().screens[":screen"]
+	for i=1, _len do 
+		_char = string.sub(text, i, i)
+		if _char == "A" then
+			s:draw_text(x, _y, "$$$$$$ ", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$ ", color) _y = _y + gap
+		end
+		if _char == "C" then
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+		end
+		if _char == "D" then
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+		end
+		if _char == "I" then
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+		end
+		if _char == "N" then
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "    $  ", color) _y = _y + gap
+			s:draw_text(x, _y, "   $   ", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+		end
+		if _char == "O" then
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, "$     $", color) _y = _y + gap
+			s:draw_text(x, _y, " $$$$$ ", color) _y = _y + gap
+		end
+		if _char == "P" then
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "   $  $", color) _y = _y + gap
+			s:draw_text(x, _y, "    $$ ", color) _y = _y + gap
+		end
+		if _char == "T" then
+			s:draw_text(x, _y, "      $", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "      $", color) _y = _y + gap
+		end
+		if _char == "#" then
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+			s:draw_text(x, _y, "$$$$$$$", color) _y = _y + gap
+		end
+		if _char == "'" then
+			s:draw_text(x, _y, "     $$", color) _y = _y + gap
+		end
+		if _char == "!" then
+			s:draw_text(x, _y, "$$ $$$$", color) _y = _y + gap
+		end
+		if _char == " " then
+			_y = _y + (gap * 4)
+		end
+		_y = _y + (gap * 2)
+	end
+end
