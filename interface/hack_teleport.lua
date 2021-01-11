@@ -23,37 +23,54 @@ function update_teleport_ram(_x, _y, _ly)
 	
 end   
 
+function draw_tardis(x, y)
+	--box and bottom
+	manager:machine().screens[":screen"]:draw_box(x, y+1, x+15, y+14, blue, 0)
+	manager:machine().screens[":screen"]:draw_line(x, y, x, y+15, blue, 0)	
+	--windows
+	manager:machine().screens[":screen"]:draw_box(x+9, y+3, x+12, y+7, yellow, 0)
+	manager:machine().screens[":screen"]:draw_box(x+9, y+8, x+12, y+12, yellow, 0)
+	manager:machine().screens[":screen"]:draw_box(x+5, y+3, x+8, y+7, cyan, 0)
+	manager:machine().screens[":screen"]:draw_box(x+5, y+8, x+8, y+12, cyan, 0)
+	manager:machine().screens[":screen"]:draw_box(x+1, y+3, x+4, y+7, cyan, 0)
+	manager:machine().screens[":screen"]:draw_box(x+1, y+8, x+4, y+12, cyan, 0)
+	--flashing light at top
+	blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
+	if blink_toggle == 16 then
+		manager:machine().screens[":screen"]:draw_box(x+15, y+7, x+16, y+8, yellow, 0)
+	else
+		manager:machine().screens[":screen"]:draw_box(x+15, y+7, x+16, y+8, red, 0)
+	end
+end
 
-function draw_tardis()
-	mode1 = mem:read_i8(0xc6005)
-	mode2 = mem:read_i8(0xc600a)
-	if mode1 == 3 and (mode2 == 11 or mode2 == 12) then
-		if stage == 1 then
-			--box
-			manager:machine().screens[":screen"]:draw_box(55, 166, 70, 179, 0xff0000ff, 0)
-			--windows
-			manager:machine().screens[":screen"]:draw_box(64, 168, 67, 172, 0xffffbd2e, 0)
-			manager:machine().screens[":screen"]:draw_box(64, 173, 67, 177, 0xffffbd2e, 0)
-			manager:machine().screens[":screen"]:draw_box(60, 168, 63, 172, 0xff000000, 0)
-			manager:machine().screens[":screen"]:draw_box(60, 173, 63, 177, 0xff000000, 0)
-			manager:machine().screens[":screen"]:draw_box(56, 168, 59, 172, 0xff000000, 0)
-			manager:machine().screens[":screen"]:draw_box(56, 173, 59, 177, 0xff000000, 0)
-			--bottom
-			manager:machine().screens[":screen"]:draw_line(55, 165, 55, 180, 0xff0000ff, 0)	
-			--flashing light
-			blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
-			if blink_toggle == 16 then
-				manager:machine().screens[":screen"]:draw_box(70, 172, 71, 173, 0xffffbd2e, 0)
-			else
-				manager:machine().screens[":screen"]:draw_box(70, 172, 71, 173, 0xffff0000, 0)
+function dkongwho_overlay()
+	if mem:read_i8(0xc6A18) ~= 0 then
+		-- hammer hasn't yet been used
+		mode1 = mem:read_i8(0xc6005)
+		mode2 = mem:read_i8(0xc600a)
+		if mode1 == 3 and (mode2 == 11 or mode2 == 12) then
+			if stage == 1 then        -- Girders
+				draw_tardis(55, 165)
+				draw_tardis(148, 14)
+			elseif stage == 2 then    -- Pies/Conveyors
+				draw_tardis(68, 101)
+				draw_tardis(107, 13)
+			elseif stage == 4 then    -- Rivets
+				draw_tardis(148, 102)
+				draw_tardis(108, 5)
 			end
 		end
 	end
 end
 
-if loaded == 3 then
+if loaded == 3 and data_subfolder == "dkongwho" then
+	-- rom specific hack to enable blue Tardis overlay graphic
 	if teleport_hack_started ~= 1 then
-		emu.register_frame_done(draw_tardis, "frame")
+		blue = 0xff0402dc
+		yellow = 0xffffbd2e
+		red = 0xffe8070a
+		cyan = 0xff14f3ff
+		emu.register_frame_done(dkongwho_overlay, "frame")
 	end
 	teleport_hack_started = 1
 end
