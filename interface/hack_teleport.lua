@@ -23,7 +23,14 @@ function update_teleport_ram(_x, _y, _ly)
 	
 end   
 
-function draw_tardis(x, y)
+function draw_tardis(x1, y1, x2, y2)
+	if math.fmod(mem:read_i8(0xc638c), 2) == 0  then -- sync flashing with bonus timer
+		x = x1
+		y = y1
+	else
+		x = x2
+		y = y2
+	end
 	--box and bottom
 	manager:machine().screens[":screen"]:draw_box(x, y+1, x+15, y+14, blue, 0)
 	manager:machine().screens[":screen"]:draw_line(x, y, x, y+15, blue, 0)	
@@ -34,7 +41,7 @@ function draw_tardis(x, y)
 	manager:machine().screens[":screen"]:draw_box(x+5, y+8, x+8, y+12, cyan, 0)
 	manager:machine().screens[":screen"]:draw_box(x+1, y+3, x+4, y+7, cyan, 0)
 	manager:machine().screens[":screen"]:draw_box(x+1, y+8, x+4, y+12, cyan, 0)
-	--flashing light at top
+	-- light
 	blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
 	if blink_toggle == 16 then
 		manager:machine().screens[":screen"]:draw_box(x+15, y+7, x+16, y+8, yellow, 0)
@@ -43,27 +50,41 @@ function draw_tardis(x, y)
 	end
 end
 
+function draw_stars()
+	key = 0
+	for x=0, 224 do
+		for y=0, 256 do
+			if starfield[key] == 1 then
+				manager:machine().screens[":screen"]:draw_line(y, x, y, x, 0xbbffffff, 0)
+			end
+			key = key + 1
+		end
+	end
+end
+
 function dkongwho_overlay()
 	mode1 = mem:read_i8(0xc6005)
 	mode2 = mem:read_i8(0xc600a)
+
+	draw_stars()
+
 	if mem:read_i8(0xc6A18) ~= 0 then
 		-- hammer hasn't yet been used
 		-- (during play) or (during attact mode) including just before and just after
 		if (mode1 == 3 and mode2 >= 11 and mode2 <= 13) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
-			-- draw tardis graphics and switch palette
+			-- draw tardis graphics
 			if stage == 1 then        -- Girders
-				draw_tardis(55, 165)
-				draw_tardis(148, 14)
+				draw_tardis(55, 165, 148, 14)
 			elseif stage == 2 then    -- Pies/Conveyors
-				draw_tardis(68, 101)
-				draw_tardis(107, 13)
+				draw_tardis(68, 101, 107, 13)
 			elseif stage == 4 then    -- Rivets
-				draw_tardis(148, 102)
-				draw_tardis(108, 5)
+				draw_tardis(148, 102, 108, 5)
 			end
 		end
 	else
+		-- hammer has been used
 		if (mode1 == 3 and mode2 >= 11 and mode2 <= 13) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
+			-- switch palette
 			if stage == 1 then        -- Girders
 				mem:write_i8(0xc7d86, 1)				
 			elseif stage == 2 then    -- Pies/Conveyors
@@ -82,6 +103,14 @@ if loaded == 3 and data_subfolder == "dkongwho" then
 		yellow = 0xffffbd2e
 		red = 0xffe8070a
 		cyan = 0xff14f3ff
+		
+		starfield={}
+		for x=0, 224 do	
+			for y=0, 256 do
+				table.insert(starfield, math.random(100))
+			end
+		end
+		
 		emu.register_frame_done(dkongwho_overlay, "frame")
 	end
 	teleport_hack_started = 1
