@@ -44,11 +44,13 @@ function draw_tardis(x, y)
 end
 
 function dkongwho_overlay()
+	mode1 = mem:read_i8(0xc6005)
+	mode2 = mem:read_i8(0xc600a)
 	if mem:read_i8(0xc6A18) ~= 0 then
 		-- hammer hasn't yet been used
-		mode1 = mem:read_i8(0xc6005)
-		mode2 = mem:read_i8(0xc600a)
-		if mode1 == 3 and (mode2 == 11 or mode2 == 12) then
+		-- (during play) or (during attact mode) including just before and just after
+		if (mode1 == 3 and mode2 >= 11 and mode2 <= 13) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
+			-- draw tardis graphics and switch palette
 			if stage == 1 then        -- Girders
 				draw_tardis(55, 165)
 				draw_tardis(148, 14)
@@ -58,6 +60,16 @@ function dkongwho_overlay()
 			elseif stage == 4 then    -- Rivets
 				draw_tardis(148, 102)
 				draw_tardis(108, 5)
+			end
+		end
+	else
+		if (mode1 == 3 and mode2 >= 11 and mode2 <= 13) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
+			if stage == 1 then        -- Girders
+				mem:write_i8(0xc7d86, 1)				
+			elseif stage == 2 then    -- Pies/Conveyors
+				mem:write_i8(0xc7d86, 0)				
+			elseif stage == 4 then    -- Rivets
+				mem:write_i8(0xc7d86, 0) 				
 			end
 		end
 	end
