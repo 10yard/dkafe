@@ -32,7 +32,7 @@ ENABLE_HAMMERS = True        # Show hammers and enable teleport between hammers.
 AWARDS = [0, 1000, 2000]     # Coins awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150              # How many coins Jumpman loses when time runs out
-CREDITS = 1                  # Automatically set credits in MAME at start of game - when using interface
+CREDITS = 0                  # Automatically set credits in MAME at start of game - when using interface
 INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
 TIMER_START = 5000           # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
@@ -43,7 +43,7 @@ COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
 # Hacks
-HACK_TELEPORT = 1            # Hack DK to allow teleport between hammers. 0 or 1
+HACK_TELEPORT = 0            # Hack DK to allow teleport between hammers. 0 or 1
 HACK_NOHAMMERS = 0           # Hack DK to remove hammers.  0 or 1
 HACK_PENALTYPOINTS = 0       # Hack DK to lose points instead of lives.  0 or set penalty as 1-9 in tens of thousands.
 HACK_LAVA = 0                # Hack DK to limit time for ascending the level due to rising lava. 0 or 1.
