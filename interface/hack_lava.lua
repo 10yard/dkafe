@@ -31,7 +31,6 @@ function draw_lava()
 		lava_y = 60
 	end
 	
-	--print("Mode1: "..mode1.." Mode2: "..mode2)
 	jumpman_y = calc_sprite_top()
 
 	if mode1 == 3 then
@@ -45,7 +44,7 @@ function draw_lava()
 				blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
 				if blink_toggle == 16 then
 					mem:write_i8(0xc7d86, 1)
-					block_text("DON'T PANIC !!", 111, 1, color_yellow, 3)
+					block_text("DON'T PANIC !!", 105, 5, color_yellow, 3)
 				else
 					mem:write_i8(0xc7d86, 0)
 					block_text("DON'T PANIC !!", 105, 5, color_red, 3)
@@ -79,7 +78,7 @@ function draw_lava()
 		-- add flames
 		for i=0, 224 do		
 			if math.fmod(i, 14) == 0 then
-				adjust_y = math.random(-4, 4)
+				adjust_y = math.random(-3, 3)
 				if adjust_y >= 0 then
 					flame_color = color_yellow
 				else
