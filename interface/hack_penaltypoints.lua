@@ -1,8 +1,7 @@
--- Penalty Points Hack
+-- DKAFE Penalty Points Hack
 -- Lose a set number of points instead of lives
 
 if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
-
 	score_intot = mem:read_i8(0xc60B4)            -- score in tens of thousands part
 	penalty_points = tonumber(hack_penaltypoints) -- penalty points to lose (in tens of thousands)
 	game_mode = mem:read_i8(0xc6005)              -- 3 = playing the game
@@ -61,6 +60,5 @@ if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 		mem:write_i8(0xc7703, 10)
 		mem:write_i8(0xc76E3, 10)
 	end
-
 end
 

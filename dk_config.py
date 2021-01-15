@@ -46,7 +46,7 @@ LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always
 HACK_TELEPORT = 0            # Hack DK to allow teleport between hammers. 0 or 1
 HACK_NOHAMMERS = 0           # Hack DK to remove hammers.  0 or 1
 HACK_PENALTYPOINTS = 0       # Hack DK to lose points instead of lives.  0 or set penalty as 1-9 in tens of thousands.
-HACK_LAVA = 0                # Hack DK to limit time for ascending the level due to rising lava. 0 or 1.
+HACK_LAVA = 0                # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1.
 
 # Root directory of frontend
 ROOT_DIR = os.getcwd()

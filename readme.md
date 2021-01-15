@@ -71,7 +71,7 @@ The frontend can be configured with multiple arcade emulators to allow a combina
 The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the DKAFE roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches - which are included with the software.  See the full list of patches below. 
 
 
-Automativally generated roms
+Automatically generated roms
 ============================
 DKAFE builds a default frontend using various patches of the original "dkong.zip" (US Set 1) arcade rom. 
 
@@ -108,6 +108,7 @@ By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
 
 By Jon Wilson (me)
+ - DK Who and the Daleks
  - Donkey Kong Lava Panic
 
 By unknown others
