@@ -69,6 +69,8 @@ function get_block_character(char)
 		blocks = "####..#..#..###"
 	elseif char == "D" then
 		blocks = "##.# ## ## ###."
+	elseif char == "E" then
+		blocks = "####..####..###"
 	elseif char == "H" then
 		blocks = "#.##.#####.##.#"
 	elseif char == "I" then
@@ -76,6 +78,8 @@ function get_block_character(char)
 	elseif char == "K" then
 		blocks = "#..##.#.###.#.#.#..#"
 		width = 4
+	elseif char == "L" then
+		blocks = "#..#..#..#..###"
 	elseif char == "O" then
 		blocks = "####.##.##.####"
 	elseif char == "P" then
@@ -86,6 +90,8 @@ function get_block_character(char)
 	elseif char == "N" then
 		blocks = "#..###.######.###..#"
 		width = 4
+	elseif char == "S" then
+		blocks = "####..###..####"
 	elseif char == "T" then
 		blocks = "###.#..#..#..#."
 	elseif char == "W" then

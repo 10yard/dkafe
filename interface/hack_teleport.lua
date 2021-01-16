@@ -96,8 +96,17 @@ function dkongwho_overlay()
 	mode2 = mem:read_i8(0xc600a)
 
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
-		screen:draw_box(96, 8, 192, 224, BLACK, 0)
-		block_text("DK WHO", 158, 16, BLUE, CYAN) 
+		screen:draw_box(96, 16, 136, 208, BLACK, 0)
+		screen:draw_box(152, 8, 198, 208, BLACK, 0)
+		block_text("DK WHO", 191, 16, BLUE, CYAN) 
+		block_text("DALEKS", 128, 16, BLUE, CYAN) 
+		mem:write_i8(0xc764d, 0x11)
+		mem:write_i8(0xc762d, 0x1e)
+		mem:write_i8(0xc760d, 0x14)
+		mem:write_i8(0xc75ed, 0x10)
+		mem:write_i8(0xc75cd, 0x24)
+		mem:write_i8(0xc75ad, 0x18)
+		mem:write_i8(0xc758d, 0x15)
 	end
 
 	draw_stars()
