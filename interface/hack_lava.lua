@@ -45,7 +45,7 @@ function draw_lava()
 				screen:draw_box(256, 224, lava_y, 0, 0xc77990000, 0)
 				
 				-- flash colour palette for dramatic effect
-				if mem:read_i8(0xc7720) == 16 then  -- sync timing with the flashing 1UP
+				if toggle() == 1 then
 					mem:write_i8(0xc7d86, 1)
 					block_text("PANIC!", 128, 16, 0xcffEE7511, 0xcffF5BCA0) 					
 				else					

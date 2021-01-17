@@ -133,3 +133,21 @@ function block_text(text, x, y, color1, color2)
 		_y = _y + (width * 8) + 8
 	end
 end
+
+function toggle()
+	-- Sync with flashing of 1UP
+	--if mem:read_i8(0xc7720) == 16 then
+	if math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
+		return 1
+	else
+		return 0
+	end
+end
+
+function write_message(start_address, length, text)
+	for key=1, length do
+			mem:write_i8(start_address - ((key - 1) * 32), text[key])
+	end
+end
+
+

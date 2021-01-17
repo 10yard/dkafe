@@ -40,15 +40,14 @@ function draw_tardis(y1, x1, y2, x2)
 	screen:draw_box(y, x+1, y+15, x+14, BLUE, 0)
 	screen:draw_box(y, x, y+1, x+15, BLUE, 0)	
 	--windows
-	screen:draw_box(y+9, x+3, y+12, x+7, BROWN, 0)
-	screen:draw_box(y+9, x+8, y+12, x+12, BROWN, 0)
-	screen:draw_box(y+5, x+3, y+8, x+7, CYAN, 0)
-	screen:draw_box(y+5, x+8, y+8, x+12, CYAN, 0)
-	screen:draw_box(y+1, x+3, y+4, x+7, CYAN, 0)
-	screen:draw_box(y+1, x+8, y+4, x+12, CYAN, 0)
+	screen:draw_box(y+9, x+3, y+12, x+7, BROWN, BROWN)
+	screen:draw_box(y+9, x+8, y+12, x+12, BROWN, BROWNp)
+	screen:draw_box(y+5, x+3, y+8, x+7, BLUE, CYAN)
+	screen:draw_box(y+5, x+8, y+8, x+12, BLUE, CYAN)
+	screen:draw_box(y+1, x+3, y+4, x+7, BLUE, CYAN)
+	screen:draw_box(y+1, x+8, y+4, x+12, BLUE, CYAN)
 	-- blinking light
-	blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 
-	if blink_toggle == 16 then
+	if toggle() == 1 then
 		screen:draw_box(y+15, x+7, y+16, x+8, YELLOW, 0)
 	else
 		screen:draw_box(y+15, x+7, y+16, x+8, RED, 0)
@@ -64,16 +63,17 @@ function draw_stars()
 	end
 end
 
-function animate_broken_ship()
+function animate_broken_ship(x, y, dont_check_lit)
 	-- if fire is lit
-	if mem:read_i8(0xc6348) == 1 then
+	if dont_check_lit == 1 or mem:read_i8(0xc6348) == 1 then
 		-- flash colours in sync with 1UP
-		if mem:read_i8(0xc7720) == 16 then
+		-- use timer as 1UP doesn't flash on the attract mode
+		if toggle() == 1 then
 			flame_color = YELLOW
 		else
 			flame_color = RED
 		end
-		screen:draw_box(18, 22, 22, 26, flame_color)
+		screen:draw_box(x, y, x+4, y+4, flame_color)
 	end
 
 end
@@ -96,26 +96,31 @@ function dkongwho_overlay()
 	mode2 = mem:read_i8(0xc600a)
 
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
+		-- Title Screen
 		screen:draw_box(96, 16, 136, 208, BLACK, 0)
 		screen:draw_box(152, 8, 198, 208, BLACK, 0)
 		block_text("DK WHO", 191, 16, BLUE, CYAN) 
 		block_text("DALEKS", 128, 16, BLUE, CYAN) 
-		mem:write_i8(0xc764d, 0x11)
-		mem:write_i8(0xc762d, 0x1e)
-		mem:write_i8(0xc760d, 0x14)
-		mem:write_i8(0xc75ed, 0x10)
-		mem:write_i8(0xc75cd, 0x24)
-		mem:write_i8(0xc75ad, 0x18)
-		mem:write_i8(0xc758d, 0x15)
+		--AND THE
+		write_message(0xc766d, 7, {0x11, 0x1e, 0x14, 0x10, 0x24, 0x18, 0x15})
+		-- DK WHO OF GALLIFREY
+		screen:draw_box(16, 0, 32, 224, BLACK, 0)
+		write_message(0xc777e, 24, {0x14, 0x1b, 0x10, 0x27, 0x18, 0x1f, 0x10, 0x1f, 0x16, 0x10, 0x17, 0x11, 0x1c, 0x1c, 0x19, 0x16, 0x22, 0x15, 0x29, 0x10, 0x19, 0x1e, 0x13, 0x2b})
+		-- Tardis jumping left to right
+		if math.fmod(mem:read_i8(0xc601a) + 128, 84) <=42 then
+			draw_tardis(64, 40, 64, 40)
+		else
+			draw_tardis(64, 172, 64, 172)
+		end
 	end
 
 	draw_stars()
-
 	-- (during play) or (during attact mode) including just before and just after
-	if (mode1 == 3 and mode2 >= 11 and mode2 <= 13) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
+	if (mode1 == 3 and (mode2 == 11 or mode2 == 12 or mode2 == 13 or mode2 == 22)) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
 		if stage == 1 then
-			animate_broken_ship()
+			animate_broken_ship(18, 22, 0)
 		elseif stage == 2 then
+			animate_broken_ship(122, 110, 1)
 			adjust_weeping_angels()
 		end
 
