@@ -10,6 +10,7 @@ data_includes_folder = os.getenv("DATA_INCLUDES")
 dofile(data_includes_folder.."/functions.lua")
 dofile(data_includes_folder.."/globals.lua")
 
+--register function for each frame
 emu.register_frame(function()
 	status, loaded = pcall(get_loaded)
 		
@@ -57,12 +58,8 @@ emu.register_frame(function()
 	
 	if loaded == 3 then
 		mode1 = mem:read_i8(0xc6005)
-		mode2 = mem:read_i8(0xc600a)
-		
-		-- score awards message during intro
-		if mode1 == 3 and mode2 == 7 then		
-			dofile(data_includes_folder.."/hack_awards.lua")
-		end
+		mode2 = mem:read_i8(0xc600a)		
+		display_awards()
 		
 		-- Optional hacks
 		if hack_teleport == "1" then
@@ -79,6 +76,11 @@ emu.register_frame(function()
 	end
 end)
 
+-- Register callback function on frame repaint
+emu.register_frame_done(frame_repaint, "frame")
+
+
+-- Register callback function on exit
 emu.register_stop(function()
 	-- Export score data
 	file = io.open(data_file, "w+")

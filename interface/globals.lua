@@ -98,4 +98,5 @@ dkchars["="] = 0x34
 dkchars["!"] = 0x38
 dkchars["'"] = 0x3a
 dkchars[","] = 0x43
+dkchars["^"] = 0xb0 -- rivet block
 dkchars["?"] = 0xfb

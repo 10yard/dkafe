@@ -56,7 +56,7 @@ end
 
 function draw_stars()
 	-- draw a starfield background
-	for key=0, number_of_stars, 2 do
+	for key=1, number_of_stars, 2 do
 		_y = starfield[key]
 		_x = starfield[key+1]
 		screen:draw_line(_y, _x, _y, _x, 0xcbbffffff, 0)
@@ -195,11 +195,11 @@ end
 if loaded == 3 and data_subfolder == "dkongwho" then
 	-- rom specific hack for DK Who
 	if teleport_hack_started ~= 1 then	
-		number_of_stars = 500
+		number_of_stars = 400
 		starfield={}
-		for i=0, number_of_stars do
-			table.insert(starfield, math.random(224))
-			table.insert(starfield, math.random(256))
+		for i=1, number_of_stars do
+			table.insert(starfield, math.random(255))
+			table.insert(starfield, math.random(223))
 		end
 		-- Register callback function to add extra graphics
 		emu.register_frame_done(dkongwho_overlay, "frame")

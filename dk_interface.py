@@ -60,7 +60,7 @@ def lua_interface(rom=None, subfolder=None, min_score=None, bonus_score=None):
         # Apply rom specific Lua hacks such as the lava hack in dkonglava
         apply_rom_specific_hacks(rom, subfolder)
 
-        # We are only concerned with minimum score to set the game highscore and to later establish if it was beaten.
+        # We are concerned with minimum score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
             preset = True
             score_width, double_width = 6, 6

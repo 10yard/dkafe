@@ -151,4 +151,23 @@ function write_message(start_address, text)
 	end
 end
 
+function display_awards()
+	-- Display score awards during the DK intro
+	if mode1 == 3 and mode2 == 7 then		
+		dkclimb = mem:read_i8(0xc638e)
+		if dkclimb > 0 then
+			if dkclimb <= 22 then
+				write_message(0xc7774, data_bonus_score.." SCORE")
+				write_message(0xc7574, data_bonus_award.." COINS")
+			end
+			if dkclimb <= 26 then
+				write_message(0xc7778, data_min_score.." SCORE")
+				write_message(0xc7578, data_min_award.." COINS")
+			end
+			if dkclimb <= 30 then
+				write_message(0xc777c, "PLAY TO WIN COINS")
+			end				
+		end
+	end
+end
 

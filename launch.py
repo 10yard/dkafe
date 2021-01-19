@@ -384,6 +384,7 @@ def launch_rom(info):
             play_sound_effect("sounds/coin.wav")
             clear_screen()
             if competing and name not in ("dkong", "dkongx11", "dkongpe", "dkonghrd", "dkongf"):
+                # Flash message showing awards before game starts. dkong roms (in above list) have the message in game.
                 flash_message(f"Beat {_s.format_K(_min)} for {AWARDS[1]} coins", x=15, y=80, clear=False)
                 flash_message(f"Beat {_s.format_K(bonus)} for {AWARDS[2]} coins", x=15, y=100, clear=False)
                 flash_message("G O   F O R   I T !", x=30, y=140, clear=False, bright=True, cycles=9)
