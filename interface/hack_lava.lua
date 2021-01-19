@@ -13,8 +13,6 @@ function calc_sprite_top(sprite)
 end
 
 function draw_lava()
-	mode1 = mem:read_i8(0xc6005)
-	mode2 = mem:read_i8(0xc600a)
 	level = mem:read_i8(0xc6229)
 	stage = mem:read_i8(0xc6227)   -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets)
 	if stage == 4 then

@@ -27,12 +27,13 @@ FULLSCREEN = True
 FREE_PLAY = True             # Jumpman does not have to pay to play
 UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = True           # Allow selection from the quick access game list
-ENABLE_HAMMERS = True        # Show hammers and enable teleport between hammers.
+ENABLE_HAMMERS = True        # Show hammers and enable teleport between hammers in the frontend
 
 AWARDS = [0, 1000, 2000]     # Coins awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150              # How many coins Jumpman loses when time runs out
-CREDITS = 0                  # Automatically set credits in MAME at start of game - when using interface
+CREDITS = 1                  # Automatically set credits in MAME at start of game - when using interface
+AUTOSTART = 1                # Automatically start the game in MAME (by simulating P1 start) when using interface
 INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
 TIMER_START = 5000           # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer

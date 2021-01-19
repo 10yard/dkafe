@@ -118,6 +118,25 @@ By unknown others
  - Donkey Kong Pace (dkongpace)
 
 
+How to use romlist.csv
+======================
+A default romlist.csv is provided for use with the automatically generated roms (above).
+
+The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
+
+The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into /original subfolder to prevent it being overwritten.
+
+The special subfolder name "shell" can be used when you want to launch a batch file or shell script.  Create a file named <romname>.bat on Windows or <romname>.sh elsewhere inside the shell subfolder of dkafe.
+
+All roms in the list should be given a slot position (between 1 and 46) of where the icon should appear and a basic descriptive name.
+
+Multiple emulators can be configured in settings.txt and the launch emulator can be set in the emu column. If blank the default 0 will be used.
+
+All roms should be provided with a similarly named image as a .png file in the /artwork/icons folder or subfolder.  You can use the default_machine.png as a template.
+
+Hopefully that all makes sense.  Refer to the example romlist.csv
+
+
 Emulator recommendation
 =======================
 For Windows
@@ -141,28 +160,11 @@ on top of dietpi lightweight OS:
   - https://dietpi.com/
   
 
-How to use romlist.txt
-======================
-The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
-
-The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into /original subfolder to prevent it being overwritten.
-
-The special subfolder name "shell" can be used when you want to launch a batch file or shell script.  Create a file named <romname>.bat on Windows or <romname>.sh elsewhere inside the shell subfolder of dkafe.
-
-Multiple emulators can be configured in settings.txt and the launch emulator can be set in the emu column. If blank the default 0 will be used.
-
-All roms in the list should be given a slot position (between 1 and 46) of where the icon should appear and a basic descriptive name.
-
-All roms should also have a similarly named image as a .png file in the /artwork/icons folder or subfolder.  You can use the default_machine.png as a template.
-
-Hopefully that all makes sense.  Refer to the example romlist.csv
-
-
 How to build?
 =============
 Requires Python3 (from v3.7) with installed packages from requirements.txt
 
-Pyinstaller is required to build the application on Windows.
+Pyinstaller can be used to build the application binary on Windows.
   - pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
 
 See build.bat for an example build script making use of venv (virtual environment for Python)
@@ -170,7 +172,7 @@ See build.bat for an example build script making use of venv (virtual environmen
 
 Motivations?
 ============
-This application was made for my own DIY Donkey Kong arcade machine as a replacement for a 60-in-1 board.  I was looking for something more in keeping with the era (graphics are rendered at 224x256) that would look and feel relevant to the early 80's.  Bringing together all of the Donkey Kong roms and rom hacks into one place with an incentive to play them and tools to aid progression (trainers) and .inp recording capability for score submission.  I want something to startup quickly and be capable of running on multiple platforms (Windows, Mac, Rasp Pi, Android).
+This application was made for my own DIY Donkey Kong arcade machine as a replacement for a 60-in-1 board.  I was looking to create something graphically in keeping with the era (rendering graphics at 224x256) feel relevant to the early 80's.  Bringing together all of the Donkey Kong roms and rom hacks into one place with an incentive to play them and tools to aid progression (trainers) and .inp recording capability for score submission.  I want something to startup quickly and be capable of running on multiple platforms (Windows, Mac, Rasp Pi, Android).
 
 
 Thanks to
@@ -189,6 +191,14 @@ Paul Goes for an excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
 Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika and Don Hodges.
+
+WolfMAME by Mahlemiut
+https://github.com/mahlemiut/wolfmame
+
+Python and pygame
+https://www.python.org/ and https://www.pygame.org/
+
+
 
 
 Feedback

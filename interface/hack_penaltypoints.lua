@@ -4,8 +4,6 @@
 if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 	score_intot = mem:read_i8(0xc60B4)            -- score in tens of thousands part
 	penalty_points = tonumber(hack_penaltypoints) -- penalty points to lose (in tens of thousands)
-	game_mode = mem:read_i8(0xc6005)              -- 3 = playing the game
-	game_mode2 = mem:read_i8(0xc600a)             -- state indicator of current game
 	jumpman_status = mem:read_i8(0xc6200)         -- 1 = alive, 0 = dead
 
 	--Force remaining lives to 2
@@ -15,7 +13,7 @@ if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 	mem:write_i8(0xc6021, 0)	
 
 	-- Check if life was lost and sufficient points for penalty
-	if game_mode == 3 and game_mode2 >= 0xC and jumpman_status == 0 then	
+	if mode1 == 3 and mode2 >= 0xC and jumpman_status == 0 then	
 		-- deduct penalty from score
 		if score_intot >= penalty_points then
 			-- score is held in #6084, #6083, #6082

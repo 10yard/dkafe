@@ -4,9 +4,9 @@ function string:split(sep)
 	self:gsub(pattern, function(c) fields[#fields+1] = c end)
 	return fields
 end
-   
-   
+      
 function get_formatted_data(var_name)
+	-- read environment variable and convert comma separated values to a table
 	local content = os.getenv(var_name)
 	if content ~= nil then
 		content = content:split(",")
@@ -15,11 +15,9 @@ function get_formatted_data(var_name)
 	return content
 end   
 
-
 function get_loaded()
 	return emu["loaded"]
 end   
-
 
 function query_highscore()
 	local highscore = ""
@@ -59,9 +57,10 @@ function draw_block(x, y, color1, color2)
 end
 
 function get_block_character(char)
+	-- data for the large block characters
 	blocks = ""
 	width = 3
-	if char == "A" then
+	if char == "A" then 
 		blocks = "####.#####.##.#"
 	elseif char == "B" then
 		blocks = "##.#.###.#.###." 
@@ -97,7 +96,6 @@ function get_block_character(char)
 	elseif char == "W" then
 		blocks = "#.#.##.#.##.#.###.###...#"
 		width = 5
-
 	elseif char == " " then
 		blocks = "     "
 		width = 1
@@ -112,6 +110,7 @@ function get_block_character(char)
 end
 
 function block_text(text, x, y, color1, color2)
+	-- Write large block characters
 	_x = x
 	_y = y
 	s = manager:machine().screens[":screen"]
@@ -135,7 +134,7 @@ function block_text(text, x, y, color1, color2)
 end
 
 function toggle()
-	-- Sync with flashing of 1UP
+	-- Sync with flashing 1UP
 	--if mem:read_i8(0xc7720) == 16 then
 	if math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
 		return 1
@@ -144,9 +143,11 @@ function toggle()
 	end
 end
 
-function write_message(start_address, length, text)
-	for key=1, length do
-			mem:write_i8(start_address - ((key - 1) * 32), text[key])
+function write_message(start_address, text)
+	-- write characters of message to DK's video ram
+	for key=1, string.len(text) do
+		_char = string.sub(text, key, key)
+		mem:write_i8(start_address - ((key - 1) * 32), dkchars[string.sub(text, key, key)])
 	end
 end
 

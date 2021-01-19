@@ -48,10 +48,22 @@ emu.register_frame(function()
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
 			mem:write_i8(0x6001, data_credits)
 		end
+		-- Optionally start the game by simulating P1 start being pressed
+		if data_autostart == "1" then
+			ports[":IN2"].fields["1 Player Start"]:set_value(1)
+		end
 		emu["loaded"] = 3
 	end
 	
 	if loaded == 3 then
+		mode1 = mem:read_i8(0xc6005)
+		mode2 = mem:read_i8(0xc600a)
+		
+		-- score awards message during intro
+		if mode1 == 3 and mode2 == 7 then		
+			dofile(data_includes_folder.."/hack_awards.lua")
+		end
+		
 		-- Optional hacks
 		if hack_teleport == "1" then
 			dofile(data_includes_folder.."/hack_teleport.lua")

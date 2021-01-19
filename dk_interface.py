@@ -1,5 +1,5 @@
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS, HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTYPOINTS
+from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTYPOINTS
 
 # Memory addresses for scores and players data
 # 6 Bytes per score
@@ -31,7 +31,7 @@ def apply_rom_specific_hacks(rom=None, subfolder=None):
             os.environ["HACK_TELEPORT"] = "1"
 
 
-def lua_interface(rom=None, subfolder=None, min_score=None):
+def lua_interface(rom=None, subfolder=None, min_score=None, bonus_score=None):
     # receive rom name, subfolder name and the target minimum score
     # Logic is mostly driven by the rom name but there are some exceptions were the subfolder name of a specific
     # rom is needed.
@@ -45,6 +45,11 @@ def lua_interface(rom=None, subfolder=None, min_score=None):
         os.environ["DATA_FILE"] = compete_file
         os.environ["DATA_SUBFOLDER"] = subfolder
         os.environ["DATA_CREDITS"] = str(CREDITS)
+        os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart
+        os.environ["DATA_MIN_SCORE"] = format_K(str(min_score))
+        os.environ["DATA_MIN_AWARD"] = str(AWARDS[1])
+        os.environ["DATA_BONUS_SCORE"] = format_K(str(bonus_score))
+        os.environ["DATA_BONUS_AWARD"] = str(AWARDS[2])
 
         # Apply hacks based on front end settings
         os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
@@ -150,6 +155,13 @@ def format_numeric_data(top_scores, width=6, first_only=False):
             break
     return data.strip(",")
 
+def format_K(text):
+    if text.endswith("000000"):
+        return text[:-6] + "M"
+    elif text.endswith("000"):
+        return text[:-3] + "K"
+    else:
+        return text
 
 if __name__ == "__main__":
     pass

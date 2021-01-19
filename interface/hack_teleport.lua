@@ -41,7 +41,7 @@ function draw_tardis(y1, x1, y2, x2)
 	screen:draw_box(y, x, y+1, x+15, BLUE, 0)	
 	--windows
 	screen:draw_box(y+9, x+3, y+12, x+7, BROWN, BROWN)
-	screen:draw_box(y+9, x+8, y+12, x+12, BROWN, BROWNp)
+	screen:draw_box(y+9, x+8, y+12, x+12, BROWN, BROWN)
 	screen:draw_box(y+5, x+3, y+8, x+7, BLUE, CYAN)
 	screen:draw_box(y+5, x+8, y+8, x+12, BLUE, CYAN)
 	screen:draw_box(y+1, x+3, y+4, x+7, BLUE, CYAN)
@@ -92,30 +92,29 @@ function adjust_weeping_angels()
 end
 
 function dkongwho_overlay()
-	mode1 = mem:read_i8(0xc6005)
-	mode2 = mem:read_i8(0xc600a)
-
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
-		-- Title Screen
+		-- Title screen
 		screen:draw_box(96, 16, 136, 208, BLACK, 0)
 		screen:draw_box(152, 8, 198, 208, BLACK, 0)
 		block_text("DK WHO", 191, 16, BLUE, CYAN) 
+		write_message(0xc766d, "AND THE")
 		block_text("DALEKS", 128, 16, BLUE, CYAN) 
-		--AND THE
-		write_message(0xc766d, 7, {0x11, 0x1e, 0x14, 0x10, 0x24, 0x18, 0x15})
-		-- DK WHO OF GALLIFREY
+
+		-- Bottom text
 		screen:draw_box(16, 0, 32, 224, BLACK, 0)
-		write_message(0xc777e, 24, {0x14, 0x1b, 0x10, 0x27, 0x18, 0x1f, 0x10, 0x1f, 0x16, 0x10, 0x17, 0x11, 0x1c, 0x1c, 0x19, 0x16, 0x22, 0x15, 0x29, 0x10, 0x19, 0x1e, 0x13, 0x2b})
+		write_message(0xc777e, "DK WHO OF GALLIFREY INC.")
+
 		-- Tardis jumping left to right
 		if math.fmod(mem:read_i8(0xc601a) + 128, 84) <=42 then
-			draw_tardis(64, 40, 64, 40)
+			draw_tardis(56, 40, 56, 40)
 		else
-			draw_tardis(64, 172, 64, 172)
+			draw_tardis(56, 172, 56, 172)
 		end
 	end
 
 	draw_stars()
-	-- (during play) or (during attact mode) including just before and just after
+	
+	-- during play or during attact mode (including just before and just after)
 	if (mode1 == 3 and (mode2 == 11 or mode2 == 12 or mode2 == 13 or mode2 == 22)) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
 		if stage == 1 then
 			animate_broken_ship(18, 22, 0)
