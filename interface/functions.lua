@@ -56,67 +56,14 @@ function draw_block(x, y, color1, color2)
 	s:draw_box(x+3, y+1, x+5, y+7, black, 0)
 end
 
-function get_block_character(char)
-	-- data for the large block characters
-	blocks = ""
-	width = 3
-	if char == "A" then 
-		blocks = "####.#####.##.#"
-	elseif char == "B" then
-		blocks = "##.#.###.#.###." 
-	elseif char == "C" then
-		blocks = "####..#..#..###"
-	elseif char == "D" then
-		blocks = "##.# ## ## ###."
-	elseif char == "E" then
-		blocks = "####..####..###"
-	elseif char == "H" then
-		blocks = "#.##.#####.##.#"
-	elseif char == "I" then
-		blocks = "###.#..#..#.###"
-	elseif char == "K" then
-		blocks = "#..##.#.###.#.#.#..#"
-		width = 4
-	elseif char == "L" then
-		blocks = "#..#..#..#..###"
-	elseif char == "O" then
-		blocks = "####.##.##.####"
-	elseif char == "P" then
-		blocks = "####.#####..#.."
-	elseif char == "M" then
-		blocks = "#...###.###.#.##.#.##.#.#"
-		width = 5
-	elseif char == "N" then
-		blocks = "#..###.######.###..#"
-		width = 4
-	elseif char == "S" then
-		blocks = "####..###..####"
-	elseif char == "T" then
-		blocks = "###.#..#..#..#."
-	elseif char == "W" then
-		blocks = "#.#.##.#.##.#.###.###...#"
-		width = 5
-	elseif char == " " then
-		blocks = "     "
-		width = 1
-	elseif char == "!" then
-		blocks = " # # #   #"
-		width = 2
-	elseif char == "'" then
-		blocks = "##   "
-		width = 1
-	end
-	return blocks, width
-end
-
 function block_text(text, x, y, color1, color2)
 	-- Write large block characters
 	_x = x
 	_y = y
 	s = manager:machine().screens[":screen"]
 	for i=1, string.len(text) do 
-		_char = string.sub(text, i, i)
-		blocks, width = get_block_character(_char)
+		blocks = dkblock[string.sub(text, i, i)]
+		width = math.floor(string.len(blocks) / 5)
 		for b=1, string.len(blocks) do
 			if string.sub(blocks, b, b) == "#" then
 				draw_block(_x, _y, color1, color2)
@@ -135,7 +82,6 @@ end
 
 function toggle()
 	-- Sync with flashing 1UP
-	--if mem:read_i8(0xc7720) == 16 then
 	if math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
 		return 1
 	else
@@ -153,21 +99,19 @@ end
 
 function display_awards()
 	-- Display score awards during the DK intro
-	if mode1 == 3 and mode2 == 7 then		
-		dkclimb = mem:read_i8(0xc638e)
-		if dkclimb > 0 then
-			if dkclimb <= 22 then
-				write_message(0xc7774, data_bonus_score.." SCORE")
-				write_message(0xc7574, data_bonus_award.." COINS")
-			end
-			if dkclimb <= 26 then
-				write_message(0xc7778, data_min_score.." SCORE")
-				write_message(0xc7578, data_min_award.." COINS")
-			end
-			if dkclimb <= 30 then
-				write_message(0xc777c, "PLAY TO WIN COINS")
-			end				
+	dkclimb = mem:read_i8(0xc638e)
+	if dkclimb > 0 then
+		if dkclimb <= 21 then
+			write_message(0xc7774, data_bonus_score.." SCORE")
+			write_message(0xc7574, data_bonus_award.." COINS")
 		end
+		if dkclimb <= 25 then
+			write_message(0xc7778, data_min_score.." SCORE")
+			write_message(0xc7578, data_min_award.." COINS")
+		end
+		if dkclimb <= 29 then
+			write_message(0xc777c, "PLAY TO WIN COINS")
+		end				
 	end
 end
 

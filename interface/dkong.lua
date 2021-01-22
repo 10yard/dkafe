@@ -2,13 +2,13 @@
 -- Set target score, registered names/scores and dump highscore to file when finished.  Enable some hacks.
 -- 0. Update ROM on start
 -- 1. Update RAM
--- 2. Update coins (optional)
+-- 2. Update coins (optional) and autostart (optional)
 -- 3. Activate hacks (optional)
 
--- Get data from DKAFE frontend
 data_includes_folder = os.getenv("DATA_INCLUDES")
-dofile(data_includes_folder.."/functions.lua")
-dofile(data_includes_folder.."/globals.lua")
+package.path = package.path .. ";" .. data_includes_folder .. "/?.lua;"
+require "functions"
+require "globals"
 
 --register function for each frame
 emu.register_frame(function()
@@ -58,8 +58,11 @@ emu.register_frame(function()
 	
 	if loaded == 3 then
 		mode1 = mem:read_i8(0xc6005)
-		mode2 = mem:read_i8(0xc600a)		
-		display_awards()
+		mode2 = mem:read_i8(0xc600a)
+		stage = mem:read_i8(0xc6227)      -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets, 5-bonus)	
+		if mode1 == 3 and mode2 == 7 then
+			display_awards()
+		end
 		
 		-- Optional hacks
 		if hack_teleport == "1" then
@@ -70,15 +73,13 @@ emu.register_frame(function()
 		if hack_lava == "1" then
 			dofile(data_includes_folder.."/hack_lava.lua")
 		end
-		if hack_penaltypoints ~= nil and tonumber(hack_penaltypoints) >= 1 and tonumber(hack_penaltypoints) <= 9 then
-			dofile(data_includes_folder.."/hack_penaltypoints.lua")
+		if hack_penaltypoints ~= nil then
+			if tonumber(hack_penaltypoints) >= 1 and tonumber(hack_penaltypoints) <= 9 then
+				dofile(data_includes_folder.."/hack_penaltypoints.lua")
+			end
 		end
 	end
 end)
-
--- Register callback function on frame repaint
-emu.register_frame_done(frame_repaint, "frame")
-
 
 -- Register callback function on exit
 emu.register_stop(function()

@@ -25,7 +25,7 @@ function update_teleport_ram(_x, _y, _ly)
 	mem:write_i8(0xc6A18, 0)    -- top
 	mem:write_i8(0xc6680, 0)
 	mem:write_i8(0xc6A1C, 0)    -- bottom
-	mem:write_i8(0xc6690, 0)
+	mem:write_i8(0xc6690, 0)	
 end   
 
 function draw_tardis(y1, x1, y2, x2)
@@ -40,8 +40,8 @@ function draw_tardis(y1, x1, y2, x2)
 	screen:draw_box(y, x+1, y+15, x+14, BLUE, 0)
 	screen:draw_box(y, x, y+1, x+15, BLUE, 0)	
 	--windows
-	screen:draw_box(y+9, x+3, y+12, x+7, BROWN, BROWN)
-	screen:draw_box(y+9, x+8, y+12, x+12, BROWN, BROWN)
+	screen:draw_box(y+9, x+3, y+12, x+7, YELLOW, BROWN)
+	screen:draw_box(y+9, x+8, y+12, x+12, YELLOW, BROWN)
 	screen:draw_box(y+5, x+3, y+8, x+7, BLUE, CYAN)
 	screen:draw_box(y+5, x+8, y+8, x+12, BLUE, CYAN)
 	screen:draw_box(y+1, x+3, y+4, x+7, BLUE, CYAN)
@@ -79,7 +79,7 @@ function animate_broken_ship(x, y, dont_check_lit)
 end
 
 function adjust_weeping_angels()
-	-- adjust Y position of dalek sprites by 4 pixels as they are taller than pies
+	-- adjust Y position of angel sprites by 4 pixels as they are taller than pies
 	angels_ram = {0xc65a5,0xc65b5,0xc65c5,0xc65d5,0xc65e5,0xc65f5}
 	for key, value in pairs(angels_ram) do
 		if mem:read_i8(value) == -52 then
@@ -104,14 +104,39 @@ function dkongwho_overlay()
 		screen:draw_box(16, 0, 32, 224, BLACK, 0)
 		write_message(0xc777e, "DK WHO OF GALLIFREY INC.")
 
-		-- Tardis jumping left to right
+		-- Tardis travelling left/right
 		if math.fmod(mem:read_i8(0xc601a) + 128, 84) <=42 then
 			draw_tardis(56, 40, 56, 40)
 		else
 			draw_tardis(56, 172, 56, 172)
 		end
 	end
-
+	
+	-- Display alternative messages on How High screens other than 1
+	if stage ~= 1 then
+		if mode2 == 8 then
+			howhigh_prepare = 1
+		elseif mode2 == 10 and howhigh_prepare == 1 then
+			if stage == 3 then
+				write_message(0xc779e, "WARNING - DALEK'S CAN FLY $")
+			elseif stage == 2 then
+				write_message(0xc779e, "DON'T LOOK AWAY OR BLINK $")
+			elseif stage == 4 then
+				math.randomseed(os.time())
+				r = math.random(3)
+				if r == 1 then
+					write_message(0xc777e, "WHERE'S MY             ")
+					write_message(0xc777f, "    SONIC SCREWDRIVER ?")
+				elseif r == 2 then
+					write_message(0xc777e, "WE MUST SEARCH FOR K-9 $")
+				else
+					write_message(0xc77be, "THE MASTER WANTS HIS WATCH $")
+				end
+			end
+			howhigh_prepare = 0
+		end
+	end
+	
 	draw_stars()
 	
 	-- during play or during attact mode (including just before and just after)
@@ -122,6 +147,8 @@ function dkongwho_overlay()
 			animate_broken_ship(122, 110, 1)
 			adjust_weeping_angels()
 		end
+
+		check_jumpman_status()
 
 		if mem:read_i8(0xc6A18) ~= 0 then
 			-- hammer hasn't yet been used
@@ -134,20 +161,24 @@ function dkongwho_overlay()
 				draw_tardis(148, 102, 108, 5)
 			end
 		else
-			-- hammer has been used
-			-- switch palette
-			if stage == 1 then        -- Girders
-				mem:write_i8(0xc7d86, 1)				
-			elseif stage == 2 then    -- Pies/Conveyors
-				mem:write_i8(0xc7d86, 0)				
-			elseif stage == 4 then    -- Rivets
-				mem:write_i8(0xc7d86, 0) 				
+			if mem:read_i8(0xc6200) ~= 0 then
+				-- hammer has been used and jumpman is not dead
+				-- switch palette
+				if stage == 1 then        -- Girders
+					mem:write_i8(0xc7d86, 1)				
+					mem:write_i8(0xc7d87, 0)				
+				elseif stage == 2 then    -- Pies/Conveyors
+					mem:write_i8(0xc7d86, 0)				
+					mem:write_i8(0xc7d87, 1)				
+				elseif stage == 4 then    -- Rivets
+					mem:write_i8(0xc7d86, 0) 				
+				end
 			end
 		end
 	end
 end
 
-function check_jumpman()
+function check_jumpman_status()
 	if stage ~= 3 and mem:read_i8(0xc6218) ~= 0 then	
 		-- Jumpman is attempting to grab a hammer
 		jumpman_y = mem:read_i8(0xc6205)  -- Jumpman's Y position
@@ -195,8 +226,9 @@ end
 if loaded == 3 and data_subfolder == "dkongwho" then
 	-- rom specific hack for DK Who
 	if teleport_hack_started ~= 1 then	
-		number_of_stars = 400
+		number_of_stars = 300
 		starfield={}
+		math.randomseed (os.time())		
 		for i=1, number_of_stars do
 			table.insert(starfield, math.random(255))
 			table.insert(starfield, math.random(223))
@@ -205,13 +237,4 @@ if loaded == 3 and data_subfolder == "dkongwho" then
 		emu.register_frame_done(dkongwho_overlay, "frame")
 	end
 	teleport_hack_started = 1
-end
-
-stage = mem:read_i8(0xc6227)      -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets, 5-bonus)	
-check_jumpman()
-
-if mem:read_i8(0xc6A18) == 00 or mem:read_i8(0xc6A1C) ~= 00 then
-	-- Prevent cleared hammers from becoming active again
-	mem:write_i8(0xc6345, 0)
-	mem:write_i8(0xc6350, 0)
 end

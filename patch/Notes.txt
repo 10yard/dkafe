@@ -1,8 +1,8 @@
-DKAFE builds the default frontend using patches of the original arcade rom. 
+DKAFE builds the default frontend using patches of the original "dkong.zip" (US Set 1) arcade rom. 
 
 The .ips patches are included with the software.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder too.  
-DKAFE will then apply patches and generate the following hacked version of Donkey Kong automaticalluy for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
+DKAFE will then apply patches and generate the following hacked version of Donkey Kong automatically for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
 By Paul Goes, https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -31,6 +31,10 @@ By Mike Mika
 
 By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
+
+By Jon Wilson (me)
+ - DK Who and the Daleks
+ - Donkey Kong Lava Panic
 
 Donkey Kong Wild Barrel Hack (dkongwbh)
 Donkey Kong 2 Marios (dkong2m)

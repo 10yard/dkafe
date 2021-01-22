@@ -14,7 +14,6 @@ end
 
 function draw_lava()
 	level = mem:read_i8(0xc6229)
-	stage = mem:read_i8(0xc6227)   -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets)
 	if stage == 4 then
 		difficulty = math.floor(1.5 * (22 - level)) -- lower difficulty is harder, rivets needs more time
 	elseif stage == 3 then

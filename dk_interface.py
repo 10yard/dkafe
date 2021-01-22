@@ -41,6 +41,7 @@ def lua_interface(rom=None, subfolder=None, min_score=None, bonus_score=None):
         compete_file = os.path.join(ROOT_DIR, "interface", "compete.dat")
         if os.path.exists(compete_file):
             os.remove(compete_file)
+        os.environ["LUA_PATH"] = os.path.join(ROOT_DIR, "interface")
         os.environ["DATA_INCLUDES"] = os.path.join(ROOT_DIR, "interface")
         os.environ["DATA_FILE"] = compete_file
         os.environ["DATA_SUBFOLDER"] = subfolder
@@ -155,6 +156,7 @@ def format_numeric_data(top_scores, width=6, first_only=False):
             break
     return data.strip(",")
 
+
 def format_K(text):
     if text.endswith("000000"):
         return text[:-6] + "M"
@@ -162,6 +164,7 @@ def format_K(text):
         return text[:-3] + "K"
     else:
         return text
+
 
 if __name__ == "__main__":
     pass
