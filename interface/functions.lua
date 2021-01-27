@@ -5,6 +5,16 @@ function string:split(sep)
 	return fields
 end
       
+function number_to_binary(x)
+	ret=""
+	while x~=1 and x~=0 do
+		ret=tostring(x%2)..ret
+		x=math.modf(x/2)
+	end
+	ret=tostring(x)..ret
+	return ret
+end	  
+	  
 function get_formatted_data(var_name)
 	-- read environment variable and convert comma separated values to a table
 	local content = os.getenv(var_name)
@@ -47,13 +57,12 @@ function sleep(n)  -- seconds
 end
 
 function draw_block(x, y, color1, color2)
-	black = 0xcff000000
 	s = manager:machine().screens[":screen"]
 	s:draw_box(x, y, x+8, y+8, color1, 0)
 	s:draw_box(x, y, x+1, y+8, color2, 0)
 	s:draw_box(x+6, y, x+7, y+8, color2, 0)
-	s:draw_box(x+2, y+2, x+6, y+6, black, 0)
-	s:draw_box(x+3, y+1, x+5, y+7, black, 0)
+	s:draw_box(x+2, y+2, x+6, y+6, 0xcff000000, 0)
+	s:draw_box(x+3, y+1, x+5, y+7, 0xcff000000, 0)
 end
 
 function block_text(text, x, y, color1, color2)
@@ -99,7 +108,7 @@ end
 
 function display_awards()
 	-- Display score awards during the DK intro
-	dkclimb = mem:read_i8(0xc638e)
+	local dkclimb = mem:read_i8(0xc638e)
 	if dkclimb > 0 then
 		if dkclimb <= 21 then
 			write_message(0xc7774, data_bonus_score.." SCORE")

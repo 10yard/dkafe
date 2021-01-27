@@ -11,6 +11,7 @@ up = False
 down = False
 jump = False
 start = False
+joysticks = []
 
 # Jumpman status
 active = True      # Jumpman is active - see INACTIVE_TIME

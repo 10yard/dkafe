@@ -12,6 +12,10 @@ copy romlist.csv dist\ /Y
 copy settings.txt dist\ /Y
 copy readme.md dist\ /Y
 
+echo **** create empty roms folder
+xcopy roms\---* dist\roms /S /i /Y
+
+
 echo **** build the exe in virtual environment ****
 venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
 

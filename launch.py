@@ -3,6 +3,7 @@ import dk_system as _s
 import dk_global as _g
 from dk_config import *
 from dk_interface import get_award
+from dk_patch import apply_patches
 from random import randint
 import pickle
 
@@ -121,23 +122,44 @@ def reset_all_inputs():
 
 def check_for_input():
     for event in pygame.event.get():
-        # General jumpman controls
+        # Keyboard controls
         if event.type in (pygame.KEYDOWN, pygame.KEYUP):
             _g.active = True
             _g.lastmove = _g.timer.duration
             for attr, control in CONTROL_ASSIGNMENTS:
                 if event.key == control:
                     setattr(_g, attr, event.type == pygame.KEYDOWN)
-
         if event.type == pygame.KEYDOWN:
             if event.key == CONTROL_EXIT:
                 exit_program(confirm=CONFIRM_EXIT)
-            if event.key in (CONTROL_P2, CONTROL_ACTION) and ENABLE_MENU:
+            if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus(initial=False)
                 open_menu(_g.menu)
-            if event.key == CONTROL_COIN:
+            if event.key == CONTROL_ACTION:
                 _g.showinfo = not _g.showinfo
-            if event.key == CONTROL_SLOTS:
+            if event.key == CONTROL_COIN:
+                _g.showslots = not _g.showslots
+
+        # Optional joystick controls
+        if USE_JOYSTICK and event.type == pygame.JOYAXISMOTION:
+            _g.active = True
+            _g.lastmove = _g.timer.duration
+            _g.left = event.axis == 0 and int(event.value) == -1
+            _g.right = event.axis == 0 and int(event.value) == 1
+            _g.up = event.axis == 1 and int(event.value) == -1
+            _g.down = event.axis == 1 and int(event.value) == 1
+        if USE_JOYSTICK and event.type == pygame.JOYBUTTONDOWN:
+            button = event.button if event.joy == 1 else event.button + 20
+            _g.jump = button == BUTTON_JUMP
+            _g.start = button == BUTTON_P1
+            if button == BUTTON_EXIT:
+                exit_program(confirm=CONFIRM_EXIT)
+            if button == BUTTON_P2 and ENABLE_MENU:
+                build_menus(initial=False)
+                open_menu(_g.menu)
+            if button == BUTTON_ACTION:
+                _g.showinfo = not _g.showinfo
+            if button == BUTTON_COIN:
                 _g.showslots = not _g.showslots
 
         if event.type == pygame.QUIT:
@@ -341,6 +363,7 @@ def build_menus(initial=False):
             _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, _min, bonus))
         if initial:
             _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, _min, bonus))
+
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
@@ -615,7 +638,13 @@ def main():
     except FileNotFoundError:
         _g.score, _g.timer_adjust = 0, 0
 
+    # Detect joysticks
+    for i in range(0, pygame.joystick.get_count()):
+        _g.joysticks.append(pygame.joystick.Joystick(i))
+        _g.joysticks[-1].init()
+
     # launch front end
+    apply_patches()
     build_menus(initial=True)
     play_intro_animation()
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)

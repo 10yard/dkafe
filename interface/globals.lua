@@ -38,7 +38,7 @@ ports = manager:machine():ioport().ports
 hack_teleport = os.getenv("HACK_TELEPORT")
 hack_nohammers = os.getenv("HACK_NOHAMMERS")
 hack_lava = os.getenv("HACK_LAVA")
-hack_penaltypoints = os.getenv("HACK_PENALTYPOINTS")
+hack_penalty = os.getenv("HACK_PENALTY")
 
 -- Colours
 BLACK = 0xff000000
@@ -101,6 +101,7 @@ dkchars["'"] = 0x3a
 dkchars[","] = 0x43
 dkchars["^"] = 0xb0 -- rivet block
 dkchars["?"] = 0xfb
+dkchars["@"] = 0xff -- extra mario icon
 
 -- Block characters
 dkblock = {}
@@ -133,3 +134,12 @@ dkblock["Z"] = "####--#--#--#---####"
 dkblock[" "] = "     "
 dkblock["!"] = " # # #   #"
 dkblock["'"] = "##   "
+dkblock["1"] = "##--#--#--#-###"
+dkblock["2"] = "###--#####--###"
+dkblock["3"] = "###--####--####"
+dkblock["4"] = "#---#---#-#-####--#-"
+dkblock["5"] = "####--###--####"
+dkblock["6"] = "####--####-####"
+dkblock["7"] = "###--#-#--#--#-"
+dkblock["8"] = "####-#####-####"
+dkblock["9"] = "####-####--#--#"

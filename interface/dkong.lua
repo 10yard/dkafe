@@ -73,10 +73,8 @@ emu.register_frame(function()
 		if hack_lava == "1" then
 			dofile(data_includes_folder.."/hack_lava.lua")
 		end
-		if hack_penaltypoints ~= nil then
-			if tonumber(hack_penaltypoints) >= 1 and tonumber(hack_penaltypoints) <= 9 then
-				dofile(data_includes_folder.."/hack_penaltypoints.lua")
-			end
+		if hack_penalty == "1" then
+			dofile(data_includes_folder.."/hack_penalty.lua")
 		end
 	end
 end)

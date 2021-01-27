@@ -8,7 +8,7 @@ GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
 TOPLEFT = (0, 0)       # position of top left corner
 CLOCK_RATE = 45        # Clock rate/timing - tweak this to get the right speed
 
-# Default Controls
+# Default Keyboard Controls
 CONTROL_LEFT = pygame.K_LEFT
 CONTROL_RIGHT = pygame.K_RIGHT
 CONTROL_UP = pygame.K_UP
@@ -19,7 +19,15 @@ CONTROL_P1 = pygame.K_1
 CONTROL_P2 = pygame.K_2
 CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
-CONTROL_SLOTS = pygame.K_9
+
+# Joystick Options and Button Assignments (Device 1 buttons start from 0,  Device 2 buttons start from 20)
+USE_JOYSTICK = False
+BUTTON_JUMP = 0
+BUTTON_ACTION = 1
+BUTTON_P1 = 9
+BUTTON_P2 = 29
+BUTTON_EXIT = 3
+BUTTON_COIN = 7
 
 # Options
 CONFIRM_EXIT = True
@@ -32,8 +40,8 @@ ENABLE_HAMMERS = True        # Show hammers and enable teleport between hammers 
 AWARDS = [0, 1000, 2000]     # Coins awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150              # How many coins Jumpman loses when time runs out
-CREDITS = 1                  # Automatically set credits in MAME at start of game - when using interface
-AUTOSTART = 1                # Automatically start the game in MAME (by simulating P1 start) when using interface
+CREDITS = 0                  # Automatically set credits in MAME at start of game - when using interface
+AUTOSTART = 0                # Automatically start the game in MAME (by simulating P1 start) when using interface
 INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
 TIMER_START = 5000           # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
@@ -46,7 +54,7 @@ LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always
 # Hacks
 HACK_TELEPORT = 0            # Hack DK to allow teleport between hammers. 0 or 1
 HACK_NOHAMMERS = 0           # Hack DK to remove hammers.  0 or 1
-HACK_PENALTYPOINTS = 0       # Hack DK to lose points instead of lives.  0 or set penalty as 1-9 in tens of thousands.
+HACK_PENALTY = 0             # Hack DK to lose penalty points instead of lives.
 HACK_LAVA = 0                # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1.
 
 # Root directory of frontend
@@ -57,7 +65,11 @@ OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
 ROM_DIR = 'C:\\dkafe\\roms'
 EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 8
 
-# Defaults can be overridden in the settings.txt file
+# Patch directory (for provided patch files) and expected location of original DK zip (not provided with software)
+PATCH_DIR = os.path.join(ROOT_DIR, "patch")
+DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
+
+# Above defaults can be overridden in the settings.txt file
 if os.path.exists("settings.txt"):
     with open("settings.txt", 'r') as sf:
         for setting in sf.readlines():
@@ -205,17 +217,17 @@ Down      and down ladders.
           Up faces Jumpman
           towards a machine
 
-P1 or  —  Play machine that 
-          Jumpman is facing.
+P1/    —  Play machine that 
+Jump      Jumpman is facing.
           Jump also jumps :)
          
-P2 or  —  Calls up the quick  
-Action    access game list
+P2     —  Call up the quick  
+          access game list
 
-Coin   -  Show game info
+Action -  Show game info
           above machines
                       
-Service-  Show slot numbers
+Coin   -  Show slot numbers
 
 Esc    -  Exit
 

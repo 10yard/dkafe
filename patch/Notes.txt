@@ -35,6 +35,7 @@ By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
 By Jon Wilson (me)
  - DK Who and the Daleks
  - Donkey Kong Lava Panic
+ - DK Last Man Standing
 
 Donkey Kong Wild Barrel Hack (dkongwbh)
 Donkey Kong 2 Marios (dkong2m)

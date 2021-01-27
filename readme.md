@@ -2,8 +2,9 @@
 
 Donkey Kong Arcade Front End
 
-A multiplatform arcade game launcher.
+An interactive arcade game launcher with objectives and incentives to play and unlock arcade games.
 
+![Image of DKAFE](https://github.com/10yard/dkafe/blob/master/artwork/intro/f0.png)
 
 Instructions
 ============
@@ -16,7 +17,7 @@ Pauline will love it when you beat all of the machines.
 
 Controls
 ========
-The default controls are as follows.
+The default keyboard controls are as follows.
 
 ```
 Left/Right - Move Jumpman along the platforms.
@@ -27,16 +28,16 @@ P1 Start   - Play the arcade machine that Jumpman is facing. Jump also jumps :)
 or Jump
 
 P2 Start   - Calls up the quick access game list.
-or Action
 
-Coin       - Display useful game information above the arcade machines.
+Action     - Display useful game information above the arcade machines.
 
-Service    - Show slot numbers.
+Coin       - Show slot numbers.
 
 Esc        - Exit
 ```
 
-The default controls are set as follows.
+Keyboard controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
+The default controls are aligned with MAME keys as follows.
 
 ```
 CONTROL_LEFT = left
@@ -51,7 +52,20 @@ CONTROL_INFO = 5
 CONTROL_EXIT = escape
 ```
 
-Controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
+Joystick controls can also be configured.
+The up, down, left, right controls are defined automatically from the joystick axis movement.
+Buttons can be customised in the settings.txt file as per the following example along with the USE_JOYSTICK option.  
+Button assignment numbers 0-19 relate to the first joystick device and 20-39 relate to a second joystick device.
+
+```
+USE_JOYSTICK = 1
+BUTTON_JUMP = 0
+BUTTON_ACTION = 1
+BUTTON_P1 = 9
+BUTTON_P2 = 29
+BUTTON_EXIT = 6
+BUTTON_COIN = 7
+```
 
 
 How to set up?
@@ -68,7 +82,14 @@ https://www.mamedev.org/roms/
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the DKAFE roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches - which are included with the software.  See the full list of patches below. 
+The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the DKAFE roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches which are included with the software.  See "Automatically generated roms" section below. 
+
+
+Resolution
+==========
+The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
+The scaling works perfectly with a 7/8 aspect vertically rotated screen.
+For my system,  I was able to create a custom 7/8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
 
 Automatically generated roms
@@ -110,6 +131,7 @@ By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
 By Jon Wilson (me)
  - DK Who and the Daleks
  - Donkey Kong Lava Panic
+ - DK Last Man Standing
 
 By unknown others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
@@ -141,15 +163,11 @@ Emulator recommendation
 =======================
 For Windows
 -----------
-1. No nag Mame64 v0226 build here:
-   - https://insertmorecoins.es/mame-mameui-0-226-32-64-bits-no-nag-including-mess/
+1. Mame64 v0197 from https://www.mamedev.org/
 
-2. Wolfmame v0226 (for competition/recording) here:
-   - https://github.com/mahlemiut/wolfmame/releases/tag/wolf226
+2. Wolfmame v0165 (for competition/recording) from https://github.com/mahlemiut/wolfmame/releases/
 
-3. HB Mame v0226 (Dedicated to hacks and homebrew) here: 
-   - http://www.progettosnaps.net/download?tipo=arcade_bin&file=/arcade/packs/ARCADE64_226_28102020.7z
-
+3. HB Mame (Dedicated to hacks and homebrew) from https://www.progettosnaps.net/hbmame/
 
 For Raspberry Pi
 ----------------
@@ -172,7 +190,7 @@ See build.bat for an example build script making use of venv (virtual environmen
 
 Motivations?
 ============
-This application was made for my own DIY Donkey Kong arcade machine as a replacement for a 60-in-1 board.  I was looking to create something graphically in keeping with the era (rendering graphics at 224x256) feel relevant to the early 80's.  Bringing together all of the Donkey Kong roms and rom hacks into one place with an incentive to play them and tools to aid progression (trainers) and .inp recording capability for score submission.  I want something to startup quickly and be capable of running on multiple platforms (Windows, Mac, Rasp Pi, Android).
+The application was developed for my own DIY Donkey Kong arcade machine as a replacement for a 60-in-1 board.  I was looking to create something graphically in keeping with the era (rendering graphics at 224x256) feel relevant to the early 80's.  Bringing together all of the Donkey Kong roms and rom hacks into one place with an incentive to play them and tools to aid my progression (trainers) and .inp recording capability for score submissions.  I want it to startup quickly and be capable of running on multiple platforms (Windows, Mac, Rasp Pi, Android).
 
 
 Thanks to
@@ -197,8 +215,6 @@ https://github.com/mahlemiut/wolfmame
 
 Python and pygame
 https://www.python.org/ and https://www.pygame.org/
-
-
 
 
 Feedback

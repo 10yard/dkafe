@@ -1,15 +1,15 @@
 # Front End Settings
-FULLSCREEN = 1
+FULLSCREEN = 0
 FREE_PLAY = 1
-UNLOCK_MODE = 1
+UNLOCK_MODE = 0
 CONFIRM_EXIT = 1
 ENABLE_MENU = 1
 
 # Emulator Settings
 ROM_DIR = C:\dkafe\roms
 OPTIONS = -skip_gameinfo -video gdi -keepaspect -unevenstretch
-EMU_1 = C:\emus\mame\mame64 <OPTIONS> -rompath <ROM_DIR>
-EMU_2 = C:\emus\wolfmame\mame64 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
+EMU_1 = C:\emus\mame_0196\mame64 <OPTIONS> -rompath <ROM_DIR>
+EMU_2 = C:\emus\wolfmame_0165\mame -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
 
 # Controls
 CONTROL_LEFT = left
