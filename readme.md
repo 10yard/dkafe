@@ -4,7 +4,7 @@ Donkey Kong Arcade Front End
 
 An interactive arcade game launcher with objectives and incentives to play and unlock arcade games.
 
-![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png){:height="448px" width="512px"}
+![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
 Instructions
 ============
