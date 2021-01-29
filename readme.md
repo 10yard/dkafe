@@ -71,6 +71,13 @@ By unknown others
  - Donkey Kong Pace (dkongpace)
 
 
+DK WolfMAME
+===========
+DKAFE comes bundled with my custom build of WolfMAME (v0.196) which supports only Donkey Kong drivers.  It a lightweight emulator less than 15mb size.
+This version has functionality removed for save and load states, cheats, rewind, throttling etc.
+It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end (see below).
+
+
 How to set up?
 ==============
 The application requires romlist.csv and settings.txt to be present in the installation folder along with other resources.

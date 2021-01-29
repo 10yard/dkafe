@@ -49,6 +49,19 @@ def load_frontend_state():
         _g.score, _g.timer_adjust = 0, 0
 
 
+def check_roms_available():
+    # Check roms are provided in the configured rom folder and warn if necessary
+    if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
+        clear_screen()
+        for i, line in enumerate(NO_ROMS_MESSAGE):
+            if line:
+                flash_message(NO_ROMS_MESSAGE[i], x=4, y=50 + (i * 12), clear=False, cycles=5, bright=0 < i < 10)
+        while True:
+            check_for_input()
+            if _g.jump or _g.start:
+                break
+
+
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
     # Write text to screen at given position using fg and bg colour (None for transparent)
     if text:
@@ -652,6 +665,7 @@ def main():
 
     # Launch front end
     play_intro_animation()
+    check_roms_available()
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     # Initialise Jumpman

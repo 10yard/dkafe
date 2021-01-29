@@ -62,12 +62,13 @@ ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults
 OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
-ROM_DIR = 'C:\\dkafe\\roms'
-EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 8
+ROM_DIR = '<ROOT>/roms'
+EMU_1 = '<ROOT>/dkwolf/dkwolf196 <OPTIONS> -rompath <ROM_DIR>'
+EMU_2 = '<ROOT>/dkwolf/dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>'
+EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6
 
-# Patch directory (for provided patch files) and expected location of original DK zip (not provided with software)
+# Patch directory (for provided patch files)
 PATCH_DIR = os.path.join(ROOT_DIR, "patch")
-DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 
 # Above defaults can be overridden in the settings.txt file
 if os.path.exists("settings.txt"):
@@ -83,11 +84,15 @@ if os.path.exists("settings.txt"):
                     elif value.isnumeric():
                         globals()[key] = int(value)
                     else:
-                        globals()[key] = value.replace("<OPTIONS>", OPTIONS).replace("<ROM_DIR>", ROM_DIR)
+                        globals()[key] = value.replace("<ROOT>", ROOT_DIR)\
+                            .replace("<ROM_DIR>", ROM_DIR).replace("<OPTIONS>", OPTIONS)
                 except KeyError:
                     print(f'Unknown setting "{key.strip()}" in settings.txt file')
                     pygame.quit()
                     exit()
+
+# Expected location of original DK zip (not provided with software)
+DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 
 # Colours
 RED = (232, 7, 10)
@@ -171,6 +176,15 @@ JUMP_PIXELS = [-1, ] * 15 + [1, ] * 13
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
 COIN_INFO = ['HEY JUMPMAN!', '', 'COLLECT COINS', 'TO PLAY GAMES', '', 'PUSH COIN', 'FOR GAME INFO', '']
 FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH COIN', 'FOR GAME INFO', '']
+
+NO_ROMS_MESSAGE = [
+    "NO ROMS WERE FOUND!", "", "", "",
+    "FOR THE DEFAULT FRONTEND",
+    "PUT DKONG.ZIP & DKONGJR.ZIP",
+    "INTO THE DKAFE\ROMS FOLDER",
+    "THEN RESTART.", "", "", "",
+    "PRESS JUMP BUTTON",
+    "TO CONTINUE"]
 
 INSTRUCTION = """
 

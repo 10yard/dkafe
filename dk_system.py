@@ -30,8 +30,8 @@ def read_romlist():
                 name, sub, des, slot, emu, state, unlock, _min, bonus, *_ = [x.strip() for x in rom_line.split(",")]
                 if name and des and SLOTS[int(slot) - 1]:
                     icx, icy = SLOTS[int(slot) - 1]
-                    # target = name + (".sh", ".bat")[is_windows()] if subfolder == "shell" else name + ".zip"
-                    # if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[subfolder == "shell"], subfolder, target)):
+                    # target = name + (".sh", ".bat")[is_windows()] if sub == "shell" else name + ".zip"
+                    # if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[sub == "shell"], sub, target)):
                     romlist.append((name, sub, des, icx, icy, int(emu), state, int(unlock), _min, bonus))
     return romlist
 

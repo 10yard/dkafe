@@ -15,6 +15,11 @@ copy readme.md dist\ /Y
 echo **** create empty roms folder
 xcopy roms\---* dist\roms /S /i /Y
 
+echo **** create minimal dkmame folder
+xcopy dkwolf\dkwolf196.exe dist\dkwolf\ /Y
+xcopy dkwolf\notes.txt dist\dkwolf\ /Y
+xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
+xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
 
 echo **** build the exe in virtual environment ****
 venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico

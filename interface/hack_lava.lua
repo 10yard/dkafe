@@ -24,6 +24,8 @@ function draw_lava()
 	
 	if mode2 == 7 or mode2 == 10 or mode2 == 11 then  -- intro / how high can you get
 		lava_y = -7  --reset lava
+		music = mem:read_i8(0xc6089)		
+
 	elseif mode2 == 21 and lava_y > 15 then
 		lava_y = 15  -- Reduce lava level on high score entry screens to avoid obstruction.
 	elseif mode2 == 16 and lava_y > 60 then
@@ -48,6 +50,13 @@ function draw_lava()
 				else					
 					mem:write_i8(0xc7d86, 0)
 				end
+
+				-- temporary change music for more drama
+				if stage ~= 2 then
+					mem:write_i8(0xc6089, 9)
+				else
+					mem:write_i8(0xc6089, 11)
+				end
 			else
 				-- reset palette to default
 				if stage == 1 or stage == 3 then
@@ -55,6 +64,8 @@ function draw_lava()
 				else
 					mem:write_i8(0xc7d86, 1)
 				end
+				-- set music back to default
+				mem:write_i8(0xc6089, music)
 			end
 		
 			if lava_y > jumpman_y + 1 then

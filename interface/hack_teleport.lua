@@ -26,6 +26,13 @@ function update_teleport_ram(_x, _y, _ly)
 	mem:write_i8(0xc6680, 0)
 	mem:write_i8(0xc6A1C, 0)    -- bottom
 	mem:write_i8(0xc6690, 0)	
+	
+	-- change music after teleporting
+	if stage ~= 2 then
+		mem:write_i8(0xc6089, 9)
+	else
+		mem:write_i8(0xc6089, 11)
+	end
 end   
 
 function draw_tardis(y1, x1, y2, x2)

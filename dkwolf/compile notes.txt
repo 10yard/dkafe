@@ -1,0 +1,38 @@
+DKAFE comes bundled with my custom build of WolfMAME (v0.196) which supports only Donkey Kong drivers.  
+It a lightweight emulator less than 15mb size.
+This version has functionality removed for save and load states, cheats, throttling etc.
+
+The code changes from released WolfMAME v0.196 are included in the "changes" folder.
+
+Changes includes:
+
+frontend/mame/ui/ui.cpp
+  removed startup up messages
+  disabled load states and save states
+  disabled throttling, frameskip, overclocking, rewind/fastforward, cheats, stepping when paused
+
+frontend/mame/mame.cpp
+  removed "Initializing..." message
+
+emu/romload.cpp
+  removed "WARNING: the machine might not run correctly."
+  removed "WRONG CHECKSUMS" message as we are expecting this with our DK hacks.
+  removed ROM loading messages
+  changed missing ROM error to show message "ROM file was not found.  Please check DKAFE configuration".
+
+A useful reference to compiling MAME can be found at:
+  http://forum.arcadecontrols.com/index.php?topic=149545.0
+
+To build with dkong only driver the SOURCES flag was used in the makefile along with REGENIE i.e.
+  SOURCES=src/mame/drivers/dkong.cpp
+  REGENIE=1
+
+Other optimisations/flags were
+  OPTIMIZE=3 
+  SYMBOLS=0 
+  STRIP_SYMBOLS=1 
+  PTR64=1 
+  TOOLS=0 
+
+For making a lightweight build to support multiple drivers e.g. for a 60-in-1 type setup
+  SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/pacman.cpp,src/mame/drivers/galaga.cpp etc..

@@ -4,11 +4,15 @@
 
 function get_dipswitch()
 	DSW0 = ports[":DSW0"]
-	for field_name, field in pairs(DSW0.fields) do
-		if field_name == "Bonus Life" then
-			dipswitch = number_to_binary(field.port:read())
-		end
-	end
+	dipswitch = "00000000"
+	-- TO DO Read DIP settings not working
+	--for field_name, field in pairs(DSW0.fields) do
+		--if field_name == "Bonus Life" then
+			--print(field_name)
+			--print(field:read())
+			--dipswitch = number_to_binary(field.port:read())
+		--end
+	--end
 	return dipswitch
 end
 
