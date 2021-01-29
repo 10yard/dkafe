@@ -10,9 +10,9 @@ This project includes:
  - A custom lightweight build of WolfMAME specifically for Donkey Kong.
  - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly between them.
  - 3 new Donkey Kong hacks made specifically for DKAFE:
-	DK Who - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
-	DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
-	DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
+   - DK Who - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
+   - DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
+   - DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
