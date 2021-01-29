@@ -3,21 +3,11 @@
 -- Drives the "DK Last Man Standing" hack 
 
 function get_dipswitch()
-	DSW0 = ports[":DSW0"]
-	dipswitch = "00000000"
-	-- TO DO Read DIP settings not working
-	--for field_name, field in pairs(DSW0.fields) do
-		--if field_name == "Bonus Life" then
-			--print(field_name)
-			--print(field:read())
-			--dipswitch = number_to_binary(field.port:read())
-		--end
-	--end
-	return dipswitch
+	return number_to_binary(ports[":DSW0"]:read())
 end
 
 function get_score()
-	-- read the score data from ram and convert to a number
+	-- read 3 segments of score data from ram and convert to a number
 	score1 = tonumber(string.format("%x", mem:read_i8(0xc60b4)))
 	score2 = tonumber(string.format("%x", mem:read_i8(0xc60b3)))
 	score3 = tonumber(string.format("%x", mem:read_i8(0xc60b2)))

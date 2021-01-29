@@ -2,7 +2,17 @@
 
 Donkey Kong Arcade Front End
 
-A Donkey Kong themed arcade game launcher with objectives and incentives to play and unlock arcade games.
+A Donkey Kong themed arcade game launcher with objectives and incentives to play and unlock arcade games.  
+
+This project includes:
+ - An interactive frontend launcher which is preconfigured to work with classic Donkey Kong roms and hacks.
+ - A rom patcher which will automatically generate 27 Donkey Kong hacks from the bundled patch files.
+ - A custom lightweight build of WolfMAME specifically for Donkey Kong.
+ - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly between them.
+ - 3 new Donkey Kong hacks made specifically for DKAFE:
+	DK Who - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
+	DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
+	DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
@@ -14,13 +24,6 @@ Donkey Kong has captured Pauline and carried her to the top of an abandoned cons
 Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well to win coins and unlock arcade machines as he works his way up the building to rescue Pauline.  
 
 Pauline will love it when you beat all of the machines.
-
-
-Display Resolution
-==================
-The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
-The scaling works perfectly with a 7/8 aspect vertically rotated screen.
-For my system,  I was able to create a custom 7/8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
 
 Automatically generated roms
@@ -74,8 +77,15 @@ By unknown others
 DK WolfMAME
 ===========
 DKAFE comes bundled with my custom build of WolfMAME (v0.196) which supports only Donkey Kong drivers.  It a lightweight emulator less than 15mb size.
-This version has functionality removed for save and load states, cheats, rewind, throttling etc.
+This version has functionality disabled for save/load states, cheats, rewind, throttling etc.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end (see below).
+
+
+Display Resolution
+==================
+The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
+The scaling works perfectly with a 7/8 aspect vertically rotated screen.
+For my system,  I was able to create a custom 7/8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
 
 How to set up?
@@ -170,6 +180,9 @@ Emulator recommendation
 =======================
 For Windows
 -----------
+For the default frontend you should stick with the bundled DKWolf emulator which is compiled from WolfMAME v0.196 and comes ready to go.
+Otherwise my recommendations are:
+
 1. Mame64 v0.196 minimum from https://www.mamedev.org/ . Rom hacks and lua interface hacks were tested against versions from v0.196 to v0.226
 
 2. Wolfmame (for competition/recording) from https://github.com/mahlemiut/wolfmame/releases/
@@ -185,14 +198,19 @@ on top of dietpi lightweight OS:
   - https://dietpi.com/
   
 
-How to build?
-=============
+How to build DKAFE?
+===================
 Requires Python3 (from v3.7) with installed packages from requirements.txt
 
 Pyinstaller can be used to build the application binary on Windows.
   - pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
 
 See build.bat for an example build script making use of venv (virtual environment for Python)
+
+
+How to build DKMame?
+====================
+Refer to compile_notes.txt in the dkmame folder.
 
 
 Motivations?
