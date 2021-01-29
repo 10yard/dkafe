@@ -1,5 +1,6 @@
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY
+from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART
+from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY
 
 # Memory addresses for scores and players data
 # 6 Bytes per score

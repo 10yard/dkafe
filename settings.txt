@@ -8,7 +8,7 @@ ENABLE_MENU = 1
 # Emulator Settings
 ROM_DIR = C:\dkafe\roms
 OPTIONS = -skip_gameinfo -video gdi -keepaspect -unevenstretch
-EMU_1 = C:\emus\mame_0196\mame64 <OPTIONS> -rompath <ROM_DIR>
+EMU_1 = C:\emus\dkmame_0196\mame64 <OPTIONS> -rompath <ROM_DIR>
 EMU_2 = C:\emus\wolfmame_0165\mame -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
 
 # Controls

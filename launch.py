@@ -42,6 +42,13 @@ def update_screen(delay_ms=0):
     clock.tick(CLOCK_RATE)
 
 
+def load_frontend_state():
+    try:
+        _g.score, _g.timer_adjust = pickle.load(open("save.p", "rb"))
+    except FileNotFoundError:
+        _g.score, _g.timer_adjust = 0, 0
+
+
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
     # Write text to screen at given position using fg and bg colour (None for transparent)
     if text:
@@ -120,6 +127,12 @@ def reset_all_inputs():
         pygame.event.post(event)
 
 
+def detect_joysticks():
+    for i in range(0, pygame.joystick.get_count()):
+        _g.joysticks.append(pygame.joystick.Joystick(i))
+        _g.joysticks[-1].init()
+
+
 def check_for_input():
     for event in pygame.event.get():
         # Keyboard controls
@@ -135,9 +148,9 @@ def check_for_input():
             if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus(initial=False)
                 open_menu(_g.menu)
-            if event.key == CONTROL_ACTION:
-                _g.showinfo = not _g.showinfo
             if event.key == CONTROL_COIN:
+                _g.showinfo = not _g.showinfo
+            if event.key == CONTROL_ACTION:
                 _g.showslots = not _g.showslots
 
         # Optional joystick controls
@@ -157,9 +170,9 @@ def check_for_input():
             if button == BUTTON_P2 and ENABLE_MENU:
                 build_menus(initial=False)
                 open_menu(_g.menu)
-            if button == BUTTON_ACTION:
-                _g.showinfo = not _g.showinfo
             if button == BUTTON_COIN:
+                _g.showinfo = not _g.showinfo
+            if button == BUTTON_ACTION:
                 _g.showslots = not _g.showslots
 
         if event.type == pygame.QUIT:
@@ -630,22 +643,14 @@ def teleport_between_hammers():
 
 
 def main():
+    # Prepare front end
     initialise_screen()
-
-    try:
-        # Load frontend state
-        _g.score, _g.timer_adjust = pickle.load(open("save.p", "rb"))
-    except FileNotFoundError:
-        _g.score, _g.timer_adjust = 0, 0
-
-    # Detect joysticks
-    for i in range(0, pygame.joystick.get_count()):
-        _g.joysticks.append(pygame.joystick.Joystick(i))
-        _g.joysticks[-1].init()
-
-    # launch front end
+    load_frontend_state()
+    detect_joysticks()
     apply_patches()
     build_menus(initial=True)
+
+    # Launch front end
     play_intro_animation()
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
@@ -655,7 +660,7 @@ def main():
     _g.lastmove = 0
     _g.timer.reset()
 
-    # loop the game
+    # Main game loop
     while True:
         if _g.active:
             display_icons(with_background=True)

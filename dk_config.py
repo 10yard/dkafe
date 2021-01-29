@@ -174,62 +174,62 @@ FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH C
 
 INSTRUCTION = """
 
-Donkey Kong has captured 
+Donkey Kong has captured
 Pauline and carried her to
 the top of an abandoned
-construction site. 
+construction site.
 
-The shock of shaking up the 
+The shock of shaking up the
 building during his ascent
-has uncovered many hidden 
-arcade machines from the 
-1980's era and they are 
-scattered around the area. 
+has uncovered many hidden
+arcade machines from the
+1980's era and they are
+scattered around the site.
 
 Yes, the plot is thin and I
 can't explain why Donkey
 Kong has decided to throw
-coins instead of barrels. 
+coins instead of barrels.
 
-Anyway, the coins must be 
+Anyway, the coins must be
 collected by Jumpman and he
-must play games well, 
-winning coins and working up 
-the building unlocking all  
-of the arcade machines along
-the way.  
+must play games well to win
+coins and unlock arcade
+machines as he works his
+way up the building to
+rescue Pauline.  
 
-Pauline will love it when
-you beat all of the machines
+Pauline will ♥ it when you
+beat all of the machines.
 
 """
 
 CONTROLS = """
 
-The Controls are as follows
+The Controls are as follows:
 
 
 Left/  —  Move Jumpman along
 Right     the platforms
 
 Up/    —  Move Jumpman up
-Down      and down ladders. 
+Down      and down ladders.
           Up faces Jumpman
           towards a machine
 
-P1/    —  Play machine that 
+P1/    —  Play machine that
 Jump      Jumpman is facing.
           Jump also jumps :)
          
-P2     —  Call up the quick  
+P2     —  Call up the quick
           access game list
 
-Action -  Show game info
+Coin   -  Show game info
           above machines
                       
-Coin   -  Show slot numbers
+Action -  Show slot numbers
 
-Esc    -  Exit
+Exit   -  Exit DKAFE
 
 
 Good luck!
