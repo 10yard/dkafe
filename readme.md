@@ -5,7 +5,7 @@ Donkey Kong Arcade Front End
 A Donkey Kong themed arcade game launcher with objectives and incentives to play and unlock arcade games.  
 
 This project includes:
- - An interactive frontend launcher which is preconfigured to work with classic Donkey Kong roms and hacks.
+ - An interactive frontend launcher that is preconfigured to work with classic Donkey Kong roms and hacks.
  - A rom patcher which will automatically generate 27 Donkey Kong hacks from the bundled patch files.
  - A custom lightweight build of WolfMAME specifically for Donkey Kong.
  - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly between them.
@@ -14,11 +14,12 @@ This project includes:
    - DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
    - DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
 
+
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
 
-Instructions
-============
+Objective
+=========
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the site. 
 
 Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well to win coins and unlock arcade machines as he works his way up the building to rescue Pauline.  
@@ -74,11 +75,14 @@ By unknown others
  - Donkey Kong Pace (dkongpace)
 
 
+![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
+
+
 DK WolfMAME
 ===========
-DKAFE comes bundled with my custom build of WolfMAME (v0.196) which supports only Donkey Kong drivers.  It a lightweight emulator less than 15mb size.
-This version has functionality disabled for save/load states, cheats, rewind, throttling etc.
-It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end (see below).
+DKAFE comes bundled with my custom lightweight build of WolfMAME (v0.196) which supports only Donkey Kong drivers. 
+This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
+It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
 
 Display Resolution
@@ -215,7 +219,7 @@ Refer to compile_notes.txt in the dkmame folder.
 
 Motivations?
 ============
-The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning Donkey Kong game mechanics and hacks.  I was looking to create something graphically in keeping with the era (rendering graphics at 224x256) and bringing together all of the Donkey Kong roms and rom hacks into one place with an incentive to play them and tools to aid my progression (trainers) and .inp recording capability for score submissions.
+The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and also as an exercise for my learning of learning Donkey Kong hacking and game mechanics.  I was aiming to bring together all of the Donkey Kong roms and hacks into one place with an incentive to play them and tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
 
 Thanks to
