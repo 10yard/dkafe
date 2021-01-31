@@ -1,15 +1,19 @@
 # Front End Settings
-FULLSCREEN = 0
+FULLSCREEN = 1
 FREE_PLAY = 1
-UNLOCK_MODE = 0
+UNLOCK_MODE = 1
 CONFIRM_EXIT = 1
 ENABLE_MENU = 1
 
 # Emulator Settings
 ROM_DIR = <ROOT>\roms
-OPTIONS = -skip_gameinfo -video gdi -keepaspect -unevenstretch
+OPTIONS = -keepaspect -unevenstretch
 EMU_1 = <ROOT>\dkwolf\dkwolf196 <OPTIONS> -rompath <ROM_DIR>
 EMU_2 = <ROOT>\dkwolf\dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
+
+# Interface Settings
+CREDITS=1
+AUTOSTART=1
 
 # Controls
 CONTROL_LEFT = left
@@ -22,4 +26,3 @@ CONTROL_P1 = 1
 CONTROL_P2 = 2
 CONTROL_COIN = 5
 CONTROL_EXIT = escape
-CONTROL_SLOTS = 9

@@ -20,6 +20,9 @@ emu/romload.cpp
   removed ROM loading messages
   changed missing ROM error to show message "ROM file was not found.  Please check DKAFE configuration".
 
+emu.config.cpp
+  remove save of config files
+
 A useful reference to compiling MAME can be found at:
   http://forum.arcadecontrols.com/index.php?topic=149545.0
 

@@ -22,7 +22,7 @@ xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
 
 echo **** build the exe in virtual environment ****
-venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+venv\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
 
 echo **** clean up
 rmdir build /s /Q
