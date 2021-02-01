@@ -61,12 +61,14 @@ emu.register_frame(function()
 		mode2 = mem:read_i8(0xc600a)
 		stage = mem:read_i8(0xc6227)      -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets, 5-bonus)	
 		score = get_score()
-
-		if mode1 == 3 and mode2 == 7 then
-			display_awards()
-		end
 		
 		if mode1 == 3 then
+			-- Show targets during climb intro
+			if mode2 == 7 then
+				display_awards()
+			end
+			
+			-- Show progress against targets under players score
 			if score > data_score1 then
 				write_message(0xc77a2, "WIN=1ST")
 			elseif score > data_score2 then
