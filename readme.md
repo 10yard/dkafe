@@ -10,13 +10,13 @@ A Donkey Kong themed arcade game launcher made for arcade cabinets with incentiv
 
 This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
- - A rom patcher that will automatically generate 27 Donkey Kong hacks using the included patch files.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly.
- - 3 new Donkey Kong hacks made specifically for DKAFE:
-   - DK Who - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
-   - DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
-   - DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
+ - A rom patcher that will automatically generate 27 hacks using the included Donkey Kong patch files.
+ - 3 Donkey Kong hacks made specifically by me for use with DKAFE:
+   - **DK Who and the Daleks** - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
+   - **DK Lava Panic** - Jumpman must keep his cool and move quickly to avoid the rising Lava.
+   - **DK Last Man Standing** - You wil lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
 
 This project does not include:
  - Roms
@@ -49,11 +49,12 @@ By Paul Goes, https://donkeykonghacks.net/
  - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Reverse (dkongrev)
 
-By John Kowalski (Sock Master) 
+By John Kowalski (Sock Master), http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)
  - Donkey Kong Christmas Remix (dkongxmas)
  - Donkey Kong Springs Trainer (dkongst2)
  - Donkey Kong Trainer (dkongtrn)
+ - Donkey Kong Pace (dkongpace)
  - Donkey Kong Rainbow (dkongrainbow)
 
 By Jeff Kulczycki, http://www.jeffsromhack.com/products/d2k.htm
@@ -61,7 +62,7 @@ By Jeff Kulczycki, http://www.jeffsromhack.com/products/d2k.htm
  - Donkey Kong Foundry (dkongf)
  - Donkey Kong Barrel Control Colouring (dkongbcc)
 
-By Mike Mika
+By Mike Mika and Clay Cowgill, http://www.multigame.com/dkp_arcade.html
  - Donkey Kong Pauline Edition (dkongpe)
 
 By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
@@ -76,7 +77,6 @@ By unknown others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
  - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Hard (dkonghrd)
- - Donkey Kong Pace (dkongpace)
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
@@ -89,8 +89,9 @@ This version has functionality disabled for save/load states, cheats, rewind, th
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
 Recordings are saved to \inp subfolder of DKWOLF and can be replayed outside of DKAFE using the playback.bat passing romname and inp file name e.g.
+```
 playback dkong dkong_01022021-084510 
-
+```
 
 ## Display Resolution
 
@@ -313,25 +314,26 @@ I wanted to bring together all of the amazing Donkey Kong roms and hacks into on
 
 ## Thanks to
 
-The MAMEdev team
-https://docs.mamedev.org/
-
-The community at Donkey Kong Forum
-https://donkeykongforum.com/
-
 The Donkey Kong rom hacking resource
 https://github.com/furrykef/dkdasm 
 
 Paul Goes for an excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
-Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika and Don Hodges.
+The Donkey Kong Forum
+https://donkeykongforum.com/
+
+The pygame community
+https://www.pygame.org/
+
+Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill and Don Hodges.
+
+The MAMEdev team
+https://docs.mamedev.org/
 
 WolfMAME by Mahlemiut
 https://github.com/mahlemiut/wolfmame
 
-Python and pygame
-https://www.python.org/ and https://www.pygame.org/
 
 
 ## Feedback
