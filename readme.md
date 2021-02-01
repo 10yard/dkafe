@@ -2,7 +2,11 @@
 
 Donkey Kong Arcade Front End
 
-A Donkey Kong themed arcade game launcher designed for arcade cabinets with objectives and incentives to play and unlock arcade games.  
+A Donkey Kong themed arcade game launcher designed for arcade cabinets with incentives to play and unlock arcade games.  
+
+
+![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
+
 
 This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
@@ -13,8 +17,6 @@ This project includes:
    - DK Who - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
    - DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
    - DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
-
-![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
 
 ## Plot
@@ -74,7 +76,7 @@ By unknown others
  - Donkey Kong Pace (dkongpace)
 
 
-![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
+![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
 
 
 ## DK WolfMAME
@@ -207,22 +209,9 @@ AUTOSTART=1
 
 The default keyboard controls are as follows.
 
-```
-Left/Right - Move Jumpman along the platforms.
 
-Up/Down    - Move Jumpman up and down ladders. Up also faces Jumpman towards an arcade machine he wants to play.
+![DKAFE controls](https://github.com/10yard/dkafe/blob/master/artwork/snaps/controls.png)
 
-P1 Start   - Play the arcade machine that Jumpman is facing. Jump also jumps :)
-or Jump
-
-P2 Start   - Calls up the quick access game list.
-
-Coin       - Display useful game information above the arcade machines
-
-Action     - Show slot numbers.
-
-Exit       - Exit DKAFE
-```
 
 Keyboard controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
 The default controls are aligned with MAME keys as follows.
