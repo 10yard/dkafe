@@ -34,12 +34,12 @@ def apply_rom_specific_hacks(rom=None, subfolder=None):
             os.environ["HACK_PENALTY"] = "1"
 
 
-def lua_interface(rom=None, subfolder=None, bronze_score=None, silver_score=None, gold_score=None):
+def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=None):
     # receive rom name, subfolder name and the target scores
     # Logic is mostly driven by the rom name but there are some exceptions were the subfolder name of a specific
     # rom is needed.
     preset = False
-    if bronze_score:
+    if score3:
         # Remove compete file if it still exists
         compete_file = os.path.join(ROOT_DIR, "interface", "compete.dat")
         if os.path.exists(compete_file):
@@ -50,12 +50,10 @@ def lua_interface(rom=None, subfolder=None, bronze_score=None, silver_score=None
         os.environ["DATA_SUBFOLDER"] = subfolder
         os.environ["DATA_CREDITS"] = str(CREDITS)
         os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart
-        os.environ["DATA_BRONZE_SCORE"] = format_K(str(bronze_score))
-        os.environ["DATA_BRONZE_AWARD"] = str(AWARDS[1])
-        os.environ["DATA_SILVER_SCORE"] = format_K(str(silver_score))
-        os.environ["DATA_SILVER_AWARD"] = str(AWARDS[2])
-        os.environ["DATA_GOLD_SCORE"] = format_K(str(gold_score))
-        os.environ["DATA_GOLD_AWARD"] = str(AWARDS[3])
+        for i, award in enumerate([("SCORE3", score3), ("SCORE2", score2), ("SCORE1", score1)]):
+            os.environ[f"DATA_{award[0]}"] = str(award[1])
+            os.environ[f"DATA_{award[0]}_K"] = format_K(str(award[1]))
+            os.environ[f"DATA_{award[0]}_AWARD"] = str(AWARDS[i+1])
 
         # Apply hacks based on front end settings
         os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
@@ -66,13 +64,13 @@ def lua_interface(rom=None, subfolder=None, bronze_score=None, silver_score=None
         # Apply rom specific Lua hacks such as the lava hack in dkonglava
         apply_rom_specific_hacks(rom, subfolder)
 
-        # We are concerned with bronze score to set the game highscore and to later establish if it was beaten.
+        # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
             preset = True
             score_width, double_width = 6, 6
             if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
                 score_width, double_width = 7, 8
-            scores = [bronze_score.zfill(score_width)] * 5
+            scores = [score3.zfill(score_width)] * 5
 
             # Default memory addresses
             os.environ["RAM_HIGH"] = RAM_HIGH
@@ -121,7 +119,7 @@ def adjust_addresses(array, offset):
     return new_array.strip(",")
 
 
-def get_award(rom, bronze, silver, gold):
+def get_award(rom, score3, score2, score1):
     # Read data from the compete.dat file to detemine if coins should be awarded to Jumpman.
     compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
     try:
@@ -130,12 +128,12 @@ def get_award(rom, bronze, silver, gold):
             name = cf.readline().replace("\n", "")
         os.remove(compete_file)
         if rom == name and score.isnumeric():
-            if int(score) > int(gold):
-                return AWARDS[3]  # Got the gold award
-            elif int(score) > int(silver):
-                return AWARDS[2]  # Got the silver award
-            elif int(score) > int(bronze):
-                return AWARDS[1]  # Got the bronze award
+            if int(score) > int(score1):
+                return AWARDS[3]  # Got 1st prize award
+            elif int(score) > int(score2):
+                return AWARDS[2]  # Got 2nd prize award
+            elif int(score) > int(score3):
+                return AWARDS[1]  # Got 3rd prize award
             else:
                 return AWARDS[0]  # Got nothing
     except Exception:

@@ -29,6 +29,31 @@ function get_loaded()
 	return emu["loaded"]
 end   
 
+function get_score()
+	-- read 3 segments of score data from ram and convert to a number
+	score1 = tonumber(string.format("%x", mem:read_i8(0xc60b4)))
+	score2 = tonumber(string.format("%x", mem:read_i8(0xc60b3)))
+	score3 = tonumber(string.format("%x", mem:read_i8(0xc60b2)))
+	score = 0
+	if score1 ~= nil then score = score + (score1 * 10000) end
+	if score2 ~= nil then score = score + (score2 * 100) end
+	if score3 ~= nil then score = score + score3 end
+	return score
+end
+
+function set_score(score)
+	padded_score = string.format("%06d", score)
+	-- update score in ram
+	score1 = string.sub(padded_score, 1, 2)
+	score2 = string.sub(padded_score, 3, 4)
+	score3 = string.sub(padded_score, 5, 6)
+	mem:write_i8(0xc60b4, tonumber(score1, 16))
+	mem:write_i8(0xc60b3, tonumber(score2, 16))
+	mem:write_i8(0xc60b2, tonumber(score3, 16))
+	-- update score on screen
+	write_message(0xc7781, padded_score) -- update screen as it otherwise may not be updated
+end
+
 function query_highscore()
 	local highscore = ""
 	if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
@@ -108,22 +133,34 @@ end
 
 function display_awards()
 	-- Display score awards during the DK intro
-	local dkclimb = mem:read_i8(0xc638e)
+	dkclimb = mem:read_i8(0xc638e)
+	offset = 0
+	
+	if emu.romname() == "dkongjr" then
+		-- DK Jr specific logic
+		if dkclimb > 45 then
+			dkclimb = dkclimb - 35
+			offset = 1
+		else
+			dkclimb = 0
+		end
+	end
+	
 	if dkclimb > 0 then
 		if dkclimb <= 17 then
-			write_message(0xc7770, data_gold_score.." SCORE")
-			write_message(0xc7570, data_gold_award.." COINS")
+			write_message(0xc7770 + (offset * 4), data_score1_k.." SCORE")
+			write_message(0xc7570 + (offset * 4), data_score1_award.." COINS")
 		end
 		if dkclimb <= 21 then
-			write_message(0xc7774, data_silver_score.." SCORE")
-			write_message(0xc7574, data_silver_award.." COINS")
+			write_message(0xc7774 + (offset * 3), data_score2_k.." SCORE")
+			write_message(0xc7574 + (offset * 3), data_score2_award.." COINS")
 		end
 		if dkclimb <= 25 then
-			write_message(0xc7778, data_bronze_score.." SCORE")
-			write_message(0xc7578, data_bronze_award.." COINS")
+			write_message(0xc7778 + (offset * 2), data_score3_k.." SCORE")
+			write_message(0xc7578 + (offset * 2), data_score3_award.." COINS")
 		end
 		if dkclimb <= 29 then
-			write_message(0xc777c, "PLAY TO WIN COINS")
+			write_message(0xc777c + offset, "PLAY TO WIN COINS")
 		end				
 	end
 end

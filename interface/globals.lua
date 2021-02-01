@@ -5,12 +5,17 @@ data_file = os.getenv("DATA_FILE")
 data_subfolder = os.getenv("DATA_SUBFOLDER")
 data_credits = os.getenv("DATA_CREDITS")
 data_autostart = os.getenv("DATA_AUTOSTART")
-data_bronze_score = os.getenv("DATA_BRONZE_SCORE")
-data_bronze_award = os.getenv("DATA_BRONZE_AWARD")
-data_silver_score = os.getenv("DATA_SILVER_SCORE")
-data_silver_award = os.getenv("DATA_SILVER_AWARD")
-data_gold_score = os.getenv("DATA_GOLD_SCORE")
-data_gold_award = os.getenv("DATA_GOLD_AWARD")
+
+--1st, 2nd and 3rd prize awards
+data_score1 = tonumber(os.getenv("DATA_SCORE1"))
+data_score1_k = os.getenv("DATA_SCORE1_K")
+data_score1_award = os.getenv("DATA_SCORE1_AWARD")
+data_score2 = tonumber(os.getenv("DATA_SCORE2"))
+data_score2_k = os.getenv("DATA_SCORE2_K")
+data_score2_award = os.getenv("DATA_SCORE2_AWARD")
+data_score3 = tonumber(os.getenv("DATA_SCORE3"))
+data_score3_k = os.getenv("DATA_SCORE3_K")
+data_score3_award = os.getenv("DATA_SCORE3_AWARD")
 
 -- Score data
 data_scores = get_formatted_data("DATA_SCORES")

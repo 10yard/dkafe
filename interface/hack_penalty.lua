@@ -6,32 +6,6 @@ function get_dipswitch()
 	return number_to_binary(ports[":DSW0"]:read())
 end
 
-function get_score()
-	-- read 3 segments of score data from ram and convert to a number
-	score1 = tonumber(string.format("%x", mem:read_i8(0xc60b4)))
-	score2 = tonumber(string.format("%x", mem:read_i8(0xc60b3)))
-	score3 = tonumber(string.format("%x", mem:read_i8(0xc60b2)))
-	score = 0
-	if score1 ~= nil then score = score + (score1 * 10000) end
-	if score2 ~= nil then score = score + (score2 * 100) end
-	if score3 ~= nil then score = score + score3 end
-	return score
-end
-
-function set_score(score)
-	padded_score = string.format("%06d", score)
-	-- update score in ram
-	score1 = string.sub(padded_score, 1, 2)
-	score2 = string.sub(padded_score, 3, 4)
-	score3 = string.sub(padded_score, 5, 6)
-	mem:write_i8(0xc60b4, tonumber(score1, 16))
-	mem:write_i8(0xc60b3, tonumber(score2, 16))
-	mem:write_i8(0xc60b2, tonumber(score3, 16))
-	-- update score on screen
-	write_message(0xc7781, padded_score) -- update screen as it otherwise may not be updated
-end
-
-
 function dkonglastman_overlay()
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
 		-- Title screen
