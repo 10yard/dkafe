@@ -118,47 +118,47 @@ Default settings can be changed in the settings.txt file.
 ```
 FULLSCREEN = 1
 ```
-*1 for fullscreen mode or 0 for windowed mode.*
+1 for fullscreen mode or 0 for windowed mode.
 
 ```
 FREE_PLAY = 0
 ```
-*1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game.*
+1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game.
 
 ```
 UNLOCK_MODE = 1
 ```
-*1 for unlock mode were Jumpman must score points to unlock games.  If 0 then all games are unlocked by default.*
+1 for unlock mode were Jumpman must score points to unlock games.  If 0 then all games are unlocked by default.
 
 ```
 CONFIRM_EXIT = 1
 ```
-*1 to display confirmation screen when attempting to exit.  0 to exit without question.*
+1 to display confirmation screen when attempting to exit.  0 to exit without question.
 
 ```
 ENABLE_HAMMERS=1
 ```
-*1 to enable teleport between hammers in the fronted to make it quicker to move up/down the platforms.*
+1 to enable teleport between hammers in the fronted to make it quicker to move up/down the platforms.
 
 ```
 INACTIVE_TIME = 20
 ```
-*Period of inactivity in seconds before showing screensaver/game instructions.*
+Period of inactivity in seconds before showing screensaver/game instructions.
 
 ```
 PLAY_COST = 100
 ```
-*How much it costs to play an arcade machine.*
+How much it costs to play an arcade machine.
 
 ```
 LIFE_COST = 150
 ```
-*How many coins Jumpman drops when time runs out.*
+How many coins Jumpman drops when time runs out.
 
 ```
 TIMER_START = 5000
 ```
-*Number to start the countdown timer from.*
+Number to start the countdown timer from.
 
 
 ### Emulator Settings
@@ -175,32 +175,32 @@ EMU_6 = (optional)
 EMU_7 = (optional)
 EMU_8 = (optional)
 ```
-*EMU_1 to EMU_8 are used to define the emulators.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for DKAFE recording sessions only.  It is recommended not to change EMU_1 and EMU_2.*
+EMU_1 to EMU_8 are used to define the emulators.  EMU_1 and EMU_2 come preconfigured.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for DKAFE .inp recording.  It is recommended not to change EMU_1 and EMU_2.
 
 ```
 ROM_DIR = <ROOT>\roms
 ```
-*the path to roms is set to the dkafe roms folder by default.  <ROOT> refers to the installed location of dkafe.*
+The rom directory is set to the dkafe roms folder by default.
 
 ```
 OPTIONS = -video gdi
 ```
-*additional argumnents to pass to DKMAME.  DKAFE will automatically pass other things in like -rompath and -record when necessary so this need not be changed.*
+Additional arguments to pass to DKMAME.  DKAFE will automatically pass other things in like -rompath and -record when necessary so this need not be changed.
 
 ```
 AUTOSTRETCH = 1
 ```
-*1 to automatically fit DKMAME to the resolution of monitor.  It will detect if monitor is 3:4 or 7:8 or similar aspect.*
+1 to automatically fit DKMAME to the resolution of monitor.  It will detect if monitor is 3:4 or 7:8 or similar aspect.
 
 ```
 CREDITS=1
 ```
-*1 to automatically insert a coin after launching a game.*
+1 to automatically insert a coin after launching a game.
 
 ```
 AUTOSTART=1
 ```
-*1 to automatically start the game - if coins are inserted.*
+1 to automatically start the game - if coins are inserted.
 
 
 ### Control Settings
