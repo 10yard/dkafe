@@ -271,7 +271,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
                     des = f"Unlock at {unlock}"
-                elif int(UNLOCK_MODE) and unlocked and _min and bonus:
+                elif unlocked and _min and bonus:
                     if since_last_move() % 4 > 3:
                         des = f'{_s.format_K(bonus)} Bonus'
                     elif since_last_move() % 4 > 2:

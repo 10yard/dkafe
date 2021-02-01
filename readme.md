@@ -2,24 +2,23 @@
 
 Donkey Kong Arcade Front End
 
-A Donkey Kong themed arcade game launcher with objectives and incentives to play and unlock arcade games.  
+A Donkey Kong themed arcade game launcher designed for arcade cabinets with objectives and incentives to play and unlock arcade games.  
 
 This project includes:
- - An interactive frontend launcher that is preconfigured to work with classic Donkey Kong roms and hacks.
- - A rom patcher which will automatically generate 27 Donkey Kong hacks from the bundled patch files.
- - A custom lightweight build of WolfMAME specifically for Donkey Kong.
- - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly between them.
+ - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
+ - A rom patcher that will automatically generate 27 Donkey Kong hacks from the included patch files.
+ - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
+ - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly.
  - 3 new Donkey Kong hacks made specifically for DKAFE:
    - DK Who - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
    - DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
    - DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
 
-
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
 
-Objective
-=========
+Plot
+====
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the site. 
 
 Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well to win coins and unlock arcade machines as he works his way up the building to rescue Pauline.  
@@ -84,6 +83,9 @@ DKAFE comes bundled with my custom lightweight build of WolfMAME (v0.196) which 
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
+Recordings are saved to \inp subfolder of DKWOLF and can be replayed outside of DKAFE using the playback.bat passing romname and inp file name e.g.
+playback dkong dkong_01022021-084510 
+
 
 Display Resolution
 ==================
@@ -107,6 +109,42 @@ https://www.mamedev.org/roms/
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
 The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the DKAFE roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches which are included with the software.  See "Automatically generated roms" section above. 
+
+
+Settings
+========
+Default settings can be changed in the settings.txt file.
+
+Frontend Settings:
+FULLSCREEN = 1     (1 for fullscreen mode or 0 for windowed mode)
+FREE_PLAY = 0      (1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game)
+UNLOCK_MODE = 1    (1 for unlock mode were Jumpman must score points to unlock games.  If 0 then all games are unlocked by default)
+CONFIRM_EXIT = 1   (1 to display confirmation screen when attempting to exit.  0 to exit without question)
+ENABLE_HAMMERS=1   (1 to enable teleport between hammers in the fronted to make it quicker to move up/down the platforms)
+INACTIVE_TIME = 20 (Period of inactivity in seconds before showing screensaver/game instructions.)
+PLAY_COST = 100    (How much it costs to play an arcade machine)
+LIFE_COST = 150    (How many coins Jumpman drops when time runs out)
+TIMER_START = 5000 (Number to start the countdown timer from)
+
+Emulator Settings:
+ROM_DIR = <ROOT>\roms (the path to roms is set to the dkafe roms folder by default.  <ROOT> refers to the installed location of dkafe.)
+OPTIONS = -video gdi  (additional argumnents to pass to DKMAME.  DKAFE will automatically pass other things in like -rompath and -record when necessary so this need not be changed.)
+AUTOSTRETCH = 1  (1 to automatically fit DKMAME to the resolution of monitor.  It will detect if monitor is 3:4 or 7:8 or similar aspect)
+CREDITS=1        (1 to automatically insert a coin after launching a game)
+AUTOSTART=1      (1 to automatically start the game - if coins are inserted)
+
+Available Emulator Settings
+EMU_1 to EMU_8        (can be used to set the emulator numbers.  OPTIONS and ROM_DIR will be picked up from above.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for recording only.  It is recommended not to change EMU_1 and EMU_2.)
+EMU_1 = <ROOT>\dkwolf\dkwolf196 <OPTIONS> -rompath <ROM_DIR>
+EMU_2 = <ROOT>\dkwolf\dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
+EMU_3 = (optional)
+EMU_4 = (optional)
+EMU_5 = (optional)
+EMU_6 = (optional)
+EMU_7 = (optional)
+EMU_8 = (optional)
+
+See below for control settings.
 
 
 Controls
@@ -219,7 +257,9 @@ Refer to compile_notes.txt in the dkmame folder.
 
 Motivations?
 ============
-The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and also as an exercise for my learning of learning Donkey Kong hacking and game mechanics.  I was aiming to bring together all of the Donkey Kong roms and hacks into one place with an incentive to play them and tools to aid my own progression (trainers) and .inp recording capability for score submissions.
+The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.  
+
+I wanted to bring together all of the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
 
 Thanks to

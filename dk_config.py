@@ -39,7 +39,7 @@ ENABLE_HAMMERS = True        # Show hammers and enable teleport between hammers 
 
 AWARDS = [0, 1000, 2000]     # Coins awared for competing. Fail, minimum and bonus scores when competing
 PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
-LIFE_COST = 150              # How many coins Jumpman loses when time runs out
+LIFE_COST = 150              # How many coins Jumpman drops when time runs out
 CREDITS = 0                  # Automatically set credits in MAME at start of game - when using interface
 AUTOSTART = 0                # Automatically start the game in MAME (by simulating P1 start) when using interface
 INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
@@ -61,8 +61,9 @@ HACK_LAVA = 0                # Hack DK to limit time for ascending the stage due
 ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults
-OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
 ROM_DIR = '<ROOT>/roms'
+OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
+AUTOSTRETCH = True
 EMU_1 = '<ROOT>/dkwolf/dkwolf196 <OPTIONS> -rompath <ROM_DIR>'
 EMU_2 = '<ROOT>/dkwolf/dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6
@@ -290,3 +291,6 @@ dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_w
 # Override default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
+
+ASPECT_RATIO = pygame.display.Info().current_h / pygame.display.Info().current_w
+

@@ -98,6 +98,7 @@ if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 	-- Flash when the penalty is greater than score to indicate player won't survive
 	blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 	
 	if score >= penalty_points or blink_toggle ~= 16 then
+		--write_message(0xc77a2, "LIFE COST")
 		write_message(0xc77a3, "@=     ")
 		write_message(0xc77a3, "@="..tonumber(penalty_points))
 	else
