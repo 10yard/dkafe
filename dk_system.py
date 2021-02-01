@@ -26,13 +26,13 @@ def read_romlist():
     romlist = []
     with open("romlist.csv", "r") as rl:
         for rom_line in rl.readlines()[1:]:  # ignore the first/header line
-            if not rom_line.startswith("#") and rom_line.count(",") == 8:
-                name, sub, des, slot, emu, state, unlock, _min, bonus, *_ = [x.strip() for x in rom_line.split(",")]
+            if not rom_line.startswith("#") and rom_line.count(",") == 9:
+                name, sub, des, slot, emu, state, unlock, bronze, silver, gold, *_ = [x.strip() for x in rom_line.split(",")]
                 if name and des and SLOTS[int(slot) - 1]:
                     icx, icy = SLOTS[int(slot) - 1]
                     # target = name + (".sh", ".bat")[is_windows()] if sub == "shell" else name + ".zip"
                     # if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[sub == "shell"], sub, target)):
-                    romlist.append((name, sub, des, icx, icy, int(emu), state, int(unlock), _min, bonus))
+                    romlist.append((name, sub, des, icx, icy, int(emu), state, int(unlock), bronze, silver, gold))
     return romlist
 
 
@@ -47,7 +47,7 @@ def build_shell_command(info):
     # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
     # rom to avoid a CRC check fail.
     competing = False
-    sub, name, emu, state, unlock, _min, bonus = info
+    sub, name, emu, state, unlock, bronze, silver, gold = info
     emu_command = get_emulator(emu).replace("<NAME>", name).replace("<DATETIME>", get_datetime())
     shell_command = f'{emu_command} {name}'
     emu_directory = os.path.dirname(emu_command.split(" ")[0])
@@ -79,7 +79,7 @@ def build_shell_command(info):
 
     # MAME/LUA interface
     if "-record" not in shell_command:
-        if lua_interface(name, sub, _min, bonus):
+        if lua_interface(name, sub, bronze, silver, gold):
             competing = True
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
             shell_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'

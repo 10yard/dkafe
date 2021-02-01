@@ -110,13 +110,17 @@ function display_awards()
 	-- Display score awards during the DK intro
 	local dkclimb = mem:read_i8(0xc638e)
 	if dkclimb > 0 then
+		if dkclimb <= 17 then
+			write_message(0xc7770, data_gold_score.." SCORE")
+			write_message(0xc7570, data_gold_award.." COINS")
+		end
 		if dkclimb <= 21 then
-			write_message(0xc7774, data_bonus_score.." SCORE")
-			write_message(0xc7574, data_bonus_award.." COINS")
+			write_message(0xc7774, data_silver_score.." SCORE")
+			write_message(0xc7574, data_silver_award.." COINS")
 		end
 		if dkclimb <= 25 then
-			write_message(0xc7778, data_min_score.." SCORE")
-			write_message(0xc7578, data_min_award.." COINS")
+			write_message(0xc7778, data_bronze_score.." SCORE")
+			write_message(0xc7578, data_bronze_award.." COINS")
 		end
 		if dkclimb <= 29 then
 			write_message(0xc777c, "PLAY TO WIN COINS")

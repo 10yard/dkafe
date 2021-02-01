@@ -32,30 +32,30 @@ BUTTON_COIN = 7
 # Options
 CONFIRM_EXIT = True
 FULLSCREEN = True
-FREE_PLAY = True             # Jumpman does not have to pay to play
-UNLOCK_MODE = True           # Arcade machines are unlocked as Jumpman's score increases
-ENABLE_MENU = True           # Allow selection from the quick access game list
-ENABLE_HAMMERS = True        # Show hammers and enable teleport between hammers in the frontend
+FREE_PLAY = True               # Jumpman does not have to pay to play
+UNLOCK_MODE = True             # Arcade machines are unlocked as Jumpman's score increases
+ENABLE_MENU = True             # Allow selection from the quick access game list
+ENABLE_HAMMERS = True          # Show hammers and enable teleport between hammers in the frontend
 
-AWARDS = [0, 1000, 2000]     # Coins awared for competing. Fail, minimum and bonus scores when competing
-PLAY_COST = 100              # How much it costs to play an arcade machine. Integer
-LIFE_COST = 150              # How many coins Jumpman drops when time runs out
-CREDITS = 0                  # Automatically set credits in MAME at start of game - when using interface
-AUTOSTART = 0                # Automatically start the game in MAME (by simulating P1 start) when using interface
-INACTIVE_TIME = 20           # Screensaver with game instructions after period in seconds of inactivity. Integer
-TIMER_START = 5000           # Timer starts countdown from. Integer
-COIN_VALUES = [0, 50, 100]   # How many points awarded for collecting a coin. Integer
-COIN_FREQUENCY = 2           # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
-COIN_HIGH = 4                # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
-COIN_SPEED = 1.6             # Number of pixels to move coin per display update. Decimal
-COIN_CYCLE = 0.15            # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = 3            # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+AWARDS = [0, 500, 1000, 2000]  # Coins awared for competing. Fail, minimum and bonus scores when competing
+PLAY_COST = 100                # How much it costs to play an arcade machine. Integer
+LIFE_COST = 150                # How many coins Jumpman drops when time runs out
+CREDITS = 0                    # Automatically set credits in MAME at start of game - when using interface
+AUTOSTART = 0                  # Automatically start the game in MAME (by simulating P1 start) when using interface
+INACTIVE_TIME = 20             # Screensaver with game instructions after period in seconds of inactivity. Integer
+TIMER_START = 5000             # Timer starts countdown from. Integer
+COIN_VALUES = [0, 50, 100]     # How many points awarded for collecting a coin. Integer
+COIN_FREQUENCY = 2             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
+COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
+LADDER_CHANCE = 3              # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 
 # Hacks
-HACK_TELEPORT = 0            # Hack DK to allow teleport between hammers. 0 or 1
-HACK_NOHAMMERS = 0           # Hack DK to remove hammers.  0 or 1
-HACK_PENALTY = 0             # Hack DK to lose penalty points instead of lives.
-HACK_LAVA = 0                # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1.
+HACK_TELEPORT = 0              # Hack DK to allow teleport between hammers. 0 or 1
+HACK_NOHAMMERS = 0             # Hack DK to remove hammers.  0 or 1
+HACK_PENALTY = 0               # Hack DK to lose penalty points instead of lives.
+HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1.
 
 # Root directory of frontend
 ROOT_DIR = os.getcwd()

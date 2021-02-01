@@ -255,7 +255,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     nearby = None
     info_list = []
     # Display icons and return icon that is near to Jumpman
-    for _x, _y, name, sub, des, emu, state, unlock, _min, bonus in _g.icons:
+    for _x, _y, name, sub, des, emu, state, unlock, bronze, silver, gold in _g.icons:
         unlocked = True
         if _g.score < unlock and UNLOCK_MODE and not intro:
             unlocked = False
@@ -271,20 +271,22 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
                     des = f"Unlock at {unlock}"
-                elif unlocked and _min and bonus:
-                    if since_last_move() % 4 > 3:
-                        des = f'{_s.format_K(bonus)} Bonus'
-                    elif since_last_move() % 4 > 2:
-                        des = f'{_s.format_K(_min)} Minimum'
+                elif unlocked and bronze and silver and gold:
+                    if since_last_move() % 5 > 4:
+                        des = f'{_s.format_K(gold)} Gold'
+                    elif since_last_move() % 5 > 3:
+                        des = f'{_s.format_K(silver)} Silver'
+                    elif since_last_move() % 5 > 2:
+                        des = f'{_s.format_K(bronze)} Bronze'
                 elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
                     des = 'FOR RECORDING!'
-                elif not _min.strip() and since_last_move() % 4 > 2:
+                elif not bronze.strip() and since_last_move() % 4 > 2:
                     des = 'FOR PRACTICE!'
                 elif not int(FREE_PLAY) and since_last_move() % 4 > 2:
                     des = f'${str(PLAY_COST)} TO PLAY'
                 write_text(des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
-                    nearby = (sub, name, emu, state, unlock, _min, bonus)
+                    nearby = (sub, name, emu, state, unlock, bronze, silver, gold)
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
                 if "-record" in _s.get_emulator(emu) and not _g.showinfo:
@@ -384,11 +386,11 @@ def build_menus(initial=False):
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
-    for name, sub, desc, icx, icy, emu, state, unlock, _min, bonus in _s.read_romlist():
+    for name, sub, desc, icx, icy, emu, state, unlock, bronze, silver, gold in _s.read_romlist():
         if _g.score >= unlock or not UNLOCK_MODE:
-            _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, _min, bonus))
+            _g.menu.add_button(desc, launch_rom, (sub, name, emu, state, unlock, bronze, silver, gold))
         if initial:
-            _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, _min, bonus))
+            _g.icons.append((int(icx), int(icy), name, sub, desc, emu, state, unlock, bronze, silver, gold))
 
     _g.menu.add_button('Close Menu', close_menu)
 
@@ -420,7 +422,7 @@ def close_menu():
 
 def launch_rom(info):
     if info:
-        sub, name, emu, state, unlock, _min, bonus = info
+        sub, name, emu, state, unlock, bronze, silver, gold = info
 
         _g.timer.stop()  # Stop timer while playing arcade
         _g.menu.disable()
@@ -434,9 +436,10 @@ def launch_rom(info):
             clear_screen()
             if competing and name not in ("dkong", "dkongx11", "dkongpe", "dkonghrd", "dkongf"):
                 # Flash message showing awards before game starts. dkong roms (in above list) have the message in game.
-                flash_message(f"Beat {_s.format_K(_min)} for {AWARDS[1]} coins", x=15, y=80, clear=False)
-                flash_message(f"Beat {_s.format_K(bonus)} for {AWARDS[2]} coins", x=15, y=100, clear=False)
-                flash_message("G O   F O R   I T !", x=30, y=140, clear=False, bright=True, cycles=9)
+                flash_message(f"Beat {_s.format_K(bronze)} for {AWARDS[1]} coins", x=15, y=70, clear=False)
+                flash_message(f"Beat {_s.format_K(silver)} for {AWARDS[2]} coins", x=15, y=90, clear=False)
+                flash_message(f"Beat {_s.format_K(silver)} for {AWARDS[3]} coins", x=15, y=110, clear=False)
+                flash_message("G O   F O R   I T !", x=30, y=150, clear=False, bright=True, cycles=9)
                 clear_screen()
             elif "-record" in shell_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
@@ -445,8 +448,8 @@ def launch_rom(info):
             os.system(shell_command)
             os.chdir(ROOT_DIR)
             if competing:
-                # Check to see if Jumpman achieved minimum or bonus scores and award earned points
-                scored = get_award(name, _min, bonus)
+                # Check to see if Jumpman achieved bronze, silver or gold scores and award earned points
+                scored = get_award(name, bronze, silver, gold)
                 if scored > 0:
                     _g.awarded = True
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):

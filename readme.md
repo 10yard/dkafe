@@ -11,7 +11,7 @@ A Donkey Kong themed arcade game launcher made for arcade cabinets with incentiv
 This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly.
+ - Scripts to interface MAME with the frontend allowing for data to pass seamlessly.
  - A rom patcher that will automatically generate 27 hacks using the included Donkey Kong patch files.
  - 3 Donkey Kong hacks made specifically by me for use with DKAFE:
    - **DK Who and the Daleks** - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
