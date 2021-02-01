@@ -2,7 +2,7 @@
 
 Donkey Kong Arcade Front End
 
-A Donkey Kong themed arcade game launcher designed for arcade cabinets with incentives to play and unlock arcade games.  
+A Donkey Kong themed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
@@ -10,13 +10,16 @@ A Donkey Kong themed arcade game launcher designed for arcade cabinets with ince
 
 This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
- - A rom patcher that will automatically generate 27 Donkey Kong hacks from the included patch files.
+ - A rom patcher that will automatically generate 27 Donkey Kong hacks using the included patch files.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - LUA scripts to interface the front end with MAME allowing for data to pass seamlessly.
  - 3 new Donkey Kong hacks made specifically for DKAFE:
    - DK Who - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
    - DK Lava Panic - Jumpman must keep his cool and move quickly to avoid the rising Lava.
    - DK Last Man Standing - Lose penalty points instead of lives so don't make a mistake unless you have enough points to survive.
+
+This project does not include:
+ - Roms
 
 
 ## Plot
@@ -206,8 +209,6 @@ AUTOSTART=1
 
 
 ### Control Settings
-
-The default keyboard controls are as follows.
 
 
 ![DKAFE controls](https://github.com/10yard/dkafe/blob/master/artwork/snaps/controls.png)
