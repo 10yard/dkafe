@@ -17,8 +17,8 @@ This project includes:
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
 
-Plot
-====
+## Plot
+
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the site. 
 
 Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well to win coins and unlock arcade machines as he works his way up the building to rescue Pauline.  
@@ -26,8 +26,8 @@ Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw c
 Pauline will love it when you beat all of the machines.
 
 
-Automatically generated roms
-============================
+## Automatically generated roms
+
 DKAFE builds a default frontend using various patches of the original "dkong.zip" (US Set 1) arcade rom. 
 
 The patches are included with the software in the patch folder.
@@ -77,8 +77,8 @@ By unknown others
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
 
 
-DK WolfMAME
-===========
+## DK WolfMAME
+
 DKAFE comes bundled with my custom lightweight build of WolfMAME (v0.196) which supports only Donkey Kong drivers. 
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
@@ -87,15 +87,15 @@ Recordings are saved to \inp subfolder of DKWOLF and can be replayed outside of 
 playback dkong dkong_01022021-084510 
 
 
-Display Resolution
-==================
+## Display Resolution
+
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 The scaling works perfectly with a 7/8 aspect vertically rotated screen.
 For my system,  I was able to create a custom 7/8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
 
-How to set up?
-==============
+## How to set up?
+
 The application requires romlist.csv and settings.txt to be present in the installation folder along with other resources.
  
 The settings.txt contains the emulator, rom path, controls and other configuration.
@@ -111,44 +111,78 @@ The frontend can be configured with multiple arcade emulators to allow a combina
 The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the DKAFE roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches which are included with the software.  See "Automatically generated roms" section above. 
 
 
-Settings
-========
+### Frontend Settings
+
 Default settings can be changed in the settings.txt file.
 
-Frontend Settings:
-FULLSCREEN = 1     (1 for fullscreen mode or 0 for windowed mode)
-FREE_PLAY = 0      (1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game)
-UNLOCK_MODE = 1    (1 for unlock mode were Jumpman must score points to unlock games.  If 0 then all games are unlocked by default)
-CONFIRM_EXIT = 1   (1 to display confirmation screen when attempting to exit.  0 to exit without question)
-ENABLE_HAMMERS=1   (1 to enable teleport between hammers in the fronted to make it quicker to move up/down the platforms)
-INACTIVE_TIME = 20 (Period of inactivity in seconds before showing screensaver/game instructions.)
-PLAY_COST = 100    (How much it costs to play an arcade machine)
-LIFE_COST = 150    (How many coins Jumpman drops when time runs out)
-TIMER_START = 5000 (Number to start the countdown timer from)
+FULLSCREEN = 1     
+*1 for fullscreen mode or 0 for windowed mode.*
 
-Emulator Settings:
-ROM_DIR = <ROOT>\roms (the path to roms is set to the dkafe roms folder by default.  <ROOT> refers to the installed location of dkafe.)
-OPTIONS = -video gdi  (additional argumnents to pass to DKMAME.  DKAFE will automatically pass other things in like -rompath and -record when necessary so this need not be changed.)
-AUTOSTRETCH = 1  (1 to automatically fit DKMAME to the resolution of monitor.  It will detect if monitor is 3:4 or 7:8 or similar aspect)
-CREDITS=1        (1 to automatically insert a coin after launching a game)
-AUTOSTART=1      (1 to automatically start the game - if coins are inserted)
+FREE_PLAY = 0      
+*1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game.*
 
-Available Emulator Settings
-EMU_1 to EMU_8        (can be used to set the emulator numbers.  OPTIONS and ROM_DIR will be picked up from above.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for recording only.  It is recommended not to change EMU_1 and EMU_2.)
+UNLOCK_MODE = 1    
+*1 for unlock mode were Jumpman must score points to unlock games.  If 0 then all games are unlocked by default.*
+
+CONFIRM_EXIT = 1 
+*1 to display confirmation screen when attempting to exit.  0 to exit without question.*
+
+ENABLE_HAMMERS=1
+*1 to enable teleport between hammers in the fronted to make it quicker to move up/down the platforms.*
+
+INACTIVE_TIME = 20 
+*Period of inactivity in seconds before showing screensaver/game instructions.*
+
+PLAY_COST = 100
+*How much it costs to play an arcade machine.*
+
+LIFE_COST = 150
+*How many coins Jumpman drops when time runs out.*
+
+TIMER_START = 5000
+*Number to start the countdown timer from.*
+
+
+### Emulator Settings
+
+Default settings can be changed in the settings.txt file.
+
 EMU_1 = <ROOT>\dkwolf\dkwolf196 <OPTIONS> -rompath <ROM_DIR>
+
 EMU_2 = <ROOT>\dkwolf\dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
+
 EMU_3 = (optional)
+
 EMU_4 = (optional)
+
 EMU_5 = (optional)
+
 EMU_6 = (optional)
+
 EMU_7 = (optional)
+
 EMU_8 = (optional)
 
-See below for control settings.
+*EMU_1 to EMU_8 are used to define the emulators.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for DKAFE recording sessions only.  It is recommended not to change EMU_1 and EMU_2.*
+
+ROM_DIR = <ROOT>\roms 
+*the path to roms is set to the dkafe roms folder by default.  <ROOT> refers to the installed location of dkafe.*
+
+OPTIONS = -video gdi
+*additional argumnents to pass to DKMAME.  DKAFE will automatically pass other things in like -rompath and -record when necessary so this need not be changed.*
+
+AUTOSTRETCH = 1
+*1 to automatically fit DKMAME to the resolution of monitor.  It will detect if monitor is 3:4 or 7:8 or similar aspect.*
+
+CREDITS=1
+*1 to automatically insert a coin after launching a game.*
+
+AUTOSTART=1
+*1 to automatically start the game - if coins are inserted.*
 
 
-Controls
-========
+### Control Settings
+
 The default keyboard controls are as follows.
 
 ```
@@ -200,8 +234,8 @@ BUTTON_COIN = 7
 ```
 
 
-How to use romlist.csv
-======================
+## How to use romlist.csv
+
 A default romlist.csv is provided for use with the automatically generated roms (above).
 
 The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
@@ -218,10 +252,10 @@ All roms should be provided with a similarly named image as a .png file in the /
 Hopefully that all makes sense.  Refer to the example romlist.csv
 
 
-Emulator recommendation
-=======================
-For Windows
------------
+## Emulator recommendation
+
+### For Windows
+
 For the default frontend you should stick with the bundled DKWolf emulator which is compiled from WolfMAME v0.196 and comes ready to go.
 Otherwise my recommendations are:
 
@@ -231,8 +265,8 @@ Otherwise my recommendations are:
 
 3. HB Mame (Dedicated to hacks and homebrew) from https://www.progettosnaps.net/hbmame/
 
-For Raspberry Pi
-----------------
+### For Raspberry Pi
+
 I get along best with advance mame:
   - https://github.com/amadvance/advancemame/releases/download/v3.9/advancemame_3.9-1_armhf.deb
 
@@ -240,8 +274,11 @@ on top of dietpi lightweight OS:
   - https://dietpi.com/
   
 
-How to build DKAFE?
-===================
+## Building/Compiling
+
+
+### How to build DKAFE?
+
 Requires Python3 (from v3.7) with installed packages from requirements.txt
 
 Pyinstaller can be used to build the application binary on Windows.
@@ -250,20 +287,19 @@ Pyinstaller can be used to build the application binary on Windows.
 See build.bat for an example build script making use of venv (virtual environment for Python)
 
 
-How to build DKMame?
-====================
+### How to compile DKMame?
+
 Refer to compile_notes.txt in the dkmame folder.
 
 
-Motivations?
-============
+## Motivations?
+
 The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.  
 
 I wanted to bring together all of the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
 
-Thanks to
-=========
+## Thanks to
 
 The MAMEdev team
 https://docs.mamedev.org/
@@ -286,8 +322,7 @@ Python and pygame
 https://www.python.org/ and https://www.pygame.org/
 
 
-Feedback
-========
+## Feedback
 
 Please send feedback to jon123wilson@hotmail.com
 
