@@ -1,5 +1,5 @@
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART
+from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS
 from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY
 
 # Memory addresses for scores and players data
@@ -53,7 +53,7 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
         for i, award in enumerate([("SCORE3", score3), ("SCORE2", score2), ("SCORE1", score1)]):
             os.environ[f"DATA_{award[0]}"] = str(award[1])
             os.environ[f"DATA_{award[0]}_K"] = format_K(str(award[1]))
-            os.environ[f"DATA_{award[0]}_AWARD"] = str(AWARDS[i+1])
+            os.environ[f"DATA_{award[0]}_AWARD"] = str(AWARDS[i])
 
         # Apply hacks based on front end settings
         os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
@@ -64,13 +64,20 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
         # Apply rom specific Lua hacks such as the lava hack in dkonglava
         apply_rom_specific_hacks(rom, subfolder)
 
+        # Are we going to show the awards targets and progress while playing the game
+        os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
+        os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
+
         # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
             preset = True
             score_width, double_width = 6, 6
             if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
                 score_width, double_width = 7, 8
-            scores = [score3.zfill(score_width)] * 5
+            # We must set the high score in DK memory to be slightly less than score3 target.
+            # This ensures user will register their high score if game ends with the exact target score.
+            min_score = str(int(score3) - 100)
+            scores = [min_score.zfill(score_width)] * 5
 
             # Default memory addresses
             os.environ["RAM_HIGH"] = RAM_HIGH
@@ -107,7 +114,6 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
                 os.environ["RAM_PLAYERS"] = adjust_addresses(RAM_PLAYERS, 1)
                 os.environ["ROM_SCORES"] = ""
                 os.environ["RAM_HIGH"] = ""
-
         return preset
 
 
@@ -129,13 +135,13 @@ def get_award(rom, score3, score2, score1):
         os.remove(compete_file)
         if rom == name and score.isnumeric():
             if int(score) > int(score1):
-                return AWARDS[3]  # Got 1st prize award
+                return AWARDS[2]  # Got 1st prize award
             elif int(score) > int(score2):
-                return AWARDS[2]  # Got 2nd prize award
+                return AWARDS[1]  # Got 2nd prize award
             elif int(score) > int(score3):
-                return AWARDS[1]  # Got 3rd prize award
+                return AWARDS[0]  # Got 3rd prize award
             else:
-                return AWARDS[0]  # Got nothing
+                return 0  # Got nothing
     except Exception:
         return 0
     return 0

@@ -132,36 +132,50 @@ function write_message(start_address, text)
 end
 
 function display_awards()
-	-- Display score awards during the DK intro
-	dkclimb = mem:read_i8(0xc638e)
-	offset = 0
-	
-	if emu.romname() == "dkongjr" then
-		-- DK Jr specific logic
-		if dkclimb > 45 then
-			dkclimb = dkclimb - 35
+	if data_show_award_targets == "1" and mode1 == 3 and mode2 == 7 then
+		-- Showy score awards during the DK climb scene/intro
+		dkclimb = mem:read_i8(0xc638e)
+		offset = 0
+		if emu.romname() == "dkongjr" then
 			offset = 1
-		else
-			dkclimb = 0
+			dkclimb = dkclimb - 36
+		end
+		
+		if dkclimb > 0 then
+			if dkclimb <= 17 then
+				write_message(0xc7770 + (offset * 7), "1ST PRIZE")
+				write_message(0xc7570 + (offset * 7), "AT "..tostring(data_score1))
+			end
+			if dkclimb <= 21 then
+				write_message(0xc7774 + (offset * 5), "2ND PRIZE")
+				write_message(0xc7574 + (offset * 5), "AT "..tostring(data_score2))
+			end
+			if dkclimb <= 25 then
+				write_message(0xc7778 + (offset * 3), "3RD PRIZE")
+				write_message(0xc7578 + (offset * 3), "AT "..tostring(data_score3))
+			end
+			if dkclimb <= 29 then
+				write_message(0xc777c + offset, "PLAY TO WIN COINS")
+			end				
 		end
 	end
 	
-	if dkclimb > 0 then
-		if dkclimb <= 17 then
-			write_message(0xc7770 + (offset * 4), data_score1_k.." SCORE")
-			write_message(0xc7570 + (offset * 4), data_score1_award.." COINS")
-		end
-		if dkclimb <= 21 then
-			write_message(0xc7774 + (offset * 3), data_score2_k.." SCORE")
-			write_message(0xc7574 + (offset * 3), data_score2_award.." COINS")
-		end
-		if dkclimb <= 25 then
-			write_message(0xc7778 + (offset * 2), data_score3_k.." SCORE")
-			write_message(0xc7578 + (offset * 2), data_score3_award.." COINS")
-		end
-		if dkclimb <= 29 then
-			write_message(0xc777c + offset, "PLAY TO WIN COINS")
-		end				
+	if data_show_award_progress == "1" then
+		-- Show progress against targets at top of screen replacing high score
+		write_message(0xc7641, "      ")
+		if score < data_score3 then
+			write_message(0xc76a0, "3RD PRIZE AT")
+			write_message(0xc7641, string.format("%06d", data_score3))
+		elseif score < data_score2 then
+			write_message(0xc76a0, "2ND PRIZE AT")
+			write_message(0xc7641, string.format("%06d", data_score2))
+		elseif score < data_score1 then
+			write_message(0xc76a0, "1ST PRIZE AT")
+			write_message(0xc7641, string.format("%06d", data_score1))
+		else
+			write_message(0xc76a0, " CONGRATS. ")
+			write_message(0xc7641, " WON 1ST")
+		end 
 	end
 end
 

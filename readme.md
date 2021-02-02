@@ -208,6 +208,16 @@ AUTOSTART=1
 ```
 1 to automatically start the game - if coins are inserted.
 
+```
+SHOW_AWARD_PROGRESS = 1
+```
+1 to show award progress when playing game (replaces highscore at top of screen)
+
+```
+SHOW_AWARD_TARGETS = 1
+```
+1 to show award targets for 1st, 2nd and 3rd prize when playing game (appears during the DK intro/climb scene)
+
 
 ### Control Settings
 
@@ -333,7 +343,6 @@ https://docs.mamedev.org/
 
 WolfMAME by Mahlemiut
 https://github.com/mahlemiut/wolfmame
-
 
 
 ## Feedback

@@ -6,6 +6,10 @@ data_subfolder = os.getenv("DATA_SUBFOLDER")
 data_credits = os.getenv("DATA_CREDITS")
 data_autostart = os.getenv("DATA_AUTOSTART")
 
+--Award targets and progress
+data_show_award_targets = os.getenv("DATA_SHOW_AWARD_TARGETS")
+data_show_award_progress = os.getenv("DATA_SHOW_AWARD_PROGRESS")
+
 --1st, 2nd and 3rd prize awards
 data_score1 = tonumber(os.getenv("DATA_SCORE1"))
 data_score1_k = os.getenv("DATA_SCORE1_K")
