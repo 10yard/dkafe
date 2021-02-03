@@ -1,9 +1,9 @@
--- DKAFE Interface for DKONG
--- Set target score, registered names/scores and dump highscore to file when finished.  Enable some hacks.
--- 0. Update ROM on start
--- 1. Update RAM
--- 2. Update coins (optional) and autostart (optional)
--- 3. Activate hacks (optional)
+-- DKAFE Interface for Donkey Kong
+----------------------------------
+-- Set target score, registered player names/scores. 
+-- Dump highscore to file when finished.  
+-- Enable some hacks (optional).  
+-- Show prizes and progress in the game (optional).
 
 data_includes_folder = os.getenv("DATA_INCLUDES")
 package.path = package.path .. ";" .. data_includes_folder .. "/?.lua;"
@@ -61,7 +61,8 @@ emu.register_frame(function()
 		mode2 = mem:read_i8(0xc600a)
 		stage = mem:read_i8(0xc6227)      -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets, 5-bonus)	
 		score = get_score()
-		
+				
+		-- Show award targets and progress during gameplay.
 		display_awards()			
 		
 		-- Optional hacks
@@ -75,15 +76,11 @@ emu.register_frame(function()
 		end
 		if hack_penalty == "1" then
 			dofile(data_includes_folder.."/hack_penalty.lua")
-		end
+		end		
 	end
 end)
 
 -- Register callback function on exit
 emu.register_stop(function()
-	-- Export score data
-	file = io.open(data_file, "w+")
-	file:write(query_highscore() .. "\n")
-	file:write(emu.romname() .. "\n")
-	file:write("\n")
+	record_in_compete_file()
 end)

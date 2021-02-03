@@ -68,16 +68,18 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
         os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
         os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
 
+        # Award prizes
+        os.environ["DATA_AWARD1"] = str(AWARDS[2])
+        os.environ["DATA_AWARD2"] = str(AWARDS[1])
+        os.environ["DATA_AWARD3"] = str(AWARDS[0])
+
         # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
             preset = True
             score_width, double_width = 6, 6
             if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
                 score_width, double_width = 7, 8
-            # We must set the high score in DK memory to be slightly less than score3 target.
-            # This ensures user will register their high score if game ends with the exact target score.
-            min_score = str(int(score3) - 100)
-            scores = [min_score.zfill(score_width)] * 5
+            scores = [score3.zfill(score_width)] * 5
 
             # Default memory addresses
             os.environ["RAM_HIGH"] = RAM_HIGH
@@ -130,9 +132,9 @@ def get_award(rom, score3, score2, score1):
     compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
     try:
         with open(compete_file, "r") as cf:
-            score = cf.readline().replace("\n", "")
             name = cf.readline().replace("\n", "")
-        os.remove(compete_file)
+            score = cf.readline().replace("\n", "")
+        # os.remove(compete_file)
         if rom == name and score.isnumeric():
             if int(score) > int(score1):
                 return AWARDS[2]  # Got 1st prize award

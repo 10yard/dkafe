@@ -1,6 +1,7 @@
 import os
 from platform import platform
 from datetime import datetime
+from time import sleep
 from glob import glob
 from shutil import copy
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
@@ -11,6 +12,10 @@ from dk_interface import lua_interface
 def is_windows():
     # Is this a Windows OS?
     return "windows" in platform().lower()
+
+
+def debounce():
+    sleep(0.2)
 
 
 def get_datetime():
@@ -81,7 +86,7 @@ def build_shell_command(info):
     if "-record" not in shell_command:
         if lua_interface(name, sub, score3, score2, score1):
             competing = True
-            shell_command += f' -console -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
+            shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
             shell_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'
 
     if state:

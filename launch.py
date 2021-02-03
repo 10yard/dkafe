@@ -135,6 +135,7 @@ def get_map_info(direction=None, x=0, y=0, platforms_only=False):
 
 def reset_all_inputs():
     # Push KEYUP events which can be lost after calling external programs
+    _s.debounce()
     for attr, control in CONTROL_ASSIGNMENTS:
         event = pygame.event.Event(pygame.KEYUP, {'key': control})
         pygame.event.post(event)
@@ -273,11 +274,11 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     des = f"Unlock at {unlock}"
                 elif unlocked and score3 and score2 and score1:
                     if since_last_move() % 5 > 4:
-                        des = f'{_s.format_K(score1)} 1st Prize'
+                        des = f'1st Prize {_s.format_K(score1)}'
                     elif since_last_move() % 5 > 3:
-                        des = f'{_s.format_K(score2)} 2nd Prize'
+                        des = f'2nd Prize {_s.format_K(score2)}'
                     elif since_last_move() % 5 > 2:
-                        des = f'{_s.format_K(score3)} 3rd Prize'
+                        des = f'3rd Prize {_s.format_K(score3)}'
                 elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
                     des = 'FOR RECORDING!'
                 elif not score3.strip() and since_last_move() % 4 > 2:
@@ -330,6 +331,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             _g.xpos += _g.right + (_g.left * -1)
         if "FOOT_UNDER_PLATFORM" not in map_info or JUMP_PIXELS[_g.jump_sequence] < 0:
             _g.ypos += JUMP_PIXELS[_g.jump_sequence]
+            _g.xpos += (_g.left + (_g.right * -1)) / 4  # Shorten Jumpman's jump length by 1/4
 
     elif direction in ("l", "r"):
         _g.ready = False
@@ -445,8 +447,11 @@ def launch_rom(info):
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
             if emu_directory:
                 os.chdir(emu_directory)
+
+            reset_all_inputs()
             os.system(shell_command)
             os.chdir(ROOT_DIR)
+
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
                 scored = get_award(name, score3, score2, score1)
@@ -456,7 +461,6 @@ def launch_rom(info):
                         drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=True)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
-            reset_all_inputs()
         else:
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)

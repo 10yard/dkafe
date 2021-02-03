@@ -1,4 +1,5 @@
--- DKAFE Global variables for interface
+-- DKAFE global variables
+----------------------------
 
 -- Data
 data_file = os.getenv("DATA_FILE")
@@ -10,7 +11,12 @@ data_autostart = os.getenv("DATA_AUTOSTART")
 data_show_award_targets = os.getenv("DATA_SHOW_AWARD_TARGETS")
 data_show_award_progress = os.getenv("DATA_SHOW_AWARD_PROGRESS")
 
---1st, 2nd and 3rd prize awards
+--Award coins
+data_award1 = os.getenv("DATA_AWARD1")
+data_award2 = os.getenv("DATA_AWARD2")
+data_award3 = os.getenv("DATA_AWARD3")
+
+--1st, 2nd and 3rd target scores for prize awards
 data_score1 = tonumber(os.getenv("DATA_SCORE1"))
 data_score1_k = os.getenv("DATA_SCORE1_K")
 data_score1_award = os.getenv("DATA_SCORE1_AWARD")

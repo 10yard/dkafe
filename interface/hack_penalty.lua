@@ -1,6 +1,10 @@
 -- DKAFE Penalty Hack
--- Lose a set number of penalty points instead of lives. Penalty points are displayed top left and will flash when there are not enough points to survive.
--- Drives the "DK Last Man Standing" hack 
+---------------------
+-- Lose a set number of penalty points instead of lives. 
+-- Penalty points are displayed top left and will flash when there are not enough points to survive.
+--
+-- Drives the "DK Last Man Standing" hack:
+-- You wil lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
 
 function get_dipswitch()
 	return number_to_binary(ports[":DSW0"]:read())

@@ -1,4 +1,5 @@
--- DKAFE No Hammers Hack 
+-- DKAFE No hammers hack 
+------------------------
 
 -- clear all hammers
 if mem:read_i8(0xc6A18) ~= 0 then

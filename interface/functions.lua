@@ -1,3 +1,9 @@
+-- DKAFE functions
+
+function get_loaded()
+	return emu["loaded"]
+end   
+
 function string:split(sep)
 	local sep, fields = sep or ":", {}
 	local pattern = string.format("([^%s]+)", sep)
@@ -25,9 +31,24 @@ function get_formatted_data(var_name)
 	return content
 end   
 
-function get_loaded()
-	return emu["loaded"]
-end   
+function toggle(sync_with)
+	sync_with = sync_with or "1UP"
+	if sync_with == "1UP" then
+		-- Sync with flashing 1UP
+		if math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
+			return 1
+		else
+			return 0
+		end
+	elseif sync_with == "TIMER" then
+		-- Sync with bonus timer
+		if math.fmod(mem:read_i8(0xc638c), 2) == 0 then
+			return 1
+		else
+			return 0
+		end
+	end
+end
 
 function get_score()
 	-- read 3 segments of score data from ram and convert to a number
@@ -54,7 +75,7 @@ function set_score(score)
 	write_message(0xc7781, padded_score) -- update screen as it otherwise may not be updated
 end
 
-function query_highscore()
+function get_highscore()
 	local highscore = ""
 	if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
 		for key, value in pairs(ram_scores) do
@@ -71,14 +92,6 @@ function query_highscore()
 		end
 	end
 	return highscore
-end
-
-
-function sleep(n)  -- seconds
-   local clock = os.clock
-   local t0 = clock()
-   while clock() - t0 <= n do
-   end
 end
 
 function draw_block(x, y, color1, color2)
@@ -114,15 +127,6 @@ function block_text(text, x, y, color1, color2)
 	end
 end
 
-function toggle()
-	-- Sync with flashing 1UP
-	if math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
-		return 1
-	else
-		return 0
-	end
-end
-
 function write_message(start_address, text)
 	-- write characters of message to DK's video ram
 	for key=1, string.len(text) do
@@ -133,7 +137,7 @@ end
 
 function display_awards()
 	if data_show_award_targets == "1" and mode1 == 3 and mode2 == 7 then
-		-- Showy score awards during the DK climb scene/intro
+		-- Show score awards during the DK climb scene/intro
 		dkclimb = mem:read_i8(0xc638e)
 		offset = 0
 		if emu.romname() == "dkongjr" then
@@ -160,22 +164,23 @@ function display_awards()
 		end
 	end
 	
-	if data_show_award_progress == "1" then
+	if data_show_award_progress == "1" and mode1 == 3 then
 		-- Show progress against targets at top of screen replacing high score
-		write_message(0xc7641, "      ")
-		if score < data_score3 then
-			write_message(0xc76a0, "3RD PRIZE AT")
-			write_message(0xc7641, string.format("%06d", data_score3))
-		elseif score < data_score2 then
-			write_message(0xc76a0, "2ND PRIZE AT")
-			write_message(0xc7641, string.format("%06d", data_score2))
-		elseif score < data_score1 then
-			write_message(0xc76a0, "1ST PRIZE AT")
-			write_message(0xc7641, string.format("%06d", data_score1))
-		else
-			write_message(0xc76a0, " CONGRATS. ")
-			write_message(0xc7641, " WON 1ST")
+		if score > data_score1 then
+			write_message(0xc76a0, "            ")
+			write_message(0xc76a0, "1ST WON " .. data_award1)
+		elseif score > data_score2 then
+			write_message(0xc76a0, "            ")
+			write_message(0xc76a0, "2ND WON " .. data_award2)
+		elseif score > data_score3 then
+			write_message(0xc76a0, "            ")
+			write_message(0xc76a0, "3RD WON " .. data_award3)
 		end 
 	end
 end
 
+function record_in_compete_file()
+	compete_file = io.open(data_file, "w+")
+	compete_file:write(emu.romname()  .. "\n")
+	compete_file:write(get_highscore() .. "\n")	
+end

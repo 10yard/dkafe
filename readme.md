@@ -11,22 +11,26 @@ A Donkey Kong themed arcade game launcher made for arcade cabinets with incentiv
 This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - Scripts to interface MAME with the frontend allowing for data to pass seamlessly.
- - A rom patcher that will automatically generate 27 hacks using the included Donkey Kong patch files.
- - 3 Donkey Kong hacks made specifically by me for use with DKAFE:
+ - Scripts to seamlessly interface MAME with the frontend.
+ - A rom patcher that will automatically generate hacks from the included patch files.
+ - 3 Donkey Kong hacks made by me for use with DKAFE:
    - **DK Who and the Daleks** - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
    - **DK Lava Panic** - Jumpman must keep his cool and move quickly to avoid the rising Lava.
    - **DK Last Man Standing** - You wil lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
 
 This project does not include:
- - Roms
+ - Roms or details on how to obtain them.
 
 
 ## Plot
 
-Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the site. 
+Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. 
 
-Yes, the plot is thin and I can't explain why Donkey Kong has decided to throw coins instead of barrels. Anyway, the coins must be collected by Jumpman and he must play games well to win coins and unlock arcade machines as he works his way up the building to rescue Pauline.  
+The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the site. 
+
+The coins thrown by Donkey Kong must be collected by Jumpman so he has money to play the arcades.
+
+Jumpman must play well to win prizes and unlock arcade machines as he works his way to the top of the building to rescue Pauline.  
 
 Pauline will love it when you beat all of the machines.
 

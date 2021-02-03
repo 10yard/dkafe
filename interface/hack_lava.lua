@@ -1,6 +1,7 @@
 ﻿-- DKAFE Lava Hack 
-
--- Drives additional features of the "DK Lava" hack.
+------------------
+-- Drives additional features of the "DK Lava Panic" hack:
+-- Jumpman must keep his cool and move quickly to avoid the rising Lava.
 
 function calc_sprite_top(sprite)
 	-- calculate Jumpman Y position

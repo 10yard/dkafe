@@ -1,8 +1,7 @@
 -- DKAFE Teleport Hack 
 -- Perform hack to teleport between hammers
-
--- Drives additional features of the "DK Who and the Daleks" hack 
 --
+-- Drives additional features of the "DK Who and the Daleks" hack:
 -- Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant Rose from the clutches of Donkey Kong.
 -- The Daleks have destroyed her rocket ship and now you are her only hope for escape.
 -- Donkey Kong's legion of Daleks aim to exterminate Jumpman (aka The Doctor) as he climbs the galactic space station.  
@@ -36,7 +35,7 @@ function update_teleport_ram(_x, _y, _ly)
 end   
 
 function draw_tardis(y1, x1, y2, x2)
-	if math.fmod(mem:read_i8(0xc638c), 2) == 0  then -- sync flashing with bonus timer
+	if toggle("TIMER") == 0  then -- sync flashing with bonus timer
 		x = x1	
 		y = y1
 	else

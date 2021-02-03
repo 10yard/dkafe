@@ -38,7 +38,7 @@ ENABLE_MENU = 1                # Allow selection from the quick access game list
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 CREDITS = 0                    # Automatically set credits in MAME at start of game - when using interface
 AUTOSTART = 0                  # Automatically start the game in MAME (by simulating P1 start) when using interface
-INACTIVE_TIME = 20             # Screensaver with game instructions after period in seconds of inactivity. Integer
+INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_AWARD_PROGRESS = 1        # Show award progress when playing game (appears top of screen replacing high score)
 SHOW_AWARD_TARGETS = 1         # Show award targets when playing game (appears during the DK intro/climb scene)
 
@@ -204,18 +204,16 @@ arcade machines from the
 1980's era and they are
 scattered around the site.
 
-Yes, the plot is thin and I
-can't explain why Donkey
-Kong has decided to throw
-coins instead of barrels.
+The coins thrown by Donkey
+Kong must be collected by 
+Jumpman so he has money
+to play the arcades.
 
-Anyway, the coins must be
-collected by Jumpman and he
-must play games well to win
-coins and unlock arcade
-machines as he works his
-way up the building to
-rescue Pauline.  
+Jumpman must play well to
+win prizes and unlock 
+arcade machines as he works
+his way to the top of the 
+building to rescue Pauline.  
 
 Pauline will ♥ it when you
 beat all of the machines.
