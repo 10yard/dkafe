@@ -6,10 +6,6 @@
 -- Drives the "DK Last Man Standing" hack:
 -- You wil lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
 
-function get_dipswitch()
-	return number_to_binary(ports[":DSW0"]:read())
-end
-
 function dkonglastman_overlay()
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
 		-- Title screen

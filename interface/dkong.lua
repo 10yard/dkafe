@@ -49,7 +49,7 @@ emu.register_frame(function()
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
 			mem:write_i8(0x6001, data_credits)
 		end
-		-- Optionally start the game by simulating P1 start being pressed
+		-- Optionally start the game by pressing P1 start.
 		if data_autostart == "1" then
 			ports[":IN2"].fields["1 Player Start"]:set_value(1)
 		end
@@ -61,10 +61,23 @@ emu.register_frame(function()
 		mode2 = mem:read_i8(0xc600a)
 		stage = mem:read_i8(0xc6227)      -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets, 5-bonus)	
 		score = get_score()
+		buttons = number_to_binary(mem:read_i8(0xc7d00)) -- P1, P2 and coin button status
+		p1start = string.sub(buttons, 6, 6)
 				
-		-- Show award targets and progress during gameplay.
-		display_awards()			
+		-- Optionally release P1 start
+		if data_autostart == "1" and mode1 == 3 and mode2 == 7 then
+			ports[":IN2"].fields["1 Player Start"]:set_value(0)
+			data_autostart = "0"
+		end
 		
+		-- Optionally show award targets and progress during gameplay.
+		display_awards()
+		if p1start == "1" then
+			write_message(0xc74c0, "TEST")
+		else
+			write_message(0xc74c0, "    ")
+		end
+
 		-- Optional hacks
 		if hack_teleport == "1" then
 			dofile(data_includes_folder.."/hack_teleport.lua")

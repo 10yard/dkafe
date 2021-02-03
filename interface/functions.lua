@@ -11,6 +11,10 @@ function string:split(sep)
 	return fields
 end
       
+function get_dipswitch()
+	return number_to_binary(mem:read_i8(0xc7d00))
+end
+
 function number_to_binary(x)
 	ret=""
 	while x~=1 and x~=0 do
@@ -18,7 +22,7 @@ function number_to_binary(x)
 		x=math.modf(x/2)
 	end
 	ret=tostring(x)..ret
-	return ret
+	return string.format("%08d", ret)
 end	  
 	  
 function get_formatted_data(var_name)
