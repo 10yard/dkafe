@@ -2,6 +2,7 @@
 ----------------------------
 
 -- Data
+data_emulator = os.getenv("DATA_EMULATOR")
 data_file = os.getenv("DATA_FILE")
 data_subfolder = os.getenv("DATA_SUBFOLDER")
 data_credits = os.getenv("DATA_CREDITS")

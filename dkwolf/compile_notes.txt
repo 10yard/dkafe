@@ -20,8 +20,11 @@ emu/romload.cpp
   removed ROM loading messages
   changed missing ROM error to show message "ROM file was not found.  Please check DKAFE configuration".
 
-emu.config.cpp
+emu/config.cpp
   remove save of config files
+
+emu/video.h
+  Increase the max frameskip so we can more quickly skip the dk intro scene when user presses jump button.
 
 A useful reference to compiling MAME can be found at:
   http://forum.arcadecontrols.com/index.php?topic=149545.0

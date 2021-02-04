@@ -135,12 +135,17 @@ function write_message(start_address, text)
 end
 
 function fast_skip_intro()
-    if data_allow_skip_intro == "1" then
+  -- Skip the DK climb intro when jump button is pressed
+  if data_allow_skip_intro == "1" then
       if mode1 == 3 then
         if mode2 == 7 then
           if string.sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
             video.throttle_rate = 1000
-            video.frameskip = 8
+            if data_emulator == "dkwolf" then
+              video.frameskip = 11  -- dkwolf has an increased max throttle
+            else
+              video.frameskip = 8
+            end
             video.throttled = false
           end
         else
@@ -196,15 +201,16 @@ function display_awards()
 	end
 	
 	if data_show_hud == "1" or data_show_hud == "2" or data_show_hud == "3" then
+		-- Toggle the HUD using P2 Start button
 		if data_autostart == "0" and string.sub(number_to_binary(mem:read_i8(0xc7d00)), 5, 5) == "1" then
-			-- Toggle the HUD using P2 Start button
 			if os.clock() - data_last_toggle > 0.25 then
 				data_last_toggle = os.clock()
 				data_toggle_hud = data_toggle_hud + 1
 			end
 		end
       
-		write_message(0xc7500, "       ")
+		--Clear the HUD
+    write_message(0xc7500, "       ")
 		write_message(0xc7501, "       ")
 		write_message(0xc7502, "       ")
 		  

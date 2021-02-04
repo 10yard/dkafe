@@ -84,7 +84,7 @@ def build_shell_command(info):
 
     # MAME/LUA interface
     if "-record" not in shell_command:
-        if lua_interface(name, sub, score3, score2, score1):
+        if lua_interface(get_emulator(emu), name, sub, score3, score2, score1):
             competing = True
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
             shell_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'

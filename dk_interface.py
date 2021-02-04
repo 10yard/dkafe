@@ -37,7 +37,7 @@ def apply_rom_specific_hacks(rom=None, subfolder=None):
             os.environ["HACK_PENALTY"] = "1"
 
 
-def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=None):
+def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None):
     # receive rom name, subfolder name and the target scores
     # Logic is mostly driven by the rom name but there are some exceptions were the subfolder name of a specific
     # rom is needed.
@@ -48,6 +48,7 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
             os.remove(COMPETE_FILE)
         os.environ["LUA_PATH"] = os.path.join(ROOT_DIR, "interface")
         os.environ["DATA_INCLUDES"] = os.path.join(ROOT_DIR, "interface")
+        os.environ["DATA_EMULATOR"] = os.path.basename(emulator.split(" ")[0])
         os.environ["DATA_FILE"] = COMPETE_FILE
         os.environ["DATA_SUBFOLDER"] = subfolder
         os.environ["DATA_CREDITS"] = str(CREDITS)
