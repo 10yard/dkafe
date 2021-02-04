@@ -203,12 +203,12 @@ AUTOSTRETCH = 1
 1 to automatically fit DKMAME to the resolution of monitor.  It will detect if monitor is 3:4 or 7:8 or similar aspect.
 
 ```
-CREDITS=1
+CREDITS = 1
 ```
 1 to automatically insert a coin after launching a game.
 
 ```
-AUTOSTART=1
+AUTOSTART = 1
 ```
 1 to automatically start the game - if coins are inserted.
 
@@ -221,6 +221,11 @@ SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1
 ```
 1 to show award targets for 1st, 2nd and 3rd prize when playing game (appears during the DK intro/climb scene)
+
+```
+SHOW_HUD = 1
+```
+1, 2 or 3 to enable in game HUD to be displayed in the top right corner.  The number determines which data is shown by default (1=Targets, 2=Awards, 3=No data, 0 to disable feature). Use P2 Start button to toggle between 1, 2, 3. 
 
 
 ### Control Settings

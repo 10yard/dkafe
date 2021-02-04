@@ -1,6 +1,9 @@
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS
+from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO
+from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD
 from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY
+
+COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
 # Memory addresses for scores and players data
 # 6 Bytes per score
@@ -8,7 +11,7 @@ ROM_SCORES = "0xc356c,0xc356d,0xc356e,0xc356f,0xc3570,0xc3571,0xc358e,0xc358f,0x
 RAM_SCORES = "0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194"""
 RAM_HIGH = "0xc7641,0xc7621,0xc7601,0xc75e1,0xc75c1,0xc75a1"
 
-# 7 bytes per group
+# 7 bytes per score
 RAM_SCORES_LONG = "0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,0xc610d,0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,0xc612f,0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,0xc6151,0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,0xc6173,0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194,0xc6194"
 
 # 3 bytes per score with 2 digits per byte
@@ -41,12 +44,11 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
     preset = False
     if score3:
         # Remove compete file if it still exists
-        compete_file = os.path.join(ROOT_DIR, "interface", "compete.dat")
-        if os.path.exists(compete_file):
-            os.remove(compete_file)
+        if os.path.exists(COMPETE_FILE):
+            os.remove(COMPETE_FILE)
         os.environ["LUA_PATH"] = os.path.join(ROOT_DIR, "interface")
         os.environ["DATA_INCLUDES"] = os.path.join(ROOT_DIR, "interface")
-        os.environ["DATA_FILE"] = compete_file
+        os.environ["DATA_FILE"] = COMPETE_FILE
         os.environ["DATA_SUBFOLDER"] = subfolder
         os.environ["DATA_CREDITS"] = str(CREDITS)
         os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart
@@ -67,6 +69,8 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
         # Are we going to show the awards targets and progress while playing the game
         os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
         os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
+        os.environ["DATA_SHOW_HUD"] = str(SHOW_HUD)
+        os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
 
         # Award prizes
         os.environ["DATA_AWARD1"] = str(AWARDS[2])
@@ -100,12 +104,12 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
             if rom == "dkongf":
                 os.environ["ROM_SCORES"] = ""
             if rom == "dkongjr":
-                os.environ["RAM_PLAYERS"] = adjust_addresses(RAM_PLAYERS, 4)
+                os.environ["RAM_PLAYERS"] = offset_addresses(RAM_PLAYERS, 4)
             if rom == "dkongx":
                 os.environ["DATA_SCORES_DOUBLE"] = \
                     format_double_data(scores, width=double_width, justify_single_digit_right=True)
-                os.environ["RAM_SCORES"] = adjust_addresses(RAM_SCORES_LONG, -1)
-                os.environ["RAM_SCORES_DOUBLE"] = adjust_addresses(RAM_SCORES_DOUBLE_LONG, 1)
+                os.environ["RAM_SCORES"] = offset_addresses(RAM_SCORES_LONG, -1)
+                os.environ["RAM_SCORES_DOUBLE"] = offset_addresses(RAM_SCORES_DOUBLE_LONG, 1)
                 os.environ["RAM_HIGH_DOUBLE"] = ""
                 os.environ["ROM_SCORES"] = ""
                 os.environ["RAM_HIGH"] = ""
@@ -113,13 +117,13 @@ def lua_interface(rom=None, subfolder=None, score3=None, score2=None, score1=Non
                 os.environ["RAM_HIGH_DOUBLE"] = RAM_HIGH_DOUBLE_LONG
                 os.environ["RAM_SCORES"] = RAM_SCORES_LONG
                 os.environ["RAM_SCORES_DOUBLE"] = RAM_SCORES_DOUBLE_LONG
-                os.environ["RAM_PLAYERS"] = adjust_addresses(RAM_PLAYERS, 1)
+                os.environ["RAM_PLAYERS"] = offset_addresses(RAM_PLAYERS, 1)
                 os.environ["ROM_SCORES"] = ""
                 os.environ["RAM_HIGH"] = ""
         return preset
 
 
-def adjust_addresses(array, offset):
+def offset_addresses(array, offset):
     # adjust all the memory addresses in the array by a given offset
     new_array = ""
     for address in array.replace("\n", "").split(","):
@@ -129,12 +133,11 @@ def adjust_addresses(array, offset):
 
 def get_award(rom, score3, score2, score1):
     # Read data from the compete.dat file to detemine if coins should be awarded to Jumpman.
-    compete_file = f'{os.path.join(ROOT_DIR, "interface", "compete.dat")}'
     try:
-        with open(compete_file, "r") as cf:
+        with open(COMPETE_FILE, "r") as cf:
             name = cf.readline().replace("\n", "")
             score = cf.readline().replace("\n", "")
-        # os.remove(compete_file)
+        os.remove(COMPETE_FILE)
         if rom == name and score.isnumeric():
             if int(score) > int(score1):
                 return AWARDS[2]  # Got 1st prize award
@@ -175,6 +178,8 @@ def format_K(text):
         return text[:-6] + "M"
     elif text.endswith("000"):
         return text[:-3] + "K"
+    elif text.endswith("500"):
+        return text[:-3] + ".5K"
     else:
         return text
 

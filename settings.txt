@@ -1,5 +1,5 @@
 # Front End Settings
-FULLSCREEN = 0
+FULLSCREEN = 1
 FREE_PLAY = 1
 UNLOCK_MODE = 0
 CONFIRM_EXIT = 1
@@ -15,8 +15,10 @@ EMU_2 = <ROOT>\dkwolf\dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath
 # Interface Settings
 CREDITS=1
 AUTOSTART=1
+ALLOW_SKIP_INTRO = 1
 SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1
+SHOW_HUD = 3
 
 # Controls
 CONTROL_LEFT = left

@@ -8,7 +8,7 @@
 -- The Doctor can use the Tardis to teleport through spacetime to assist his travel through the stages.
 -- Bonus items to be collected are K9, Sonic Screwdriver and The Master's Watch.
 
-function update_teleport_ram(_x, _y, _ly)
+function update_teleport_ram(update_x, update_y, update_ly)
     -- force 0 to disable the hammer
 	mem:write_i8(0xc6217, 0)
 	mem:write_i8(0xc6218, 0)
@@ -16,9 +16,9 @@ function update_teleport_ram(_x, _y, _ly)
 	mem:write_i8(0xc6350, 0)
 
 	-- update position
-	mem:write_i8(0xc6203, _x)   -- Update Jumpman's X position
-	mem:write_i8(0xc6205, _y)   -- Update Jumpman's Y position
-	mem:write_i8(0xc620E, _ly)  -- Update launch Y position to prevent excessive fall
+	mem:write_i8(0xc6203, update_x)   -- Update Jumpman's X position
+	mem:write_i8(0xc6205, update_y)   -- Update Jumpman's Y position
+	mem:write_i8(0xc620E, update_ly)  -- Update launch Y position to prevent excessive fall
 
 	-- clear all hammers
 	mem:write_i8(0xc6A18, 0)    -- top
@@ -36,36 +36,36 @@ end
 
 function draw_tardis(y1, x1, y2, x2)
 	if toggle("TIMER") == 0  then -- sync flashing with bonus timer
-		x = x1	
-		y = y1
+		_xpos = x1	
+		_ypos = y1
 	else
-		x = x2	
-		y = y2
+		_xpos = x2	
+		_ypos = y2
 	end
 	--box and bottom
-	screen:draw_box(y, x+1, y+15, x+14, BLUE, 0)
-	screen:draw_box(y, x, y+1, x+15, BLUE, 0)	
+	screen:draw_box(_ypos, _xpos+1, _ypos+15, _xpos+14, BLUE, 0)
+	screen:draw_box(_ypos, _xpos, _ypos+1, _xpos+15, BLUE, 0)	
 	--windows
-	screen:draw_box(y+9, x+3, y+12, x+7, YELLOW, BROWN)
-	screen:draw_box(y+9, x+8, y+12, x+12, YELLOW, BROWN)
-	screen:draw_box(y+5, x+3, y+8, x+7, BLUE, CYAN)
-	screen:draw_box(y+5, x+8, y+8, x+12, BLUE, CYAN)
-	screen:draw_box(y+1, x+3, y+4, x+7, BLUE, CYAN)
-	screen:draw_box(y+1, x+8, y+4, x+12, BLUE, CYAN)
+	screen:draw_box(_ypos+9, _xpos+3, _ypos+12, _xpos+7, YELLOW, BROWN)
+	screen:draw_box(_ypos+9, _xpos+8, _ypos+12, _xpos+12, YELLOW, BROWN)
+	screen:draw_box(_ypos+5, _xpos+3, _ypos+8, _xpos+7, BLUE, CYAN)
+	screen:draw_box(_ypos+5, _xpos+8, _ypos+8, _xpos+12, BLUE, CYAN)
+	screen:draw_box(_ypos+1, _xpos+3, _ypos+4, _xpos+7, BLUE, CYAN)
+	screen:draw_box(_ypos+1, _xpos+8, _ypos+4, _xpos+12, BLUE, CYAN)
 	-- blinking light
 	if toggle() == 1 then
-		screen:draw_box(y+15, x+7, y+16, x+8, YELLOW, 0)
+		screen:draw_box(_ypos+15, _xpos+7, _ypos+16, _xpos+8, YELLOW, 0)
 	else
-		screen:draw_box(y+15, x+7, y+16, x+8, RED, 0)
+		screen:draw_box(_ypos+15, _xpos+7, _ypos+16, _xpos+8, RED, 0)
 	end
 end
 
 function draw_stars()
 	-- draw a starfield background
 	for key=1, number_of_stars, 2 do
-		_y = starfield[key]
-		_x = starfield[key+1]
-		screen:draw_line(_y, _x, _y, _x, 0xcbbffffff, 0)
+		local _ypos = starfield[key]
+		local _xpos = starfield[key+1]
+		screen:draw_line(_ypos, _xpos, _ypos, _xpos, 0xcbbffffff, 0)
 	end
 end
 
@@ -87,7 +87,7 @@ end
 function adjust_weeping_angels()
 	-- adjust Y position of angel sprites by 4 pixels as they are taller than pies
 	angels_ram = {0xc65a5,0xc65b5,0xc65c5,0xc65d5,0xc65e5,0xc65f5}
-	for key, value in pairs(angels_ram) do
+	for _, value in pairs(angels_ram) do
 		if mem:read_i8(value) == -52 then
 			mem:write_i8(value, -56)
 		end
@@ -98,6 +98,7 @@ function adjust_weeping_angels()
 end
 
 function dkongwho_overlay()
+  local r = 1
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
 		-- Title screen
 		screen:draw_box(96, 16, 136, 208, BLACK, 0)
@@ -235,7 +236,7 @@ if loaded == 3 and data_subfolder == "dkongwho" then
 		number_of_stars = 300
 		starfield={}
 		math.randomseed (os.time())		
-		for i=1, number_of_stars do
+		for _=1, number_of_stars do
 			table.insert(starfield, math.random(255))
 			table.insert(starfield, math.random(223))
 		end

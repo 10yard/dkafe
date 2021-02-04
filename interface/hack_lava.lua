@@ -3,9 +3,9 @@
 -- Drives additional features of the "DK Lava Panic" hack:
 -- Jumpman must keep his cool and move quickly to avoid the rising Lava.
 
-function calc_sprite_top(sprite)
+function calc_sprite_top()
 	-- calculate Jumpman Y position
-	_y = mem:read_i8(0xc6205)
+	local _y = mem:read_i8(0xc6205)
 	if _y >= 0 then
 		_y = -256 + _y
 	end

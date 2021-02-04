@@ -35,12 +35,14 @@ FULLSCREEN = 1
 FREE_PLAY = 1                  # Jumpman does not have to pay to play
 UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = 1                # Allow selection from the quick access game list
-ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
-CREDITS = 0                    # Automatically set credits in MAME at start of game - when using interface
-AUTOSTART = 0                  # Automatically start the game in MAME (by simulating P1 start) when using interface
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
+ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
+CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface
+AUTOSTART = 1                  # Automatically start the game in MAME (by simulating P1 start) when using interface
+ALLOW_SKIP_INTRO = 1           # Allow the DK climb scene to be quickly skipped in game by pressing Jump button
 SHOW_AWARD_PROGRESS = 1        # Show award progress when playing game (appears top of screen replacing high score)
 SHOW_AWARD_TARGETS = 1         # Show award targets when playing game (appears during the DK intro/climb scene)
+SHOW_HUD = 1                   # Show in game HUD by default (in top right corner) and use P2 to toggle data.
 
 # Additional options
 AWARDS = [500, 1000, 2500]     # Coins awarded for reaching score target for 1st, 2nd, 3rd when competing.
@@ -294,4 +296,3 @@ pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
 
 ASPECT_RATIO = pygame.display.Info().current_h / pygame.display.Info().current_w
-

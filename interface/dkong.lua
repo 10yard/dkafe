@@ -57,26 +57,24 @@ emu.register_frame(function()
 	end
 	
 	if loaded == 3 then
-		mode1 = mem:read_i8(0xc6005)
-		mode2 = mem:read_i8(0xc600a)
-		stage = mem:read_i8(0xc6227)      -- Stage (1-girders, 2-pie, 3-elevator, 4-rivets, 5-bonus)	
+		mode1 = mem:read_i8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game    
+		mode2 = mem:read_i8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over 
+		stage = mem:read_i8(0xc6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 		score = get_score()
-		buttons = number_to_binary(mem:read_i8(0xc7d00)) -- P1, P2 and coin button status
-		p1start = string.sub(buttons, 6, 6)
 				
-		-- Optionally release P1 start
-		if data_autostart == "1" and mode1 == 3 and mode2 == 7 then
-			ports[":IN2"].fields["1 Player Start"]:set_value(0)
-			data_autostart = "0"
+		-- Release P1 Start button (after autostart)
+		if data_autostart == "1" then
+			if mode1 == 3 and mode2 == 7 then
+				ports[":IN2"].fields["1 Player Start"]:set_value(0)
+				data_autostart = "0"
+			end
 		end
-		
-		-- Optionally show award targets and progress during gameplay.
+    
+    -- Fast skip through the DK climb scene when jump button is pressed (optional)
+    fast_skip_intro()
+				
+		-- Show award targets and progress during gameplay (optional)
 		display_awards()
-		if p1start == "1" then
-			write_message(0xc74c0, "TEST")
-		else
-			write_message(0xc74c0, "    ")
-		end
 
 		-- Optional hacks
 		if hack_teleport == "1" then
@@ -89,7 +87,7 @@ emu.register_frame(function()
 		end
 		if hack_penalty == "1" then
 			dofile(data_includes_folder.."/hack_penalty.lua")
-		end		
+		end
 	end
 end)
 

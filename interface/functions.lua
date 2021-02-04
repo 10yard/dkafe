@@ -11,17 +11,13 @@ function string:split(sep)
 	return fields
 end
       
-function get_dipswitch()
-	return number_to_binary(mem:read_i8(0xc7d00))
-end
-
 function number_to_binary(x)
-	ret=""
+	local ret = ""
 	while x~=1 and x~=0 do
-		ret=tostring(x%2)..ret
+		ret = tostring(x%2) .. ret
 		x=math.modf(x/2)
 	end
-	ret=tostring(x)..ret
+	ret = tostring(x)..ret
 	return string.format("%08d", ret)
 end	  
 	  
@@ -88,7 +84,7 @@ function get_highscore()
 			end
 		end	
 	else
-		for key, value in pairs(ram_high) do
+		for _, value in pairs(ram_high) do
 			highscore = highscore .. mem:read_i8(value)
 		end	
 		if highscore == "161616161616" then 
@@ -99,19 +95,19 @@ function get_highscore()
 end
 
 function draw_block(x, y, color1, color2)
-	s = manager:machine().screens[":screen"]
-	s:draw_box(x, y, x+8, y+8, color1, 0)
-	s:draw_box(x, y, x+1, y+8, color2, 0)
-	s:draw_box(x+6, y, x+7, y+8, color2, 0)
-	s:draw_box(x+2, y+2, x+6, y+6, 0xcff000000, 0)
-	s:draw_box(x+3, y+1, x+5, y+7, 0xcff000000, 0)
+	screen:draw_box(x, y, x+8, y+8, color1, 0)
+	screen:draw_box(x, y, x+1, y+8, color2, 0)
+	screen:draw_box(x+6, y, x+7, y+8, color2, 0)
+	screen:draw_box(x+2, y+2, x+6, y+6, 0xcff000000, 0)
+	screen:draw_box(x+3, y+1, x+5, y+7, 0xcff000000, 0)
 end
 
 function block_text(text, x, y, color1, color2)
 	-- Write large block characters
-	_x = x
-	_y = y
-	s = manager:machine().screens[":screen"]
+	local _x = x
+	local _y = y
+  local width = 0
+  local blocks = ""
 	for i=1, string.len(text) do 
 		blocks = dkblock[string.sub(text, i, i)]
 		width = math.floor(string.len(blocks) / 5)
@@ -134,16 +130,33 @@ end
 function write_message(start_address, text)
 	-- write characters of message to DK's video ram
 	for key=1, string.len(text) do
-		_char = string.sub(text, key, key)
 		mem:write_i8(start_address - ((key - 1) * 32), dkchars[string.sub(text, key, key)])
 	end
+end
+
+function fast_skip_intro()
+    if data_allow_skip_intro == "1" then
+      if mode1 == 3 then
+        if mode2 == 7 then
+          if string.sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
+            video.throttle_rate = 1000
+            video.frameskip = 8
+            video.throttled = false
+          end
+        else
+          video.throttle_rate = 1
+          video.frameskip = 0
+          video.throttled = true
+        end
+      end
+    end    
 end
 
 function display_awards()
 	if data_show_award_targets == "1" and mode1 == 3 and mode2 == 7 then
 		-- Show score awards during the DK climb scene/intro
-		dkclimb = mem:read_i8(0xc638e)
-		offset = 0
+		local dkclimb = mem:read_i8(0xc638e)
+		local offset = 0
 		if emu.romname() == "dkongjr" then
 			offset = 1
 			dkclimb = dkclimb - 36
@@ -180,6 +193,44 @@ function display_awards()
 			write_message(0xc76a0, "            ")
 			write_message(0xc76a0, "3RD WON " .. data_award3)
 		end 
+	end
+	
+	if data_show_hud == "1" or data_show_hud == "2" or data_show_hud == "3" then
+		if data_autostart == "0" and string.sub(number_to_binary(mem:read_i8(0xc7d00)), 5, 5) == "1" then
+			-- Toggle the HUD using P2 Start button
+			if os.clock() - data_last_toggle > 0.25 then
+				data_last_toggle = os.clock()
+				data_toggle_hud = data_toggle_hud + 1
+			end
+		end
+      
+		write_message(0xc7500, "       ")
+		write_message(0xc7501, "       ")
+		write_message(0xc7502, "       ")
+		  
+    if data_toggle_hud == 1 then
+      if emu.romname() ~= "dkongx11" then
+        write_message(0xc7500, "1="..data_score1_k)
+        write_message(0xc7501, "2="..data_score2_k)
+        write_message(0xc7502, "3="..data_score3_k)
+      else
+        write_message(0xc7500, "1."..data_score1_k)
+        write_message(0xc7501, "2."..data_score2_k)
+        write_message(0xc7502, "3."..data_score3_k)
+      end
+    elseif data_toggle_hud == 2 then
+      if emu.romname() ~= "dkongx11" then
+        write_message(0xc7500, data_award1.."[]")
+        write_message(0xc7501, data_award2.."[]")
+        write_message(0xc7502, data_award3.."[]")
+      else
+        write_message(0xc7500, data_award1.." C.")
+        write_message(0xc7501, data_award2.." C.")
+        write_message(0xc7502, data_award3.." C.")
+      end
+    elseif data_toggle_hud == 3 then
+			data_toggle_hud = 0
+		end
 	end
 end
 

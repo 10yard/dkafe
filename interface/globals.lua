@@ -10,6 +10,10 @@ data_autostart = os.getenv("DATA_AUTOSTART")
 --Award targets and progress
 data_show_award_targets = os.getenv("DATA_SHOW_AWARD_TARGETS")
 data_show_award_progress = os.getenv("DATA_SHOW_AWARD_PROGRESS")
+data_allow_skip_intro = os.getenv("DATA_ALLOW_SKIP_INTRO")
+data_show_hud = os.getenv("DATA_SHOW_HUD")
+data_toggle_hud = tonumber(data_show_hud)
+data_last_toggle = 0
 
 --Award coins
 data_award1 = os.getenv("DATA_AWARD1")
@@ -50,6 +54,10 @@ cpu = manager:machine().devices[":maincpu"]
 mem = cpu.spaces["program"]
 screen = manager:machine().screens[":screen"]
 ports = manager:machine():ioport().ports
+video = manager:machine():video()
+
+--manager:machine():video().throttle_rate = 100   (set back to 1)
+--manager:machine():video().frameskip = -1        (set back to 0)
 
 -- Optional hacks
 hack_teleport = os.getenv("HACK_TELEPORT")
@@ -116,6 +124,10 @@ dkchars["$"] = 0x36  -- double exclamations !!
 dkchars["!"] = 0x38
 dkchars["'"] = 0x3a
 dkchars[","] = 0x43
+dkchars["["] = 0x49 -- copyright part 1
+dkchars["]"] = 0x4a -- copyright part 2
+dkchars["("] = 0x4b -- ITC part 1
+dkchars[")"] = 0x4c -- ITC part 2
 dkchars["^"] = 0xb0 -- rivet block
 dkchars["?"] = 0xfb
 dkchars["@"] = 0xff -- extra mario icon

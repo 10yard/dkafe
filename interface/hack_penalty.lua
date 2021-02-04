@@ -26,22 +26,15 @@ if loaded == 3 and data_subfolder == "dkonglastman" then
 		emu.register_frame_done(dkonglastman_overlay, "frame")
 	end
 	lastman_hack_started = 1
+  lastman_penalty_dips = {}
+  lastman_penalty_dips["00"] = 25000
+  lastman_penalty_dips["11"] = 40000
+  lastman_penalty_dips["10"] = 60000
+  lastman_penalty_dips["01"] = 75000
 end
 
-
 if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
-	dip = string.sub(get_dipswitch(),7,8)         -- use number of lives dip to set penalty points
-	if dip == "00" then
-		penalty_points = 25000
-	elseif dip == "01" then
-		penalty_points = 50000
-	elseif dip == "10" then
-		penalty_points = 75000
-	elseif dip == "11" then
-		penalty_points = 90000
-	end
-	
-	score = get_score()
+  penalty_points = lastman_penalty_dips[string.sub(number_to_binary(mem:read_i8(0xc7d80)), 7, 8)]  -- number of lives dip determines the penalty	
 	jumpman_status = mem:read_i8(0xc6200)         -- 1 = alive, 0 = dead
 
 	--Force remaining lives to 2 (so we can lose lives without ending the game if necessary)
@@ -56,7 +49,7 @@ if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 		if score >= penalty_points then
 			set_score(score - penalty_points)
 			
-   	        --set jumpman status to alive instead of dead
+      --set jumpman status to alive instead of dead
 			mem:write_i8(0xc6200, 1)
 			
 			--set remaining lives to 2
