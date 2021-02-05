@@ -67,8 +67,7 @@ ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults
 ROM_DIR = '<ROOT>/roms'
-OPTIONS = '-skip_gameinfo -video gdi -keepaspect -unevenstretch'
-AUTOSTRETCH = True
+OPTIONS = '-video gdi -view "Pixel Aspect (7:8)'
 EMU_1 = '<ROOT>/dkwolf/dkwolf196 <OPTIONS> -rompath <ROM_DIR>'
 EMU_2 = '<ROOT>/dkwolf/dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6

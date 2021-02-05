@@ -160,14 +160,22 @@ end
 function display_awards()
 	if data_show_award_targets == "1" and mode1 == 3 and mode2 == 7 then
 		-- Show score awards during the DK climb scene/intro
+        
 		local dkclimb = mem:read_i8(0xc638e)
 		local offset = 0
 		if emu.romname() == "dkongjr" then
 			offset = 1
 			dkclimb = dkclimb - 36
 		end
+		if emu.romname() == "dkongx" then
+      dkclimb = mem:read_i8(0xc691f)
+      if dkclimb < 0 then
+        dkclimb = dkclimb + 256
+      end
+      dkclimb = math.floor((dkclimb + 51) / 8)
+    end
 		
-		if dkclimb > 0 then
+		if dkclimb >= 10 then
 			if dkclimb <= 17 then
 				write_message(0xc7770 + (offset * 7), "1ST PRIZE")
 				write_message(0xc7570 + (offset * 7), "AT "..tostring(data_score1))

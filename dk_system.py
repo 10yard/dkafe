@@ -75,12 +75,12 @@ def build_shell_command(info):
     if not FULLSCREEN:
         shell_command += " -window"
 
-    if AUTOSTRETCH:
-        if 0.75 <= ASPECT_RATIO <= 1.25:
-            # ratios of 3:4 or 7:8 should fill screen perfectly
-            shell_command += " -nokeepaspect -nounevenstretch"
-        else:
-            shell_command += " -keepaspect -unevenstretch"
+    #if AUTOSTRETCH:
+    #    if 0.75 <= ASPECT_RATIO <= 1.25:
+    #        # ratios of 3:4 or 7:8 should fill screen perfectly
+    #        shell_command += " -nokeepaspect -nounevenstretch"
+    #    else:
+    #        shell_command += " -keepaspect -unevenstretch"
 
     # MAME/LUA interface
     if "-record" not in shell_command:

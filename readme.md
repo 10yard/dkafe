@@ -22,6 +22,15 @@ This project does not include:
  - Roms or details on how to obtain them.
 
 
+The default Donkey Kong frontend was created to pull together all of the excellent hacks that have been developed by the community.  The frontend's reward system will encourage you to play through them all by awarding coins so you can unlock the next one.  The frontend makes your targets visible in the emulator and informs you when you have earned a prize so you can expect a payout of coins.  The coins will drop from the top of the screen (after returning to the frontend) and Jumpman must collect them.  Coins are awarded for beating set scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).  Pauline will provide information as you walk past the arcade machines.  You will drop coins when the timer runs out (150 coins) or when you start an arcade game (100 coins).
+
+
+It is possible to adjust things and have free play and all machines unlocked - if you prefer to have complete freedom.
+
+
+![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/snaps/awards.png)
+
+
 ## Plot
 
 Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. 
@@ -35,13 +44,16 @@ Jumpman must play well to win prizes and unlock arcade machines as he works his 
 Pauline will love it when you beat all of the machines.
 
 
+![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/snaps/gameinfo.png)
+
+
 ## Automatically generated roms
 
 DKAFE builds a default frontend using various patches of the original "dkong.zip" (US Set 1) arcade rom. 
 
 The patches are included with the software in the patch folder.
-The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder.  
-DKAFE can apply patches and generate the following hacked Donkey Kong roms automatically for you.  The hacked versions will be organised into subfolders.  The folder name is given in brackets.
+
+The original Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  
 
 By Paul Goes, https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -72,15 +84,15 @@ By Mike Mika and Clay Cowgill, http://www.multigame.com/dkp_arcade.html
 By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
 
-By Jon Wilson (me)
- - DK Who and the Daleks (dkongwho)
- - Donkey Kong Lava Panic (dkonglava)
- - DK Last Man Standing (dkonglastman)
-
 By unknown others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
  - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Hard (dkonghrd)
+
+By Jon Wilson (me)
+ - DK Who and the Daleks (dkongwho)
+ - Donkey Kong Lava Panic (dkonglava)
+ - DK Last Man Standing (dkonglastman)
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
@@ -100,17 +112,20 @@ playback dkong dkong_01022021-084510
 ## Display Resolution
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
-The scaling works perfectly with a 7/8 aspect vertically rotated screen.
-For my system,  I was able to create a custom 7/8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
+The scaling works perfectly with a 7:8 aspect vertically rotated screen.
+
+For my system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
+
+I use the command line option **-view "Pixel Aspect (7:8)"** to avoid MAME's 4:3 default aspect ratio.
 
 
 ## How to set up?
 
-The application requires romlist.csv and settings.txt to be present in the installation folder along with other resources.
+The application requires settings.txt and romlist.csv to be present in the installation folder along with other resources.  Defaults are provided.
  
 The settings.txt contains the emulator, rom path, controls and other configuration.
 
-The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.  You must provide your own roms.
+The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.
 
 Mamedev maintains a list of free roms at:
 
@@ -118,7 +133,7 @@ https://www.mamedev.org/roms/
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you provide "dkong.zip" and "dkongjr.zip" rom and place them into the DKAFE roms subfolder.  The frontend can automatically generate roms for a whole bunch of Donkey Kong variants using patches which are included with the software.  See "Automatically generated roms" section above. 
+The default set up simply requires that you place "dkong.zip" and "dkongjr.zip" into the DKAFE roms subfolder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  See "Automatically generated roms" section above. 
 
 
 ### Frontend Settings
@@ -185,7 +200,16 @@ EMU_6 = (optional)
 EMU_7 = (optional)
 EMU_8 = (optional)
 ```
-EMU_1 to EMU_8 are used to define the emulators.  EMU_1 and EMU_2 come preconfigured.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for DKAFE .inp recording.  It is recommended not to change EMU_1 and EMU_2.
+EMU_1 and EMU_2 come preconfigured.  EMU_3 to EMU_8 can be used to add more of your own emulators.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for DKAFE .inp recording.
+
+Note:
+
+You can make use of special variables which will be replaced for their values at run time.
+
+<ROOT> is the install location of dkafe e.g. c:\dkafe 
+<ROM_DIR> and <OPTIONS> make reference to other settings which are defined in settings.txt.  See below.
+<NAME> is the name of rom being launched
+<DATETIME> is a datatime stamp of the format DDMMYY-HHMMSS e.g. 01022021-084510
 
 ```
 ROM_DIR = <ROOT>\roms
@@ -193,14 +217,9 @@ ROM_DIR = <ROOT>\roms
 The rom directory is set to the dkafe roms folder by default.
 
 ```
-OPTIONS = -video gdi
+OPTIONS = -video gdi -view "Pixel Aspect (7:8)"
 ```
-Additional arguments to pass to DKMAME.  DKAFE will automatically pass other things in like -rompath and -record when necessary so this need not be changed.
-
-```
-AUTOSTRETCH = 1
-```
-1 to automatically fit DKMAME to the resolution of monitor.  It will detect if monitor is 3:4 or 7:8 or similar aspect.
+Additional arguments to pass to DKMAME.  These options are stored into <OPTIONS> which then be included in the EMU settings.
 
 ```
 CREDITS = 1

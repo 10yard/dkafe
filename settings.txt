@@ -1,14 +1,14 @@
 # Front End Settings
-FULLSCREEN = 1
+FULLSCREEN = 0
 FREE_PLAY = 1
-UNLOCK_MODE = 0
+UNLOCK_MODE = 1
 CONFIRM_EXIT = 1
 ENABLE_MENU = 1
 
 # Emulator Settings
 ROM_DIR = <ROOT>\roms
-OPTIONS = -video gdi -nofilter
-AUTOSTRETCH = 1
+OPTIONS = -video gdi -view "Pixel Aspect (7:8)"
+#AUTOSTRETCH = 1
 EMU_1 = <ROOT>\dkwolf\dkwolf <OPTIONS> -rompath <ROM_DIR>
 EMU_2 = <ROOT>\dkwolf\dkwolf -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
 

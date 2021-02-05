@@ -436,7 +436,7 @@ def launch_rom(info):
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
             clear_screen()
-            if competing and name not in ("dkong", "dkongjr", "dkongx11", "dkongpe", "dkonghrd", "dkongf"):
+            if competing and name[:5] != "dkong":
                 # Flash message showing awards before game starts. dkong roms (in above list) have the message in game.
                 flash_message(f"Beat {_s.format_K(score3)} for {AWARDS[0]} coins", x=15, y=70, clear=False)
                 flash_message(f"Beat {_s.format_K(score2)} for {AWARDS[1]} coins", x=15, y=90, clear=False)

@@ -4,7 +4,7 @@ The .ips patches are included with the software.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder too.  
 DKAFE will then apply patches and generate the following hacked version of Donkey Kong automatically for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
-By Paul Goes, https://donkeykonghacks.net/
+By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)
  - Donkey Kong Championship Edition (dkongce)
  - Donkey Kong Randomized Edition (dkongrnd)
@@ -19,17 +19,18 @@ By John Kowalski (Sock Master)
  - Donkey Kong Christmas Remix (dkongxmas)
  - Donkey Kong Springs Trainer (dkongst2)
  - Donkey Kong Trainer (dkongtrn)
+ - Donkey Kong Pace (dkongpace)
  - Donkey Kong Rainbow (dkongrainbow)
 
-By Jeff Kulczycki, http://www.jeffsromhack.com/products/d2k.htm
+By Jeff Kulczycki
  - Donkey Kong 2 Jumpman Returns (dkongdk2)
  - Donkey Kong Foundry (dkongf)
  - Donkey Kong Barrel Control Colouring (dkongbcc)
 
-By Mike Mika
+By Mike Mika and Clay Cowgill
  - Donkey Kong Pauline Edition (dkongpe)
 
-By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
+By Don Hodges
  - Donkey Kong Kill Screen Fix (dkongksfix)
 
 By Jon Wilson (me)
@@ -37,10 +38,10 @@ By Jon Wilson (me)
  - Donkey Kong Lava Panic
  - DK Last Man Standing
 
-Donkey Kong Wild Barrel Hack (dkongwbh)
-Donkey Kong 2 Marios (dkong2m)
-Donkey Kong Hard (dkonghrd)
-Donkey Kong Pace (dkongpace)
+By Unknown
+ - Donkey Kong Wild Barrel Hack (dkongwbh)
+ - Donkey Kong 2 Marios (dkong2m)
+ - Donkey Kong Hard (dkonghrd)
 
 
 ----
