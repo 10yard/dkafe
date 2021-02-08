@@ -22,26 +22,29 @@ This project does not include:
  - Roms or details on how to obtain them.
 
 
-The default Donkey Kong frontend was created to pull together all of the excellent hacks that have been developed by the community.  The frontend's reward system will encourage you to play through them all by awarding coins so you can unlock the next one.  The frontend makes your targets visible in the emulator and informs you when you have earned a prize so you can expect a payout of coins.  The coins will drop from the top of the screen (after returning to the frontend) and Jumpman must collect them.  Coins are awarded for beating set scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).  Pauline will provide information as you walk past the arcade machines.  You will drop coins when the timer runs out (150 coins) or when you start an arcade game (100 coins).
+## The Frontend
 
+The default Donkey Kong frontend was created to pull together all of the excellent hacks that have been developed by the community.  
+
+The frontend's reward system will encourage you to play through them all by awarding coins so you can unlock the next one.  
+
+Your score targets are visible in the emulator and informs you when you have earned a prize so you can expect a payout of coins.  
+
+The coins will drop from the top of the screen (after returning to the frontend) and Jumpman must collect them.  
+
+Coins are awarded for beating set scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).  
+
+Pauline will provide information as you walk past the arcade machines.  
+
+You will drop coins when the timer runs out (150 coins) or when you start an arcade game (100 coins).
 
 It is possible to adjust things and have free play and all machines unlocked - if you prefer to have complete freedom.
+
+Pauline will love it when you beat all of the machines.
 
 
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/snaps/awards.png)
 
-
-## Plot
-
-Donkey Kong has captured Pauline and carried her to the top of an abandoned construction site. 
-
-The shock of shaking up the building during his ascent has uncovered many hidden arcade machines from the 1980's era and they are scattered around the site. 
-
-The coins thrown by Donkey Kong must be collected by Jumpman so he has money to play the arcades.
-
-Jumpman must play well to win prizes and unlock arcade machines as he works his way to the top of the building to rescue Pauline.  
-
-Pauline will love it when you beat all of the machines.
 
 
 ![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/snaps/gameinfo.png)
@@ -51,7 +54,7 @@ Pauline will love it when you beat all of the machines.
 
 DKAFE builds a default frontend using various patches of the original "dkong.zip" (US Set 1) arcade rom. 
 
-The patches are included with the software in the patch folder.
+The patch files are included with the software in the patch folder.
 
 The original Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  
 

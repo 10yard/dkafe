@@ -8,7 +8,6 @@ ENABLE_MENU = 1
 # Emulator Settings
 ROM_DIR = <ROOT>\roms
 OPTIONS = -video gdi -view "Pixel Aspect (7:8)"
-#AUTOSTRETCH = 1
 EMU_1 = <ROOT>\dkwolf\dkwolf <OPTIONS> -rompath <ROM_DIR>
 EMU_2 = <ROOT>\dkwolf\dkwolf -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
 
@@ -18,7 +17,7 @@ AUTOSTART=1
 ALLOW_SKIP_INTRO = 1
 SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1
-SHOW_HUD = 3
+SHOW_HUD =1
 
 # Controls
 CONTROL_LEFT = left

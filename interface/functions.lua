@@ -140,7 +140,8 @@ function fast_skip_intro()
       if mode1 == 3 then
         if mode2 == 7 then
           if string.sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
-            video.throttle_rate = 1000
+                        
+            --video.throttle_rate = 1000
             if data_emulator == "dkwolf" then
               video.frameskip = 11  -- dkwolf has an increased max throttle
             else
