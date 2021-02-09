@@ -174,17 +174,13 @@ def format_numeric_data(top_scores, width=6, first_only=False):
     return data.strip(",")
 
 
-def format_K(text):
-    if text.endswith("000000"):
-        return text[:-6] + "M"
-    elif text.endswith("000"):
-        return text[:-3] + "K"
-    elif text == "500":
-        return "0.5K"
-    elif text.endswith("500"):
-        return text[:-3] + ".5K"
-    else:
-        return text
+def format_K(number):
+    num = float('{:.3g}'.format(float(number)))
+    magnitude = 0
+    while abs(num) >= 1000:
+        magnitude += 1
+        num /= 1000.0
+    return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
 
 
 if __name__ == "__main__":

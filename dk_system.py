@@ -6,7 +6,7 @@ from glob import glob
 from shutil import copy
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from dk_config import *
-from dk_interface import lua_interface
+from dk_interface import lua_interface, format_K
 
 
 def is_windows():
@@ -96,16 +96,3 @@ def calculate_bonus(duration):
     bonus_timer = get_bonus_timer(duration)
     bonus_display = " 000" if bonus_timer <= 100 else str(int(bonus_timer)).rjust(4)[:2] + "00"
     return bonus_display, (CYAN, MAGENTA)[bonus_timer < 1000], bonus_timer < 1000, bonus_timer <= -200
-
-
-def format_K(text):
-    if text.endswith("000000"):
-        return text[:-6] + "M"
-    elif text.endswith("000"):
-        return text[:-3] + "K"
-    elif text == "500":
-        return "0.5K"
-    elif text.endswith("500"):
-        return text[:-3] + ".5K"
-    else:
-        return text

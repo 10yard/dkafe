@@ -14,40 +14,39 @@ This project includes:
  - Scripts to seamlessly interface MAME with the frontend.
  - A rom patcher that will automatically generate hacks from the included patch files.
  - 3 Donkey Kong hacks made by me for use with DKAFE:
-   - **DK Who and the Daleks** - Jumpman has regenerated as the next Dr Who and can use the Tardis to teleport through spacetime.
-   - **DK Lava Panic** - Jumpman must keep his cool and move quickly to avoid the rising Lava.
-   - **DK Last Man Standing** - You wil lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
+   - **DK Who and the Daleks** - Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
+   - **DK Lava Panic** - Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
+   - **DK Last Man Standing** - You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
 
 This project does not include:
  - Roms or details on how to obtain them.
 
 
+![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/snaps/gameinfo.png)
+
+
 ## The Frontend
 
-The default Donkey Kong frontend was created to pull together all of the excellent hacks that have been developed by the community.  
+The default Donkey Kong frontend was created to bring together all of the excellent hacks that have been developed by the community.  
 
-The frontend's reward system will encourage you to play through them all by awarding coins so you can unlock the next one.  
+The frontend's reward system will encourage you to play through them all by awarding coins so you can unlock the next one.  Hopefully encouring you to play them and get good at them!
 
-Your score targets are visible in the emulator and informs you when you have earned a prize so you can expect a payout of coins.  
+Your score targets are made visible in the emulator during gameplay and you are informed when you have earned a prize - so you can expect a payout of coins.  
 
-The coins will drop from the top of the screen (after returning to the frontend) and Jumpman must collect them.  
+Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off screen.  
 
-Coins are awarded for beating set scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).  
+Coins are awarded for beating a set score for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).  
 
-Pauline will provide information as you walk past the arcade machines.  
+Pauline will provide game and award information as you walk past the arcade machines.  
 
-You will drop coins when the timer runs out (150 coins) or when you start an arcade game (100 coins).
+You will be charged 100 coins to launch a game.  If the timer runs out you will lose 150 coins.
 
-It is possible to adjust things and have free play and all machines unlocked - if you prefer to have complete freedom.
+If you are not up for the challenge then it is possible to adjust things and have free play and all machines unlocked.  You may prefer to have complete freedom.  
 
-Pauline will love it when you beat all of the machines.
+Pauline will love it when you beat all of the machines though.
 
 
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/snaps/awards.png)
-
-
-
-![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/snaps/gameinfo.png)
 
 
 ## Automatically generated roms
