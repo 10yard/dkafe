@@ -179,6 +179,8 @@ def format_K(text):
         return text[:-6] + "M"
     elif text.endswith("000"):
         return text[:-3] + "K"
+    elif text == "500":
+        return "0.5K"
     elif text.endswith("500"):
         return text[:-3] + ".5K"
     else:

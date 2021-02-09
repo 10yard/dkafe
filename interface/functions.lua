@@ -51,28 +51,37 @@ function toggle(sync_with)
 end
 
 function get_score()
-	-- read 3 segments of score data from ram and convert to a number
-	score1 = tonumber(string.format("%x", mem:read_i8(0xc60b4)))
-	score2 = tonumber(string.format("%x", mem:read_i8(0xc60b3)))
-	score3 = tonumber(string.format("%x", mem:read_i8(0xc60b2)))
-	score = 0
-	if score1 ~= nil then score = score + (score1 * 10000) end
-	if score2 ~= nil then score = score + (score2 * 100) end
-	if score3 ~= nil then score = score + score3 end
-	return score
+  -- read score from top left,  allowing for 6 and 7 digit scores
+  _s1 = tostring(mem:read_i8(0xc7781))
+  if _s1 ~= "16" then
+    _s2 = tostring(mem:read_i8(0xc7761))
+    _s3 = tostring(mem:read_i8(0xc7741))
+    _s4 = tostring(mem:read_i8(0xc7721))
+    _s5 = tostring(mem:read_i8(0xc7701))
+    _s6 = tostring(mem:read_i8(0xc76e1))
+    _s7 = tostring(mem:read_i8(0xc76c1))
+    if _s7 == "16" then
+      _score = tonumber(_s1.._s2.._s3.._s4.._s5.._s6)
+    else
+      _score = tonumber(_s1.._s2.._s3.._s4.._s5.._s6.._s7)  
+    end
+  else
+    _score = 0
+  end
+	return _score
 end
 
 function set_score(score)
-	padded_score = string.format("%06d", score)
-	-- update score in ram
-	score1 = string.sub(padded_score, 1, 2)
-	score2 = string.sub(padded_score, 3, 4)
-	score3 = string.sub(padded_score, 5, 6)
-	mem:write_i8(0xc60b4, tonumber(score1, 16))
-	mem:write_i8(0xc60b3, tonumber(score2, 16))
-	mem:write_i8(0xc60b2, tonumber(score3, 16))
 	-- update score on screen
-	write_message(0xc7781, padded_score) -- update screen as it otherwise may not be updated
+	_padded_score = string.format("%06d", score)
+	write_message(0xc7781, _padded_score) -- update screen as it otherwise may not be updated
+	-- update score in ram
+	_s1 = string.sub(_padded_score, 1, 2)
+	_s2 = string.sub(_padded_score, 3, 4)
+	_s3 = string.sub(_padded_score, 5, 6)
+	mem:write_i8(0xc60b4, tonumber(_s1, 16))
+	mem:write_i8(0xc60b3, tonumber(_s2, 16))
+	mem:write_i8(0xc60b2, tonumber(_s3, 16))
 end
 
 function get_highscore()
@@ -134,14 +143,26 @@ function write_message(start_address, text)
 	end
 end
 
+function clear_sounds()
+  -- clear music on soundcpu
+  for key = 0, 32 do
+    soundmem:write_i8(0x0 + key, 0x00)
+  end
+  
+  -- clear sound fx buffer
+  for key = 0, 8 do
+    mem:write_i8(0xc6080 + key, 0x00)
+  end
+end
+
 function fast_skip_intro()
   -- Skip the DK climb intro when jump button is pressed
   if data_allow_skip_intro == "1" then
       if mode1 == 3 then
         if mode2 == 7 then
           if string.sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
-                        
-            --video.throttle_rate = 1000
+            player_skipped_intro = 1
+            video.throttle_rate = 250
             if data_emulator == "dkwolf" then
               video.frameskip = 11  -- dkwolf has an increased max throttle
             else
@@ -149,7 +170,13 @@ function fast_skip_intro()
             end
             video.throttled = false
           end
+          if player_skipped_intro == 1 then
+            -- clear music and soundfx as they won't sound good
+            clear_sounds()
+          end
+        
         else
+          skip_intro = 0
           video.throttle_rate = 1
           video.frameskip = 0
           video.throttled = true

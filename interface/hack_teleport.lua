@@ -119,7 +119,7 @@ function dkongwho_overlay()
 		end
 	end
 	
-	-- Display alternative messages on How High screens other than 1
+	-- Display alternative messages on How High screens other than stage 1
 	if stage ~= 1 then
 		if mode2 == 8 then
 			howhigh_prepare = 1
@@ -233,7 +233,7 @@ end
 if loaded == 3 and data_subfolder == "dkongwho" then
 	-- rom specific hack for DK Who
 	if teleport_hack_started ~= 1 then	
-		number_of_stars = 300
+		number_of_stars = 500
 		starfield={}
 		math.randomseed (os.time())		
 		for _=1, number_of_stars do

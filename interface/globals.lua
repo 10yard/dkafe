@@ -51,14 +51,15 @@ ram_scores_DOUBLE = get_formatted_data("RAM_SCORES_DOUBLE")
 ram_players = get_formatted_data("RAM_PLAYERS")
 
 -- Memory state
-cpu = manager:machine().devices[":maincpu"]
+machine = manager:machine()
+ports = machine:ioport().ports
+video = machine:video()
+screen = machine.screens[":screen"]
+cpu = machine.devices[":maincpu"]
 mem = cpu.spaces["program"]
-screen = manager:machine().screens[":screen"]
-ports = manager:machine():ioport().ports
-video = manager:machine():video()
 
---manager:machine():video().throttle_rate = 100   (set back to 1)
---manager:machine():video().frameskip = -1        (set back to 0)
+soundcpu = machine.devices[":soundcpu"]
+soundmem = soundcpu.spaces["data"]
 
 -- Optional hacks
 hack_teleport = os.getenv("HACK_TELEPORT")

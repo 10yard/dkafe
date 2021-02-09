@@ -34,6 +34,13 @@ if loaded == 3 and data_subfolder == "dkonglastman" then
 end
 
 if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
+  if mode1 == 2 then
+    -- Player finish flag is reset before game starts
+    -- Player presses COIN to finish game and record their points - it's the
+    --   only way to register points without reaching a killscreen
+    player_finish = 0
+  end
+  
   penalty_points = lastman_penalty_dips[string.sub(number_to_binary(mem:read_i8(0xc7d80)), 7, 8)]  -- number of lives dip determines the penalty	
 	jumpman_status = mem:read_i8(0xc6200)         -- 1 = alive, 0 = dead
 
@@ -44,7 +51,7 @@ if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 	mem:write_i8(0xc6021, 0)	
 
 	-- Check if life was lost and sufficient points for penalty are available
-	if mode1 == 3 and mode2 >= 0xc and jumpman_status == 0 then	
+	if mode1 == 3 and mode2 >= 0xc and jumpman_status == 0 and player_finish ~= 1 then	
 		-- deduct penalty from score
 		if score >= penalty_points then
 			set_score(score - penalty_points)
@@ -55,17 +62,25 @@ if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
 			--set remaining lives to 2
 			mem:write_i8(0xc6228, 2)			
 		else
+			set_score(0)
 			--Force Game over
 			--set remaining lives to 1
 			mem:write_i8(0xc6228, 1)			
 		end
 	end
 
+  -- Player ends game to keep current score by pressing COIN.
+  if string.sub(number_to_binary(mem:read_i8(0xc7d00)), 1, 1) == "1" then
+    mem:write_i8(0xc6228, 1)		
+    mem:write_i8(0xc6200, 0)
+    player_finish = 1
+  end
+
+
 	-- Display jumpman penalty instead of the remaining lives
 	-- Flash when the penalty is greater than score to indicate player won't survive
 	blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 	
 	if score >= penalty_points or blink_toggle ~= 16 then
-		--write_message(0xc77a2, "LIFE COST")
 		write_message(0xc77a3, "@=     ")
 		write_message(0xc77a3, "@="..tonumber(penalty_points))
 	else
