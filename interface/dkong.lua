@@ -23,6 +23,10 @@ emu.register_frame(function()
 	end
 
 	if loaded == 1 then
+    if emu.romname() == "dkongx" and data_allow_skip_intro == "1" then 
+      -- quickly skip past startup screen in DK2
+      max_throttle(1) 
+    end
 		-- Update RAM when ready	
 		if mem:read_i8(ram_players[1]) > 0 and ( emu.romname() ~= "dkongx" or mem:read_i8("0xc0000") < 0 ) then
 			emu["loaded"] = 2
@@ -45,6 +49,9 @@ emu.register_frame(function()
 	end
 	
 	if loaded == 2 then
+    if emu.romname() == "dkongx" and data_allow_skip_intro == "1" then 
+      max_throttle(0) 
+    end
 		-- Optionally set number of coins inserted into the machine
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
 			mem:write_i8(0x6001, data_credits)
@@ -61,8 +68,8 @@ emu.register_frame(function()
 		mode2 = mem:read_i8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over 
 		stage = mem:read_i8(0xc6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 		score = get_score()
-				
-		-- Release P1 Start button (after autostart)
+                
+    -- Release P1 Start button (after autostart)
 		if data_autostart == "1" then
 			if mode1 == 3 and mode2 == 7 then
 				ports[":IN2"].fields["1 Player Start"]:set_value(0)
