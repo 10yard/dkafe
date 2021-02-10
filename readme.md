@@ -1,6 +1,6 @@
 # **DKAFE** #
 
-##Donkey Kong Arcade Front End##
+##Donkey Kong Arcade Front End
 
 A Donkey Kong themed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
 
@@ -8,7 +8,7 @@ A Donkey Kong themed arcade game launcher made for arcade cabinets with incentiv
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
 
-###This project includes:
+### This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - Scripts to seamlessly interface MAME with the frontend.
@@ -20,7 +20,7 @@ Jumpman must keep his cool and move quickly up the platforms to avoid the rising
    3. **DK Last Man Standing**
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
 
-###This project does not include:
+### This project does not include:
  - Roms or details on how to obtain them.
 
 
@@ -57,7 +57,7 @@ The patch files are included with the software in the patch folder.
 
 The original Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  
 
-####By Paul Goes - https://donkeykonghacks.net/
+#### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
  - Donkey Kong Championship Edition (dkongce)
  - Donkey Kong Randomized Edition (dkongrnd)
@@ -67,7 +67,7 @@ The original Donkey Kong rom is not provided with the software and must be obtai
  - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Reverse (dkongrev)
 
-####By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
+#### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)
  - Donkey Kong Christmas Remix (dkongxmas)
  - Donkey Kong Springs Trainer (dkongst2)
@@ -75,23 +75,23 @@ The original Donkey Kong rom is not provided with the software and must be obtai
  - Donkey Kong Pace (dkongpace)
  - Donkey Kong Rainbow (dkongrainbow)
 
-####By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
+#### By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
  - Donkey Kong 2 Jumpman Returns (dkongdk2)
  - Donkey Kong Foundry (dkongf)
  - Donkey Kong Barrel Control Colouring (dkongbcc)
 
-####By Mike Mika and Clay Cowgill - http://www.multigame.com/dkp_arcade.html
+#### By Mike Mika and Clay Cowgill - http://www.multigame.com/dkp_arcade.html
  - Donkey Kong Pauline Edition (dkongpe)
 
-####By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
+#### By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
 
-####By unknown others
+#### By unknown others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
  - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Hard (dkonghrd)
 
-####By Jon Wilson (me)
+#### By Jon Wilson (me)
  - DK Who and the Daleks (dkongwho)
  - Donkey Kong Lava Panic (dkonglava)
  - DK Last Man Standing (dkonglastman)
