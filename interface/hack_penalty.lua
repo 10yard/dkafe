@@ -4,7 +4,8 @@
 -- Penalty points are displayed top left and will flash when there are not enough points to survive.
 --
 -- Drives the "DK Last Man Standing" hack:
--- You wil lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
+-- You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
+-- Press COIN button to stop playing and register your points - unless you want to go for a kill screen.
 
 function dkonglastman_overlay()
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
@@ -33,11 +34,10 @@ if loaded == 3 and data_subfolder == "dkonglastman" then
   lastman_penalty_dips["01"] = 75000
 end
 
-if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
+if mem:read_i8(0xc600F) == 0 then         -- 0 is a 1 player game
   if mode1 == 2 then
     -- Player finish flag is reset before game starts
-    -- Player presses COIN to finish game and record their points - it's the
-    --   only way to register points without reaching a killscreen
+    -- Player presses COIN to finish game and record their points - it's the only way to register points without reaching a killscreen
     player_finish = 0
   end
   
@@ -76,11 +76,9 @@ if mem:read_i8(0xc600F) == 0 then                 -- 0 is a 1 player game
     player_finish = 1
   end
 
-
 	-- Display jumpman penalty instead of the remaining lives
 	-- Flash when the penalty is greater than score to indicate player won't survive
-	blink_toggle = mem:read_i8(0xc7720) -- sync with the flashing 1UP 	
-	if score >= penalty_points or blink_toggle ~= 16 then
+	if score >= penalty_points or toggle("1UP") == 0 or (mode1 == 1 and mode2 == 1) then 
 		write_message(0xc77a3, "@=     ")
 		write_message(0xc77a3, "@="..tonumber(penalty_points))
 	else

@@ -23,9 +23,9 @@ emu.register_frame(function()
 	end
 
 	if loaded == 1 then
-    if emu.romname() == "dkongx" and data_allow_skip_intro == "1" then 
-      -- quickly skip past startup screen in DK2
-      max_throttle(1) 
+    if data_allow_skip_intro == "1" and emu.romname() == "dkongx" then 
+      -- quickly skip past startup screen of DK2
+      max_frameskip(1) 
     end
 		-- Update RAM when ready	
 		if mem:read_i8(ram_players[1]) > 0 and ( emu.romname() ~= "dkongx" or mem:read_i8("0xc0000") < 0 ) then
@@ -49,8 +49,9 @@ emu.register_frame(function()
 	end
 	
 	if loaded == 2 then
-    if emu.romname() == "dkongx" and data_allow_skip_intro == "1" then 
-      max_throttle(0) 
+    -- Reset frameskip after fast start of DK2
+    if data_allow_skip_intro == "1" and emu.romname() == "dkongx" then 
+      max_frameskip(0) 
     end
 		-- Optionally set number of coins inserted into the machine
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then

@@ -1,27 +1,27 @@
-#Rom Name,Sub Folder,Description,Slot,Emu,State,Unlock,3rd Prize,2nd Prize,1st Prize
-dkong,,DK Wolf,1,2,,0,,,
-dkong,,Donkey Kong,3,1,,0,25000,50000,100000
-dkong,dkongtrn,DK Trainer,5,1,,0,,,
-dkongjr,,DK Junior,8,1,,2000,15000,25000,50000
-dkongx11,dkongspooky,DK Spooky,10,1,,4000,15000,25000,50000
-dkong,dkongrev,DK Reverse,11,1,,6000,25000,40000,80000
-dkongf,dkongst2,DK Springs,14,1,,8000,10000,20000,30000
-dkong,dkongwho,DK Who,15,1,,10000,25000,50000,100000
-dkong,dkongwbh,DK Wild,17,1,,12000,1500,2500,5000
-dkong,dkongce,DK Champ Ed,18,1,,14000,30000,50000,100000
-dkong,dkonglava,DK Lava,19,1,,16000,15000,25000,50000
-dkongx11,dkongxmas,DK Xmas,20,1,,18000,15000,25000,50000
-dkong,dkongitd,DK IntoTheDark,21,1,,20000,25000,40000,80000
-dkong,dkonglastman,DK Last Man,23,1,,22000,25000,40000,80000
-dkongx,dkongdk2,DK 2,25,1,,24000,15000,25000,50000
-dkong,dkongl05,DK SkipStart,26,1,,26000,25000,40000,80000
-dkongf,dkongrdemo,DK Remix Demo,29,1,,28000,25000,40000,80000
-dkong,dkongrnd,DK Random,31,1,,30000,25000,40000,80000
-dkongf,dkongf,DK Foundry,33,1,,32000,20000,30000,60000
-dkong,dkongrainbow,DK Rainbow,34,1,,34000,30000,50000,100000
-dkonghrd,dkonghrd,DK Hard,35,1,,36000,20000,30000,50000
-dkong,dkongotr,DK OnTheRun,37,1,,38000,15000,25000,50000
-dkong,dkongfr,DK Free Run,40,1,,40000,200000,500000,750000
-dkong,dkongcb,DK CrazyBarrels,42,1,,42000,10000,15000,30000
-dkongpe,dkongpe,DK Pauline Ed,45,1,,45000,30000,50000,100000
-dkong,dkongksfix,KS Fix,46,1,,50000,50000,100000,200000
+#Rom Name,Sub Folder,Description,Slot,Emu,Unlock,3rd Prize,2nd Prize,1st Prize
+dkong,,DK Wolf,1,2,0,,,
+dkong,,Donkey Kong,3,1,0,25000,50000,100000
+dkong,dkongtrn,DK Trainer,5,1,0,,,
+dkongjr,,DK Junior,8,1,2000,15000,25000,50000
+dkongx11,dkongspooky,DK Spooky,10,1,4000,15000,25000,50000
+dkong,dkonglava,DK LavaPanic,11,1,6000,25000,40000,80000
+dkongf,dkongst2,DK Springs,14,1,8000,10000,20000,30000
+dkong,dkongwho,DK Who,15,1,10000,25000,50000,100000
+dkong,dkongwbh,DK Wild,17,1,12000,1500,2500,5000
+dkong,dkongce,DK Champ Ed,18,1,14000,30000,50000,100000
+dkong,dkongitd,DK IntoTheDark,19,1,16000,25000,40000,80000
+dkong,dkongrev,DK Reverse,21,1,18000,25000,40000,80000
+dkongx11,dkongxmas,DK Xmas,22,1,20000,15000,25000,50000
+dkong,dkonglastman,DK LastMan,24,1,22000,25000,40000,80000
+dkongx,dkongdk2,DK 2,25,1,24000,15000,25000,50000
+dkong,dkongl05,DK SkipStart,26,1,26000,25000,40000,80000
+dkongf,dkongrdemo,DK Remix Demo,29,1,28000,25000,40000,80000
+dkong,dkongrnd,DK Random,31,1,30000,25000,40000,80000
+dkongf,dkongf,DK Foundry,33,1,32000,20000,30000,60000
+dkong,dkongrainbow,DK Rainbow,34,1,34000,30000,50000,100000
+dkonghrd,dkonghrd,DK Hard,35,1,36000,20000,30000,50000
+dkong,dkongotr,DK OnTheRun,37,1,38000,15000,25000,50000
+dkong,dkongfr,DK Free Run,40,1,40000,200000,500000,750000
+dkong,dkongcb,DK CrazyBarrels,42,1,42000,10000,15000,30000
+dkongpe,dkongpe,DK Pauline Ed,45,1,45000,30000,50000,100000
+dkong,dkongksfix,KS Fix,46,1,50000,50000,100000,200000

@@ -6,7 +6,7 @@ from glob import glob
 from shutil import copy
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from dk_config import *
-from dk_interface import lua_interface, format_K
+from dk_interface import lua_interface
 
 
 def is_windows():
@@ -31,13 +31,13 @@ def read_romlist():
     romlist = []
     with open("romlist.csv", "r") as rl:
         for rom_line in rl.readlines()[1:]:  # ignore the first/header line
-            if not rom_line.startswith("#") and rom_line.count(",") == 9:
-                name, sub, des, slot, emu, state, unlock, score3, score2, score1, *_ = [x.strip() for x in rom_line.split(",")]
+            if not rom_line.startswith("#") and rom_line.count(",") == 8:
+                name, sub, des, slot, emu, unlock, score3, score2, score1, *_ = [x.strip() for x in rom_line.split(",")]
                 if name and des and SLOTS[int(slot) - 1]:
                     icx, icy = SLOTS[int(slot) - 1]
                     # target = name + (".sh", ".bat")[is_windows()] if sub == "shell" else name + ".zip"
                     # if os.path.exists(os.path.join((ROM_DIR, ROOT_DIR)[sub == "shell"], sub, target)):
-                    romlist.append((name, sub, des, icx, icy, int(emu), state, int(unlock), score3, score2, score1))
+                    romlist.append((name, sub, des, icx, icy, int(emu), int(unlock), score3, score2, score1))
     return romlist
 
 
@@ -46,13 +46,13 @@ def get_emulator(emu_number):
 
 
 def build_shell_command(info):
-    # Receives subfolder (optional), name, emulator and rom state from info
+    # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # A homebew emulator is preferred for rom hacks but a good alternative is to provide a subfolder which holds a
     # variant of the main rom e.g. roms/skipstart/dkong.zip is a variant of roms/dkong.zip.  If mame emulator supports
     # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
     # rom to avoid a CRC check fail.
     competing = False
-    sub, name, emu, state, unlock, score3, score2, score1 = info
+    sub, name, emu, unlock, score3, score2, score1 = info
     emu_command = get_emulator(emu).replace("<NAME>", name).replace("<DATETIME>", get_datetime())
     shell_command = f'{emu_command} {name}'
     emu_directory = os.path.dirname(emu_command.split(" ")[0])
@@ -82,8 +82,6 @@ def build_shell_command(info):
             shell_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
             shell_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'
 
-    if state:
-        shell_command += f' -state {state.strip()}'
     return shell_command, emu_directory, competing
 
 

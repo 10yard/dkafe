@@ -155,11 +155,11 @@ function clear_sounds()
   end
 end
 
-function max_throttle(switch)
+function max_frameskip(switch)
   if switch == 1 then
-    video.throttle_rate = 250
+    video.throttle_rate = 1000
     if data_emulator == "dkwolf" then
-      video.frameskip = 11  -- dkwolf has an increased max throttle
+      video.frameskip = 11  -- dkwolf has an increased max frameskip
     else
       video.frameskip = 8
     end
@@ -178,16 +178,16 @@ function fast_skip_intro()
         if mode2 == 7 then
           if string.sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
             player_skipped_intro = 1
-            max_throttle(1)
+            max_frameskip(1)
           end
           if player_skipped_intro == 1 then
             -- clear music and soundfx as they won't sound good
             clear_sounds()
           end
         else
-          skip_intro = 0
-          max_throttle(0)
-    end
+          player_skipped_intro = 0
+          max_frameskip(0)
+        end
       end
     end    
 end

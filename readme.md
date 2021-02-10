@@ -1,6 +1,6 @@
 # **DKAFE** #
 
-Donkey Kong Arcade Front End
+##Donkey Kong Arcade Front End##
 
 A Donkey Kong themed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
 
@@ -8,17 +8,19 @@ A Donkey Kong themed arcade game launcher made for arcade cabinets with incentiv
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
 
 
-This project includes:
+###This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - Scripts to seamlessly interface MAME with the frontend.
  - A rom patcher that will automatically generate hacks from the included patch files.
  - 3 Donkey Kong hacks made by me for use with DKAFE:
-   - **DK Who and the Daleks** - Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
-   - **DK Lava Panic** - Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
-   - **DK Last Man Standing** - You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
+  1. **DK Who and the Daleks** Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
+  2. **DK Lava Panic**
+Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
+   3. **DK Last Man Standing**
+You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
 
-This project does not include:
+###This project does not include:
  - Roms or details on how to obtain them.
 
 
@@ -41,9 +43,7 @@ Pauline will provide game and award information as you walk past the arcade mach
 
 You will be charged 100 coins to launch a game.  If the timer runs out you will lose 150 coins.
 
-If you are not up for the challenge then it is possible to adjust things and have free play and all machines unlocked.  You may prefer to have complete freedom.  
-
-Pauline will love it when you beat all of the machines though.
+If you are not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all of the machines though.
 
 
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/snaps/awards.png)
@@ -51,13 +51,13 @@ Pauline will love it when you beat all of the machines though.
 
 ## Automatically generated roms
 
-DKAFE builds a default frontend using various patches of the original "dkong.zip" (US Set 1) arcade rom. 
+DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.
 
 The patch files are included with the software in the patch folder.
 
 The original Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  
 
-By Paul Goes, https://donkeykonghacks.net/
+####By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
  - Donkey Kong Championship Edition (dkongce)
  - Donkey Kong Randomized Edition (dkongrnd)
@@ -67,7 +67,7 @@ By Paul Goes, https://donkeykonghacks.net/
  - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Reverse (dkongrev)
 
-By John Kowalski (Sock Master), http://users.axess.com/twilight/sock/
+####By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)
  - Donkey Kong Christmas Remix (dkongxmas)
  - Donkey Kong Springs Trainer (dkongst2)
@@ -75,23 +75,23 @@ By John Kowalski (Sock Master), http://users.axess.com/twilight/sock/
  - Donkey Kong Pace (dkongpace)
  - Donkey Kong Rainbow (dkongrainbow)
 
-By Jeff Kulczycki, http://www.jeffsromhack.com/products/d2k.htm
+####By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
  - Donkey Kong 2 Jumpman Returns (dkongdk2)
  - Donkey Kong Foundry (dkongf)
  - Donkey Kong Barrel Control Colouring (dkongbcc)
 
-By Mike Mika and Clay Cowgill, http://www.multigame.com/dkp_arcade.html
+####By Mike Mika and Clay Cowgill - http://www.multigame.com/dkp_arcade.html
  - Donkey Kong Pauline Edition (dkongpe)
 
-By Don Hodges, http://www.donhodges.com/how_high_can_you_get.htm
+####By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
 
-By unknown others
+####By unknown others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
  - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Hard (dkonghrd)
 
-By Jon Wilson (me)
+####By Jon Wilson (me)
  - DK Who and the Daleks (dkongwho)
  - Donkey Kong Lava Panic (dkonglava)
  - DK Last Man Standing (dkonglastman)
@@ -102,11 +102,11 @@ By Jon Wilson (me)
 
 ## DK WolfMAME
 
-DKAFE comes bundled with my custom lightweight build of WolfMAME (v0.196) which supports only Donkey Kong drivers. 
+DKAFE comes with my custom lightweight build of WolfMAME (v0.196) which supports only Donkey Kong drivers. 
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
-Recordings are saved to \inp subfolder of DKWOLF and can be replayed outside of DKAFE using the playback.bat passing romname and inp file name e.g.
+Gameplay recordings are saved to the **\inp** subfolder of **dkwolf** and can be replayed outside of DKAFE using the **playback.bat** passing romname and filename e.g.
 ```
 playback dkong dkong_01022021-084510 
 ```
@@ -118,7 +118,7 @@ The scaling works perfectly with a 7:8 aspect vertically rotated screen.
 
 For my system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
-I use the command line option **-view "Pixel Aspect (7:8)"** to avoid MAME's 4:3 default aspect ratio.
+I use the command line option **-view "Pixel Aspect (7:8)"** to override MAME's default 4:3 aspect.
 
 
 ## How to set up?
@@ -135,56 +135,41 @@ https://www.mamedev.org/roms/
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you place "dkong.zip" and "dkongjr.zip" into the DKAFE roms subfolder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  See "Automatically generated roms" section above. 
+The default set up simply requires that you place **dkong.zip** and **dkongjr.zip** into the DKAFE **\roms** subfolder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
 
 
 ### Frontend Settings
 
 Default settings can be changed in the settings.txt file.
 
-```
-FULLSCREEN = 1
-```
+`FULLSCREEN = 1`
 1 for fullscreen mode or 0 for windowed mode.
 
-```
-FREE_PLAY = 0
-```
+`FREE_PLAY = 0`
 1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game.
 
-```
-UNLOCK_MODE = 1
-```
+`UNLOCK_MODE = 1`
 1 for unlock mode were Jumpman must score points to unlock games.  If 0 then all games are unlocked by default.
 
-```
-CONFIRM_EXIT = 1
-```
+`CONFIRM_EXIT = 1`
 1 to display confirmation screen when attempting to exit.  0 to exit without question.
 
-```
-ENABLE_HAMMERS=1
-```
-1 to enable teleport between hammers in the fronted to make it quicker to move up/down the platforms.
+`ENABLE_MENU=1`
+1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 
-```
-INACTIVE_TIME = 20
-```
-Period of inactivity in seconds before showing screensaver/game instructions.
+`ENABLE_HAMMERS=1`
+1 to enable teleport between hammers in the fronted.  Makes it quicker to move up and down platforms.
 
-```
-PLAY_COST = 100
-```
+`INACTIVE_TIME = 20`
+Period of inactivity in seconds before showing attract mode/game instructions.
+
+`PLAY_COST = 100`
 How much it costs to play an arcade machine.
 
-```
-LIFE_COST = 150
-```
+`LIFE_COST = 150`
 How many coins Jumpman drops when time runs out.
 
-```
-TIMER_START = 5000
-```
+`TIMER_START = 5000`
 Number to start the countdown timer from.
 
 
@@ -202,51 +187,43 @@ EMU_6 = (optional)
 EMU_7 = (optional)
 EMU_8 = (optional)
 ```
-EMU_1 and EMU_2 come preconfigured.  EMU_3 to EMU_8 can be used to add more of your own emulators.  By default EMU_1 is used for DKAFE gameplay and EMU_2 is used for DKAFE .inp recording.
+`EMU_1` and `EMU_2` come preconfigured.
+`EMU_3` to `EMU_8` can be used to add more of your own emulators.  By default `EMU_1` is used for DKAFE gameplay and `EMU_2` is used for "inp" recordings.
 
-Note:
-
-You can make use of special variables which will be replaced for their values at run time.
-
-<ROOT> is the install location of dkafe e.g. c:\dkafe 
-<ROM_DIR> and <OPTIONS> make reference to other settings which are defined in settings.txt.  See below.
-<NAME> is the name of rom being launched
-<DATETIME> is a datatime stamp of the format DDMMYY-HHMMSS e.g. 01022021-084510
-
-```
-ROM_DIR = <ROOT>\roms
-```
+`ROM_DIR = <ROOT>\roms`
 The rom directory is set to the dkafe roms folder by default.
 
-```
-OPTIONS = -video gdi -view "Pixel Aspect (7:8)"
-```
+`OPTIONS = -video gdi -view "Pixel Aspect (7:8)"`
 Additional arguments to pass to DKMAME.  These options are stored into <OPTIONS> which then be included in the EMU settings.
 
-```
-CREDITS = 1
-```
+The special tags `<ROOT>`, `<ROM_DIR>`, `<NAME>`, `<DATETIME>` you see above will be replaced with their values at runtime.
+
+`<ROOT>` is the install location of the frontend e.g. `C:\dkafe`. 
+`<ROM_DIR>` and `<OPTIONS>` refer to other settings which are defined in settings.txt.
+`<NAME>` is the name of the rom being launched.
+`<DATETIME>`is a current date/time stamp
+
+
+### DK Interface Settings
+
+These settings relate to Donkey Kong and DK Junior Roms and hacks.
+
+`CREDITS = 1`
 1 to automatically insert a coin after launching a game.
 
-```
-AUTOSTART = 1
-```
+`AUTOSTART = 1`
 1 to automatically start the game - if coins are inserted.
 
-```
-SHOW_AWARD_PROGRESS = 1
-```
+`SHOW_AWARD_PROGRESS = 1`
 1 to show award progress when playing game (replaces highscore at top of screen)
 
-```
-SHOW_AWARD_TARGETS = 1
-```
+`SHOW_AWARD_TARGETS = 1`
 1 to show award targets for 1st, 2nd and 3rd prize when playing game (appears during the DK intro/climb scene)
 
-```
-SHOW_HUD = 1
-```
-1, 2 or 3 to enable in game HUD to be displayed in the top right corner.  The number determines which data is shown by default (1=Targets, 2=Awards, 3=No data, 0 to disable feature). Use P2 Start button to toggle between 1, 2, 3. 
+`SHOW_HUD = 1`
+1, 2 or 3 to enable the HUD to be displayed in the top right corner.  
+1=Targets, 2=Awards, 3=No data, 0 to disable the HUD.
+When active, use P2 Start button to toggle between 1, 2, 3. 
 
 
 ### Control Settings
@@ -335,7 +312,9 @@ on top of dietpi lightweight OS:
 Requires Python3 (from v3.7) with installed packages from requirements.txt
 
 Pyinstaller can be used to build the application binary on Windows.
-  - pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+```
+pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+```
 
 See build.bat for an example build script making use of venv (virtual environment for Python)
 

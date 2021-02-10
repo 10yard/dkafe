@@ -9,7 +9,7 @@ function calc_sprite_top()
 	if _y >= 0 then
 		_y = -256 + _y
 	end
-	_y = 8 - _y  -- 8 to allow lava to rise to sprite height + 1
+	_y = 8 - _y  -- to allow lava to rise to sprite height + 1
 	return _y
 end
 
@@ -23,21 +23,23 @@ function draw_lava()
 		difficulty = math.floor(1.2 * (22 - level)) -- lower difficulty is harder
 	end
 	
-	if mode2 == 7 or mode2 == 10 or mode2 == 11 then  -- intro / how high can you get
-		lava_y = -7  --reset lava
+	if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then
+    -- reset lava level at start of game or when in attract mode
+		lava_y = -7
 		music = mem:read_i8(0xc6089)		
-
 	elseif mode2 == 21 and lava_y > 15 then
-		lava_y = 15  -- Reduce lava level on high score entry screens to avoid obstruction.
+    -- Reduce lava level on high score entry screens to avoid obstruction.
+		lava_y = 15
 	elseif mode2 == 16 and lava_y > 60 then
-		lava_y = 60  -- Reduce lava level on game over screens to avoid obstruction.
+    -- Reduce lava level on game over screens to avoid obstruction.    
+		lava_y = 60
 	end
 	
-	if mode1 == 3 then
+	if mode1 == 3 or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
 		-- draw rising lava
 		screen:draw_box(0, 0, lava_y, 224, lava_colour, 0)
 		
-		if mode2 == 12 then	
+		if mode2 == 12 or (mode1 == 1 and mode2 >= 2 and mode2 <= 3) then	
 			jumpman_y = calc_sprite_top()
 			-- issue warning to Jumpman
 			if lava_y + 10 > jumpman_y then
@@ -70,12 +72,12 @@ function draw_lava()
 			end
 		
 			if lava_y > jumpman_y + 1 then
-				-- lava has engulfed Jumpman. Set his status to dead
+				-- lava has engulfed Jumpman. Set status to dead
 				mem:write_i8(0xc6200, 0)
 			elseif math.fmod((mem:read_i8(0xc601A)), difficulty) == 0 then
 				-- Game is active.  Lava rises periodically based on the difficulty
 				if mem:read_i8(0xc6350) == 0 then
-					-- Lava shouldn't rise when item is being smashed with hammer
+					-- Lava shouldn't rise when an item is being smashed by the hammer
 					lava_y = lava_y + 1
 				end
 			end
@@ -89,7 +91,7 @@ function draw_lava()
 			end
 		end
 		
-		-- add flames
+		-- add flames above lava
 		for i=0, 224 do		
 			if math.fmod(i, 14) == 0 then
 				adjust_y = math.random(-3, 3)

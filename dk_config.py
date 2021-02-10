@@ -3,7 +3,7 @@ import pygame
 import pygame_menu as pymenu
 
 # Graphic Config
-TITLE = 'DONKEY KONG ARCADE FE'
+TITLE = 'DKAFE'
 GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
 TOPLEFT = (0, 0)       # position of top left corner
 CLOCK_RATE = 45        # Clock rate/timing - tweak this to get the right speed
@@ -293,5 +293,3 @@ dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_w
 # Override default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
-
-ASPECT_RATIO = pygame.display.Info().current_h / pygame.display.Info().current_w
