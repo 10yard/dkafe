@@ -5,6 +5,7 @@ from dk_config import ROM_DIR, DKONG_ZIP, PATCH_DIR
 
 
 def apply_patches():
+    applied_patches_list = []
     if os.path.exists(DKONG_ZIP):
         ips_files = glob(os.path.join(PATCH_DIR, "*.ips"))
         if ips_files:
@@ -19,11 +20,11 @@ def apply_patches():
                 target_zip = os.path.join(subfolder, "dkong.zip")
                 if not os.path.exists(subfolder):
                     os.mkdir(subfolder)
-
-                    print(f"Applying patch: {ips}")
                     patch = Patch.load(ips)
                     with open(target_zip, 'w+b') as f_out:
                         f_out.write(patch.apply(dkong_binary))
+                        applied_patches_list.append(name)
+    return applied_patches_list
 
 
 if __name__ == "__main__":

@@ -13,7 +13,7 @@ def exit_program(confirm=False):
         open_menu(_g.exitmenu)
     else:
         # Save frontend state and exit
-        _g.timer_adjust = _g.timer.duration + _g.timer_adjust
+        _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 1
         pickle.dump([_g.score, _g.timer_adjust], open("save.p", "wb"))
         pygame.quit()
         sys.exit()
@@ -49,6 +49,26 @@ def load_frontend_state():
         _g.score, _g.timer_adjust = 0, 0
 
 
+def check_patches_available():
+    applied_patches = apply_patches()
+    if applied_patches:
+        clear_screen()
+        x_offset, y_offset = 8, 24
+        write_text(f"APPLYING PATCH FILES...", font=dk_font, x=8, y=8, fg=RED)
+        for i, patch in enumerate(applied_patches):
+            write_text(patch, font=dk_font, x=x_offset, y=y_offset, fg=WHITE)
+            update_screen(delay_ms=20)
+            y_offset += 9
+            if y_offset > 220:
+                x_offset, y_offset = 128, 24
+        flash_message("ALL GOOD!", x=8, y=232, clear=False, cycles=4)
+        flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
+        while True:
+            check_for_input(force_exit=True)
+            if _g.jump or _g.start:
+                break
+
+
 def check_roms_available():
     # Check roms are provided in the configured rom folder and warn if necessary
     if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
@@ -57,7 +77,7 @@ def check_roms_available():
             if line:
                 flash_message(NO_ROMS_MESSAGE[i], x=4, y=50 + (i * 12), clear=False, cycles=5, bright=0 < i < 10)
         while True:
-            check_for_input()
+            check_for_input(force_exit=True)
             if _g.jump or _g.start:
                 break
 
@@ -80,12 +100,12 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
 
 
-def flash_message(message, x, y, clear=True, bright=False, cycles=6):
+def flash_message(message, x, y, clear=True, bright=False, cycles=6, delay_ms=40):
     if clear:
         clear_screen()
     for i in (0, 1, 2) * cycles:
         write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED, BROWN, WHITE, CYAN)[i + (bright * 3)])
-        update_screen(delay_ms=40)
+        update_screen(delay_ms=delay_ms)
     if clear:
         clear_screen()
 
@@ -147,7 +167,7 @@ def detect_joysticks():
         _g.joysticks[-1].init()
 
 
-def check_for_input():
+def check_for_input(force_exit=False):
     for event in pygame.event.get():
         # Keyboard controls
         if event.type in (pygame.KEYDOWN, pygame.KEYUP):
@@ -158,7 +178,7 @@ def check_for_input():
                     setattr(_g, attr, event.type == pygame.KEYDOWN)
         if event.type == pygame.KEYDOWN:
             if event.key == CONTROL_EXIT:
-                exit_program(confirm=CONFIRM_EXIT)
+                exit_program(confirm=CONFIRM_EXIT and not force_exit)
             if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus(initial=False)
                 open_menu(_g.menu)
@@ -180,7 +200,7 @@ def check_for_input():
             _g.jump = button == BUTTON_JUMP
             _g.start = button == BUTTON_P1
             if button == BUTTON_EXIT:
-                exit_program(confirm=CONFIRM_EXIT)
+                exit_program(confirm=CONFIRM_EXIT and not force_exit)
             if button == BUTTON_P2 and ENABLE_MENU:
                 build_menus(initial=False)
                 open_menu(_g.menu)
@@ -321,17 +341,25 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     map_info = get_map_info(direction)
 
     if midjump:
+        sprite_file = f"artwork/sprite/jmj{direction}.png"
+        sprite_file = sprite_file.replace("#", "1")
         if _g.jump_sequence == 8:
             sound_file = "sounds/jump.wav"
         # Jumpman is jumping.  Check for landing platform and blocks
-        if "BLOCKED_LEFT" in map_info or "BLOCKED_RIGHT" in map_info:
-            sprite_file = sprite_file.replace("#", "0")
-        else:
-            sprite_file = sprite_file.replace("#", "1")
-            _g.xpos += _g.right + (_g.left * -1)
-        if "FOOT_UNDER_PLATFORM" not in map_info or JUMP_PIXELS[_g.jump_sequence] < 0:
-            _g.ypos += JUMP_PIXELS[_g.jump_sequence]
-            _g.xpos += (_g.left + (_g.right * -1)) / 4  # Shorten Jumpman's jump length by 1/4
+        if "BLOCKED_LEFT" in map_info or "BLOCKED_RIGHT" in map_info and _g.wall_bounce == 1:
+            if _g.left or _g.right:
+                # Wall bounce
+                _g.wall_bounce = -1
+                _g.facing = int(not _g.facing)
+                # Allow full jump if started near to wall.  Don't keep ascending after bounce.
+                if 3 < _g.jump_sequence <= len(JUMP_PIXELS) / 2:
+                    _g.jump_sequence = len(JUMP_PIXELS) - _g.jump_sequence + 1
+        _g.xpos += ((_g.right + (_g.left * -1)) * _g.wall_bounce) / JUMP_SHORTEN
+        if "FOOT_UNDER_PLATFORM" not in get_map_info(direction) or JUMP_PIXELS[_g.jump_sequence] < 0:
+            if "FOOT_ABOVE_PLATFORM" not in get_map_info(direction) or _g.jump_sequence < len(JUMP_PIXELS) - 3:
+                _g.ypos += JUMP_PIXELS[_g.jump_sequence]
+            else:
+                sprite_file = f"artwork/sprite/jm{direction}0.png"
 
     elif direction in ("l", "r"):
         _g.ready = False
@@ -339,7 +367,6 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
         if "LADDER_DETECTED" in ladder_info and "END_OF_LADDER" not in ladder_info:
             _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
-
         if direction == "l" and "BLOCKED_LEFT" not in map_info:
             _g.facing = 0
         elif direction == "r" and "BLOCKED_RIGHT" not in map_info:
@@ -667,7 +694,7 @@ def main():
     initialise_screen()
     load_frontend_state()
     detect_joysticks()
-    apply_patches()
+    check_patches_available()
     build_menus(initial=True)
 
     # Launch front end
@@ -710,7 +737,7 @@ def main():
             if _g.jump_sequence or "LADDER_DETECTED" not in ladder_info or "END_OF_LADDER" in ladder_info:
                 _g.jump_sequence += 1
                 if _g.jump_sequence >= len(JUMP_PIXELS):
-                    _g.jump, _g.jump_sequence, _g.sprite_index = False, 0, 0
+                    _g.jump, _g.jump_sequence, _g.sprite_index, _g.wall_bounce = False, 0, 0, 1
                     adjust_jumpman()
                     animate_jumpman(("l", "r")[_g.facing], horizontal_movement=0)
 

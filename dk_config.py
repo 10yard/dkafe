@@ -176,6 +176,7 @@ LADDER_ZONES = [
 SPRITE_FULL = 15
 SPRITE_HALF = 8
 JUMP_PIXELS = [-1, ] * 15 + [1, ] * 13
+JUMP_SHORTEN = 1.25
 
 # In game messages and instructions
 QUESTION = "WHAT GAME WILL YOU PLAY ?"

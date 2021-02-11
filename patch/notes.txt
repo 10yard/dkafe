@@ -4,6 +4,11 @@ The .ips patches are included with the software.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder too.  
 DKAFE will then apply patches and generate the following hacked version of Donkey Kong automatically for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
+By Jon Wilson (me)
+ - DK Who and the Daleks (dkongwho)
+ - Donkey Kong Lava Panic (dkonglava)
+ - DK Last Man Standing (dkonglastman)
+
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)
  - Donkey Kong Championship Edition (dkongce)
@@ -36,18 +41,18 @@ By Don Hodges
 By Tim Appleton
  - Donkey Kong Pac-Man (dkongpac)
 
-By Jon Wilson (me)
- - DK Who and the Daleks
- - Donkey Kong Lava Panic
- - DK Last Man Standing
+By Vic Twenty George
+ - Donkey Kong Atari 2600 Graphics (dkong2600)
 
 By Unknown
  - Donkey Kong Wild Barrel Hack (dkongwbh)
- - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Hard (dkonghrd)
+ - Donkey Kong 2 Marios (dkong2m)
+ - Donkey Kong Naked (dkongnad)
 
 
-----
+---- Creating patches
+
 To make a complete patch file for a hack you need to:
  1. add/replace all files related to the hack into a copy of dkong.zip (you may need to rename some files so that they overwrite originals.  It should be obvious when the files are replacements.)
  2. use IPS patch tool to create a patch of the differences between original dkong.zip and the modified dkong.zip
@@ -55,7 +60,23 @@ To make a complete patch file for a hack you need to:
 
 All completed hacks will be named dkong.zip and placed into a unique folder under /hacks
 e.g. dkongspooky.ips will create "<ROM_DIR>/hacks/dkongspooky/dkong.zip"
-----
+
+---- Converting old zips other than those already included
+
+dkong.zip files from early versions of mame make use of different file names.  Archive filenames should be renamed as follows.  Filenames can differ for some hacks.
+
+dk.3n to v_5h_b.bin
+dk.3p to v_3pt.bin
+dk.7c to l_4m_b.bin
+dk.7d to l_4n_b.bin
+dk.7e to l_4r_b.bin
+dk.7f to l_4s_b.bin
+dk.5a to c_5at_g.bin
+dk.5b to c_5bt_g.bin
+dk.5c to c_5ct_g.bin
+dk.5e to c_5et_g.bin 
+dk.3f to s_3j_b.bin
+dk.3h to s_3i_b.bin
 
 
 

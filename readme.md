@@ -3,27 +3,34 @@
 
 ## Donkey Kong Arcade Front End
 
-A Donkey Kong themed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
+A Donkey Kong focussed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
+
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
+
 
 
 ### This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - Scripts to seamlessly interface MAME with the frontend.
- - A rom patcher that will automatically generate hacks from the included patch files.
+ - A rom patcher that will automatically generate hacks from the many included patch files.
  - 3 Donkey Kong hacks made by me for use with DKAFE:
-  1. **DK Who and the Daleks** Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
-  2. **DK Lava Panic** Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
-  3. **DK Last Man Standing** You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
+   1. **DK Who and the Daleks** 
+Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
+   2. **DK Lava Panic**
+Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
+   3. **DK Last Man Standing** 
+You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
 
 ### This project does not include:
- - Roms or details on how to obtain them.
+ - Roms or information on how to obtain them.
+
 
 
 ![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/snaps/gameinfo.png)
+
 
 
 ## The Frontend
@@ -45,16 +52,24 @@ You will be charged 100 coins to launch a game.  If the timer runs out you will 
 If you are not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all of the machines though.
 
 
+
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/snaps/awards.png)
+
 
 
 ## Automatically generated roms
 
 DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.
+Not all of the roms feature in the default frontend though.  I have purposely left out some of the crumbier hacks e.g. dkong2m, dkongnad, dkongpac.
 
-The patch files are included with the software in the patch folder.
+All patch files are included with the software in the patch folder.
 
-The original Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  
+The original Donkey Kong rom is not provided with the software and must be obtained and placed into the **dkafe/roms** folder as dkong.zip.  
+
+#### By Jon Wilson (me)
+ - DK Who and the Daleks (dkongwho)
+ - Donkey Kong Lava Panic (dkonglava)
+ - DK Last Man Standing (dkonglastman)
 
 #### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -88,18 +103,19 @@ The original Donkey Kong rom is not provided with the software and must be obtai
 #### By Tim Appleton - https://www.oocities.org/wigglebeat
  - Donkey Kong Pac-Man (dkongpac)
 
+#### By Vic Twenty George
+ - Donkey Kong Atari 2600 Graphics (dkong2600)
+
 #### By unknown others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
- - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Hard (dkonghrd)
+ - Donkey Kong 2 Marios (dkong2m)
+ - Donkey Kong Naked (dkongnad)
 
-#### By Jon Wilson (me)
- - DK Who and the Daleks (dkongwho)
- - Donkey Kong Lava Panic (dkonglava)
- - DK Last Man Standing (dkonglastman)
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
+
 
 
 ## DK WolfMAME
@@ -108,10 +124,11 @@ DKAFE comes with my custom lightweight build of WolfMAME (v0.196) which supports
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
-Gameplay recordings are saved to the **\inp** subfolder of **dkwolf** and can be replayed outside of DKAFE using the **playback.bat** passing romname and filename e.g.
+Gameplay recordings are saved to DKAFE's **\dkwolf\inp** folder and can be replayed outside of DKAFE using the **playback.bat** passing arguments for romname and filename e.g.
 ```
 playback dkong dkong_01022021-084510 
 ```
+
 
 ## Display Resolution
 
@@ -131,13 +148,9 @@ The settings.txt contains the emulator, rom path, controls and other configurati
 
 The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.
 
-Mamedev maintains a list of free roms at:
-
-https://www.mamedev.org/roms/
-
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you place **dkong.zip** and **dkongjr.zip** into the DKAFE **\roms** subfolder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
+The default set up simply requires that you place **dkong.zip** and **dkongjr.zip** into DKAFE's **\roms** folder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
 
 
 ### Frontend Settings
@@ -231,7 +244,9 @@ When active, use P2 Start button to toggle between 1, 2, 3.
 ### Control Settings
 
 
+
 ![DKAFE controls](https://github.com/10yard/dkafe/blob/master/artwork/snaps/controls.png)
+
 
 
 Keyboard controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
@@ -284,7 +299,9 @@ All roms should be provided with a similarly named image as a .png file in the /
 Hopefully that all makes sense.  Refer to the example romlist.csv
 
 
+
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/snaps/slots.png)
+
 
 
 ## Emulator recommendation
@@ -334,6 +351,8 @@ Refer to compile_notes.txt in the dkmame folder.
 The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.  
 
 I wanted to bring together all of the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
+
+I frequently play the original Donkey Kong on MAME and aim to beat my high score of 199,200.  I need to master those springs!
 
 
 ## Thanks to

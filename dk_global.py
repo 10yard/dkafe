@@ -15,10 +15,11 @@ joysticks = []
 
 # Jumpman status
 active = True      # Jumpman is active - see INACTIVE_TIME
-jump_sequence = 0  # Sequence number of jump.  0 = Not jumping.
 lastmove = 0       # Time of last movement
-facing = 1         # Direction Jumpman is facing 0=Left, Right=1
 score = 0          # Jumpman's score
+facing = 1         # Direction Jumpman is facing 0=Left, Right=1
+jump_sequence = 0  # Sequence number of jump.  0 = Not jumping.  Refer to JUMP_PIXELS array.
+wall_bounce = 1    # Adjustment for bouncing off edges. -1 will flip direction of Jumpman's movement
 
 # Toggle display options
 showinfo = False    # Press coin2 to show description above the icons
