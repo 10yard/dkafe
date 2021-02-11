@@ -30,8 +30,11 @@ By Jeff Kulczycki
 By Mike Mika and Clay Cowgill
  - Donkey Kong Pauline Edition (dkongpe)
 
-By Don Hodges
+By Don Hodges 
  - Donkey Kong Kill Screen Fix (dkongksfix)
+
+By Tim Appleton
+ - Donkey Kong Pac-Man (dkongpac)
 
 By Jon Wilson (me)
  - DK Who and the Daleks

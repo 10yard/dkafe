@@ -1,6 +1,7 @@
+
 # **DKAFE** #
 
-##Donkey Kong Arcade Front End
+## Donkey Kong Arcade Front End
 
 A Donkey Kong themed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
 
@@ -15,10 +16,8 @@ A Donkey Kong themed arcade game launcher made for arcade cabinets with incentiv
  - A rom patcher that will automatically generate hacks from the included patch files.
  - 3 Donkey Kong hacks made by me for use with DKAFE:
   1. **DK Who and the Daleks** Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
-  2. **DK Lava Panic**
-Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
-   3. **DK Last Man Standing**
-You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
+  2. **DK Lava Panic** Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
+  3. **DK Last Man Standing** You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
 
 ### This project does not include:
  - Roms or details on how to obtain them.
@@ -85,6 +84,9 @@ The original Donkey Kong rom is not provided with the software and must be obtai
 
 #### By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Kill Screen Fix (dkongksfix)
+
+#### By Tim Appleton - https://www.oocities.org/wigglebeat
+ - Donkey Kong Pac-Man (dkongpac)
 
 #### By unknown others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
@@ -280,6 +282,9 @@ Multiple emulators can be configured in settings.txt and the launch emulator can
 All roms should be provided with a similarly named image as a .png file in the /artwork/icons folder or subfolder.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
 
 Hopefully that all makes sense.  Refer to the example romlist.csv
+
+
+![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/snaps/slots.png)
 
 
 ## Emulator recommendation
