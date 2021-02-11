@@ -73,9 +73,13 @@ def check_roms_available():
     # Check roms are provided in the configured rom folder and warn if necessary
     if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
         clear_screen()
+        fg = RED
         for i, line in enumerate(NO_ROMS_MESSAGE):
             if line:
-                flash_message(NO_ROMS_MESSAGE[i], x=4, y=50 + (i * 12), clear=False, cycles=5, bright=0 < i < 10)
+                write_text(NO_ROMS_MESSAGE[i], font=dk_font, x=4, y=8+(i*12), fg=fg)
+                fg = WHITE
+                update_screen(delay_ms=80)
+        flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
         while True:
             check_for_input(force_exit=True)
             if _g.jump or _g.start:
@@ -431,6 +435,7 @@ def build_menus(initial=False):
 
 
 def open_menu(menu):
+    _g.timer.stop()
     reset_all_inputs()
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
@@ -446,6 +451,7 @@ def close_menu():
     _g.exitmenu.disable()
     update_screen()
     _g.active = True
+    _g.timer.start()
     _g.lastmove = _g.timer.duration
 
 
@@ -677,11 +683,11 @@ def activity_check():
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
-            if 163 <= _g.xpos <= 170 and 188 <= _g.ypos <= 195:
+            if 160 <= _g.xpos <= 172 and 188 <= _g.ypos <= 195:
                 _g.xpos = 14
                 _g.ypos = 91 - (190 - _g.ypos)
                 _g.teleport_ticks = pygame.time.get_ticks()
-            elif 11 <= _g.xpos <= 16 and 91 <= _g.ypos <= 100:
+            elif 10 <= _g.xpos <= 22 and 91 <= _g.ypos <= 100:
                 _g.xpos = 165
                 _g.ypos = 188 - (92 - _g.ypos)
                 _g.teleport_ticks = pygame.time.get_ticks()

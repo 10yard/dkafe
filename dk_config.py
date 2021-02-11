@@ -50,7 +50,7 @@ PLAY_COST = 100                # How much it costs to play an arcade machine. In
 LIFE_COST = 150                # How many coins Jumpman drops when time runs out
 TIMER_START = 5000             # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]     # How many points awarded for collecting a coin. Integer
-COIN_FREQUENCY = 2             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
@@ -184,13 +184,11 @@ COIN_INFO = ['HEY JUMPMAN!', '', 'COLLECT COINS', 'TO PLAY GAMES', '', 'PUSH COI
 FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH COIN', 'FOR GAME INFO', '']
 
 NO_ROMS_MESSAGE = [
-    "NO ROMS WERE FOUND!", "", "", "",
+    "NO ROMS WERE FOUND!", "",
     "FOR THE DEFAULT FRONTEND",
     "PUT DKONG.ZIP & DKONGJR.ZIP",
     "INTO THE DKAFE\\ROMS FOLDER",
-    "THEN RESTART.", "", "", "",
-    "PRESS JUMP BUTTON",
-    "TO CONTINUE"]
+    "THEN RESTART."]
 
 INSTRUCTION = """
 

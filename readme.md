@@ -14,8 +14,8 @@ A Donkey Kong focussed arcade game launcher made for arcade cabinets with incent
 ### This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - Scripts to seamlessly interface MAME with the frontend.
  - A rom patcher that will automatically generate hacks from the many included patch files.
+ - Scripts to seamlessly interface MAME with the frontend.
  - 3 Donkey Kong hacks made by me for use with DKAFE:
    1. **DK Who and the Daleks** 
 Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
@@ -23,6 +23,7 @@ Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting thro
 Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
    3. **DK Last Man Standing** 
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
+
 
 ### This project does not include:
  - Roms or information on how to obtain them.
@@ -35,15 +36,15 @@ You will lose penalty points instead of lives so don't make mistakes unless you 
 
 ## The Frontend
 
-The default Donkey Kong frontend was created to bring together all of the excellent hacks that have been developed by the community.  
+The default frontend was created to bring together all of the excellent Donkey Kong hacks that have been developed by the community.  
 
-The frontend's reward system will encourage you to play through them all by awarding coins so you can unlock the next one.  Hopefully encouring you to play them and get good at them!
+The frontend's reward system will encourage you to play through them all by awarding coins when you play well so you can unlock the next one.  Hopefully encouring you to play them and get good at them!
 
-Your score targets are made visible in the emulator during gameplay and you are informed when you have earned a prize - so you can expect a payout of coins.  
+Your score targets are made visible in the emulator during gameplay and you are informed when you have earned a prize - so you can know to expect a payout of coins.  
 
-Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off screen.  
+Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.  
 
-Coins are awarded for beating a set score for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).  
+Coins are awarded for beating target scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).  
 
 Pauline will provide game and award information as you walk past the arcade machines.  
 
@@ -59,12 +60,11 @@ If you are not up for the challenge then it is possible to adjust things and hav
 
 ## Automatically generated roms
 
-DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.
+DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work,  it is not provided with the software.
+All patch files are included with the software in the **\patch folder.  Credit is given to the original authors below.
+
 Not all of the roms feature in the default frontend though.  I have purposely left out some of the crumbier hacks e.g. dkong2m, dkongnad, dkongpac.
 
-All patch files are included with the software in the patch folder.
-
-The original Donkey Kong rom is not provided with the software and must be obtained and placed into the **dkafe/roms** folder as dkong.zip.  
 
 #### By Jon Wilson (me)
  - DK Who and the Daleks (dkongwho)
@@ -363,13 +363,13 @@ https://github.com/furrykef/dkdasm
 Paul Goes for an excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
+Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, Tim Appleton and Vic20 George.
+
 The Donkey Kong Forum
 https://donkeykongforum.com/
 
 The pygame community
 https://www.pygame.org/
-
-Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill and Don Hodges.
 
 The MAMEdev team
 https://docs.mamedev.org/
