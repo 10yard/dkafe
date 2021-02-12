@@ -19,6 +19,7 @@ CONTROL_P1 = pygame.K_1
 CONTROL_P2 = pygame.K_2
 CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
+CONTROL_SNAP = pygame.K_F12
 
 # Joystick Options and Button Assignments (Device 1 buttons start from 0,  Device 2 buttons start from 20)
 USE_JOYSTICK = False

@@ -46,7 +46,7 @@ def load_frontend_state():
     try:
         _g.score, _g.timer_adjust = pickle.load(open("save.p", "rb"))
     except FileNotFoundError:
-        _g.score, _g.timer_adjust = 0, 0
+        _g.score, _g.timer_adjust = PLAY_COST, 0
 
 
 def check_patches_available():
@@ -73,11 +73,9 @@ def check_roms_available():
     # Check roms are provided in the configured rom folder and warn if necessary
     if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
         clear_screen()
-        fg = RED
         for i, line in enumerate(NO_ROMS_MESSAGE):
             if line:
-                write_text(NO_ROMS_MESSAGE[i], font=dk_font, x=4, y=8+(i*12), fg=fg)
-                fg = WHITE
+                write_text(NO_ROMS_MESSAGE[i], font=dk_font, x=4, y=8+(i*12), fg=[WHITE, RED][i == 0])
                 update_screen(delay_ms=80)
         flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
         while True:
@@ -157,6 +155,14 @@ def get_map_info(direction=None, x=0, y=0, platforms_only=False):
     return map_info
 
 
+def take_screenshot():
+    if _g.active:
+        animate_jumpman()
+        activity_check()
+    update_screen()
+    pygame.image.save(_g.screen, f"artwork/snap/dkafe_{_s.get_datetime()}.png")
+
+
 def reset_all_inputs():
     # Push KEYUP events which can be lost after calling external programs
     _s.debounce()
@@ -174,7 +180,7 @@ def detect_joysticks():
 def check_for_input(force_exit=False):
     for event in pygame.event.get():
         # Keyboard controls
-        if event.type in (pygame.KEYDOWN, pygame.KEYUP):
+        if event.type in (pygame.KEYDOWN, pygame.KEYUP) and event.key != CONTROL_SNAP:
             _g.active = True
             _g.lastmove = _g.timer.duration
             for attr, control in CONTROL_ASSIGNMENTS:
@@ -190,6 +196,8 @@ def check_for_input(force_exit=False):
                 _g.showinfo = not _g.showinfo
             if event.key == CONTROL_ACTION:
                 _g.showslots = not _g.showslots
+            if event.key == CONTROL_SNAP:
+                take_screenshot()
 
         # Optional joystick controls
         if USE_JOYSTICK and event.type == pygame.JOYAXISMOTION:
@@ -323,7 +331,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         # Show game info above icons.  Done as last step so that icons do not overwrite the text.
         for des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
             write_text(des, x=x, y=y - 6, fg=[BLACK, MAGENTA][unlocked], bg=[GREY, WHITE][unlocked], box=True,
-                       rj_adjust=(x > 175) * w)
+                       rj_adjust=(not (len(des) * 4) + x <= 224) * w)
     return nearby
 
 
@@ -697,6 +705,7 @@ def teleport_between_hammers():
 
 def main():
     # Prepare front end
+    _g.active = False
     initialise_screen()
     load_frontend_state()
     detect_joysticks()
@@ -710,9 +719,10 @@ def main():
 
     # Initialise Jumpman
     animate_jumpman("r", horizontal_movement=0)
-    pygame.time.delay(150)
+    # pygame.time.delay(150)
     _g.lastmove = 0
     _g.timer.reset()
+    _g.active = True
 
     # Main game loop
     while True:

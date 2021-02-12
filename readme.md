@@ -6,9 +6,7 @@
 A Donkey Kong focussed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
 
 
-
-![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/snaps/frontend.png)
-
+![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
 
 ### This project includes:
@@ -29,9 +27,7 @@ You will lose penalty points instead of lives so don't make mistakes unless you 
  - Roms or information on how to obtain them.
 
 
-
-![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/snaps/gameinfo.png)
-
+![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/gameinfo.png)
 
 
 ## The Frontend
@@ -48,14 +44,12 @@ Coins are awarded for beating target scores for 3rd prize (2500 coins), 2nd priz
 
 Pauline will provide game and award information as you walk past the arcade machines.  
 
-You will be charged 100 coins to launch a game.  If the timer runs out you will lose 150 coins.
+You start with only 100 coins but you can collect coins which are thrown by Donkey Kong.  You will be charged 100 coins to launch a game.  If the timer runs out you will lose 150 coins.
 
 If you are not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all of the machines though.
 
 
-
-![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/snaps/awards.png)
-
+![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png)
 
 
 ## Automatically generated roms
@@ -113,9 +107,7 @@ Not all of the roms feature in the default frontend though.  I have purposely le
  - Donkey Kong Naked (dkongnad)
 
 
-
-![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/snaps/dkwho_gameplay.png)
-
+![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
 
 
 ## DK WolfMAME
@@ -157,34 +149,34 @@ The default set up simply requires that you place **dkong.zip** and **dkongjr.zi
 
 Default settings can be changed in the settings.txt file.
 
-`FULLSCREEN = 1`
+`FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
 
-`FREE_PLAY = 0`
+`FREE_PLAY = 0`    
 1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game.
 
-`UNLOCK_MODE = 1`
+`UNLOCK_MODE = 1`    
 1 for unlock mode were Jumpman must score points to unlock games.  If 0 then all games are unlocked by default.
 
-`CONFIRM_EXIT = 1`
+`CONFIRM_EXIT = 1`    
 1 to display confirmation screen when attempting to exit.  0 to exit without question.
 
-`ENABLE_MENU=1`
+`ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 
-`ENABLE_HAMMERS=1`
+`ENABLE_HAMMERS=1`    
 1 to enable teleport between hammers in the fronted.  Makes it quicker to move up and down platforms.
 
-`INACTIVE_TIME = 20`
+`INACTIVE_TIME = 20`    
 Period of inactivity in seconds before showing attract mode/game instructions.
 
-`PLAY_COST = 100`
+`PLAY_COST = 100`    
 How much it costs to play an arcade machine.
 
-`LIFE_COST = 150`
+`LIFE_COST = 150`    
 How many coins Jumpman drops when time runs out.
 
-`TIMER_START = 5000`
+`TIMER_START = 5000`    
 Number to start the countdown timer from.
 
 
@@ -202,51 +194,43 @@ EMU_6 = (optional)
 EMU_7 = (optional)
 EMU_8 = (optional)
 ```
-`EMU_1` and `EMU_2` come preconfigured.
+`EMU_1` and `EMU_2` come preconfigured.    
 `EMU_3` to `EMU_8` can be used to add more of your own emulators.  By default `EMU_1` is used for DKAFE gameplay and `EMU_2` is used for "inp" recordings.
 
-`ROM_DIR = <ROOT>\roms`
+`ROM_DIR = <ROOT>\roms`    
 The rom directory is set to the dkafe roms folder by default.
 
-`OPTIONS = -video gdi -view "Pixel Aspect (7:8)"`
+`OPTIONS = -video gdi -view "Pixel Aspect (7:8)"`    
 Additional arguments to pass to DKMAME.  These options are stored into <OPTIONS> which then be included in the EMU settings.
 
-The special tags `<ROOT>`, `<ROM_DIR>`, `<NAME>`, `<DATETIME>` you see above will be replaced with their values at runtime.
-
-`<ROOT>` is the install location of the frontend e.g. `C:\dkafe`. 
-`<ROM_DIR>` and `<OPTIONS>` refer to other settings which are defined in settings.txt.
-`<NAME>` is the name of the rom being launched.
-`<DATETIME>`is a current date/time stamp
+The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` used above are replaced with their actual values at runtime.
 
 
 ### DK Interface Settings
 
 These settings relate to Donkey Kong and DK Junior Roms and hacks.
 
-`CREDITS = 1`
+`CREDITS = 1`    
 1 to automatically insert a coin after launching a game.
 
-`AUTOSTART = 1`
+`AUTOSTART = 1`    
 1 to automatically start the game - if coins are inserted.
 
-`SHOW_AWARD_PROGRESS = 1`
+`SHOW_AWARD_PROGRESS = 1`    
 1 to show award progress when playing game (replaces highscore at top of screen)
 
-`SHOW_AWARD_TARGETS = 1`
+`SHOW_AWARD_TARGETS = 1`    
 1 to show award targets for 1st, 2nd and 3rd prize when playing game (appears during the DK intro/climb scene)
 
-`SHOW_HUD = 1`
-1, 2 or 3 to enable the HUD to be displayed in the top right corner.  
+`SHOW_HUD = 1`    
+1, 2 or 3 to enable the HUD to be displayed in the top right corner.  Use P2 Start to toggle the data.
 1=Targets, 2=Awards, 3=No data, 0 to disable the HUD.
-When active, use P2 Start button to toggle between 1, 2, 3. 
 
 
 ### Control Settings
 
 
-
-![DKAFE controls](https://github.com/10yard/dkafe/blob/master/artwork/snaps/controls.png)
-
+![DKAFE controls](https://github.com/10yard/dkafe/blob/master/artwork/about/controls.png)
 
 
 Keyboard controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
@@ -263,6 +247,7 @@ CONTROL_START = 1
 CONTROL_MENU = 2
 CONTROL_INFO = 5
 CONTROL_EXIT = escape
+CONTROL_SNAP = F12
 ```
 
 Joystick controls can be configured by setting the USE_JOYSTICK option.
@@ -286,22 +271,20 @@ BUTTON_COIN = 7
 A default romlist.csv is provided for use with the automatically generated roms (above).
 
 The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
-The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into /original subfolder to prevent it being overwritten.
+The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into /original subfolder to prevent it from being overwritten.
 
 The special subfolder name "shell" can be used when you want to launch a batch file or shell script.  Create a file named <romname>.bat on Windows or <romname>.sh elsewhere inside the shell subfolder of dkafe.
 
 All roms in the list should be given a slot position (between 1 and 46) of where the icon should appear and a basic descriptive name.
 
-Multiple emulators can be configured in settings.txt and the launch emulator can be set in the emu column. If blank the default 0 will be used.
+Multiple emulators can be configured in settings.txt and the launch emulator number can be set in the emu column.
 
 All roms should be provided with a similarly named image as a .png file in the /artwork/icons folder or subfolder.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
 
 Hopefully that all makes sense.  Refer to the example romlist.csv
 
 
-
-![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/snaps/slots.png)
-
+![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)
 
 
 ## Emulator recommendation
