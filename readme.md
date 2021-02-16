@@ -1,4 +1,3 @@
-
 # **DKAFE** #
 
 ## Donkey Kong Arcade Front End
@@ -12,7 +11,7 @@ A Donkey Kong focussed arcade game launcher made for arcade cabinets with incent
 ### This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - A rom patcher that will automatically generate hacks from the many included patch files.
+ - A rom patcher that will automatically generate hacked roms from the many included patch files.
  - Scripts to seamlessly interface MAME with the frontend.
  - 3 Donkey Kong hacks made by me for use with DKAFE:
    1. **DK Who and the Daleks** 
@@ -55,9 +54,9 @@ If you are not up for the challenge then it is possible to adjust things and hav
 ## Automatically generated roms
 
 DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work,  it is not provided with the software.
-All patch files are included with the software in the **\patch folder.  Credit is given to the original authors below.
+All patch files are included in the **\patch folder.  Credit is given to the original authors below.
 
-Not all of the roms feature in the default frontend though.  I have purposely left out some of the crumbier hacks e.g. dkong2m, dkongnad, dkongpac.
+Not all of the roms feature in the default frontend setup.  I have purposely left out some of the crumbier hacks e.g. dkong2m, dkongnad, dkongpac.
 
 
 #### By Jon Wilson (me)
@@ -112,11 +111,11 @@ Not all of the roms feature in the default frontend though.  I have purposely le
 
 ## DK WolfMAME
 
-DKAFE comes with my custom lightweight build of WolfMAME (v0.196) which supports only Donkey Kong drivers. 
+DKAFE comes with my custom lightweight build of WolfMAME which supports only Donkey Kong drivers. 
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
-Gameplay recordings are saved to DKAFE's **\dkwolf\inp** folder and can be replayed outside of DKAFE using the **playback.bat** passing arguments for romname and filename e.g.
+Gameplay recordings are saved to DKAFE's **dkwolf\inp** folder and can be replayed outside of DKAFE using the **playback.bat** passing arguments for romname and filename e.g.
 ```
 playback dkong dkong_01022021-084510 
 ```
@@ -201,7 +200,7 @@ EMU_8 = (optional)
 The rom directory is set to the dkafe roms folder by default.
 
 `OPTIONS = -video gdi -view "Pixel Aspect (7:8)"`    
-Additional arguments to pass to DKMAME.  These options are stored into <OPTIONS> which then be included in the EMU settings.
+Additional arguments to pass to DKWolf.  These options are stored into <OPTIONS> which then be included in the EMU settings.
 
 The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` used above are replaced with their actual values at runtime.
 
@@ -271,15 +270,13 @@ BUTTON_COIN = 7
 A default romlist.csv is provided for use with the automatically generated roms (above).
 
 The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
-The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into /original subfolder to prevent it from being overwritten.
+The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into **/original** subfolder to prevent it from being overwritten.
 
 The special subfolder name "shell" can be used when you want to launch a batch file or shell script.  Create a file named <romname>.bat on Windows or <romname>.sh elsewhere inside the shell subfolder of dkafe.
 
-All roms in the list should be given a slot position (between 1 and 46) of where the icon should appear and a basic descriptive name.
+All roms in the list should be given an emulator number (as defined in settings.txt), a slot position (between 1 and 46) and a basic descriptive name.
 
-Multiple emulators can be configured in settings.txt and the launch emulator number can be set in the emu column.
-
-All roms should be provided with a similarly named image as a .png file in the /artwork/icons folder or subfolder.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
+An accompanying icon in .png format should be placed into the **artwork\icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
 
 Hopefully that all makes sense.  Refer to the example romlist.csv
 
@@ -291,7 +288,8 @@ Hopefully that all makes sense.  Refer to the example romlist.csv
 
 ### For Windows
 
-For the default frontend you should stick with the bundled DKWolf emulator which is compiled from WolfMAME v0.196 and comes ready to go.
+For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go.
+
 Otherwise my recommendations are:
 
 1. Mame64 v0.196 minimum from https://www.mamedev.org/ . Rom hacks and lua interface hacks were tested against versions from v0.196 to v0.226
@@ -302,11 +300,15 @@ Otherwise my recommendations are:
 
 ### For Raspberry Pi
 
-I get along best with advance mame:
-  - https://github.com/amadvance/advancemame/releases/download/v3.9/advancemame_3.9-1_armhf.deb
+For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go.
+For best performance: 
+ - Use RaspberryPi Lite OS or dietpi OS
+ - Set the display resolution to 640x480 in raspi-config and rotate screen if preferred.
+ - Set the framebuffer_width and framebuffer_height to 224x256 (or double that to 448x512 for a better command line experience) in the **/boot/config.txt** file
+ - Set `OPTIONS = -video gdi -view "Pixel Aspect (7:8)"` in DKAFE's **settings.txt** file.
 
-on top of dietpi lightweight OS:
-  - https://dietpi.com/
+For emulating eveything else I recommend Advance Mame:
+  - https://github.com/amadvance/advancemame/releases/download/v3.9/advancemame_3.9-1_armhf.deb
   
 
 ## Building/Compiling
@@ -314,7 +316,7 @@ on top of dietpi lightweight OS:
 
 ### How to build DKAFE?
 
-Requires Python3 (from v3.7) with installed packages from requirements.txt
+Requires Python3 (v3.7 upwards) with installed packages from requirements.txt
 
 Pyinstaller can be used to build the application binary on Windows.
 ```
@@ -324,9 +326,9 @@ pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
 See build.bat for an example build script making use of venv (virtual environment for Python)
 
 
-### How to compile DKMame?
+### How to compile DKWolf?
 
-Refer to compile_notes.txt in the dkmame folder.
+Refer to compile_notes.txt in the **DKWolf** folder.
 
 
 ## Motivations?
@@ -337,6 +339,11 @@ I wanted to bring together all of the amazing Donkey Kong roms and hacks into on
 
 I frequently play the original Donkey Kong on MAME and aim to beat my high score of 199,200.  I need to master those springs!
 
+
+## What's next?
+
+ - Build DKWolf on RaspberryPi
+ - Extend the default frontend setup to include support for NES Donkey Kong hacks possibly on the rivets stage.
 
 ## Thanks to
 

@@ -262,6 +262,7 @@ def play_intro_animation():
             for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
                 if from_scene < current < to_scene:
                     display_icons(below_y=below_y, above_y=above_y, intro=True, smash=current < smash_scene)
+                    display_slots()
 
             # Title and messages
             write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
@@ -273,10 +274,11 @@ def play_intro_animation():
 
 
 def display_slots():
-    for i, slot in enumerate(SLOTS):
-        _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
-        write_text("  ", pl_font, SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
-        write_text(str(i + 1).zfill(2), pl_font, SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK, fg=WHITE)
+    if _g.showslots:
+        for i, slot in enumerate(SLOTS):
+            _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
+            write_text("  ", pl_font, SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
+            write_text(str(i + 1).zfill(2), pl_font, SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK, fg=WHITE)
 
 
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
@@ -728,8 +730,7 @@ def main():
     while True:
         if _g.active:
             display_icons(with_background=True)
-            if _g.showslots:
-                display_slots()
+            display_slots()
 
         if _g.jump_sequence:
             animate_jumpman(["l", "r"][_g.facing], midjump=True)
