@@ -1,4 +1,4 @@
--- DKAFE Teleport Hack 
+-- DKAFE Teleport Hack by Jon Wilson
 -- Perform hack to teleport between hammers
 --
 -- Drives additional features of the "DK Who and the Daleks" hack:
@@ -9,7 +9,7 @@
 -- Bonus items to be collected are K9, Sonic Screwdriver and The Master's Watch.
 
 function update_teleport_ram(update_x, update_y, update_ly)
-    -- force 0 to disable the hammer
+  -- force 0 to disable the hammer
 	mem:write_i8(0xc6217, 0)
 	mem:write_i8(0xc6218, 0)
 	mem:write_i8(0xc6345, 0)
@@ -88,11 +88,9 @@ function adjust_weeping_angels()
 	-- adjust Y position of angel sprites by 4 pixels as they are taller than pies
 	angels_ram = {0xc65a5,0xc65b5,0xc65c5,0xc65d5,0xc65e5,0xc65f5}
 	for _, value in pairs(angels_ram) do
-		if mem:read_i8(value) == -52 then
-			mem:write_i8(value, -56)
-		end
-		if mem:read_i8(value) == 124 then
-			mem:write_i8(value, 120)
+    _y = mem:read_i8(value)
+    if _y == -52 or _y == 124 then
+			mem:write_i8(value, _y - 4)
 		end
 	end
 end
@@ -130,11 +128,11 @@ function dkongwho_overlay()
 				write_message(0xc779e, "DON'T LOOK AWAY OR BLINK $")
 			elseif stage == 4 then
 				math.randomseed(os.time())
-				r = math.random(3)
-				if r == 1 then
+				_r = math.random(3)
+				if _r == 1 then
 					write_message(0xc777e, "WHERE'S MY             ")
 					write_message(0xc777f, "    SONIC SCREWDRIVER ?")
-				elseif r == 2 then
+				elseif _r == 2 then
 					write_message(0xc777e, "WE MUST SEARCH FOR K-9 $")
 				else
 					write_message(0xc77be, "THE MASTER WANTS HIS WATCH $")

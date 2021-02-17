@@ -14,6 +14,9 @@ frontend/mame/ui/ui.cpp
 frontend/mame/mame.cpp
   removed "Initializing..." message
 
+frontend/mame/luaengine.cpp
+  fixed issue with lua engine preventing the rightmost pixels from being drawn to screen
+
 emu/romload.cpp
   removed "WARNING: the machine might not run correctly."
   removed "WRONG CHECKSUMS" message as we are expecting this with our DK hacks.
@@ -51,3 +54,6 @@ https://nowhereman999.wordpress.com/2016/02/29/compile-mame-0-171-on-a-raspberry
 
 Launching DKWolf with these options
 ./mame -video accel -view "Pixel Aspect (7:8)" dkong
+
+These needed to run "sudo python3 launch.py" from commmand line
+sudo apt-get install git curl libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-2.0-0 libsdl2-ttf-2.0-0

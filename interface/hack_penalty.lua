@@ -1,5 +1,5 @@
--- DKAFE Penalty Hack
----------------------
+-- DKAFE Penalty Hack by Jon Wilson
+-----------------------------------
 -- Lose a set number of penalty points instead of lives. 
 -- Penalty points are displayed top left and will flash when there are not enough points to survive.
 --
@@ -25,13 +25,15 @@ if loaded == 3 and data_subfolder == "dkonglastman" then
 	if lastman_hack_started ~= 1 then	
 		-- Register callback function to add extra graphics
 		emu.register_frame_done(dkonglastman_overlay, "frame")
+    -- Set up dip switch penalty point options.  Default is 00.
+    lastman_penalty_dips = {}
+    lastman_penalty_dips["00"] = 25000
+    lastman_penalty_dips["11"] = 40000
+    lastman_penalty_dips["10"] = 60000
+    lastman_penalty_dips["01"] = 75000
+    
+  	lastman_hack_started = 1
 	end
-	lastman_hack_started = 1
-  lastman_penalty_dips = {}
-  lastman_penalty_dips["00"] = 25000
-  lastman_penalty_dips["11"] = 40000
-  lastman_penalty_dips["10"] = 60000
-  lastman_penalty_dips["01"] = 75000
 end
 
 if mem:read_i8(0xc600F) == 0 then         -- 0 is a 1 player game

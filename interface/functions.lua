@@ -103,6 +103,16 @@ function get_highscore()
 	return highscore
 end
 
+function get_jumpman_y()
+	-- calculate Jumpman Y position (at top of sprite)
+	local _y = mem:read_i8(0xc6205)
+	if _y >= 0 then
+		_y = -256 + _y
+	end
+	-- allow lava to rise to sprite height + 1
+	return 8 - _y
+end
+
 function draw_block(x, y, color1, color2)
 	screen:draw_box(x, y, x+8, y+8, color1, 0)
 	screen:draw_box(x, y, x+1, y+8, color2, 0)

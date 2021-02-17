@@ -432,7 +432,7 @@ def build_menus(initial=False):
     for name, sub, desc, icx, icy, emu, unlock, score3, score2, score1 in _s.read_romlist():
         if _g.score >= unlock or not UNLOCK_MODE:
             _g.menu.add_button(desc, launch_rom, (sub, name, emu, unlock, score3, score2, score1))
-        if initial:
+        if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, emu, unlock, score3, score2, score1))
 
     _g.menu.add_button('Close Menu', close_menu)
@@ -473,7 +473,7 @@ def launch_rom(info):
         _g.menu.disable()
         intermission_channel.stop()
         music_channel.pause()
-        shell_command, emu_directory, competing = _s.build_shell_command(info)
+        launch_command, launch_directory, competing = _s.build_launch_command(info)
 
         if FREE_PLAY or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
@@ -486,13 +486,13 @@ def launch_rom(info):
                 flash_message(f"Beat {format_K(score1)} for {AWARDS[2]} coins", x=15, y=110, clear=False)
                 flash_message("G O   F O R   I T !", x=30, y=150, clear=False, bright=True, cycles=9)
                 clear_screen()
-            elif "-record" in shell_command:
+            elif "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
-            if emu_directory:
-                os.chdir(emu_directory)
 
             reset_all_inputs()
-            os.system(shell_command)
+            if os.path.exists(launch_directory):
+                os.chdir(launch_directory)
+            os.system(launch_command)
             os.chdir(ROOT_DIR)
 
             if competing:

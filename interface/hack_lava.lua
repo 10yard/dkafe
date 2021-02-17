@@ -1,24 +1,14 @@
-﻿-- DKAFE Lava Hack 
-------------------
+﻿-- DKAFE Lava Hack by Jon Wilson
+--------------------------------
 -- Drives additional features of the "DK Lava Panic" hack:
 -- Jumpman must keep his cool and move quickly to avoid the rising Lava.
-
-function calc_sprite_top()
-	-- calculate Jumpman Y position
-	local _y = mem:read_i8(0xc6205)
-	if _y >= 0 then
-		_y = -256 + _y
-	end
-	_y = 8 - _y  -- to allow lava to rise to sprite height + 1
-	return _y
-end
 
 function draw_lava()
 	level = mem:read_i8(0xc6229)
 	if stage == 4 then
 		difficulty = math.floor(1.5 * (22 - level)) -- lower difficulty is harder, rivets needs more time
 	elseif stage == 3 then
-		difficulty = math.floor(1.0 * (22 - level)) -- lower difficulty is harder, elevators needs less time
+		difficulty = math.floor(0.8 * (22 - level)) -- lower difficulty is harder, elevators needs less time
 	else
 		difficulty = math.floor(1.2 * (22 - level)) -- lower difficulty is harder
 	end
@@ -26,6 +16,7 @@ function draw_lava()
 	if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then
     -- reset lava level at start of game or when in attract mode
 		lava_y = -7
+    -- remember default music
 		music = mem:read_i8(0xc6089)		
 	elseif mode2 == 21 and lava_y > 15 then
     -- Reduce lava level on high score entry screens to avoid obstruction.
@@ -40,7 +31,7 @@ function draw_lava()
 		screen:draw_box(0, 0, lava_y, 224, lava_colour, 0)
 		
 		if mode2 == 12 or (mode1 == 1 and mode2 >= 2 and mode2 <= 3) then	
-			jumpman_y = calc_sprite_top()
+			jumpman_y = get_jumpman_y()
 			-- issue warning to Jumpman
 			if lava_y + 10 > jumpman_y then
 				-- dim the screen above lava flow
@@ -83,17 +74,20 @@ function draw_lava()
 			end
 		end
 				
+		-- 10yard - I modded the DKWolf source to fix issue with luaengine.cpp
+    --          The following workaround is no longer required
+    ----------------------------------------------------------------------
 		-- workaround Lua bug which prevents the rightmost pixels from being drawn
 		-- the pixels are blacked out with a text block
-		for i=0, 256 do	
-			if math.fmod(i, 8) == 0 then
-				screen:draw_text(i, 223, "#", BLACK)
-			end
-		end
+		--for i=0, 256 do	
+		--	if math.fmod(i, 8) == 0 then
+		--		screen:draw_text(i, 223, "#", BLACK)
+		--	end
+		--end
 		
-		-- add flames above lava
+		-- add dancing flames above lava
 		for i=0, 224 do		
-			if math.fmod(i, 14) == 0 then
+			if math.fmod(i, 18) == 0 then
 				adjust_y = math.random(-3, 3)
 				flame_y = lava_y + adjust_y
 				if flame_y > 0 then

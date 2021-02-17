@@ -1,5 +1,5 @@
--- DKAFE No hammers hack 
-------------------------
+-- DKAFE No hammers hack by Jon Wilson
+--------------------------------------
 
 -- clear all hammers
 if mem:read_i8(0xc6A18) ~= 0 then

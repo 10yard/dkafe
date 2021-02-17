@@ -1,5 +1,5 @@
--- DKAFE Interface for Donkey Kong
-----------------------------------
+-- DKAFE Interface for Donkey Kong by Jon Wilson
+----------------------------------------------------
 -- Set target score, registered player names/scores. 
 -- Dump highscore to file when finished.  
 -- Enable some hacks (optional).  
