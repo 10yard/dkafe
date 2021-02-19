@@ -26,24 +26,20 @@ if loaded == 3 and data_subfolder == "dkonglastman" then
 		-- Register callback function to add extra graphics
 		emu.register_frame_done(dkonglastman_overlay, "frame")
     -- Set up dip switch penalty point options.  Default is 00.
-    lastman_penalty_dips = {}
-    lastman_penalty_dips["00"] = 25000
-    lastman_penalty_dips["11"] = 40000
-    lastman_penalty_dips["10"] = 60000
-    lastman_penalty_dips["01"] = 75000
-    
+    penalty_dips = {}
+    penalty_dips["00"], penalty_dips["11"], penalty_dips["10"], penalty_dips["01"] = 25000, 40000, 60000, 75000    
   	lastman_hack_started = 1
 	end
 end
 
-if mem:read_i8(0xc600F) == 0 then         -- 0 is a 1 player game
+if mem:read_i8(0xc600F) == 0 then  -- 0 is a 1 player game
   if mode1 == 2 then
     -- Player finish flag is reset before game starts
     -- Player presses COIN to finish game and record their points - it's the only way to register points without reaching a killscreen
     player_finish = 0
   end
   
-  penalty_points = lastman_penalty_dips[string.sub(number_to_binary(mem:read_i8(0xc7d80)), 7, 8)]  -- number of lives dip determines the penalty	
+  penalty_points = penalty_dips[string.sub(number_to_binary(mem:read_i8(0xc7d80)), 7, 8)]  -- number of lives dip determines the penalty	
 	jumpman_status = mem:read_i8(0xc6200)         -- 1 = alive, 0 = dead
 
 	--Force remaining lives to 2 (so we can lose lives without ending the game if necessary)

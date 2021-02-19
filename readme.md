@@ -4,13 +4,21 @@
 
 A Donkey Kong focussed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games. 
 
+
+![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
+
+
 The default frontend setup brings together all of the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for use with the frontend.  
 
 The frontend reward system will encourage you to play them by awarding coins when you play well so you can unlock the next one.  Hopefully encouring you to play them all and get good at them!
 
 Your score targets are made visible during gameplay and you are informed when you have earned a prize - so you can know to expect a payout of coins.  Coins are awarded for beating target scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).
 
-Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.    
+Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
+
+
+![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
+
 
 Pauline will provide game information, score targets or unlock requirements as you walk towards an arcade machine.  
 
@@ -20,8 +28,7 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be easily configured to launch other emulators and roms.
 
-
-![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
+There will be folks who want to have 50,000 games on their arcade machines.  This frontend is not for them,  it was made for simplicty and to showcase a small selection of games and encourage them to be played.  
 
 
 ### This project includes:
@@ -42,19 +49,16 @@ You will lose penalty points instead of lives so don't make mistakes unless you 
  - Roms or information on how to obtain them.
 
 
-![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/gameinfo.png)
-
-
-
-![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png)
-
-
 ## Automatically generated roms
 
 DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work,  it is not provided with the software.
 All patch files are included in the **\patch folder.  Credit is given to the original authors below.
 
-Not all of the roms feature in the default frontend setup.  I have purposely left out some of the crumbier hacks e.g. dkong2m, dkongnad, dkongpac.
+
+![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/gameinfo.png)
+
+
+Not all of the hacks feature in the default frontend setup.  I have purposely left out some of the crumbier ones e.g. dkong2m, dkongnad.
 
 
 #### By Jon Wilson (me)
@@ -107,7 +111,7 @@ Not all of the roms feature in the default frontend setup.  I have purposely lef
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
 
 
-## DK WolfMAME
+## DKWolf
 
 DKAFE comes with my custom lightweight build of WolfMAME which supports only Donkey Kong drivers. 
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
@@ -139,7 +143,7 @@ The romlist.csv contains information about the roms, which slot they should appe
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you place **dkong.zip** and **dkongjr.zip** into DKAFE's **\roms** folder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
+The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **\roms** folder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
 
 
 ### Frontend Settings
@@ -182,8 +186,8 @@ Number to start the countdown timer from.
 Default settings can be changed in the settings.txt file.
 
 ```
-EMU_1 = <ROOT>\dkwolf\dkwolf196 <OPTIONS> -rompath <ROM_DIR>
-EMU_2 = <ROOT>\dkwolf\dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
+EMU_1 = <ROOT>\dkwolf\dkwolf <OPTIONS>
+EMU_2 = <ROOT>\dkwolf\dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
 EMU_3 = (optional)
 EMU_4 = (optional)
 EMU_5 = (optional)
@@ -195,12 +199,15 @@ EMU_8 = (optional)
 `EMU_3` to `EMU_8` can be used to add more of your own emulators.  By default `EMU_1` is used for DKAFE gameplay and `EMU_2` is used for "inp" recordings.
 
 `ROM_DIR = <ROOT>\roms`    
-The rom directory is set to the dkafe roms folder by default.
+The rom directory is set to the DKAFE roms folder by default.
 
-`OPTIONS = -video gdi -view "Pixel Aspect (7:8)"`    
-Additional arguments to pass to DKWolf.  These options are stored into <OPTIONS> which then be included in the EMU settings.
+`OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"`    
+General arguments can be stored into <OPTIONS> rather than repeating for each emulator.
 
 The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` used above are replaced with their actual values at runtime.
+
+`ALLOW_ROM_OVERWRITE = 0`
+Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
 
 
 ### DK Interface Settings
@@ -265,14 +272,15 @@ BUTTON_COIN = 7
 
 ## How to use romlist.csv
 
-A default romlist.csv is provided for use with the automatically generated roms (above).
+A default romlist.csv is provided for use with the automatically generated roms (see above).
 
 The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
-The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports -rompath then dkafe will launch the rom directly otherwise the rom will be copied over to the main rompath to workaround CRC checks.  If not providing -rompath then I recommend the original rom to be placed into **/original** subfolder to prevent it from being overwritten.
+The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
+If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See ALLOW_ROM_OVERWRITE option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. **/original**) to prevent it from being overwritten.
 
-All roms in the list should be given an emulator number (as defined in settings.txt), a slot position (between 1 and 46) and a basic descriptive name.
+All roms in the list should be given an emulator number (as defined in settings.txt), a slot position (between 1 and 46) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
 
-The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **shell** subfolder of dkafe.  Emulator number can be left blank.
+The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **shell** subfolder of DKAFE.  The emulator number can be left blank.
 
 An accompanying icon in .png format should be placed into the **artwork\icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
 
@@ -304,7 +312,7 @@ For best performance:
  - Raspberry Pi 4 hardware (tested with 4gb version) running "RaspberryPi OS Lite"
  - Set the display resolution to 640x480 in raspi-config and rotate screen if preferred.
  - Set the framebuffer_width and framebuffer_height to 224x256 (or double that to 448x512 for a better command line experience) in the **/boot/config.txt** file
- - Set `OPTIONS = -video gdi -view "Pixel Aspect (7:8)"` in DKAFE's **settings.txt** file.
+ - Set `OPTIONS = -rompath <ROM_DIR> -video accel -view "Pixel Aspect (7:8)"` in DKAFE's **settings.txt** file.
   
 
 ## Building/Compiling
@@ -324,12 +332,12 @@ See build.bat for an example build script making use of venv (virtual environmen
 
 ### How to compile DKWolf?
 
-Refer to compile_notes.txt in the **DKWolf** folder.
+Refer to readme.txt in the **DKWolf** folder.
 
 
 ## Motivations?
 
-The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.  
+The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.
 
 I aim to bring together all of the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
@@ -338,11 +346,11 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
 
 ## What's next?
 
- - Get this all running well on a Raspberry Pi 4.
- - Extend the default frontend setup to include support for NES Donkey Kong hacks possibly on the rivets stage.
+ - Get this all running well on a Raspberry Pi 4 and make an install script.
+ - Extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Add Crazy Kong and Donkey Kong 3 interface support to the default frontend.
- - Provide 60-in-1 as a default frontend option.  At the moment there are only 46 slots to keep things tidy.
- - Allow some options to be changed via the frontend e.g. freeplay (on/off), unlock mode (on/off), autostart (on/off)
+ - Provide 60-in-1 as a pre-configured frontend option - without the roms.
+ - Allow some options to be changed via the frontend e.g. freeplay (on/off), unlock mode (on/off), autostart (on/off).
  
  
 ## Thanks to

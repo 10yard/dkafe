@@ -1,11 +1,10 @@
 #Rom Name,Sub Folder,Description,Slot,Emu,Unlock,3rd Prize,2nd Prize,1st Prize
-dkong,,DK Wolf,1,2,0,,,
 dkong,,Donkey Kong,3,1,0,25000,50000,100000
 dkongjr,,DK Junior,5,1,1000,15000,25000,50000
 dkong,dkonglava,DK Lava!,8,1,2000,25000,40000,80000
 dkongx11,dkongspooky,DK Spooky,10,1,4000,15000,25000,50000
 dkong,dkongrev,DK Reverse,11,1,6000,25000,40000,80000
-dkongf,dkongst2,DK Springs,14,1,8000,10000,20000,30000
+dkongf,dkongst2,DK Springs,14,1,8000,10000,20000,35000
 dkong,dkongwho,DK Who,15,1,10000,25000,50000,100000
 dkong,dkongwbh,DK Wild,17,1,12000,1500,2500,5000
 dkongf,dkongf,DK Foundry,18,1,14000,20000,30000,60000
@@ -26,6 +25,7 @@ dkong,dkongfr,DK FreeRun,40,1,42000,200000,500000,750000
 dkong,dkongcb,DK CrazyBarrels,42,1,44000,10000,15000,30000
 dkongpe,dkongpe,DK Pauline Ed,45,1,47000,30000,50000,100000
 dkong,dkongksfix,KS Fix,46,1,50000,50000,100000,200000
-dkong,dkongtrn,DK Trainer,0,1,0,,,
-dkong,dkongpace,DK Pace,0,1,0,,,
-dkong,dkongbcc,DK Barrel Control,0,1,0,,,
+dkong,dkongtrn,DK Trainer,99,1,0,,,
+dkong,dkongpace,DK Pace,99,1,0,,,
+dkong,dkongbcc,DK Barrel Control,99,1,0,,,
+dkong,,DK Record*,1,2,0,,,

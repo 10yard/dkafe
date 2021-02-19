@@ -36,11 +36,9 @@ end
 
 function draw_tardis(y1, x1, y2, x2)
 	if toggle("TIMER") == 0  then -- sync flashing with bonus timer
-		_xpos = x1	
-		_ypos = y1
+		_xpos, _ypos = x1, y1	
 	else
-		_xpos = x2	
-		_ypos = y2
+		_xpos, _ypos = x2, y2	
 	end
 	--box and bottom
 	screen:draw_box(_ypos, _xpos+1, _ypos+15, _xpos+14, BLUE, 0)
@@ -62,131 +60,38 @@ end
 
 function draw_stars()
 	-- draw a starfield background
+  local _ypos, _xpos = 0, 0
 	for key=1, number_of_stars, 2 do
-		local _ypos = starfield[key]
-		local _xpos = starfield[key+1]
+		_ypos, _xpos = starfield[key], starfield[key+1]
 		screen:draw_line(_ypos, _xpos, _ypos, _xpos, 0xcbbffffff, 0)
 	end
 end
 
 function animate_broken_ship(x, y, dont_check_lit)
-	-- if fire is lit
+	-- flash flames on the ship when fire is lit
 	if dont_check_lit == 1 or mem:read_i8(0xc6348) == 1 then
-		-- flash colours in sync with 1UP
-		-- use timer as 1UP doesn't flash on the attract mode
+    local flame_color = RED
 		if toggle() == 1 then
 			flame_color = YELLOW
-		else
-			flame_color = RED
 		end
 		screen:draw_box(x, y, x+4, y+4, flame_color)
 	end
-
 end
 
 function adjust_weeping_angels()
 	-- adjust Y position of angel sprites by 4 pixels as they are taller than pies
-	angels_ram = {0xc65a5,0xc65b5,0xc65c5,0xc65d5,0xc65e5,0xc65f5}
-	for _, value in pairs(angels_ram) do
-    _y = mem:read_i8(value)
-    if _y == -52 or _y == 124 then
-			mem:write_i8(value, _y - 4)
+	for _, value in pairs({0xc65a5,0xc65b5,0xc65c5,0xc65d5,0xc65e5,0xc65f5}) do
+    _y = mem:read_u8(value)
+    if _y == 124 or _y == 204 then
+			mem:write_u8(value, _y - 4)
 		end
 	end
 end
 
-function dkongwho_overlay()
-  local r = 1
-	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
-		-- Title screen
-		screen:draw_box(96, 16, 136, 208, BLACK, 0)
-		screen:draw_box(152, 8, 198, 208, BLACK, 0)
-		block_text("DK WHO", 191, 16, BLUE, CYAN) 
-		write_message(0xc766d, "AND THE")
-		block_text("DALEKS", 128, 16, BLUE, CYAN) 
-
-		-- Bottom text
-		screen:draw_box(16, 0, 32, 224, BLACK, 0)
-		write_message(0xc777e, "DK WHO OF GALLIFREY INC.")
-
-		-- Tardis travelling left/right
-		if math.fmod(mem:read_i8(0xc601a) + 128, 84) <=42 then
-			draw_tardis(56, 40, 56, 40)
-		else
-			draw_tardis(56, 172, 56, 172)
-		end
-	end
-	
-	-- Display alternative messages on How High screens other than stage 1
-	if stage ~= 1 then
-		if mode2 == 8 then
-			howhigh_prepare = 1
-		elseif mode2 == 10 and howhigh_prepare == 1 then
-			if stage == 3 then
-				write_message(0xc779e, "WARNING - DALEK'S CAN FLY $")
-			elseif stage == 2 then
-				write_message(0xc779e, "DON'T LOOK AWAY OR BLINK $")
-			elseif stage == 4 then
-				math.randomseed(os.time())
-				_r = math.random(3)
-				if _r == 1 then
-					write_message(0xc777e, "WHERE'S MY             ")
-					write_message(0xc777f, "    SONIC SCREWDRIVER ?")
-				elseif _r == 2 then
-					write_message(0xc777e, "WE MUST SEARCH FOR K-9 $")
-				else
-					write_message(0xc77be, "THE MASTER WANTS HIS WATCH $")
-				end
-			end
-			howhigh_prepare = 0
-		end
-	end
-	
-	draw_stars()
-	
-	-- during play or during attact mode (including just before and just after)
-	if (mode1 == 3 and (mode2 == 11 or mode2 == 12 or mode2 == 13 or mode2 == 22)) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
-		if stage == 1 then
-			animate_broken_ship(18, 22, 0)
-		elseif stage == 2 then
-			animate_broken_ship(122, 110, 1)
-			adjust_weeping_angels()
-		end
-
-		check_jumpman_status()
-
-		if mem:read_i8(0xc6A18) ~= 0 then
-			-- hammer hasn't yet been used
-			-- draw tardis graphics
-			if stage == 1 then        -- Girders
-				draw_tardis(55, 165, 148, 14)
-			elseif stage == 2 then    -- Pies/Conveyors
-				draw_tardis(68, 101, 107, 13)
-			elseif stage == 4 then    -- Rivets
-				draw_tardis(148, 102, 108, 5)
-			end
-		else
-			if mem:read_i8(0xc6200) ~= 0 then
-				-- hammer has been used and jumpman is not dead
-				-- switch palette
-				if stage == 1 then        -- Girders
-					mem:write_i8(0xc7d86, 1)				
-					mem:write_i8(0xc7d87, 0)				
-				elseif stage == 2 then    -- Pies/Conveyors
-					mem:write_i8(0xc7d86, 0)				
-					mem:write_i8(0xc7d87, 1)				
-				elseif stage == 4 then    -- Rivets
-					mem:write_i8(0xc7d86, 0) 				
-				end
-			end
-		end
-	end
-end
-
-function check_jumpman_status()
+function check_teleports()
 	if stage ~= 3 and mem:read_i8(0xc6218) ~= 0 then	
 		-- Jumpman is attempting to grab a hammer
-		jumpman_y = mem:read_i8(0xc6205)  -- Jumpman's Y position
+		local jumpman_y = mem:read_i8(0xc6205)  -- Jumpman's Y position
 		
 		if stage == 1 then
 			if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
@@ -221,6 +126,91 @@ function check_jumpman_status()
 				update_teleport_ram(90, -78, -65)
 			else
 				update_teleport_ram(65, -30, -17)
+			end
+		end
+	end
+end
+
+function dkongwho_overlay()
+  local _rand = 1
+	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
+		-- Title screen
+		screen:draw_box(96, 16, 136, 208, BLACK, 0)
+		screen:draw_box(152, 8, 198, 208, BLACK, 0)
+		block_text("DK WHO", 191, 16, BLUE, CYAN) 
+		write_message(0xc766d, "AND THE")
+		block_text("DALEKS", 128, 16, BLUE, CYAN) 
+		-- Bottom text
+		screen:draw_box(16, 0, 32, 224, BLACK, 0)
+		write_message(0xc777e, "DK WHO OF GALLIFREY INC.")
+
+		-- Tardis travelling left/right
+		if math.fmod(mem:read_u8(0xc601a), 84) <=42 then
+			draw_tardis(56, 40, 56, 40)
+		else
+			draw_tardis(56, 172, 56, 172)
+		end
+	end
+	
+	-- Display alternative messages on How High screens other than stage 1
+	if stage ~= 1 then
+		if mode2 == 8 then
+			howhigh_prepare = 1
+		elseif mode2 == 10 and howhigh_prepare == 1 then
+			if stage == 3 then
+				write_message(0xc779e, "WARNING - DALEK'S CAN FLY $")
+			elseif stage == 2 then
+				write_message(0xc779e, "DON'T LOOK AWAY OR BLINK $")
+			elseif stage == 4 then
+				math.randomseed(os.time())
+				_rand = math.random(3)
+				if _rand == 1 then
+					write_message(0xc777e, "WHERE'S MY             ")
+					write_message(0xc777f, "    SONIC SCREWDRIVER ?")
+				elseif _rand == 2 then
+					write_message(0xc777e, "WE MUST SEARCH FOR K-9 $")
+				else
+					write_message(0xc77be, "THE MASTER WANTS HIS WATCH $")
+				end
+			end
+			howhigh_prepare = 0
+		end
+	end
+	
+	draw_stars()
+	
+	if (mode1 == 3 and (mode2 == 11 or mode2 == 12 or mode2 == 13 or mode2 == 22)) or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
+    -- During play or during attact mode (including just before and just after)
+		if stage == 1 then
+			animate_broken_ship(18, 22, 0)
+		elseif stage == 2 then
+			animate_broken_ship(122, 110, 1)
+			adjust_weeping_angels()
+		end
+
+		check_teleports()
+
+		if mem:read_i8(0xc6A18) ~= 0 then
+			-- Draw tardis graphics.  The hammer hasn't been used.
+			if stage == 1 then        -- Girders
+				draw_tardis(55, 165, 148, 14)
+			elseif stage == 2 then    -- Pies/Conveyors
+				draw_tardis(68, 101, 107, 13)
+			elseif stage == 4 then    -- Rivets
+				draw_tardis(148, 102, 108, 5)
+			end
+		else
+			if mem:read_i8(0xc6200) ~= 0 then
+				-- Switch the palette.  The hammer has been used and jumpman is not dead.
+				if stage == 1 then        -- Girders
+					mem:write_i8(0xc7d86, 1)				
+					mem:write_i8(0xc7d87, 0)				
+				elseif stage == 2 then    -- Pies/Conveyors
+					mem:write_i8(0xc7d86, 0)				
+					mem:write_i8(0xc7d87, 1)				
+				elseif stage == 4 then    -- Rivets
+					mem:write_i8(0xc7d86, 0) 				
+				end
 			end
 		end
 	end

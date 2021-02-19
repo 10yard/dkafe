@@ -31,54 +31,41 @@ function get_formatted_data(var_name)
 	return content
 end   
 
-function toggle(sync_with)
-	sync_with = sync_with or "1UP"
-	if sync_with == "1UP" then
-		-- Sync with flashing 1UP
-		if math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
-			return 1
-		else
-			return 0
-		end
-	elseif sync_with == "TIMER" then
-		-- Sync with bonus timer
-		if math.fmod(mem:read_i8(0xc638c), 2) == 0 then
-			return 1
-		else
-			return 0
-		end
+function toggle(sync)
+  -- Sync timing with the flashing 1UP (default) or the countdown timer
+	local sync = sync or "1UP"
+	if sync == "1UP" and math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
+		return 1
+  elseif sync == "TIMER" and math.fmod(mem:read_i8(0xc638c), 2) == 0 then
+		return 1
+  else
+	  return 0
 	end
 end
 
 function get_score()
   -- read score from top left,  allowing for 6 and 7 digit scores
-  _s1 = tostring(mem:read_i8(0xc7781))
-  if _s1 ~= "16" then
-    _s2 = tostring(mem:read_i8(0xc7761))
-    _s3 = tostring(mem:read_i8(0xc7741))
-    _s4 = tostring(mem:read_i8(0xc7721))
-    _s5 = tostring(mem:read_i8(0xc7701))
-    _s6 = tostring(mem:read_i8(0xc76e1))
-    _s7 = tostring(mem:read_i8(0xc76c1))
-    if _s7 == "16" then
-      _score = tonumber(_s1.._s2.._s3.._s4.._s5.._s6)
+  local _score, s1, s2, s3, s4, s5, s6, s7
+  _score = 0
+  s1 = tostring(mem:read_i8(0xc7781))
+  if s1 ~= "16" then
+    s2, s3, s4, s5, s6, s7 = tostring(mem:read_i8(0xc7761)), tostring(mem:read_i8(0xc7741)), tostring(mem:read_i8(0xc7721)), 
+                             tostring(mem:read_i8(0xc7701)), tostring(mem:read_i8(0xc76e1)), tostring(mem:read_i8(0xc76c1))    
+    if s7 == "16" then
+      _score = tonumber(s1..s2..s3..s4..s5..s6)
     else
-      _score = tonumber(_s1.._s2.._s3.._s4.._s5.._s6.._s7)  
+      _score = tonumber(s1..s2..s3..s4..s5..s6..s7)  
     end
-  else
-    _score = 0
   end
 	return _score
 end
 
 function set_score(score)
 	-- update score on screen
-	_padded_score = string.format("%06d", score)
+	local _padded_score = string.format("%06d", score)
 	write_message(0xc7781, _padded_score) -- update screen as it otherwise may not be updated
 	-- update score in ram
-	_s1 = string.sub(_padded_score, 1, 2)
-	_s2 = string.sub(_padded_score, 3, 4)
-	_s3 = string.sub(_padded_score, 5, 6)
+	local _s1, _s2, _s3 = string.sub(_padded_score, 1, 2), string.sub(_padded_score, 3, 4), string.sub(_padded_score, 5, 6)
 	mem:write_i8(0xc60b4, tonumber(_s1, 16))
 	mem:write_i8(0xc60b3, tonumber(_s2, 16))
 	mem:write_i8(0xc60b2, tonumber(_s3, 16))
@@ -93,7 +80,7 @@ function get_highscore()
 			end
 		end	
 	else
-		for _, value in pairs(ram_high) do
+		for key, value in pairs(ram_high) do
 			highscore = highscore .. mem:read_i8(value)
 		end	
 		if highscore == "161616161616" then 
@@ -123,12 +110,10 @@ end
 
 function block_text(text, x, y, color1, color2)
 	-- Write large block characters
-	local _x = x
-	local _y = y
-  local width = 0
-  local blocks = ""
+	local _x, _y, width, blocks = x, y, 0, ""
+  local _dkblock = dkblock
 	for i=1, string.len(text) do 
-		blocks = dkblock[string.sub(text, i, i)]
+		blocks = _dkblock[string.sub(text, i, i)]
 		width = math.floor(string.len(blocks) / 5)
 		for b=1, string.len(blocks) do
 			if string.sub(blocks, b, b) == "#" then
@@ -148,8 +133,9 @@ end
 
 function write_message(start_address, text)
 	-- write characters of message to DK's video ram
+  local _dkchars = dkchars
 	for key=1, string.len(text) do
-		mem:write_i8(start_address - ((key - 1) * 32), dkchars[string.sub(text, key, key)])
+		mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string.sub(text, key, key)])
 	end
 end
 
@@ -158,8 +144,7 @@ function clear_sounds()
   for key = 0, 32 do
     soundmem:write_i8(0x0 + key, 0x00)
   end
-  
-  -- clear sound fx buffer
+  -- clear soundfx buffer
   for key = 0, 8 do
     mem:write_i8(0xc6080 + key, 0x00)
   end
@@ -167,17 +152,17 @@ end
 
 function max_frameskip(switch)
   if switch == 1 then
-    video.throttle_rate = 1000
-    if data_emulator == "dkwolf" then
-      video.frameskip = 11  -- dkwolf has an increased max frameskip
-    else
-      video.frameskip = 8
-    end
     video.throttled = false
+    video.throttle_rate = 1000
+    video.frameskip = 8
+    if data_emulator == "dkwolf" then
+      -- dkwolf has an increased max frameskip
+      video.frameskip = 11
+    end
   else
+    video.throttled = true
     video.throttle_rate = 1
     video.frameskip = 0
-    video.throttled = true
   end
 end
 
@@ -205,7 +190,6 @@ end
 function display_awards()
 	if data_show_award_targets == "1" and mode1 == 3 and mode2 == 7 then
 		-- Show score awards during the DK climb scene/intro
-        
 		local dkclimb = mem:read_i8(0xc638e)
 		local offset = 0
 		if emu.romname() == "dkongjr" then
@@ -219,7 +203,6 @@ function display_awards()
       end
       dkclimb = math.floor((dkclimb + 51) / 8)
     end
-		
 		if dkclimb >= 10 then
 			if dkclimb <= 17 then
 				write_message(0xc7770 + (offset * 7), "1ST PRIZE")
@@ -261,35 +244,21 @@ function display_awards()
 				data_toggle_hud = data_toggle_hud + 1
 			end
 		end
-      
-		--Clear the HUD
-    write_message(0xc7500, "       ")
-		write_message(0xc7501, "       ")
-		write_message(0xc7502, "       ")
-		  
+		-- Display the HUD
+    local msg1, msg2, msg3, sep = "       ", "       ", "       ", {"=", "[]"}
+    if emu.romname() == "dkongx11" then
+      sep = {".", " C."}
+    end
     if data_toggle_hud == 1 then
-      if emu.romname() ~= "dkongx11" then
-        write_message(0xc7500, "1="..data_score1_k)
-        write_message(0xc7501, "2="..data_score2_k)
-        write_message(0xc7502, "3="..data_score3_k)
-      else
-        write_message(0xc7500, "1."..data_score1_k)
-        write_message(0xc7501, "2."..data_score2_k)
-        write_message(0xc7502, "3."..data_score3_k)
-      end
+      msg1, msg2, msg3 = "1"..sep[1]..data_score1_k, "2"..sep[1]..data_score2_k, "3"..sep[1]..data_score3_k
     elseif data_toggle_hud == 2 then
-      if emu.romname() ~= "dkongx11" then
-        write_message(0xc7500, data_award1.."[]")
-        write_message(0xc7501, data_award2.."[]")
-        write_message(0xc7502, data_award3.."[]")
-      else
-        write_message(0xc7500, data_award1.." C.")
-        write_message(0xc7501, data_award2.." C.")
-        write_message(0xc7502, data_award3.." C.")
-      end
+      msg1, msg2, msg3 = data_award1..sep[2], data_award2..sep[2], data_award3..sep[2]
     elseif data_toggle_hud == 3 then
 			data_toggle_hud = 0
 		end
+    write_message(0xc7500, msg1)
+    write_message(0xc7501, msg2)
+    write_message(0xc7502, msg3)
 	end
 end
 

@@ -38,6 +38,8 @@ UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
+
+# Interface options
 CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface
 AUTOSTART = 1                  # Automatically start the game in MAME (by simulating P1 start) when using interface
 ALLOW_SKIP_INTRO = 1           # Allow the DK climb scene to be quickly skipped in game by pressing Jump button
@@ -68,10 +70,13 @@ ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults
 ROM_DIR = '<ROOT>/roms'
-OPTIONS = '-video gdi -view "Pixel Aspect (7:8)'
-EMU_1 = '<ROOT>/dkwolf/dkwolf196 <OPTIONS> -rompath <ROM_DIR>'
-EMU_2 = '<ROOT>/dkwolf/dkwolf196 -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>'
+OPTIONS = '-rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)'
+EMU_1 = '<ROOT>/dkwolf/dkwolf <OPTIONS>'
+EMU_2 = '<ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6
+
+# Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support -rompath argument.
+ALLOW_ROM_OVERWRITE = 0
 
 # Patch directory (for provided patch files)
 PATCH_DIR = os.path.join(ROOT_DIR, "patch")
@@ -90,8 +95,7 @@ if os.path.exists("settings.txt"):
                     elif value.isnumeric():
                         globals()[key] = int(value)
                     else:
-                        globals()[key] = value.replace("<ROOT>", ROOT_DIR)\
-                            .replace("<ROM_DIR>", ROM_DIR).replace("<OPTIONS>", OPTIONS)
+                        globals()[key] = value.replace("<ROOT>", ROOT_DIR).replace("<OPTIONS>", OPTIONS)
                 except KeyError:
                     print(f'Unknown setting "{key.strip()}" in settings.txt file')
                     pygame.quit()
@@ -187,7 +191,8 @@ FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH C
 NO_ROMS_MESSAGE = [
     "NO ROMS WERE FOUND!", "",
     "FOR THE DEFAULT FRONTEND",
-    "PUT DKONG.ZIP & DKONGJR.ZIP",
+    "PUT DKONG.ZIP",
+    "AND OPTIONALLY DKONGJR.ZIP",
     "INTO THE DKAFE\\ROMS FOLDER",
     "THEN RESTART."]
 

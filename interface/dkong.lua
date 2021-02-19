@@ -1,8 +1,8 @@
 -- DKAFE Interface for Donkey Kong by Jon Wilson
 ----------------------------------------------------
--- Set target score, registered player names/scores. 
--- Dump highscore to file when finished.  
--- Enable some hacks (optional).  
+-- Set target score, registered player names/scores.
+-- Dump highscore to file when finished.
+-- Enable some hacks (optional).
 -- Show prizes and progress in the game (optional).
 
 data_includes_folder = os.getenv("DATA_INCLUDES")
@@ -12,8 +12,8 @@ require "globals"
 
 --register function for each frame
 emu.register_frame(function()
-	status, loaded = pcall(get_loaded)
-		
+	_, loaded = pcall(get_loaded)
+  
 	if loaded == nil then
 		-- Update ROM on start
 		emu["loaded"] = 1
@@ -21,7 +21,7 @@ emu.register_frame(function()
 			mem:write_direct_i8(value, data_scores[key])				
 		end
 	end
-
+  
 	if loaded == 1 then
     if data_allow_skip_intro == "1" and emu.romname() == "dkongx" then 
       -- quickly skip past startup screen of DK2
@@ -47,7 +47,7 @@ emu.register_frame(function()
 			end
 		end
 	end
-	
+  
 	if loaded == 2 then
     -- Reset frameskip after fast start of DK2
     if data_allow_skip_intro == "1" and emu.romname() == "dkongx" then 
@@ -63,7 +63,7 @@ emu.register_frame(function()
 		end
 		emu["loaded"] = 3
 	end
-	
+  
 	if loaded == 3 then
 		mode1 = mem:read_i8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game    
 		mode2 = mem:read_i8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over 

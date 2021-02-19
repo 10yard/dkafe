@@ -485,7 +485,6 @@ def launch_rom(info):
                 flash_message(f"Beat {format_K(score2)} for {AWARDS[1]} coins", x=15, y=90, clear=False)
                 flash_message(f"Beat {format_K(score1)} for {AWARDS[2]} coins", x=15, y=110, clear=False)
                 flash_message("G O   F O R   I T !", x=30, y=150, clear=False, bright=True, cycles=9)
-                clear_screen()
             elif "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
 
@@ -494,6 +493,7 @@ def launch_rom(info):
                 os.chdir(launch_directory)
             os.system(launch_command)
             os.chdir(ROOT_DIR)
+            clear_screen(and_reset_display=True)
 
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
@@ -508,8 +508,6 @@ def launch_rom(info):
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
 
-        clear_screen(and_reset_display=True)                      # Reset the screen
-        os.chdir(ROOT_DIR)
         _g.skip = True
         _g.timer.start()  # Restart the timer
 

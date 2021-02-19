@@ -41,7 +41,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
     # receive rom name, subfolder name and the target scores
     # Logic is mostly driven by the rom name but there are some exceptions were the subfolder name of a specific
     # rom is needed.
-    preset = False
+    script = None
     if score3:
         # Remove compete file if it still exists
         if os.path.exists(COMPETE_FILE):
@@ -80,7 +80,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
 
         # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
-            preset = True
+            script = "dkong.lua"
             score_width, double_width = 6, 6
             if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
                 score_width, double_width = 7, 8
@@ -121,7 +121,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
                 os.environ["RAM_PLAYERS"] = offset_addresses(RAM_PLAYERS, 1)
                 os.environ["ROM_SCORES"] = ""
                 os.environ["RAM_HIGH"] = ""
-        return preset
+    return script
 
 
 def offset_addresses(array, offset):

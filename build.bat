@@ -17,7 +17,7 @@ xcopy roms\---* dist\roms /S /i /Y
 
 echo **** create minimal dkmame folder
 xcopy dkwolf\dkwolf.exe dist\dkwolf\ /Y
-xcopy dkwolf\notes.txt dist\dkwolf\ /Y
+xcopy dkwolf\readme.txt dist\dkwolf\ /Y
 xcopy dkwolf\playback.bat dist\dkwolf\ /Y
 xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y

@@ -4,13 +4,14 @@
 -- Jumpman must keep his cool and move quickly to avoid the rising Lava.
 
 function draw_lava()
-	level = mem:read_i8(0xc6229)
+	local level = mem:read_i8(0xc6229)
+  local difficulty = math.floor(1.2 * (22 - level))
 	if stage == 4 then
-		difficulty = math.floor(1.5 * (22 - level)) -- lower difficulty is harder, rivets needs more time
+    -- rivets needs more time
+		difficulty = math.floor(1.5 * (22 - level))
 	elseif stage == 3 then
-		difficulty = math.floor(0.8 * (22 - level)) -- lower difficulty is harder, elevators needs less time
-	else
-		difficulty = math.floor(1.2 * (22 - level)) -- lower difficulty is harder
+    -- elevators needs less time
+		difficulty = math.floor(0.8 * (22 - level))
 	end
 	
 	if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then
@@ -28,7 +29,7 @@ function draw_lava()
 	
 	if mode1 == 3 or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
 		-- draw rising lava
-		screen:draw_box(0, 0, lava_y, 224, lava_colour, 0)
+		screen:draw_box(0, 0, lava_y, 224, 0xddff0000, 0)
 		
 		if mode2 == 12 or (mode1 == 1 and mode2 >= 2 and mode2 <= 3) then	
 			jumpman_y = get_jumpman_y()
@@ -73,25 +74,14 @@ function draw_lava()
 				end
 			end
 		end
-				
-		-- 10yard - I modded the DKWolf source to fix issue with luaengine.cpp
-    --          The following workaround is no longer required
-    ----------------------------------------------------------------------
-		-- workaround Lua bug which prevents the rightmost pixels from being drawn
-		-- the pixels are blacked out with a text block
-		--for i=0, 256 do	
-		--	if math.fmod(i, 8) == 0 then
-		--		screen:draw_text(i, 223, "#", BLACK)
-		--	end
-		--end
-		
+						
 		-- add dancing flames above lava
 		for i=0, 224 do		
 			if math.fmod(i, 18) == 0 then
-				adjust_y = math.random(-3, 3)
-				flame_y = lava_y + adjust_y
+        local adjust_y = math.random(-3, 3)
+				local flame_y = lava_y + adjust_y
+				local flame_color = BLACK
 				if flame_y > 0 then
-					if adjust_y == 0 then flame_color = BLACK  end
 					if adjust_y > 0  then flame_color = ORANGE end
 					if adjust_y < 0  then flame_color = RED    end
 					screen:draw_text(flame_y, i, "~", flame_color)
@@ -105,9 +95,6 @@ end
 
 if loaded == 3 then
 	if lava_hack_started ~= 1 then
-		--initialise some variables
-		lava_colour = 0xddff0000
-		lava_y = -7		
 		--register the frame drawing callback
 		emu.register_frame_done(draw_lava, "frame")
 	end

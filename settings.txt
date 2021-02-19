@@ -1,6 +1,6 @@
 # Front End Settings
-FULLSCREEN = 1
-FREE_PLAY = 0
+FULLSCREEN = 0
+FREE_PLAY = 1
 UNLOCK_MODE = 0
 INACTIVE_TIME = 15
 ENABLE_MENU = 1
@@ -8,9 +8,16 @@ CONFIRM_EXIT = 1
 
 # Emulator Settings
 ROM_DIR = <ROOT>\roms
-OPTIONS = -video gdi -view "Pixel Aspect (7:8)"
-EMU_1 = <ROOT>\dkwolf\dkwolf <OPTIONS> -rompath <ROM_DIR>
-EMU_2 = <ROOT>\dkwolf\dkwolf -record <NAME>_<DATETIME>.inp <OPTIONS> -rompath <ROM_DIR>
+OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"
+EMU_1 = <ROOT>\dkwolf\dkwolf <OPTIONS>
+EMU_2 = <ROOT>\dkwolf\dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
+EMU_3 = c:\emus\mame_0196\mame64 <OPTIONS>
+EMU_4 = None
+EMU_5 = None
+EMU_6 = None
+EMU_7 = None
+EMU_8 = None
+ALLOW_ROM_OVERWRITE = 0
 
 # Interface Settings
 CREDITS = 1

@@ -24,9 +24,14 @@ def read_romlist():
     # read romlist and return info about available roms (and shell scripts)
     romlist = []
     with open("romlist.csv", "r") as rl:
-        for rom_line in rl.readlines()[1:]:  # ignore the first/header line
-            if not rom_line.startswith("#") and rom_line.count(",") == 8:
-                name, sub, des, slot, emu, unlock, score3, score2, score1, *_ = [x.strip() for x in rom_line.split(",")]
+        for line in rl.readlines():
+            if not line.startswith("#") and line.count(",") == 8:
+                name, sub, des, slot, emu, unlock, score3, score2, score1, *_ = [x.strip() for x in line.split(",")]
+
+                # DK Junior is optional in the default frontend so replace with trainer if not available
+                if name == "dkongjr" and slot == "5" and not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
+                    name, sub, des, unlock, score3, score2, score1 = "dkong", "dkongtrn", "DK Trainer", "0", "", "", ""
+
                 if name and des:
                     icx, icy = -1, -1
                     if 0 < int(slot) <= len(SLOTS):
@@ -41,38 +46,39 @@ def get_emulator(emu_number):
 
 def build_launch_command(info):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
-    # A homebew emulator is preferred for rom hacks but a good alternative is to provide a subfolder which holds a
-    # variant of the main rom e.g. roms/skipstart/dkong.zip is a variant of roms/dkong.zip.  If mame emulator supports
-    # rompath then the rom can be launched direct from the subfolder otherwise the file will be copied over the main
-    # rom to avoid a CRC check fail.
-    sub, name, emu, unlock, score3, score2, score1 = info
+    # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
+    # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
+    subfolder, name, emu, unlock, score3, score2, score1 = info
     emu_args = get_emulator(emu).replace("<NAME>", name).replace("<DATETIME>", get_datetime())
     launch_directory = os.path.dirname(emu_args.split(" ")[0])
     launch_command = f'{emu_args} {name}'
     competing = False
 
-    if sub:
-        if sub == "shell":
+    if subfolder:
+        if subfolder == "shell":
             # Launch a batch file or shell script from the shell subfolder
             launch_command = os.path.join(ROOT_DIR, "shell", name)
-        elif "-rompath" in emu_args:
+        elif "<ROM_DIR>" in emu_args:
             # Launch a rom and provide rom path
-            launch_command = f'{emu_args}{os.sep}{sub} {name}'
-        else:
-            # Copy rom to the fixed rom path. Useful for emulators like advmame when -rompath argument is not supported.
-            rom_source = os.path.join(ROM_DIR, sub, name + ".zip")
+            launch_command = launch_command.replace("<ROM_DIR>", os.path.join(ROM_DIR, subfolder))
+        elif int(ALLOW_ROM_OVERWRITE):
+            # Copy rom to fixed rom path before launch. For emulators without a rompath argument e.g. Advmame.
+            rom_source = os.path.join(ROM_DIR, subfolder, name + ".zip")
             rom_target = os.path.join(ROM_DIR, name + ".zip")
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
+    else:
+        launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
 
     if not FULLSCREEN:
         launch_command += " -window"
 
     if "-record" not in launch_command:
-        if lua_interface(get_emulator(emu), name, sub, score3, score2, score1):
-            # MAME/LUA interface is available
+        script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1)
+        if script:
+            # An interface script is available
             competing = True
-            launch_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", "dkong.lua")}'
+            launch_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
             launch_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'
 
     return launch_command, launch_directory, competing
