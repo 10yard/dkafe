@@ -74,9 +74,8 @@ def check_roms_available():
     if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
         clear_screen()
         for i, line in enumerate(NO_ROMS_MESSAGE):
-            if line:
-                write_text(NO_ROMS_MESSAGE[i], font=dk_font, x=4, y=8+(i*12), fg=[WHITE, RED][i == 0])
-                update_screen(delay_ms=80)
+            write_text(line, font=dk_font, x=4, y=8+(i*12), fg=[WHITE, RED][i == 0])
+            update_screen(delay_ms=80)
         flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
         while True:
             check_for_input(force_exit=True)
@@ -718,6 +717,7 @@ def main():
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     # Initialise Jumpman
+    _s.debounce()
     animate_jumpman("r", horizontal_movement=0)
     # pygame.time.delay(150)
     _g.lastmove = 0

@@ -69,7 +69,7 @@ emu.register_frame(function()
 		mode2 = mem:read_i8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over 
 		stage = mem:read_i8(0xc6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 		score = get_score()
-                
+              
     -- Release P1 Start button (after autostart)
 		if data_autostart == "1" then
 			if mode1 == 3 and mode2 == 7 then

@@ -63,7 +63,11 @@ end
 function set_score(score)
 	-- update score on screen
 	local _padded_score = string.format("%06d", score)
-	write_message(0xc7781, _padded_score) -- update screen as it otherwise may not be updated
+	local _offset = 0x00
+  if emu.romname() == "dkongx11" or emu.romname() == "dkongx" or emu.romname() == "dkongf" then
+    _offset = 0x20
+  end
+  write_message(0xc7781 - _offset, _padded_score) -- update screen as it otherwise may not be updated
 	-- update score in ram
 	local _s1, _s2, _s3 = string.sub(_padded_score, 1, 2), string.sub(_padded_score, 3, 4), string.sub(_padded_score, 5, 6)
 	mem:write_i8(0xc60b4, tonumber(_s1, 16))

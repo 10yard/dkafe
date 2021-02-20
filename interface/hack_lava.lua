@@ -11,7 +11,7 @@ function draw_lava()
 		difficulty = math.floor(1.5 * (22 - level))
 	elseif stage == 3 then
     -- elevators needs less time
-		difficulty = math.floor(0.8 * (22 - level))
+		difficulty = math.floor(0.6 * (22 - level))
 	end
 	
 	if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then

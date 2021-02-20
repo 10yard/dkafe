@@ -8,7 +8,9 @@ A Donkey Kong focussed arcade game launcher made for arcade cabinets with incent
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
 
-The default frontend setup brings together all of the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for use with the frontend.  
+The default frontend setup brings together all of the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for use with the frontend. 
+
+Jumpman can select a game to play from the familiar girders stage by walking up to an arcade machine and paying coins to launch the game. 
 
 The frontend reward system will encourage you to play them by awarding coins when you play well so you can unlock the next one.  Hopefully encouring you to play them all and get good at them!
 
