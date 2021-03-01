@@ -7,14 +7,13 @@ A Donkey Kong focussed arcade game launcher made for arcade cabinets with incent
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
+You control Jumpman on the familiar girders stage and have him select which game to launch.
 
-The default frontend setup brings together all of the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for use with the frontend. 
+The default frontend setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for this frontend. 
 
-Jumpman can select a game to play from the familiar girders stage by walking up to an arcade machine and paying coins to launch the game. 
+The frontend reward system will encourage you to play them all by awarding coins when you play well, so you can unlock the next one.  Hopefully this will encoure you to play them and get good at them!
 
-The frontend reward system will encourage you to play them by awarding coins when you play well so you can unlock the next one.  Hopefully encouring you to play them all and get good at them!
-
-Your score targets are made visible during gameplay and you are informed when you have earned a prize - so you can know to expect a payout of coins.  Coins are awarded for beating target scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).
+Your score targets are made visible during gameplay, and you are informed when you have earned a prize - so you can know to expect a payout of coins.  Coins are awarded for beating target scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).
 
 Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
 
@@ -24,13 +23,13 @@ Awarded coins will drop from the top of the screen (after returning to the front
 
 Pauline will provide game information, score targets or unlock requirements as you walk towards an arcade machine.  
 
-You begin with only 100 coins so you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
+You begin with only 100 coins, so you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
 
-If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all of the machines though.
+If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all the machines though.
 
 The frontend can be easily configured to launch other emulators and roms.
 
-There will be folks who want to have 50,000 games on their arcade machines.  This frontend is not for them,  it was made for simplicty and to showcase a small selection of games and encourage them to be played.  
+> There will be folks who want to have 50,000 games on their arcade machines.  This frontend is not for them,  it was made for simplicity and to showcase a small selection of games and encourage them to be played.  
 
 
 ### This project includes:
@@ -60,7 +59,7 @@ All patch files are included in the **\patch folder.  Credit is given to the ori
 ![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/gameinfo.png)
 
 
-Not all of the hacks feature in the default frontend setup.  I have purposely left out some of the crumbier ones e.g. dkong2m, dkongnad.
+Not all the hacks feature in the default frontend setup.  I have purposely left out some crumbier ones e.g. dkong2m, dkongnad.
 
 
 #### By Jon Wilson (me)
@@ -75,8 +74,9 @@ Not all of the hacks feature in the default frontend setup.  I have purposely le
  - Donkey Kong Freerun Edition (dkongfr)
  - Donkey Kong Into The Dark (dkongitd)
  - Donkey Kong Skip Start (dkongl05)
- - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Reverse (dkongrev)
+ - Donkey Kong On The Run (dkongotr)
+ - Donkey Kong Twisted Jungle (dkongjungle)
 
 #### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)
@@ -119,7 +119,7 @@ DKAFE comes with my custom lightweight build of WolfMAME which supports only Don
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
-Gameplay recordings are saved to DKAFE's **dkwolf\inp** folder and can be replayed outside of DKAFE using the **playback.bat** passing arguments for romname and filename e.g.
+Gameplay recordings are saved to DKAFE's **dkwolf\inp** folder and can be replayed outside DKAFE using the **playback.bat** passing arguments for romname and filename e.g.
 ```
 playback dkong dkong_01022021-084510 
 ```
@@ -145,7 +145,7 @@ The romlist.csv contains information about the roms, which slot they should appe
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **\roms** folder.  The frontend will automatically generate roms for a whole bunch of Donkey Kong hacks using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
+The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **\roms** folder.  The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
 
 
 ### Frontend Settings
@@ -296,9 +296,8 @@ Hopefully that all makes sense.  Refer to the example romlist.csv
 
 ### For Windows
 
-For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go.
-
-Otherwise my recommendations are:
+For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go. 
+Otherwise, my recommendations are:
 
 1. Mame64 v0.196 minimum from https://www.mamedev.org/ . Rom hacks and lua interface hacks were tested against versions from v0.196 to v0.226
 
@@ -341,14 +340,14 @@ Refer to readme.txt in the **DKWolf** folder.
 
 The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.
 
-I aim to bring together all of the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
+I aim to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
 I frequently play the original Donkey Kong on MAME and aim to beat my high score of 199,200.  I need to master those springs!
 
 
 ## What's next?
 
- - Get this all running well on a Raspberry Pi 4 and make an install script.
+ - Get this all running well on a Raspberry Pi 4.
  - Extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Add Crazy Kong and Donkey Kong 3 interface support to the default frontend.
  - Provide 60-in-1 as a pre-configured frontend option - without the roms.
