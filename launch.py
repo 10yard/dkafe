@@ -13,7 +13,7 @@ def exit_program(confirm=False):
         open_menu(_g.exitmenu)
     else:
         # Save frontend state and exit
-        _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 1
+        _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 2
         pickle.dump([_g.score, _g.timer_adjust], open("save.p", "wb"))
         pygame.quit()
         sys.exit()
@@ -262,6 +262,8 @@ def play_intro_animation():
                 if from_scene < current < to_scene:
                     display_icons(below_y=below_y, above_y=above_y, intro=True, smash=current < smash_scene)
                     display_slots()
+                else:
+                    display_slots(version_only=True)
 
             # Title and messages
             write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
@@ -272,12 +274,14 @@ def play_intro_animation():
         update_screen(delay_ms=40)
 
 
-def display_slots():
+def display_slots(version_only=False):
     if _g.showslots:
-        for i, slot in enumerate(SLOTS):
-            _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
-            write_text("  ", pl_font, SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
-            write_text(str(i + 1).zfill(2), pl_font, SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK, fg=WHITE)
+        if not version_only:
+            for i, slot in enumerate(SLOTS):
+                _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
+                write_text("  ", pl_font, SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
+                write_text(str(i + 1).zfill(2), pl_font, SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK, fg=WHITE)
+        write_text(text=VERSION, font=dk_font, x=184, y=0, fg=RED, bg=BLACK)
 
 
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
@@ -531,6 +535,7 @@ def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, a
 def show_timeup_animation(sprite_number, loss=0):
     # Show coins during the out of time animation
     display_icons(with_background=True)
+    display_slots()
     _g.screen.blit(get_image(f"artwork/sprite/out{sprite_number}.png"), (_g.xpos, int(_g.ypos)))
 
     # Display items that don't get updated in this loop

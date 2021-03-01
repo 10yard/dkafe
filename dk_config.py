@@ -101,6 +101,9 @@ if os.path.exists("settings.txt"):
                     pygame.quit()
                     exit()
 
+# Frontend version
+VERSION = "V1.0"
+
 # Expected location of original DK zip (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 

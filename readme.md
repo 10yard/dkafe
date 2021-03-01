@@ -11,9 +11,9 @@ You control Jumpman on the familiar girders stage and have him select which game
 
 The default frontend setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for this frontend. 
 
-The frontend reward system will encourage you to play them all by awarding coins when you play well, so you can unlock the next one.  Hopefully this will encoure you to play them and get good at them!
+The frontend reward system will encourage you to play machines by awarding coins when you play well.  Hopefully encouraging you to unlock them and get good at them!
 
-Your score targets are made visible during gameplay, and you are informed when you have earned a prize - so you can know to expect a payout of coins.  Coins are awarded for beating target scores for 3rd prize (2500 coins), 2nd prize (1500 coins) and 3rd prize (500 coins).
+Your score targets are made visible during gameplay, and you are informed when you have earned a prize - so you know to expect a payout of coins.  Coins are awarded after beating target scores for 3rd, 2nd and 1st prize.
 
 Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
 
@@ -21,9 +21,9 @@ Awarded coins will drop from the top of the screen (after returning to the front
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
 
 
-Pauline will provide game information, score targets or unlock requirements as you walk towards an arcade machine.  
+Pauline will provide game information, score targets and unlock requirements as you walk towards an arcade machine.  
 
-You begin with only 100 coins, so you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
+You begin with just 100 coins, so you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
 
 If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all the machines though.
 
@@ -76,7 +76,7 @@ Not all the hacks feature in the default frontend setup.  I have purposely left 
  - Donkey Kong Skip Start (dkongl05)
  - Donkey Kong Reverse (dkongrev)
  - Donkey Kong On The Run (dkongotr)
- - Donkey Kong Twisted Jungle (dkongjungle)
+ - Donkey Kong Twisted Jungle (dkongtj)
 
 #### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)
@@ -308,16 +308,14 @@ Otherwise, my recommendations are:
 
 ### For Raspberry Pi
 
-For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go.
+Support is work in progress.
+
 For best performance: 
  - Raspberry Pi 4 hardware (tested with 4gb version) running "RaspberryPi OS Lite"
  - Set the display resolution to 640x480 in raspi-config and rotate screen if preferred.
- - Set the framebuffer_width and framebuffer_height to 224x256 (or double that to 448x512 for a better command line experience) in the **/boot/config.txt** file
+ - Set the framebuffer_width and framebuffer_height to 448x512 in the **/boot/config.txt** file
  - Set `OPTIONS = -rompath <ROM_DIR> -video accel -view "Pixel Aspect (7:8)"` in DKAFE's **settings.txt** file.
   
-
-## Building/Compiling
-
 
 ### How to build DKAFE?
 
@@ -338,9 +336,9 @@ Refer to readme.txt in the **DKWolf** folder.
 
 ## Motivations?
 
-The application was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.
+The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.
 
-I aim to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
+I wanted to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
 I frequently play the original Donkey Kong on MAME and aim to beat my high score of 199,200.  I need to master those springs!
 
@@ -351,7 +349,7 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
  - Extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Add Crazy Kong and Donkey Kong 3 interface support to the default frontend.
  - Provide 60-in-1 as a pre-configured frontend option - without the roms.
- - Allow some options to be changed via the frontend e.g. freeplay (on/off), unlock mode (on/off), autostart (on/off).
+ - Allow some options to be easily changed via the frontend e.g. freeplay (on/off), unlock mode (on/off), autostart (on/off).
  
  
 ## Thanks to

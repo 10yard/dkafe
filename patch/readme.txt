@@ -18,7 +18,7 @@ By Paul Goes
  - Donkey Kong Skip Start (dkongl05)
  - Donkey Kong Reverse (dkongrev)
  - Donkey Kong On The Run (dkongotr)
- - Donkey Kong Twisted Jungle (dkongjungle)
+ - Donkey Kong Twisted Jungle (dkongtj)
 
 By John Kowalski (Sock Master) 
  - Donkey Kong Spooky Remix (dkongspooky)
