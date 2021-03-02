@@ -2,16 +2,17 @@
 
 ## Donkey Kong Arcade Front End
 
-A Donkey Kong focussed arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games. 
+A multiplatform arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
+It comes almost ready to play - the minimum you need to do is provide the Donkey Kong rom.
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-You control Jumpman on the familiar girders stage and have him select which game to launch.
+The frontend mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which game to launch.
 
-The default frontend setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for this frontend. 
+The default setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for the frontend. 
 
-The frontend reward system will encourage you to play machines by awarding coins when you play well.  Hopefully encouraging you to unlock them and get good at them!
+The built-in reward system will encourage you to play machines by awarding coins when you play well.  Hopefully encouraging you to unlock them and get good at them!
 
 Your score targets are made visible during gameplay, and you are informed when you have earned a prize - so you know to expect a payout of coins.  Coins are awarded after beating target scores for 3rd, 2nd and 1st prize.
 
@@ -64,7 +65,7 @@ Not all the hacks feature in the default frontend setup.  I have purposely left 
 
 #### By Jon Wilson (me)
  - DK Who and the Daleks (dkongwho)
- - Donkey Kong Lava Panic (dkonglava)
+ - Donkey Kong Lava Panic! (dkonglava)
  - DK Last Man Standing (dkonglastman)
 
 #### By Paul Goes - https://donkeykonghacks.net/
@@ -95,7 +96,7 @@ Not all the hacks feature in the default frontend setup.  I have purposely left 
  - Donkey Kong Pauline Edition (dkongpe)
 
 #### By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
- - Donkey Kong Kill Screen Fix (dkongksfix)
+ - Donkey Kong Killscreen Fix (dkongksfix)
 
 #### By Tim Appleton - https://www.oocities.org/wigglebeat
  - Donkey Kong Pac-Man (dkongpac)

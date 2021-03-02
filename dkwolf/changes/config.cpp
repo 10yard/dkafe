@@ -105,24 +105,24 @@ int configuration_manager::load_settings()
 void configuration_manager::save_settings()
 {
 	//10 yard - remove save settings files
-	///* loop over all registrants and call their init function */
-	//for (auto type : m_typelist)
-	//	type.save(config_type::INIT, nullptr);
+	/* loop over all registrants and call their init function */
+	for (auto type : m_typelist)
+		type.save(config_type::INIT, nullptr);
 
-	///* save the defaults file */
-	//emu_file file(machine().options().cfg_directory(), OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
-	//osd_file::error filerr = file.open("default.cfg");
-	//if (filerr == osd_file::error::NONE)
-	//	save_xml(file, config_type::DEFAULT);
+	/* save the defaults file */
+	emu_file file(machine().options().cfg_directory(), OPEN_FLAG_WRITE | OPEN_FLAG_CREATE | OPEN_FLAG_CREATE_PATHS);
+	osd_file::error filerr = file.open("default.cfg");
+	if (filerr == osd_file::error::NONE)
+		save_xml(file, config_type::DEFAULT);
 
-	///* finally, save the game-specific file */
-	//filerr = file.open(machine().basename(), ".cfg");
-	//if (filerr == osd_file::error::NONE)
-	//	save_xml(file, config_type::GAME);
+	/* finally, save the game-specific file */
+	filerr = file.open(machine().basename(), ".cfg");
+	if (filerr == osd_file::error::NONE)
+		save_xml(file, config_type::GAME);
 
-	///* loop over all registrants and call their final function */
-	//for (auto type : m_typelist)
-	//	type.save(config_type::FINAL, nullptr);
+	/* loop over all registrants and call their final function */
+	for (auto type : m_typelist)
+		type.save(config_type::FINAL, nullptr);
 }
 
 

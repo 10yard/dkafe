@@ -62,11 +62,7 @@ def check_patches_available():
             if y_offset > 220:
                 x_offset, y_offset = 128, 24
         flash_message("ALL GOOD!", x=8, y=232, clear=False, cycles=4)
-        flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
-        while True:
-            check_for_input(force_exit=True)
-            if _g.jump or _g.start:
-                break
+        jump_to_continue()
 
 
 def check_roms_available():
@@ -76,11 +72,16 @@ def check_roms_available():
         for i, line in enumerate(NO_ROMS_MESSAGE):
             write_text(line, font=dk_font, x=4, y=8+(i*12), fg=[WHITE, RED][i == 0])
             update_screen(delay_ms=80)
-        flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
-        while True:
-            check_for_input(force_exit=True)
-            if _g.jump or _g.start:
-                break
+        jump_to_continue()
+
+
+def jump_to_continue():
+    # Show Jump to continue message at foot of screen and wait for button press
+    flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
+    while True:
+        check_for_input(force_exit=True)
+        if _g.jump or _g.start:
+            break
 
 
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
@@ -281,7 +282,8 @@ def display_slots(version_only=False):
                 _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
                 write_text("  ", pl_font, SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
                 write_text(str(i + 1).zfill(2), pl_font, SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK, fg=WHITE)
-        write_text(text=VERSION, font=dk_font, x=184, y=0, fg=RED, bg=BLACK)
+        write_text(text="VERSION", font=dk_font, x=224, y=0, fg=RED, bg=BLACK, rj_adjust=True)
+        write_text(text=VERSION, font=dk_font, x=224, y=8, fg=WHITE, bg=BLACK, rj_adjust=True)
 
 
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
@@ -293,7 +295,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     nearby = None
     info_list = []
     # Display icons and return icon that is near to Jumpman
-    for _x, _y, name, sub, des, emu, unlock, score3, score2, score1 in _g.icons:
+    for _x, _y, name, sub, des, alt, emu, unlock, score3, score2, score1 in _g.icons:
         unlocked = True
         if _g.score < unlock and UNLOCK_MODE and not intro:
             unlocked = False
@@ -432,11 +434,11 @@ def build_menus(initial=False):
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
-    for name, sub, desc, icx, icy, emu, unlock, score3, score2, score1 in _s.read_romlist():
+    for name, sub, desc, alt, icx, icy, emu, unlock, score3, score2, score1 in _s.read_romlist():
         if _g.score >= unlock or not UNLOCK_MODE:
-            _g.menu.add_button(desc, launch_rom, (sub, name, emu, unlock, score3, score2, score1))
+            _g.menu.add_button(alt, launch_rom, (sub, name, emu, unlock, score3, score2, score1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
-            _g.icons.append((int(icx), int(icy), name, sub, desc, emu, unlock, score3, score2, score1))
+            _g.icons.append((int(icx), int(icy), name, sub, desc, alt, emu, unlock, score3, score2, score1))
 
     _g.menu.add_button('Close Menu', close_menu)
 
@@ -482,21 +484,26 @@ def launch_rom(info):
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
             clear_screen()
-            if competing and name[:5] != "dkong":
-                # Flash message showing awards before game starts. dkong roms (in above list) have the message in game.
-                flash_message(f"Beat {format_K(score3)} for {AWARDS[0]} coins", x=15, y=70, clear=False)
-                flash_message(f"Beat {format_K(score2)} for {AWARDS[1]} coins", x=15, y=90, clear=False)
-                flash_message(f"Beat {format_K(score1)} for {AWARDS[2]} coins", x=15, y=110, clear=False)
-                flash_message("G O   F O R   I T !", x=30, y=150, clear=False, bright=True, cycles=9)
+            if competing and (not name.startswith("dkong") or sub == 'dkongtj'):
+                # Flash message showing awards before game starts. Most dkong roms have the message displayed in game.
+                write_text(f"PLAY TO WIN COINS", font=dk_font, x=8, y=4, fg=RED)
+                update_screen(delay_ms=500)
+                for i, s in enumerate((score3, score2, score1)):
+                    write_text(f"BEAT {format_K(s)} FOR {AWARDS[i]} COINS", font=dk_font, x=8, y=40 + (i*24), fg=WHITE)
+                    update_screen(delay_ms=500)
+                flash_message("GO FOR IT!", x=8, y=232, clear=False, cycles=4)
+                jump_to_continue()
             elif "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
 
             reset_all_inputs()
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
+            clear_screen(and_reset_display=True)
+            if _s.is_raspberry() and EMU_EXIT_RPI:
+                os.system(EMU_EXIT_RPI)
             os.system(launch_command)
             os.chdir(ROOT_DIR)
-            clear_screen(and_reset_display=True)
 
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
@@ -717,8 +724,8 @@ def main():
     build_menus(initial=True)
 
     # Launch front end
-    play_intro_animation()
     check_roms_available()
+    play_intro_animation()
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     # Initialise Jumpman
@@ -734,7 +741,6 @@ def main():
         if _g.active:
             display_icons(with_background=True)
             display_slots()
-
         if _g.jump_sequence:
             animate_jumpman(["l", "r"][_g.facing], midjump=True)
         else:

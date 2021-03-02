@@ -196,7 +196,7 @@ function display_awards()
 		-- Show score awards during the DK climb scene/intro
 		local dkclimb = mem:read_i8(0xc638e)
 		local offset = 0
-		if emu.romname() == "dkongjr" then
+    if emu.romname() == "dkongjr" then
 			offset = 1
 			dkclimb = dkclimb - 36
 		end

@@ -68,6 +68,9 @@ HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage d
 # Root directory of frontend
 ROOT_DIR = os.getcwd()
 
+# RPI specific
+EMU_EXIT_RPI = "wmctrl -a DKAFE -F"
+
 # Emulator and rom path defaults
 ROM_DIR = '<ROOT>/roms'
 OPTIONS = '-rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)'
@@ -102,7 +105,7 @@ if os.path.exists("settings.txt"):
                     exit()
 
 # Frontend version
-VERSION = "V1.0"
+VERSION = "v0.1b"
 
 # Expected location of original DK zip (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")

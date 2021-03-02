@@ -8,6 +8,16 @@ from dk_config import *
 from dk_interface import lua_interface
 
 
+def is_raspberry():
+    try:
+        if os.uname().machine.startswith("arm"):
+            return True
+        else:
+            return False
+    except AttributeError:
+        return False
+
+
 def debounce():
     sleep(0.2)
 
@@ -24,19 +34,21 @@ def read_romlist():
     # read romlist and return info about available roms (and shell scripts)
     romlist = []
     with open("romlist.csv", "r") as rl:
-        for line in rl.readlines():
-            if not line.startswith("#") and line.count(",") == 8:
-                name, sub, des, slot, emu, unlock, score3, score2, score1, *_ = [x.strip() for x in line.split(",")]
+        for row in rl.readlines():
+            if not row.startswith("#") and row.count(",") == 9:
+                name, sub, des, alt, slot, emu, unlock, score3, score2, score1, *_ = [x.strip() for x in row.split(",")]
 
                 # DK Junior is optional in the default frontend so replace with trainer if not available
                 if name == "dkongjr" and slot == "5" and not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
                     name, sub, des, unlock, score3, score2, score1 = "dkong", "dkongtrn", "DK Trainer", "0", "", "", ""
 
                 if name and des:
+                    if not alt:
+                        alt = des
                     icx, icy = -1, -1
                     if 0 < int(slot) <= len(SLOTS):
                         icx, icy = SLOTS[int(slot) - 1]
-                    romlist.append((name, sub, des, icx, icy, int(emu), int(unlock), score3, score2, score1))
+                    romlist.append((name, sub, des, alt, icx, icy, int(emu), int(unlock), score3, score2, score1))
     return romlist
 
 
@@ -78,7 +90,7 @@ def build_launch_command(info):
         if script:
             # An interface script is available
             competing = True
-            launch_command += f' -console -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
+            launch_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
             launch_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'
 
     return launch_command, launch_directory, competing

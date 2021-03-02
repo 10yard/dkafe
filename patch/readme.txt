@@ -6,7 +6,7 @@ DKAFE will then apply patches and generate the following hacked version of Donke
 
 By Jon Wilson (me)
  - DK Who and the Daleks (dkongwho)
- - Donkey Kong Lava Panic (dkonglava)
+ - Donkey Kong Lava Panic! (dkonglava)
  - DK Last Man Standing (dkonglastman)
 
 By Paul Goes
@@ -37,7 +37,7 @@ By Mike Mika and Clay Cowgill
  - Donkey Kong Pauline Edition (dkongpe)
 
 By Don Hodges 
- - Donkey Kong Kill Screen Fix (dkongksfix)
+ - Donkey Kong Killscreen Fix (dkongksfix)
 
 By Tim Appleton
  - Donkey Kong Pac-Man (dkongpac)

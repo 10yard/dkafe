@@ -1,4 +1,4 @@
-vDKWolf is a custom build of WolfMAME (v0.196) built for DKAFE which supports only Donkey Kong drivers.  
+DKWolf is a custom build of WolfMAME (v0.196) built for DKAFE which supports only Donkey Kong drivers.  
 It a lightweight emulator less than 15mb size.
 This version has functionality removed for save and load states, cheats, throttling etc.
 
@@ -29,7 +29,7 @@ The changes are:
     Increase the max frameskip so we can more quickly skip the dk intro scene when user presses jump button.
 
   osd/modules/render/drawbgfx.cpp
-    Fix bug with mame source to allow building on Raspberry Pi4 without X11
+    Fix bug in mame source which was effecting RPI build
 
 A useful reference to compiling MAME can be found at:
   http://forum.arcadecontrols.com/index.php?topic=149545.0
@@ -53,44 +53,42 @@ For making a lightweight build to support multiple drivers e.g. for a 60-in-1 ty
 *****************
 ** Raspberry Pi**
 *****************
-Useful reference when compiling for Raspberry Pi:
-  https://nowhereman999.wordpress.com/2016/02/29/compile-mame-0-171-on-a-raspberry-pi-2/
-  also NO_OPENGL=1 with the make
+Build to Raspberry Pi Model 4B:
 
-Raspberry Pi Model 4B:
-  Burn retropie to SDcard,  can use the version that comes with rpi imager
-  copy dkafe.zip to boot partition
-  copy mame_211b.zip to boot partition
-  update config.txt and cmdline.txt on boot partition
+Use Raspberry Pi Imager to write "Raspberry Pi Desktop" to an SD card and boot it up.
+Recommand to change the desktop resolution to 640x480
 
-  start it up then:
-  cd
-  unzip dkafe.zip
+sudo apt-get update
+sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default
+sudo apt-get install python3-pip
+sudo apt-get install wmctrl
 
-  cd
-  sudo apt install -y mame
-  (installs to /usr/games/mame and .mame under home)
+# Get wolfmame source
+wget https://github.com/mahlemiut/wolfmame/archive/wolf196.zip
+unzip wolf196
+# Download dkwolf mods and overwrite source files
 
-  cd RetroPieSetup
-  sudo ./retropie_setup.sh 
-	- autostart > boot to text console (auto login)
-	- splashscreen > disable splashscreen on boot
-	- bashwelcometweak > remove bash welcome tweak
-  reboot
+# Build
+sudo nano makefile
+make -j5
 
-  sudo apt install libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0 libsdl2-image-2.0-0  (install other SDL2 stuff,  not the main SDL2 though)
+# Get DKAFE and install requirements
+wget https://github.com/10yard/dkafe/??.zip
+unzip dkafe
+pip3 install -r requirements.txt
+sudo pip3 install -r requirements.txt (sudo requirements are needed later for pyinstaller)
 
-  cd
-  cd dkafe
-  sudo apt-get install python3-pip
-  pip3 install -r requirements.txt
+# Build pyinstaller
+git clone https://github.com/pyinstaller/pyinstaller
+	# Need to make a bootloader for Pi
+	cd pyinstaller/bootloader
+	python ./waf all --target-arch=32bit
+	cp /home/pi/code/pyinstaller/build/release/run /home/pi/code/pyinstaller/bootloader
+cd pyinstaller	
+sudo python3 setup.py install
 
-  sudo nano /opt/retropie/configs/all/autostart.sh (replace content with below)
-  # DKAFE startup script
-  aconnect -x  (to close any apps using the sound)
-  cd
-  cd dkafe
-  python3 launch.py
+#build DKAFE
+sudo pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
 
-Launching DKWolf with these arguments:
-  -video accel -view "Pixel Aspect (7:8)"
+# To switch window focus back to DKAFE
+wmctrl -a DKAFE -F
