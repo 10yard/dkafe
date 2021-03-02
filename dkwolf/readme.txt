@@ -53,7 +53,7 @@ For making a lightweight build to support multiple drivers e.g. for a 60-in-1 ty
 *****************
 ** Raspberry Pi**
 *****************
-Build to Raspberry Pi Model 4B:
+Compiling on Raspberry Pi 4:
 
 Use Raspberry Pi Imager to write "Raspberry Pi Desktop" to an SD card and boot it up.
 Recommand to change the desktop resolution to 640x480
@@ -66,7 +66,8 @@ sudo apt-get install wmctrl
 # Get wolfmame source
 wget https://github.com/mahlemiut/wolfmame/archive/wolf196.zip
 unzip wolf196
-# Download dkwolf mods and overwrite source files
+
+# Copy files from the /dkwolf/changes folder overwriting the source files.  File paths provided in the above notes.
 
 # Build
 sudo nano makefile
@@ -90,5 +91,3 @@ sudo python3 setup.py install
 #build DKAFE
 sudo pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
 
-# To switch window focus back to DKAFE
-wmctrl -a DKAFE -F

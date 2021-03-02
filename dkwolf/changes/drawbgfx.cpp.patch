@@ -1,0 +1,25 @@
+--- a/src/osd/modules/render/drawbgfx.cpp	2020-10-05 15:49:54.000000000 -0400
++++ b/src/osd/modules/render/drawbgfx.cpp	2020-10-05 21:50:49.178789472 -0400
+@@ -169,7 +169,8 @@
+ 	}
+ 
+ #   if BX_PLATFORM_LINUX || BX_PLATFORM_BSD || BX_PLATFORM_RPI
+-	return (void*)wmi.info.x11.window;
++	// return (void*)wmi.info.x11.window;
++	return (void*)_window;
+ #   elif BX_PLATFORM_OSX
+ 	return wmi.info.cocoa.window;
+ #   elif BX_PLATFORM_WINDOWS
+@@ -192,8 +193,10 @@
+ 
+ 	bgfx::PlatformData pd;
+ #   if BX_PLATFORM_LINUX || BX_PLATFORM_BSD
+-	pd.ndt          = wmi.info.x11.display;
+-	pd.nwh          = (void*)(uintptr_t)wmi.info.x11.window;
++	// pd.ndt          = wmi.info.x11.display;
++	// pd.nwh          = (void*)(uintptr_t)wmi.info.x11.window;
++	pd.ndt = NULL;
++	pd.nwh = _window;
+ #   elif BX_PLATFORM_OSX
+ 	pd.ndt          = NULL;
+ 	pd.nwh          = wmi.info.cocoa.window;

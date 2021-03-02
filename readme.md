@@ -54,7 +54,7 @@ You will lose penalty points instead of lives so don't make mistakes unless you 
 ## Automatically generated roms
 
 DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work,  it is not provided with the software.
-All patch files are included in the **\patch folder.  Credit is given to the original authors below.
+All patch files are included in the **/patch folder.  Credit is given to the original authors below.
 
 
 ![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/gameinfo.png)
@@ -120,10 +120,7 @@ DKAFE comes with my custom lightweight build of WolfMAME which supports only Don
 This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
-Gameplay recordings are saved to DKAFE's **dkwolf\inp** folder and can be replayed outside DKAFE using the **playback.bat** passing arguments for romname and filename e.g.
-```
-playback dkong dkong_01022021-084510 
-```
+Gameplay recordings are saved to DKAFE's **dkwolf/inp** folder.
 
 
 ## Display Resolution
@@ -131,9 +128,10 @@ playback dkong dkong_01022021-084510
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 The scaling works perfectly with a 7:8 aspect vertically rotated screen.
 
-For my system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
+For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
+For Raspberry Pi,  I have my Desktop resolution set to 480x640.
 
-I use the command line option **-view "Pixel Aspect (7:8)"** to override MAME's default 4:3 aspect.
+The command line argument **-view "Pixel Aspect (7:8)"** can be used to override MAME's default 4:3 aspect.
 
 
 ## How to set up?
@@ -146,7 +144,7 @@ The romlist.csv contains information about the roms, which slot they should appe
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
-The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **\roms** folder.  The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
+The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **/roms** folder.  The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
 
 
 ### Frontend Settings
@@ -189,8 +187,8 @@ Number to start the countdown timer from.
 Default settings can be changed in the settings.txt file.
 
 ```
-EMU_1 = <ROOT>\dkwolf\dkwolf <OPTIONS>
-EMU_2 = <ROOT>\dkwolf\dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
+EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
+EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
 EMU_3 = (optional)
 EMU_4 = (optional)
 EMU_5 = (optional)
@@ -201,7 +199,7 @@ EMU_8 = (optional)
 `EMU_1` and `EMU_2` come preconfigured.    
 `EMU_3` to `EMU_8` can be used to add more of your own emulators.  By default `EMU_1` is used for DKAFE gameplay and `EMU_2` is used for "inp" recordings.
 
-`ROM_DIR = <ROOT>\roms`    
+`ROM_DIR = <ROOT>/roms`    
 The rom directory is set to the DKAFE roms folder by default.
 
 `OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"`    
@@ -211,6 +209,9 @@ The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` u
 
 `ALLOW_ROM_OVERWRITE = 0`
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
+
+`EMU_EXIT_RPI = wmctrl -a DKAFE -F`
+Raspberry PI specific setting to return focus to the frontend after exiting the emulator.  This is an external program call so be sure that the target program is installed i.e. `sudo apt-get install wmctrl`
 
 
 ### DK Interface Settings
@@ -285,7 +286,7 @@ All roms in the list should be given an emulator number (as defined in settings.
 
 The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **shell** subfolder of DKAFE.  The emulator number can be left blank.
 
-An accompanying icon in .png format should be placed into the **artwork\icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
+An accompanying icon in .png format should be placed into the **artwork/icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
 
 Hopefully that all makes sense.  Refer to the example romlist.csv
 
@@ -295,12 +296,13 @@ Hopefully that all makes sense.  Refer to the example romlist.csv
 
 ## Emulator recommendation
 
+For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go. 
+
 ### For Windows
 
-For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go. 
 Otherwise, my recommendations are:
 
-1. Mame64 v0.196 minimum from https://www.mamedev.org/ . Rom hacks and lua interface hacks were tested against versions from v0.196 to v0.226
+1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.
 
 2. Wolfmame (for competition/recording) from https://github.com/mahlemiut/wolfmame/releases/
 
@@ -309,25 +311,21 @@ Otherwise, my recommendations are:
 
 ### For Raspberry Pi
 
-Support is work in progress.
+1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Binaries are not generally available for Rpi so you will need to compile your own.  See compile notes in *\dkwolf* folder
 
-For best performance: 
- - Raspberry Pi 4 hardware (tested with 4gb version) running "RaspberryPi OS Lite"
- - Set the display resolution to 640x480 in raspi-config and rotate screen if preferred.
- - Set the framebuffer_width and framebuffer_height to 448x512 in the **/boot/config.txt** file
- - Set `OPTIONS = -rompath <ROM_DIR> -video accel -view "Pixel Aspect (7:8)"` in DKAFE's **settings.txt** file.
+2. Advance Mame from https://www.advancemame.it/download
   
 
 ### How to build DKAFE?
 
 Requires Python3 (v3.7 upwards) with installed packages from requirements.txt
 
-Pyinstaller can be used to build the application binary on Windows.
+Pyinstaller can be used to build the application binary.
 ```
-pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 ```
 
-See build.bat for an example build script making use of venv (virtual environment for Python)
+See build.bat for an example Windows build script making use of venv (virtual environment for Python)
 
 
 ### How to compile DKWolf?
