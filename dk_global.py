@@ -16,6 +16,7 @@ joysticks = []
 # Jumpman status
 active = True      # Jumpman is active - see INACTIVE_TIME
 lastmove = 0       # Time of last movement
+lastexit = 0       # Time of exiting last emulated game
 score = 0          # Jumpman's score
 facing = 1         # Direction Jumpman is facing 0=Left, Right=1
 jump_sequence = 0  # Sequence number of jump.  0 = Not jumping.  Refer to JUMP_PIXELS array.

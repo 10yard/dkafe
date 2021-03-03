@@ -2,8 +2,7 @@
 
 ## Donkey Kong Arcade Front End
 
-A multiplatform arcade game launcher made for arcade cabinets with incentives to play and unlock arcade games.  
-It comes almost ready to play - the minimum you need to do is provide the Donkey Kong rom.
+A multiplatform arcade game launcher based on Donkey Kong made for arcade cabinets with incentives to play and unlock arcade games.  
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
@@ -129,7 +128,7 @@ The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arca
 The scaling works perfectly with a 7:8 aspect vertically rotated screen.
 
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
-For Raspberry Pi,  I have my Desktop resolution set to 480x640.
+For Raspberry Pi,  you can use the available 640x480 resolution or create a custom resolution yourself using xrandr - `sudo apt-get xrandr`. 
 
 The command line argument **-view "Pixel Aspect (7:8)"** can be used to override MAME's default 4:3 aspect.
 
@@ -311,7 +310,7 @@ Otherwise, my recommendations are:
 
 ### For Raspberry Pi
 
-1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Binaries are not generally available for Rpi so you will need to compile your own.  See compile notes in *\dkwolf* folder
+1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in *\dkwolf* folder
 
 2. Advance Mame from https://www.advancemame.it/download
   
@@ -344,7 +343,6 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
 
 ## What's next?
 
- - Get this all running well on a Raspberry Pi 4.
  - Extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Add Crazy Kong and Donkey Kong 3 interface support to the default frontend.
  - Provide 60-in-1 as a pre-configured frontend option - without the roms.

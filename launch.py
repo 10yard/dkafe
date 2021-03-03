@@ -9,14 +9,16 @@ import pickle
 
 
 def exit_program(confirm=False):
-    if confirm:
-        open_menu(_g.exitmenu)
-    else:
-        # Save frontend state and exit
-        _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 2
-        pickle.dump([_g.score, _g.timer_adjust], open("save.p", "wb"))
-        pygame.quit()
-        sys.exit()
+    # Exit and prompt for confirmation if required.  Exit is temporarily disabled after returning from an emulator.
+    if _g.lastexit == 0 or since_last_exit() > 0.25:
+        if confirm:
+            open_menu(_g.exitmenu)
+        else:
+            # Save frontend state and exit
+            _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 1
+            pickle.dump([_g.score, _g.timer_adjust], open("save.p", "wb"))
+            pygame.quit()
+            sys.exit()
 
 
 def initialise_screen(reset=False):
@@ -500,9 +502,8 @@ def launch_rom(info):
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
             clear_screen(and_reset_display=True)
-            if _s.is_raspberry() and EMU_EXIT_RPI:
-                os.system(EMU_EXIT_RPI)
             os.system(launch_command)
+            _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
 
             if competing:
@@ -690,6 +691,10 @@ def since_last_move():
     return _g.timer.duration - _g.lastmove
 
 
+def since_last_exit():
+    return _g.timer.duration - _g.lastexit
+
+
 def activity_check():
     if _g.active:
         _g.timer.start()
@@ -698,6 +703,9 @@ def activity_check():
             pygame.mixer.unpause()
         process_interrupts()
 
+        if _g.lastexit > 0 and since_last_exit() < 1:
+            if _s.is_raspberry() and EMU_EXIT_RPI:
+                os.system(EMU_EXIT_RPI)
 
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
