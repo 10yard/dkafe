@@ -101,5 +101,5 @@ end)
 
 -- Register callback function on exit
 emu.register_stop(function()
-	record_in_compete_file()
+  record_in_compete_file()
 end)

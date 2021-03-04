@@ -128,7 +128,8 @@ The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arca
 The scaling works perfectly with a 7:8 aspect vertically rotated screen.
 
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
-For Raspberry Pi,  you can use the available 640x480 resolution or create a custom resolution yourself using xrandr - `sudo apt-get xrandr`. 
+
+For Raspberry Pi,  you should use 640x480 resolution and adjust the frontend display scale using xrandr.  Refer to rpi_notes.
 
 The command line argument **-view "Pixel Aspect (7:8)"** can be used to override MAME's default 4:3 aspect.
 
@@ -315,7 +316,7 @@ Otherwise, my recommendations are:
 2. Advance Mame from https://www.advancemame.it/download
   
 
-### How to build DKAFE?
+### How to build DKAFE binary?
 
 Requires Python3 (v3.7 upwards) with installed packages from requirements.txt
 
@@ -324,7 +325,8 @@ Pyinstaller can be used to build the application binary.
 pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 ```
 
-See build.bat for an example Windows build script making use of venv (virtual environment for Python)
+See build.bat for an example Windows build script making use of venv (virtual environment for Python).
+See rpi_notes.txt for building a Raspberry Pi binary.
 
 
 ### How to compile DKWolf?

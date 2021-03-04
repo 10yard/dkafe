@@ -703,7 +703,7 @@ def activity_check():
             pygame.mixer.unpause()
         process_interrupts()
 
-        if _g.lastexit > 0 and since_last_exit() < 1:
+        if _g.lastexit > 0 and since_last_exit() < 0.5:
             if _s.is_raspberry() and EMU_EXIT_RPI:
                 os.system(EMU_EXIT_RPI)
 

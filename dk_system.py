@@ -5,17 +5,7 @@ from glob import glob
 from shutil import copy
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from dk_config import *
-from dk_interface import lua_interface
-
-
-def is_raspberry():
-    try:
-        if os.uname().machine.startswith("arm"):
-            return True
-        else:
-            return False
-    except AttributeError:
-        return False
+from dk_interface import lua_interface, is_raspberry
 
 
 def debounce():

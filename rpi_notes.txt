@@ -1,0 +1,73 @@
+Prepare DKAFE (source will be installed to /home/pi/dkafe)
+----------------------------------------------------------
+cd /home/pi/dkafe
+wget https:......
+unzip dkafe.zip
+cd dkafe
+
+Set up environment
+------------------
+sudo apt-get install python3-pip
+sudo apt-get install wmctrl xrandr
+pip3 install -r requirements.txt
+
+Launch DKAFE from terminal
+--------------------------
+/home/pi/dkafe/rpi_start.sh
+
+Resolution and frontend display scale (optional)
+------------------------------------------------
+The default display scale is set in rpi_start.sh file as:
+	xrandr -s 640x480 --output HDMI-1 --scale 1x0.8
+This is based on a rotated display.  Adjust the scale to fit the screen.
+set --scale 1x1 for the system default.
+
+To launch on start (optional)
+-----------------------------
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+...and add this line to end of the file:
+	@/home/pi/dkafe/rpi_start.sh
+
+Hide Desktop and Panel (optional)
+---------------------------------
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+...and remove or comment out this line with #:
+@lxpanel --profile LXDE-pi
+
+In Desktop Preferences, set the desktop background to black, remove the Wastebasket and Mounted Disk icons
+
+Hide the mouse pointer (optional)
+---------------------------------
+sudo nano /usr/share/lightdm/lightdm.conf.d/01_debian.conf
+(then add following line to end of file)
+	xserver-command=X -nocursor
+
+Build DKAFE (Optional - if you prefer not to run as Python script)
+------------------------------------------------------------------
+cd
+sudo pip3 install -r requirements.txt (sudo requirements are needed for pyinstaller)
+git clone https://github.com/pyinstaller/pyinstaller
+	build pyinstaller - we need to make a bootloader for Rpi too
+	------------------------------------------------------------
+	cd pyinstaller/bootloader
+	python ./waf all --target-arch=32bit
+	cp /home/pi/pyinstaller/build/release/run /home/pi/pyinstaller/bootloader
+	cd pyinstaller	
+	sudo python3 setup.py install
+
+	build the Frontend
+	------------------
+	sudo pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
+	
+	copy the executable to the dkafe folder which holds all the resources needed to run
+	-----------------------------------------------------------------------------------
+	sudo cp /home/pi/dkafe/dist/launch /home/pi/dkafe
+        cd /home/pi/dkafe
+	./launch
+
+Boot optimisations refer to:
+	http://himeshp.blogspot.com/2018/08/fast-boot-with-raspberry-pi.html
+
+To playback .inp recordings
+---------------------------
+./dkwolfrpi -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp
