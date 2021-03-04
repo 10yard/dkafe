@@ -501,7 +501,9 @@ def launch_rom(info):
             reset_all_inputs()
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
-            clear_screen(and_reset_display=True)
+            clear_screen()
+            if _s.is_raspberry() and EMU_EXIT_RPI:
+                os.system(EMU_ENTER_RPI)
             os.system(launch_command)
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
@@ -515,6 +517,7 @@ def launch_rom(info):
                         drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=True)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
+            clear_screen(and_reset_display=True)
         else:
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
@@ -706,6 +709,7 @@ def activity_check():
         if _g.lastexit > 0 and since_last_exit() < 0.5:
             if _s.is_raspberry() and EMU_EXIT_RPI:
                 os.system(EMU_EXIT_RPI)
+
 
 def teleport_between_hammers():
     if ENABLE_HAMMERS:

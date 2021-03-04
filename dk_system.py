@@ -5,11 +5,21 @@ from glob import glob
 from shutil import copy
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from dk_config import *
-from dk_interface import lua_interface, is_raspberry
+from dk_interface import lua_interface
 
 
 def debounce():
     sleep(0.2)
+
+
+def is_raspberry():
+    try:
+        if os.uname().machine.startswith("arm"):
+            return True
+        else:
+            return False
+    except AttributeError:
+        return False
 
 
 def get_datetime():

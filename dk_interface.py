@@ -183,15 +183,5 @@ def format_K(number):
     return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
 
 
-def is_raspberry():
-    try:
-        if os.uname().machine.startswith("arm"):
-            return True
-        else:
-            return False
-    except AttributeError:
-        return False
-
-
 if __name__ == "__main__":
     pass

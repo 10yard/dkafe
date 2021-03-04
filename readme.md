@@ -202,7 +202,7 @@ EMU_8 = (optional)
 `ROM_DIR = <ROOT>/roms`    
 The rom directory is set to the DKAFE roms folder by default.
 
-`OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"`    
+`OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"`    
 General arguments can be stored into <OPTIONS> rather than repeating for each emulator.
 
 The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` used above are replaced with their actual values at runtime.
@@ -211,7 +211,10 @@ The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` u
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
 
 `EMU_EXIT_RPI = wmctrl -a DKAFE -F`
-Raspberry PI specific setting to return focus to the frontend after exiting the emulator.  This is an external program call so be sure that the target program is installed i.e. `sudo apt-get install wmctrl`
+Raspberry Pi specific command to issue after exiting emulator e.g. return focus to frontend.  This is an external program call so be sure that the target program is installed i.e. `sudo apt-get install wmctrl`
+
+`EMU_ENTER_RPI`
+Raspberry Pi specific command to issue before starting an emulator
 
 
 ### DK Interface Settings

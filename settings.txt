@@ -11,13 +11,16 @@ ROM_DIR = <ROOT>/roms
 OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
-EMU_3 = None
-EMU_4 = None
-EMU_5 = None
-EMU_6 = None
-EMU_7 = None
-EMU_8 = None
 ALLOW_ROM_OVERWRITE = 0
+
+## Emulator Settings (for Raspberry PI)
+# ROM_DIR = /home/pi/dkafe/roms
+# OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"
+# EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
+# EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -record <NAME>_<DATETIME>.inp 
+# EMU_EXIT_RPI = "wmctrl -a DKAFE -F ; xrandr -s 640x480 --output HDMI-1 --scale 1x0.8"
+# EMU_ENTER_RPI = "xrandr -s 640x480 --output HDMI-1 --scale 1x1"
+# ALLOW_ROM_OVERWRITE = 0
 
 # Interface Settings
 CREDITS = 1
