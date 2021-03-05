@@ -1,32 +1,36 @@
-Prepare DKAFE (source will be installed to /home/pi/dkafe)
-----------------------------------------------------------
-cd /home/pi/dkafe
-wget https:......
-unzip dkafe.zip
-cd dkafe
-
-Set up environment
-------------------
-sudo apt-get install python3-pip
-sudo apt-get install wmctrl xrandr
-pip3 install -r requirements.txt
+Prepare DKAFE 
+source files should be extracted to /home/pi/dkafe
+binary distribution should be extracted to /home/pi/dkafe_bin
+-----------------------------------------------------------
 
 Launch DKAFE from terminal
 --------------------------
-/home/pi/dkafe/rpi_start.sh
+for sources (set up environment first, see below):
+	cd dkafe
+	python3 launch.py
+
+for binary:
+	cd dkafe_bin
+	./rpi_start.sh
+
+
+Set up environment when using sources
+-------------------------------------
+sudo apt-get install python3-pip xrandr
+pip3 install -r requirements.txt
 
 Resolution and frontend display scale (optional)
 ------------------------------------------------
 The default display scale is set in rpi_start.sh file as:
 	xrandr -s 640x480 --output HDMI-1 --scale 1x0.8
 This is based on a rotated display.  Adjust the scale to fit the screen.
-set --scale 1x1 for the system default.
+use --scale 1x1 for the pi system default.
 
 To launch on start (optional)
 -----------------------------
 sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ...and add this line to end of the file:
-	@/home/pi/dkafe/rpi_start.sh
+	@/home/pi/dkafe_bin/rpi_start.sh
 
 Hide Desktop and Panel (optional)
 ---------------------------------
@@ -70,4 +74,8 @@ For boot optimisations refer to:
 
 To playback .inp recordings
 ---------------------------
-./dkwolfrpi4 -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp
+./dkwolfrpi -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp
+
+To convert dos to unix format file - useful if file has been edited on PC
+----------------------------------
+sudo dos2unix <filename>
