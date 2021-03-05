@@ -13,11 +13,11 @@ EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
 ALLOW_ROM_OVERWRITE = 0
 
-## Emulator Settings (for Raspberry PI)
+## Emulator Settings (for Raspberry Pi4)
 # ROM_DIR = /home/pi/dkafe/roms
 # OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"
-# EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
-# EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -record <NAME>_<DATETIME>.inp 
+# EMU_1 = <ROOT>/dkwolf/dkwolfrpi4 <OPTIONS>
+# EMU_2 = <ROOT>/dkwolf/dkwolfrpi4 <OPTIONS> -record <NAME>_<DATETIME>.inp 
 # EMU_EXIT_RPI = "wmctrl -a DKAFE -F ; xrandr -s 640x480 --output HDMI-1 --scale 1x0.8"
 # EMU_ENTER_RPI = "xrandr -s 640x480 --output HDMI-1 --scale 1x1"
 # ALLOW_ROM_OVERWRITE = 0

@@ -13,6 +13,7 @@ def debounce():
 
 
 def is_raspberry():
+    # Check for Raspberry Pi.  Are we running on Arm architecture?
     try:
         if os.uname().machine.startswith("arm"):
             return True

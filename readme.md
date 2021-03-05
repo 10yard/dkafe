@@ -312,7 +312,7 @@ Otherwise, my recommendations are:
 3. HB Mame (Dedicated to hacks and homebrew) from https://www.progettosnaps.net/hbmame/
 
 
-### For Raspberry Pi
+### For Raspberry Pi (Model 4)
 
 1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in *\dkwolf* folder
 
@@ -329,7 +329,7 @@ pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 ```
 
 See build.bat for an example Windows build script making use of venv (virtual environment for Python).
-See rpi_notes.txt for building a Raspberry Pi binary.
+See rpi_notes.txt for building a Raspberry Pi Model 4 binary.
 
 
 ### How to compile DKWolf?

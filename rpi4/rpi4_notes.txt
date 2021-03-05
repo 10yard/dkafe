@@ -65,9 +65,9 @@ git clone https://github.com/pyinstaller/pyinstaller
         cd /home/pi/dkafe
 	./launch
 
-Boot optimisations refer to:
+For boot optimisations refer to:
 	http://himeshp.blogspot.com/2018/08/fast-boot-with-raspberry-pi.html
 
 To playback .inp recordings
 ---------------------------
-./dkwolfrpi -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp
+./dkwolfrpi4 -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp

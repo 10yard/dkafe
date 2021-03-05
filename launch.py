@@ -1,3 +1,4 @@
+# Donkey Kong Arcade Frontend (DKAFE) by Jon Wilson
 import sys
 import dk_system as _s
 import dk_global as _g
