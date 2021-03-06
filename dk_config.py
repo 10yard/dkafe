@@ -69,8 +69,8 @@ HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage d
 ROOT_DIR = os.getcwd()
 
 # RPI specific
-EMU_EXIT_RPI = "wmctrl -a DKAFE -F"  # External command to issue after exiting emulator e.g. return focus to frontend
-EMU_ENTER_RPI = ""                   # External command to issue before starting emulator
+EMU_EXIT_RPI = ""              # External command to issue after exiting emulator e.g. return focus to frontend
+EMU_ENTER_RPI = ""             # External command to issue before starting emulator
 
 # Emulator and rom path defaults
 ROM_DIR = '<ROOT>/roms'

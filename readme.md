@@ -210,8 +210,8 @@ The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` u
 `ALLOW_ROM_OVERWRITE = 0`
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
 
-`EMU_EXIT_RPI = wmctrl -a DKAFE -F`
-Raspberry Pi specific command to issue after exiting emulator e.g. return focus to frontend.  This is an external program call so be sure that the target program is installed i.e. `sudo apt-get install wmctrl`
+`EMU_EXIT_RPI`
+Raspberry Pi specific command to issue after exiting emulator e.g. using `wmctrl` to return focus to the frontend or using 'xrandr' to change the frontend display scale.
 
 `EMU_ENTER_RPI`
 Raspberry Pi specific command to issue before starting an emulator
@@ -329,12 +329,13 @@ pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 ```
 
 See build.bat for an example Windows build script making use of venv (virtual environment for Python).
-See rpi_notes.txt for building a Raspberry Pi Model 4 binary.
+
+See build.sh and rpi4/rpi_notes.txt for building a Raspberry Pi binary.
 
 
 ### How to compile DKWolf?
 
-Refer to readme.txt in the **DKWolf** folder.
+Refer to readme.txt in the */DKWolf* folder.
 
 
 ## Motivations?

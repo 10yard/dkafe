@@ -1,37 +1,60 @@
-# RPI build script
+# Rpi build script
 # Refer to rpi4_notes for info on settng up pyinstaller
+# Dependenices will be needed:
+#   sudo apt-get install python3-pip zip
+#   pip3 install -r requirements.txt
 
-# remove existing build folders
-sudo rm -r dist
-sudo rm -r build
-sudo mkdir dist
+# remove existing binary folders
+sudo rm -r -f /home/pi/dkafe_bin
+sudo rm /home/pi/dkafe_bin_rpi4.zip
+
+# set full permission on sources
+cd /home/pi
+sudo chown -R pi:pi dkafe
+sudo chmod -R 755 dkafe
+
+cd /home/pi/dkafe
+sudo rm -r -f dist
+sudo rm -r -f build
+
+# build the application binary
+sudo pyinstaller launch.py --onefile --clean --noconsole
 
 # copy program resources
-sudo cp -r artwork dist/artwork
-sudo cp -r fonts dist/fonts
-sudo cp -r shell dist/shell
-sudo cp -r sounds dist/sounds
-sudo cp -r interface dist/interface
-sudo cp -r patch dist/patch
-sudo cp romlist.csv dist/romlist.csv
-sudo cp settings.txt dist/settings.txt
-sudo cp readme.md dist/settings.txt
+sudo cp -r artwork dist
+sudo cp -r fonts dist
+sudo cp -r shell dist
+sudo cp -r sounds dist
+sudo cp -r interface dist
+sudo cp -r patch dist
+sudo cp romlist.csv dist
+sudo cp settings.txt dist
+sudo cp readme.md dist
+sudo cp rpi4/rpi_start.sh dist
 
 # create empty roms folder
 sudo mkdir dist/roms
 sudo cp roms/---* dist/roms
 
 # create minimal dkmame folder
-sudo cp dkwolf/dkwolfrpi dist/dkwolfrpi
-sudo cp dkwolf/playback.bat dist/dkwolf/playback.bat
+sudo mkdir dist/dkwolf
+sudo cp dkwolf/dkwolfrpi dist/dkwolf
+sudo cp dkwolf/playback.bat dist/dkwolf
 sudo cp -r dkwolf/*.txt dist/dkwolf
 sudo cp -r dkwolf/*.md dist/dkwolf
-sudo cp -r dkwolf/plugins dist/dkwolf/plugins
-sudo cp -r dkwolf/changes dist/dkwolf/changes
+sudo cp -r dkwolf/plugins dist/dkwolf
+sudo cp -r dkwolf/changes dist/dkwolf
 
-# build the application binary
-sudo pyinstaller launch.py --onefile --clean --noconsole
-sudo cp launch /dist/launch
+# Grant all permissions on dist
+sudo chown -R pi:pi dist
+sudo chmod -R 755 dist
 
-#clean up
+# Move dist to make it accessible from /home/pi/dkafe/bin
+mv dist /home/pi/dkafe_bin
+
+# Clean up
 sudo rm -r build
+
+# package it all up into a ZIP for easy distribution
+cd /home/pi
+zip -r dkafe_bin_rpi4.zip dkafe_bin

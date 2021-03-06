@@ -1,7 +1,27 @@
 Prepare DKAFE 
+
+Manual setup
+------------
 source files should be extracted to /home/pi/dkafe
 binary distribution should be extracted to /home/pi/dkafe_bin
------------------------------------------------------------
+
+
+Automated setup
+---------------
+Automated setup will extract DKAFE files and set up some configuration for you.
+The default DKAFE Frontend will start automatically when your Pi boots.
+
+Get a new SD card and write the Raspberry Pi OS (Desktop) using Raspberry Pi Imager tool.
+Boot it up and complete the "Welcome to Raspberry Pi" setup.
+Copy these files to rpi's boot partition:
+	dkafe_bin_rpi4.zip - the install files (provided in the release
+	dkafe_install.sh   - the install script (provided in the release
+	dkong.zip          - the main rom for Donkey Kong (not provided in the release)
+	dkongjr.zip	   - optional (not provided in the release)
+
+Boot your Raspberry Pi into desktop and run the install script in a terminal:
+	sudo ./dkafe_install.sh
+
 
 Launch DKAFE from terminal
 --------------------------
@@ -16,7 +36,7 @@ for binary:
 
 Set up environment when using sources
 -------------------------------------
-sudo apt-get install python3-pip xrandr
+sudo apt-get install python3-pip
 pip3 install -r requirements.txt
 
 Resolution and frontend display scale (optional)
