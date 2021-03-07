@@ -1,8 +1,5 @@
 # Run this script to start DKAFE
 #
-# For autostart on boot, edit the 
-# Refer to rpi_notes.txt
-#
 # Set screen resolution and launch DKAFE
 xrandr -s 640x480 --output HDMI-1 --scale 1x0.8
 

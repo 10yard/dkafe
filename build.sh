@@ -27,10 +27,11 @@ sudo cp -r shell dist
 sudo cp -r sounds dist
 sudo cp -r interface dist
 sudo cp -r patch dist
+sudo cp -r rpi4 dist
 sudo cp romlist.csv dist
 sudo cp settings.txt dist
 sudo cp readme.md dist
-sudo cp rpi4/rpi_start.sh dist
+sudo cp rpi4/dkafe_start.sh dist
 
 # create empty roms folder
 sudo mkdir dist/roms

@@ -10,10 +10,5 @@ cd /home/pi
 sudo chown -R pi:pi dkafe_bin
 sudo chmod -R 755 dkafe_bin
 
-# 4) Update system/config files
-sudo sh -c "echo '@/home/pi/dkafe_bin/rpi_start.sh' >> /etc/xdg/lxsession/LXDE-pi/autostart"
-sudo sh -c "echo 'xserver-command=X -nocursor' >> /usr/share/lightdm/lightdm.conf.d/01_debian.conf"
-
-# 5) Set default screen resolution and reboot
-xrandr -s 640x480 --output HDMI-1 --scale 1x1
-sudo reboot
+# 4) Run Python scipt for optional setup
+sudo python3 /home/pi/dkafe_bin/rpi4/dkafe_install.py

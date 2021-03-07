@@ -31,7 +31,7 @@ for sources (set up environment first, see below):
 
 for binary:
 	cd dkafe_bin
-	./rpi_start.sh
+	./dkafe_start.sh
 
 
 Set up environment when using sources
@@ -41,7 +41,7 @@ pip3 install -r requirements.txt
 
 Resolution and frontend display scale (optional)
 ------------------------------------------------
-The default display scale is set in rpi_start.sh file as:
+The default display scale is set in dkafe_start.sh file as:
 	xrandr -s 640x480 --output HDMI-1 --scale 1x0.8
 This is based on a rotated display.  Adjust the scale to fit the screen.
 use --scale 1x1 for the pi system default.
@@ -50,7 +50,7 @@ To launch on start (optional)
 -----------------------------
 sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ...and add this line to end of the file:
-	@/home/pi/dkafe_bin/rpi_start.sh
+	@/home/pi/dkafe_bin/dkafe_start.sh
 
 Hide Desktop and Panel (optional)
 ---------------------------------
