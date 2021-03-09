@@ -450,6 +450,8 @@ def build_menus(initial=False):
                               theme=dkafe_theme, onclose=close_menu)
     _g.exitmenu.add_button('Take me back', close_menu)
     _g.exitmenu.add_button('Exit', exit_program)
+    if _s.is_raspberry():
+        _g.exitmenu.add_button('Shutdown', shutdown_rpi)
 
 
 def open_menu(menu):
@@ -471,6 +473,10 @@ def close_menu():
     _g.active = True
     _g.timer.start()
     _g.lastmove = _g.timer.duration
+
+
+def shutdown_rpi():
+    os.system("shutdown -h now")
 
 
 def launch_rom(info):

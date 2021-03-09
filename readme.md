@@ -115,11 +115,13 @@ Not all the hacks feature in the default frontend setup.  I have purposely left 
 
 ## DKWolf
 
-DKAFE comes with my custom lightweight build of WolfMAME which supports only Donkey Kong drivers. 
-This version has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
-It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
+DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers.
+
+This build has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 
 Gameplay recordings are saved to DKAFE's **dkwolf/inp** folder.
+
+It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
 
 ## Display Resolution
@@ -127,11 +129,12 @@ Gameplay recordings are saved to DKAFE's **dkwolf/inp** folder.
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 The scaling works perfectly with a 7:8 aspect vertically rotated screen.
 
+The command line argument **-view "Pixel Aspect (7:8)"** can be used to override MAME's default 4:3 aspect.
+
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
-For Raspberry Pi,  you should use 640x480 resolution and adjust the frontend display scale using xrandr.  Refer to rpi_notes.
+For Raspberry Pi,  you should use 640x480 resolution and adjust the frontend display scale using xrandr.  Refer to *rpi4/rpi4_notes*.
 
-The command line argument **-view "Pixel Aspect (7:8)"** can be used to override MAME's default 4:3 aspect.
 
 
 ## How to set up?
@@ -145,6 +148,7 @@ The romlist.csv contains information about the roms, which slot they should appe
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
 
 The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **/roms** folder.  The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
+
 
 
 ### Frontend Settings
@@ -211,7 +215,7 @@ The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` u
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
 
 `EMU_EXIT_RPI`
-Raspberry Pi specific command to issue after exiting emulator e.g. using `wmctrl` to return focus to the frontend or using 'xrandr' to change the frontend display scale.
+Raspberry Pi specific command to issue after exiting emulator e.g. using `wmctrl` to return focus to the frontend.
 
 `EMU_ENTER_RPI`
 Raspberry Pi specific command to issue before starting an emulator
@@ -301,9 +305,9 @@ Hopefully that all makes sense.  Refer to the example romlist.csv
 
 For the default frontend you should stick with the bundled DKWolf emulator which comes ready to go. 
 
-### For Windows
-
 Otherwise, my recommendations are:
+
+### For Windows
 
 1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.
 

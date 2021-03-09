@@ -1,30 +1,31 @@
-Prepare DKAFE 
-
 Manual setup
 ------------
 source files should be extracted to /home/pi/dkafe
-binary distribution should be extracted to /home/pi/dkafe_bin
+binary distribution should be extracted to /home/pi/dkafe_bin or you can use the automated setup below.
 
 
-Automated setup
----------------
+Automated setup of binary distribution
+--------------------------------------
 Automated setup will extract DKAFE files and set up some configuration for you.
-The default DKAFE Frontend will start automatically when your Pi boots.
-
 Get a new SD card and write the Raspberry Pi OS (Desktop) using Raspberry Pi Imager tool.
+Copy these files to boot partition of sdcard:
+	dkafe_bin_rpi4.zip        - the install files (provided in the release)
+	dkafe_install.sh          - the install script (provided in the release)
+	dkong.zip and dkongjr.zip - roms (not provided)
 Boot it up and complete the "Welcome to Raspberry Pi" setup.
-Copy these files to rpi's boot partition:
-	dkafe_bin_rpi4.zip - the install files (provided in the release
-	dkafe_install.sh   - the install script (provided in the release
-	dkong.zip          - the main rom for Donkey Kong (not provided in the release)
-	dkongjr.zip	   - optional (not provided in the release)
+Run the install script in a terminal  (Ctrl-Alt-T):
+	sudo /boot/dkafe_install.sh
 
-Boot your Raspberry Pi into desktop and run the install script in a terminal:
-	sudo ./dkafe_install.sh
+You will be asked the following Y/N questions. Y is recommended.
+	1) Launch DKAFE on boot ?
+	2) Hide the Pi Taskbar ?
+	3) Hide the Pi Desktop ?
+	4) Hide the Pi Mouse Cursor ?
+	5) Rotate the Display ?
+	6) Reboot ?
 
-
-Launch DKAFE from terminal
---------------------------
+Launch DKAFE from terminal manually
+-----------------------------------
 for sources (set up environment first, see below):
 	cd dkafe
 	python3 launch.py
@@ -39,32 +40,13 @@ Set up environment when using sources
 sudo apt-get install python3-pip
 pip3 install -r requirements.txt
 
-Resolution and frontend display scale (optional)
-------------------------------------------------
-The default display scale is set in dkafe_start.sh file as:
-	xrandr -s 640x480 --output HDMI-1 --scale 1x0.8
-This is based on a rotated display.  Adjust the scale to fit the screen.
-use --scale 1x1 for the pi system default.
 
-To launch on start (optional)
------------------------------
-sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
-...and add this line to end of the file:
-	@/home/pi/dkafe_bin/dkafe_start.sh
+Resolution and frontend display scale
+-------------------------------------
+The resolution and display scale are set in dkafe_start.sh file.
+e.g. for 7:8 aspect ratio (0.875) with a rotated display use the following:
+	xrandr --output HDMI-1 --scale 0.875 --rotate left
 
-Hide Desktop and Panel (optional)
----------------------------------
-sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
-...and remove or comment out this line with #:
-@lxpanel --profile LXDE-pi
-
-In Desktop Preferences, set the desktop background to black, remove the Wastebasket and Mounted Disk icons
-
-Hide the mouse pointer (optional)
----------------------------------
-sudo nano /usr/share/lightdm/lightdm.conf.d/01_debian.conf
-(then add following line to end of file)
-	xserver-command=X -nocursor
 
 Build DKAFE (Optional - if you prefer not to run as Python script)
 ------------------------------------------------------------------
@@ -89,13 +71,8 @@ git clone https://github.com/pyinstaller/pyinstaller
         cd /home/pi/dkafe
 	./launch
 
-For boot optimisations refer to:
-	http://himeshp.blogspot.com/2018/08/fast-boot-with-raspberry-pi.html
 
 To playback .inp recordings
 ---------------------------
 ./dkwolfrpi -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp
 
-To convert dos to unix format file - useful if file has been edited on PC
-----------------------------------
-sudo dos2unix <filename>

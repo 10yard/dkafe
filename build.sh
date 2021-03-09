@@ -29,8 +29,10 @@ sudo cp -r interface dist
 sudo cp -r patch dist
 sudo cp -r rpi4 dist
 sudo cp romlist.csv dist
-sudo cp settings.txt dist
 sudo cp readme.md dist
+
+# copy rpi4 specific settings
+sudo cp rpi4/settings.txt dist
 sudo cp rpi4/dkafe_start.sh dist
 
 # create empty roms folder
