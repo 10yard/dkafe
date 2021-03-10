@@ -1,12 +1,20 @@
 -- DKAFE functions
 
+-- Optimise access to globals used in functions
+local string_sub = string.sub
+local string_len = string.len
+local string_format = string.format
+local math_fmod = math.fmod
+local math_modf = math.modf
+local math_floor = math.floor
+
 function get_loaded()
 	return emu["loaded"]
 end   
 
 function string:split(sep)
 	local sep, fields = sep or ":", {}
-	local pattern = string.format("([^%s]+)", sep)
+	local pattern = string_format("([^%s]+)", sep)
 	self:gsub(pattern, function(c) fields[#fields+1] = c end)
 	return fields
 end
@@ -15,10 +23,10 @@ function number_to_binary(x)
 	local ret = ""
 	while x~=1 and x~=0 do
 		ret = tostring(x%2) .. ret
-		x=math.modf(x/2)
+		x=math_modf(x/2)
 	end
 	ret = tostring(x)..ret
-	return string.format("%08d", ret)
+	return string_format("%08d", ret)
 end	  
 	  
 function get_formatted_data(var_name)
@@ -34,9 +42,9 @@ end
 function toggle(sync)
   -- Sync timing with the flashing 1UP (default) or the countdown timer
 	local sync = sync or "1UP"
-	if sync == "1UP" and math.fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
+	if sync == "1UP" and math_fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
 		return 1
-  elseif sync == "TIMER" and math.fmod(mem:read_i8(0xc638c), 2) == 0 then
+  elseif sync == "TIMER" and math_fmod(mem:read_i8(0xc638c), 2) == 0 then
 		return 1
   else
 	  return 0
@@ -62,14 +70,14 @@ end
 
 function set_score(score)
 	-- update score on screen
-	local _padded_score = string.format("%06d", score)
+	local _padded_score = string_format("%06d", score)
 	local _offset = 0x00
   if emu.romname() == "dkongx11" or emu.romname() == "dkongx" or emu.romname() == "dkongf" then
     _offset = 0x20
   end
   write_message(0xc7781 - _offset, _padded_score) -- update screen as it otherwise may not be updated
 	-- update score in ram
-	local _s1, _s2, _s3 = string.sub(_padded_score, 1, 2), string.sub(_padded_score, 3, 4), string.sub(_padded_score, 5, 6)
+	local _s1, _s2, _s3 = string_sub(_padded_score, 1, 2), string_sub(_padded_score, 3, 4), string_sub(_padded_score, 5, 6)
 	mem:write_i8(0xc60b4, tonumber(_s1, 16))
 	mem:write_i8(0xc60b3, tonumber(_s2, 16))
 	mem:write_i8(0xc60b2, tonumber(_s3, 16))
@@ -116,14 +124,14 @@ function block_text(text, x, y, color1, color2)
 	-- Write large block characters
 	local _x, _y, width, blocks = x, y, 0, ""
   local _dkblock = dkblock
-	for i=1, string.len(text) do 
-		blocks = _dkblock[string.sub(text, i, i)]
-		width = math.floor(string.len(blocks) / 5)
-		for b=1, string.len(blocks) do
-			if string.sub(blocks, b, b) == "#" then
+	for i=1, string_len(text) do 
+		blocks = _dkblock[string_sub(text, i, i)]
+		width = math_floor(string_len(blocks) / 5)
+		for b=1, string_len(blocks) do
+			if string_sub(blocks, b, b) == "#" then
 				draw_block(_x, _y, color1, color2)
 			end
-			if math.fmod(b, width) == 0 then
+			if math_fmod(b, width) == 0 then
 				_y = _y - (width - 1) * 8 
 				_x = _x - 8
 			else
@@ -138,8 +146,8 @@ end
 function write_message(start_address, text)
 	-- write characters of message to DK's video ram
   local _dkchars = dkchars
-	for key=1, string.len(text) do
-		mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string.sub(text, key, key)])
+	for key=1, string_len(text) do
+		mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
 	end
 end
 
@@ -175,7 +183,7 @@ function fast_skip_intro()
   if data_allow_skip_intro == "1" then
       if mode1 == 3 then
         if mode2 == 7 then
-          if string.sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
+          if string_sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
             player_skipped_intro = 1
             max_frameskip(1)
           end
@@ -205,7 +213,7 @@ function display_awards()
       if dkclimb < 0 then
         dkclimb = dkclimb + 256
       end
-      dkclimb = math.floor((dkclimb + 51) / 8)
+      dkclimb = math_floor((dkclimb + 51) / 8)
     end
 		if dkclimb >= 10 then
 			if dkclimb <= 17 then
@@ -242,7 +250,7 @@ function display_awards()
 	
 	if data_show_hud == "1" or data_show_hud == "2" or data_show_hud == "3" then
 		-- Toggle the HUD using P2 Start button
-		if data_autostart == "0" and string.sub(number_to_binary(mem:read_i8(0xc7d00)), 5, 5) == "1" then
+		if data_autostart == "0" and string_sub(number_to_binary(mem:read_i8(0xc7d00)), 5, 5) == "1" then
 			if os.clock() - data_last_toggle > 0.25 then
 				data_last_toggle = os.clock()
 				data_toggle_hud = data_toggle_hud + 1

@@ -47,11 +47,18 @@ def yesno(question):
 
 
 def main():
-    print('DKAFE: Raspberry Pi Setup Options')
-    print('---------------------------------')
-    print('')
-    print('It is recommended to answer "y" to the following questions.')
-    print('')
+    print("""
+----------------------------------
+ 
+ ###    #  #    ##    ####   ####
+ #  #   # #    #  #   #      #
+ #  #   ##     ####   ###    ###
+ #  #   # #    #  #   #      #
+ ###    #  #   #  #   #      ####
+
+-------- INSTALL OPTIONS ---------
+
+""")
 
     # 1) Launch DKAFE on boot
     # and

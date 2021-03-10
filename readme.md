@@ -9,13 +9,13 @@ A multiplatform arcade game launcher based on Donkey Kong made for arcade cabine
 
 The frontend mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which game to launch.
 
-The default setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks made specifically for the frontend. 
+The default setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that I made specifically for the frontend. 
 
-The built-in reward system will encourage you to play machines by awarding coins when you play well.  Hopefully encouraging you to unlock them and get good at them!
+The built-in reward system will encourage you to play machines by awarding coins when you play well.  Earning coins will allow you to unlock machines.
 
-Your score targets are made visible during gameplay, and you are informed when you have earned a prize - so you know to expect a payout of coins.  Coins are awarded after beating target scores for 3rd, 2nd and 1st prize.
+Your score targets are made visible during gameplay, and you are informed when you have earned a prize - so you know to expect a payout of coins.  
 
-Awarded coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
+Coins are awarded after beating target scores (for 3rd, 2nd and 1st prize).  Coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
 
 
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
@@ -23,13 +23,13 @@ Awarded coins will drop from the top of the screen (after returning to the front
 
 Pauline will provide game information, score targets and unlock requirements as you walk towards an arcade machine.  
 
-You begin with just 100 coins, so you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
+You begin with just 200 coins, so you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
 
 If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all the machines though.
 
 The frontend can be easily configured to launch other emulators and roms.
 
-> There will be folks who want to have 50,000 games on their arcade machines.  This frontend is not for them,  it was made for simplicity and to showcase a small selection of games and encourage them to be played.  
+> There will be folks who want to have 10,000 games on their arcade machines.  This frontend is not for them.  It was made for simplicity and to showcase a small selection of games and encourage them to be played.  
 
 
 ### This project includes:
@@ -53,7 +53,7 @@ You will lose penalty points instead of lives so don't make mistakes unless you 
 ## Automatically generated roms
 
 DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work,  it is not provided with the software.
-All patch files are included in the **/patch folder.  Credit is given to the original authors below.
+All patch files are included in the **/patch folder**.  Credit is given to the original authors below.
 
 
 ![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/gameinfo.png)
@@ -119,7 +119,7 @@ DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it suppo
 
 This build has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
 
-Gameplay recordings are saved to DKAFE's **dkwolf/inp** folder.
+Gameplay recordings are saved to DKAFE's **/dkwolf/inp** folder.
 
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
@@ -287,11 +287,11 @@ A default romlist.csv is provided for use with the automatically generated roms 
 
 The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
-If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See ALLOW_ROM_OVERWRITE option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. **/original**) to prevent it from being overwritten.
+If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See ALLOW_ROM_OVERWRITE option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. **/roms/original**) to prevent it from being overwritten.
 
 All roms in the list should be given an emulator number (as defined in settings.txt), a slot position (between 1 and 46) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
 
-The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **shell** subfolder of DKAFE.  The emulator number can be left blank.
+The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **/shell** subfolder.  The emulator number can be left blank.
 
 An accompanying icon in .png format should be placed into the **artwork/icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
 

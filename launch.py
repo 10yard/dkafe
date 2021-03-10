@@ -49,7 +49,7 @@ def load_frontend_state():
     try:
         _g.score, _g.timer_adjust = pickle.load(open("save.p", "rb"))
     except FileNotFoundError:
-        _g.score, _g.timer_adjust = PLAY_COST, 0
+        _g.score, _g.timer_adjust = SCORE_START, 0
 
 
 def check_patches_available():

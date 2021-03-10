@@ -16,9 +16,9 @@ EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
 
 ## Emulator Settings for Raspberry Pi4
-# OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"
-# EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
-# EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -record <NAME>_<DATETIME>.inp 
+#OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"
+#EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
+#EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -record <NAME>_<DATETIME>.inp 
 
 # Interface Settings
 CREDITS = 1

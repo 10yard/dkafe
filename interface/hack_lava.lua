@@ -4,21 +4,21 @@
 -- Jumpman must keep his cool and move quickly to avoid the rising Lava.
 
 function draw_lava()
-	local level = mem:read_i8(0xc6229)
-  local difficulty = math.floor(1.2 * (22 - level))
-	if stage == 4 then
-    -- rivets needs more time
-		difficulty = math.floor(1.5 * (22 - level))
-	elseif stage == 3 then
-    -- elevators needs less time
-		difficulty = math.floor(0.6 * (22 - level))
-	end
-	
 	if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then
-    -- reset lava level at start of game or when in attract mode
+    -- recalculate difficulty at start of level or when in attract mode
+    local level = mem:read_i8(0xc6229)
+    lava_difficulty = math.floor(1.2 * (22 - level))
+    if stage == 4 then
+      -- rivets needs more time
+      lava_difficulty = math.floor(1.5 * (22 - level))
+    elseif stage == 3 then
+      -- elevators needs less time
+      lava_difficulty = math.floor(0.6 * (22 - level))
+    end    
+    -- reset lava level
 		lava_y = -7
     -- remember default music
-		music = mem:read_i8(0xc6089)		
+		music = mem:read_i8(0xc6089)
 	elseif mode2 == 21 and lava_y > 15 then
     -- Reduce lava level on high score entry screens to avoid obstruction.
 		lava_y = 15
@@ -66,8 +66,8 @@ function draw_lava()
 			if lava_y > jumpman_y + 1 then
 				-- lava has engulfed Jumpman. Set status to dead
 				mem:write_i8(0xc6200, 0)
-			elseif math.fmod((mem:read_i8(0xc601A)), difficulty) == 0 then
-				-- Game is active.  Lava rises periodically based on the difficulty
+			elseif math.fmod((mem:read_i8(0xc601A)), lava_difficulty) == 0 then
+				-- Game is active.  Lava rises periodically based on the lava_difficulty
 				if mem:read_i8(0xc6350) == 0 then
 					-- Lava shouldn't rise when an item is being smashed by the hammer
 					lava_y = lava_y + 1
@@ -76,14 +76,19 @@ function draw_lava()
 		end
 						
 		-- add dancing flames above lava
+    local math_fmod = math.fmod
+    local math_random = math.random
 		for i=0, 224 do		
-			if math.fmod(i, 18) == 0 then
-        local adjust_y = math.random(-3, 3)
+			if math_fmod(i, 18) == 0 then
+        local adjust_y = math_random(-3, 3)
 				local flame_y = lava_y + adjust_y
-				local flame_color = BLACK
+				local flame_color = ORANGE
 				if flame_y > 0 then
-					if adjust_y > 0  then flame_color = ORANGE end
-					if adjust_y < 0  then flame_color = RED    end
+					if adjust_y > 0  then 
+            flame_color = ORANGE
+					else
+            flame_color = RED
+          end
 					screen:draw_text(flame_y, i, "~", flame_color)
 				end
 			end
@@ -95,7 +100,7 @@ end
 
 if loaded == 3 then
 	if lava_hack_started ~= 1 then
-		--register the frame drawing callback
+		--register the frame drawing callbackz
 		emu.register_frame_done(draw_lava, "frame")
 	end
 	lava_hack_started = 1
