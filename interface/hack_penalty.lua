@@ -1,11 +1,14 @@
 -- DKAFE Penalty Hack by Jon Wilson
------------------------------------
+------------------------------------------------------------------------
 -- Lose a set number of penalty points instead of lives. 
--- Penalty points are displayed top left and will flash when there are not enough points to survive.
---
+-- Penalty points are displayed top left and will flash when there are 
+-- not enough points to survive.
+------------------------------------------------------------------------
 -- Drives the "DK Last Man Standing" hack:
--- You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.
--- Press COIN button to stop playing and register your points - unless you want to go for a kill screen.
+-- You will lose penalty points instead of lives so don't make mistakes 
+-- unless you have earned enough points to survive.
+-- Press COIN button to stop playing and register your points.
+------------------------------------------------------------------------
 
 function dkonglastman_overlay()
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
@@ -18,8 +21,9 @@ function dkonglastman_overlay()
 	end
 end
 
--- PROGRAM START
-
+------------------------------------------------------------------------
+-- Program start
+------------------------------------------------------------------------
 if loaded == 3 and data_subfolder == "dkonglastman" then
 	-- rom specific hack for DK Last Man Standing
 	if lastman_hack_started ~= 1 then	
@@ -35,13 +39,15 @@ end
 if mem:read_i8(0xc600F) == 0 then  -- 0 is a 1 player game
   if mode1 == 2 then
     -- Player finish flag is reset before game starts
-    -- Player presses COIN to finish game and record their points - it's the only way to register points without reaching a killscreen
+    -- Player presses COIN to finish game and record their points.
+    -- It's the only way to register points without reaching a killscreen!
     player_finish = 0
   end
   
-  penalty_points = penalty_dips[string.sub(number_to_binary(mem:read_i8(0xc7d80)), 7, 8)]  -- number of lives dip determines the penalty	
+  -- number of lives dip switch determines the penalty	
+  penalty_points = penalty_dips[string.sub(number_to_binary(mem:read_i8(0xc7d80)), 7, 8)]
+  
 	jumpman_status = mem:read_i8(0xc6200)         -- 1 = alive, 0 = dead
-
 	--Force remaining lives to 2 (so we can lose lives without ending the game if necessary)
 	mem:write_i8(0xc6020, 2)	
 
@@ -50,8 +56,8 @@ if mem:read_i8(0xc600F) == 0 then  -- 0 is a 1 player game
 
 	-- Check if life was lost and sufficient points for penalty are available
 	if mode1 == 3 and mode2 >= 0xc and jumpman_status == 0 and player_finish ~= 1 then	
-		-- deduct penalty from score
 		if score >= penalty_points then
+   		-- deduct penalty from score
 			set_score(score - penalty_points)
 			
       --set jumpman status to alive instead of dead
@@ -60,9 +66,9 @@ if mem:read_i8(0xc600F) == 0 then  -- 0 is a 1 player game
 			--set remaining lives to 2
 			mem:write_i8(0xc6228, 2)			
 		else
-			set_score(0)
 			--Force Game over
-			--set remaining lives to 1
+			--Set remaining lives to 1
+			set_score(0)
 			mem:write_i8(0xc6228, 1)			
 		end
 	end

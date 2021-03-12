@@ -17,12 +17,17 @@ Run the install script in a terminal  (Ctrl-Alt-T):
 	sudo /boot/dkafe_install.sh
 
 You will be asked the following Y/N questions. Y is recommended.
-	1) Launch DKAFE on boot ?
-	2) Hide the Pi Taskbar ?
-	3) Hide the Pi Desktop ?
-	4) Hide the Pi Mouse Cursor ?
-	5) Rotate the Display ?
-	6) Reboot ?
+  1) Launch DKAFE on boot?
+  2) Hide startup messages?
+  3) Hide the Pi taskbar?
+  4) Hide the Pi desktop?
+  5) Hide the Pi mouse cursor?
+  6) Use headphone jack for audio?
+  7) Rotate the display?
+  8) Disable non-essential Services?
+  9) Disable networking services (WiFi, SSH)?
+ 10) Update system?
+ 11) Reboot?
 
 Launch DKAFE from terminal manually
 -----------------------------------

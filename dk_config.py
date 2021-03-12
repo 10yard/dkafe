@@ -52,7 +52,7 @@ AWARDS = [500, 1000, 2500]     # Coins awarded for reaching score target for 1st
 PLAY_COST = 100                # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150                # How many coins Jumpman drops when time runs out
 SCORE_START = 200              # How many coins Jumpman starts with
-TIMER_START = 5000             # Timer starts countdown from. Integer
+TIMER_START = 8000             # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]     # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer

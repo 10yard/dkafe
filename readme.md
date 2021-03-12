@@ -7,13 +7,11 @@ A multiplatform arcade game launcher based on Donkey Kong made for arcade cabine
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-The frontend mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which game to launch.
+The frontend mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.
 
-The default setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that I made specifically for the frontend. 
+The default setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically for the frontend. 
 
-The built-in reward system will encourage you to play machines by awarding coins when you play well.  Earning coins will allow you to unlock machines.
-
-Your score targets are made visible during gameplay, and you are informed when you have earned a prize - so you know to expect a payout of coins.  
+The built-in reward system will payout coins when you play well.  Earning coins will allow you to unlock and play more machines.
 
 Coins are awarded after beating target scores (for 3rd, 2nd and 1st prize).  Coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
 
@@ -27,7 +25,7 @@ You begin with just 200 coins, so you must collect coins which are thrown by Don
 
 If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all the machines though.
 
-The frontend can be easily configured to launch other emulators and roms.
+The frontend can be configured to launch other emulators and roms.
 
 > There will be folks who want to have 10,000 games on their arcade machines.  This frontend is not for them.  It was made for simplicity and to showcase a small selection of games and encourage them to be played.  
 
@@ -56,10 +54,7 @@ DKAFE comes with a default frontend built from various patches of the original *
 All patch files are included in the **/patch folder**.  Credit is given to the original authors below.
 
 
-![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/gameinfo.png)
-
-
-Not all the hacks feature in the default frontend setup.  I have purposely left out some crumbier ones e.g. dkong2m, dkongnad.
+![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/patches.png)
 
 
 #### By Jon Wilson (me)

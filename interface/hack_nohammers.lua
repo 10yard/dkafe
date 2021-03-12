@@ -1,10 +1,10 @@
 -- DKAFE No hammers hack by Jon Wilson
---------------------------------------
+------------------------------------------------------------------------
 
--- clear all hammers
+-- Clear all hammers
+------------------------------------------------------------------------
 if mem:read_i8(0xc6A18) ~= 0 then
-	mem:write_i8(0xc6A18, 0)    -- top
-	mem:write_i8(0xc6680, 0)
-	mem:write_i8(0xc6A1C, 0)    -- bottom
-	mem:write_i8(0xc6690, 0)	
+  for k, v in pairs({0xc6A18, 0xc6680, 0xc6A1C, 0xc6690}) do
+    mem:write_i8(v, 0)
+  end
 end

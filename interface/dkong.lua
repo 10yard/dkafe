@@ -1,16 +1,20 @@
 -- DKAFE Interface for Donkey Kong by Jon Wilson
-----------------------------------------------------
+------------------------------------------------------------------------
 -- Set target score, registered player names/scores.
 -- Dump highscore to file when finished.
 -- Enable some hacks (optional).
 -- Show prizes and progress in the game (optional).
+------------------------------------------------------------------------
 
 data_includes_folder = os.getenv("DATA_INCLUDES")
 package.path = package.path .. ";" .. data_includes_folder .. "/?.lua;"
 require "functions"
+require "graphics"
 require "globals"
 
---register function for each frame
+------------------------------------------------------------------------
+-- Register function for each frame
+------------------------------------------------------------------------
 emu.register_frame(function()
 	_, loaded = pcall(get_loaded)
   
@@ -80,7 +84,7 @@ emu.register_frame(function()
     
     -- Fast skip through the DK climb scene when jump button is pressed (optional)
     fast_skip_intro()
-				
+				    
 		-- Show award targets and progress during gameplay (optional)
 		display_awards()
 
@@ -99,7 +103,9 @@ emu.register_frame(function()
 	end
 end)
 
+------------------------------------------------------------------------
 -- Register callback function on exit
+------------------------------------------------------------------------
 emu.register_stop(function()
   record_in_compete_file()
 end)

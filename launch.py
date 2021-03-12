@@ -16,7 +16,7 @@ def exit_program(confirm=False):
             open_menu(_g.exitmenu)
         else:
             # Save frontend state and exit
-            _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 1
+            _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 4
             pickle.dump([_g.score, _g.timer_adjust], open("save.p", "wb"))
             pygame.quit()
             sys.exit()

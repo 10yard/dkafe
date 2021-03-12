@@ -1,12 +1,15 @@
 -- DKAFE Teleport Hack by Jon Wilson
+------------------------------------------------------------------------
 -- Perform hack to teleport between hammers
---
+------------------------------------------------------------------------
 -- Drives additional features of the "DK Who and the Daleks" hack:
--- Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant Rose from the clutches of Donkey Kong.
--- The Daleks have destroyed her rocket ship and now you are her only hope for escape.
--- Donkey Kong's legion of Daleks aim to exterminate Jumpman (aka The Doctor) as he climbs the galactic space station.  
--- The Doctor can use the Tardis to teleport through spacetime to assist his travel through the stages.
--- Bonus items to be collected are K9, Sonic Screwdriver and The Master's Watch.
+-- Jumpman has regenerated as the next Dr Who.  Help him rescue his 
+-- assistant Rose from the clutches of Donkey Kong.
+-- The Daleks have destroyed her rocket ship and you are now her only 
+-- hope for escape.
+-- The Doctor can use the Tardis to teleport through spacetime to assist 
+-- his travel through the stages.
+------------------------------------------------------------------------
 
 function update_teleport_ram(update_x, update_y, update_ly)
   -- force 0 to disable the hammer
@@ -60,9 +63,10 @@ end
 
 function draw_stars()
 	-- draw a starfield background
+  local _starfield = starfield
   local _ypos, _xpos = 0, 0
 	for key=1, number_of_stars, 2 do
-		_ypos, _xpos = starfield[key], starfield[key+1]
+		_ypos, _xpos = _starfield[key], _starfield[key+1]
 		screen:draw_line(_ypos, _xpos, _ypos, _xpos, 0xcbbffffff, 0)
 	end
 end
@@ -216,8 +220,9 @@ function dkongwho_overlay()
 	end
 end
 
--- PROGRAM START --
-
+------------------------------------------------------------------------
+-- Program start
+------------------------------------------------------------------------
 if loaded == 3 and data_subfolder == "dkongwho" then
 	-- rom specific hack for DK Who
 	if teleport_hack_started ~= 1 then	

@@ -1,8 +1,8 @@
--- DKAFE functions
+-- DKAFE functions by Jon Wilson
+------------------------------------------------------------------------
 
--- Optimise access to globals used in functions
+-- Optimise access to globals used in these functions
 local string_sub = string.sub
-local string_len = string.len
 local string_format = string.format
 local math_fmod = math.fmod
 local math_modf = math.modf
@@ -11,13 +11,6 @@ local math_floor = math.floor
 function get_loaded()
 	return emu["loaded"]
 end   
-
-function string:split(sep)
-	local sep, fields = sep or ":", {}
-	local pattern = string_format("([^%s]+)", sep)
-	self:gsub(pattern, function(c) fields[#fields+1] = c end)
-	return fields
-end
       
 function number_to_binary(x)
 	local ret = ""
@@ -29,6 +22,13 @@ function number_to_binary(x)
 	return string_format("%08d", ret)
 end	  
 	  
+function string:split(sep)
+	local sep, fields = sep or ":", {}
+	local pattern = string_format("([^%s]+)", sep)
+	self:gsub(pattern, function(c) fields[#fields+1] = c end)
+	return fields
+end
+
 function get_formatted_data(var_name)
 	-- read environment variable and convert comma separated values to a table
 	local content = os.getenv(var_name)
@@ -42,7 +42,7 @@ end
 function toggle(sync)
   -- Sync timing with the flashing 1UP (default) or the countdown timer
 	local sync = sync or "1UP"
-	if sync == "1UP" and math_fmod(mem:read_i8(0xc601a) + 128, 32) <= 16 then	
+	if sync == "1UP" and math_fmod(mem:read_u8(0xc601a), 32) <= 16 then	
 		return 1
   elseif sync == "TIMER" and math_fmod(mem:read_i8(0xc638c), 2) == 0 then
 		return 1
@@ -110,45 +110,6 @@ function get_jumpman_y()
 	end
 	-- allow lava to rise to sprite height + 1
 	return 8 - _y
-end
-
-function draw_block(x, y, color1, color2)
-	screen:draw_box(x, y, x+8, y+8, color1, 0)
-	screen:draw_box(x, y, x+1, y+8, color2, 0)
-	screen:draw_box(x+6, y, x+7, y+8, color2, 0)
-	screen:draw_box(x+2, y+2, x+6, y+6, 0xcff000000, 0)
-	screen:draw_box(x+3, y+1, x+5, y+7, 0xcff000000, 0)
-end
-
-function block_text(text, x, y, color1, color2)
-	-- Write large block characters
-	local _x, _y, width, blocks = x, y, 0, ""
-  local _dkblock = dkblock
-	for i=1, string_len(text) do 
-		blocks = _dkblock[string_sub(text, i, i)]
-		width = math_floor(string_len(blocks) / 5)
-		for b=1, string_len(blocks) do
-			if string_sub(blocks, b, b) == "#" then
-				draw_block(_x, _y, color1, color2)
-			end
-			if math_fmod(b, width) == 0 then
-				_y = _y - (width - 1) * 8 
-				_x = _x - 8
-			else
-				_y = _y + 8
-			end
-		end
-		_x = x
-		_y = _y + (width * 8) + 8
-	end
-end
-
-function write_message(start_address, text)
-	-- write characters of message to DK's video ram
-  local _dkchars = dkchars
-	for key=1, string_len(text) do
-		mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
-	end
 end
 
 function clear_sounds()
