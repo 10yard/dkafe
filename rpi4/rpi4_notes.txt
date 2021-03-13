@@ -6,7 +6,7 @@ binary distribution should be extracted to /home/pi/dkafe_bin or you can use the
 
 Automated setup of binary distribution
 --------------------------------------
-Automated setup will extract DKAFE files and set up some configuration for you.
+Automated setup will extract DKAFE files and do some configuration for you.
 Get a new SD card and write the Raspberry Pi OS (Desktop) using Raspberry Pi Imager tool.
 Copy these files to boot partition of sdcard:
 	dkafe_bin_rpi4.zip        - the install files (provided in the release)
@@ -17,17 +17,18 @@ Run the install script in a terminal  (Ctrl-Alt-T):
 	sudo /boot/dkafe_install.sh
 
 You will be asked the following Y/N questions. Y is recommended.
-  1) Launch DKAFE on boot?
-  2) Hide startup messages?
-  3) Hide the Pi taskbar?
-  4) Hide the Pi desktop?
-  5) Hide the Pi mouse cursor?
-  6) Use headphone jack for audio?
-  7) Rotate the display?
-  8) Disable non-essential Services?
-  9) Disable networking services (WiFi, SSH)?
+ 1) Rotate the display?
+ 2) Launch DKAFE on boot?
+ 3) Hide startup messages?
+ 4) Hide the Pi taskbar?
+ 5) Hide the Pi desktop?
+ 6) Hide the Pi mouse cursor?
+ 7) Use headphone jack for audio?
+ 8) Disable non-essential Services?
+ 9) Disable networking services (WiFi, SSH)?
  10) Update system?
  11) Reboot?
+
 
 Launch DKAFE from terminal manually
 -----------------------------------

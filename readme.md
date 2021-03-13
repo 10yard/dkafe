@@ -119,6 +119,49 @@ Gameplay recordings are saved to DKAFE's **/dkwolf/inp** folder.
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
 
 
+## How to install
+
+Steps to install the default frontend are as follows.  Also refer to *How to set up*.
+
+### Windows
+
+1. Download the latest Windows binary zip and extract content to a folder
+
+2. Run "launch.exe".
+
+
+### Raspberry Pi
+
+The automated setup will extract DKAFE files and do some configuration for you.
+
+1. Write the Raspberry Pi OS Desktop image to a new SD card using the Raspberry Pi Imager tool.
+
+2. Copy the Raspberry Pi4 binary zip (dkafe_bin_rpi4.zip) and the install script (dkafe_install.sh) to the */boot* partition of the SD card.
+
+3. Boot the Pi with SD card inserted and complete the "Welcome to Raspberry Pi" setup.  You can skip options for now.
+
+4. Run the install script in a terminal by typing `/boot/dkafe_install.sh`
+
+5. Answer list of questions,  responding *Y* to *Launch DKAFE on boot?*.
+
+6. Reboot the Pi.
+
+
+## How to set up?
+
+The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **/roms** folder.  
+The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.
+
+The application requires settings.txt and romlist.csv to be present in the installation folder along with other resources.  Defaults are provided.
+ 
+The settings.txt contains the emulator, rom path, controls and other configuration.  See *Frontend Settings" section below.
+
+The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.
+
+The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
+
+
+
 ## Display Resolution
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
@@ -129,20 +172,6 @@ The command line argument **-view "Pixel Aspect (7:8)"** can be used to override
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
 For Raspberry Pi,  you should use 640x480 resolution and adjust the frontend display scale using xrandr.  Refer to *rpi4/rpi4_notes*.
-
-
-
-## How to set up?
-
-The application requires settings.txt and romlist.csv to be present in the installation folder along with other resources.  Defaults are provided.
- 
-The settings.txt contains the emulator, rom path, controls and other configuration.
-
-The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.
-
-The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
-
-The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **/roms** folder.  The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.  Refer to the "Automatically generated roms" section above. 
 
 
 
@@ -350,7 +379,7 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
 
  - Extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Add Crazy Kong and Donkey Kong 3 interface support to the default frontend.
- - Provide 60-in-1 as a pre-configured frontend option - without the roms.
+ - Provide 60-in-1 option as a pre-configured frontend - without the roms.
  - Allow some options to be easily changed via the frontend e.g. freeplay (on/off), unlock mode (on/off), autostart (on/off).
  
  

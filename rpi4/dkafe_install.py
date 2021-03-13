@@ -208,8 +208,8 @@ def main():
         changes_made = True
         print("Updating, please wait...")
         os.system("sudo apt update -qq")
-        print("Upgrading, please wait, it may take a while ...")
-        os.system("sudo apt upgrade -y -qq")
+        # print("Upgrading, please wait, it may take a while ...")
+        # os.system("sudo apt upgrade -y -qq")
 
     # 11) Reboot
     answer = yesno("Reboot system")
