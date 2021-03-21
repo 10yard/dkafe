@@ -1,4 +1,5 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Unlock,3rd Prize,2nd Prize,1st Prize
+dkong,,DK Record.,DK Recording (.inp),1,2,0,,,
 dkong,,Donkey Kong,,3,1,0,25000,50000,100000
 dkongjr,,DK Junior,,5,1,1000,15000,25000,50000
 dkong,dkonglava,DK Lava!,DK Lava Panic!,8,1,2000,25000,40000,80000
@@ -17,16 +18,15 @@ dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,26,1,26000,25000,40000,80000
 dkong,dkongrnd,DK Random,DK Randomized,27,1,28000,25000,40000,80000
 dkongf,dkongrdemo,DK Remix,RK Remix Demo,29,1,30000,25000,40000,80000
 dkong,dkongpac,DK Pac-Man,,31,1,32000,25000,45000,90000
-dkong,dkongce,DK Champ Ed.,DK Championship,46,1,34000,30000,50000,100000
+dkong,dkongtj,DK Jungle,DK Twisted Jungle,33,1,50000,50000,100000,200000
 dkong,dkongrainbow,DK Rainbow,,34,1,36000,30000,50000,100000
 dkonghrd,dkonghrd,DK Hard,,35,1,38000,20000,30000,50000
 dkong,dkongl05,DK SkipStart,DK Skip Start,37,1,40000,25000,40000,80000
 dkong,dkongfr,DK FreeRun,DK Freerun Edition,40,1,42000,200000,500000,750000
-dkong,dkongcb,DK CrazyBarrels,DK Crazy Barrels,42,1,44000,10000,15000,30000
+dkong,dkongcb,DK CrazyBarrels,DK Crazy Barrels,42,1,44000,10000,20000,40000
 dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,45,1,47000,30000,50000,100000
+dkong,dkongce,DK Champ Ed.,DK Championship,46,1,34000,30000,50000,100000
 dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,0,,,
-dkong,dkongtj,DK Jungle,DK Twisted Jungle,33,1,50000,50000,100000,200000
 dkong,dkongtrn,DK Trainer,,99,1,0,,,
 dkong,dkongpace,DK Pace,,99,1,0,,,
 dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,0,,,
-dkong,,DK Record.,DK Recording (.inp),1,2,0,,,

@@ -486,6 +486,7 @@ def launch_rom(info):
         _g.timer.stop()  # Stop timer while playing arcade
         _g.menu.disable()
         intermission_channel.stop()
+        award_channel.stop()
         music_channel.pause()
         launch_command, launch_directory, competing = _s.build_launch_command(info)
 

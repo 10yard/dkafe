@@ -24,3 +24,6 @@
 /dkwolf/nvram
 /artwork/snap/*.png
 /rpi4_notes.txt
+/venv32
+/venv64
+/releases

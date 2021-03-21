@@ -36,10 +36,10 @@ The frontend can be configured to launch other emulators and roms.
  - A rom patcher that will automatically generate hacked roms from the many included patch files.
  - LUA scripts to seamlessly interface MAME with the frontend.
  - 3 Donkey Kong hacks made by me for use with the DKAFE frontend:
-   1. **DK Who and the Daleks** 
-Jumpman has regenerated as the next Dr Who and has a Tardis for teleporting through spacetime.  Daleks and Weeping Angels will stand in your way of saving Rose Tyler.
-   2. **DK Lava Panic**
-Jumpman must keep his cool and move quickly up the platforms to avoid the rising Lava.  Try not to panic!
+   1. **DK Lava Panic**
+Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  Try not to panic!
+   2. **DK Who and the Daleks** 
+Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant "Rose" from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
    3. **DK Last Man Standing** 
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
 
@@ -50,16 +50,19 @@ You will lose penalty points instead of lives so don't make mistakes unless you 
 
 ## Automatically generated roms
 
-DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work,  it is not provided with the software.
-All patch files are included in the **/patch folder**.  Credit is given to the original authors below.
+DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work.
+All patch files are included in the **/patch folder**.
 
 
 ![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/patches.png)
 
 
+Credit is given to the original authors below.
+
+
 #### By Jon Wilson (me)
- - DK Who and the Daleks (dkongwho)
  - Donkey Kong Lava Panic! (dkonglava)
+ - DK Who and the Daleks (dkongwho)
  - DK Last Man Standing (dkonglastman)
 
 #### By Paul Goes - https://donkeykonghacks.net/
@@ -121,11 +124,11 @@ It is possible to set up other emulators and roms if you do not wish to use the 
 
 ## How to install
 
-Steps to install the default frontend are as follows.  Also refer to *How to set up*.
+Steps to install the default frontend are as follows.  Also refer to **How to set up**.
 
 ### Windows
 
-1. Download the latest Windows binary zip and extract content to a folder
+1. Download the latest DKAFE binary release for Windows and extract content to a folder
 
 2. Run "launch.exe".
 
@@ -136,15 +139,17 @@ The automated setup will extract DKAFE files and do some configuration for you.
 
 1. Write the Raspberry Pi OS Desktop image to a new SD card using the Raspberry Pi Imager tool.
 
-2. Copy the Raspberry Pi4 binary zip (dkafe_bin_rpi4.zip) and the install script (dkafe_install.sh) to the */boot* partition of the SD card.
+2. Download the latest DKAFE binary release for Raspberry Pi and extract both files.
 
-3. Boot the Pi with SD card inserted and complete the "Welcome to Raspberry Pi" setup.  You can skip options for now.
+3. Copy the binary zip (dkafe_bin_rpi4.zip) and the install script (dkafe_install.sh) to the **/boot** partition of the SD card.
 
-4. Run the install script in a terminal by typing `/boot/dkafe_install.sh`
+4. Boot the Pi with SD card inserted and complete the "Welcome to Raspberry Pi" setup.  You can skip options for now.
 
-5. Answer list of questions,  responding *Y* to *Launch DKAFE on boot?*.
+5. Run the install script in a terminal by typing `/boot/dkafe_install.sh`
 
-6. Reboot the Pi.
+6. Answer list of questions,  responding **Y** to **Launch DKAFE on boot?**.
+
+7. Reboot the Pi.
 
 
 ## How to set up?
@@ -154,7 +159,7 @@ The frontend will automatically generate a bunch of Donkey Kong roms using patch
 
 The application requires settings.txt and romlist.csv to be present in the installation folder along with other resources.  Defaults are provided.
  
-The settings.txt contains the emulator, rom path, controls and other configuration.  See *Frontend Settings" section below.
+The settings.txt contains the emulator, rom path, controls and other configuration.  See **Frontend Settings** section below.
 
 The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.
 
@@ -171,7 +176,7 @@ The command line argument **-view "Pixel Aspect (7:8)"** can be used to override
 
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
-For Raspberry Pi,  you should use 640x480 resolution and adjust the frontend display scale using xrandr.  Refer to *rpi4/rpi4_notes*.
+For Raspberry Pi,  you should use 640x480 resolution and adjust the frontend display scale using xrandr.  Refer to **rpi4/rpi4_notes**.
 
 
 
@@ -342,7 +347,7 @@ Otherwise, my recommendations are:
 
 ### For Raspberry Pi (Model 4)
 
-1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in *\dkwolf* folder
+1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
 
 2. Advance Mame from https://www.advancemame.it/download
   
@@ -363,7 +368,7 @@ See build.sh and rpi4/rpi_notes.txt for building a Raspberry Pi binary.
 
 ### How to compile DKWolf?
 
-Refer to readme.txt in the */DKWolf* folder.
+Refer to readme.txt in the **/DKWolf** folder.
 
 
 ## Motivations?

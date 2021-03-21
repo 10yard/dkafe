@@ -5,8 +5,8 @@ The orginal Donkey Kong rom is not provided with the software and must be obtain
 DKAFE will then apply patches and generate the following hacked version of Donkey Kong automatically for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
 By Jon Wilson (me)
- - DK Who and the Daleks (dkongwho)
  - Donkey Kong Lava Panic! (dkonglava)
+ - DK Who and the Daleks (dkongwho)
  - DK Last Man Standing (dkonglastman)
 
 By Paul Goes
