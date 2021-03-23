@@ -38,6 +38,7 @@ UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
+ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
 
 # Interface options
 CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface
@@ -107,7 +108,9 @@ if os.path.exists("settings.txt"):
                     exit()
 
 # Frontend version
-VERSION = "v0.1b"
+if os.path.exists("version.txt"):
+    with open("version.txt", 'r') as vf:
+        VERSION = vf.readline().strip()
 
 # Expected location of original DK zip (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")

@@ -76,13 +76,13 @@ def main():
         answer = yesno("Rotate to the Left")
         if answer:
             changes_made = True
-            script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate left")
+            script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate left")
             os.system("xrandr --output HDMI-1 --rotate left")  # rotate now to assist install
         else:
             answer = yesno("Rotate to the Right")
             if answer:
                 changes_made = True
-                script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate right")
+                script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate right")
                 os.system("xrandr --output HDMI-1 --rotate right")  # rotate now to assist install
     if script:
         # Overwrite the default start script

@@ -450,8 +450,8 @@ def build_menus(initial=False):
                               theme=dkafe_theme, onclose=close_menu)
     _g.exitmenu.add_button('Take me back', close_menu)
     _g.exitmenu.add_button('Exit', exit_program)
-    if _s.is_raspberry():
-        _g.exitmenu.add_button('Shutdown', shutdown_rpi)
+    if ENABLE_SHUTDOWN:
+        _g.exitmenu.add_button('Shutdown', shutdown_system)
 
 
 def open_menu(menu):
@@ -475,8 +475,11 @@ def close_menu():
     _g.lastmove = _g.timer.duration
 
 
-def shutdown_rpi():
-    os.system("shutdown -h now")
+def shutdown_system():
+    if _s.is_raspberry():
+        os.system("shutdown -h now")
+    else:
+        os.system("shutdown /s /f /t 00")
 
 
 def launch_rom(info):
@@ -736,6 +739,7 @@ def teleport_between_hammers():
 
 def main():
     # Prepare front end
+    assert (VERSION.startswith("v")), "The version number could not be determined"
     _g.active = False
     initialise_screen()
     load_frontend_state()

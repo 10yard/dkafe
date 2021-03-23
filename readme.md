@@ -199,6 +199,9 @@ Default settings can be changed in the settings.txt file.
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 
+`ENABLE_SHUTDOWN=0`    
+1 to enable system shutdown via the "confirm exit" menu.
+
 `ENABLE_HAMMERS=1`    
 1 to enable teleport between hammers in the fronted.  Makes it quicker to move up and down platforms.
 
