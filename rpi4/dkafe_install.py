@@ -10,10 +10,11 @@
 # 5) Hide the Pi desktop
 # 6) Hide the Pi mouse cursor
 # 7) Use headphone jack for audio
-# 8) Disable non-essential Services
-# 9) Disable networking services (WiFi, SSH)
-# 10) Update system
-# 11) Reboot
+# 8) Map GPIO to keyboard input controls
+# 9) Disable non-essential Services
+# 10) Disable networking services (WiFi, SSH)
+# 11) Update system
+# 12) Reboot
 import os
 AUTOSTART_FILE = "/etc/xdg/lxsession/LXDE-pi/autostart"
 AUTOSTART_FILE_BU = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP"
@@ -24,6 +25,22 @@ DESKTOP_CONFIG_FILE = "/usr/share/lightdm/lightdm.conf.d/01_debian.conf"
 DESKTOP_CONFIG_FILE_BU = "/usr/share/lightdm/lightdm.conf.d/01_debian_DKAFEBACKUP.conf"
 CMDLINE_FILE = "/boot/cmdline.txt"
 CMDLINE_FILE_BU = "/boot/cmdline_DKAFEBACKUP.txt"
+CONFIG_FILE = "/boot/config.txt"
+CONFIG_FILE_BU = "/boot/config_DKAFEBACKUP.txt"
+
+GPIO_MAPPING = '''
+# GPIO to keyboard inputs
+dtoverlay=gpio-key,gpio=17,keycode=105,label="KEY_LEFT"
+dtoverlay=gpio-key,gpio=27,keycode=106,label="KEY_RIGHT"
+dtoverlay=gpio-key,gpio=22,keycode=103,label="KEY_UP"
+dtoverlay=gpio-key,gpio=23,keycode=108,label="KEY_DOWN"
+dtoverlay=gpio-key,gpio=24,keycode=29,label="KEY_LEFTCTRL"
+dtoverlay=gpio-key,gpio=25,keycode=56,label="KEY_LEFTALT"
+dtoverlay=gpio-key,gpio=5,keycode=2,label="KEY_1"
+dtoverlay=gpio-key,gpio=6,keycode=3,label="KEY_2"
+dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
+dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
+'''
 
 START_SCRIPT = """# Run this script to start DKAFE
 #
@@ -76,13 +93,17 @@ def main():
         answer = yesno("Rotate to the Left")
         if answer:
             changes_made = True
-            script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate left")
+            # script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate left")
+            # 0.825 looks crisper
+            script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.825 --rotate left")
             os.system("xrandr --output HDMI-1 --rotate left")  # rotate now to assist install
         else:
             answer = yesno("Rotate to the Right")
             if answer:
                 changes_made = True
-                script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate right")
+                # script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate right")
+                # 0.825 looks crisper
+                script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.825 --rotate right")
                 os.system("xrandr --output HDMI-1 --rotate right")  # rotate now to assist install
     if script:
         # Overwrite the default start script
@@ -177,9 +198,19 @@ def main():
         changes_made = True
         os.system("sudo raspi-config nonint do_audio 1")
 
-    # 8) Disable non-essential services
+    # 8) Map GPIO to keyboard input controls
+    if os.path.exists(CONFIG_FILE) and not os.path.exists(CONFIG_FILE_BU):
+        os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
+        if os.path.exists(CONFIG_FILE_BU):
+            answer = yesno("Map GPIO to keyboard input controls ?")
+            if answer:
+                # update /boot/config.txt
+                with open(CONFIG_FILE, "a") as f_out:
+                    f_out.write(GPIO_MAPPING)
+
+    # 9) Disable non-essential services
     # and
-    # 9) Disable networking services
+    # 10) Disable networking services
     answer = yesno("Disable non-essential services")
     if answer:
         changes_made = True
@@ -202,7 +233,7 @@ def main():
             os.system("sudo systemctl disable ssh.service --quiet")
             os.system("sudo systemctl disable wpa_supplicant.service --quiet")
 
-    # 10) Update system
+    # 11) Update system
     answer = yesno("Update system")
     if answer:
         changes_made = True
@@ -211,7 +242,7 @@ def main():
         # print("Upgrading, please wait, it may take a while ...")
         # os.system("sudo apt upgrade -y -qq")
 
-    # 11) Reboot
+    # 12) Reboot
     answer = yesno("Reboot system")
     if answer:
         os.system("reboot")

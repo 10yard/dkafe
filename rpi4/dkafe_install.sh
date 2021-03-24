@@ -1,5 +1,5 @@
 # 1) Install DKAFE to /home/pi/dkafe_bin folder
-sudo unzip /boot/dkafe_bin_rpi4.zip -d /home/pi
+sudo unzip /boot/dkafe_rpi4_binary*.zip -d /home/pi
 
 # 2) Copy dkong roms (if found in /boot partition)
 sudo cp -f /boot/dkong.zip /home/pi/dkafe_bin/roms

@@ -280,6 +280,8 @@ These settings relate to Donkey Kong and DK Junior Roms and hacks.
 ![DKAFE controls](https://github.com/10yard/dkafe/blob/master/artwork/about/controls.png)
 
 
+#### Keyboard Controls
+
 Keyboard controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
 The default controls are aligned with MAME keys as follows.
 
@@ -297,6 +299,8 @@ CONTROL_EXIT = escape
 CONTROL_SNAP = F12
 ```
 
+#### Joystick Controls
+
 Joystick controls can be configured by setting the USE_JOYSTICK option.
 The up, down, left, right controls are defined automatically from the joystick axis movement.
 Buttons can be customised in the settings.txt file as per the following example.  
@@ -310,6 +314,27 @@ BUTTON_P1 = 9
 BUTTON_P2 = 29
 BUTTON_EXIT = 6
 BUTTON_COIN = 7
+```
+
+#### GPIO Inputs
+
+GPIO input is supported on Raspberry Pi.
+The install script can set this up automatically for you if you plan to connect GPIO directly to arcade controls.
+GPIO inputs are mapped to keyboard inputs in the /boot/config.txt file.
+These defaults avoid using GPIO pins that could be used with other peripherals:
+
+```
+# GPIO to keyboard inputs
+dtoverlay=gpio-key,gpio=17,keycode=105,label="KEY_LEFT"
+dtoverlay=gpio-key,gpio=27,keycode=106,label="KEY_RIGHT"
+dtoverlay=gpio-key,gpio=22,keycode=103,label="KEY_UP"
+dtoverlay=gpio-key,gpio=23,keycode=108,label="KEY_DOWN"
+dtoverlay=gpio-key,gpio=24,keycode=29,label="KEY_LEFTCTRL"
+dtoverlay=gpio-key,gpio=25,keycode=56,label="KEY_LEFTALT"
+dtoverlay=gpio-key,gpio=5,keycode=2,label="KEY_1"
+dtoverlay=gpio-key,gpio=6,keycode=3,label="KEY_2"
+dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
+dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ```
 
 

@@ -24,10 +24,11 @@ You will be asked the following Y/N questions. Y is recommended.
  5) Hide the Pi desktop?
  6) Hide the Pi mouse cursor?
  7) Use headphone jack for audio?
- 8) Disable non-essential Services?
- 9) Disable networking services (WiFi, SSH)?
- 10) Update system?
- 11) Reboot?
+ 8) Map GPIO to keyboard input controls?
+ 9) Disable non-essential Services?
+ 10) Disable networking services (WiFi, SSH)?
+ 11) Update system?
+ 12) Reboot?
 
 
 Launch DKAFE from terminal manually
@@ -52,6 +53,28 @@ Resolution and frontend display scale
 The resolution and display scale are set in dkafe_start.sh file.
 e.g. for 7:8 aspect ratio (0.875) with a rotated display use the following:
 	xrandr --output HDMI-1 --scale 0.875 --rotate left
+Note: 0.825 looks crisper for some reason so DKAFE default is:
+	xrandr --output HDMI-1 --scale 0.825 --rotate left
+
+
+GPIO input
+----------
+GPIO pins can be mapped to keyboard input in the /boot/config.txt file
+This makes it easy to wire up arcade controls.
+
+Default assignments for DKAFE controls are as follows:
+dtoverlay=gpio-key,gpio=17,keycode=105,label="KEY_LEFT"
+dtoverlay=gpio-key,gpio=27,keycode=106,label="KEY_RIGHT"
+dtoverlay=gpio-key,gpio=22,keycode=103,label="KEY_UP"
+dtoverlay=gpio-key,gpio=23,keycode=108,label="KEY_DOWN"
+dtoverlay=gpio-key,gpio=24,keycode=29,label="KEY_LEFTCTRL"
+dtoverlay=gpio-key,gpio=25,keycode=56,label="KEY_LEFTALT"
+dtoverlay=gpio-key,gpio=5,keycode=2,label="KEY_1"
+dtoverlay=gpio-key,gpio=6,keycode=3,label="KEY_2"
+dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
+dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
+
+Refer to pinout guide at https://pinout.xyz/
 
 
 Build DKAFE (Optional - if you prefer not to run as Python script)

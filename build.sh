@@ -30,6 +30,7 @@ sudo cp -r patch dist
 sudo cp -r rpi4 dist
 sudo cp romlist.csv dist
 sudo cp readme.md dist
+sudo cp version.txt dist
 
 # copy rpi4 specific settings
 sudo cp rpi4/settings.txt dist
@@ -61,4 +62,4 @@ sudo rm -r build
 # package it all up into a versioned ZIP for easy distribution
 version=$(cat /home/pi/dkafe/version.txt)
 cd /home/pi
-zip -r /home/pi/dkafe/releases/dkafe_rpi4_binary_${version}.zip dkafe_bin
+zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_bin
