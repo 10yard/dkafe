@@ -439,6 +439,12 @@ WolfMAME by Mahlemiut
 https://github.com/mahlemiut/wolfmame
 
 
+## License
+
+DKAFE is a free, open source and cross platform front-end for emulators.
+It is licensed under GNU GPLv3.
+
+
 ## Feedback
 
 Please send feedback to jon123wilson@hotmail.com
