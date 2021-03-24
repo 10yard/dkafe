@@ -108,8 +108,9 @@ if os.path.exists("settings.txt"):
                     exit()
 
 # Frontend version
-if os.path.exists("version.txt"):
-    with open("version.txt", 'r') as vf:
+VERSION = ''
+if os.path.exists("VERSION"):
+    with open("VERSION", 'r') as vf:
         VERSION = vf.readline().strip()
 
 # Expected location of original DK zip (not provided with software)

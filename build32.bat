@@ -11,7 +11,8 @@ xcopy patch dist\patch /S /i /Y
 copy romlist.csv dist\ /Y
 copy settings.txt dist\ /Y
 copy readme.md dist\ /Y
-copy version.txt dist\ /Y
+copy VERSION dist\ /Y
+copy COPYING dist\ /Y
 
 echo **** create empty roms folder
 xcopy roms\---* dist\roms /S /i /Y
@@ -33,6 +34,6 @@ del *.spec
 
 
 echo **** package into a release ZIP getting the version from version.txt
-set /p version=<version.txt
+set /p version=<VERSION
 set zip_path="C:\Program Files\7-Zip\7z"
 %zip_path% a releases\dkafe_win32_binary_%version%.zip .\dist\*

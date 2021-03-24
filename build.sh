@@ -11,7 +11,7 @@ sudo rm /home/pi/dkafe_bin_rpi4.zip
 # set full permission on sources
 cd /home/pi
 sudo chown -R pi:pi dkafe
-sudo chmod -R 755 dkafe
+sudo chmod -R 777 dkafe
 
 cd /home/pi/dkafe
 sudo rm -r -f dist
@@ -30,7 +30,8 @@ sudo cp -r patch dist
 sudo cp -r rpi4 dist
 sudo cp romlist.csv dist
 sudo cp readme.md dist
-sudo cp version.txt dist
+sudo cp VERSION dist
+sudo cp COPYING dist
 
 # copy rpi4 specific settings
 sudo cp rpi4/settings.txt dist
@@ -51,7 +52,7 @@ sudo cp -r dkwolf/changes dist/dkwolf
 
 # Grant all permissions on dist
 sudo chown -R pi:pi dist
-sudo chmod -R 755 dist
+sudo chmod -R 777 dist
 
 # Move dist to make it accessible from /home/pi/dkafe/bin
 mv dist /home/pi/dkafe_bin
@@ -60,6 +61,6 @@ mv dist /home/pi/dkafe_bin
 sudo rm -r build
 
 # package it all up into a versioned ZIP for easy distribution
-version=$(cat /home/pi/dkafe/version.txt)
+version=$(cat /home/pi/dkafe/VERSION)
 cd /home/pi
 zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_bin
