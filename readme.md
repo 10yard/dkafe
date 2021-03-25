@@ -176,7 +176,7 @@ The command line argument **-view "Pixel Aspect (7:8)"** can be used to override
 
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
-For Raspberry Pi,  you should use 640x480 resolution and adjust the frontend display scale using xrandr.  Refer to **rpi4/rpi4_notes**.
+For Raspberry Pi,  you should use 640x480 resolution and adjust the x/y display scale using xrandr.  Refer to **rpi4/rpi4_notes**.
 
 
 

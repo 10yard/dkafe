@@ -10,10 +10,10 @@
 # 5) Hide the Pi desktop
 # 6) Hide the Pi mouse cursor
 # 7) Use headphone jack for audio
-# 8) Map GPIO to keyboard input controls
-# 9) Disable non-essential Services
-# 10) Disable networking services (WiFi, SSH)
-# 11) Update system
+# 8) Force 640x480 mode on boot (good for scan line generators)
+# 9) Map GPIO to keyboard input controls
+# 10) Disable non-essential Services
+# 11) Disable networking services (WiFi, SSH)
 # 12) Reboot
 import os
 AUTOSTART_FILE = "/etc/xdg/lxsession/LXDE-pi/autostart"
@@ -40,6 +40,7 @@ dtoverlay=gpio-key,gpio=5,keycode=2,label="KEY_1"
 dtoverlay=gpio-key,gpio=6,keycode=3,label="KEY_2"
 dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
 dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
+
 '''
 
 START_SCRIPT = """# Run this script to start DKAFE
@@ -94,30 +95,26 @@ def main():
         if answer:
             changes_made = True
             # script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate left")
-            # 0.825 looks crisper
-            script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.825 --rotate left")
+            # 0.8 looks crisper
+            script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate left")
             os.system("xrandr --output HDMI-1 --rotate left")  # rotate now to assist install
         else:
             answer = yesno("Rotate to the Right")
             if answer:
                 changes_made = True
                 # script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate right")
-                # 0.825 looks crisper
-                script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.825 --rotate right")
+                # 0.8 looks crisper
+                script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate right")
                 os.system("xrandr --output HDMI-1 --rotate right")  # rotate now to assist install
     if script:
         # Overwrite the default start script
         with open("/home/pi/dkafe_bin/dkafe_start.sh", "w") as f:
             f.write(script)
 
-    # 2) Launch DKAFE on boot
-    # and
-    # 3) Hide startup messages
-    # and
-    # 4) Hide the Raspberry Pi taskbar
     if os.path.exists(AUTOSTART_FILE) and not os.path.exists(AUTOSTART_FILE_BU):
         os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU}")
         if os.path.exists(AUTOSTART_FILE_BU):
+            # 2) Launch DKAFE on boot
             answer = yesno("Launch DKAFE on boot")
             if answer:
                 # append DKAFE start script to autoboot file
@@ -127,6 +124,7 @@ def main():
                 if os.path.exists(CMDLINE_FILE) and not os.path.exists(CMDLINE_FILE_BU):
                     os.system(f"sudo cp {CMDLINE_FILE} {CMDLINE_FILE_BU}")
                     if os.path.exists(CMDLINE_FILE_BU):
+                        # 3) Hide startup messages
                         answer = yesno("Hide system startup messages")
                         if answer:
                             # update /boot/cmdline.txt
@@ -145,6 +143,7 @@ def main():
             # ----
             os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU2}")
             if os.path.exists(AUTOSTART_FILE_BU2):
+                # 4) Hide the Raspberry Pi taskbar
                 answer = yesno("Hide the Pi taskbar")
                 if answer:
                     changes_made = True
@@ -198,19 +197,40 @@ def main():
         changes_made = True
         os.system("sudo raspi-config nonint do_audio 1")
 
-    # 8) Map GPIO to keyboard input controls
     if os.path.exists(CONFIG_FILE) and not os.path.exists(CONFIG_FILE_BU):
         os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
         if os.path.exists(CONFIG_FILE_BU):
+            # 8) Force 640x480 mode on boot
+            answer = yesno("Force 640x480 mode on boot (good for scan line generators) ?")
+            if answer:
+                changes_made = True
+                with open(CONFIG_FILE, "w") as f_out:
+                    with open(CONFIG_FILE_BU, "r") as f_in:
+                        for line in f_in.readlines():
+                            if "disable_overscan=" in line.lower():
+                                f_out.write("disable_overscan=1\n")
+                            elif "hdmi_group=" in line.lower():
+                                f_out.write("hdmi_group=1\n")
+                            elif "hdmi_mode=" in line.lower():
+                                f_out.write("hdmi_mode=1\n")
+                            else:
+                                f_out.write(line)
+            # 9) Map GPIO to keyboard input controls
             answer = yesno("Map GPIO to keyboard input controls ?")
             if answer:
+                changes_made = True
                 # update /boot/config.txt
                 with open(CONFIG_FILE, "a") as f_out:
                     f_out.write(GPIO_MAPPING)
 
-    # 9) Disable non-essential services
+            # disable the annoying splash screen while we're here
+            with open(CONFIG_FILE, "a") as f_out:
+                f_out.write("# Disable the rainbow splash screen\n")
+                f_out.write("disable_splash=1\n")
+
+    # 10) Disable non-essential services
     # and
-    # 10) Disable networking services
+    # 11) Disable networking services
     answer = yesno("Disable non-essential services")
     if answer:
         changes_made = True
@@ -232,15 +252,6 @@ def main():
             os.system("sudo systemctl disable networking.service --quiet")
             os.system("sudo systemctl disable ssh.service --quiet")
             os.system("sudo systemctl disable wpa_supplicant.service --quiet")
-
-    # 11) Update system
-    answer = yesno("Update system")
-    if answer:
-        changes_made = True
-        print("Updating, please wait...")
-        os.system("sudo apt update -qq")
-        # print("Upgrading, please wait, it may take a while ...")
-        # os.system("sudo apt upgrade -y -qq")
 
     # 12) Reboot
     answer = yesno("Reboot system")

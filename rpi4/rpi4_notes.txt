@@ -24,10 +24,10 @@ You will be asked the following Y/N questions. Y is recommended.
  5) Hide the Pi desktop?
  6) Hide the Pi mouse cursor?
  7) Use headphone jack for audio?
- 8) Map GPIO to keyboard input controls?
- 9) Disable non-essential Services?
- 10) Disable networking services (WiFi, SSH)?
- 11) Update system?
+ 8) Force 640x480 mode on boot (good for scan line generators)?
+ 9) Map GPIO to keyboard input controls?
+ 10) Disable non-essential Services?
+ 11) Disable networking services (WiFi, SSH)?
  12) Reboot?
 
 
@@ -53,8 +53,16 @@ Resolution and frontend display scale
 The resolution and display scale are set in dkafe_start.sh file.
 e.g. for 7:8 aspect ratio (0.875) with a rotated display use the following:
 	xrandr --output HDMI-1 --scale 0.875 --rotate left
-Note: 0.825 looks crisper for some reason so DKAFE default is:
-	xrandr --output HDMI-1 --scale 0.825 --rotate left
+Note: 0.8 looks crisper for some reason so DKAFE default is:
+	xrandr --output HDMI-1 --scale 0.8 --rotate left
+
+
+Scan line generator
+-------------------
+If using with a scan line generator then you should force 640x480 during boot and disable overscan i.e.
+disable_overscan=1
+hdmi_group=1
+hdmi_mode=1
 
 
 GPIO input
@@ -75,6 +83,7 @@ dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
 dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 
 Refer to pinout guide at https://pinout.xyz/
+
 
 
 Build DKAFE (Optional - if you prefer not to run as Python script)
