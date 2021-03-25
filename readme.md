@@ -9,7 +9,7 @@ A multiplatform arcade game launcher based on Donkey Kong made for arcade cabine
 
 The frontend mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.
 
-The default setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically for the frontend. 
+The default setup brings together all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically for this frontend. 
 
 The built-in reward system will payout coins when you play well.  Earning coins will allow you to unlock and play more machines.
 
@@ -136,20 +136,36 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 ### Raspberry Pi
 
 The automated setup will extract DKAFE files and do some configuration for you.
+For the automated setup follow these steps.
 
-1. Write the Raspberry Pi OS Desktop image to a new SD card using the Raspberry Pi Imager tool.
+1. Write the Raspberry Pi OS Desktop to a new SD card using the Raspberry Pi Imager tool.
 
-2. Download the latest DKAFE binary release for Raspberry Pi and extract both files.
+2. Get the latest DKAFE binary release (e.g. dkafe_rpi4_binary_v0.1b.zip) and copy that along with the install script (dkafe_install.sh) to the **/boot** partition of the SD card.
 
-3. Copy the binary zip (dkafe_bin_rpi4.zip) and the install script (dkafe_install.sh) to the **/boot** partition of the SD card.
+3. Copy dkong.zip (and optionally dkongjr.zip) to the **/boot** partition of the SD card.  These files will be automatically copied into the roms folder by the install script.
 
-4. Boot the Pi with SD card inserted and complete the "Welcome to Raspberry Pi" setup.  You can skip options for now.
+4. Boot the Pi with SD card inserted and complete the "Welcome to Raspberry Pi" setup. I recommend you skip past all options.
 
-5. Run the install script in a terminal by typing `/boot/dkafe_install.sh`
+5. Run the DKAFE install script in a terminal by typing `/boot/dkafe_install.sh`
 
-6. Answer list of questions,  responding **Y** to **Launch DKAFE on boot?**.
+6. Answer the following questions.  You should respond **Y** to launch DKAFE on boot.
 
-7. Reboot the Pi.
+```
+ 1) Rotate the display?
+ 2) Launch DKAFE on boot?
+ 3) Hide startup messages?
+ 4) Hide the Pi taskbar?
+ 5) Hide the Pi desktop?
+ 6) Hide the Pi mouse cursor?
+ 7) Use headphone jack for audio?
+ 8) Force 640x480 mode on boot (good for scan line generators)?
+ 9) Map GPIO to keyboard input controls?
+ 10) Disable non-essential Services?
+ 11) Disable networking services (WiFi, SSH)?
+ 12) Reboot?
+```
+
+7. Reboot your Pi.
 
 
 ## How to set up?
@@ -318,10 +334,9 @@ BUTTON_COIN = 7
 
 #### GPIO Inputs
 
-GPIO input is supported on Raspberry Pi.
-The install script can set this up automatically for you if you plan to connect GPIO directly to arcade controls.
-GPIO inputs are mapped to keyboard inputs in the /boot/config.txt file.
-These defaults avoid using GPIO pins that could be used with other peripherals:
+GPIO input is supported on Raspberry Pi.  The install script can set this up automatically for you if you plan to connect GPIO directly to arcade controls.
+
+GPIO inputs are mapped to keyboard inputs in the /boot/config.txt file. These defaults avoid using GPIO pins that could be used with other peripherals:
 
 ```
 # GPIO to keyboard inputs
