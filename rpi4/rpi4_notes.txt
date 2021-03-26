@@ -1,12 +1,28 @@
+       ___   ___                    .-.
+     (   ) (   )                  /    \
+   .-.| |   | |   ___     .---.   | .`. ;    .--.
+  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+ |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+ | |  | |   | |,' /       .'`  | (   __)   |  | | |
+ | |  | |   | .  '.      / .'| |  | |      |  |/  |
+ | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+ | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+ ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /
+  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   Donkey Kong Arcade Frontend by Jon Wilson
+
+----------------------------------------------------------------------------------------------
+ Notes on setting up Raspberry Pi4
+----------------------------------------------------------------------------------------------
+
 Manual setup
-------------
+----------------------------------------------------------------------------------------------
 source files should be extracted to /home/pi/dkafe
 binary distribution should be extracted to /home/pi/dkafe_bin or you can use the automated setup below.
 
 
-Automated setup of binary distribution
---------------------------------------
-Automated setup will extract DKAFE files and do some configuration for you.
+Assisted setup of binary distribution
+----------------------------------------------------------------------------------------------
+The assisted setup will extract DKAFE files and do some configuration for you.
 Get a new SD card and write the Raspberry Pi OS (Desktop) using Raspberry Pi Imager tool.
 Copy these files to boot partition of sdcard:
 	dkafe_bin_rpi4.zip        - the install files (provided in the release)
@@ -32,7 +48,7 @@ You will be asked the following Y/N questions. Y is recommended.
 
 
 Launch DKAFE from terminal manually
------------------------------------
+----------------------------------------------------------------------------------------------
 for sources (set up environment first, see below):
 	cd dkafe
 	python3 launch.py
@@ -43,13 +59,13 @@ for binary:
 
 
 Set up environment when using sources
--------------------------------------
+----------------------------------------------------------------------------------------------
 sudo apt-get install python3-pip
 pip3 install -r requirements.txt
 
 
 Resolution and frontend display scale
--------------------------------------
+----------------------------------------------------------------------------------------------
 The resolution and display scale are set in dkafe_start.sh file.
 e.g. for 7:8 aspect ratio (0.875) with a rotated display use the following:
 	xrandr --output HDMI-1 --scale 0.875 --rotate left
@@ -58,7 +74,7 @@ Note: 0.8 looks crisper for some reason so DKAFE default is:
 
 
 Scan line generator
--------------------
+----------------------------------------------------------------------------------------------
 If using with a scan line generator then you should force 640x480 during boot and disable overscan i.e.
 disable_overscan=1
 hdmi_group=1
@@ -66,7 +82,7 @@ hdmi_mode=1
 
 
 GPIO input
-----------
+----------------------------------------------------------------------------------------------
 GPIO pins can be mapped to keyboard input in the /boot/config.txt file
 This makes it easy to wire up arcade controls.
 
@@ -85,9 +101,8 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 Refer to pinout guide at https://pinout.xyz/
 
 
-
 Build DKAFE (Optional - if you prefer not to run as Python script)
-------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 cd
 sudo pip3 install -r requirements.txt (sudo requirements are needed for pyinstaller)
 git clone https://github.com/pyinstaller/pyinstaller
@@ -111,6 +126,5 @@ git clone https://github.com/pyinstaller/pyinstaller
 
 
 To playback .inp recordings
----------------------------
+----------------------------------------------------------------------------------------------
 ./dkwolfrpi -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp
-

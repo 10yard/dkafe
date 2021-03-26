@@ -1,3 +1,10 @@
+echo
+echo  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
+echo
+echo ----------------------------------------------------------------------------------------------
+echo  Build and package the Windows x64 binary release
+echo ----------------------------------------------------------------------------------------------
+
 echo **** remove existing build folders ****
 rmdir build /s /Q
 

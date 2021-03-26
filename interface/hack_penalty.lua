@@ -1,14 +1,26 @@
--- DKAFE Penalty Hack by Jon Wilson
-------------------------------------------------------------------------
--- Lose a set number of penalty points instead of lives. 
--- Penalty points are displayed top left and will flash when there are 
--- not enough points to survive.
-------------------------------------------------------------------------
--- Drives the "DK Last Man Standing" hack:
--- You will lose penalty points instead of lives so don't make mistakes 
--- unless you have earned enough points to survive.
--- Press COIN button to stop playing and register your points.
-------------------------------------------------------------------------
+--[[
+#      ___   ___                    .-.
+#     (   ) (   )                  /    \
+#   .-.| |   | |   ___     .---.   | .`. ;    .--.
+#  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+# |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+# | |  | |   | |,' /       .'`  | (   __)   |  | | |
+# | |  | |   | .  '.      / .'| |  | |      |  |/  |
+# | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+# | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+# ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
+#  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+
+ DKAFE Penalty Hack
+------------------------------------------------------------------------------------------------
+ Lose a set number of penalty points instead of lives. 
+ Penalty points are displayed top left and flash when there are not enough points to survive.
+------------------------------------------------------------------------------------------------
+ Drives the "DK Last Man Standing" hack:
+ You will lose penalty points instead of lives so don't make mistakes unless you have earned 
+ enough points to survive.  Press COIN button to stop playing and register your points.
+------------------------------------------------------------------------------------------------
+]]
 
 function dkonglastman_overlay()
 	if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
@@ -21,9 +33,8 @@ function dkonglastman_overlay()
 	end
 end
 
-------------------------------------------------------------------------
 -- Program start
-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 if loaded == 3 and data_subfolder == "dkonglastman" then
 	-- rom specific hack for DK Last Man Standing
 	if lastman_hack_started ~= 1 then	

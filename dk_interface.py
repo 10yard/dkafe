@@ -1,3 +1,17 @@
+#
+#       ___   ___                    .-.
+#      (   ) (   )                  /    \
+#    .-.| |   | |   ___     .---.   | .`. ;    .--.
+#   /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+#  |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+#  | |  | |   | |,' /       .'`  | (   __)   |  | | |
+#  | |  | |   | .  '.      / .'| |  | |      |  |/  |
+#  | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+#  | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+#  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /
+#   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   Donkey Kong Arcade Frontend by Jon Wilson
+#
+#  ---------------------------------------------------------------------------------------------
 import os
 from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO
 from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD

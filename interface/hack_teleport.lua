@@ -1,15 +1,27 @@
--- DKAFE Teleport Hack by Jon Wilson
-------------------------------------------------------------------------
--- Perform hack to teleport between hammers
-------------------------------------------------------------------------
--- Drives additional features of the "DK Who and the Daleks" hack:
--- Jumpman has regenerated as the next Dr Who.  Help him rescue his 
--- assistant Rose from the clutches of Donkey Kong.
--- The Daleks have destroyed her rocket ship and you are now her only 
--- hope for escape.
--- The Doctor can use the Tardis to teleport through spacetime to assist 
--- his travel through the stages.
-------------------------------------------------------------------------
+--[[
+#      ___   ___                    .-.
+#     (   ) (   )                  /    \
+#   .-.| |   | |   ___     .---.   | .`. ;    .--.
+#  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+# |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+# | |  | |   | |,' /       .'`  | (   __)   |  | | |
+# | |  | |   | .  '.      / .'| |  | |      |  |/  |
+# | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+# | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+# ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
+#  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+
+ DKAFE Teleport Hack
+------------------------------------------------------------------------------------------------
+ Perform hack to teleport between hammers
+------------------------------------------------------------------------------------------------
+ Drives additional features of the "DK Who and the Daleks" hack:
+ Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant Rose from the 
+ clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you are now her only 
+ hope for escape.  The Doctor can use the Tardis to teleport through spacetime assisting his 
+ travel through the stages.
+------------------------------------------------------------------------------------------------
+]]
 
 function update_teleport_ram(update_x, update_y, update_ly)
   -- force 0 to disable the hammer
@@ -220,9 +232,8 @@ function dkongwho_overlay()
 	end
 end
 
-------------------------------------------------------------------------
 -- Program start
-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 if loaded == 3 and data_subfolder == "dkongwho" then
 	-- rom specific hack for DK Who
 	if teleport_hack_started ~= 1 then	

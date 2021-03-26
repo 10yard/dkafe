@@ -1,3 +1,10 @@
+echo
+echo  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
+echo
+echo ----------------------------------------------------------------------------------------------
+echo  Build and package the Windows x86 (32 bit) binary release
+echo ----------------------------------------------------------------------------------------------
+echo
 echo **** remove existing build folders ****
 rmdir build /s /Q
 
@@ -31,7 +38,6 @@ venv32\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwor
 echo **** clean up
 rmdir build /s /Q
 del *.spec
-
 
 echo **** package into a release ZIP getting the version from version.txt
 set /p version=<VERSION

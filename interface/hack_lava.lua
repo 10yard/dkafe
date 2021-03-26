@@ -1,16 +1,30 @@
-﻿-- DKAFE Lava Hack by Jon Wilson
-------------------------------------------------------------------------
--- Drives features of the "DK Lava Panic" hack:
--- Jumpman must keep his cool and move quickly to avoid the rising Lava.
-------------------------------------------------------------------------
+﻿--[[
+#      ___   ___                    .-.
+#     (   ) (   )                  /    \
+#   .-.| |   | |   ___     .---.   | .`. ;    .--.
+#  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+# |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+# | |  | |   | |,' /       .'`  | (   __)   |  | | |
+# | |  | |   | .  '.      / .'| |  | |      |  |/  |
+# | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+# | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+# ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
+#  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+
+ DKAFE Lava Hack
+------------------------------------------------------------------------------------------------
+ Drives features of the "DK Lava Panic" hack:
+ Jumpman must keep his cool and move quickly to avoid the rising Lava.
+------------------------------------------------------------------------------------------------
+]]
 
 local math_floor = math.floor
 local math_fmod = math.fmod
 local math_random = math.random
 function draw_lava()
-  ------------------------------------------------------------------------
-  -- Before and after gameplay
-  ------------------------------------------------------------------------
+
+-- Before and after gameplay
+------------------------------------------------------------------------------------------------
 	if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then    
     -- recalculate difficulty at start of level or when in attract mode
     local level = mem:read_i8(0xc6229)
@@ -32,9 +46,9 @@ function draw_lava()
 		lava_y = 60
 	end
 	
-  ------------------------------------------------------------------------
-  -- During gameplay
-  ------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+-- During gameplay
+------------------------------------------------------------------------------------------------
 	if mode1 == 3 or (mode1 == 1 and mode2 >= 2 and mode2 <= 4) then
 		-- draw rising lava
 		screen:draw_box(0, 0, lava_y, 224, 0xddff0000, 0)
@@ -101,10 +115,8 @@ function draw_lava()
 	end
 end
 
-------------------------------------------------------------------------
 -- Program start
-------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------------
 if loaded == 3 then
 	if lava_hack_started ~= 1 then
 		--register the frame drawing callbackz

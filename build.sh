@@ -1,8 +1,24 @@
-# Rpi build script
-# Refer to rpi4_notes for info on settng up pyinstaller
-# Dependenices will be needed:
-#   sudo apt-get install python3-pip zip
-#   pip3 install -r requirements.txt
+#
+#       ___   ___                    .-.
+#      (   ) (   )                  /    \
+#    .-.| |   | |   ___     .---.   | .`. ;    .--.
+#   /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+#  |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+#  | |  | |   | |,' /       .'`  | (   __)   |  | | |
+#  | |  | |   | .  '.      / .'| |  | |      |  |/  |
+#  | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+#  | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+#  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /
+#   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   Donkey Kong Arcade Frontend by Jon Wilson
+#
+# ----------------------------------------------------------------------------------------------
+#  Raspberry Pi Build Script
+# ----------------------------------------------------------------------------------------------
+#  Refer to rpi4_notes for info on settng up pyinstaller
+#  Dependenices will be needed:
+#    sudo apt-get install python3-pip zip
+#    pip3 install -r requirements.txt
+# ----------------------------------------------------------------------------------------------
 
 # remove existing binary folders
 sudo rm -r -f /home/pi/dkafe_bin

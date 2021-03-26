@@ -1,4 +1,20 @@
-DKAFE builds the default frontend using patches of the original "dkong.zip" (US Set 1) arcade rom. 
+       ___   ___                    .-.
+     (   ) (   )                  /    \
+   .-.| |   | |   ___     .---.   | .`. ;    .--.
+  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+ |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+ | |  | |   | |,' /       .'`  | (   __)   |  | | |
+ | |  | |   | .  '.      / .'| |  | |      |  |/  |
+ | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+ | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+ ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /
+  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   Donkey Kong Arcade Frontend by Jon Wilson
+
+----------------------------------------------------------------------------------------------
+ Notes on automatically generate roms from .ips patch files
+----------------------------------------------------------------------------------------------
+
+DKAFE builds the default frontend using patches of the original "dkong.zip" (US Set 1) arcade rom.
 
 The .ips patches are included with the software.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder too.  
@@ -78,9 +94,3 @@ dk.5c to c_5ct_g.bin
 dk.5e to c_5et_g.bin 
 dk.3f to s_3j_b.bin
 dk.3h to s_3i_b.bin
-
-
-
-
-
-

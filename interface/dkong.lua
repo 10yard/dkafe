@@ -1,10 +1,24 @@
--- DKAFE Interface for Donkey Kong by Jon Wilson
-------------------------------------------------------------------------
--- Set target score, registered player names/scores.
--- Dump highscore to file when finished.
--- Enable some hacks (optional).
--- Show prizes and progress in the game (optional).
-------------------------------------------------------------------------
+--[[
+#      ___   ___                    .-.
+#     (   ) (   )                  /    \
+#   .-.| |   | |   ___     .---.   | .`. ;    .--.
+#  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+# |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+# | |  | |   | |,' /       .'`  | (   __)   |  | | |
+# | |  | |   | .  '.      / .'| |  | |      |  |/  |
+# | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+# | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+# ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
+#  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+
+ DKAFE Interface for Donkey Kong
+------------------------------------------------------------------------------------------------
+ Set target score, registered player names and player scores.
+ Dump highscore to file when finished.
+ Show prizes and progress in the game (optional).
+ Enable some DKAFE specific hacks (optional).
+------------------------------------------------------------------------------------------------
+]]
 
 data_includes_folder = os.getenv("DATA_INCLUDES")
 package.path = package.path .. ";" .. data_includes_folder .. "/?.lua;"
@@ -12,9 +26,8 @@ require "functions"
 require "graphics"
 require "globals"
 
-------------------------------------------------------------------------
 -- Register function for each frame
-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 emu.register_frame(function()
 	_, loaded = pcall(get_loaded)
   
@@ -103,9 +116,9 @@ emu.register_frame(function()
 	end
 end)
 
-------------------------------------------------------------------------
+
 -- Register callback function on exit
-------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 emu.register_stop(function()
   record_in_compete_file()
 end)

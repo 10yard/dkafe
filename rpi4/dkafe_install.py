@@ -1,20 +1,36 @@
-# DKAFE - Install Script for Raspberry Pi4
-# Invoked from install_script.sh after extracting binary files to /home/pi/dkafe_bin folder
-# This program handles optional setup items by prompting user.
 #
-# The recommended setup is to answer "y" to the following questions:
-# 1) Rotate the display
-# 2) Launch DKAFE on boot
-# 3) Hide startup messages
-# 4) Hide the Pi taskbar
-# 5) Hide the Pi desktop
-# 6) Hide the Pi mouse cursor
-# 7) Use headphone jack for audio
-# 8) Force 640x480 mode on boot (good for scan line generators)
-# 9) Map GPIO to keyboard input controls
-# 10) Disable non-essential Services
-# 11) Disable networking services (WiFi, SSH)
-# 12) Reboot now
+#       ___   ___                    .-.
+#      (   ) (   )                  /    \
+#    .-.| |   | |   ___     .---.   | .`. ;    .--.
+#   /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+#  |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+#  | |  | |   | |,' /       .'`  | (   __)   |  | | |
+#  | |  | |   | .  '.      / .'| |  | |      |  |/  |
+#  | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+#  | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+#  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /
+#   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   Donkey Kong Arcade Frontend by Jon Wilson
+#
+# ----------------------------------------------------------------------------------------------
+#  Install program for Raspberry Pi4
+# ----------------------------------------------------------------------------------------------
+#  Invoked from install_script.sh after extracting binary files to /home/pi/dkafe_bin folder
+#  This program handles optional setup items by prompting user.
+#
+#  The recommended setup is to answer "y" to the following questions:
+#  1) Rotate the display
+#  2) Launch DKAFE on boot
+#  3) Hide startup messages
+#  4) Hide the Pi taskbar
+#  5) Hide the Pi desktop
+#  6) Hide the Pi mouse cursor
+#  7) Use headphone jack for audio
+#  8) Force 640x480 mode on boot (good for scan line generators)
+#  9) Map GPIO to keyboard input controls
+#  10) Disable non-essential Services
+#  11) Disable networking services (WiFi, SSH)
+#  12) Reboot now
+# ----------------------------------------------------------------------------------------------
 import os
 AUTOSTART_FILE = "/etc/xdg/lxsession/LXDE-pi/autostart"
 AUTOSTART_FILE_BU = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP"
@@ -74,17 +90,21 @@ def yesno(question):
 
 def main():
     print("""
---------------------------------------------------
- 
-       ###     #  #     ##     ####    ####
-       #  #    # #     #  #    #       #
-       #  #    ##      ####    ###     ###
-       #  #    # #     #  #    #       #
-       ###     #  #    #  #    #       ####
+     ___   ___                    .-.              
+    (   ) (   )                  /    \            
+  .-.| |   | |   ___     .---.   | .`. ;    .--.   
+ /   \ |   | |  (   )   / .-, \  | |(___)  /    \  
+|  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ; 
+| |  | |   | |,' /       .'`  | (   __)   |  | | | 
+| |  | |   | .  '.      / .'| |  | |      |  |/  | 
+| |  | |   | | `. \    | /  | |  | |      |  ' _.' 
+| '  | |   | |   \ \   ; |  ; |  | |      |  .'.-. 
+' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' / 
+ `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'  
 
-          I N S T A L L    O P T I O N S          
+--------  I n s t a l l    O p t i o n s  --------
 
-""")
+ """)
     changes_made = False
 
     # 1) Rotate the Display

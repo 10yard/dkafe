@@ -1,3 +1,26 @@
+#
+#       ___   ___                    .-.
+#      (   ) (   )                  /    \
+#    .-.| |   | |   ___     .---.   | .`. ;    .--.
+#   /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+#  |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+#  | |  | |   | |,' /       .'`  | (   __)   |  | | |
+#  | |  | |   | .  '.      / .'| |  | |      |  |/  |
+#  | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+#  | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+#  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /
+#   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   Donkey Kong Arcade Frontend by Jon Wilson
+#
+# ----------------------------------------------------------------------------------------------
+#  Assisted install script for Raspberry Pi4
+#
+#  You will need to copy the DKAFE binary release (e.g. dkafe_rpi4_binary_v0.1b.zip) and this
+#  install script to the /boot partition.
+#
+#  Run this script to start the assisted install of DKAFE.
+#  i.e. /boot/dkafe_install.sh
+# ----------------------------------------------------------------------------------------------
+
 # 1) Install DKAFE to /home/pi/dkafe_bin folder
 sudo unzip /boot/dkafe_rpi4_binary*.zip -d /home/pi
 
