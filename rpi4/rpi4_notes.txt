@@ -28,7 +28,7 @@ You will be asked the following Y/N questions. Y is recommended.
  9) Map GPIO to keyboard input controls?
  10) Disable non-essential Services?
  11) Disable networking services (WiFi, SSH)?
- 12) Reboot?
+ 12) Reboot now?
 
 
 Launch DKAFE from terminal manually

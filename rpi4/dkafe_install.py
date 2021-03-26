@@ -14,7 +14,7 @@
 # 9) Map GPIO to keyboard input controls
 # 10) Disable non-essential Services
 # 11) Disable networking services (WiFi, SSH)
-# 12) Reboot
+# 12) Reboot now
 import os
 AUTOSTART_FILE = "/etc/xdg/lxsession/LXDE-pi/autostart"
 AUTOSTART_FILE_BU = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP"
@@ -253,8 +253,8 @@ def main():
             os.system("sudo systemctl disable ssh.service --quiet")
             os.system("sudo systemctl disable wpa_supplicant.service --quiet")
 
-    # 12) Reboot
-    answer = yesno("Reboot system")
+    # 12) Reboot system
+    answer = yesno("Reboot now")
     if answer:
         os.system("reboot")
     else:
