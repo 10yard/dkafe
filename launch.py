@@ -30,7 +30,11 @@ def exit_program(confirm=False):
         else:
             # Save frontend state and exit
             _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 4
-            pickle.dump([_g.score, _g.timer_adjust], open("save.p", "wb"))
+            try:
+                with open('save.p', 'wb') as f:
+                    pickle.dump([_g.score, _g.timer_adjust], f)
+            except Exception:
+                _g.score, _g.timer_adjust = SCORE_START, 0
             pygame.quit()
             sys.exit()
 
@@ -60,7 +64,8 @@ def update_screen(delay_ms=0):
 
 def load_frontend_state():
     try:
-        _g.score, _g.timer_adjust = pickle.load(open("save.p", "rb"))
+        with open('save.p', "rb") as f:
+            _g.score, _g.timer_adjust = pickle.load(f)
     except FileNotFoundError:
         _g.score, _g.timer_adjust = SCORE_START, 0
 
@@ -265,6 +270,7 @@ def play_intro_animation():
         if type(_key) is int:
             # Flash DK Logo
             _g.screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), TOPLEFT)
+            display_slots(version_only=True, logo_scene=True)
         else:
             # Show DK climb scene
             _g.screen.blit(get_image(_key), TOPLEFT)
@@ -291,8 +297,8 @@ def play_intro_animation():
         update_screen(delay_ms=40)
 
 
-def display_slots(version_only=False):
-    if _g.showslots:
+def display_slots(version_only=False, logo_scene=False):
+    if _g.showslots or logo_scene:
         if not version_only:
             for i, slot in enumerate(SLOTS):
                 _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
