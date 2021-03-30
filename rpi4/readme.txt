@@ -1,0 +1,40 @@
+      ___   ___                    .--.
+     (   ) (   )                  /    \
+   .-.| |   | |   ___     .---.   | .`. ;    .--.
+  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
+ |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
+ | |  | |   | |,' /       .'`  | (   __)   |  | | |
+ | |  | |   | .  '.      / .'| |  | |      |  |/  |
+ | |  | |   | | `. \    | /  | |  | |      |  ' _.'
+ | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
+ ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade
+  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+
+-------------------------------------------------------------------------------
+ Raspberry Pi 4 Install 
+-------------------------------------------------------------------------------
+
+1. Format a new SD Card,  minimum 4GB size
+2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
+3. Copy contents of this zip file to the boot partition of the SD card.
+4. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
+5. Verify that your /boot partition contains these files before continuing:     
+     ▪ /boot/dkafe_bin
+     ▪ /boot/dkafe_install.sh
+     ▪ /boot/dkong.zip
+6. Boot up your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
+7. Run the DKAFE install script in a terminal by typing the following:
+     /boot/dkafe_install.sh
+8. The assisted setup will ask the following questions:
+     ▪ Rotate the display?
+     ▪ Launch DKAFE on boot?                    (Recommend Y)
+     ▪ Hide startup messages?                   (Recommend Y)
+     ▪ Hide the Pi taskbar?                     (Recommend Y)
+     ▪ Hide the Pi desktop?                     (Recommend Y)
+     ▪ Hide the Pi mouse cursor?                (Recommend Y)
+     ▪ Use headphone jack for audio?            (Recommend Y)
+     ▪ Force 640x480 mode on boot?              (Recommend Y)
+     ▪ Map GPIO to keyboard input controls?     (Recommend Y)
+     ▪ Disable non-essential Services?          (Recommend Y)
+     ▪ Disable networking services (WiFi, SSH)?
+     ▪ Reboot now?                              (Recommend Y)

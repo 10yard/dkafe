@@ -135,35 +135,39 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ### Raspberry Pi
 
-The automated setup will extract DKAFE files and do some configuration for you.  Follow these steps.
+1. Format a new SD Card,  minimum 4GB size
 
-1. Write Raspberry Pi OS Desktop to a new SD card using the Raspberry Pi Imager tool.
+2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
 
-2. Get the latest DKAFE binary release (e.g. dkafe_rpi4_binary_v0.1b.zip) and copy that along with the install script (dkafe_install.sh) to the **/boot** partition of the SD card.
+3. Copy contents of this zip file to the boot partition of the SD card.
 
-3. Copy dkong.zip (and optionally dkongjr.zip) to the **/boot** partition of the SD card.  These files will be automatically copied into the roms folder by the install script.
+4. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
 
-4. Boot the Pi with SD card inserted and complete the "Welcome to Raspberry Pi" setup. I recommend you skip past all options.
+5. Verify that your /boot partition contains these files before continuing:     
+     /boot/dkafe_bin
+     /boot/dkafe_install.sh
+     /boot/dkong.zip
+	 
+6. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
 
-5. Run the DKAFE install script on the boot partition (you can do this in a terminal by typing `/boot/dkafe_install.sh`).
+7. Run the install script in a terminal.
+     /boot/dkafe_install.sh
 
-6. Answer the following questions.
-
+8. The assisted setup will ask the following questions.
+```	 
+	 Rotate the display?
+	 Launch DKAFE on boot?                    (Recommend Y)
+	 Hide startup messages?                   (Recommend Y)
+	 Hide the Pi taskbar?                     (Recommend Y)
+	 Hide the Pi desktop?                     (Recommend Y)
+	 Hide the Pi mouse cursor?                (Recommend Y)
+	 Use headphone jack for audio?            (Recommend Y)
+	 Force 640x480 mode on boot?              (Recommend Y)
+	 Map GPIO to keyboard input controls?     (Recommend Y)
+	 Disable non-essential Services?          (Recommend Y)
+	 Disable networking services (WiFi, SSH)?
+	 Reboot now?                              (Recommend Y)
 ```
- 1) Rotate the display?
- 2) Launch DKAFE on boot?  (Y is recommended)
- 3) Hide startup messages? (Y is recommended)
- 4) Hide the Pi taskbar? (Y is recommended.  Unless you want to run other apps from the taskbar.)
- 5) Hide the Pi desktop? (Y is recommended)
- 6) Hide the Pi mouse cursor? (Y is recommended if you are ok with using a keyboard for admin tasks and you can use Alt-T to open a terminal).
- 7) Use headphone jack for audio?
- 8) Force 640x480 mode on boot (good for scan line generators)?
- 9) Map GPIO to keyboard input controls?
- 10) Disable non-essential Services? (Y is recommended)
- 11) Disable networking services (WiFi, SSH)?
- 12) Reboot now? (Y is recommended)
-```
-
 
 ## How to set up?
 

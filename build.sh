@@ -12,9 +12,8 @@
 #    pip3 install -r requirements.txt
 # ----------------------------------------------------------------------------------------------
 
-# remove existing binary folders
+# remove existing build folders
 sudo rm -r -f /home/pi/dkafe_bin
-sudo rm /home/pi/dkafe_bin_rpi4.zip
 
 # set full permission on sources
 cd /home/pi
@@ -72,3 +71,6 @@ sudo rm -r build
 version=$(cat /home/pi/dkafe/VERSION)
 cd /home/pi
 zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_bin
+cd /home/pi/dkafe/rpi4
+zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_install.sh
+zip -r /home/pi/dkafe_rpi4_binary_${version}.zip readme.txt

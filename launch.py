@@ -24,7 +24,7 @@ import pickle
 
 def exit_program(confirm=False):
     # Exit and prompt for confirmation if required.  Exit is temporarily disabled after returning from an emulator.
-    if _g.lastexit == 0 or since_last_exit() > 0.25:
+    if _g.lastexit <= 0 or since_last_exit() > 0.2:
         if confirm:
             open_menu(_g.exitmenu)
         else:

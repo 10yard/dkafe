@@ -4,15 +4,14 @@
 # ----------------------------------------------------------------------------------------------
 #  Assisted install script for Raspberry Pi4
 #
-#  You will need to copy the DKAFE binary release (e.g. dkafe_rpi4_binary_v0.1b.zip) and this
-#  install script to the /boot partition.
+#  You will need to extract contents of DKAFE binary release (e.g. dkafe_rpi4_binary_v0.1b.zip)
+#  to the /boot partition and then run this script.
 #
-#  Run this script to start the assisted install of DKAFE.
 #  i.e. /boot/dkafe_install.sh
 # ----------------------------------------------------------------------------------------------
 
 # 1) Install DKAFE to /home/pi/dkafe_bin folder
-sudo unzip /boot/dkafe_rpi4_binary*.zip -d /home/pi
+sudo cp -r /boot/dkafe_bin /home/pi
 
 # 2) Copy dkong roms (if found in /boot partition)
 sudo cp -f /boot/dkong.zip /home/pi/dkafe_bin/roms

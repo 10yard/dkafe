@@ -22,29 +22,30 @@ binary distribution should be extracted to /home/pi/dkafe_bin or you can use the
 
 Assisted setup of binary distribution
 ----------------------------------------------------------------------------------------------
-The assisted setup will extract DKAFE files and do some configuration for you.
-Get a new SD card and write the Raspberry Pi OS (Desktop) using Raspberry Pi Imager tool.
-Copy these files to boot partition of sdcard:
-	dkafe_bin_rpi4.zip        - the install files (provided in the release)
-	dkafe_install.sh          - the install script (provided in the release)
-	dkong.zip and dkongjr.zip - roms (not provided)
-Boot it up and complete the "Welcome to Raspberry Pi" setup.
-Run the install script in a terminal  (Ctrl-Alt-T):
-	sudo /boot/dkafe_install.sh
-
-You will be asked the following Y/N questions. Y is recommended.
- 1) Rotate the display?
- 2) Launch DKAFE on boot?
- 3) Hide startup messages?
- 4) Hide the Pi taskbar?
- 5) Hide the Pi desktop?
- 6) Hide the Pi mouse cursor?
- 7) Use headphone jack for audio?
- 8) Force 640x480 mode on boot (good for scan line generators)?
- 9) Map GPIO to keyboard input controls?
- 10) Disable non-essential Services?
- 11) Disable networking services (WiFi, SSH)?
- 12) Reboot now?
+1. Format a new SD Card,  minimum 4GB size
+2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
+3. Extract contents of the DKAFE binary release zip file and copy to the boot partition of the SD card.
+4. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
+5. Verify that your /boot partition contains these files before continuing:     
+     /boot/dkafe_bin
+     /boot/dkafe_install.sh
+     /boot/dkong.zip
+6. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
+7. Run the install script in a terminal.
+     /boot/dkafe_install.sh
+8. The assisted setup will ask the following questions.
+	 Rotate the display?
+	 Launch DKAFE on boot?                    (Recommend Y)
+	 Hide startup messages?                   (Recommend Y)
+	 Hide the Pi taskbar?                     (Recommend Y)
+	 Hide the Pi desktop?                     (Recommend Y)
+	 Hide the Pi mouse cursor?                (Recommend Y)
+	 Use headphone jack for audio?            (Recommend Y)
+	 Force 640x480 mode on boot?              (Recommend Y)
+	 Map GPIO to keyboard input controls?     (Recommend Y)
+	 Disable non-essential Services?          (Recommend Y)
+	 Disable networking services (WiFi, SSH)?
+	 Reboot now?                              (Recommend Y)
 
 
 Launch DKAFE from terminal manually
@@ -68,9 +69,11 @@ Resolution and frontend display scale
 ----------------------------------------------------------------------------------------------
 The resolution and display scale are set in dkafe_start.sh file.
 e.g. for 7:8 aspect ratio (0.875) with a rotated display use the following:
-	xrandr --output HDMI-1 --scale 0.875 --rotate left
-Note: 0.8 looks crisper for some reason so DKAFE default is:
-	xrandr --output HDMI-1 --scale 0.8 --rotate left
+	xrandr --output HDMI-1 --scale 1x0.875 --rotate left
+
+Note: 0.8 and 0.85 scale looks crisper for unknown reason so DKAFE default is:
+	xrandr --output HDMI-1 --scale 1x0.8 --rotate left
+
 
 
 Scan line generator
