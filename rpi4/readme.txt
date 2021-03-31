@@ -10,9 +10,9 @@
  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade
   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
 
--------------------------------------------------------------------------------
- Raspberry Pi 4 Install 
--------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+ Raspberry Pi 4 Install.  This readme file is bundled with the binary release ZIP.
+-----------------------------------------------------------------------------------
 
 1. Format a new SD Card,  minimum 4GB size
 2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.

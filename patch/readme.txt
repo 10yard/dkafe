@@ -10,9 +10,9 @@
  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
 
-----------------------------------------------------------------------------------------------
- Notes on automatically generate roms from .ips patch files
-----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+ Notes on automatically generating roms from .ips patch files
+--------------------------------------------------------------------------------
 
 DKAFE builds the default frontend using patches of the original "dkong.zip" (US Set 1) arcade rom.
 

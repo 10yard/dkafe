@@ -16,15 +16,15 @@
 
 Manual setup
 ----------------------------------------------------------------------------------------------
-source files should be extracted to /home/pi/dkafe
-binary distribution should be extracted to /home/pi/dkafe_bin or you can use the automated setup below.
+Source files should be extracted to /home/pi/dkafe
+The binary distribution should be extracted to /home/pi/dkafe_bin or you can use the automated setup below.
 
 
 Assisted setup of binary distribution
 ----------------------------------------------------------------------------------------------
 1. Format a new SD Card,  minimum 4GB size
 2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
-3. Extract contents of the DKAFE binary release zip file and copy to the boot partition of the SD card.
+3. Extract contents of the DKAFE binary release zip and copy to the boot partition of the SD card.
 4. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
 5. Verify that your /boot partition contains these files before continuing:     
      /boot/dkafe_bin
@@ -121,10 +121,10 @@ git clone https://github.com/pyinstaller/pyinstaller
 	------------------
 	sudo pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
 	
-	copy the executable to the dkafe folder which holds all the resources needed to run
+	copy executable back to the dkafe folder which holds all the resources needed to run
 	-----------------------------------------------------------------------------------
 	sudo cp /home/pi/dkafe/dist/launch /home/pi/dkafe
-        cd /home/pi/dkafe
+        cd /home/pi/dkafe	
 	./launch
 
 

@@ -7,7 +7,7 @@ A multiplatform arcade game launcher based on Donkey Kong made for arcade cabine
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-The frontend mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.
+The frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.
 
 The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically for this frontend. 
 
@@ -19,9 +19,9 @@ Coins are awarded after beating target scores (for 3rd, 2nd and 1st prize).  Coi
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
 
 
-Pauline will provide game information, score targets and unlock requirements as you walk towards an arcade machine.  
+Pauline helps out providing game information, score targets and unlock requirements as you walk towards an arcade machine.  
 
-You begin with just 200 coins, so you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
+You begin with just 200 coins, and you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
 
 If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all the machines though.
 
@@ -135,25 +135,23 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ### Raspberry Pi
 
-1. Format a new SD Card,  minimum 4GB size
+1. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool to an SD Card.
 
-2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
+2. Copy contents of the latest Raspberry Pi Binary Release Zip to the boot partition of the SD card.
 
-3. Copy contents of this zip file to the boot partition of the SD card.
+3. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
 
-4. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
-
-5. Verify that your /boot partition contains these files before continuing:     
+4. Verify that your /boot partition contains these files before continuing:     
      /boot/dkafe_bin
      /boot/dkafe_install.sh
      /boot/dkong.zip
 	 
-6. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
+5. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
 
-7. Run the install script in a terminal.
+6. Run the install script in a terminal.
      /boot/dkafe_install.sh
 
-8. The assisted setup will ask the following questions.
+7. The assisted setup will ask the following questions.
 ```	 
 	 Rotate the display?
 	 Launch DKAFE on boot?                    (Recommend Y)
@@ -174,14 +172,13 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **/roms** folder.  
 The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.
 
-The application requires settings.txt and romlist.csv to be present in the installation folder along with other resources.  Defaults are provided.
+The application requires settings.txt and romlist.csv to be present in the installation folder.  Defaults are provided.
  
 The settings.txt contains the emulator, rom path, controls and other configuration.  See **Frontend Settings** section below.
 
-The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.
+The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
 
 The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
-
 
 
 ## Display Resolution
@@ -193,7 +190,7 @@ The command line argument **-view "Pixel Aspect (7:8)"** can be used to override
 
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
-For Raspberry Pi,  you should use 640x480 resolution and adjust the x/y display scale using xrandr.  Refer to **rpi4/rpi4_notes**.
+For Raspberry Pi,  you should use 640x480 resolution and adjust the x/y display scale using xrandr.  The Pi install script will set this up for you.  Refer to **rpi4/rpi4_notes**.
 
 
 
@@ -231,7 +228,10 @@ How much it costs to play an arcade machine.
 `LIFE_COST = 150`    
 How many coins Jumpman drops when time runs out.
 
-`TIMER_START = 5000`    
+`SCORE_START = 200`
+How many coins Jumpman starts out with.
+
+`TIMER_START = 8000`    
 Number to start the countdown timer from.
 
 
@@ -322,7 +322,7 @@ CONTROL_SNAP = F12
 #### Joystick Controls
 
 Joystick controls can be configured by setting the USE_JOYSTICK option.
-The up, down, left, right controls are defined automatically from the joystick axis movement.
+The up, down, left, right controls are defined automatically from the first joysticks axis movement.
 Buttons can be customised in the settings.txt file as per the following example.  
 Button numbers 0-19 relate to the first joystick and 20-39 relate to the second joystick.
 
@@ -338,9 +338,9 @@ BUTTON_COIN = 7
 
 #### GPIO Inputs
 
-GPIO input is supported on Raspberry Pi.  The install script can set this up automatically for you if you plan to connect GPIO directly to arcade controls.
+GPIO input is supported on Raspberry Pi and it is my recommended option for interfacing with arcade controls.  The DKAFE install script can set this up automatically.
 
-GPIO inputs are mapped to keyboard inputs in the /boot/config.txt file. These defaults avoid using GPIO pins that could be used with other peripherals:
+GPIO inputs can be mapped to keyboard inputs in the /boot/config.txt file. The chosen defaults avoid using GPIO pins that may be used with other Raspberry Pi peripherals:
 
 ```
 # GPIO to keyboard inputs
@@ -431,8 +431,12 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
 
  - Extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Add Crazy Kong and Donkey Kong 3 interface support to the default frontend.
- - Provide 60-in-1 option as a pre-configured frontend - without the roms.
+ - Alternative frontend preconfigured with vertical arcade games (as replacement for 60-in-1) e.g. Pacman, Ms Pacman, Galaga, Burger Time, Frogger.  No roms provided.
  - Allow some options to be easily changed via the frontend e.g. freeplay (on/off), unlock mode (on/off), autostart (on/off).
+
+
+## I need help with
+ - Creating .png icons for popular arcade machine.  See the **dkafe/artwork/icon** folder.
  
  
 ## Thanks to
@@ -460,8 +464,8 @@ https://github.com/mahlemiut/wolfmame
 
 ## License
 
-DKAFE is a free, open source and cross platform front-end for emulators.
-It is licensed under GNU GPLv3.
+DKAFE is a free, open source, cross platform front-end for emulators.
+It is licensed under GNU GPLv3. 
 
 
 ## Feedback

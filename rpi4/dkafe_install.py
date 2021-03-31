@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------------------
 #  Install program for Raspberry Pi4
 # ----------------------------------------------------------------------------------------------
-#  Invoked from install_script.sh after extracting binary files to /home/pi/dkafe_bin folder
+#  Invoked from install_script.sh after installing binary files to /home/pi/dkafe_bin folder
 #  This program handles optional setup items by prompting user.
 #
 #  The recommended setup is to answer "y" to the following questions:
