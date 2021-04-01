@@ -418,6 +418,9 @@ See build.sh and rpi4/rpi_notes.txt for building a Raspberry Pi binary.
 Refer to readme.txt in the **/DKWolf** folder.
 
 
+![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/arcade.jpg)
+
+
 ## Motivations?
 
 The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.
@@ -429,14 +432,16 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
 
 ## What's next?
 
- - Extend the default frontend setup to include support for NES Donkey Kong hacks.
- - Add Crazy Kong and Donkey Kong 3 interface support to the default frontend.
- - Alternative frontend preconfigured with vertical arcade games (as replacement for 60-in-1) e.g. Pacman, Ms Pacman, Galaga, Burger Time, Frogger.  No roms provided.
- - Allow some options to be easily changed via the frontend e.g. freeplay (on/off), unlock mode (on/off), autostart (on/off).
+ - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
+ - Maybe extend the default frontend setup to include support for NES Donkey Kong hacks.
+ - Create an x86 binary release for Windows. Currently only x64 is available.
+ - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
 
 
 ## I need help with
+ 
  - Creating .png icons for popular arcade machine.  See the **dkafe/artwork/icon** folder.
+ - Testing and tweaking the unlock mode.
  
  
 ## Thanks to
