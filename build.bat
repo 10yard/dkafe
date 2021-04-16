@@ -24,8 +24,8 @@ copy COPYING dist\ /Y
 echo **** create empty roms folder
 xcopy roms\---* dist\roms /S /i /Y
 
-echo **** create minimal dkmame folder
-xcopy dkwolf\dkwolf* dist\dkwolf\ /Y
+echo **** create minimal dkwolf folder
+xcopy dkwolf\dkwolf.exe dist\dkwolf\ /Y
 xcopy dkwolf\*.txt dist\dkwolf\ /Y
 xcopy dkwolf\*.md dist\dkwolf\ /Y
 xcopy dkwolf\playback.bat dist\dkwolf\ /Y
@@ -33,7 +33,7 @@ xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
 
 echo **** build the exe in virtual environment ****
-venv\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
+venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
 
 echo **** clean up
 rmdir build /s /Q

@@ -128,7 +128,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ### Windows
 
-1. Download the latest DKAFE binary release for Windows and extract content to a folder
+1. Download the latest DKAFE binary release for Windows and extract content to a folder. It is recommended to download the 64bit version unless you have an old machine.
 
 2. Run "launch.exe".
 
@@ -416,6 +416,7 @@ See build.sh and rpi4/rpi_notes.txt for building a Raspberry Pi binary.
 ### How to compile DKWolf?
 
 Refer to readme.txt in the **/DKWolf** folder.
+
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/arcade.jpg)

@@ -50,6 +50,8 @@ The changes are:
 A useful reference to compiling MAME can be found at:
   http://forum.arcadecontrols.com/index.php?topic=149545.0
 
+MAME build tools are available at https://github.com/mamedev/buildtools/releases
+
 To build with dkong only driver the SOURCES flag was used in the makefile along with REGENIE i.e.
   SOURCES=src/mame/drivers/dkong.cpp
   REGENIE=1
@@ -58,7 +60,6 @@ Other optimisations/flags were
   OPTIMIZE=3
   SYMBOLS=0 
   STRIP_SYMBOLS=1 
-  PTR64=1 
   TOOLS=0 
 
 Build time was less than 10 minutes!

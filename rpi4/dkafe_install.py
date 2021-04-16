@@ -25,7 +25,7 @@
 #  5) Hide the Pi desktop
 #  6) Hide the Pi mouse cursor
 #  7) Use headphone jack for audio
-#  8) Force 640x480 mode on boot (good for scan line generators)
+#  8) Force 640x480 mode on boot (for scan line generators)
 #  9) Map GPIO to keyboard input controls
 #  10) Disable non-essential Services
 #  11) Disable networking services (WiFi, SSH)
@@ -221,7 +221,7 @@ def main():
         os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
         if os.path.exists(CONFIG_FILE_BU):
             # 8) Force 640x480 mode on boot
-            answer = yesno("Force 640x480 mode on boot (good for scan line generators) ?")
+            answer = yesno("Force 640x480 mode on boot (for scan line generators)")
             if answer:
                 changes_made = True
                 with open(CONFIG_FILE, "w") as f_out:
