@@ -10,9 +10,9 @@
  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
 
-----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
  Notes on DKWolf
-----------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 DKWolf is a custom build of WolfMAME (v0.196) built for DKAFE which supports only Donkey Kong drivers.
 It a lightweight emulator less than 15mb size.
@@ -37,9 +37,6 @@ The changes are:
     removed "WRONG CHECKSUMS" message as we are expecting this with our DK hacks.
     removed ROM loading messages
     changed missing ROM error to show message "ROM file was not found.  Please check DKAFE configuration".
-
-  emu/config.cpp
-    remove save of config files
 
   emu/video.h
     Increase the max frameskip so we can more quickly skip the dk intro scene when user presses jump button.
