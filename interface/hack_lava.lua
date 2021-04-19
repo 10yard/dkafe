@@ -32,7 +32,7 @@ function draw_lava()
     if stage == 4 then
       lava_difficulty = math_floor(1.5 * (22 - level))  -- more time for rivets
     elseif stage == 3 then
-      lava_difficulty = math_floor(0.6 * (22 - level))  -- less time for elevators
+      lava_difficulty = math_floor(0.75 * (22 - level))  -- less time for elevators
     end    
     -- reset lava level
 		lava_y = -7

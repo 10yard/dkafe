@@ -435,7 +435,6 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
 
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
  - Maybe extend the default frontend setup to include support for NES Donkey Kong hacks.
- - Create an x86 binary release for Windows. Currently only x64 is available.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
 
 

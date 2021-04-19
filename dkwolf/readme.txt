@@ -41,7 +41,7 @@ The changes are:
   emu/video.h
     Increase the max frameskip so we can more quickly skip the dk intro scene when user presses jump button.
 
-  osd/modules/render/drawbgfx.cpp
+  osd/modules/render/drawbgfx.cpp (** RPI4 ONLY)
     Fix bug in mame source which was effecting RPI build
 
 A useful reference to compiling MAME can be found at:
