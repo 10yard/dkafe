@@ -2,7 +2,7 @@
 
 ## Donkey Kong Arcade Front End
 
-A multiplatform arcade game launcher based on Donkey Kong made for arcade cabinets with incentives to play and unlock arcade games.  
+A multi-platform arcade game launcher based on Donkey Kong made for arcade cabinets with incentives to play and unlock arcade games.  
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
@@ -39,7 +39,7 @@ The frontend can be configured to launch other emulators and roms.
    1. **DK Lava Panic**
 Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  Try not to panic!
    2. **DK Who and the Daleks** 
-Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant "Rose" from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
+Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
    3. **DK Last Man Standing** 
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
 
@@ -433,6 +433,7 @@ I frequently play the original Donkey Kong on MAME and aim to beat my high score
 
 ## What's next?
 
+ - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
  - Maybe extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
@@ -453,9 +454,6 @@ Paul Goes for an excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
 Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, Tim Appleton and Vic20 George.
-
-The Donkey Kong Forum
-https://donkeykongforum.com/
 
 The pygame community
 https://www.pygame.org/

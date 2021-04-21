@@ -75,9 +75,6 @@ To make a complete patch file for a hack you need to:
  2. use IPS patch tool to create a patch of the differences between original dkong.zip and the modified dkong.zip
  3. save the .ips file to patch folder
 
-All completed hacks will be named dkong.zip and placed into a unique folder under /hacks
-e.g. dkongspooky.ips will create "<ROM_DIR>/hacks/dkongspooky/dkong.zip"
-
 ---- Converting old zips other than those already included
 
 dkong.zip files from early versions of mame make use of different file names.  Archive filenames should be renamed as follows.  Filenames can differ for some hacks.
