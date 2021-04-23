@@ -141,10 +141,12 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 3. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
 
-4. Verify that your /boot partition contains these files before continuing:     
-     /boot/dkafe_bin
-     /boot/dkafe_install.sh
-     /boot/dkong.zip
+4. Verify that your /boot partition contains these files before continuing:
+```  
+     dkafe_bin
+     dkafe_install.sh
+     dkong.zip
+```
 	 
 5. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
 
@@ -467,7 +469,7 @@ https://github.com/mahlemiut/wolfmame
 
 ## License
 
-DKAFE is a free, open source, cross platform front-end for emulators.
+DKAFE is a free, open source, cross-platform front-end for emulators.
 It is licensed under GNU GPLv3. 
 
 

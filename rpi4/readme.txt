@@ -19,9 +19,9 @@
 3. Copy contents of this zip file to the boot partition of the SD card.
 4. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
 5. Verify that your /boot partition contains these files before continuing:     
-     ▪ /boot/dkafe_bin
-     ▪ /boot/dkafe_install.sh
-     ▪ /boot/dkong.zip
+     ▪ dkafe_bin
+     ▪ dkafe_install.sh
+     ▪ dkong.zip
 6. Boot up your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
 7. Run the DKAFE install script in a terminal by typing the following:
      /boot/dkafe_install.sh

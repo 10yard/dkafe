@@ -88,8 +88,9 @@ sudo nano makefile
 make -j5
 
 # Get DKAFE and install requirements
-wget https://github.com/10yard/dkafe/??.zip
-unzip dkafe
+wget https://github.com/10yard/dkafe/archive/refs/heads/master.zip
+unzip dkafe_master.zip
+cd dkafe_master
 pip3 install -r requirements.txt
 sudo pip3 install -r requirements.txt (sudo requirements are needed later for pyinstaller)
 
