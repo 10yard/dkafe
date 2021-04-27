@@ -210,6 +210,8 @@ def check_for_input(force_exit=False):
             if event.key == CONTROL_EXIT:
                 if _g.lastexit <= 0 or since_last_exit() > 0.2:
                     exit_program(confirm=CONFIRM_EXIT and not force_exit)
+            if event.key == CONTROL_TAB:
+                open_menu(_g.settingmenu)
             if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus(initial=False)
                 open_menu(_g.menu)
@@ -461,7 +463,7 @@ def build_menus(initial=False):
             _g.menu.add_button(alt, launch_rom, (sub, name, emu, unlock, score3, score2, score1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, emu, unlock, score3, score2, score1))
-
+    _g.menu.add_vertical_margin(10)
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
@@ -472,6 +474,55 @@ def build_menus(initial=False):
     if ENABLE_SHUTDOWN:
         _g.exitmenu.add_button('Shutdown', shutdown_system)
 
+    # Setting menu
+    _g.settingmenu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], "    FRONTEND SETTINGS", mouse_visible=False,
+                                 mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
+    _g.settingmenu.add_selector(' Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
+    _g.settingmenu.add_selector('   Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
+    _g.settingmenu.add_selector('  Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
+    _g.settingmenu.add_selector('Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
+    _g.settingmenu.add_vertical_margin(10)
+    _g.settingmenu.add_button('Save Changes to File', save_menu_settings)
+    _g.settingmenu.add_vertical_margin(10)
+    _g.settingmenu.add_button('Close Menu', close_menu)
+
+
+def save_menu_settings():
+    if os.path.exists("settings.txt"):
+        _s.copy("settings.txt", "settings_backup.txt")
+        if os.path.exists("settings_backup.txt"):
+            with open("settings.txt", "w") as f_out:
+                with open("settings_backup.txt", "r") as f_in:
+                    for line in f_in.readlines():
+                        line_packed = line.replace(" ","")
+                        if "UNLOCK_MODE=" in line_packed:
+                            f_out.write(f"UNLOCK_MODE = {UNLOCK_MODE}\n")
+                        elif "FREE_PLAY=" in line_packed:
+                            f_out.write(f"FREE_PLAY = {FREE_PLAY}\n")
+                        elif "FULLSCREEN=" in line_packed:
+                            f_out.write(f"FULLSCREEN = {FULLSCREEN}\n")
+                        elif "CONFIRM_EXIT=" in line_packed:
+                            f_out.write(f"CONFIRM_EXIT = {CONFIRM_EXIT}\n")
+                        else:
+                            f_out.write(line)
+            write_text(text="  Changes have been saved  ", font=dk_font, x=0, y=232, fg=PINK, bg=RED)
+            update_screen(delay_ms=1500)
+
+
+def set_unlock(selected, value):
+    globals()["UNLOCK_MODE"] = value
+
+
+def set_freeplay(selected, value):
+    globals()["FREE_PLAY"] = value
+
+
+def set_fullscreen(selected, value):
+    globals()["FULLSCREEN"] = value
+    clear_screen(and_reset_display=True)
+
+def set_confirm(selected, value):
+    globals()["CONFIRM_EXIT"] = value
 
 def open_menu(menu):
     _g.timer.stop()
@@ -488,6 +539,7 @@ def close_menu():
     intermission_channel.stop()
     _g.menu.disable()
     _g.exitmenu.disable()
+    _g.settingmenu.disable()
     update_screen()
     _g.active = True
     _g.timer.start()
@@ -538,6 +590,7 @@ def launch_rom(info):
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
 
+            clear_screen(and_reset_display=True)
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
                 scored = get_award(name, score3, score2, score1)
@@ -547,7 +600,6 @@ def launch_rom(info):
                         drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=True)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
-            clear_screen(and_reset_display=True)
         else:
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)

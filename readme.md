@@ -21,7 +21,7 @@ Coins are awarded after beating target scores (for 3rd, 2nd and 1st prize).  Coi
 
 Pauline helps out providing game information, score targets and unlock requirements as you walk towards an arcade machine.  
 
-You begin with just 200 coins, and you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
+You begin with 500 coins, and you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
 
 If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all the machines though.
 
@@ -188,7 +188,7 @@ The frontend can be configured with multiple arcade emulators to allow a combina
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 The scaling works perfectly with a 7:8 aspect vertically rotated screen.
 
-The command line argument **-view "Pixel Aspect (7:8)"** can be used to override MAME's default 4:3 aspect.
+The command line argument `-view "Pixel Aspect (7:8)"` can be used to override MAME's default 4:3 aspect.
 
 For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
 
@@ -199,6 +199,7 @@ For Raspberry Pi,  you should use 640x480 resolution and adjust the x/y display 
 ### Frontend Settings
 
 Default settings can be changed in the settings.txt file.
+The main frontend settings (first 4 items below) can also be changed using the settings menu within DKAFE, accessed with the <TAB> key.
 
 `FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
@@ -230,7 +231,7 @@ How much it costs to play an arcade machine.
 `LIFE_COST = 150`    
 How many coins Jumpman drops when time runs out.
 
-`SCORE_START = 200`
+`SCORE_START = 500`
 How many coins Jumpman starts out with.
 
 `TIMER_START = 8000`    
@@ -318,6 +319,7 @@ CONTROL_START = 1
 CONTROL_MENU = 2
 CONTROL_INFO = 5
 CONTROL_EXIT = escape
+CONTROL_SETTINGS = tab
 CONTROL_SNAP = F12
 ```
 

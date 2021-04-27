@@ -33,6 +33,7 @@ CONTROL_P1 = pygame.K_1
 CONTROL_P2 = pygame.K_2
 CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
+CONTROL_TAB = pygame.K_TAB
 CONTROL_SNAP = pygame.K_F12
 
 # Joystick Options and Button Assignments (Device 1 buttons start from 0,  Device 2 buttons start from 20)
@@ -66,7 +67,7 @@ SHOW_HUD = 1                   # Show in game HUD by default (in top right corne
 AWARDS = [500, 1000, 2500]     # Coins awarded for reaching score target for 1st, 2nd, 3rd when competing.
 PLAY_COST = 100                # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150                # How many coins Jumpman drops when time runs out
-SCORE_START = 200              # How many coins Jumpman starts with
+SCORE_START = 500              # How many coins Jumpman starts with
 TIMER_START = 8000             # Timer starts countdown from. Integer
 COIN_VALUES = [0, 50, 100]     # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
