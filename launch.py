@@ -29,11 +29,13 @@ def exit_program(confirm=False):
     else:
         # Save frontend state and exit
         _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 4
-        try:
-            with open('save.p', 'wb') as f:
-                pickle.dump([_g.score, _g.timer_adjust], f)
-        except Exception:
-            _g.score, _g.timer_adjust = SCORE_START, 0
+        for attempt in 1, 2, 3:
+            try:
+                with open('save.p', 'wb') as f:
+                    pickle.dump([_g.score, _g.timer_adjust], f)
+                break
+            except Exception:
+                pygame.time.delay(250 * attempt)
         pygame.quit()
         sys.exit()
 
@@ -65,6 +67,8 @@ def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
             _g.score, _g.timer_adjust = pickle.load(f)
+    except EOFError:
+        _g.score, _g.timer_adjust = SCORE_START, 0
     except FileNotFoundError:
         _g.score, _g.timer_adjust = SCORE_START, 0
 
@@ -491,6 +495,7 @@ def build_menus(initial=False):
 def settings_menu():
     open_menu(_g.settingmenu)
 
+
 def save_menu_settings():
     if os.path.exists("settings.txt"):
         _s.copy("settings.txt", "settings_backup.txt")
@@ -498,7 +503,7 @@ def save_menu_settings():
             with open("settings.txt", "w") as f_out:
                 with open("settings_backup.txt", "r") as f_in:
                     for line in f_in.readlines():
-                        line_packed = line.replace(" ","")
+                        line_packed = line.replace(" ", "")
                         if "UNLOCK_MODE=" in line_packed:
                             f_out.write(f"UNLOCK_MODE = {UNLOCK_MODE}\n")
                         elif "FREE_PLAY=" in line_packed:
@@ -513,20 +518,22 @@ def save_menu_settings():
             update_screen(delay_ms=1500)
 
 
-def set_unlock(selected, value):
-    globals()["UNLOCK_MODE"] = value
+def set_unlock(_, setting_value):
+    globals()["UNLOCK_MODE"] = setting_value
 
 
-def set_freeplay(selected, value):
-    globals()["FREE_PLAY"] = value
+def set_freeplay(_, setting_value):
+    globals()["FREE_PLAY"] = setting_value
 
 
-def set_fullscreen(selected, value):
-    globals()["FULLSCREEN"] = value
+def set_fullscreen(_, setting_value):
+    globals()["FULLSCREEN"] = setting_value
     clear_screen(and_reset_display=True)
 
-def set_confirm(selected, value):
-    globals()["CONFIRM_EXIT"] = value
+
+def set_confirm(_, setting_value):
+    globals()["CONFIRM_EXIT"] = setting_value
+
 
 def open_menu(menu):
     _g.timer.stop()
