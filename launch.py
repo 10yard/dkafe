@@ -28,7 +28,7 @@ def exit_program(confirm=False):
         open_menu(_g.exitmenu)
     else:
         # Save frontend state and exit
-        _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 4
+        _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 2
         for attempt in 1, 2, 3:
             try:
                 with open('save.p', 'wb') as f:
@@ -515,7 +515,7 @@ def save_menu_settings():
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, x=0, y=232, fg=PINK, bg=RED)
-            update_screen(delay_ms=1500)
+            update_screen(delay_ms=1000)
 
 
 def set_unlock(_, setting_value):
