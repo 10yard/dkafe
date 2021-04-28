@@ -464,6 +464,7 @@ def build_menus(initial=False):
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, emu, unlock, score3, score2, score1))
     _g.menu.add_vertical_margin(10)
+    _g.menu.add_button('Settings', settings_menu)
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
@@ -486,6 +487,9 @@ def build_menus(initial=False):
     _g.settingmenu.add_vertical_margin(10)
     _g.settingmenu.add_button('Close Menu', close_menu)
 
+
+def settings_menu():
+    open_menu(_g.settingmenu)
 
 def save_menu_settings():
     if os.path.exists("settings.txt"):

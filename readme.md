@@ -198,8 +198,7 @@ For Raspberry Pi,  you should use 640x480 resolution and adjust the x/y display 
 
 ### Frontend Settings
 
-Default settings can be changed in the settings.txt file.
-The main frontend settings (first 4 items below) can also be changed using the settings menu within DKAFE, accessed with the <TAB> key.
+Default settings can be changed in the settings.txt file.  Some settings can also be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB).
 
 `FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
