@@ -48,7 +48,7 @@ sudo cp rpi4/dkafe_start.sh dist
 sudo mkdir dist/roms
 sudo cp roms/---* dist/roms
 
-# create minimal dkmame folder
+# create minimal dkwolf folder
 sudo mkdir dist/dkwolf
 sudo cp dkwolf/dkwolfrpi dist/dkwolf
 sudo cp dkwolf/playback.bat dist/dkwolf
@@ -61,7 +61,7 @@ sudo cp -r dkwolf/changes dist/dkwolf
 sudo chown -R pi:pi dist
 sudo chmod -R 777 dist
 
-# Move dist to make it accessible from /home/pi/dkafe/bin
+# Move binaries to /home/pi
 mv dist /home/pi/dkafe_bin
 
 # Clean up

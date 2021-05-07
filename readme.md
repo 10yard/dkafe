@@ -137,7 +137,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 1. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool to an SD Card.
 
-2. Copy contents of the latest Raspberry Pi Binary Release Zip to the boot partition of the SD card.
+2. Extract contents of the latest Raspberry Pi Binary Release Zip to the boot partition of the SD card.
 
 3. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
 
@@ -431,7 +431,7 @@ The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replac
 
 I wanted to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
-I frequently play the original Donkey Kong on MAME and aim to beat my high score of 199,200.  I need to master those springs!
+I frequently play the original Donkey Kong and aim to improve on my high score of 255,120.  I need to master those springs!
 
 
 ## What's next?
