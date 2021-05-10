@@ -61,9 +61,14 @@ def read_romlist():
                 if name == "dkongjr" and slot == "5" and not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
                     name, sub, des, unlock, score3, score2, score1 = "dkong", "dkongtrn", "DK Trainer", "0", "", "", ""
 
-                # In record mode,  score targets are not considered
+                # In record mode checks.
                 if "-record" in get_emulator(int(emu)).lower():
-                    score3, score2, score1 = ("",) * 3
+                    if sub in LUA_HACKS:
+                        # Recording is not supported for LUA hacks at the moment
+                        emu = "1"
+                    else:
+                        # Score targets are not considered for recordings
+                        score3, score2, score1 = ("",) * 3
 
                 if name and des:
                     if not alt:

@@ -131,6 +131,9 @@ if os.path.exists("VERSION"):
 # Expected location of original DK zip (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 
+# These hacks depend on the MAME/LUA interface
+LUA_HACKS = ["dkonglava", "dkongwho", "dkonglastman"]
+
 # Colours
 RED = (232, 7, 10)
 BLUE = (4, 3, 255)
