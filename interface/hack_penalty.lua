@@ -42,7 +42,7 @@ if loaded == 3 and data_subfolder == "dkonglastman" then
 		emu.register_frame_done(dkonglastman_overlay, "frame")
     -- Set up dip switch penalty point options.  Default is 00.
     penalty_dips = {}
-    penalty_dips["00"], penalty_dips["11"], penalty_dips["10"], penalty_dips["01"] = 25000, 40000, 60000, 75000    
+    penalty_dips["00"], penalty_dips["11"], penalty_dips["10"], penalty_dips["01"] = 10000, 15000, 25000, 50000    
   	lastman_hack_started = 1
 	end
 end

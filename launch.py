@@ -357,9 +357,10 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     nearby = (sub, name, emu, unlock, score3, score2, score1)
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
-                if "-record" in _s.get_emulator(emu) and not _g.showinfo:
+                if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
                     # Show recording text above icon
-                    write_text("REC", x=_x, y=_y - 6, fg=(BLACK, RED)[_g.timer.duration % 2 < 1], bg=None)
+                    if _g.timer.duration % 2 < 1:
+                        write_text("REC", x=_x, y=_y - 6, fg=WHITE, bg=RED)
             if _g.showinfo:
                 info_list.append((des, _x, _y, w, unlocked))
     if _g.showinfo:
@@ -431,6 +432,11 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
     elif direction in ("u", "d"):
         if "LADDER_DETECTED" in map_info:
+            # Centre Jumpman on ladder
+            for c in LADDER_CENTRES:
+                if _g.xpos >= c - 2 and _g.xpos <= c + 3:
+                    _g.xpos = c
+
             if "END_OF_LADDER" in map_info:
                 sprite_file = sprite_file.replace("#", "0")
             elif "NEARING_END_OF_LADDER" in map_info:

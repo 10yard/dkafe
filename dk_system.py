@@ -54,10 +54,16 @@ def read_romlist():
         for row in rl.readlines():
             if not row.startswith("#") and row.count(",") == 9:
                 name, sub, des, alt, slot, emu, unlock, score3, score2, score1, *_ = [x.strip() for x in row.split(",")]
+                if not emu.strip():
+                   emu = "1"
 
                 # DK Junior is optional in the default frontend so replace with trainer if not available
                 if name == "dkongjr" and slot == "5" and not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
                     name, sub, des, unlock, score3, score2, score1 = "dkong", "dkongtrn", "DK Trainer", "0", "", "", ""
+
+                # In record mode,  score targets are not considered
+                if "-record" in get_emulator(int(emu)).lower():
+                    score3, score2, score1 = ("",) * 3
 
                 if name and des:
                     if not alt:

@@ -204,6 +204,9 @@ LADDER_ZONES = [
     ("ANY_LADDER", (20, 30, 60, 90, 160, 170, 180, 190, 240)),
     ("TOP_OF_ANY_LADDER", (60, 170, 180))]
 
+# Jumpman's x position when centre of ladder
+LADDER_CENTRES = (28, 60, 68, 76, 84, 92, 108, 124, 164, 180)
+
 # Sprite helpers
 SPRITE_FULL = 15
 SPRITE_HALF = 8
