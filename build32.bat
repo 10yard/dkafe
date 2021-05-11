@@ -7,6 +7,7 @@ echo ---------------------------------------------------------------------------
 echo
 echo **** remove existing build folders ****
 rmdir build /s /Q
+rmdir dist /s /Q
 
 echo **** copy program resources ****
 xcopy artwork dist\artwork /S /i /Y
