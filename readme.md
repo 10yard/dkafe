@@ -1,6 +1,6 @@
 # **DKAFE** #
 
-## Donkey Kong Arcade Front End
+## Donkey Kong Arcade Frontend
 
 A multi-platform arcade game launcher based on Donkey Kong made for arcade cabinets with incentives to play and unlock arcade games.  
 
@@ -119,7 +119,7 @@ This build has functionality disabled for save/load states, cheats, rewind, thro
 
 Gameplay recordings are saved to DKAFE's **/dkwolf/inp** folder.
 
-It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed front end.
+It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
 
 
 ## How to install

@@ -212,8 +212,8 @@ def check_for_input(force_exit=False):
                     setattr(_g, attr, event.type == pygame.KEYDOWN)
         if event.type == pygame.KEYDOWN:
             if event.key == CONTROL_EXIT:
-                if _g.lastexit <= 0 or since_last_exit() > 0.2:
-                    exit_program(confirm=CONFIRM_EXIT and not force_exit)
+                # if _g.lastexit <= 0 or since_last_exit() > 0.2:
+                exit_program(confirm=CONFIRM_EXIT and not force_exit)
             if event.key == CONTROL_TAB:
                 open_menu(_g.settingmenu)
             if event.key == CONTROL_P2 and ENABLE_MENU:
@@ -604,6 +604,8 @@ def launch_rom(info):
             if _s.is_raspberry() and EMU_EXIT_RPI:
                 os.system(EMU_ENTER_RPI)
             os.system(launch_command)
+
+            pygame.time.delay(50) # debounce
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
 

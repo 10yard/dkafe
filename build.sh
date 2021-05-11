@@ -2,9 +2,7 @@
 #  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
 #
 # ----------------------------------------------------------------------------------------------
-#  Build and package the Windows x64 binary release
-# ----------------------------------------------------------------------------------------------
-#  Raspberry Pi Build Script
+#  Build and package the Raspberry Pi binary release
 # ----------------------------------------------------------------------------------------------
 #  Refer to rpi4_notes for info on settng up pyinstaller
 #  Dependenices will be needed:
