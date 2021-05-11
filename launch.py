@@ -597,6 +597,7 @@ def launch_rom(info):
             elif "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
 
+            clear_awarded_coin_status(_g.coins)
             reset_all_inputs()
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
@@ -642,6 +643,12 @@ def show_score():
 def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=False):
     # Drop a coin at x, y location, rotate sprite no, movement direction, use ladders?, coin type id, coin was awarded?
     _g.coins.append((x, y, rotate, movement, use_ladders, coin_type, awarded))
+
+
+def clear_awarded_coin_status(coins):
+    _g.coins = []
+    for coin in coins:
+        _g.coins.append(coin[:6] + (False,))
 
 
 def show_timeup_animation(sprite_number, loss=0):
@@ -744,6 +751,8 @@ def animate_rolling_coins(out_of_time=False):
     for i, coin in enumerate(_g.coins):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
         if co_awarded:
+            write_text(("YOU WON A PRIZE !", "COLLECT THE COINS")[pygame.time.get_ticks() % 3000 > 1500], x=108, y=37,
+                       fg=WHITE, bg=MAGENTA, bubble=True)
             _g.awarded = True
         _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_rot % 4))}.png"), (int(co_x), int(co_y)))
 
