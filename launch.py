@@ -777,7 +777,7 @@ def animate_rolling_coins(out_of_time=False):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
         if co_awarded:
             place, place_text = get_prize_placing(co_awarded)
-            write_text(f"YOU GOT {place_text} !", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+            write_text(f"YOU WON {place_text} PRIZE!", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
             _g.awarded = co_awarded
             _g.lastaward = _g.timer.duration
 
