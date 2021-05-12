@@ -434,7 +434,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
         if "LADDER_DETECTED" in map_info:
             # Centre Jumpman on ladder
             for c in LADDER_CENTRES:
-                if _g.xpos >= c - 2 and _g.xpos <= c + 3:
+                if c - 2 <= _g.xpos <= c + 3:
                     _g.xpos = c
 
             if "END_OF_LADDER" in map_info:
@@ -606,7 +606,7 @@ def launch_rom(info):
                 os.system(EMU_ENTER_RPI)
             os.system(launch_command)
 
-            pygame.time.delay(50) # debounce
+            pygame.time.delay(50)  # debounce
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
 
@@ -616,8 +616,10 @@ def launch_rom(info):
                 scored = get_award(name, score3, score2, score1)
                 if scored > 0:
                     _g.awarded = True
+                    _g.timer.reset()
+                    _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
-                        drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=True)
+                        drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
         else:
@@ -640,7 +642,7 @@ def show_score():
     write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
 
 
-def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=False):
+def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=0):
     # Drop a coin at x, y location, rotate sprite no, movement direction, use ladders?, coin type id, coin was awarded?
     _g.coins.append((x, y, rotate, movement, use_ladders, coin_type, awarded))
 
@@ -648,7 +650,7 @@ def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, a
 def clear_awarded_coin_status(coins):
     _g.coins = []
     for coin in coins:
-        _g.coins.append(coin[:6] + (False,))
+        _g.coins.append(coin[:6] + (0,))
 
 
 def show_timeup_animation(sprite_number, loss=0):
@@ -715,29 +717,35 @@ def process_interrupts():
 
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
 
-    # animated DK,  sometimes DK will grab a coin
-    prefix = ("dk", "dkg")[_g.grab]
-    if _g.grab and _g.cointype == 0:
-        # Determine next coin to be grabbed by DK. Higher value coins are released less frequenly
-        _g.cointype = int(randint(1, COIN_HIGH) == 1) + 1
+    if _g.awarded:
+        _g.screen.blit(get_image(f"artwork/sprite/dka.png"), (11, 52))
+    elif _g.timer.duration - _g.lastaward < 2:
+        _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11, 52))
+    else:
+        # animated DK,  sometimes DK will grab a coin
+        prefix = ("dk", "dkg")[_g.grab]
+        if _g.grab and _g.cointype == 0:
+            # Determine next coin to be grabbed by DK. Higher value coins are released less frequenly
+            _g.cointype = int(randint(1, COIN_HIGH) == 1) + 1
 
-    for i, mod in enumerate((500, 1000, 1500)):
-        if ticks % 5000 < mod:
-            _g.screen.blit(get_image(f"artwork/sprite/{prefix}{str(i + 1)}.png"), (11, 52))
-            if _g.grab:
-                _g.screen.blit(get_image(f"artwork/sprite/coin{_g.cointype}3.png"), ((12, 38, 64)[i], 74))
-            break
+        for i, mod in enumerate((500, 1000, 1500)):
+            if ticks % 5000 < mod:
+                _g.screen.blit(get_image(f"artwork/sprite/{prefix}{str(i + 1)}.png"), (11, 52))
+                if _g.grab:
+                    _g.screen.blit(get_image(f"artwork/sprite/coin{_g.cointype}3.png"), ((12, 38, 64)[i], 74))
+                break
 
-    # If DK grabbed a coin then it will start rolling
-    if ticks % 5000 >= 1500:
-        if ticks % 5000 < 2000:
-            if _g.grab:
-                drop_coin(coin_type=_g.cointype)
-            _g.grab = False
-            _g.cointype = 0
-        if ticks % 5000 > 4500:
-            _g.grab = randint(1, COIN_FREQUENCY) == 1
-        _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11, 52))
+        # If DK grabbed a coin then it will start rolling
+        if ticks % 5000 >= 1500:
+            if ticks % 5000 < 2000:
+                if _g.grab:
+                    drop_coin(coin_type=_g.cointype)
+                _g.grab = False
+                _g.cointype = 0
+            if ticks % 5000 > 4500:
+                # Will DK grab a coin?
+                _g.grab = randint(1, COIN_FREQUENCY) == 1
+            _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11, 52))
 
     # Animate rolling coins
     animate_rolling_coins()
@@ -746,14 +754,23 @@ def process_interrupts():
     _g.coins = [i for i in _g.coins if i[0] > -10]
 
 
+def get_prize_placing(awarded):
+    # Return the awarded prize placing e.g. "1", "1st"
+    place = 3 - AWARDS.index(awarded)
+    return place, PRIZE_PLACINGS[place]
+
+
 def animate_rolling_coins(out_of_time=False):
     _g.awarded = False
     for i, coin in enumerate(_g.coins):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
         if co_awarded:
-            write_text(("YOU WON A PRIZE !", "COLLECT THE COINS")[pygame.time.get_ticks() % 3000 > 1500], x=108, y=37,
-                       fg=WHITE, bg=MAGENTA, bubble=True)
+            place, place_text = get_prize_placing(co_awarded)
+            _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33, 60))
+            write_text(f"YOU GOT {place_text} !", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
             _g.awarded = True
+            _g.lastaward = _g.timer.duration
+
         _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_rot % 4))}.png"), (int(co_x), int(co_y)))
 
         if (co_x - SPRITE_HALF <= _g.xpos < co_x + SPRITE_HALF) and (co_y >= _g.ypos > co_y - SPRITE_HALF):

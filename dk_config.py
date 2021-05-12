@@ -167,6 +167,12 @@ CONTROL_ASSIGNMENTS = [
   ("jump", CONTROL_JUMP),
   ("start", CONTROL_P1)]
 
+# Text description of prize placing
+PRIZE_PLACINGS = {
+    1: "1ST",
+    2: "2ND",
+    3: "3RD"}
+
 # Sounds that are played during walk sequence. Not all steps will trigger a sound.
 WALK_SOUNDS = {
   1: "sounds/walk0.wav",
