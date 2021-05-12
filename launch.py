@@ -615,7 +615,7 @@ def launch_rom(info):
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
                 scored = get_award(name, score3, score2, score1)
                 if scored > 0:
-                    _g.awarded = True
+                    _g.awarded = scored
                     _g.timer.reset()
                     _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
@@ -718,11 +718,22 @@ def process_interrupts():
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
 
     if _g.awarded:
-        _g.screen.blit(get_image(f"artwork/sprite/dka.png"), (11, 52))
+        # Animate DK grabbing the trophy
+        place, place_text = get_prize_placing(_g.awarded)
+        if _g.timer.duration > 1:
+            if _g.timer.duration < 2:
+                _g.screen.blit(get_image(f"artwork/sprite/dkg1.png"), (11, 52))
+                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5, 62))
+            else:
+                _g.screen.blit(get_image(f"artwork/sprite/dka.png"), (11, 52))
+                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33, 60))
+        else:
+            _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11, 52))
+            _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5, 62))
     elif _g.timer.duration - _g.lastaward < 2:
         _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11, 52))
     else:
-        # animated DK,  sometimes DK will grab a coin
+        # Animate DK stomping,  sometimes DK will grab a coin
         prefix = ("dk", "dkg")[_g.grab]
         if _g.grab and _g.cointype == 0:
             # Determine next coin to be grabbed by DK. Higher value coins are released less frequenly
@@ -761,14 +772,13 @@ def get_prize_placing(awarded):
 
 
 def animate_rolling_coins(out_of_time=False):
-    _g.awarded = False
+    _g.awarded = 0
     for i, coin in enumerate(_g.coins):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
         if co_awarded:
             place, place_text = get_prize_placing(co_awarded)
-            _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33, 60))
             write_text(f"YOU GOT {place_text} !", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
-            _g.awarded = True
+            _g.awarded = co_awarded
             _g.lastaward = _g.timer.duration
 
         _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_rot % 4))}.png"), (int(co_x), int(co_y)))
