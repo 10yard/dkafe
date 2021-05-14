@@ -530,6 +530,7 @@ def save_menu_settings():
 def set_basic(_, setting_value):
     globals()["BASIC_MODE"] = setting_value
 
+
 def set_unlock(_, setting_value):
     globals()["UNLOCK_MODE"] = setting_value
 

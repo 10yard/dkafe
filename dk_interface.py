@@ -102,8 +102,17 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
             os.environ["DATA_SHOW_HUD"] = "0"
             os.environ["DATA_ALLOW_SKIP_INTRO"] = "0"
 
+        # Clear exising addresses
+        os.environ["RAM_HIGH"] = ""
+        os.environ["RAM_HIGH_DOUBLE"] = ""
+        os.environ["RAM_SCORES"] = ""
+        os.environ["RAM_SCORES_DOUBLE"] = ""
+        os.environ["RAM_PLAYERS"] = ""
+        os.environ["ROM_SCORES"] = ""
+
         # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd") and not basic:
+
             script = "dkong.lua"
             score_width, double_width = 6, 6
             if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
