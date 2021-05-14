@@ -4,7 +4,7 @@
 # ----------------------------------------------------------------------------------------------
 #  Assisted install script for Raspberry Pi4
 #
-#  You will need to extract contents of DKAFE binary release (e.g. dkafe_rpi4_binary_v0.1b.zip)
+#  You will need to extract all contents of the DKAFE binary release zip file
 #  to the /boot partition and then run this script.
 #
 #  i.e. /boot/dkafe_install.sh

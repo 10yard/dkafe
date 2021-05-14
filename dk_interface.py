@@ -15,7 +15,7 @@
 import os
 from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO
 from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD
-from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY
+from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY, LUA_HACKS
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
@@ -51,7 +51,7 @@ def apply_rom_specific_hacks(rom=None, subfolder=None):
             os.environ["HACK_PENALTY"] = "1"
 
 
-def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None):
+def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None, basic=0):
     # receive rom name, subfolder name and the target scores
     # Logic is mostly driven by the rom name but there are some exceptions were the subfolder name of a specific
     # rom is needed.
@@ -92,8 +92,18 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         os.environ["DATA_AWARD2"] = str(AWARDS[1])
         os.environ["DATA_AWARD3"] = str(AWARDS[0])
 
+        # Turn off features when in basic mode
+        if basic and subfolder in LUA_HACKS:
+            script = "dkong.lua"
+            os.environ["DATA_CREDITS"] = "0"
+            os.environ["DATA_AUTOSTART"] = "0"
+            os.environ["DATA_SHOW_AWARD_TARGETS"] = "0"
+            os.environ["DATA_SHOW_AWARD_PROGRESS"] = "0"
+            os.environ["DATA_SHOW_HUD"] = "0"
+            os.environ["DATA_ALLOW_SKIP_INTRO"] = "0"
+
         # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
-        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd"):
+        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd") and not basic:
             script = "dkong.lua"
             score_width, double_width = 6, 6
             if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":

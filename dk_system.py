@@ -84,7 +84,7 @@ def get_emulator(emu_number):
     return f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu_number - 1]}'
 
 
-def build_launch_command(info):
+def build_launch_command(info, basic_mode):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
@@ -113,8 +113,8 @@ def build_launch_command(info):
     if not FULLSCREEN:
         launch_command += " -window"
 
-    if "-record" not in launch_command:
-        script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1)
+    if (not basic_mode and "-record" not in launch_command) or subfolder in LUA_HACKS:
+        script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1, basic_mode)
         if script:
             # An interface script is available
             competing = True

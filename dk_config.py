@@ -54,6 +54,7 @@ ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
+BASIC_MODE = 0                 # Diable interface features and set to freeplay with unlock mode off
 
 # Interface options
 CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface
@@ -61,10 +62,13 @@ AUTOSTART = 1                  # Automatically start the game in MAME (by simula
 ALLOW_SKIP_INTRO = 1           # Allow the DK climb scene to be quickly skipped in game by pressing Jump button
 SHOW_AWARD_PROGRESS = 1        # Show award progress when playing game (appears top of screen replacing high score)
 SHOW_AWARD_TARGETS = 1         # Show award targets when playing game (appears during the DK intro/climb scene)
-SHOW_HUD = 1                   # Show in game HUD by default (in top right corner) and use P2 to toggle data.
+SHOW_HUD = 1                   # Show in game HUD by default (in top right corner) and use P2 to toggle data
+
+# Basic mode switch overrides some settings
+BASIC_MODE = 0                 # Equivalent to FREE_PLAY = 1, UNLOCK_MODE = 0 and all interface options disabled
 
 # Additional options
-AWARDS = [500, 1000, 2500]     # Coins awarded for reaching score target for 1st, 2nd, 3rd when competing.
+AWARDS = [500, 1000, 2500]     # Coins awarded for reaching score target for 1st, 2nd, 3rd when competing
 PLAY_COST = 100                # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150                # How many coins Jumpman drops when time runs out
 SCORE_START = 500              # How many coins Jumpman starts with
@@ -79,8 +83,8 @@ LADDER_CHANCE = 3              # Chance of coin dropping down a ladder (1 = alwa
 # Hacks
 HACK_TELEPORT = 0              # Hack DK to allow teleport between hammers. 0 or 1
 HACK_NOHAMMERS = 0             # Hack DK to remove hammers.  0 or 1
-HACK_PENALTY = 0               # Hack DK to lose penalty points instead of lives.
-HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1.
+HACK_PENALTY = 0               # Hack DK to lose penalty points instead of lives
+HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1
 
 # Root directory of frontend
 ROOT_DIR = os.getcwd()

@@ -18,7 +18,7 @@
 2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
 3. Extract contents of this zip file to the boot partition of the SD card.
 4. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
-5. Verify that your /boot partition contains these files before continuing:     
+5. Verify that your /boot partition contains the following before continuing:
      ▪ dkafe_bin
      ▪ dkafe_install.sh
      ▪ dkong.zip

@@ -215,7 +215,7 @@ def check_for_input(force_exit=False):
                 # if _g.lastexit <= 0 or since_last_exit() > 0.2:
                 exit_program(confirm=CONFIRM_EXIT and not force_exit)
             if event.key == CONTROL_TAB:
-                open_menu(_g.settingmenu)
+                open_settings_menu()
             if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus(initial=False)
                 open_menu(_g.menu)
@@ -325,7 +325,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, emu, unlock, score3, score2, score1 in _g.icons:
         unlocked = True
-        if _g.score < unlock and UNLOCK_MODE and not intro:
+        if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
             unlocked = False
         if not below_y or not above_y or (below_y >= _y >= above_y):
             icon_image = os.path.join("artwork/icon", sub, name + ".png")
@@ -339,7 +339,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
                     des = f"Unlock at {unlock}"
-                elif unlocked and score3 and score2 and score1:
+                elif unlocked and score3 and score2 and score1 and not BASIC_MODE:
                     if since_last_move() % 5 > 4:
                         des = f'1st Prize {format_K(score1)}'
                     elif since_last_move() % 5 > 3:
@@ -350,7 +350,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     des = 'FOR RECORDING!'
                 elif not score3.strip() and since_last_move() % 4 > 2:
                     des = 'FOR PRACTICE!'
-                elif not int(FREE_PLAY) and since_last_move() % 4 > 2:
+                elif not int(FREE_PLAY or BASIC_MODE) and since_last_move() % 4 > 2:
                     des = f'${str(PLAY_COST)} TO PLAY'
                 write_text(des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
@@ -469,12 +469,12 @@ def build_menus(initial=False):
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
     for name, sub, desc, alt, icx, icy, emu, unlock, score3, score2, score1 in _s.read_romlist():
-        if _g.score >= unlock or not UNLOCK_MODE:
+        if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             _g.menu.add_button(alt, launch_rom, (sub, name, emu, unlock, score3, score2, score1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, emu, unlock, score3, score2, score1))
     _g.menu.add_vertical_margin(10)
-    _g.menu.add_button('Settings', settings_menu)
+    _g.menu.add_button('Settings', open_settings_menu)
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
@@ -492,13 +492,14 @@ def build_menus(initial=False):
     _g.settingmenu.add_selector('   Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
     _g.settingmenu.add_selector('  Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
     _g.settingmenu.add_selector('Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
-    _g.settingmenu.add_vertical_margin(10)
+    _g.settingmenu.add_vertical_margin(15)
+    _g.settingmenu.add_selector('DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
+    _g.settingmenu.add_vertical_margin(15)
     _g.settingmenu.add_button('Save Changes to File', save_menu_settings)
-    _g.settingmenu.add_vertical_margin(10)
     _g.settingmenu.add_button('Close Menu', close_menu)
 
 
-def settings_menu():
+def open_settings_menu():
     open_menu(_g.settingmenu)
 
 
@@ -518,11 +519,16 @@ def save_menu_settings():
                             f_out.write(f"FULLSCREEN = {FULLSCREEN}\n")
                         elif "CONFIRM_EXIT=" in line_packed:
                             f_out.write(f"CONFIRM_EXIT = {CONFIRM_EXIT}\n")
+                        elif "BASIC_MODE=" in line_packed:
+                            f_out.write(f"BASIC_MODE = {BASIC_MODE}\n")
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, x=0, y=232, fg=PINK, bg=RED)
             update_screen(delay_ms=1000)
 
+
+def set_basic(_, setting_value):
+    globals()["BASIC_MODE"] = setting_value
 
 def set_unlock(_, setting_value):
     globals()["UNLOCK_MODE"] = setting_value
@@ -579,10 +585,11 @@ def launch_rom(info):
         intermission_channel.stop()
         award_channel.stop()
         music_channel.pause()
-        launch_command, launch_directory, competing = _s.build_launch_command(info)
 
-        if FREE_PLAY or _g.score >= PLAY_COST:
-            _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY)]  # Deduct coins if not freeplay
+        launch_command, launch_directory, competing = _s.build_launch_command(info, BASIC_MODE)
+
+        if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
+            _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
             clear_screen()
             if competing and (not name.startswith("dkong") or sub == 'dkongtj'):
@@ -676,7 +683,7 @@ def process_interrupts():
 
     # Start up messages from Pauline
     if not _g.lastmove:
-        message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY)]
+        message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY or BASIC_MODE)]
         write_text(message[int(_g.timer.duration) % len(message)], x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
     show_score()
 
