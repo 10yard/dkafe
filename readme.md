@@ -213,7 +213,7 @@ Default settings can be changed in the settings.txt file.  Some settings can als
 1 to display confirmation screen when attempting to exit.  0 to exit without question.
 
 `BASIC_MODE = 0`
-1 for basic mode to switch the frontend gameplay features off.  This is equivalent to setting FREE_PLAY = 1, UNLOCK_MODE = 0 and disabling all of the DK interface settings.
+1 for basic mode to switch the frontend gameplay features off.  This is equivalent to FREE_PLAY = 1, UNLOCK_MODE = 0 and all interface settings set to 0.
 
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.

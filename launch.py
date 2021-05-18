@@ -540,8 +540,11 @@ def set_freeplay(_, setting_value):
 
 
 def set_fullscreen(_, setting_value):
-    globals()["FULLSCREEN"] = setting_value
-    clear_screen(and_reset_display=True)
+    if FULLSCREEN != setting_value:
+        globals()["FULLSCREEN"] = setting_value
+        pygame.display.toggle_fullscreen()
+        pygame.display.init()
+        pygame.display.set_icon(get_image("artwork/dkafe.ico"))
 
 
 def set_confirm(_, setting_value):
@@ -732,9 +735,12 @@ def process_interrupts():
             if _g.timer.duration < 2:
                 _g.screen.blit(get_image(f"artwork/sprite/dkg1.png"), (11, 52))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5, 62))
-            else:
-                _g.screen.blit(get_image(f"artwork/sprite/dka.png"), (11, 52))
+            elif _g.timer.duration < 3:
+                _g.screen.blit(get_image(f"artwork/sprite/dka1.png"), (11, 52))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33, 60))
+            else:
+                _g.screen.blit(get_image(f"artwork/sprite/dka2.png"), (11, 45))
+                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33, 29))
         else:
             _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11, 52))
             _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5, 62))
