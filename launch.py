@@ -42,6 +42,7 @@ def exit_program(confirm=False):
 
 def initialise_screen(reset=False):
     _g.screen = pygame.display.set_mode(GRAPHICS, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
+    pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
     if not reset:
         _g.screen_map = _g.screen.copy()
@@ -543,6 +544,7 @@ def set_fullscreen(_, setting_value):
     if FULLSCREEN != setting_value:
         globals()["FULLSCREEN"] = setting_value
         pygame.display.toggle_fullscreen()
+        pygame.event.set_grab(FULLSCREEN == 1)
         pygame.display.init()
         pygame.display.set_icon(get_image("artwork/dkafe.ico"))
 

@@ -482,3 +482,5 @@ It is licensed under GNU GPLv3.
 Please send feedback to jon123wilson@hotmail.com
 
 Jon
+
+![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy.png)
