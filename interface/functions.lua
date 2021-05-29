@@ -99,7 +99,7 @@ end
 
 function get_highscore()
 	local highscore = ""
-	if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
+	if emu.romname() == "dkongx" or emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
 		for key, value in pairs(ram_scores) do
 			if key <= 7 then
 				highscore = highscore .. mem:read_i8(value)
