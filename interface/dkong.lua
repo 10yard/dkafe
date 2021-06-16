@@ -37,6 +37,7 @@ emu.register_frame(function()
 		for key, value in pairs(rom_scores) do
 			mem:write_direct_i8(value, data_scores[key])				
 		end
+    sleep(0.1)
 	end
   
 	if loaded == 1 then

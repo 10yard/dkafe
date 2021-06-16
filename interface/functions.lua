@@ -21,10 +21,16 @@ local string_format = string.format
 local math_fmod = math.fmod
 local math_modf = math.modf
 local math_floor = math.floor
+local clock = os.clock
 
 function get_loaded()
 	return emu["loaded"]
 end   
+      
+function sleep(n)  -- seconds
+  local t0 = clock()
+  while clock() - t0 <= n do end
+end      
       
 function number_to_binary(x)
 	local ret = ""
@@ -212,14 +218,14 @@ function display_awards()
 	if data_show_award_progress == "1" and mode1 == 3 then
 		-- Show progress against targets at top of screen replacing high score
 		if score > data_score1 then
-			write_message(0xc76c0, "              ")
-			write_message(0xc76a0, "1ST WON " .. data_award1)
+			write_message(0xc76e0, "              ")
+			write_message(0xc76a0, "1ST WON " .. data_award1 .. "  ")
 		elseif score > data_score2 then
-			write_message(0xc76c0, "              ")
-			write_message(0xc76a0, "2ND WON " .. data_award2)
+			write_message(0xc76e0, "              ")
+			write_message(0xc76a0, "2ND WON " .. data_award2 .. "  ")
 		elseif score > data_score3 then
-			write_message(0xc76c0, "             ")
-			write_message(0xc76a0, "3RD WON " .. data_award3)
+			write_message(0xc76e0, "             ")
+			write_message(0xc76a0, "3RD WON " .. data_award3 .. "  ")
 		end 
 	end
 	

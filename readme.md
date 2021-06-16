@@ -2,7 +2,7 @@
 
 ## Donkey Kong Arcade Frontend
 
-A multi-platform arcade game launcher based on Donkey Kong made for arcade cabinets with incentives to play and unlock arcade games.  
+An arcade game launcher based on Donkey Kong made for arcade cabinets with incentives to play and unlock arcade games.  
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
@@ -75,6 +75,7 @@ Credit is given to the original authors below.
  - Donkey Kong Reverse (dkongrev)
  - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Twisted Jungle (dkongtj)
+ - Donkey Kong Barrelpalooza (dkongbarpal)
 
 #### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)

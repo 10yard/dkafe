@@ -68,7 +68,7 @@ SHOW_HUD = 1                   # Show in game HUD by default (in top right corne
 BASIC_MODE = 0                 # Equivalent to FREE_PLAY = 1, UNLOCK_MODE = 0 and all interface options disabled
 
 # Additional options
-AWARDS = [500, 1000, 2500]     # Coins awarded for reaching score target for 1st, 2nd, 3rd when competing
+AWARDS = [500, 1500, 2500]     # Coins awarded for reaching score target for 3rd, 2nd, 1st when competing
 PLAY_COST = 100                # How much it costs to play an arcade machine. Integer
 LIFE_COST = 150                # How many coins Jumpman drops when time runs out
 SCORE_START = 500              # How many coins Jumpman starts with

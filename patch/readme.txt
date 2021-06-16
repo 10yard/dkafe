@@ -35,6 +35,7 @@ By Paul Goes
  - Donkey Kong Reverse (dkongrev)
  - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Twisted Jungle (dkongtj)
+ - Donkey Kong Barrelpalooza (dkongbp)
 
 By John Kowalski (Sock Master) 
  - Donkey Kong Spooky Remix (dkongspooky)

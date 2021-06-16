@@ -325,6 +325,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     info_list = []
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, emu, unlock, score3, score2, score1 in _g.icons:
+        p_des = alt if alt.strip() else des
         unlocked = True
         if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
             unlocked = False
@@ -339,21 +340,21 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
-                    des = f"Unlock at {unlock}"
+                    p_des = f"UNLOCK AT {unlock}"
                 elif unlocked and score3 and score2 and score1 and not BASIC_MODE:
                     if since_last_move() % 5 > 4:
-                        des = f'1st Prize {format_K(score1)}'
+                        p_des = f'1ST PRIZE AT {format_K(score1)}'
                     elif since_last_move() % 5 > 3:
-                        des = f'2nd Prize {format_K(score2)}'
+                        p_des = f'2ND PRIZE AT {format_K(score2)}'
                     elif since_last_move() % 5 > 2:
-                        des = f'3rd Prize {format_K(score3)}'
+                        p_des = f'3RD PRIZE AT {format_K(score3)}'
                 elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
-                    des = 'FOR RECORDING!'
+                    p_des = 'FOR RECORDING!'
                 elif not score3.strip() and since_last_move() % 4 > 2:
-                    des = 'FOR PRACTICE!'
+                    p_des = 'FOR PRACTICE!'
                 elif not int(FREE_PLAY or BASIC_MODE) and since_last_move() % 4 > 2:
-                    des = f'${str(PLAY_COST)} TO PLAY'
-                write_text(des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+                    p_des = f'${str(PLAY_COST)} TO PLAY'
+                write_text(p_des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
                     nearby = (sub, name, emu, unlock, score3, score2, score1)
             if not detect_only:
@@ -598,16 +599,7 @@ def launch_rom(info):
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
             clear_screen()
-            if competing and (not name.startswith("dkong") or sub == 'dkongtj'):
-                # Flash message showing awards before game starts. Most dkong roms have the message displayed in game.
-                write_text(f"PLAY TO WIN COINS", font=dk_font, x=8, y=4, fg=RED)
-                update_screen(delay_ms=500)
-                for i, s in enumerate((score3, score2, score1)):
-                    write_text(f"BEAT {format_K(s)} FOR {AWARDS[i]} COINS", font=dk_font, x=8, y=40 + (i*24), fg=WHITE)
-                    update_screen(delay_ms=500)
-                flash_message("GO FOR IT!", x=8, y=232, clear=False, cycles=4)
-                jump_to_continue()
-            elif "-record" in launch_command:
+            if not competing and "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
 
             clear_awarded_coin_status(_g.coins)
