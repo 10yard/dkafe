@@ -57,9 +57,9 @@ def read_romlist():
                 if not emu.strip():
                    emu = "1"
 
-                # DK Junior is optional in the default frontend so replace with trainer if not available
+                # DK Junior is optional in the default frontend so replace with DK Pies if not available
                 if name == "dkongjr" and slot == "5" and not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
-                    name, sub, des, unlock, score3, score2, score1 = "dkong", "dkongtrn", "DK Trainer", "0", "", "", ""
+                    name, sub, des, alt = "dkong", "dkongpies", "DK Pies", "DK Pies Only"
 
                 # In record mode checks.
                 if "-record" in get_emulator(int(emu)).lower():

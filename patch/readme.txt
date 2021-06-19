@@ -17,13 +17,14 @@
 DKAFE builds the default frontend using patches of the original "dkong.zip" (US Set 1) arcade rom.
 
 The .ips patches are included with the software.
-The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  It is recommended but not essential for you to also place dkongjr.zip into the dkafe/roms folder too.  
+The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  
 DKAFE will then apply patches and generate the following hacked version of Donkey Kong automatically for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
 By Jon Wilson (me)
  - Donkey Kong Lava Panic! (dkonglava)
  - DK Who and the Daleks (dkongwho)
  - DK Last Man Standing (dkonglastman)
+ - DK Pies (dkongpies)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -92,3 +93,26 @@ dk.5c to c_5ct_g.bin
 dk.5e to c_5et_g.bin 
 dk.3f to s_3j_b.bin
 dk.3h to s_3i_b.bin
+
+---- Notes on making the DK Pies Hack
+
+Removed the RETURN at the end of pies stage logic which made program continue to end of rivets stage logic.
+In file c_5ct_g.bin: Change offset 7B5 to "00" (NOP) from "C9" (RET)
+
+Add logic to increment level to conveyors stage replacing original logic which cleared the end of level count. 
+In file c_5ct_g.bin: Copy offsets 951,952,953,954 to offsets 7a9,7aa,7ab,7ac. 
+
+Update the screen patterns table so it only contains pies board (value 02).  
+In file c_5ct_g.bin: Change values starting at offset A65 from 01 04 01 03 04 01 02 03 04 01 02 01 03 01 04 7F to 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 7F
+
+Prevent rivet cleared animation being drawn to screen.
+In file c_5ct_g.bin: In the rivet code from offset 7B7 to 825 replace the values CD 26 18 and CD A7 0D with 00 00 00
+
+Change the high score text to "PIES ONLY".
+In file c_5at_g.bin: Change values at offset 6B5 from 18 19 17 18 10 23 13 1F 22 15 to 20 19 15 23 10 1F 1E 1C 29 10
+
+Change "HOW HIGH CAN YOU GET" text to "HOW HIGH CAN YOU PIE?"
+In file c_5at_g.bin: Change values at offet 6DF from 17 15 24 to 20 19 15
+
+Finally,  to prevent the kong from being drawn again prior to level increase. I created a block of 40 blank sprites in file c_5at_g.bin beginning from offset F30.  This blank sprite erases Kong.
+In file c_5ct_g.bin: Change values starting at offset 804 from 5C 38 to 30 3F.  

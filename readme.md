@@ -42,7 +42,8 @@ Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  
 Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
    3. **DK Last Man Standing** 
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
-
+   4. **DK Pies**
+Only the pies stage.  Includes level 1 and level 2 pies which are not available in regular DK.
 
 ### This project does not include:
  - Roms or information on how to obtain them.
@@ -64,6 +65,7 @@ Credit is given to the original authors below.
  - Donkey Kong Lava Panic! (dkonglava)
  - DK Who and the Daleks (dkongwho)
  - DK Last Man Standing (dkonglastman)
+ - DK Pies (dkongpies)
 
 #### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -140,7 +142,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 2. Extract contents of the latest Raspberry Pi Binary Release Zip to the boot partition of the SD card.
 
-3. Copy dkong.zip and dkongjr.zip (optional) to the boot partition of the SD card.  Roms are not provided.
+3. Copy dkong.zip to the boot partition of the SD card.  Roms are not provided.
 
 4. Verify that your /boot partition contains these files before continuing:
 ```  
@@ -172,7 +174,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ## How to set up?
 
-The default set up simply requires that you place **dkong.zip** (and optionally **dkongjr.zip**) into DKAFE's **/roms** folder.  
+The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  You may also place dkongjr.zip into the dkafe/roms folder too but that is not essential.  
 The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.
 
 The application requires settings.txt and romlist.csv to be present in the installation folder.  Defaults are provided.
@@ -278,7 +280,7 @@ Raspberry Pi specific command to issue before starting an emulator
 
 ### DK Interface Settings
 
-These settings relate to Donkey Kong and DK Junior Roms and hacks.
+These settings relate to Donkey Kong hacks.
 
 `CREDITS = 1`    
 1 to automatically insert a coin after launching a game.
