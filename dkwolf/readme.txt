@@ -52,10 +52,12 @@ MAME build tools are available at https://github.com/mamedev/buildtools/releases
 To build with dkong only driver the SOURCES flag was used in the makefile along with REGENIE i.e.
   SOURCES=src/mame/drivers/dkong.cpp
   REGENIE=1
+  NOWERROR=1
 
 Other optimisations/flags were
   OPTIMIZE=3
-  SYMBOLS=0 
+  SYMBOLS=0
+  SYMLEVEL=1
   STRIP_SYMBOLS=1 
   TOOLS=0 
 
@@ -73,9 +75,7 @@ Use Raspberry Pi Imager to write "Raspberry Pi Desktop" to an SD card and boot i
 Recommand to change the desktop resolution to 640x480
 
 sudo apt-get update
-sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default
-sudo apt-get install python3-pip
-sudo apt-get install wmctrl
+sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default python3-pip
 
 # Get wolfmame source
 wget https://github.com/mahlemiut/wolfmame/archive/wolf196.zip
@@ -83,9 +83,9 @@ unzip wolf196
 
 # Copy files from the /dkwolf/changes folder overwriting the source files.  File paths provided in the above notes.
 
-# Build
+# Adjust makefile (ap per above notes) and build
 sudo nano makefile
-make -j5
+make -j4
 
 # Get DKAFE and install requirements
 wget https://github.com/10yard/dkafe/archive/refs/heads/master.zip

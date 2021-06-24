@@ -499,6 +499,21 @@ def build_menus(initial=False):
     _g.settingmenu.add_vertical_margin(15)
     _g.settingmenu.add_button('Save Changes to File', save_menu_settings)
     _g.settingmenu.add_button('Close Menu', close_menu)
+    build_launch_menu()
+
+
+def build_launch_menu():
+    # Special launch menu
+    _g.launchmenu = pymenu.Menu(100, 200, "     Launch menu", mouse_visible=False, mouse_enabled=False,
+                              theme=dkafe_theme, onclose=close_menu)
+    nearby = display_icons(detect_only=True)
+    if nearby and nearby[2] != 2:
+        _g.launchmenu.add_button('Default Launch', launch_rom, nearby)
+    _g.launchmenu.add_vertical_margin(15)
+    _g.launchmenu.add_button('Launch and record (.inp)', launch_rom, nearby, 2)
+    _g.launchmenu.add_button('Playback (.inp)', launch_rom, nearby)
+    _g.launchmenu.add_vertical_margin(15)
+    _g.launchmenu.add_button('Close', close_menu)
 
 
 def open_settings_menu():
@@ -570,6 +585,7 @@ def close_menu():
     _g.menu.disable()
     _g.exitmenu.disable()
     _g.settingmenu.disable()
+    _g.launchmenu.disable()
     update_screen()
     _g.active = True
     _g.timer.start()
@@ -583,12 +599,14 @@ def shutdown_system():
         os.system("shutdown /s /f /t 00")
 
 
-def launch_rom(info):
+def launch_rom(info, override_emu=None):
     if info:
         sub, name, emu, unlock, score3, score2, score1 = info
-
+        if override_emu:
+            info = sub, name, override_emu, unlock, score3, score2, score1
         _g.timer.stop()  # Stop timer while playing arcade
         _g.menu.disable()
+        _g.launchmenu.disable()
         intermission_channel.stop()
         award_channel.stop()
         music_channel.pause()
@@ -911,9 +929,13 @@ def main():
         if _g.jump and _s.get_bonus_timer(_g.timer.duration + _g.timer_adjust) <= -165:
             # Block jump button when almost out of time
             _g.jump = False
-        elif (_g.jump or _g.start) and _g.ready:
-            # Launch a game
-            launch_rom(display_icons(detect_only=True))
+        elif _g.ready and (_g.jump or _g.start):
+                _g.start = False
+                if _g.jump:
+                    launch_rom(display_icons(detect_only=True))
+                else:
+                    build_launch_menu()
+                    open_menu(_g.launchmenu)
         elif (_g.jump or _g.jump_sequence) and _g.timer.duration > 0.5:
             # Jumpman has started a jump or is actively jumping
             teleport_between_hammers()

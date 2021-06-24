@@ -68,7 +68,7 @@ image_cache = {}
 screen, screen_map, screen_copy, last_image = (None,) * 4
 
 # Menu
-menu, exitmenu, settingmenu = (None,) * 3
+menu, exitmenu, settingmenu, launchmenu = (None,) * 4
 
 # Active Window
 window = None
