@@ -69,6 +69,7 @@ screen, screen_map, screen_copy, last_image = (None,) * 4
 
 # Menu
 menu, exitmenu, settingmenu, launchmenu = (None,) * 4
+selected = None
 
 # Active Window
 window = None

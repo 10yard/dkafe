@@ -357,6 +357,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 write_text(p_des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
                     nearby = (sub, name, emu, unlock, score3, score2, score1)
+                    _g.selected = p_des
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
                 if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
@@ -499,21 +500,38 @@ def build_menus(initial=False):
     _g.settingmenu.add_vertical_margin(15)
     _g.settingmenu.add_button('Save Changes to File', save_menu_settings)
     _g.settingmenu.add_button('Close Menu', close_menu)
-    build_launch_menu()
+    build_launch_menu(initial=True)
 
 
-def build_launch_menu():
+def build_launch_menu(initial=False):
     # Special launch menu
-    _g.launchmenu = pymenu.Menu(100, 200, "     Launch menu", mouse_visible=False, mouse_enabled=False,
-                              theme=dkafe_theme, onclose=close_menu)
-    nearby = display_icons(detect_only=True)
-    if nearby and nearby[2] != 2:
-        _g.launchmenu.add_button('Default Launch', launch_rom, nearby)
-    _g.launchmenu.add_vertical_margin(15)
-    _g.launchmenu.add_button('Launch and record (.inp)', launch_rom, nearby, 2)
-    _g.launchmenu.add_button('Playback (.inp)', launch_rom, nearby)
-    _g.launchmenu.add_vertical_margin(15)
-    _g.launchmenu.add_button('Close', close_menu)
+    if initial:
+        _g.launchmenu = pymenu.Menu(120, 216, "Launch Menu")
+    else:
+        nearby = display_icons(detect_only=True)
+        sub, name, emu, unlock, score3, score2, score1 = nearby
+        title = _g.selected.center(24)
+        inps = _s.get_recording_files(emu, name, sub)
+
+        _g.launchmenu = pymenu.Menu(200, 224, title, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme,
+                                    onclose=close_menu)
+        if emu != 2:
+            _g.launchmenu.add_button('Default Launch', launch_rom, nearby)
+        _g.launchmenu.add_vertical_margin(15)
+        if sub in LUA_HACKS:
+            _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
+            _g.launchmenu.add_label('possible for this game', selectable=False, font_color=GREY)
+        else:
+            _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, 2)
+            _g.launchmenu.add_vertical_margin(15)
+            _g.launchmenu.add_label(f'Playback recent recordings:', selectable=False)
+            if inps:
+                for inp in inps:
+                    _g.launchmenu.add_button(os.path.basename(inp).split("_")[-1], playback_rom, nearby, inp)
+            else:
+                _g.launchmenu.add_label(f'None recorded yet', selectable=False, font_color=GREY)
+        _g.launchmenu.add_vertical_margin(15)
+        _g.launchmenu.add_button('Close', close_menu)
 
 
 def open_settings_menu():
@@ -651,6 +669,27 @@ def launch_rom(info, override_emu=None):
 
         _g.skip = True
         _g.timer.start()  # Restart the timer
+
+
+def playback_rom(info, inpfile):
+    # playback the specified inp file
+    launch_command, launch_directory, competing = _s.build_launch_command(info, True)
+    if os.path.exists(launch_directory):
+        playback_command = ""
+        retain = True
+        for arg in launch_command.split(" "):
+            if arg == "-record" or arg == "-nvram_directory":
+                retain = False
+            else:
+                if retain:
+                    playback_command += arg + " "
+                retain = True
+        os.chdir(launch_directory)
+        playback_command += f" -playback {os.path.basename(inpfile)}"
+        intermission_channel.stop()
+        os.system(playback_command)
+        os.chdir(ROOT_DIR)
+        close_menu()
 
 
 def show_hammers():
@@ -930,12 +969,12 @@ def main():
             # Block jump button when almost out of time
             _g.jump = False
         elif _g.ready and (_g.jump or _g.start):
-                _g.start = False
-                if _g.jump:
-                    launch_rom(display_icons(detect_only=True))
-                else:
-                    build_launch_menu()
-                    open_menu(_g.launchmenu)
+            _g.start = False
+            if _g.jump:
+                launch_rom(display_icons(detect_only=True))
+            else:
+                build_launch_menu()
+                open_menu(_g.launchmenu)
         elif (_g.jump or _g.jump_sequence) and _g.timer.duration > 0.5:
             # Jumpman has started a jump or is actively jumping
             teleport_between_hammers()

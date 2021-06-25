@@ -87,12 +87,19 @@ def get_emulator(emu_number):
     return f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu_number - 1]}'
 
 
+def get_recording_files(emu, name, sub):
+    # Return the 5 most recent .inp recordings for the specified rom
+    _recordings = glob(os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp", f"{name}_{sub}_*.inp"))
+    return sorted(_recordings, reverse=True)[:5]
+
+
 def build_launch_command(info, basic_mode):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
     subfolder, name, emu, unlock, score3, score2, score1 = info
-    emu_args = get_emulator(emu).replace("<NAME>", name).replace("<DATETIME>", get_datetime())
+    emu_args = get_emulator(emu)
+    emu_args = emu_args.replace("<RECORD_ID>", f"{name}_{subfolder}_{get_datetime()}.inp")
     launch_directory = os.path.dirname(emu_args.split(" ")[0])
     launch_command = f'{emu_args} {name}'
     competing = False

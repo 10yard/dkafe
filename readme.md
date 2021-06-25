@@ -249,7 +249,7 @@ Default settings can be changed in the settings.txt file.
 
 ```
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
-EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp 
+EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -record <RECORD_ID> 
 EMU_3 = (optional)
 EMU_4 = (optional)
 EMU_5 = (optional)
@@ -266,7 +266,7 @@ The rom directory is set to the DKAFE roms folder by default.
 `OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"`    
 General arguments can be stored into <OPTIONS> rather than repeating for each emulator.
 
-The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>`, `<NAME>` and `<DATETIME>` used above are replaced with their actual values at runtime.
+The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>` and `<RECORD_ID>` used above are replaced with their actual values at runtime.
 
 `ALLOW_ROM_OVERWRITE = 0`
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.

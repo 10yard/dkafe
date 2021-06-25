@@ -275,30 +275,30 @@ CONTROLS = """
 The Controls are as follows:
 
 
-Left/  —  Move Jumpman along
-Right     the platforms
+Left/ —  Move Jumpman along
+Right    the platforms
 
-Up/    —  Move Jumpman up
-Down      and down ladders.
-          Up faces Jumpman
-          towards a machine
+Up/    — Move Jumpman up
+Down     and down ladders.
+         Up faces Jumpman
+         towards a machine
 
-P1/    —  Play machine that
-Jump      Jumpman is facing.
-          Jump also jumps :)
-         
-P2     —  Call up the quick
-          access game list
+Jump   — Launch machine that
+         Jumpman is facing.
 
-Coin   -  Show game info
-          above machines
+P1     - Call up launch menu
+         for machine that
+         Jumpman is facing.
+          
+P2     — Call up the quick
+         access game list
+
+Coin   - Show game info
+         above machines
                       
-Action -  Show slot numbers
+Action - Show slot numbers
 
-Exit   -  Exit DKAFE
-
-
-Good luck!
+Exit   - Exit DKAFE
 """
 
 # Sound setup

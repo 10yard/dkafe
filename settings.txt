@@ -15,12 +15,12 @@ ALLOW_ROM_OVERWRITE = 0
 # Emulator Settings for Windows
 OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
-EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <NAME>_<DATETIME>.inp 
+EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID> 
 
 ## Emulator Settings for Raspberry Pi4
 #OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"
 #EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
-#EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -nvram_directory /dev/null -record <NAME>_<DATETIME>.inp 
+#EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -nvram_directory /dev/null -record <RECORD_ID> 
 
 # Interface Settings
 CREDITS = 1
