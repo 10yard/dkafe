@@ -500,15 +500,12 @@ def build_menus(initial=False):
     _g.settingmenu.add_vertical_margin(15)
     _g.settingmenu.add_button('Save Changes to File', save_menu_settings)
     _g.settingmenu.add_button('Close Menu', close_menu)
-    build_launch_menu(initial=True)
 
 
-def build_launch_menu(initial=False):
+def build_launch_menu():
     # Special launch menu
-    if initial:
-        _g.launchmenu = pymenu.Menu(120, 216, "Launch Menu")
-    else:
-        nearby = display_icons(detect_only=True)
+    nearby = display_icons(detect_only=True)
+    if nearby:
         sub, name, emu, unlock, score3, score2, score1 = nearby
         title = _g.selected.center(24)
         inps = _s.get_recording_files(emu, name, sub)
@@ -628,7 +625,8 @@ def launch_rom(info, override_emu=None):
             info = sub, name, override_emu, unlock, score3, score2, score1
         _g.timer.stop()  # Stop timer while playing arcade
         _g.menu.disable()
-        _g.launchmenu.disable()
+        if _g.launchmenu:
+            _g.launchmenu.disable()
         intermission_channel.stop()
         award_channel.stop()
         music_channel.pause()
