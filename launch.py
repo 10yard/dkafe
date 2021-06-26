@@ -516,7 +516,7 @@ def build_launch_menu(initial=False):
         _g.launchmenu = pymenu.Menu(200, 224, title, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme,
                                     onclose=close_menu)
         if emu != 2:
-            _g.launchmenu.add_button('Default Launch', launch_rom, nearby)
+            _g.launchmenu.add_button('Launch game', launch_rom, nearby)
         _g.launchmenu.add_vertical_margin(15)
         if sub in LUA_HACKS:
             _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
@@ -524,12 +524,16 @@ def build_launch_menu(initial=False):
         else:
             _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, 2)
             _g.launchmenu.add_vertical_margin(15)
-            _g.launchmenu.add_label(f'Playback recent recordings:', selectable=False)
+            _g.launchmenu.add_label('Playback latest recordings:', selectable=False)
             if inps:
                 for inp in inps:
-                    _g.launchmenu.add_button(os.path.basename(inp).split("_")[-1], playback_rom, nearby, inp)
+                    try:
+                        entry = _s.format_datetime(os.path.splitext(os.path.basename(inp).split("_")[-1])[0])
+                        _g.launchmenu.add_button("♥ " + entry, playback_rom, nearby, inp)
+                    except ValueError:
+                        pass
             else:
-                _g.launchmenu.add_label(f'None recorded yet', selectable=False, font_color=GREY)
+                _g.launchmenu.add_label('No recordings found', selectable=False, font_color=GREY)
         _g.launchmenu.add_vertical_margin(15)
         _g.launchmenu.add_button('Close', close_menu)
 

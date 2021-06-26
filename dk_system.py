@@ -40,7 +40,12 @@ def is_raspberry():
 
 
 def get_datetime():
-    return datetime.now().strftime("%d%m%Y-%H%M%S")
+    return datetime.now().strftime("%Y%m%d-%H%M%S")
+
+
+def format_datetime(datestring):
+    datetime_object = datetime.strptime(datestring, '%Y%m%d-%H%M%S')
+    return datetime_object.strftime("%d %B, %Y at %H:%M:%S")
 
 
 def intro_frames(climb_scene_only=False):
