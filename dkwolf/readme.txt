@@ -85,7 +85,7 @@ unzip wolf196
 
 # Adjust makefile (ap per above notes) and build
 sudo nano makefile
-make -j4
+make
 
 # Get DKAFE and install requirements
 wget https://github.com/10yard/dkafe/archive/refs/heads/master.zip

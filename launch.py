@@ -604,7 +604,8 @@ def close_menu():
     _g.menu.disable()
     _g.exitmenu.disable()
     _g.settingmenu.disable()
-    _g.launchmenu.disable()
+    if _g.launchmenu:
+        _g.launchmenu.disable()
     update_screen()
     _g.active = True
     _g.timer.start()

@@ -27,8 +27,6 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be configured to launch other emulators and roms.
 
-> There will be folks who want to have 10,000 games on their arcade machines.  This frontend is not for them.  It was made for simplicity and to showcase a small selection of games and encourage them to be played.  
-
 
 ### This project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
@@ -189,14 +187,10 @@ The frontend can be configured with multiple arcade emulators to allow a combina
 ## Display Resolution
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
-The scaling works perfectly with a 7:8 aspect vertically rotated screen.
 
-The command line argument `-view "Pixel Aspect (7:8)"` can be used to override MAME's default 4:3 aspect.
+The command line argument `-view "Pixel Aspect (7:8)"` can be used to override MAME's default 4:3 aspect if you want perfect scaling.
 
-For my Windows system,  I was able to create a custom 7:8 aspect resoluton of 448x512 pixels with the Intel Graphics Driver.
-
-For Raspberry Pi,  you should use 640x480 resolution and adjust the x/y display scale using xrandr.  The Pi install script will set this up for you.  Refer to **rpi4/rpi4_notes**.
-
+For Raspberry Pi,  it is recommended to use 640x480 resolution and adjust the x/y display scale using xrandr.  The Pi install script can set this up for you.  Refer to **rpi4/rpi4_notes**.
 
 
 ### Frontend Settings
@@ -257,8 +251,8 @@ EMU_6 = (optional)
 EMU_7 = (optional)
 EMU_8 = (optional)
 ```
-`EMU_1` and `EMU_2` come preconfigured.    
-`EMU_3` to `EMU_8` can be used to add more of your own emulators.  By default `EMU_1` is used for DKAFE gameplay and `EMU_2` is used for "inp" recordings.
+`EMU_1` and `EMU_2` come preconfigured. `EMU_1` is used for DKAFE gameplay and `EMU_2` is used for "inp" recordings.
+`EMU_3` to `EMU_8` can be used to add more of your own emulators.
 
 `ROM_DIR = <ROOT>/roms`    
 The rom directory is set to the DKAFE roms folder by default.
