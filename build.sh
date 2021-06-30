@@ -54,6 +54,7 @@ sudo cp -r dkwolf/*.txt dist/dkwolf
 sudo cp -r dkwolf/*.md dist/dkwolf
 sudo cp -r dkwolf/plugins dist/dkwolf
 sudo cp -r dkwolf/changes dist/dkwolf
+sudo cp rpi4/mame.ini dist/dkwolf
 
 # Grant all permissions on dist
 sudo chown -R pi:pi dist
