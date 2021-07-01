@@ -128,6 +128,8 @@ def build_launch_command(info, basic_mode):
     if not FULLSCREEN:
         launch_command += " -window"
 
+    launch_command += " -skip_gameinfo"
+
     if (not basic_mode and "-record" not in launch_command) or subfolder in LUA_HACKS:
         script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1, basic_mode)
         if script:
