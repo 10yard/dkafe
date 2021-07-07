@@ -87,22 +87,3 @@ unzip wolf196
 sudo nano makefile
 make
 
-# Get DKAFE and install requirements
-wget https://github.com/10yard/dkafe/archive/refs/heads/master.zip
-unzip dkafe_master.zip
-cd dkafe_master
-pip3 install -r requirements.txt
-sudo pip3 install -r requirements.txt (sudo requirements are needed later for pyinstaller)
-
-# Build pyinstaller
-git clone https://github.com/pyinstaller/pyinstaller
-	# Need to make a bootloader for Pi
-	cd pyinstaller/bootloader
-	python ./waf all --target-arch=32bit
-	cp /home/pi/code/pyinstaller/build/release/run /home/pi/code/pyinstaller/bootloader
-cd pyinstaller	
-sudo python3 setup.py install
-
-#build DKAFE
-sudo pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
-

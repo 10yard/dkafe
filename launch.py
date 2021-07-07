@@ -521,7 +521,8 @@ def build_launch_menu():
         else:
             _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, 2)
             _g.launchmenu.add_vertical_margin(15)
-            _g.launchmenu.add_label('Playback latest recordings:', selectable=False)
+            _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
+            _g.launchmenu.add_vertical_margin(1)
             if inps:
                 for inp in inps:
                     try:

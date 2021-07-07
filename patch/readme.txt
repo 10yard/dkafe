@@ -24,7 +24,8 @@ By Jon Wilson (me)
  - Donkey Kong Lava Panic! (dkonglava)
  - DK Who and the Daleks (dkongwho)
  - DK Last Man Standing (dkonglastman)
- - DK Pies (dkongpies)
+ - DK Pies Only (dkongpies)
+ - DK Rivets Only (dkongrivets)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -107,7 +108,7 @@ In file c_5ct_g.bin: Change offset 7B5 to "00" (NOP) from "C9" (RET)
 In file c_5ct_g.bin: Copy offsets 951,952,953,954 to offsets 7a9,7aa,7ab,7ac. 
 
 * Update the screen patterns table so it only contains pies board (value 02).  
-In file c_5ct_g.bin: Change values starting at offset A65 from 01 04 01 03 04 01 02 03 04 01 02 01 03 01 04 7F to 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 7F
+In file c_5at_g.bin: Change values starting at offset A65 from 01 04 01 03 04 01 02 03 04 01 02 01 03 01 04 7F to 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 7F
 
 * Prevent rivet cleared animation being drawn to screen.
 In file c_5ct_g.bin: In the rivet code from offset 7B7 to 825 replace the values CD 26 18 and CD A7 0D with 00 00 00

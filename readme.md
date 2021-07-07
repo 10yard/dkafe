@@ -33,15 +33,15 @@ The frontend can be configured to launch other emulators and roms.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - A rom patcher that will automatically generate hacked roms from the many included patch files.
  - LUA scripts to seamlessly interface MAME with the frontend.
- - 3 Donkey Kong hacks made by me for use with the DKAFE frontend:
-   1. **DK Lava Panic**
+ - Donkey Kong hacks made by me for use with the DKAFE frontend:
+   **DK Lava Panic**
 Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  Try not to panic!
-   2. **DK Who and the Daleks** 
+   **DK Who and the Daleks** 
 Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
-   3. **DK Last Man Standing** 
+   **DK Last Man Standing** 
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
-   4. **DK Pies**
-Only the pies stage.  Includes level 1 and level 2 pies which are not available in regular DK.
+   **DK Pies** and **DK Rivets**
+These hacks contains only one stage.  The pies hack begin on level 1 - which is not available in regular DK.  Can you reach the killscreen?
 
 ### This project does not include:
  - Roms or information on how to obtain them.
@@ -63,7 +63,8 @@ Credit is given to the original authors below.
  - Donkey Kong Lava Panic! (dkonglava)
  - DK Who and the Daleks (dkongwho)
  - DK Last Man Standing (dkonglastman)
- - DK Pies (dkongpies)
+ - DK Pies Only (dkongpies)
+ - DK Rivets Only (dkongrivets)
 
 #### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)

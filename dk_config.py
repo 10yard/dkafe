@@ -54,7 +54,6 @@ ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
-BASIC_MODE = 0                 # Diable interface features and set to freeplay with unlock mode off
 
 # Interface options
 CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface

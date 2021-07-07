@@ -127,7 +127,3 @@ git clone https://github.com/pyinstaller/pyinstaller
         cd /home/pi/dkafe	
 	./launch
 
-
-To playback .inp recordings
-----------------------------------------------------------------------------------------------
-./dkwolfrpi -rompath /home/pi/dkafe/roms dkong -playback dkong_04032021-171505.inp
