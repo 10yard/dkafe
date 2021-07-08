@@ -651,7 +651,7 @@ def launch_rom(info, override_emu=None):
                 os.chdir(launch_directory)
             clear_screen()
             if _s.is_raspberry() and EMU_EXIT_RPI:
-                os.system(EMU_ENTER_RPI)
+                os.system(EMU_EXIT_RPI)
             os.system(launch_command)
 
             pygame.time.delay(50)  # debounce
@@ -695,6 +695,9 @@ def playback_rom(info, inpfile):
         playback_command += f" -playback {os.path.basename(inpfile)}"
         intermission_channel.stop()
         os.system(playback_command)
+
+        pygame.time.delay(50)  # debounce
+        _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
         close_menu()
 
