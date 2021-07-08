@@ -57,26 +57,26 @@ def read_romlist():
     romlist = []
     with open("romlist.csv", "r") as rl:
         for row in rl.readlines():
-            if not row.startswith("#") and row.count(",") == 9:
-                name, sub, des, alt, slot, emu, unlock, score3, score2, score1, *_ = [x.strip() for x in row.split(",")]
+            if not row.startswith("#") and row.count(",") == 10:
+                name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in row.split(",")]
                 if not emu.strip():
-                   emu = "1"
+                    emu = "1"
+                if not rec.strip():
+                    rec = "0"
 
                 # DK Junior is optional in the default frontend so replace with DK Pies if not available
                 if not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
-                    if name == "dkongjr" and slot == "5":
+                    if name == "dkongjr" and slot == "3":
                         name, sub, des, alt = "dkong", "dkongpies", "DK Pies", "DK Pies Only"
                     elif sub == "dkongpies" and slot == "99":
                         continue
 
-                # In record mode checks.
                 if "-record" in get_emulator(int(emu)).lower():
+                    # LUA hacks don't support recording so shouldn't have -record as default.
                     if sub in LUA_HACKS:
-                        # Recording is not supported for LUA hacks at the moment
-                        emu = "1"
-                    else:
-                        # Score targets are not considered for recordings
-                        score3, score2, score1 = ("",) * 3
+                        continue
+                    # Score targets are not considered for recordings
+                    st3, st2, st1 = ("",) * 3
 
                 if name and des:
                     if not alt:
@@ -84,7 +84,7 @@ def read_romlist():
                     icx, icy = -1, -1
                     if 0 < int(slot) <= len(SLOTS):
                         icx, icy = SLOTS[int(slot) - 1]
-                    romlist.append((name, sub, des, alt, icx, icy, int(emu), int(unlock), score3, score2, score1))
+                    romlist.append((name, sub, des, alt, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
     return romlist
 
 
@@ -102,7 +102,7 @@ def build_launch_command(info, basic_mode):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
-    subfolder, name, emu, unlock, score3, score2, score1 = info
+    subfolder, name, emu, rec, unlock, score3, score2, score1 = info
     emu_args = get_emulator(emu)
     emu_args = emu_args.replace("<RECORD_ID>", f"{name}_{subfolder}_{get_datetime()}.inp")
     launch_directory = os.path.dirname(emu_args.split(" ")[0])

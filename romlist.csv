@@ -1,35 +1,34 @@
-#Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Unlock,3rd Prize,2nd Prize,1st Prize
-dkong,,DK Record.,DK Recording (.inp),1,2,0,,,
-dkong,,Donkey Kong,,3,1,0,10000,25000,40000
-dkongjr,,DK Junior,,5,1,0,10000,15000,30000
-dkong,dkonglava,DK Lava!,DK Lava Panic!,8,1,1000,10000,20000,40000
-dkongx11,dkongspooky,DK Spooky,DK Spooky Remix,10,1,2000,10000,15000,30000
-dkong,dkongrev,DK Reverse,,11,1,4000,10000,20000,40000
-dkongf,dkongst2,DK Springs,,14,1,6000,10000,15000,30000
-dkong,dkongwho,DK Who,DK Who and the Daleks,15,1,8000,10000,20000,40000
-dkong,dkongwbh,DK Wild,DK Wild Barrels,17,1,10000,1000,2000,5000
-dkongf,dkongf,DK Foundry,,18,1,12000,10000,20000,40000
-dkong,dkongitd,DK IntoTheDark,DK Into The Dark,19,1,14000,8000,15000,35000
-dkong,dkongotr,DK OnTheRun,DK On The Run,21,1,16000,10000,15000,30000
-dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,22,1,18000,10000,15000,30000
-dkong,dkonglastman,DK LastMan,DK Last Man Standing,24,1,20000,10000,20000,45000
-dkongx,dkongdk2,DK 2,DK2 Jumpman Returns,25,1,22000,5000,10000,25000
-dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,26,1,24000,10000,20000,40000
-dkong,dkongrnd,DK Random,DK Randomized,27,1,26000,10000,25000,50000
-dkong,dkongtj,DK Jungle,DK Twisted Jungle,29,1,28000,10000,25000,45000
-dkong,dkongcb,DK Crazy,DK Crazy Barrels,31,1,30000,10000,20000,40000
-dkongf,dkongrdemo,DK Remix,DK Remix Demo,33,1,32000,10000,20000,45000
-dkong,dkongrainbow,DK Rainbow,,34,1,34000,10000,25000,50000
-dkonghrd,dkonghrd,DK Hard,,35,1,36000,10000,15000,25000
-dkong,dkongl05,DK SkipStart,DK Skip Start,37,1,38000,8000,15000,25000
-dkong,dkongfr,DK FreeRun,DK Freerun Edition,40,1,40000,20000,40000,75000
-dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,42,1,42000,8000,15000,25000
-dkong,dkongbarpal,DK Barrelpalooza,DK Barrelpalooza,45,1,44000,10000,25000,50000
-dkong,dkongce,DK Champ Ed.,DK Championship Edition,46,1,46000,10000,25000,50000
-dkong,dkongpies,DK Pies Only,DK Pies Only,99,1,0,,,
-dkong,dkongrivets,DK Rivets Only,DK Rivets Only,99,1,0,,,
-dkong,dkongpac,DK Pac-Man,,99,1,0,,,
-dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,0,,,
-dkong,dkongtrn,DK Trainer,,99,1,0,,,
-dkong,dkongpace,DK Pace,,99,1,0,,,
-dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,0,,,
+#Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
+dkong,,Donkey Kong,,1,1,2,0,10000,25000,40000
+dkongjr,,DK Junior,,3,1,2,0,10000,15000,30000
+dkong,dkonglava,DK Lava!,DK Lava Panic!,5,1,0,1000,10000,20000,40000
+dkong,dkongrivets,DK Rivets,DK Rivets Only,8,1,2,2000,10000,20000,40000
+dkongx11,dkongspooky,DK Spooky,DK Spooky Remix,10,1,2,4000,10000,15000,30000
+dkong,dkongrev,DK Reverse,,11,1,2,6000,10000,20000,40000
+dkongf,dkongst2,DK Springs,,14,1,2,8000,10000,15000,30000
+dkong,dkongwho,DK Who,DK Who and the Daleks,15,1,0,10000,10000,20000,40000
+dkong,dkongwbh,DK Wild,DK Wild Barrels,17,1,2,12000,1000,2000,5000
+dkongf,dkongf,DK Foundry,,18,1,2,14000,10000,20000,40000
+dkong,dkongitd,DK IntoTheDark,DK Into The Dark,19,1,2,16000,8000,15000,35000
+dkong,dkongotr,DK OnTheRun,DK On The Run,21,1,2,18000,10000,15000,30000
+dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,22,1,2,20000,10000,15000,30000
+dkong,dkonglastman,DK LastMan,DK Last Man Standing,24,1,0,22000,10000,20000,45000
+dkongx,dkongdk2,DK 2,DK2 Jumpman Returns,25,1,2,24000,5000,10000,25000
+dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,26,1,2,26000,10000,20000,40000
+dkong,dkongrnd,DK Random,DK Randomized,27,1,2,28000,10000,25000,50000
+dkong,dkongtj,DK Jungle,DK Twisted Jungle,29,1,2,30000,10000,25000,45000
+dkong,dkongcb,DK Crazy,DK Crazy Barrels,31,1,2,32000,10000,20000,40000
+dkongf,dkongrdemo,DK Remix,DK Remix Demo,33,1,2,34000,10000,20000,45000
+dkong,dkongrainbow,DK Rainbow,,34,1,2,36000,10000,25000,50000
+dkonghrd,dkonghrd,DK Hard,,35,1,2,38000,10000,15000,25000
+dkong,dkongl05,DK SkipStart,DK Skip Start,37,1,2,40000,8000,15000,25000
+dkong,dkongfr,DK FreeRun,DK Freerun Edition,40,1,2,42000,20000,40000,75000
+dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,42,1,2,44000,8000,15000,25000
+dkong,dkongbarpal,DK Barrelpalooza,DK Barrelpalooza,45,1,2,46000,10000,25000,50000
+dkong,dkongce,DK Champ Ed.,DK Championship Edition,46,1,2,48000,10000,25000,50000
+dkong,dkongpies,DK Pies Only,DK Pies Only,99,1,2,0,,,
+dkong,dkongpac,DK Pac-Man,,99,1,2,0,,,
+dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,0,,,
+dkong,dkongtrn,DK Trainer,,99,1,2,0,,,
+dkong,dkongpace,DK Pace,,99,1,2,0,,,
+dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,2,0,,,

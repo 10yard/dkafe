@@ -7,7 +7,7 @@ An arcade game launcher based on Donkey Kong made for arcade cabinets with incen
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-The frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.
+The frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
 The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically for this frontend. 
 
@@ -41,7 +41,7 @@ Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from 
    **DK Last Man Standing** 
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
    **DK Pies** and **DK Rivets**
-These hacks contains only one stage.  The pies hack begin on level 1 - which is not available in regular DK.  Can you reach the killscreen?
+These hacks contains only one stage.  The pies hack starts on level 1 - which is not available in regular DK.  Can you reach a killscreen?
 
 ### This project does not include:
  - Roms or information on how to obtain them.
@@ -369,7 +369,9 @@ The file can be configured to launch roms from the default rom directory (by lea
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
 If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See ALLOW_ROM_OVERWRITE option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. **/roms/original**) to prevent it from being overwritten.
 
-All roms in the list should be given an emulator number (as defined in settings.txt), a slot position (between 1 and 46) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
+All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in settings.txt), a slot position (between 1 and 46) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
+
+As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 
 The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **/shell** subfolder.  The emulator number can be left blank.
 

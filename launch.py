@@ -324,7 +324,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     nearby = None
     info_list = []
     # Display icons and return icon that is near to Jumpman
-    for _x, _y, name, sub, des, alt, emu, unlock, score3, score2, score1 in _g.icons:
+    for _x, _y, name, sub, des, alt, emu, rec, unlock, st3, st2, st1 in _g.icons:
         p_des = alt if alt.strip() else des
         unlocked = True
         if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
@@ -341,22 +341,23 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
                     p_des = f"UNLOCK AT {unlock}"
-                elif unlocked and score3 and score2 and score1 and not BASIC_MODE:
+                elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
                     if since_last_move() % 5 > 4:
-                        p_des = f'1ST PRIZE AT {format_K(score1)}'
+                        p_des = f'1ST PRIZE AT {format_K(st1)}'
                     elif since_last_move() % 5 > 3:
-                        p_des = f'2ND PRIZE AT {format_K(score2)}'
+                        p_des = f'2ND PRIZE AT {format_K(st2)}'
                     elif since_last_move() % 5 > 2:
-                        p_des = f'3RD PRIZE AT {format_K(score3)}'
+                        p_des = f'3RD PRIZE AT {format_K(st3)}'
                 elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
+                    # In case the default emu is for recordings
                     p_des = 'FOR RECORDING!'
-                elif not score3.strip() and since_last_move() % 4 > 2:
+                elif not st3.strip() and since_last_move() % 4 > 2:
                     p_des = 'FOR PRACTICE!'
                 elif not int(FREE_PLAY or BASIC_MODE) and since_last_move() % 4 > 2:
                     p_des = f'${str(PLAY_COST)} TO PLAY'
                 write_text(p_des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
-                    nearby = (sub, name, emu, unlock, score3, score2, score1)
+                    nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                     _g.selected = p_des
             if not detect_only:
                 _g.screen.blit(img, (_x, _y))
@@ -471,11 +472,11 @@ def build_menus(initial=False):
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
-    for name, sub, desc, alt, icx, icy, emu, unlock, score3, score2, score1 in _s.read_romlist():
+    for name, sub, desc, alt, icx, icy, emu, rec, unlock, st3, st2, st1 in _s.read_romlist():
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
-            _g.menu.add_button(alt, launch_rom, (sub, name, emu, unlock, score3, score2, score1))
+            _g.menu.add_button(alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
-            _g.icons.append((int(icx), int(icy), name, sub, desc, alt, emu, unlock, score3, score2, score1))
+            _g.icons.append((int(icx), int(icy), name, sub, desc, alt, emu, rec, unlock, st3, st2, st1))
     _g.menu.add_vertical_margin(10)
     _g.menu.add_button('Settings', open_settings_menu)
     _g.menu.add_button('Close Menu', close_menu)
@@ -506,20 +507,20 @@ def build_launch_menu():
     # Special launch menu
     nearby = display_icons(detect_only=True)
     if nearby:
-        sub, name, emu, unlock, score3, score2, score1 = nearby
+        sub, name, emu, rec, unlock, st3, st2, st1 = nearby
         title = _g.selected.center(24)
         inps = _s.get_recording_files(emu, name, sub)
 
         _g.launchmenu = pymenu.Menu(200, 224, title, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme,
                                     onclose=close_menu)
-        if emu != 2:
+        if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game', launch_rom, nearby)
         _g.launchmenu.add_vertical_margin(15)
-        if sub in LUA_HACKS:
+        if rec == 0 or sub in LUA_HACKS:
             _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
             _g.launchmenu.add_label('possible for this game', selectable=False, font_color=GREY)
         else:
-            _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, 2)
+            _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, rec)
             _g.launchmenu.add_vertical_margin(15)
             _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
             _g.launchmenu.add_vertical_margin(1)
@@ -621,10 +622,12 @@ def shutdown_system():
 
 
 def launch_rom(info, override_emu=None):
+    # Launch the rom using provided info.  Override is used to change emu number in case of recordings (to rec number).
     if info:
-        sub, name, emu, unlock, score3, score2, score1 = info
+        sub, name, emu, rec, unlock, st3, st2, st1 = info
         if override_emu:
-            info = sub, name, override_emu, unlock, score3, score2, score1
+            emu = override_emu
+            info = sub, name, emu, rec, unlock, st3, st2, st1
         _g.timer.stop()  # Stop timer while playing arcade
         _g.menu.disable()
         if _g.launchmenu:
@@ -658,7 +661,7 @@ def launch_rom(info, override_emu=None):
             clear_screen(and_reset_display=True)
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
-                scored = get_award(name, score3, score2, score1)
+                scored = get_award(name, st3, st2, st1)
                 if scored > 0:
                     _g.awarded = scored
                     _g.timer.reset()
