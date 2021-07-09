@@ -43,6 +43,7 @@ Assisted setup of binary distribution
 	 Use headphone jack for audio?            (Recommend Y)
 	 Force 640x480 mode on boot?              (Recommend Y)
 	 Map GPIO to keyboard input controls?     (Recommend Y)
+	 Install wmctrl to manage windows?        (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
 	 Disable networking services (WiFi, SSH)?
 	 Reboot now?                              (Recommend Y)

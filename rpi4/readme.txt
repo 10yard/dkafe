@@ -25,16 +25,17 @@
 6. Boot up your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
 7. Run the DKAFE install script in a terminal by typing the following:
      /boot/dkafe_install.sh
-8. The assisted setup will ask the following questions:
+8. The assisted setup will ask the following questions.  Y is recommended for all.
      ▪ Rotate the display?
-     ▪ Launch DKAFE on boot?                    (Recommend Y)
-     ▪ Hide startup messages?                   (Recommend Y)
-     ▪ Hide the Pi taskbar?                     (Recommend Y)
-     ▪ Hide the Pi desktop?                     (Recommend Y)
-     ▪ Hide the Pi mouse cursor?                (Recommend Y)
-     ▪ Use headphone jack for audio?            (Recommend Y)
-     ▪ Force 640x480 mode on boot?              (Recommend Y)
-     ▪ Map GPIO to keyboard input controls?     (Recommend Y)
-     ▪ Disable non-essential Services?          (Recommend Y)
+     ▪ Launch DKAFE on boot?
+     ▪ Hide startup messages?
+     ▪ Hide the Pi taskbar?
+     ▪ Hide the Pi desktop?
+     ▪ Hide the Pi mouse cursor?
+     ▪ Use headphone jack for audio?
+     ▪ Force 640x480 mode on boot?
+     ▪ Map GPIO to keyboard input controls?
+     ▪ Install wmctrl to allow DKAFE to manage windows?
+     ▪ Disable non-essential Services?
      ▪ Disable networking services (WiFi, SSH)?
-     ▪ Reboot now?                              (Recommend Y)
+     ▪ Reboot now?

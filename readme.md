@@ -77,6 +77,7 @@ Credit is given to the original authors below.
  - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Twisted Jungle (dkongtj)
  - Donkey Kong Barrelpalooza (dkongbarpal)
+ - Donkey Kong 40th Anniversary Edition (dkong40)
 
 #### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)
@@ -116,10 +117,6 @@ Credit is given to the original authors below.
 ## DKWolf
 
 DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers.
-
-This build has functionality disabled for save/load states, cheats, rewind, throttling etc. to make competition more challenging.
-
-Gameplay recordings are saved to DKAFE's **/dkwolf/inp** folder.
 
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
 
@@ -166,6 +163,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Use headphone jack for audio?            (Recommend Y)
 	 Force 640x480 mode on boot?              (Recommend Y)
 	 Map GPIO to keyboard input controls?     (Recommend Y)
+	 Install wmctrl to manage windows?        (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
 	 Disable networking services (WiFi, SSH)?
 	 Reboot now?                              (Recommend Y)
@@ -182,21 +180,19 @@ The settings.txt contains the emulator, rom path, controls and other configurati
 
 The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
 
-The frontend can be configured with multiple arcade emulators to allow a combination of standard arcade roms,  hacked and homebrew roms and to support Wolfmame recordings.
-
 
 ## Display Resolution
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 
-The command line argument `-view "Pixel Aspect (7:8)"` can be used to override MAME's default 4:3 aspect if you want perfect scaling.
+The command line argument `-view "Pixel Aspect (7:8)"` is used by default to override MAME's default 4:3 aspect.
 
-For Raspberry Pi,  it is recommended to use 640x480 resolution and adjust the x/y display scale using xrandr.  The Pi install script can set this up for you.  Refer to **rpi4/rpi4_notes**.
+For Raspberry Pi,  it is recommended to use 640x480 resolution and adjust the x/y display scale using xrandr.  The Pi install script will set this up for you.  Refer to **rpi4/rpi4_notes**.
 
 
 ### Frontend Settings
 
-Default settings can be changed in the settings.txt file.  Some settings can also be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB).
+Default settings can be changed in the settings.txt file.  Some of these settings can be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB).
 
 `FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
@@ -267,7 +263,7 @@ The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>` and `<RECORD_ID>` used above
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
 
 `EMU_EXIT_RPI`
-Raspberry Pi specific command to issue after exiting emulator e.g. using `wmctrl` to return focus to the frontend.
+Raspberry Pi specific command to issue after exiting emulator e.g. using `wmctrl -Fa DKAFE` to return focus to the frontend.
 
 `EMU_ENTER_RPI`
 Raspberry Pi specific command to issue before starting an emulator
@@ -325,8 +321,8 @@ CONTROL_SNAP = F12
 
 #### Joystick Controls
 
-Joystick controls can be configured by setting the USE_JOYSTICK option.
-The up, down, left, right controls are defined automatically from the first joysticks axis movement.
+Joystick controls are disabled by default.
+The up, down, left, right controls are taken from the first detected joystick axis movement.
 Buttons can be customised in the settings.txt file as per the following example.  
 Button numbers 0-19 relate to the first joystick and 20-39 relate to the second joystick.
 
@@ -439,7 +435,10 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
 
 ## What's next?
 
+ - Add more cab friendly features including a test screen for player controls and a welcome screen to set the initial frontend settings.
+ - Difficulty settings ranging from Noob to Master 
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
+ - Update the old "Donkey Kong 2600 Graphics" hack, replacing regular Kong for Gingerbread Kong.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
  - Maybe extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
