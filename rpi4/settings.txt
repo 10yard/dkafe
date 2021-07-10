@@ -18,7 +18,7 @@ EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -nvram_directory /dev/null -record <RECORD_ID>
 
 # Window Management
-EMU_EXIT_RPI = wmctrl -Fa DKAFE
+EMU_EXIT = wmctrl -Fa DKAFE
 
 # Interface Settings
 CREDITS = 1

@@ -88,16 +88,15 @@ HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage d
 # Root directory of frontend
 ROOT_DIR = os.getcwd()
 
-# RPI specific
-EMU_EXIT_RPI = ""              # External command to issue after exiting emulator e.g. return focus to frontend
-EMU_ENTER_RPI = ""             # External command to issue before starting emulator
-
 # Emulator and rom path defaults
 ROM_DIR = '<ROOT>/roms'
 OPTIONS = '-rompath <ROM_DIR> -view "Pixel Aspect (7:8)'
 EMU_1 = '<ROOT>/dkwolf/dkwolf <OPTIONS>'
 EMU_2 = '<ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6
+
+# External command to issue after exiting emulator e.g. return focus to frontend
+EMU_EXIT = ""
 
 # Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support -rompath argument.
 ALLOW_ROM_OVERWRITE = 0

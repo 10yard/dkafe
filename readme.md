@@ -262,11 +262,8 @@ The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>` and `<RECORD_ID>` used above
 `ALLOW_ROM_OVERWRITE = 0`
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
 
-`EMU_EXIT_RPI`
-Raspberry Pi specific command to issue after exiting emulator e.g. using `wmctrl -Fa DKAFE` to return focus to the frontend.
-
-`EMU_ENTER_RPI`
-Raspberry Pi specific command to issue before starting an emulator
+`EMU_EXIT`
+System command to issue after exiting emulator e.g. using `wmctrl -Fa DKAFE` to return focus to the frontend on Raspberry Pi.
 
 
 ### DK Interface Settings

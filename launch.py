@@ -650,8 +650,8 @@ def launch_rom(info, override_emu=None):
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
             clear_screen()
-            if _s.is_raspberry() and EMU_EXIT_RPI:
-                os.system(EMU_EXIT_RPI)
+            if EMU_EXIT:
+                launch_command += f"; {EMU_EXIT}"
             os.system(launch_command)
 
             pygame.time.delay(50)  # debounce
@@ -919,8 +919,8 @@ def activity_check():
         process_interrupts()
 
         if _g.lastexit > 0 and since_last_exit() < 0.2:
-            if _s.is_raspberry() and EMU_EXIT_RPI:
-                os.system(EMU_EXIT_RPI)
+            if EMU_EXIT:
+                os.system(EMU_EXIT)
 
 
 def teleport_between_hammers():
