@@ -28,11 +28,11 @@ If you're not up for the challenge then it is possible to adjust things and have
 The frontend can be configured to launch other emulators and roms.
 
 
-### This project includes:
+### The DKAFE project includes:
  - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - A rom patcher that will automatically generate hacked roms from the many included patch files.
- - LUA scripts to seamlessly interface MAME with the frontend.
+ - LUA scripts to interface MAME with the frontend.
  - Donkey Kong hacks made by me for use with the DKAFE frontend:
    **DK Lava Panic**
 Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  Try not to panic!
@@ -443,12 +443,6 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
  - Maybe extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
 
-
-## I need help with
- 
- - Creating .png icons for popular arcade machine.  See the **dkafe/artwork/icon** folder.
- - Testing and tweaking the unlock mode.
- 
  
 ## Thanks to
 

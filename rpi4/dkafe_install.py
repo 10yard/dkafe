@@ -252,7 +252,8 @@ def main():
     # 10) Install wmctrl to manage windows
     answer = yesno("Install wmctrl to manage windows")
     if answer:
-        os.system("sudo apt-get install wmctrl")
+        print("Installing wmctrl, please wait...")
+        os.system("sudo apt-get -qq install wmctrl")
         changes_made = True
 
     # 11) Disable non-essential services

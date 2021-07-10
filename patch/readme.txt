@@ -38,6 +38,7 @@ By Paul Goes
  - Donkey Kong On The Run (dkongotr)
  - Donkey Kong Twisted Jungle (dkongtj)
  - Donkey Kong Barrelpalooza (dkongbp)
+ - Donkey Kong 40th Anniversary Edition (dkong40)
 
 By John Kowalski (Sock Master) 
  - Donkey Kong Spooky Remix (dkongspooky)
@@ -119,5 +120,5 @@ In file c_5at_g.bin: Change values at offset 6B5 from 18 19 17 18 10 23 13 1F 22
 * Change "HOW HIGH CAN YOU GET" text to "HOW HIGH CAN YOU PIE?"
 In file c_5at_g.bin: Change values at offet 6DF from 17 15 24 to 20 19 15
 
-* Finally,  to prevent the kong from being drawn again prior to level increase. I created a block of 40 blank sprites in file c_5at_g.bin beginning from offset F30.  This blank sprite erases Kong.
+* Finally,  to prevent Kong from being drawn again before level increase, I created a block of 40 blank sprites in file c_5at_g.bin beginning from offset F30.  This blank sprite erases Kong.
 In file c_5ct_g.bin: Change values starting at offset 804 from 5C 38 to 30 3F.  
