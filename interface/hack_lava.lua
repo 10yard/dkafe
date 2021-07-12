@@ -99,7 +99,7 @@ function draw_lava()
 		end
 						
 		-- Add dancing flames above lava
-		for k, i in pairs({0, 18, 36, 54, 72, 90, 108, 126, 144, 162, 180, 198, 216}) do
+		for k, i in pairs({8, 24, 40, 56, 72, 88, 104, 120, 136, 152, 168, 184, 200, 216}) do
       local adjust_y = math_random(-3, 3)
 			local flame_y = lava_y + adjust_y
 			local flame_color = ORANGE
@@ -109,7 +109,13 @@ function draw_lava()
 				else
           flame_color = RED
         end
-			  screen:draw_text(flame_y, i, "~", flame_color)
+        -- Draw flame graphic
+       	screen:draw_box(flame_y + 0, i - 0, flame_y + 1, i - 1, flame_color)
+       	screen:draw_box(flame_y + 1, i - 1, flame_y + 2, i - 2, flame_color)
+       	screen:draw_box(flame_y + 2, i - 2, flame_y + 3, i - 3, flame_color)
+       	screen:draw_box(flame_y + 3, i - 1, flame_y + 4, i - 2, flame_color)
+       	screen:draw_box(flame_y + 4, i - 0, flame_y + 5, i - 1, flame_color)
+       	screen:draw_box(flame_y + 5, i - 1, flame_y + 6, i - 2, flame_color)
       end
 		end
 	end

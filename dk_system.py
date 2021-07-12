@@ -137,7 +137,6 @@ def build_launch_command(info, basic_mode):
             # An interface script is available
             competing = True
             launch_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
-            launch_command += f' -fontpath {os.path.join(ROOT_DIR, "fonts")} -debugger_font_size 11 -uifont {ui_font}'
 
     return launch_command, launch_directory, competing
 
