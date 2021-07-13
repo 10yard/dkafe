@@ -692,7 +692,7 @@ def playback_rom(info, inpfile):
                     playback_command += arg + " "
                 retain = True
         os.chdir(launch_directory)
-        playback_command += f" -playback {os.path.basename(inpfile)}"
+        playback_command += f" -playback {os.path.basename(inpfile)} -exit_after_playback"
         intermission_channel.stop()
         os.system(playback_command)
 

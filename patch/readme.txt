@@ -115,10 +115,13 @@ In file c_5at_g.bin: Change values starting at offset A65 from 01 04 01 03 04 01
 In file c_5ct_g.bin: In the rivet code from offset 7B7 to 825 replace the values CD 26 18 and CD A7 0D with 00 00 00
 
 * Change the high score text to "PIES ONLY".
-In file c_5at_g.bin: Change values at offset 6B5 from 18 19 17 18 10 23 13 1F 22 15 to 20 19 15 23 10 1F 1E 1C 29 10
+In file c_5at_g.bin: Change values at offset 6B4 from 18 19 17 18 10 23 13 1F 22 15 to 20 19 15 23 10 1F 1E 1C 29 10
 
 * Change "HOW HIGH CAN YOU GET" text to "HOW HIGH CAN YOU PIE?"
-In file c_5at_g.bin: Change values at offet 6DF from 17 15 24 to 20 19 15
+In file c_5at_g.bin: Change values at offset 6DF from 17 15 24 to 20 19 15
+
+* Change attract mode to show pies level
+In file c_5et_g.bin: Change value at offset 76C from 01 to 02
 
 * Finally,  to prevent Kong from being drawn again before level increase, I created a block of 40 blank sprites in file c_5at_g.bin beginning from offset F30.  This blank sprite erases Kong.
 In file c_5ct_g.bin: Change values starting at offset 804 from 5C 38 to 30 3F.  

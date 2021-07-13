@@ -40,8 +40,9 @@ Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  
 Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
    **DK Last Man Standing** 
 You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
-   **DK Pies** and **DK Rivets**
-These hacks contains only one stage.  The pies hack starts on level 1 - which is not available in regular DK.  Can you reach a killscreen?
+   **DK Pies**, **DK Rivets** and **DK Springy**
+These hacks contains only one stage.  The pie and elevator hacks starts on level 1 - which is not available in regular DK.
+
 
 ### This project does not include:
  - Roms or information on how to obtain them.
@@ -65,6 +66,7 @@ Credit is given to the original authors below.
  - DK Last Man Standing (dkonglastman)
  - DK Pies Only (dkongpies)
  - DK Rivets Only (dkongrivets)
+ - DK Springs Only (dkongspringy)
 
 #### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
