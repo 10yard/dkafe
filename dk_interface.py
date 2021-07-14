@@ -13,7 +13,7 @@
 #
 #  ---------------------------------------------------------------------------------------------
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO
+from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO, ALLOW_COIN_TO_END_GAME
 from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD
 from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY, LUA_HACKS
 
@@ -60,13 +60,24 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         # Remove compete file if it still exists
         if os.path.exists(COMPETE_FILE):
             os.remove(COMPETE_FILE)
+
         os.environ["LUA_PATH"] = os.path.join(ROOT_DIR, "interface")
         os.environ["DATA_INCLUDES"] = os.path.join(ROOT_DIR, "interface")
         os.environ["DATA_EMULATOR"] = os.path.basename(emulator.split(" ")[0])
         os.environ["DATA_FILE"] = COMPETE_FILE
         os.environ["DATA_SUBFOLDER"] = subfolder
+
+        # Options
         os.environ["DATA_CREDITS"] = str(CREDITS)
         os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart
+        os.environ["DATA_ALLOW_COIN_TO_END_GAME"] = str(ALLOW_COIN_TO_END_GAME)
+        os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
+
+        # Are we going to show the awards targets and progress while playing the game
+        os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
+        os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
+        os.environ["DATA_SHOW_HUD"] = str(SHOW_HUD)
+
         for i, award in enumerate([("SCORE3", score3), ("SCORE2", score2), ("SCORE1", score1)]):
             os.environ[f"DATA_{award[0]}"] = str(award[1])
             os.environ[f"DATA_{award[0]}_K"] = format_K(str(award[1]))
@@ -76,16 +87,10 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
         os.environ["HACK_NOHAMMERS"] = str(HACK_NOHAMMERS)
         os.environ["HACK_LAVA"] = str(HACK_LAVA) if rom == "dkong" else "0"
-        os.environ["HACK_PENALTY"] = str(HACK_PENALTY) if rom == "dkong" else "0"
+        # os.environ["HACK_PENALTY"] = str(HACK_PENALTY) if rom == "dkong" else "0"
 
         # Apply rom specific Lua hacks such as the lava hack in dkonglava
         apply_rom_specific_hacks(rom, subfolder)
-
-        # Are we going to show the awards targets and progress while playing the game
-        os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
-        os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
-        os.environ["DATA_SHOW_HUD"] = str(SHOW_HUD)
-        os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
 
         # Award prizes
         os.environ["DATA_AWARD1"] = str(AWARDS[2])

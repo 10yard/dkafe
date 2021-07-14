@@ -38,11 +38,8 @@ The frontend can be configured to launch other emulators and roms.
 Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  Try not to panic!
    **DK Who and the Daleks** 
 Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
-   **DK Last Man Standing** 
-You will lose penalty points instead of lives so don't make mistakes unless you have earned enough points to survive.  You decide when to stop playing!
-   **DK Pies**, **DK Rivets** and **DK Springy**
-These hacks contains only one stage.  The pie and elevator hacks starts on level 1 - which is not available in regular DK.
-
+   **DK Pies**, **DK Springy**, **DK Rivets** and **DK Barrels**
+These hacks contains only one stage,  all starting from level 1, and working up to the killscreen.
 
 ### This project does not include:
  - Roms or information on how to obtain them.
@@ -63,10 +60,10 @@ Credit is given to the original authors below.
 #### By Jon Wilson (me)
  - Donkey Kong Lava Panic! (dkonglava)
  - DK Who and the Daleks (dkongwho)
- - DK Last Man Standing (dkonglastman)
  - DK Pies Only (dkongpies)
  - DK Rivets Only (dkongrivets)
  - DK Springs Only (dkongspringy)
+ - DK Barrels Only (dkongbarrels)
 
 #### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -280,6 +277,9 @@ These settings relate to Donkey Kong hacks.
 
 `ALLOW_SKIP_INTRO = 1`
 Allow the DK climb scene to be quickly skipped in game by pressing Jump button
+
+`ALLOW_COIN_TO_END_GAME = 1`
+1 to allow push of coin during gameplay to trigger end of game, sacrificing all remaining lives.  This allows a score to be registered after reaching your target score.
 
 `SHOW_AWARD_PROGRESS = 1`    
 1 to show award progress when playing game (replaces highscore at top of screen)

@@ -37,7 +37,6 @@ emu.register_frame(function()
 		for key, value in pairs(rom_scores) do
 			mem:write_direct_i8(value, data_scores[key])				
 		end
-    -- sleep(0.1)
 	end
   
 	if loaded == 1 then
@@ -80,6 +79,7 @@ emu.register_frame(function()
 			ports[":IN2"].fields["1 Player Start"]:set_value(1)
 		end
 		emu["loaded"] = 3
+    emu.register_frame_done(dkong_overlay, "frame")
 	end
   
 	if loaded == 3 then
@@ -98,10 +98,13 @@ emu.register_frame(function()
     
     -- Fast skip through the DK climb scene when jump button is pressed (optional)
     fast_skip_intro()
+  
+    -- Player ends game to keep current score by pressing COIN.
+    if mode1 == 3 and data_coin_ends == "1" and string.sub(number_to_binary(mem:read_i8(0xc7d00)), 1, 1) == "1" then
+      mem:write_i8(0xc6228, 1)		
+      mem:write_i8(0xc6200, 0)
+    end
 				    
-		-- Show award targets and progress during gameplay (optional)
-		display_awards()
-
 		-- Optional hacks
 		if hack_teleport == "1" then
 			dofile(data_includes_folder.."/hack_teleport.lua")
@@ -111,12 +114,16 @@ emu.register_frame(function()
 		if hack_lava == "1" then
 			dofile(data_includes_folder.."/hack_lava.lua")
 		end
-		if hack_penalty == "1" then
-			dofile(data_includes_folder.."/hack_penalty.lua")
-		end
 	end
 end)
 
+
+-- Callback function for frame updates
+------------------------------------------------------------------------------------------------
+function dkong_overlay()
+	-- Show award targets and progress during gameplay (optional)
+  display_awards()
+end
 
 -- Register callback function on exit
 ------------------------------------------------------------------------------------------------

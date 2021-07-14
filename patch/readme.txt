@@ -23,9 +23,9 @@ DKAFE will then apply patches and generate the following hacked version of Donke
 By Jon Wilson (me)
  - Donkey Kong Lava Panic! (dkonglava)
  - DK Who and the Daleks (dkongwho)
- - DK Last Man Standing (dkonglastman)
  - DK Pies Only (dkongpies)
  - DK Rivets Only (dkongrivets)
+ - DK Barrels Only (dkongbarrels)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)

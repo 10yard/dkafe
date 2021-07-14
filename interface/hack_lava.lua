@@ -100,7 +100,7 @@ function draw_lava()
 						
 		-- Add dancing flames above lava
 		for k, i in pairs({8, 24, 40, 56, 72, 88, 104, 120, 136, 152, 168, 184, 200, 216}) do
-      local adjust_y = math_random(-3, 3)
+      local adjust_y = math_random(-4, 4)
 			local flame_y = lava_y + adjust_y
 			local flame_color = ORANGE
 			if flame_y > 0 then

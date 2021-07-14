@@ -59,6 +59,7 @@ ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
 CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface
 AUTOSTART = 1                  # Automatically start the game in MAME (by simulating P1 start) when using interface
 ALLOW_SKIP_INTRO = 1           # Allow the DK climb scene to be quickly skipped in game by pressing Jump button
+ALLOW_COIN_TO_END_GAME = 1     # Allow push of coin during gameplay to end game immediately so score can be registered
 SHOW_AWARD_PROGRESS = 1        # Show award progress when playing game (appears top of screen replacing high score)
 SHOW_AWARD_TARGETS = 1         # Show award targets when playing game (appears during the DK intro/climb scene)
 SHOW_HUD = 1                   # Show in game HUD by default (in top right corner) and use P2 to toggle data

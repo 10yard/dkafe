@@ -22,6 +22,7 @@ data_file = os.getenv("DATA_FILE")
 data_subfolder = os.getenv("DATA_SUBFOLDER")
 data_credits = os.getenv("DATA_CREDITS")
 data_autostart = os.getenv("DATA_AUTOSTART")
+data_coin_ends = os.getenv("DATA_ALLOW_COIN_TO_END_GAME")
 
 --Award targets and progress data
 ------------------------------------------------------------------------------------------------
@@ -87,7 +88,7 @@ soundmem = soundcpu.spaces["data"]
 hack_teleport = os.getenv("HACK_TELEPORT")
 hack_nohammers = os.getenv("HACK_NOHAMMERS")
 hack_lava = os.getenv("HACK_LAVA")
-hack_penalty = os.getenv("HACK_PENALTY")
+-- hack_penalty = os.getenv("HACK_PENALTY")
 
 -- Colours
 ------------------------------------------------------------------------------------------------
