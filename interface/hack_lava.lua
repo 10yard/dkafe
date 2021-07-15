@@ -61,7 +61,7 @@ function draw_lava()
 				-- Dim the screen above lava flow
 				screen:draw_box(256, 224, lava_y, 0, 0xc77990000, 0)
 				
-				-- Flash colour palette for dramatic effect
+				-- PANIC! text with flashing colour palette for dramatic effect
 				if toggle() == 1 then
 					mem:write_i8(0xc7d86, 1)
 					block_text("PANIC!", 128, 16, 0xcffEE7511, 0xcffF5BCA0) 					
@@ -69,7 +69,7 @@ function draw_lava()
 					mem:write_i8(0xc7d86, 0)
 				end
 
-				-- Temporary change to music for added drama
+				-- Temporary change music for added drama
 				if stage ~= 2 then
 					mem:write_i8(0xc6089, 9)
 				else
@@ -100,22 +100,25 @@ function draw_lava()
 						
 		-- Add dancing flames above lava
 		for k, i in pairs({8, 24, 40, 56, 72, 88, 104, 120, 136, 152, 168, 184, 200, 216}) do
-      local adjust_y = math_random(-4, 4)
-			local flame_y = lava_y + adjust_y
-			local flame_color = ORANGE
-			if flame_y > 0 then
-			  if adjust_y > 0  then 
-          flame_color = ORANGE
-				else
-          flame_color = RED
+      local flicker = math_random(2)
+      if flicker == 1 then
+        local adjust_y = math_random(-5, 4)
+        local flame_y = lava_y + adjust_y
+        local flame_color = ORANGE
+        if flame_y > 0 then
+          if adjust_y > 0  then 
+            flame_color = ORANGE
+          else
+            flame_color = RED
+          end
+          -- Draw flame graphic
+          screen:draw_box(flame_y + 0, i - 0, flame_y + 1, i - 1, flame_color)
+          screen:draw_box(flame_y + 1, i - 1, flame_y + 2, i - 2, flame_color)
+          screen:draw_box(flame_y + 2, i - 2, flame_y + 3, i - 3, flame_color)
+          screen:draw_box(flame_y + 3, i - 1, flame_y + 4, i - 2, flame_color)
+          screen:draw_box(flame_y + 4, i - 0, flame_y + 5, i - 1, flame_color)
+          screen:draw_box(flame_y + 5, i - 1, flame_y + 6, i - 2, flame_color)
         end
-        -- Draw flame graphic
-       	screen:draw_box(flame_y + 0, i - 0, flame_y + 1, i - 1, flame_color)
-       	screen:draw_box(flame_y + 1, i - 1, flame_y + 2, i - 2, flame_color)
-       	screen:draw_box(flame_y + 2, i - 2, flame_y + 3, i - 3, flame_color)
-       	screen:draw_box(flame_y + 3, i - 1, flame_y + 4, i - 2, flame_color)
-       	screen:draw_box(flame_y + 4, i - 0, flame_y + 5, i - 1, flame_color)
-       	screen:draw_box(flame_y + 5, i - 1, flame_y + 6, i - 2, flame_color)
       end
 		end
 	end
@@ -125,7 +128,7 @@ end
 ------------------------------------------------------------------------------------------------
 if loaded == 3 then
 	if lava_hack_started ~= 1 then
-		--register the frame drawing callbackz
+		--register the frame drawing callback
 		emu.register_frame_done(draw_lava, "frame")
 	end
 	lava_hack_started = 1

@@ -279,7 +279,7 @@ These settings relate to Donkey Kong hacks.
 Allow the DK climb scene to be quickly skipped in game by pressing Jump button
 
 `ALLOW_COIN_TO_END_GAME = 1`
-1 to allow push of coin during gameplay to trigger end of game, sacrificing all remaining lives.  This allows a score to be registered after reaching your target score.
+1 to allow push of coin during gameplay to trigger end of game, sacrificing all remaining lives, so a score can be registered.
 
 `SHOW_AWARD_PROGRESS = 1`    
 1 to show award progress when playing game (replaces highscore at top of screen)
@@ -370,9 +370,7 @@ As well as an emulator number,  the roms can be given a recording emulator numbe
 
 The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **/shell** subfolder.  The emulator number can be left blank.
 
-An accompanying icon in .png format should be placed into the **artwork/icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.  You can use the default_machine.png as a template.
-
-Hopefully that all makes sense.  Refer to the example romlist.csv
+An accompanying icon in .png format should be placed into the **artwork/icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)

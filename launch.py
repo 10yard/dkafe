@@ -649,16 +649,16 @@ def launch_rom(info, override_emu=None):
             reset_all_inputs()
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
-            clear_screen()
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
-            os.system(launch_command)
 
+            clear_screen()
+            os.system(launch_command)
+            clear_screen(and_reset_display=True)
             pygame.time.delay(50)  # debounce
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
 
-            clear_screen(and_reset_display=True)
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
                 scored = get_award(name, st3, st2, st1)
@@ -694,8 +694,10 @@ def playback_rom(info, inpfile):
         os.chdir(launch_directory)
         playback_command += f" -playback {os.path.basename(inpfile)} -exit_after_playback"
         intermission_channel.stop()
-        os.system(playback_command)
 
+        clear_screen()
+        os.system(playback_command)
+        clear_screen(and_reset_display=True)
         pygame.time.delay(50)  # debounce
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
