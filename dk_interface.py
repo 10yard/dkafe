@@ -15,7 +15,7 @@
 import os
 from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO, ALLOW_COIN_TO_END_GAME
 from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD
-from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, HACK_PENALTY, LUA_HACKS
+from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, LUA_HACKS
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
@@ -47,8 +47,6 @@ def apply_rom_specific_hacks(rom=None, subfolder=None):
             os.environ["HACK_LAVA"] = "1"
         elif subfolder == "dkongwho":
             os.environ["HACK_TELEPORT"] = "1"
-        elif subfolder == "dkonglastman":
-            os.environ["HACK_PENALTY"] = "1"
 
 
 def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None, basic=0):
@@ -87,7 +85,6 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
         os.environ["HACK_NOHAMMERS"] = str(HACK_NOHAMMERS)
         os.environ["HACK_LAVA"] = str(HACK_LAVA) if rom == "dkong" else "0"
-        # os.environ["HACK_PENALTY"] = str(HACK_PENALTY) if rom == "dkong" else "0"
 
         # Apply rom specific Lua hacks such as the lava hack in dkonglava
         apply_rom_specific_hacks(rom, subfolder)
@@ -116,7 +113,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         os.environ["ROM_SCORES"] = ""
 
         # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
-        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd") and not basic:
+        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd", "dkongj") and not basic:
 
             script = "dkong.lua"
             score_width, double_width = 6, 6

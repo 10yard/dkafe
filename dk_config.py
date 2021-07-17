@@ -83,7 +83,6 @@ LADDER_CHANCE = 3              # Chance of coin dropping down a ladder (1 = alwa
 # Hacks
 HACK_TELEPORT = 0              # Hack DK to allow teleport between hammers. 0 or 1
 HACK_NOHAMMERS = 0             # Hack DK to remove hammers.  0 or 1
-HACK_PENALTY = 0               # Hack DK to lose penalty points instead of lives
 HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1
 
 # Root directory of frontend
@@ -135,7 +134,7 @@ if os.path.exists("VERSION"):
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 
 # These hacks depend on the MAME/LUA interface
-LUA_HACKS = ["dkonglava", "dkongwho", "dkonglastman"]
+LUA_HACKS = ["dkonglava", "dkongwho"]
 
 # Colours
 RED = (232, 7, 10)

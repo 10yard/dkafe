@@ -14,6 +14,7 @@
 # ----------------------------------------------------------------------------------------------
 #  Global variables
 # ----------------------------------------------------------------------------------------------
+# noinspection PyPackageRequirements
 from stopwatch import Stopwatch
 
 # Jumpman start position

@@ -26,6 +26,7 @@ By Jon Wilson (me)
  - DK Pies Only (dkongpies)
  - DK Rivets Only (dkongrivets)
  - DK Barrels Only (dkongbarrels)
+ - DK Springs Only (dkongspringy)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -65,11 +66,12 @@ By Tim Appleton
 By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics (dkong2600)
 
-By Unknown
+By Others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
- - Donkey Kong Hard (dkonghrd)
  - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Naked (dkongnad)
+ - Donkey Kong Hard (dkonghrd)
+ - Donkey Kong Japan (dkongjapan)
 
 
 ---- Creating patches

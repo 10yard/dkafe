@@ -85,7 +85,7 @@ def check_patches_available():
             update_screen(delay_ms=20)
             y_offset += 9
             if y_offset > 220:
-                x_offset, y_offset = 128, 24
+                x_offset, y_offset = 120, 24
         flash_message("ALL GOOD!", x=8, y=232, clear=False, cycles=4)
         jump_to_continue()
 

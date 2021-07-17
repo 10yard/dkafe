@@ -103,11 +103,12 @@ Credit is given to the original authors below.
 #### By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics (dkong2600)
 
-#### By unknown others
+#### By others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
- - Donkey Kong Hard (dkonghrd)
  - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Naked (dkongnad)
+ - Donkey Kong Hard (dkonghrd)
+ - Donkey Kong Japan (dkongjapan)
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)

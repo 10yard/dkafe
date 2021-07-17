@@ -57,7 +57,7 @@ def read_romlist():
     romlist = []
     with open("romlist.csv", "r") as rl:
         for row in rl.readlines():
-            data = row.replace('"','')
+            data = row.replace('"', '')
             if not data.startswith("#") and data.count(",") >= 10:
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                 if not emu.strip():
