@@ -52,10 +52,11 @@ FREE_PLAY = 1                  # Jumpman does not have to pay to play
 UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score increases
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
+SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
 
-# Interface options
+# DKWolf/Interface options
 CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface
 AUTOSTART = 1                  # Automatically start the game in MAME (by simulating P1 start) when using interface
 ALLOW_SKIP_INTRO = 1           # Allow the DK climb scene to be quickly skipped in game by pressing Jump button
@@ -94,6 +95,9 @@ OPTIONS = '-rompath <ROM_DIR> -view "Pixel Aspect (7:8)'
 EMU_1 = '<ROOT>/dkwolf/dkwolf <OPTIONS>'
 EMU_2 = '<ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6
+
+# External command to issue when emulator starts up
+EMU_ENTER = ""
 
 # External command to issue after exiting emulator e.g. return focus to frontend
 EMU_EXIT = ""

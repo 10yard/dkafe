@@ -209,6 +209,9 @@ Default settings can be changed in the settings.txt file.  Some of these setting
 `BASIC_MODE = 0`
 1 for basic mode to switch the frontend gameplay features off.  This is equivalent to FREE_PLAY = 1, UNLOCK_MODE = 0 and all interface settings set to 0.
 
+`SHOW_SPLASHSCREEN = 1`
+1 to show the DKAFE splash screen and animation on startup.  0 to skip the splash screen.
+
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 
@@ -262,8 +265,11 @@ The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>` and `<RECORD_ID>` used above
 `ALLOW_ROM_OVERWRITE = 0`
 Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that doesn't support a rompath argument e.g. AdvanceMAME.
 
+`EMU_ENTER`
+Optional system command to issue before launching emulator
+
 `EMU_EXIT`
-System command to issue after exiting emulator e.g. using `wmctrl -Fa DKAFE` to return focus to the frontend on Raspberry Pi.
+Optional system command to issue after exiting emulator e.g. using `wmctrl -Fa DKAFE` to return focus to the frontend on Raspberry Pi.
 
 
 ### DK Interface Settings

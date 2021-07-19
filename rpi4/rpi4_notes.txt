@@ -75,6 +75,17 @@ Note: 0.8 and 0.85 scale looks crisper for unknown reason so DKAFE default is:
 	xrandr --output HDMI-1 --scale 1x0.8 --rotate left
 
 
+Window management
+----------------------------------------------------------------------------------------------
+MAME launches much faster in window mode (-window argument)
+To take advantage we launch with -window and switch to full screen using the provided fs.sh
+bash script.
+The script runs after emulator starts and is specified in settings:
+EMU_ENTER = nohup ./fs.sh
+
+To ensure safe switching back to DKAFE when emulator exits we specify in settings:
+EMU_EXIT = wmctrl -Fa DKAFE
+
 
 Scan line generator
 ----------------------------------------------------------------------------------------------

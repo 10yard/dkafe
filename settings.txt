@@ -1,12 +1,15 @@
-# Front End Settings
-FULLSCREEN = 1
+# Front End Features
 FREE_PLAY = 0
 UNLOCK_MODE = 1
-INACTIVE_TIME = 20
-ENABLE_MENU = 1
-CONFIRM_EXIT = 1
-ENABLE_SHUTDOWN = 0
 BASIC_MODE = 0
+INACTIVE_TIME = 20
+SHOW_SPLASHSCREEN = 1
+
+# Front End Settings
+FULLSCREEN = 1
+CONFIRM_EXIT = 1
+ENABLE_MENU = 1
+ENABLE_SHUTDOWN = 0
 
 # Emulator Settings
 ROM_DIR = <ROOT>/roms
@@ -17,10 +20,10 @@ OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID> 
 
-# Interface Settings
+# DKWolf/Interface Settings
 CREDITS = 1
 AUTOSTART = 1
-ALLOW_SKIP_INTRO = 1
+SKIP_INTRO = 1
 ALLOW_COIN_TO_END_GAME = 1
 SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1

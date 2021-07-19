@@ -19,6 +19,7 @@ from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches
 from random import randint
+from subprocess import Popen
 import pickle
 
 
@@ -263,45 +264,43 @@ def play_sound_effect(effect=None, stop=False):
 
 def play_intro_animation():
     play_sound_effect(effect="sounds/jump.wav")
+    if SHOW_SPLASHSCREEN:
+        # Preload images
+        for _key in _s.intro_frames(climb_scene_only=True):
+            get_image(_key)
+        for _key in _s.intro_frames():
+            check_for_input()
+            if _g.jump or _g.start or _g.skip:
+                play_sound_effect(stop=True)
+                break
+            if type(_key) is int:
+                # Flash DK Logo
+                _g.screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), TOPLEFT)
+                display_slots(version_only=True, logo_scene=True)
+            else:
+                # Show DK climb scene
+                _g.screen.blit(get_image(_key), TOPLEFT)
+                current = int(_key.split("scene_")[1][:4])
 
-    # Preload images
-    for _key in _s.intro_frames(climb_scene_only=True):
-        get_image(_key)
+                # play sound if required for the current frame
+                if current in SCENE_SOUNDS:
+                    play_sound_effect(SCENE_SOUNDS[current])
 
-    for _key in _s.intro_frames():
-        check_for_input()
-        if _g.jump or _g.start or _g.skip:
-            play_sound_effect(stop=True)
-            break
+                # display nearby icons as girders are broken
+                for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
+                    if from_scene < current < to_scene:
+                        display_icons(below_y=below_y, above_y=above_y, intro=True, smash=current < smash_scene)
+                        display_slots()
+                    else:
+                        display_slots(version_only=True)
 
-        if type(_key) is int:
-            # Flash DK Logo
-            _g.screen.blit(get_image("artwork/intro/f%s.png" % (str(_key % 2) if _key <= 40 else "1")), TOPLEFT)
-            display_slots(version_only=True, logo_scene=True)
-        else:
-            # Show DK climb scene
-            _g.screen.blit(get_image(_key), TOPLEFT)
-            current = int(_key.split("scene_")[1][:4])
+                # Title and messages
+                write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
+                write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
+                write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
 
-            # play sound if required for the current frame
-            if current in SCENE_SOUNDS:
-                play_sound_effect(SCENE_SOUNDS[current])
-
-            # display nearby icons as girders are broken
-            for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
-                if from_scene < current < to_scene:
-                    display_icons(below_y=below_y, above_y=above_y, intro=True, smash=current < smash_scene)
-                    display_slots()
-                else:
-                    display_slots(version_only=True)
-
-            # Title and messages
-            write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
-            write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
-            write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
-
-        show_score()
-        update_screen(delay_ms=40)
+            show_score()
+            update_screen(delay_ms=40)
 
 
 def display_slots(version_only=False, logo_scene=False):
@@ -496,6 +495,7 @@ def build_menus(initial=False):
     _g.settingmenu.add_selector('   Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
     _g.settingmenu.add_selector('  Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
     _g.settingmenu.add_selector('Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
+    _g.settingmenu.add_selector(' Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN, onchange=set_splash)
     _g.settingmenu.add_vertical_margin(15)
     _g.settingmenu.add_selector('DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
     _g.settingmenu.add_vertical_margin(15)
@@ -559,6 +559,8 @@ def save_menu_settings():
                             f_out.write(f"CONFIRM_EXIT = {CONFIRM_EXIT}\n")
                         elif "BASIC_MODE=" in line_packed:
                             f_out.write(f"BASIC_MODE = {BASIC_MODE}\n")
+                        elif "SHOW_SPLASHSCREEN=" in line_packed:
+                            f_out.write(f"SHOW_SPLASHSCREEN = {SHOW_SPLASHSCREEN}\n")
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, x=0, y=232, fg=PINK, bg=RED)
@@ -575,6 +577,10 @@ def set_unlock(_, setting_value):
 
 def set_freeplay(_, setting_value):
     globals()["FREE_PLAY"] = setting_value
+
+
+def set_splash(_, setting_value):
+    globals()["SHOW_SPLASHSCREEN"] = setting_value
 
 
 def set_fullscreen(_, setting_value):
@@ -649,10 +655,13 @@ def launch_rom(info, override_emu=None):
             reset_all_inputs()
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
-            if EMU_EXIT:
-                launch_command += f"; {EMU_EXIT}"
-
             clear_screen()
+            if EMU_ENTER:
+                # Optional command to issue before launching the emulator
+                Popen(EMU_ENTER.replace("<ROOT>", ROOT_DIR), shell=False)
+            if EMU_EXIT:
+                # Optional command to issue when exiting emulator
+                launch_command += f"; {EMU_EXIT} "
             os.system(launch_command)
             clear_screen(and_reset_display=True)
             pygame.time.delay(50)  # debounce

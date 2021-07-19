@@ -41,6 +41,7 @@ sudo cp COPYING dist
 # copy rpi4 specific settings
 sudo cp rpi4/settings.txt dist
 sudo cp rpi4/dkafe_start.sh dist
+sudo cp rpi4/fs.sh dist
 
 # create empty roms folder
 sudo mkdir dist/roms
