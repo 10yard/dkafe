@@ -87,7 +87,7 @@ def check_patches_available():
             y_offset += 9
             if y_offset > 220:
                 x_offset, y_offset = 120, 24
-        flash_message("ALL GOOD!", x=8, y=232, clear=False, cycles=4)
+        flash_message("ALL GOOD!", x=8, y=232, cycles=4, clear=False)
         jump_to_continue()
 
 
@@ -103,7 +103,7 @@ def check_roms_available():
 
 def jump_to_continue():
     # Show Jump to continue message at foot of screen and wait for button press
-    flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, clear=False, cycles=8)
+    flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, cycles=8, clear=False)
     while True:
         check_for_input(force_exit=True)
         if _g.jump or _g.start:
@@ -128,7 +128,7 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
 
 
-def flash_message(message, x, y, clear=True, bright=False, cycles=6, delay_ms=40):
+def flash_message(message, x, y, bright=False, cycles=6, delay_ms=40, clear=True):
     if clear:
         clear_screen()
     for i in (0, 1, 2) * cycles:
@@ -564,7 +564,7 @@ def save_menu_settings():
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, x=0, y=232, fg=PINK, bg=RED)
-            update_screen(delay_ms=1000)
+            update_screen(delay_ms=750)
 
 
 def set_basic(_, setting_value):
@@ -647,7 +647,6 @@ def launch_rom(info, override_emu=None):
         if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
-            clear_screen()
             if not competing and "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
 
@@ -655,7 +654,6 @@ def launch_rom(info, override_emu=None):
             reset_all_inputs()
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
-            clear_screen()
             if EMU_ENTER:
                 # Optional command to issue before launching the emulator
                 Popen(EMU_ENTER.replace("<ROOT>", ROOT_DIR), shell=False)
@@ -663,7 +661,7 @@ def launch_rom(info, override_emu=None):
                 # Optional command to issue when exiting emulator
                 launch_command += f"; {EMU_EXIT} "
             os.system(launch_command)
-            clear_screen(and_reset_display=True)
+            # clear_screen(and_reset_display=True)
             pygame.time.delay(50)  # debounce
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
