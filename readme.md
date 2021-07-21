@@ -269,7 +269,7 @@ Allow roms in ROM_DIR to be overwritten.  Set to 1 when using an emulator that d
 Optional system command to issue before launching emulator
 
 `EMU_EXIT`
-Optional system command to issue after exiting emulator e.g. using `wmctrl -Fa DKAFE` to return focus to the frontend on Raspberry Pi.
+Optional system command to issue after exiting emulator
 
 
 ### DK Interface Settings

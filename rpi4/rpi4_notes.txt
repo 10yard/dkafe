@@ -81,10 +81,10 @@ MAME launches much faster in window mode (-window argument)
 To take advantage we launch with -window and switch to full screen using the provided fs.sh
 bash script.
 The script runs after emulator starts and is specified in settings:
-EMU_ENTER = nohup ./fs.sh
+EMU_ENTER = <ROOT>/w_enter.sh
 
 To ensure safe switching back to DKAFE when emulator exits we specify in settings:
-EMU_EXIT = wmctrl -Fa DKAFE
+EMU_EXIT = nohup <ROOT>/w_exit.sh > /dev/null 2>&1 & wmctrl -Fa DKAFE > /dev/null 2>&1
 
 
 Scan line generator

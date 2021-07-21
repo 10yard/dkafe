@@ -656,12 +656,11 @@ def launch_rom(info, override_emu=None):
                 os.chdir(launch_directory)
             if EMU_ENTER:
                 # Optional command to issue before launching the emulator
-                Popen(EMU_ENTER.replace("<ROOT>", ROOT_DIR), shell=False)
+                Popen(EMU_ENTER, shell=False)
             if EMU_EXIT:
                 # Optional command to issue when exiting emulator
-                launch_command += f"; {EMU_EXIT} "
+                launch_command += f"; {EMU_EXIT}"
             os.system(launch_command)
-            # clear_screen(and_reset_display=True)
             pygame.time.delay(50)  # debounce
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
@@ -756,7 +755,7 @@ def process_interrupts():
     ticks = pygame.time.get_ticks()
 
     # Start up messages from Pauline
-    if not _g.lastmove:
+    if not _g.lastmove and not display_icons(detect_only=True):
         message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY or BASIC_MODE)]
         write_text(message[int(_g.timer.duration) % len(message)], x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
     show_score()
