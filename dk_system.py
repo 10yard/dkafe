@@ -136,7 +136,7 @@ def build_launch_command(info, basic_mode):
         if script:
             # An interface script is available
             competing = True
-            launch_command += f' -console -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
+            launch_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
 
     return launch_command, launch_directory, competing
 

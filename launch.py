@@ -354,7 +354,9 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     p_des = 'FOR PRACTICE!'
                 elif not int(FREE_PLAY or BASIC_MODE) and since_last_move() % 4 > 2:
                     p_des = f'${str(PLAY_COST)} TO PLAY'
-                write_text(p_des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+                if not _g.awarded:
+                    # don't announce if Pauline already informing of an award
+                    write_text(p_des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
                 if unlocked:
                     nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                     _g.selected = p_des
@@ -629,7 +631,7 @@ def shutdown_system():
 
 def launch_rom(info, override_emu=None):
     # Launch the rom using provided info.  Override is used to change emu number in case of recordings (to rec number).
-    if info:
+    if _g.active and info:
         sub, name, emu, rec, unlock, st3, st2, st1 = info
         if override_emu:
             emu = override_emu
@@ -654,17 +656,17 @@ def launch_rom(info, override_emu=None):
             reset_all_inputs()
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
+            clear_screen()
             if EMU_ENTER:
-                # Optional command to issue before launching the emulator
                 Popen(EMU_ENTER, shell=False)
             if EMU_EXIT:
-                # Optional command to issue when exiting emulator
                 launch_command += f"; {EMU_EXIT}"
             os.system(launch_command)
             pygame.time.delay(50)  # debounce
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
 
+            clear_screen(and_reset_display=True)
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
                 scored = get_award(name, st3, st2, st1)
@@ -700,10 +702,11 @@ def playback_rom(info, inpfile):
         os.chdir(launch_directory)
         playback_command += f" -playback {os.path.basename(inpfile)} -exit_after_playback"
         intermission_channel.stop()
-
-        clear_screen()
+        if EMU_ENTER:
+            Popen(EMU_ENTER, shell=False)
+        if EMU_EXIT:
+            launch_command += f"; {EMU_EXIT}"
         os.system(playback_command)
-        clear_screen(and_reset_display=True)
         pygame.time.delay(50)  # debounce
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
@@ -858,7 +861,7 @@ def animate_rolling_coins(out_of_time=False):
     _g.awarded = 0
     for i, coin in enumerate(_g.coins):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
-        if co_awarded:
+        if co_awarded and _g.timer.duration < 6:
             place, place_text = get_prize_placing(co_awarded)
             write_text(f"YOU WON {place_text} PRIZE!", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
             _g.awarded = co_awarded
@@ -895,6 +898,8 @@ def animate_rolling_coins(out_of_time=False):
 
 def inactivity_check():
     if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
+        _g.ready = False  # Jumpman status is changed so he is not ready to play.
+        _g.facing = 1
         pause_mod = (pygame.time.get_ticks() - _g.pause_ticks) % 21000
         if pause_mod < 3000:
             _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), TOPLEFT)
