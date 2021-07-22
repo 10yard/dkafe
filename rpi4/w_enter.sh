@@ -4,7 +4,7 @@
 # Use this line in your settings.txt to enable it i.e.
 #   EMU_ENTER = <ROOT>/w_enter.sh
 
-for i in {1..10}
+for i in {1..20}
 do
 	# Keep focus on DKAFE until MAME starts
 	wmctrl -Fa DKAFE

@@ -672,6 +672,8 @@ def launch_rom(info, override_emu=None):
                 scored = get_award(name, st3, st2, st1)
                 if scored > 0:
                     _g.awarded = scored
+                    _g.ready = False
+                    _g.facing = 1
                     _g.timer.reset()
                     _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
@@ -861,7 +863,7 @@ def animate_rolling_coins(out_of_time=False):
     _g.awarded = 0
     for i, coin in enumerate(_g.coins):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
-        if co_awarded and _g.timer.duration < 6:
+        if co_awarded:
             place, place_text = get_prize_placing(co_awarded)
             write_text(f"YOU WON {place_text} PRIZE!", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
             _g.awarded = co_awarded
