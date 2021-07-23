@@ -128,11 +128,11 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
 
 
-def flash_message(message, x, y, bright=False, cycles=6, delay_ms=40, clear=True):
+def flash_message(message, x, y, cycles=6, delay_ms=50, clear=True):
     if clear:
         clear_screen()
     for i in (0, 1, 2) * cycles:
-        write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED, BROWN, WHITE, CYAN)[i + (bright * 3)])
+        write_text(message, font=dk_font, x=x, y=y, fg=(BROWN, PINK, RED)[i])
         update_screen(delay_ms=delay_ms)
     if clear:
         clear_screen()
@@ -541,6 +541,7 @@ def build_launch_menu():
 
 def open_settings_menu():
     open_menu(_g.settingmenu)
+    reset_all_inputs()
 
 
 def save_menu_settings():
@@ -600,12 +601,12 @@ def set_confirm(_, setting_value):
 
 def open_menu(menu):
     _g.timer.stop()
-    reset_all_inputs()
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
     menu.enable()
     menu.mainloop(_g.screen)
+    reset_all_inputs()
 
 
 def close_menu():
@@ -662,7 +663,7 @@ def launch_rom(info, override_emu=None):
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
             os.system(launch_command)
-            pygame.time.delay(50)  # debounce
+            _s.debounce()
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
 
@@ -709,7 +710,7 @@ def playback_rom(info, inpfile):
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
         os.system(playback_command)
-        pygame.time.delay(50)  # debounce
+        _s.debounce()
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
         close_menu()
@@ -753,7 +754,7 @@ def show_timeup_animation(sprite_number, loss=0):
         write_text(f"-{str(loss)}", x=_g.xpos, y=_g.ypos - 10, fg=WHITE, bg=RED, box=True)
 
     animate_rolling_coins(out_of_time=True)
-    update_screen(delay_ms=22)
+    update_screen()
 
 
 def process_interrupts():
@@ -971,7 +972,6 @@ def main():
     # Initialise Jumpman
     _s.debounce()
     animate_jumpman("r", horizontal_movement=0)
-    # pygame.time.delay(150)
     _g.lastmove = 0
     _g.timer.reset()
     _g.active = True
@@ -1018,3 +1018,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
