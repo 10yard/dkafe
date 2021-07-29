@@ -103,6 +103,9 @@ Credit is given to the original authors below.
 #### By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics (dkong2600)
 
+#### By Raulitokong
+ - Donkey Kong Fireballs Only (dkongfireballs)
+
 #### By others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
  - Donkey Kong 2 Marios (dkong2m)
@@ -125,9 +128,10 @@ It is possible to set up other emulators and roms if you do not wish to use the 
 
 Steps to install the default frontend are as follows.  Also refer to **How to set up**.
 
+
 ### Windows
 
-1. Download the latest DKAFE binary release for Windows and extract content to a folder. It is recommended to download the 64bit version unless you have an old machine.
+1. Download the latest DKAFE binary release for your version of Windows and extract contents to a folder.
 
 2. Run "launch.exe".
 

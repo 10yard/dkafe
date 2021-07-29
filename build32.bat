@@ -43,4 +43,5 @@ del *.spec
 echo **** package into a release ZIP getting the version from version.txt
 set /p version=<VERSION
 set zip_path="C:\Program Files\7-Zip\7z"
+del releases\dkafe_win32_binary_%version%.zip
 %zip_path% a releases\dkafe_win32_binary_%version%.zip .\dist\*

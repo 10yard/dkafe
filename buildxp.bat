@@ -1,0 +1,55 @@
+echo
+echo  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
+echo
+echo ----------------------------------------------------------------------------------------------
+echo  Build and package the Windows XP binary release
+echo  NOTE: Not using a virtual environment here
+echo ----------------------------------------------------------------------------------------------
+echo
+
+set /p version=<VERSION
+set zip_path="C:\Program Files\7-Zip\7z"
+
+echo **** remove existing build folders ****
+rmdir build /s /Q
+rmdir dist /s /Q
+
+echo **** build the exe ****
+pyinstaller launch.py --onedir --clean --console --icon artwork\dkafe.ico --name launchxp
+
+echo **** copy python dependencies ****
+echo **** these are files from the base_library.zip ****
+xcopy C:\python_base_library dist\launchxp  /E /H /C /I /Y
+del /q dist\launchxp\base_library.zip
+
+echo **** copy program resources ****
+xcopy artwork dist\launchxp\artwork /S /i /Y
+xcopy fonts dist\launchxp\fonts /S /i /Y
+xcopy shell dist\launchxp\shell /S /i /Y
+xcopy sounds dist\launchxp\sounds /S /i /Y
+xcopy interface dist\launchxp\interface /S /i /Y
+xcopy patch dist\launchxp\patch /S /i /Y
+copy romlist.csv dist\launchxp\ /Y
+copy settings.txt dist\launchxp\ /Y
+copy readme.md dist\launchxp\ /Y
+copy VERSION dist\launchxp\ /Y
+copy COPYING dist\launchxp\ /Y
+
+echo **** create empty roms folder
+xcopy roms\---* dist\launchxp\roms /S /i /Y
+
+echo **** create minimal dkwolf folder
+xcopy dkwolf\dkwolf32.exe dist\launchxp\dkwolf\dkwolf.exe* /Y
+xcopy dkwolf\*.txt dist\launchxp\dkwolf\ /Y
+xcopy dkwolf\*.md dist\launchxp\dkwolf\ /Y
+xcopy dkwolf\playback.bat dist\launchxp\dkwolf\ /Y
+xcopy dkwolf\plugins dist\launchxp\dkwolf\plugins /S /i /Y
+xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
+
+echo **** clean up
+rmdir build /s /Q
+del /q *.spec
+
+echo **** package into a release ZIP getting the version from version.txt
+del /q releases\dkafe_winxp_binary_%version%.zip
+%zip_path% a releases\dkafe_winxp_binary_%version%.zip .\dist\launchxp\*

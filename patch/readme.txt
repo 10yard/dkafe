@@ -66,6 +66,9 @@ By Tim Appleton
 By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics (dkong2600)
 
+By Raulitokong
+ - Donkey Kong Fireballs Only (dkongfireballs)
+
 By Others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
  - Donkey Kong 2 Marios (dkong2m)
