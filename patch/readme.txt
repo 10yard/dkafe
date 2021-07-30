@@ -67,7 +67,7 @@ By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics (dkong2600)
 
 By Raulitokong
- - Donkey Kong Fireballs Only (dkongfireballs)
+ - Donkey Kong Fireballs Only (dkongfireball)
 
 By Others
  - Donkey Kong Wild Barrel Hack (dkongwbh)

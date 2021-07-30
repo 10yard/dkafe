@@ -117,7 +117,7 @@ Credit is given to the original authors below.
  - Donkey Kong Atari 2600 Graphics (dkong2600)
 
 #### By Raulitokong
- - Donkey Kong Fireballs Only (dkongfireballs)
+ - Donkey Kong Fireballs Only (dkongfireball)
 
 #### By others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
