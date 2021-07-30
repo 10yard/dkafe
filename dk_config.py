@@ -20,7 +20,8 @@ import pygame_menu as pymenu
 TITLE = 'DKAFE'
 GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
 TOPLEFT = (0, 0)       # position of top left corner
-CLOCK_RATE = 45        # Clock rate/timing - tweak this to get the right speed
+CLOCK_RATE = 45        # Clock rate
+SPEED_ADJUST = 0       # Adjustment to the above clock rate (e.g. 0=45, 1=50, +2=55, +3=60, +4=65, +5=70, +6=75)
 
 # Default Keyboard Controls
 CONTROL_LEFT = pygame.K_LEFT

@@ -227,6 +227,9 @@ Default settings can be changed in the settings.txt file.  Some of these setting
 `SHOW_SPLASHSCREEN = 1`
 1 to show the DKAFE splash screen and animation on startup.  0 to skip the splash screen.
 
+`SPEED_ADJUST = 0`
+Increase the frontend speed.  0 is normal.  If frontend is running slow then try incrementing by 1 until desired speed is achieved.
+
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 

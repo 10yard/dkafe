@@ -62,7 +62,7 @@ def clear_screen(colour=BLACK, and_reset_display=False):
 def update_screen(delay_ms=0):
     pygame.display.update()
     pygame.time.delay(delay_ms)
-    clock.tick(CLOCK_RATE)
+    clock.tick(CLOCK_RATE + (SPEED_ADJUST * 5))
 
 
 def load_frontend_state():
@@ -96,7 +96,7 @@ def check_roms_available():
     if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
         clear_screen()
         for i, line in enumerate(NO_ROMS_MESSAGE):
-            write_text(line, font=dk_font, x=4, y=8+(i*12), fg=[WHITE, RED][i == 0])
+            write_text(line, font=dk_font, x=4, y=8 + (i * 12), fg=[WHITE, RED][i == 0])
             update_screen(delay_ms=80)
         jump_to_continue()
 
@@ -331,7 +331,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         if not below_y or not above_y or (below_y >= _y >= above_y):
             icon_image = os.path.join("artwork/icon", sub, name + ".png")
             if smash:
-                icon_image = f"artwork/sprite/smash{str(randint(0,3))}.png"
+                icon_image = f"artwork/sprite/smash{str(randint(0, 3))}.png"
             if not os.path.exists(icon_image):
                 icon_image = os.path.join("artwork/icon/default.png")
             img = get_image(icon_image, fade=not unlocked)
@@ -493,11 +493,17 @@ def build_menus(initial=False):
     # Setting menu
     _g.settingmenu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], "    FRONTEND SETTINGS", mouse_visible=False,
                                  mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
-    _g.settingmenu.add_selector(' Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
-    _g.settingmenu.add_selector('   Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
-    _g.settingmenu.add_selector('  Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
-    _g.settingmenu.add_selector('Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
-    _g.settingmenu.add_selector(' Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN, onchange=set_splash)
+    _g.settingmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
+    _g.settingmenu.add_selector('     Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
+    _g.settingmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN,
+                                onchange=set_fullscreen)
+    _g.settingmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
+    _g.settingmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN,
+                                onchange=set_splash)
+    _g.settingmenu.add_selector('  Speed Adjust: ',
+                                [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6),
+                                 ('+7', 7), ('+8', 8)],
+                                default=SPEED_ADJUST, onchange=set_speed)
     _g.settingmenu.add_vertical_margin(15)
     _g.settingmenu.add_selector('DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
     _g.settingmenu.add_vertical_margin(15)
@@ -564,6 +570,8 @@ def save_menu_settings():
                             f_out.write(f"BASIC_MODE = {BASIC_MODE}\n")
                         elif "SHOW_SPLASHSCREEN=" in line_packed:
                             f_out.write(f"SHOW_SPLASHSCREEN = {SHOW_SPLASHSCREEN}\n")
+                        elif "SPEED_ADJUST=" in line_packed:
+                            f_out.write(f"SPEED_ADJUST = {SPEED_ADJUST}\n")
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, x=0, y=232, fg=PINK, bg=RED)
@@ -584,6 +592,10 @@ def set_freeplay(_, setting_value):
 
 def set_splash(_, setting_value):
     globals()["SHOW_SPLASHSCREEN"] = setting_value
+
+
+def set_speed(_, setting_value):
+    globals()["SPEED_ADJUST"] = setting_value
 
 
 def set_fullscreen(_, setting_value):
@@ -651,7 +663,7 @@ def launch_rom(info, override_emu=None):
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
             play_sound_effect("sounds/coin.wav")
             if not competing and "-record" in launch_command:
-                flash_message("R E C O R D I N G", x=40, y=120)   # Gameplay recording (i.e. Wolfmame)
+                flash_message("R E C O R D I N G", x=40, y=120)  # Gameplay recording (i.e. Wolfmame)
 
             clear_awarded_coin_status(_g.coins)
             reset_all_inputs()
@@ -870,7 +882,8 @@ def animate_rolling_coins(out_of_time=False):
             _g.awarded = co_awarded
             _g.lastaward = _g.timer.duration
 
-        _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_rot % 4))}.png"), (int(co_x), int(co_y)))
+        _g.screen.blit(get_image(f"artwork/sprite/coin{str(co_type)}{str(int(co_rot % 4))}.png"),
+                       (int(co_x), int(co_y)))
 
         if (co_x - SPRITE_HALF <= _g.xpos < co_x + SPRITE_HALF) and (co_y >= _g.ypos > co_y - SPRITE_HALF):
             if not out_of_time and _g.timer.duration > 0.2:  # Jumpman cannot collect coins immediately after start/out of time
@@ -905,11 +918,11 @@ def inactivity_check():
         _g.facing = 1
         pause_mod = (pygame.time.get_ticks() - _g.pause_ticks) % 21000
         if pause_mod < 3000:
-            _g.screen.blit(get_image(f"artwork/intro/f{randint(0,1)}.png"), TOPLEFT)
+            _g.screen.blit(get_image(f"artwork/intro/f{randint(0, 1)}.png"), TOPLEFT)
         else:
             lines = (INSTRUCTION, CONTROLS)[pause_mod > 12000]
             for i, line in enumerate(lines.split("\n")):
-                write_text(line+(" "*28), x=0, y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
+                write_text(line + (" " * 28), x=0, y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
         show_score()
         if _g.active:
             _g.timer.stop()
@@ -1018,4 +1031,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
