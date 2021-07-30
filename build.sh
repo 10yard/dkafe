@@ -68,7 +68,7 @@ mv dist /home/pi/dkafe_bin
 # Clean up
 sudo rm -r build
 
-# package it all up into a versioned ZIP for easy distribution
+# Package everything into a versioned ZIP for easy distribution
 version=$(cat /home/pi/dkafe/VERSION)
 cd /home/pi
 zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_bin

@@ -16,7 +16,7 @@ ROM_DIR = <ROOT>/roms
 ALLOW_ROM_OVERWRITE = 0
 
 # Emulator Settings for Windows
-OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)"
+OPTIONS = -rompath <ROM_DIR> -video gdi -view "Pixel Aspect (7:8)" -nofilter
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID> 
 
@@ -41,3 +41,8 @@ CONTROL_P2 = 2
 CONTROL_COIN = 5
 CONTROL_EXIT = escape
 CONTROL_SETTINGS = tab
+
+# Notes:
+# If DKWolf emulation is slow then try changing "-video gdi" to "-video opengl" in OPTIONS above.
+# For a complete list of settings visit - https://github.com/10yard/dkafe#frontend-settings
+#

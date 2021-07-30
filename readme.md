@@ -2,12 +2,40 @@
 
 ## Donkey Kong Arcade Frontend
 
-An arcade game launcher based on Donkey Kong made for arcade cabinets with incentives to play and unlock arcade games.  
+An arcade game launcher based on Donkey Kong, made for arcade cabinets, with incentives to play and unlock arcade games.  It comes bundled with features and ready to go.  
+You just need to provide your own dkong.zip.  
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-The frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
+
+### The DKAFE project includes:
+ - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
+ - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
+ - A rom patcher that will automatically generate hacked roms from the many included patch files.
+ - LUA scripts to interface MAME with the frontend.
+ - Donkey Kong hacks made by me for use with the DKAFE frontend: DK Lava Panic, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
+
+### This project does not include:
+ - Roms or information on how to obtain them.
+
+
+### Get DKAFE
+
+| Download Link                                                                                                        | Operating System                               |
+| -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| [dkafe_win64_binary_v0.20.zip](https://github.com/10yard/dkafe/releases/download/v0.20/dkafe_win64_binary_v0.20.zip) | Windows x64 systems                            |
+| [dkafe_win32_binary_v0.20.zip](https://github.com/10yard/dkafe/releases/download/v0.20/dkafe_win32_binary_v0.20.zip) | Modern Windows x86 systems: Vista, 7, 8, 10    |
+| [dkafe_winxp_binary_v0.20.zip](https://github.com/10yard/dkafe/releases/download/v0.20/dkafe_winxp_binary_v0.20.zip) | Windows XP only                                |
+| [dkafe_rpi4_binary_v0.20.zip](https://github.com/10yard/dkafe/releases/download/v0.20/dkafe_rpi4_binary_v0.20.zip)   | Raspberry Pi 4 and 400 only                    |
+| [Source release](https://github.com/10yard/dkafe/archive/refs/tags/v0.20.zip)                                        | All                                            |
+
+
+
+### About DKAFE
+
+
+The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
 The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically for this frontend. 
 
@@ -26,23 +54,6 @@ You begin with 500 coins, and you must collect coins which are thrown by Donkey 
 If you're not up for the challenge then it is possible to adjust things and have all machines unlocked and set to free play.  Pauline will love it when you beat all the machines though.
 
 The frontend can be configured to launch other emulators and roms.
-
-
-### The DKAFE project includes:
- - An interactive frontend launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
- - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - A rom patcher that will automatically generate hacked roms from the many included patch files.
- - LUA scripts to interface MAME with the frontend.
- - Donkey Kong hacks made by me for use with the DKAFE frontend:
-   **DK Lava Panic**
-Jumpman must keep his cool and move quickly up platforms to avoid rising Lava.  Try not to panic!
-   **DK Who and the Daleks** 
-Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from the clutches of Donkey Kong.  The Daleks have destroyed her rocket ship and you're her only hope for escape.  Use the Tardis to teleport Jumpman through dimensions in spacetime.
-   **DK Pies**, **DK Springy**, **DK Rivets** and **DK Barrels**
-These hacks contains only one stage,  all starting from level 1, and working up to the killscreen.
-
-### This project does not include:
- - Roms or information on how to obtain them.
 
 
 ## Automatically generated roms
@@ -140,7 +151,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 1. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool to an SD Card.
 
-2. Extract contents of the latest Raspberry Pi Binary Release Zip to the boot partition of the SD card.
+2. Extract contents of the DKAFE Binary Release Zip to the boot partition of the SD card.
 
 3. Copy dkong.zip to the boot partition of the SD card.  Roms are not provided.
 
@@ -190,8 +201,6 @@ The romlist.csv contains information about the roms, which slot they should appe
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 
 The command line argument `-view "Pixel Aspect (7:8)"` is used by default to override MAME's default 4:3 aspect.
-
-For Raspberry Pi,  it is recommended to use 640x480 resolution and adjust the x/y display scale using xrandr.  The Pi install script will set this up for you.  Refer to **rpi4/rpi4_notes**.
 
 
 ### Frontend Settings

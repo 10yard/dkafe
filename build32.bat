@@ -3,8 +3,20 @@ echo  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
 echo
 echo ----------------------------------------------------------------------------------------------
 echo  Build and package the Windows x86 (32 bit) binary release
+echo  NOTES:
+echo    The build should be done on a 32bit machine.
 echo ----------------------------------------------------------------------------------------------
 echo
+
+@echo off
+set /p _check=Recommend build is done on 32bit machine.  Do you wish to proceed? [Y/N]: 
+if %_check% NEQ Y GOTO abort
+echo Start Build
+
+echo **** set up environment
+set /p version=<VERSION
+set zip_path="C:\Program Files\7-Zip\7z"
+
 echo **** remove existing build folders ****
 rmdir build /s /Q
 rmdir dist /s /Q
@@ -41,7 +53,8 @@ rmdir build /s /Q
 del *.spec
 
 echo **** package into a release ZIP getting the version from version.txt
-set /p version=<VERSION
-set zip_path="C:\Program Files\7-Zip\7z"
 del releases\dkafe_win32_binary_%version%.zip
 %zip_path% a releases\dkafe_win32_binary_%version%.zip .\dist\*
+
+:abort
+echo End

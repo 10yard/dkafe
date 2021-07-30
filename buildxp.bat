@@ -1,12 +1,23 @@
 echo
 echo  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
 echo
-echo ----------------------------------------------------------------------------------------------
+echo -----------------------------------------------------------------------------------------------
 echo  Build and package the Windows XP binary release
-echo  NOTE: Not using a virtual environment here
-echo ----------------------------------------------------------------------------------------------
+echo  NOTES: 
+echo    Built using a backport of Python37 for XP
+echo    No virtual environment is used
+echo    No support for --onefile on XP so files are bundled by pyinstaller with --onedir
+echo    Python base library files are not bundled by default so this script looks for them in
+echo      C:\python_base_library
+echo -----------------------------------------------------------------------------------------------
 echo
 
+@echo off
+set /p _check=Build should be done on XP.  Do you wish to proceed? [Y/N]: 
+if %_check% NEQ Y GOTO abort
+echo Start Build
+
+echo **** Set up environment ****
 set /p version=<VERSION
 set zip_path="C:\Program Files\7-Zip\7z"
 
@@ -53,3 +64,6 @@ del /q *.spec
 echo **** package into a release ZIP getting the version from version.txt
 del /q releases\dkafe_winxp_binary_%version%.zip
 %zip_path% a releases\dkafe_winxp_binary_%version%.zip .\dist\launchxp\*
+
+:abort
+echo End
