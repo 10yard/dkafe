@@ -20,7 +20,9 @@ An arcade game launcher based on Donkey Kong, made for arcade cabinets, with inc
 
 
 
-### Get DKAFE
+### Get DKAFE for your system
+
+The latest releases are available to download from below.  Refer to the **How to Install** section.
 
 | Download Link                                                                                                        | Operating System                               |
 | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
