@@ -51,6 +51,7 @@ CONFIRM_EXIT = 1
 FULLSCREEN = 1
 FREE_PLAY = 1                  # Jumpman does not have to pay to play
 UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score increases
+SKILL_LEVEL = 0                # How difficult are the target scores. 0 (Beginner) to 9 (Expert).
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup

@@ -52,6 +52,13 @@ def intro_frames(climb_scene_only=False):
     return list(range(0, 100 * int(not climb_scene_only))) + list(sorted(glob("artwork/scene/scene_*.png")))
 
 
+def apply_skill(base_score):
+    score = base_score
+    if score and score.isnumeric() and 0 <= SKILL_LEVEL <= 9:
+        score = str(int(score) * (SKILL_LEVEL + 1))
+    return score
+
+
 def read_romlist():
     # read romlist and return info about available roms (and shell scripts)
     romlist = []
@@ -64,6 +71,8 @@ def read_romlist():
                     emu = "1"
                 if not rec.strip():
                     rec = "0"
+                if not unlock:
+                    unlock = "0"
 
                 # DK Junior is optional in the default frontend so replace with DK Pies if not available
                 if not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
@@ -85,6 +94,9 @@ def read_romlist():
                     icx, icy = -1, -1
                     if 0 < int(slot) <= len(SLOTS):
                         icx, icy = SLOTS[int(slot) - 1]
+                    st1 = apply_skill(st1)
+                    st2 = apply_skill(st2)
+                    st3 = apply_skill(st3)
                     romlist.append((name, sub, des, alt, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
     return romlist
 

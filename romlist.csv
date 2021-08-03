@@ -1,6 +1,6 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
-dkong,,Donkey Kong,,1,1,2,0,10000,25000,40000
-dkongjr,,DK Junior,,3,1,2,0,10000,15000,30000
+dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
+dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
 dkong,dkonglava,DK Lava!,DK Lava Panic!,5,1,0,1000,10000,20000,40000
 dkong,dkongrivets,DK Rivets,DK Rivets Only,8,1,2,2000,10000,20000,40000
 dkongx11,dkongspooky,DK Spooky,DK Spooky Remix,10,1,2,4000,10000,15000,30000
@@ -28,11 +28,11 @@ dkong,dkongfr,DK FreeRun,DK Freerun Edition,40,1,2,46000,20000,40000,75000
 dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,42,1,2,48000,8000,15000,25000
 dkong,dkongbarpal,DK Barrelpalooza,DK Barrelpalooza,45,1,2,50000,10000,25000,50000
 dkong,dkongce,DK Champ Ed.,DK Championship Edition,46,1,2,52000,10000,25000,50000
-dkong,dkongpies,DK Pies Only,DK Pies Only,99,1,2,0,,,
-dkong,dkongpac,DK Pac-Man,,99,1,2,0,,,
-dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,0,,,
-dkong,dkongtrn,DK Trainer,,99,1,2,0,,,
-dkongf,dkongst2,DK Springs Trainer,,99,1,2,0,,,
-dkong,dkongpace,DK Pace,,99,1,2,0,,,
-dkong,dkongfireballs,DK Fireball,DK Fireballs Only,99,1,2,0,,,
-dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,2,0,,,
+dkong,dkongpies,DK Pies Only,DK Pies Only,99,1,2,,,,
+dkong,dkongpac,DK Pac-Man,,99,1,2,,,,
+dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,,,,
+dkong,dkongtrn,DK Trainer,,99,1,2,,,,
+dkongf,dkongst2,DK Springs Trainer,,99,1,2,,,,
+dkong,dkongpace,DK Pace,,99,1,2,,,,
+dkong,dkongfireballs,DK Fireball,DK Fireballs Only,99,1,2,,,,
+dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,2,,,,

@@ -230,6 +230,9 @@ Default settings can be changed in the settings.txt file.  Some of these setting
 `SPEED_ADJUST = 0`
 Increase the frontend speed.  0 is normal.  If frontend is running slow then try incrementing by 1 until desired speed is achieved.
 
+`SKILL_LEVEL = 0`
+How difficult are the target scores. 0 (Beginner) to 9 (Expert).
+
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 

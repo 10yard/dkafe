@@ -470,6 +470,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 def build_menus(initial=False):
     # Game selection menu
+    _g.icons = []
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
@@ -500,10 +501,9 @@ def build_menus(initial=False):
     _g.settingmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
     _g.settingmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN,
                                 onchange=set_splash)
-    _g.settingmenu.add_selector('  Speed Adjust: ',
-                                [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6),
-                                 ('+7', 7), ('+8', 8)],
-                                default=SPEED_ADJUST, onchange=set_speed)
+    _g.settingmenu.add_selector(' Speed Adjust: ',
+                                [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7),
+                                 ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
     _g.settingmenu.add_vertical_margin(15)
     _g.settingmenu.add_selector('DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
     _g.settingmenu.add_vertical_margin(15)
