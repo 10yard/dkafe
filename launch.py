@@ -470,7 +470,6 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 def build_menus(initial=False):
     # Game selection menu
-    _g.icons = []
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
@@ -523,24 +522,26 @@ def build_launch_menu():
                                     onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game', launch_rom, nearby)
-        _g.launchmenu.add_vertical_margin(15)
+        _g.launchmenu.add_vertical_margin(10)
         if rec == 0 or sub in LUA_HACKS:
             _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
-            _g.launchmenu.add_label('possible for this game', selectable=False, font_color=GREY)
+            _g.launchmenu.add_label('supported for this game', selectable=False, font_color=GREY)
         else:
             _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, rec)
-            _g.launchmenu.add_vertical_margin(15)
+            _g.launchmenu.add_vertical_margin(10)
             _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
             _g.launchmenu.add_vertical_margin(1)
             if inps:
                 for inp in inps:
                     try:
+                        bullet = "♥ " if os.path.getsize(inp) > INP_FAVOURITE else "- "
                         entry = _s.format_datetime(os.path.splitext(os.path.basename(inp).split("_")[-1])[0])
-                        _g.launchmenu.add_button("♥ " + entry, playback_rom, nearby, inp)
+                        _g.launchmenu.add_button(bullet + entry, playback_rom, nearby, inp)
                     except ValueError:
                         pass
             else:
                 _g.launchmenu.add_label('No recordings found', selectable=False, font_color=GREY)
+
         _g.launchmenu.add_vertical_margin(15)
         _g.launchmenu.add_button('Close', close_menu)
 
@@ -735,9 +736,11 @@ def show_hammers():
 
 
 def show_score():
-    # Flashing 1UP and score
+    # Flashing 1UP, score and level
     write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 550 < 275], bg=None)
     write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
+    if _g.active:
+        write_text(f"L={str(SKILL_LEVEL).zfill(2)}", font=dk_font, x=170, y=24, fg=DARKBLUE, bg=BLACK)
 
 
 def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=0):
@@ -967,7 +970,7 @@ def teleport_between_hammers():
             write_text("TELEPORT JUMP!", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
 
 
-def main():
+def main(initial=True):
     # Prepare front end
     assert (VERSION.startswith("v")), "The version number could not be determined"
     _g.active = False
@@ -979,7 +982,9 @@ def main():
 
     # Launch front end
     check_roms_available()
-    play_intro_animation()
+
+    if initial:
+        play_intro_animation()
     music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     # Initialise Jumpman
@@ -1027,6 +1032,12 @@ def main():
         activity_check()
         inactivity_check()
         update_screen()
+
+        ## test
+        #if _g.score > 500:
+        #    import importlib
+        #    importlib.reload(_g)
+        #    main(initial=False)
 
 
 if __name__ == "__main__":

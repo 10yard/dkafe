@@ -45,7 +45,7 @@ def get_datetime():
 
 def format_datetime(datestring):
     datetime_object = datetime.strptime(datestring, '%Y%m%d-%H%M%S')
-    return datetime_object.strftime("%d %B, %Y at %H:%M:%S")
+    return datetime_object.strftime("%d %b, %Y at %H:%M:%S")
 
 
 def intro_frames(climb_scene_only=False):
@@ -54,8 +54,8 @@ def intro_frames(climb_scene_only=False):
 
 def apply_skill(base_score):
     score = base_score
-    if score and score.isnumeric() and 0 <= SKILL_LEVEL <= 9:
-        score = str(int(score) * (SKILL_LEVEL + 1))
+    if score and score.isnumeric() and 1 <= SKILL_LEVEL <= 10:
+        score = str(int(score) * SKILL_LEVEL)
     return score
 
 
@@ -108,7 +108,7 @@ def get_emulator(emu_number):
 def get_recording_files(emu, name, sub):
     # Return the 5 most recent .inp recordings for the specified rom
     _recordings = glob(os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp", f"{name}_{sub}_*.inp"))
-    return sorted(_recordings, reverse=True)[:5]
+    return sorted(_recordings, reverse=True)[:8]
 
 
 def build_launch_command(info, basic_mode):

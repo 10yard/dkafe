@@ -51,7 +51,7 @@ CONFIRM_EXIT = 1
 FULLSCREEN = 1
 FREE_PLAY = 1                  # Jumpman does not have to pay to play
 UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score increases
-SKILL_LEVEL = 0                # How difficult are the target scores. 0 (Beginner) to 9 (Expert).
+SKILL_LEVEL = 1                # How difficult are the target scores. 1 (Beginner) to 10 (Expert).
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
@@ -82,6 +82,7 @@ COIN_HIGH = 4                  # Frequency of coin being higher value (1 = alway
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3              # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+INP_FAVOURITE = 100000         # Flag .inp recordings above this size (in bytes) as favourites by prefixing with ♥
 
 # Hacks
 HACK_TELEPORT = 0              # Hack DK to allow teleport between hammers. 0 or 1
@@ -152,6 +153,7 @@ MAGENTA = (236, 49, 148)
 WHITE = (254, 252, 255)
 PINK = (255, 188, 160)
 GREY = (128, 128, 128)
+DARKBLUE = (4, 2, 220)
 
 # Alpha value for faded/locked arcade machines
 FADE_LEVEL = 85
