@@ -439,7 +439,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
         if "LADDER_DETECTED" in map_info:
             # Centre Jumpman on ladder
             for c in LADDER_CENTRES:
-                if c - 3 <= _g.xpos <= c + 4:
+                if c - 4 <= _g.xpos <= c + 4:
                     _g.xpos = c
 
             if "END_OF_LADDER" in map_info:
@@ -1033,11 +1033,11 @@ def main(initial=True):
         inactivity_check()
         update_screen()
 
-        ## test
-        #if _g.score > 500:
-        #    import importlib
-        #    importlib.reload(_g)
-        #    main(initial=False)
+        # -- restart game after level is completed --
+        # if _g.score >= 50000:
+        #     import importlib
+        #     importlib.reload(_g)
+        #     main(initial=False)
 
 
 if __name__ == "__main__":
