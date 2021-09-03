@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "dkwho",
+"description": "DK Who and the Daleks",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

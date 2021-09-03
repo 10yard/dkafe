@@ -41,12 +41,9 @@ DATA_PLAYERS = "20,16,16,27,16,16,17,16,16,22,16,16,21,16,16"
 
 
 def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None, basic=0):
-    # receive rom name, subfolder name and the target scores
-    # Logic is mostly driven by the rom name but there are some exceptions were the subfolder name of a specific
-    # rom is needed.
+    # Logic is driven by the rom name but there are exceptions were the subfolder name of a specific rom is needed.
     script = None
     if score3:
-        # Remove compete file if it still exists
         if os.path.exists(COMPETE_FILE):
             os.remove(COMPETE_FILE)
 
