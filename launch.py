@@ -523,7 +523,7 @@ def build_launch_menu():
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game', launch_rom, nearby)
         _g.launchmenu.add_vertical_margin(10)
-        if rec == 0 or sub in LUA_HACKS:
+        if rec == 0:
             _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
             _g.launchmenu.add_label('supported for this game', selectable=False, font_color=GREY)
         else:

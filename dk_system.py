@@ -82,9 +82,6 @@ def read_romlist():
                         continue
 
                 if "-record" in get_emulator(int(emu)).lower():
-                    # LUA hacks don't support recording so shouldn't have -record as default.
-                    if sub in LUA_HACKS:
-                        continue
                     # Score targets are not considered for recordings
                     st3, st2, st1 = ("",) * 3
 
@@ -135,6 +132,12 @@ def build_launch_command(info, basic_mode):
             rom_target = os.path.join(ROM_DIR, name + ".zip")
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
+
+        # Does the rom have a plugin?
+        for plugin, plugin_folder in PLUGINS:
+            if plugin == subfolder:
+                launch_command += f" -plugin {plugin_folder}"
+                break
     else:
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
 
@@ -143,7 +146,7 @@ def build_launch_command(info, basic_mode):
 
     launch_command += " -skip_gameinfo -nonvram_save"
 
-    if (not basic_mode and "-record" not in launch_command) or subfolder in LUA_HACKS:
+    if (not basic_mode and "-record" not in launch_command):
         script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1, basic_mode)
         if script:
             # An interface script is available

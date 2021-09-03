@@ -84,11 +84,6 @@ COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3              # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 INP_FAVOURITE = 100000         # Flag .inp recordings above this size (in bytes) as favourites by prefixing with ♥
 
-# Hacks
-HACK_TELEPORT = 0              # Hack DK to allow teleport between hammers. 0 or 1
-HACK_NOHAMMERS = 0             # Hack DK to remove hammers.  0 or 1
-HACK_LAVA = 0                  # Hack DK to limit time for ascending the stage due to rising lava. 0 or 1
-
 # Root directory of frontend
 ROOT_DIR = os.getcwd()
 
@@ -140,8 +135,10 @@ if os.path.exists("VERSION"):
 # Expected location of original DK zip (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 
-# These hacks depend on the MAME/LUA interface
-LUA_HACKS = ["dkonglava", "dkongwho"]
+# Plugins add functionality to certain roms
+PLUGINS = [
+  ("dkonglava", "dklavapanic"),
+  ("dkongwho", "dkwho")]
 
 # Colours
 RED = (232, 7, 10)

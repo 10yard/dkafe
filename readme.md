@@ -14,6 +14,7 @@ An arcade game launcher based on Donkey Kong, made for arcade cabinets, with inc
  - A rom patcher that will automatically generate hacked roms from the many included patch files.
  - LUA scripts to interface MAME with the frontend.
  - Donkey Kong hacks made by me for use with the DKAFE frontend: DK Lava Panic, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
+ - MAME plugins to add functionality to some rom hacks
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -100,7 +101,7 @@ Credit is given to the original authors below.
  - Donkey Kong Rainbow (dkongrainbow)
 
 #### By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
- - Donkey Kong 2 Jumpman Returns (dkongdk2)
+ - Donkey Kong 2 Jumpman Returns (dkongd2k)
  - Donkey Kong Foundry (dkongf)
  - Donkey Kong Barrel Control Colouring (dkongbcc)
 
@@ -180,7 +181,6 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Use headphone jack for audio?            (Recommend Y)
 	 Force 640x480 mode on boot?              (Recommend Y)
 	 Map GPIO to keyboard input controls?     (Recommend Y)
-	 Install wmctrl to manage windows?        (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
 	 Disable networking services (WiFi, SSH)?
 	 Reboot now?                              (Recommend Y)

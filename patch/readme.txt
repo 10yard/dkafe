@@ -50,7 +50,7 @@ By John Kowalski (Sock Master)
  - Donkey Kong Rainbow (dkongrainbow)
 
 By Jeff Kulczycki
- - Donkey Kong 2 Jumpman Returns (dkongdk2)
+ - Donkey Kong 2 Jumpman Returns (dkongd2k)
  - Donkey Kong Foundry (dkongf)
  - Donkey Kong Barrel Control Colouring (dkongbcc)
 

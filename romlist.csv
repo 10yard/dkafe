@@ -1,21 +1,21 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
 dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
 dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
-dkong,dkonglava,DK Lava!,DK Lava Panic!,5,1,0,1000,10000,20000,40000
+dkong,dkonglava,DK Lava!,DK Lava Panic!,5,1,2,1000,10000,20000,40000
 dkong,dkongrivets,DK Rivets,DK Rivets Only,8,1,2,2000,10000,20000,40000
 dkongx11,dkongspooky,DK Spooky,DK Spooky Remix,10,1,2,4000,10000,15000,30000
 dkong,dkong40,DK 40!!,DK Anniversary Edition,11,1,2,6000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,12,1,2,8000,10000,15000,30000
 dkong,dkongrev,DK Rev.,DK Reverse,14,1,2,10000,10000,20000,40000
-dkong,dkongwho,DK Who,DK Who and the Daleks,15,1,0,12000,10000,20000,40000
+dkong,dkongwho,DK Who,DK Who and the Daleks,15,1,2,12000,10000,20000,40000
 dkong,dkongwbh,DK Wild,DK Wild Barrels,17,1,2,14000,1000,2000,5000
 dkongf,dkongf,DK Foundry,,18,1,2,16000,10000,20000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,19,1,2,18000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,20,1,2,20000,10000,15000,30000
 dkong,dkongotr,DK OnTheRun,DK On The Run,21,1,2,22000,10000,15000,30000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,22,1,2,24000,10000,20000,40000
-dkong,dkongbarrels,DK Barrels,DK Barrels Only,24,1,0,26000,10000,20000,40000
-dkongx,dkongdk2,DK 2,DK2 Jumpman Returns,25,1,2,28000,5000,10000,25000
+dkong,dkongbarrels,DK Barrels,DK Barrels Only,24,1,2,26000,10000,20000,40000
+dkongx,dkongd2k,D2K,D2K Jumpman Returns,25,1,2,28000,5000,10000,25000
 dkongj,dkongjapan,DKJapan,DK Japan Version,26,1,2,30000,10000,20000,40000
 dkong,dkongrnd,DK Random,DK Randomized,27,1,2,32000,10000,25000,50000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,29,1,2,34000,10000,25000,45000

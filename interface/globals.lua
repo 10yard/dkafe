@@ -83,20 +83,3 @@ mem = cpu.spaces["program"]
 soundcpu = machine.devices[":soundcpu"]
 soundmem = soundcpu.spaces["data"]
 
--- Optional hack flags
-------------------------------------------------------------------------------------------------
-hack_teleport = os.getenv("HACK_TELEPORT")
-hack_nohammers = os.getenv("HACK_NOHAMMERS")
-hack_lava = os.getenv("HACK_LAVA")
--- hack_penalty = os.getenv("HACK_PENALTY")
-
--- Colours
-------------------------------------------------------------------------------------------------
-BLACK = 0xff000000
-WHITE = 0xffffffff
-YELLOW = 0xffffbd2e
-RED = 0xffe8070a
-BLUE = 0xff0402dc
-CYAN = 0xff14f3ff
-BROWN = 0xfff5bca0
-ORANGE = 0xfff4bA15

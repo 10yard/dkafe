@@ -16,7 +16,6 @@
  Set target score, registered player names and player scores.
  Dump highscore to file when finished.
  Show prizes and progress in the game (optional).
- Enable some DKAFE specific hacks (optional).
 ------------------------------------------------------------------------------------------------
 ]]
 
@@ -88,7 +87,7 @@ emu.register_frame(function()
 		stage = mem:read_i8(0xc6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 		score = get_score()
               
-    -- Release P1 Start button (after autostart)
+		-- Release P1 Start button (after autostart)
 		if data_autostart == "1" then
 			if mode1 == 3 and mode2 == 7 then
 				ports[":IN2"].fields["1 Player Start"]:set_value(0)
@@ -96,27 +95,16 @@ emu.register_frame(function()
 			end
 		end
     
-    -- Fast skip through the DK climb scene when jump button is pressed (optional)
-    fast_skip_intro()
+		-- Fast skip through the DK climb scene when jump button is pressed (optional)
+		fast_skip_intro()
   
-    -- Player ends game to keep current score by pressing COIN.
-    if mode1 == 3 and data_coin_ends == "1" and string.sub(number_to_binary(mem:read_i8(0xc7d00)), 1, 1) == "1" then
-      mem:write_i8(0xc6228, 1)		
-      mem:write_i8(0xc6200, 0)
-    end
-				    
-		-- Optional hacks
-		if hack_teleport == "1" then
-			dofile(data_includes_folder.."/hack_teleport.lua")
-		elseif hack_nohammers == "1" then
-			dofile(data_includes_folder.."/hack_nohammers.lua")
-		end
-		if hack_lava == "1" then
-			dofile(data_includes_folder.."/hack_lava.lua")
+		-- Player ends game to keep current score by pressing COIN.
+		if mode1 == 3 and data_coin_ends == "1" and string.sub(number_to_binary(mem:read_i8(0xc7d00)), 1, 1) == "1" then
+			mem:write_i8(0xc6228, 1)		
+			mem:write_i8(0xc6200, 0)
 		end
 	end
 end)
-
 
 -- Callback function for frame updates
 ------------------------------------------------------------------------------------------------

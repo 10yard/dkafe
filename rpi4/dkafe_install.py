@@ -27,10 +27,9 @@
 #  7) Use headphone jack for audio
 #  8) Force 640x480 mode on boot (for scan line generators)
 #  9) Map GPIO to keyboard input controls
-#  10) Install wmctrl to manage windows
-#  11) Disable non-essential Services
-#  12) Disable networking services (WiFi, SSH)
-#  13) Reboot now
+#  10) Disable non-essential Services
+#  11) Disable networking services (WiFi, SSH)
+#  12) Reboot now
 # ----------------------------------------------------------------------------------------------
 import os
 AUTOSTART_FILE = "/etc/xdg/lxsession/LXDE-pi/autostart"
@@ -249,16 +248,9 @@ def main():
                 f_out.write("# Disable the rainbow splash screen\n")
                 f_out.write("disable_splash=1\n")
 
-    # 10) Install wmctrl to manage windows
-    answer = yesno("Install wmctrl to manage windows")
-    if answer:
-        print("Installing wmctrl, please wait...")
-        os.system("sudo apt-get -qq install wmctrl")
-        changes_made = True
-
-    # 11) Disable non-essential services
+    # 10) Disable non-essential services
     # and
-    # 12) Disable networking services
+    # 11) Disable networking services
     answer = yesno("Disable non-essential services")
     if answer:
         changes_made = True
@@ -281,7 +273,7 @@ def main():
             os.system("sudo systemctl disable ssh.service --quiet")
             os.system("sudo systemctl disable wpa_supplicant.service --quiet")
 
-    # 13) Reboot system
+    # 12) Reboot system
     answer = yesno("Reboot now")
     if answer:
         os.system("reboot")

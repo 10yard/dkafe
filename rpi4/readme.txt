@@ -35,7 +35,6 @@
      ▪ Use headphone jack for audio?
      ▪ Force 640x480 mode on boot?
      ▪ Map GPIO to keyboard input controls?
-     ▪ Install wmctrl to allow DKAFE to manage windows?
      ▪ Disable non-essential Services?
      ▪ Disable networking services (WiFi, SSH)?
      ▪ Reboot now?

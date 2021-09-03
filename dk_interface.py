@@ -15,7 +15,6 @@
 import os
 from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO, ALLOW_COIN_TO_END_GAME
 from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD
-from dk_config import HACK_TELEPORT, HACK_NOHAMMERS, HACK_LAVA, LUA_HACKS
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
@@ -39,14 +38,6 @@ RAM_HIGH_DOUBLE_LONG = "0xc60ba,0xc60b9,0xc60b8,0xc60b7"
 # Memory addresses for players
 RAM_PLAYERS = "0xc610f,0xc6110,0xc6111,0xc6131,0xc6132,0xc6133,0xc6153,0xc6154,0xc6155,0xc6175,0xc6176,0xc6177,0xc6197,0xc6198,0xc6199"
 DATA_PLAYERS = "20,16,16,27,16,16,17,16,16,22,16,16,21,16,16"
-
-
-def apply_rom_specific_hacks(rom=None, subfolder=None):
-    if rom == "dkong":
-        if subfolder == "dkonglava":
-            os.environ["HACK_LAVA"] = "1"
-        elif subfolder == "dkongwho":
-            os.environ["HACK_TELEPORT"] = "1"
 
 
 def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None, basic=0):
@@ -81,28 +72,10 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
             os.environ[f"DATA_{award[0]}_K"] = format_K(str(award[1]))
             os.environ[f"DATA_{award[0]}_AWARD"] = str(AWARDS[i])
 
-        # Apply hacks based on front end settings
-        os.environ["HACK_TELEPORT"] = str(HACK_TELEPORT)
-        os.environ["HACK_NOHAMMERS"] = str(HACK_NOHAMMERS)
-        os.environ["HACK_LAVA"] = str(HACK_LAVA) if rom == "dkong" else "0"
-
-        # Apply rom specific Lua hacks such as the lava hack in dkonglava
-        apply_rom_specific_hacks(rom, subfolder)
-
         # Award prizes
         os.environ["DATA_AWARD1"] = str(AWARDS[2])
         os.environ["DATA_AWARD2"] = str(AWARDS[1])
         os.environ["DATA_AWARD3"] = str(AWARDS[0])
-
-        # Turn off features when in basic mode
-        if basic and subfolder in LUA_HACKS:
-            script = "dkong.lua"
-            os.environ["DATA_CREDITS"] = "0"
-            os.environ["DATA_AUTOSTART"] = "0"
-            os.environ["DATA_SHOW_AWARD_TARGETS"] = "0"
-            os.environ["DATA_SHOW_AWARD_PROGRESS"] = "0"
-            os.environ["DATA_SHOW_HUD"] = "0"
-            os.environ["DATA_ALLOW_SKIP_INTRO"] = "0"
 
         # Clear exising addresses
         os.environ["RAM_HIGH"] = ""

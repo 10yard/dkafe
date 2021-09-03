@@ -18,48 +18,6 @@
 -- Optimise access to globals used in functions
 local string_sub = string.sub
 local string_len = string.len
-local math_floor = math.floor
-local math_fmod = math.fmod
-
-function draw_block(x, y, color1, color2)
-  -- Draw a single block
-	screen:draw_box(x, y, x+8, y+8, color1, 0)
-	screen:draw_box(x, y, x+1, y+8, color2, 0)
-	screen:draw_box(x+6, y, x+7, y+8, color2, 0)
-	screen:draw_box(x+2, y+2, x+6, y+6, 0xcff000000, 0)
-	screen:draw_box(x+3, y+1, x+5, y+7, 0xcff000000, 0)
-end
-
-function block_text(text, x, y, color1, color2)
-	-- Write large block characters made up from individual blocks (using draw_block)
-  local _dkblock = dkblock
-	local _x, _y, width, blocks = x, y, 0, ""
-	for i=1, string_len(text) do 
-		blocks = _dkblock[string_sub(text, i, i)]
-		width = math_floor(string_len(blocks) / 5)
-		for b=1, string_len(blocks) do
-			if string_sub(blocks, b, b) == "#" then
-				draw_block(_x, _y, color1, color2)
-			end
-			if math_fmod(b, width) == 0 then
-				_y = _y - (width - 1) * 8 
-				_x = _x - 8
-			else
-				_y = _y + 8
-			end
-		end
-		_x = x
-		_y = _y + (width * 8) + 8
-	end
-end
-
-function write_message(start_address, text)
-	-- write characters of message to DK's video ram
-  local _dkchars = dkchars
-  for key=1, string_len(text) do
-		mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
-	end
-end
 
 -- Characters
 dkchars = {}
@@ -118,43 +76,10 @@ dkchars["^"] = 0xb0 -- rivet block
 dkchars["?"] = 0xfb
 dkchars["@"] = 0xff -- extra mario icon
 
--- Block characters
-dkblock = {}
-dkblock["A"] = "####.#####.##.#"
-dkblock["B"] = "##.#.###.#.###."
-dkblock["C"] = "####..#..#..###"
-dkblock["D"] = "##.# ## ## ###."
-dkblock["E"] = "####..####..###"
-dkblock["F"] = "####--####--#--"
-dkblock["G"] = "#####---#-###--#####"
-dkblock["H"] = "#.##.#####.##.#"
-dkblock["I"] = "###.#..#..#.###"
-dkblock["J"] = "###-#--#--#-##-"
-dkblock["K"] = "#..##.#.###.#.#.#..#"
-dkblock["L"] = "#..#..#..#..###"
-dkblock["M"] = "#...###.###.#.##.#.##.#.#"
-dkblock["N"] = "#..###.######.###..#"
-dkblock["O"] = "####.##.##.####"
-dkblock["P"] = "####.#####..#.."
-dkblock["Q"] = "####-#--#-#--#-#-##-#####"
-dkblock["R"] = "####-######-#-#"
-dkblock["S"] = "####..###..####"
-dkblock["T"] = "###.#..#..#..#."
-dkblock["U"] = "#-##-##-##-####"
-dkblock["V"] = "#-##-##-##-#-#-"
-dkblock["W"] = "#.#.##.#.##.#.###.###...#"
-dkblock["X"] = "#-##-#-#-#-##-#"
-dkblock["Y"] = "#-##-##-#-#--#-"
-dkblock["Z"] = "####--#--#--#---####"
-dkblock[" "] = "     "
-dkblock["!"] = " # # #   #"
-dkblock["'"] = "##   "
-dkblock["1"] = "##--#--#--#-###"
-dkblock["2"] = "###--#####--###"
-dkblock["3"] = "###--####--####"
-dkblock["4"] = "#---#---#-#-####--#-"
-dkblock["5"] = "####--###--####"
-dkblock["6"] = "####--####-####"
-dkblock["7"] = "###--#-#--#--#-"
-dkblock["8"] = "####-#####-####"
-dkblock["9"] = "####-####--#--#"
+function write_message(start_address, text)
+	-- write characters of message to DK's video ram
+  local _dkchars = dkchars
+  for key=1, string_len(text) do
+		mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
+	end
+end
