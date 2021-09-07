@@ -53,12 +53,6 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         os.environ["DATA_FILE"] = COMPETE_FILE
         os.environ["DATA_SUBFOLDER"] = subfolder
 
-        # Options
-        os.environ["DATA_CREDITS"] = str(CREDITS)
-        os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart
-        os.environ["DATA_ALLOW_COIN_TO_END_GAME"] = str(ALLOW_COIN_TO_END_GAME)
-        os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
-
         # Are we going to show the awards targets and progress while playing the game
         os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
         os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)

@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "dkcoach",
+"description": "Donkey Kong Coach",
+"version": "0.21",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

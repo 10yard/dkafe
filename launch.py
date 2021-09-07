@@ -523,11 +523,13 @@ def build_launch_menu():
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game', launch_rom, nearby)
         _g.launchmenu.add_vertical_margin(10)
+        if name.startswith("dkong") and sub in COACH_FRIENDLY:
+            _g.launchmenu.add_button('Launch with coaching', launch_rom, nearby, True)
         if rec == 0:
             _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
             _g.launchmenu.add_label('supported for this game', selectable=False, font_color=GREY)
         else:
-            _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, rec)
+            _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, False, rec)
             _g.launchmenu.add_vertical_margin(10)
             _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
             _g.launchmenu.add_vertical_margin(1)
@@ -643,7 +645,7 @@ def shutdown_system():
         os.system("shutdown /s /f /t 00")
 
 
-def launch_rom(info, override_emu=None):
+def launch_rom(info, coaching=False, override_emu=None):
     # Launch the rom using provided info.  Override is used to change emu number in case of recordings (to rec number).
     if _g.active and info:
         sub, name, emu, rec, unlock, st3, st2, st1 = info
@@ -658,7 +660,7 @@ def launch_rom(info, override_emu=None):
         award_channel.stop()
         music_channel.pause()
 
-        launch_command, launch_directory, competing = _s.build_launch_command(info, BASIC_MODE)
+        launch_command, launch_directory, competing = _s.build_launch_command(info, BASIC_MODE, coaching)
 
         if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
@@ -704,7 +706,7 @@ def launch_rom(info, override_emu=None):
 
 def playback_rom(info, inpfile):
     # playback the specified inp file
-    launch_command, launch_directory, competing = _s.build_launch_command(info, True)
+    launch_command, launch_directory, competing = _s.build_launch_command(info, True, False)
     if os.path.exists(launch_directory):
         playback_command = ""
         retain = True
