@@ -142,7 +142,7 @@ It is possible to set up other emulators and roms if you do not wish to use the 
 
 The coaching plugin can help you master the springs and barrels stages.
 
-![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.jpg)
+![Coach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.jpg)
 
 
 ## How to install
