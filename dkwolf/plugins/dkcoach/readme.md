@@ -2,7 +2,7 @@
 
 ## A MAME plugin to assist with Donkey Kong gameplay 
 
-Tested with latest MAME version 0.234
+Tested with latest MAME version 0.235
 (Compatible with MAME and WolfMAME versions from 0.196 upwards)
 
 At the moment,  the plugin helps you with the springs and barrels stages.  I plan to add help to all other stages.

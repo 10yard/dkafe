@@ -84,6 +84,7 @@ function dkcoach.startplugin()
 	help_setting_name[2] = "MIN"
 	help_setting_name[3] = "MAX"
 	local help_setting = 3
+	local last_help_toggle = 0
 	local spring_startx_default = 22
 	local spring_starty_default = 224
 	local spring_startx_coach = 180
@@ -94,34 +95,37 @@ function dkcoach.startplugin()
 	local barrel_starty_coach = 206
 
 	function initialize()
-		last_help_toggle = os.clock()
 		mame_version = tonumber(emu.app_version())
-		
-		data_credits = os.getenv("DATA_CREDITS")
-		data_autostart = os.getenv("DATA_AUTOSTART")
-		data_allow_skip_intro = os.getenv("DATA_ALLOW_SKIP_INTRO")
-		
+				
 		if mame_version >= 0.227 then
-			cpu = manager.machine.devices[":maincpu"]
-			scr = manager.machine.screens[":screen"]
+			maincpu = manager.machine.devices[":maincpu"]
+			screen = manager.machine.screens[":screen"]
 			video = manager.machine.video
 			ports = manager.machine.ioport.ports
-			mem = cpu.spaces["program"]
+			soundcpu = manager.machine.devices[":soundcpu"]
 		elseif mame_version >= 0.196 then
-			cpu = manager:machine().devices[":maincpu"]
-			scr = manager:machine().screens[":screen"]
+			maincpu = manager:machine().devices[":maincpu"]
+			screen = manager:machine().screens[":screen"]
 			video = manager:machine():video()
 			ports = manager:machine():ioport().ports			
-			mem = cpu.spaces["program"]
+			soundcpu = manager:machine().devices[":soundcpu"]
 		else
 			print("----------------------------------------------------------")
 			print("The dkcoach plugin requires MAME version 0.196 or greater.")
 			print("----------------------------------------------------------")
 		end
+		if maincpu ~= nil then
+			mem = maincpu.spaces["program"]
+			soundmem = soundcpu.spaces["data"]
+			
+			data_credits = os.getenv("DATA_CREDITS")
+			data_autostart = os.getenv("DATA_AUTOSTART")
+			data_allow_skip_intro = os.getenv("DATA_ALLOW_SKIP_INTRO")
+		end
 	end
 
 	function main()
-		if cpu ~= nil then
+		if maincpu ~= nil then
 			stage, mode1, mode2 = mem:read_i8(0x6227), mem:read_u8(0xc6005), mem:read_u8(0xc600a)
 
 			dkafe_specific_features()
@@ -130,7 +134,7 @@ function dkcoach.startplugin()
 			write_message(0x76e0, "    DK COACH   TOGGLE")
 			write_message(0x7521, help_setting_name[help_setting].." HELP")
 
-			-- check for P2 button press.
+			-- check for toggle / P2 button press.
 			if string.sub(int_to_bin(mem:read_i8(0x7d00)), 5, 5) == "1" then
 				if os.clock() - last_help_toggle > 0.25 then
 					-- toggle the active help setting
@@ -142,6 +146,7 @@ function dkcoach.startplugin()
 				end
 			end
 
+			-- main loop
 			if mode2 == 0xc or mode2 == 0xd or mode2 == 0x16 then
 				-- get Jumpman's position and convert to drawing system coordinates (ignoring jump)
 				jm_x = mem:read_u8(0x6203)
@@ -151,7 +156,7 @@ function dkcoach.startplugin()
 					ds_y = 250 - jm_y
 				end
 
-				-- Mark Jumpman's location with a spot and output x, y position to console
+				---- Debug: Mark Jumpman's location with a spot and output x, y position to console
 				-- version_draw_box(ds_y - 1, ds_x - 1, ds_y + 1, ds_x + 1, 0xffffffff, 0xffffffff)
 				-- print(ds_x.."  "..ds_y)
 
@@ -411,9 +416,9 @@ function dkcoach.startplugin()
 	function version_draw_box(y1, x1, y2, x2, c1, c2)
 		-- Handle the version specific syntax of draw_box
 		if mame_version >= 0.227 then
-			scr:draw_box(y1, x1, y2, x2, c1, c2)
+			screen:draw_box(y1, x1, y2, x2, c1, c2)
 		else
-			scr:draw_box(y1, x1, y2, x2, c2, c1)
+			screen:draw_box(y1, x1, y2, x2, c2, c1)
 		end
 	end
 
@@ -426,8 +431,8 @@ function dkcoach.startplugin()
 		elseif y1 > ds_y or y2 > ds_y then
 			if type == "hazard" then
 				version_draw_box(y1, x1, y2, x2, 0xffff0000, 0x66ff0000)
-				scr:draw_line(y1, x1, y2, x2, 0xffff0000)
-				scr:draw_line(y2, x1, y1, x2, 0xffff0000)
+				screen:draw_line(y1, x1, y2, x2, 0xffff0000)
+				screen:draw_line(y2, x1, y1, x2, 0xffff0000)
 			elseif type == "safe" then
 				version_draw_box(y1, x1, y2, x2, 0xff00ff00, 0x00000000)
 				version_draw_box(y1, x1, y2 + 3, x2, 0x00000000, 0x6000ff00)
@@ -472,6 +477,17 @@ function dkcoach.startplugin()
 		end
 	end
 
+	function clear_sounds()
+		-- clear music on soundcpu
+		for key = 0, 32 do
+			soundmem:write_i8(0x0 + key, 0x00)
+		end
+		-- clear soundfx buffer
+		for key = 0, 8 do
+			mem:write_i8(0xc6080 + key, 0x00)
+		end
+	end
+
 	function dkafe_specific_features()
 		-- Optionally set number of coins inserted into the machine
 		if data_credits ~= nil then
@@ -492,9 +508,14 @@ function dkcoach.startplugin()
 			if mode1 == 3 then
 				if mode2 == 7 then
 					if string.sub(int_to_bin(mem:read_i8(0xc7c00)), 4, 4) == "1" then
+						intro_skipped = true
 						max_frameskip(1)
 					end
+					if intro_skipped then
+						clear_sounds()
+					end
 				else
+					intro_skipped = false
 					max_frameskip(0)
 				end
 			end

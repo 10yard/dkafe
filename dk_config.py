@@ -141,7 +141,7 @@ PLUGINS = [
   ("dkongwho", "dkwho")]
 
 # Roms that are compatible with the dkcoach plugin
-COACH_FRIENDLY = ["", "dkongspringy", "dkongst2", "dkongwbh", "dkongbarrels", "dkongcb", "dkonghrd", "dkongbcc"]
+COACH_FRIENDLY = ["", "dkongspringy", "dkongst2", "dkongbarrels", "dkongcb", "dkonghrd", "dkongbcc"]
 
 # Colours
 RED = (232, 7, 10)

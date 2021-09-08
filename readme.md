@@ -14,7 +14,7 @@ An arcade game launcher based on Donkey Kong, made for arcade cabinets, with inc
  - A rom patcher that will automatically generate hacked roms from the many included patch files.
  - LUA scripts to interface MAME with the frontend.
  - Donkey Kong hacks made by me for use with the DKAFE frontend: DK Lava Panic, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
- - MAME plugins to add functionality to some rom hacks
+ - MAME plugins to add functionality to some of my rom hacks and also provide a coaching mode.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -207,7 +207,7 @@ The command line argument `-view "Pixel Aspect (7:8)"` is used by default to ove
 
 ### Frontend Settings
 
-Default settings can be changed in the settings.txt file.  Some of these settings can be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB).
+Default settings can be changed in the settings.txt file.  Some settings can be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB).
 
 `FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
@@ -451,7 +451,7 @@ Refer to readme.txt in the **/DKWolf** folder.
 
 ## Motivations?
 
-The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong hacking.
+The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replacement for a 60-in-1 board and as an exercise in learning game development and Donkey Kong rom hacking.
 
 I wanted to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 

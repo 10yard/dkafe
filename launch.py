@@ -453,8 +453,8 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
                 sprite_file = sprite_file.replace("#", ("1", "2")[_g.sprite_index % 10 < 5])
             _g.ypos += (0.5, -0.5)[direction == "u"]
 
-            if int(_g.sprite_index % 9) == 5:
-                sound_file = "sounds/walk0.wav"
+            if int(_g.sprite_index % 15) == 8:
+                sound_file = f"sounds/walk{('1', '0')[direction == 'u']}.wav"
             _g.sprite_index += 1
 
         elif direction == "u" and display_icons(detect_only=True):
@@ -525,6 +525,7 @@ def build_launch_menu():
         _g.launchmenu.add_vertical_margin(10)
         if name.startswith("dkong") and sub in COACH_FRIENDLY:
             _g.launchmenu.add_button('Launch with coaching', launch_rom, nearby, True)
+            inps = inps[:-1]
         if rec == 0:
             _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
             _g.launchmenu.add_label('supported for this game', selectable=False, font_color=GREY)
@@ -532,7 +533,6 @@ def build_launch_menu():
             _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, False, rec)
             _g.launchmenu.add_vertical_margin(10)
             _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
-            _g.launchmenu.add_vertical_margin(1)
             if inps:
                 for inp in inps:
                     try:
