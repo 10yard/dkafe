@@ -138,6 +138,13 @@ DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it suppo
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
 
 
+## DKCoach
+
+The coaching plugin can help you master the springs and barrels stages.
+
+![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.jpg)
+
+
 ## How to install
 
 Steps to install the default frontend are as follows.  Also refer to **How to set up**.
@@ -460,8 +467,8 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
 
 ## What's next?
 
+ - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs a bit more work too.
  - Add more cab friendly features including a test screen for player controls and a welcome screen to set the initial frontend settings.
- - Difficulty settings ranging from Noob to Master 
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Update the old "Donkey Kong 2600 Graphics" hack, replacing regular Kong for Gingerbread Kong.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.

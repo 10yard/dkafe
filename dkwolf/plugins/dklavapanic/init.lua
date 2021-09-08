@@ -76,11 +76,12 @@ function dklavapanic.startplugin()
 		if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then
 			-- recalculate difficulty at start of level or when in attract mode
 			local level = mem:read_i8(0x6229)
-			lava_difficulty = math_floor(1.2 * (22 - level))
 			if stage == 4 then
-			  lava_difficulty = math_floor(1.5 * (22 - level))  -- more time for rivets
+				lava_difficulty = math_floor(1.5 * (22 - level))  -- more time for rivets
 			elseif stage == 3 then
-			  lava_difficulty = math_floor(0.75 * (22 - level))  -- less time for elevators
+				lava_difficulty = math_floor(0.75 * (22 - level))  -- less time for elevators
+			else
+				lava_difficulty = math_floor(1.2 * (22 - level))			
 			end
 			-- reset lava level
 			lava_y = -7
@@ -104,12 +105,12 @@ function dklavapanic.startplugin()
 				jumpman_y = 264 - mem:read_u8(0x6205)
 				if lava_y + 10 > jumpman_y then
 					-- Dim the screen above lava flow
-					version_draw_box(256, 224, lava_y, 0, 0x66990000, 0x0)
+					version_draw_box(256, 224, lava_y, 0, 0x44000000, 0x0)
 
 					-- PANIC! text with flashing colour palette for dramatic effect
 					if math_fmod(mem:read_u8(0x601a), 32) <= 16 then
 						mem:write_i8(0x7d86, 0)
-						block_characters("PANIC!", 128, 16, 0xffEE7511, 0xffffff99)
+						block_characters("PANIC!", 128, 16, 0xffff0000, 0xffffff99)
 					else
 						mem:write_i8(0x7d86, 1)
 					end
@@ -146,21 +147,14 @@ function dklavapanic.startplugin()
 			-- Add dancing flames above lava
 			for _, i in pairs({8, 24, 40, 56, 72, 88, 104, 120, 136, 152, 168, 184, 200, 216}) do
 			  	if math_random(3) == 1 then
-					local adjust_y = math_random(-5, 4)
-					local flame_y = lava_y + adjust_y
-					local flame_color = 0xfff4bA15
+					local flame_y = lava_y + math_random(-5, 4)
 					if flame_y > 0 then
-						if adjust_y > 0  then
-							flame_color = 0xfff4bA15
-						else
-							flame_color = 0xffe8070a
-						end
 						-- Draw flame graphic
-						version_draw_box(flame_y + 1, i - 1, flame_y + 2, i - 2, flame_color, 0x0)
-						version_draw_box(flame_y + 2, i - 2, flame_y + 3, i - 3, flame_color, 0x0)
-						version_draw_box(flame_y + 3, i - 1, flame_y + 4, i - 2, flame_color, 0x0)
-						version_draw_box(flame_y + 4, i - 0, flame_y + 5, i - 1, flame_color, 0x0)
-						version_draw_box(flame_y + 5, i - 1, flame_y + 6, i - 2, flame_color, 0x0)
+						version_draw_box(flame_y + 1, i - 1, flame_y + 2, i - 2, 0xfff4bA15, 0x0)
+						version_draw_box(flame_y + 2, i - 2, flame_y + 3, i - 3, 0xfff4bA15, 0x0)
+						version_draw_box(flame_y + 3, i - 1, flame_y + 4, i - 2, 0xfff4bA15, 0x0)
+						version_draw_box(flame_y + 4, i - 0, flame_y + 5, i - 1, 0xfff4bA15, 0x0)
+						version_draw_box(flame_y + 5, i - 1, flame_y + 6, i - 2, 0xfff4bA15, 0x0)
 					end
 				end
 			end
