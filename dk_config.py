@@ -138,6 +138,7 @@ DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 # Plugins add functionality to certain roms
 PLUGINS = [
   ("dkonglava", "dklavapanic"),
+  ("dkongshooter", "dkshooter"),
   ("dkongwho", "dkwho")]
 
 # Roms that are compatible with the dkcoach plugin
