@@ -29,46 +29,41 @@ require "globals"
 ------------------------------------------------------------------------------------------------
 emu.register_frame(function()
 	_, loaded = pcall(get_loaded)
-  
+
 	if loaded == nil then
 		-- Update ROM on start
 		emu["loaded"] = 1
 		for key, value in pairs(rom_scores) do
-			mem:write_direct_i8(value, data_scores[key])				
+			mem:write_direct_i8(value, data_scores[key])
 		end
 	end
-  
+
 	if loaded == 1 then
-    if data_allow_skip_intro == "1" and emu.romname() == "dkongx" then 
-      -- quickly skip past startup screen of DK2
-      max_frameskip(1) 
-    end
-		-- Update RAM when ready	
+		-- optionally skip past startup screen of DK2
+		max_frameskip(data_allow_skip_intro == "1" and emu.romname() == "dkongx")
+
+		-- Update RAM when ready
 		if mem:read_i8(ram_players[1]) > 0 and ( emu.romname() ~= "dkongx" or mem:read_i8("0xc0000") < 0 ) then
 			emu["loaded"] = 2
 			for key, value in pairs(ram_high) do
-				mem:write_i8(value, data_high[key])				
-			end						
+				mem:write_i8(value, data_high[key])
+			end
 			for key, value in pairs(ram_high_DOUBLE) do
-				mem:write_i8(value, data_high_DOUBLE[key])				
+				mem:write_i8(value, data_high_DOUBLE[key])
 			end
 			for key, value in pairs(ram_scores) do
 				mem:write_i8(value, data_scores[key])
 			end
 			for key, value in pairs(ram_scores_DOUBLE) do
-				mem:write_i8(value, data_scores_DOUBLE[key])				
-			end		
+				mem:write_i8(value, data_scores_DOUBLE[key])
+			end
 			for key, value in pairs(ram_players) do
 				mem:write_i8(value, data_players[key])
 			end
 		end
 	end
-  
+
 	if loaded == 2 then
-    -- Reset frameskip after fast start of DK2
-    if data_allow_skip_intro == "1" and emu.romname() == "dkongx" then 
-      max_frameskip(0) 
-    end
 		-- Optionally set number of coins inserted into the machine
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
 			mem:write_i8(0x6001, data_credits)
@@ -78,29 +73,27 @@ emu.register_frame(function()
 			ports[":IN2"].fields["1 Player Start"]:set_value(1)
 		end
 		emu["loaded"] = 3
-    emu.register_frame_done(dkong_overlay, "frame")
+		emu.register_frame_done(dkong_overlay, "frame")
 	end
-  
+
 	if loaded == 3 then
 		mode1 = mem:read_i8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game    
-		mode2 = mem:read_i8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over 
+		mode2 = mem:read_i8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
 		stage = mem:read_i8(0xc6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 		score = get_score()
-              
+
 		-- Release P1 Start button (after autostart)
-		if data_autostart == "1" then
-			if mode1 == 3 and mode2 == 7 then
-				ports[":IN2"].fields["1 Player Start"]:set_value(0)
-				data_autostart = "0"
-			end
+		if data_autostart == "1" and mode1 == 3 and mode2 == 7 then
+			ports[":IN2"].fields["1 Player Start"]:set_value(0)
+			data_autostart = "0"
 		end
-    
+
 		-- Fast skip through the DK climb scene when jump button is pressed (optional)
 		fast_skip_intro()
-  
+
 		-- Player ends game to keep current score by pressing COIN.
-		if mode1 == 3 and data_coin_ends == "1" and string.sub(number_to_binary(mem:read_i8(0xc7d00)), 1, 1) == "1" then
-			mem:write_i8(0xc6228, 1)		
+		if mode1 == 3 and data_coin_ends == "1" and string.sub(int_to_bin(mem:read_i8(0xc7d00)), 1, 1) == "1" then
+			mem:write_i8(0xc6228, 1)
 			mem:write_i8(0xc6200, 0)
 		end
 	end
@@ -110,11 +103,11 @@ end)
 ------------------------------------------------------------------------------------------------
 function dkong_overlay()
 	-- Show award targets and progress during gameplay (optional)
-  display_awards()
+	display_awards()
 end
 
 -- Register callback function on exit
 ------------------------------------------------------------------------------------------------
 emu.register_stop(function()
-  record_in_compete_file()
+	record_in_compete_file()
 end)

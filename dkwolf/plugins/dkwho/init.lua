@@ -137,7 +137,7 @@ function dkwho.startplugin()
 			mem = cpu.spaces["program"]
 
 			--Generate a starfield
-			number_of_stars = 500
+			number_of_stars = 400
 			starfield={}
 			math.randomseed(os.time())
 			for _=1, number_of_stars do

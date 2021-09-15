@@ -15,10 +15,6 @@
 ------------------------------------------------------------------------------------------------
 ]]
 
--- Optimise access to globals used in functions
-local string_sub = string.sub
-local string_len = string.len
-
 -- Characters
 dkchars = {}
 dkchars["0"] = 0x00
@@ -76,6 +72,8 @@ dkchars["^"] = 0xb0 -- rivet block
 dkchars["?"] = 0xfb
 dkchars["@"] = 0xff -- extra mario icon
 
+local string_sub = string.sub
+local string_len = string.len
 function write_message(start_address, text)
 	-- write characters of message to DK's video ram
   local _dkchars = dkchars

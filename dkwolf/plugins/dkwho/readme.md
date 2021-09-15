@@ -13,7 +13,7 @@ Jumpman has regenerated as the next Dr Who.  Help him rescue his assistant from 
 ## Installing and running
  
 You must first patch the dkong rom to update the sprites.
-The IPS patch is available from https://github.com/10yard/dkafe/tree/master/patch
+The IPS patch is available from https://github.com/10yard/dkafe/blob/master/patch/dkongwho.ips
  
 The plugin is installed by copying the "dkwho" folder into your MAME plugins folder.
 

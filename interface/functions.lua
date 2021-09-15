@@ -21,25 +21,18 @@ local string_format = string.format
 local math_fmod = math.fmod
 local math_modf = math.modf
 local math_floor = math.floor
-local clock = os.clock
 
 function get_loaded()
 	return emu["loaded"]
 end
 
-function sleep(n)  -- seconds
-	local t0 = clock()
-	while clock() - t0 <= n do end
-end
-
-function number_to_binary(x)
+function int_to_bin(x)
 	local ret = ""
 	while x~=1 and x~=0 do
 		ret = tostring(x%2) .. ret
 		x=math_modf(x/2)
 	end
-	ret = tostring(x)..ret
-	return string_format("%08d", ret)
+	return string_format("%08d", tostring(x)..ret)
 end
 
 function string:split(sep)
@@ -122,16 +115,6 @@ function get_highscore()
 	return highscore
 end
 
-function get_jumpman_y()
-	-- calculate Jumpman Y position (at top of sprite)
-	local _y = mem:read_i8(0xc6205)
-	if _y >= 0 then
-		_y = -256 + _y
-	end
-	-- allow lava to rise to sprite height + 1
-	return 8 - _y
-end
-
 function clear_sounds()
 	-- clear music on soundcpu
 	for key = 0, 32 do
@@ -144,7 +127,7 @@ function clear_sounds()
 end
 
 function max_frameskip(switch)
-	if switch == 1 then
+	if switch == true then
 		video.throttled = false
 		video.throttle_rate = 1000
 		video.frameskip = 8
@@ -161,21 +144,19 @@ end
 
 function fast_skip_intro()
 	-- Skip the DK climb intro when jump button is pressed
-	if data_allow_skip_intro == "1" then
-		if mode1 == 3 then
-			if mode2 == 7 then
-				if string_sub(number_to_binary(mem:read_i8(0xc7c00)), 4, 4) == "1" then
-					player_skipped_intro = 1
-					max_frameskip(1)
-				end
-				if player_skipped_intro == 1 then
-					-- clear music and soundfx as they won't sound good
-					clear_sounds()
-				end
-			else
-				player_skipped_intro = 0
-				max_frameskip(0)
+	if data_allow_skip_intro == "1" and mode1 == 3 then
+		if mode2 == 7 then
+			if string_sub(int_to_bin(mem:read_i8(0xc7c00)), 4, 4) == "1" then
+				player_skipped_intro = 1
+				max_frameskip(true)
 			end
+			if player_skipped_intro == 1 then
+				-- clear music and soundfx as they won't sound good
+				clear_sounds()
+			end
+		else
+			player_skipped_intro = 0
+			max_frameskip(false)
 		end
 	end
 end
@@ -219,14 +200,12 @@ function display_awards()
 		score = tonumber(score)
 		-- Show progress against targets at top of screen replacing high score
 		if score > data_score3 then
+			write_message(0xc76e0, "              ")
 			if score > data_score1 then
-				write_message(0xc76e0, "              ")
 				write_message(0xc76a0, "1ST WON " .. data_award1 .. "  ")
 			elseif score > data_score2 then
-				write_message(0xc76e0, "              ")
 				write_message(0xc76a0, "2ND WON " .. data_award2 .. "  ")
 			else
-				write_message(0xc76e0, "             ")
 				write_message(0xc76a0, "3RD WON " .. data_award3 .. "  ")
 			end
 		end
@@ -234,7 +213,7 @@ function display_awards()
 
 	if data_show_hud == "1" or data_show_hud == "2" or data_show_hud == "3" then
 		-- Toggle the HUD using P2 Start button
-		if data_autostart == "0" and string_sub(number_to_binary(mem:read_i8(0xc7d00)), 5, 5) == "1" then
+		if data_autostart == "0" and string_sub(int_to_bin(mem:read_i8(0xc7d00)), 5, 5) == "1" then
 			if os.clock() - data_last_toggle > 0.25 then
 				data_last_toggle = os.clock()
 				data_toggle_hud = data_toggle_hud + 1
