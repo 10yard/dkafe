@@ -517,11 +517,10 @@ def build_launch_menu():
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
         title = _g.selected.center(26)
         inps = _s.get_recording_files(emu, name, sub)
+        if name.startswith("dkong"):
+            inps = inps[:len(inps) - int(sub in COACH_FRIENDLY) - int(sub in CHORUS_FRIENDLY)]
 
-        if name.startswith("dkong") and sub in COACH_FRIENDLY:
-            inps = inps[:-1]
-
-        _g.launchmenu = pymenu.Menu(200, 224, title, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme,
+        _g.launchmenu = pymenu.Menu(256, 224, title, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme,
                                     onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game', launch_rom, nearby)

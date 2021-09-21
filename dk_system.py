@@ -105,7 +105,7 @@ def get_emulator(emu_number):
 def get_recording_files(emu, name, sub):
     # Return the 5 most recent .inp recordings for the specified rom
     _recordings = glob(os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp", f"{name}_{sub}_*.inp"))
-    return sorted(_recordings, reverse=True)[:7]
+    return sorted(_recordings, reverse=True)[:12]
 
 
 def build_launch_command(info, basic_mode=False, launch_plugin=None):

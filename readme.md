@@ -146,6 +146,13 @@ The coaching plugin can help you master the springs and barrels stages.
 ![Coach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)
 
 
+## DKChorus
+
+The chorus plugin replaces the default samples and music with acapella sounds.
+
+[![Link to video](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
+* Click image to watch gameplay video
+
 ## How to install
 
 Steps to install the default frontend are as follows.  Also refer to **How to set up**.
