@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "dkchorus",
+"description": "Donkey Kong Chorus",
+"version": "0.11",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

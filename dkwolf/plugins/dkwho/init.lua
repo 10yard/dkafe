@@ -149,9 +149,9 @@ function dkwho.startplugin()
 
 	function main()
 		if cpu ~= nil then
-			mode1 = mem:read_i8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
-			mode2 = mem:read_i8(0x600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
-			stage = mem:read_i8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
+			mode1 = mem:read_u8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
+			mode2 = mem:read_u8(0x600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
+			stage = mem:read_u8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 			local _rand = 1
 			if mode1 == 1 and mode2 >= 6 and mode2 <= 7 then
 				-- Title screen
@@ -208,7 +208,7 @@ function dkwho.startplugin()
 
 				check_teleports()
 
-				if mem:read_i8(0xc6A18) ~= 0 then
+				if mem:read_u8(0xc6A18) ~= 0 then
 					-- Draw tardis graphics.  The hammer hasn't been used.
 					if stage == 1 then        -- Girders
 						draw_tardis(55, 165, 148, 14)
@@ -218,16 +218,16 @@ function dkwho.startplugin()
 						draw_tardis(148, 102, 108, 5)
 					end
 				else
-					if mem:read_i8(0xc6200) ~= 0 then
+					if mem:read_u8(0xc6200) ~= 0 then
 						-- Switch the palette.  The hammer has been used and jumpman is not dead.
 						if stage == 1 then        -- Girders
-							mem:write_i8(0xc7d86, 1)
-							mem:write_i8(0xc7d87, 0)
+							mem:write_u8(0xc7d86, 1)
+							mem:write_u8(0xc7d87, 0)
 						elseif stage == 2 then    -- Pies/Conveyors
-							mem:write_i8(0xc7d86, 0)
-							mem:write_i8(0xc7d87, 1)
+							mem:write_u8(0xc7d86, 0)
+							mem:write_u8(0xc7d87, 1)
 						elseif stage == 4 then    -- Rivets
-							mem:write_i8(0xc7d86, 0)
+							mem:write_u8(0xc7d86, 0)
 						end
 					end
 				end
@@ -250,7 +250,7 @@ function dkwho.startplugin()
 		-- write characters of message to DK's video ram
 	  	local _dkchars = dkchars
   		for key=1, string_len(text) do
-			mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
+			mem:write_u8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
 		end
 	end
 
@@ -283,7 +283,7 @@ function dkwho.startplugin()
 		local sync = sync or "1UP"
 		if sync == "1UP" and math_fmod(mem:read_u8(0xc601a), 32) <= 16 then
 			return 1
-		elseif sync == "TIMER" and math_fmod(mem:read_i8(0xc638c), 2) == 0 then
+		elseif sync == "TIMER" and math_fmod(mem:read_u8(0xc638c), 2) == 0 then
 			return 1
 		else
 			return 0
@@ -292,27 +292,27 @@ function dkwho.startplugin()
 
 	function update_teleport_ram(update_x, update_y, update_ly)
 	  -- force 0 to disable the hammer
-		mem:write_i8(0xc6217, 0)
-		mem:write_i8(0xc6218, 0)
-		mem:write_i8(0xc6345, 0)
-		mem:write_i8(0xc6350, 0)
+		mem:write_u8(0xc6217, 0)
+		mem:write_u8(0xc6218, 0)
+		mem:write_u8(0xc6345, 0)
+		mem:write_u8(0xc6350, 0)
 
 		-- update position
-		mem:write_i8(0xc6203, update_x)   -- Update Jumpman's X position
-		mem:write_i8(0xc6205, update_y)   -- Update Jumpman's Y position
-		mem:write_i8(0xc620E, update_ly)  -- Update launch Y position to prevent excessive fall
+		mem:write_u8(0xc6203, update_x)   -- Update Jumpman's X position
+		mem:write_u8(0xc6205, update_y)   -- Update Jumpman's Y position
+		mem:write_u8(0xc620E, update_ly)  -- Update launch Y position to prevent excessive fall
 
 		-- clear all hammers
-		mem:write_i8(0xc6A18, 0)    -- top
-		mem:write_i8(0xc6680, 0)
-		mem:write_i8(0xc6A1C, 0)    -- bottom
-		mem:write_i8(0xc6690, 0)
+		mem:write_u8(0xc6A18, 0)    -- top
+		mem:write_u8(0xc6680, 0)
+		mem:write_u8(0xc6A1C, 0)    -- bottom
+		mem:write_u8(0xc6690, 0)
 
 		-- change music after teleporting
 		if stage ~= 2 then
-			mem:write_i8(0xc6089, 9)
+			mem:write_u8(0xc6089, 9)
 		else
-			mem:write_i8(0xc6089, 11)
+			mem:write_u8(0xc6089, 11)
 		end
 	end
 
@@ -355,7 +355,7 @@ function dkwho.startplugin()
 
 	function animate_broken_ship(x, y, dont_check_lit)
 		-- flash flames on the ship when fire is lit
-		if dont_check_lit == 1 or mem:read_i8(0xc6348) == 1 then
+		if dont_check_lit == 1 or mem:read_u8(0xc6348) == 1 then
 		local flame_color = RED
 			if toggle() == 1 then
 				flame_color = YELLOW
@@ -375,7 +375,7 @@ function dkwho.startplugin()
 	end
 
 	function check_teleports()
-		if stage ~= 3 and mem:read_i8(0xc6218) ~= 0 then
+		if stage ~= 3 and mem:read_u8(0xc6218) ~= 0 then
 			-- Jumpman is attempting to grab a hammer
 			local jumpman_y = mem:read_i8(0xc6205)  -- Jumpman's Y position
 

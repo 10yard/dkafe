@@ -63,9 +63,9 @@ function dklavapanic.startplugin()
 
 	function main()
 		if cpu ~= nil then
-			mode1 = mem:read_i8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
-			mode2 = mem:read_i8(0x600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
-			stage = mem:read_i8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
+			mode1 = mem:read_u8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
+			mode2 = mem:read_u8(0x600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
+			stage = mem:read_u8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 			draw_lava()
 		end
 	end
@@ -75,7 +75,7 @@ function dklavapanic.startplugin()
 		---------------------------------------------------------------------------------
 		if mode2 == 7 or mode2 == 10 or mode2 == 11 or mode2 == 1 then
 			-- recalculate difficulty at start of level or when in attract mode
-			local level = mem:read_i8(0x6229)
+			local level = mem:read_u8(0x6229)
 			if stage == 4 then
 				lava_difficulty = math_floor(1.5 * (22 - level))  -- more time for rivets
 			elseif stage == 3 then
@@ -86,12 +86,12 @@ function dklavapanic.startplugin()
 			-- reset lava level
 			lava_y = -7
 			-- remember default music
-			music = mem:read_i8(0x6089)
+			music = mem:read_u8(0x6089)
 		elseif mode2 == 21 and lava_y > 15 then
-			-- Reduce lava level on high score entry screen to avoid obstruction.
+			-- Adjust lava level on high score entry screen to avoid obstruction.
 			lava_y = 15
 		elseif mode2 == 16 and lava_y > 60 then
-			-- Reduce lava level on game over screens to avoid obstruction.
+			-- Adjust lava level on game over screens to avoid obstruction.
 			lava_y = 60
 		end
 
@@ -109,35 +109,35 @@ function dklavapanic.startplugin()
 
 					-- PANIC! text with flashing colour palette for dramatic effect
 					if math_fmod(mem:read_u8(0x601a), 32) <= 16 then
-						mem:write_i8(0x7d86, 0)
+						mem:write_u8(0x7d86, 0)
 						block_characters("PANIC!", 128, 16, 0xffff0000, 0xffffff99)
 					else
-						mem:write_i8(0x7d86, 1)
+						mem:write_u8(0x7d86, 1)
 					end
 
 					-- Temporary change music for added drama
 					if stage ~= 2 then
-						mem:write_i8(0x6089, 9)
+						mem:write_u8(0x6089, 9)
 					else
-						mem:write_i8(0x6089, 11)
+						mem:write_u8(0x6089, 11)
 					end
 				else
 					-- Reset palette
 					if stage == 1 or stage == 3 then
-						mem:write_i8(0x7d86, 0)
+						mem:write_u8(0x7d86, 0)
 					else
-						mem:write_i8(0x7d86, 1)
+						mem:write_u8(0x7d86, 1)
 					end
 					-- Reset music
-					mem:write_i8(0x6089, music)
+					mem:write_u8(0x6089, music)
 				end
 
 				if lava_y > jumpman_y + 1 then
 					-- The lava has engulfed Jumpman. Set status to dead
-					mem:write_i8(0x6200, 0)
-				elseif math_fmod((mem:read_i8(0x601A)), lava_difficulty) == 0 then
+					mem:write_u8(0x6200, 0)
+				elseif math_fmod((mem:read_u8(0x601A)), lava_difficulty) == 0 then
 					-- Game is active.  Lava rises periodically based on the lava_difficulty
-					if mem:read_i8(0x6350) == 0 then
+					if mem:read_u8(0x6350) == 0 then
 						-- Lava shouldn't rise when an item is being smashed by the hammer
 						lava_y = lava_y + 1
 					end

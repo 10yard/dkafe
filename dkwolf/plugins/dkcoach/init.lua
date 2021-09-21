@@ -126,7 +126,7 @@ function dkcoach.startplugin()
 
 	function main()
 		if maincpu ~= nil then
-			stage, mode1, mode2 = mem:read_i8(0x6227), mem:read_u8(0xc6005), mem:read_u8(0xc600a)
+			stage, mode1, mode2 = mem:read_u8(0x6227), mem:read_u8(0xc6005), mem:read_u8(0xc600a)
 
 			dkafe_specific_features()
 			
@@ -135,7 +135,7 @@ function dkcoach.startplugin()
 			write_message(0x7521, help_setting_name[help_setting].." HELP")
 
 			-- check for toggle / P2 button press.
-			if string.sub(int_to_bin(mem:read_i8(0x7d00)), 5, 5) == "1" then
+			if string.sub(int_to_bin(mem:read_u8(0x7d00)), 5, 5) == "1" then
 				if os.clock() - last_help_toggle > 0.25 then
 					-- toggle the active help setting
 					help_setting = help_setting - 1
@@ -339,7 +339,7 @@ function dkcoach.startplugin()
 						s_type = s_x + 8
 					end
 				end
-				if (s_x >= 130 and s_x < 170 and s_y == 80) or s_type_trailing == nil or mem:read_i8(0x6229) < 4 then
+				if (s_x >= 130 and s_x < 170 and s_y == 80) or s_type_trailing == nil or mem:read_u8(0x6229) < 4 then
 					-- Remember type of the trailing string.
 					s_type_trailing = s_type
 				end
@@ -386,7 +386,7 @@ function dkcoach.startplugin()
 		-- write characters of message to DK's video ram
 		local _char_table = char_table
 		for key=1, string.len(text) do
-			mem:write_i8(start_address - ((key - 1) * 32), _char_table[string.sub(text, key, key)])
+			mem:write_u8(start_address - ((key - 1) * 32), _char_table[string.sub(text, key, key)])
 		end
 	end	
 
@@ -466,7 +466,7 @@ function dkcoach.startplugin()
     end
 
 	function max_frameskip(switch)
-		if switch == 1 then
+		if switch == true then
 			video.throttled = false
 			video.throttle_rate = 1000
 			video.frameskip = 8
@@ -480,11 +480,11 @@ function dkcoach.startplugin()
 	function clear_sounds()
 		-- clear music on soundcpu
 		for key = 0, 32 do
-			soundmem:write_i8(0x0 + key, 0x00)
+			soundmem:write_u8(0x0 + key, 0x00)
 		end
 		-- clear soundfx buffer
 		for key = 0, 8 do
-			mem:write_i8(0xc6080 + key, 0x00)
+			mem:write_u8(0xc6080 + key, 0x00)
 		end
 	end
 
@@ -492,7 +492,7 @@ function dkcoach.startplugin()
 		-- Optionally set number of coins inserted into the machine
 		if data_credits ~= nil then
 			if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
-				mem:write_i8(0x6001, data_credits)
+				mem:write_u8(0x6001, data_credits)
 			end
 			data_credits = "0"
 		end
@@ -502,24 +502,23 @@ function dkcoach.startplugin()
 			ports[":IN2"].fields["1 Player Start"]:set_value(1)
 			data_autostart = "0"
 		end
-		
-		-- Optioanlly fast skip through the DK climb scene when jump button is pressed
-		if data_allow_skip_intro == "1" then
-			if mode1 == 3 then
-				if mode2 == 7 then
-					if string.sub(int_to_bin(mem:read_i8(0xc7c00)), 4, 4) == "1" then
-						intro_skipped = true
-						max_frameskip(1)
-					end
-					if intro_skipped then
-						clear_sounds()
-					end
-				else
-					intro_skipped = false
-					max_frameskip(0)
+				
+		-- Optionally fast skip through the DK climb scene when jump button is pressed
+		if data_allow_skip_intro == "1" and mode1 == 3 then
+			if mode2 == 7 then
+				if string.sub(int_to_bin(mem:read_u8(0xc7c00)), 4, 4) == "1" then
+					skipped_intro = true
+					max_frameskip(true)
 				end
+				if skipped_intro == true then
+					clear_sounds()
+				end
+			elseif skipped_intro == true then
+				skipped_intro = false
+				max_frameskip(false)
 			end
-		end
+		end		
+		
 	end
 
 	emu.register_start(function()

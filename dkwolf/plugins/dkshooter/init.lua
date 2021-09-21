@@ -99,9 +99,9 @@ function dkshooter.startplugin()
 
 	function main()
 		if cpu ~= nil then
-			mode1 = mem:read_i8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
-			mode2 = mem:read_i8(0x600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
-			stage = mem:read_i8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets
+			mode1 = mem:read_u8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
+			mode2 = mem:read_u8(0x600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
+			stage = mem:read_u8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets
 			
 			draw_stars()
 			
@@ -333,7 +333,7 @@ function dkshooter.startplugin()
 		-- write characters of message to DK's video ram
 		local _char_table = char_table
 		for key=1, string.len(text) do
-			mem:write_i8(start_address - ((key - 1) * 32), _char_table[string.sub(text, key, key)])
+			mem:write_u8(start_address - ((key - 1) * 32), _char_table[string.sub(text, key, key)])
 		end
 	end	
 	

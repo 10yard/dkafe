@@ -105,10 +105,10 @@ def get_emulator(emu_number):
 def get_recording_files(emu, name, sub):
     # Return the 5 most recent .inp recordings for the specified rom
     _recordings = glob(os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp", f"{name}_{sub}_*.inp"))
-    return sorted(_recordings, reverse=True)[:8]
+    return sorted(_recordings, reverse=True)[:7]
 
 
-def build_launch_command(info, basic_mode=False, coaching=False):
+def build_launch_command(info, basic_mode=False, launch_plugin=None):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
@@ -143,22 +143,22 @@ def build_launch_command(info, basic_mode=False, coaching=False):
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
 
     # Are we using coaching?
-    if coaching and not "-plugin" in launch_command:
-        launch_command += " -plugin dkcoach"
+    if launch_plugin and not "-plugin" in launch_command:
+        launch_command += f" -plugin {launch_plugin}"
 
     if not FULLSCREEN:
         launch_command += " -window"
 
     launch_command += " -skip_gameinfo -nonvram_save"
 
-    if not basic_mode and not coaching and "-record" not in launch_command:
+    if not basic_mode and not launch_plugin and "-record" not in launch_command:
         script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1, basic_mode)
         if script:
             # An interface script is available
             competing = True
             launch_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
 
-    if competing or coaching:
+    if competing or launch_plugin:
         # Update options
         os.environ["DATA_CREDITS"] = str(CREDITS)
         os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart

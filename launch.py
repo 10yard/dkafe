@@ -515,25 +515,21 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
-        title = _g.selected.center(24)
+        title = _g.selected.center(26)
         inps = _s.get_recording_files(emu, name, sub)
+
+        if name.startswith("dkong") and sub in COACH_FRIENDLY:
+            inps = inps[:-1]
 
         _g.launchmenu = pymenu.Menu(200, 224, title, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme,
                                     onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game', launch_rom, nearby)
-        _g.launchmenu.add_vertical_margin(10)
-        if name.startswith("dkong") and sub in COACH_FRIENDLY:
-            _g.launchmenu.add_button('Launch with coaching', launch_rom, nearby, True)
-            inps = inps[:-1]
-        if rec == 0:
-            _g.launchmenu.add_label('Sorry, recording is not', selectable=False, font_color=GREY)
-            _g.launchmenu.add_label('supported for this game', selectable=False, font_color=GREY)
-        else:
-            _g.launchmenu.add_button('Launch with .inp recording', launch_rom, nearby, False, rec)
-            _g.launchmenu.add_vertical_margin(10)
-            _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
+        if rec > 0:
+            _g.launchmenu.add_button('Launch and record game', launch_rom, nearby, False, rec)
             if inps:
+                _g.launchmenu.add_vertical_margin(9)
+                _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
                 for inp in inps:
                     try:
                         bullet = "♥ " if os.path.getsize(inp) > INP_FAVOURITE else "- "
@@ -541,10 +537,15 @@ def build_launch_menu():
                         _g.launchmenu.add_button(bullet + entry, playback_rom, nearby, inp)
                     except ValueError:
                         pass
-            else:
-                _g.launchmenu.add_label('No recordings found', selectable=False, font_color=GREY)
 
-        _g.launchmenu.add_vertical_margin(15)
+        if name.startswith("dkong"):
+            _g.launchmenu.add_vertical_margin(9)
+            if sub in COACH_FRIENDLY:
+                _g.launchmenu.add_button('Č Launch with coaching', launch_rom, nearby, "dkcoach")
+            if sub in CHORUS_FRIENDLY and not _s.is_raspberry():
+                _g.launchmenu.add_button('♪ Launch with chorus sound', launch_rom, nearby, "dkchorus")
+
+        _g.launchmenu.add_vertical_margin(9)
         _g.launchmenu.add_button('Close', close_menu)
 
 
@@ -645,7 +646,7 @@ def shutdown_system():
         os.system("shutdown /s /f /t 00")
 
 
-def launch_rom(info, coaching=False, override_emu=None):
+def launch_rom(info, launch_plugin=None, override_emu=None):
     # Launch the rom using provided info.  Override is used to change emu number in case of recordings (to rec number).
     if _g.active and info:
         sub, name, emu, rec, unlock, st3, st2, st1 = info
@@ -660,7 +661,7 @@ def launch_rom(info, coaching=False, override_emu=None):
         award_channel.stop()
         music_channel.pause()
 
-        launch_command, launch_directory, competing = _s.build_launch_command(info, BASIC_MODE, coaching)
+        launch_command, launch_directory, competing = _s.build_launch_command(info, BASIC_MODE, launch_plugin)
 
         if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay

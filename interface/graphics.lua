@@ -75,9 +75,9 @@ dkchars["@"] = 0xff -- extra mario icon
 local string_sub = string.sub
 local string_len = string.len
 function write_message(start_address, text)
-	-- write characters of message to DK's video ram
-  local _dkchars = dkchars
-  for key=1, string_len(text) do
-		mem:write_i8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
-	end
+    -- write characters of message to DK's video ram
+    local _dkchars = dkchars
+    for key=1, string_len(text) do
+		mem:write_u8(start_address - ((key - 1) * 32), _dkchars[string_sub(text, key, key)])
+    end
 end
