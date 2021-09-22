@@ -82,7 +82,7 @@ COIN_HIGH = 4                  # Frequency of coin being higher value (1 = alway
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
 LADDER_CHANCE = 3              # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
-INP_FAVOURITE = 100000         # Flag .inp recordings above this size (in bytes) as favourites by prefixing with ♥
+INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
 
 # Root directory of frontend
 ROOT_DIR = os.getcwd()
@@ -91,7 +91,7 @@ ROOT_DIR = os.getcwd()
 ROM_DIR = '<ROOT>/roms'
 OPTIONS = '-rompath <ROM_DIR> -view "Pixel Aspect (7:8)'
 EMU_1 = '<ROOT>/dkwolf/dkwolf <OPTIONS>'
-EMU_2 = '<ROOT>/dkwolf/dkwolf <OPTIONS> -record <NAME>_<DATETIME>.inp'
+EMU_2 = '<ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID>'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6
 
 # External command to issue when emulator starts up

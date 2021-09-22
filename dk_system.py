@@ -16,9 +16,9 @@
 # ----------------------------------------------------------------------------------------------
 import os
 from datetime import datetime
-from time import sleep
+from time import sleep, time
 from glob import glob
-from shutil import copy
+from shutil import copy, move
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from dk_config import *
 from dk_interface import lua_interface
@@ -28,7 +28,7 @@ def debounce():
     sleep(0.2)
 
 
-def is_raspberry():
+def is_pi():
     # Check for Raspberry Pi.  Are we running on Arm architecture?
     try:
         if os.uname().machine.startswith("arm"):
@@ -43,9 +43,9 @@ def get_datetime():
     return datetime.now().strftime("%Y%m%d-%H%M%S")
 
 
-def format_datetime(datestring):
+def format_datetime(datestring, suffix=""):
     datetime_object = datetime.strptime(datestring, '%Y%m%d-%H%M%S')
-    return datetime_object.strftime("%d %b, %Y at %H:%M:%S")
+    return datetime_object.strftime(f"%d %b %y at %H:%M{suffix}")
 
 
 def intro_frames(climb_scene_only=False):
@@ -102,10 +102,14 @@ def get_emulator(emu_number):
     return f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu_number - 1]}'
 
 
-def get_recording_files(emu, name, sub):
+def get_inp_dir(emu):
+    return os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp")
+
+
+def get_inp_files(emu, name, sub, num):
     # Return the 5 most recent .inp recordings for the specified rom
-    _recordings = glob(os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp", f"{name}_{sub}_*.inp"))
-    return sorted(_recordings, reverse=True)[:12]
+    _recordings = glob(os.path.join(get_inp_dir(emu), f"{name}_{sub}_*.inp"))
+    return sorted(_recordings, reverse=True)[:num]
 
 
 def build_launch_command(info, basic_mode=False, launch_plugin=None):
@@ -114,7 +118,8 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None):
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
     subfolder, name, emu, rec, unlock, score3, score2, score1 = info
     emu_args = get_emulator(emu)
-    emu_args = emu_args.replace("<RECORD_ID>", f"{name}_{subfolder}_{get_datetime()}.inp")
+    inp_file = f"{name}_{subfolder}_{get_datetime()}_0m.inp"
+    emu_args = emu_args.replace("<RECORD_ID>", inp_file)
     launch_directory = os.path.dirname(emu_args.split(" ")[0])
     launch_command = f'{emu_args} {name}'
     competing = False
@@ -165,7 +170,7 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None):
         os.environ["DATA_ALLOW_COIN_TO_END_GAME"] = str(ALLOW_COIN_TO_END_GAME)
         os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
 
-    return launch_command, launch_directory, competing
+    return launch_command, launch_directory, competing, inp_file
 
 
 def get_bonus_timer(duration):

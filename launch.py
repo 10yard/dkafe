@@ -515,36 +515,36 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
-        title = _g.selected.center(26)
-        inps = _s.get_recording_files(emu, name, sub)
-        if name.startswith("dkong"):
-            inps = inps[:len(inps) - int(sub in COACH_FRIENDLY) - int(sub in CHORUS_FRIENDLY)]
+        show_coach, show_chorus = sub in COACH_FRIENDLY, sub in CHORUS_FRIENDLY and not _s.is_pi()
+        inps = _s.get_inp_files(emu, name, sub, 12 - show_coach - show_chorus)
 
-        _g.launchmenu = pymenu.Menu(256, 224, title, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme,
-                                    onclose=close_menu)
+        _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
+                                    theme=dkafe_theme, onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game', launch_rom, nearby)
         if rec > 0:
             _g.launchmenu.add_button('Launch and record game', launch_rom, nearby, False, rec)
             if inps:
-                _g.launchmenu.add_vertical_margin(9)
-                _g.launchmenu.add_label('Playback latest recordings:', underline=True, selectable=False)
+                _g.launchmenu.add_vertical_margin(10)
+                _g.launchmenu.add_label('Playback latest recordings:', selectable=False)
                 for inp in inps:
                     try:
-                        bullet = "♥ " if os.path.getsize(inp) > INP_FAVOURITE else "- "
-                        entry = _s.format_datetime(os.path.splitext(os.path.basename(inp).split("_")[-1])[0])
-                        _g.launchmenu.add_button(bullet + entry, playback_rom, nearby, inp)
+                        *_, time_stamp, time_mins = os.path.splitext(inp)[0].split("_")
+                        if time_mins.endswith("m"):
+                            bullet = "♥ " if int(time_mins[:-1]) >= INP_FAVOURITE else "- "
+                            entry = _s.format_datetime(time_stamp, ' +{0: <4}'.format(time_mins))
+                            _g.launchmenu.add_button(bullet + entry, playback_rom, nearby, inp)
                     except ValueError:
                         pass
 
-        if name.startswith("dkong"):
-            _g.launchmenu.add_vertical_margin(9)
-            if sub in COACH_FRIENDLY:
+        if show_coach or show_chorus:
+            _g.launchmenu.add_vertical_margin(10)
+            if show_coach:
                 _g.launchmenu.add_button('Č Launch with coaching', launch_rom, nearby, "dkcoach")
-            if sub in CHORUS_FRIENDLY and not _s.is_raspberry():
+            if show_chorus:
                 _g.launchmenu.add_button('♪ Launch with chorus sound', launch_rom, nearby, "dkchorus")
 
-        _g.launchmenu.add_vertical_margin(9)
+        _g.launchmenu.add_vertical_margin(10)
         _g.launchmenu.add_button('Close', close_menu)
 
 
@@ -639,7 +639,7 @@ def close_menu():
 
 
 def shutdown_system():
-    if _s.is_raspberry():
+    if _s.is_pi():
         os.system("shutdown -h now")
     else:
         os.system("shutdown /s /f /t 00")
@@ -660,7 +660,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
         award_channel.stop()
         music_channel.pause()
 
-        launch_command, launch_directory, competing = _s.build_launch_command(info, BASIC_MODE, launch_plugin)
+        launch_command, launch_directory, competing, inp_file = _s.build_launch_command(info, BASIC_MODE, launch_plugin)
 
         if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
@@ -677,7 +677,9 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 Popen(EMU_ENTER, shell=False)
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
+            time_start = _s.time()
             os.system(launch_command)
+            time_end = _s.time()
             _s.debounce()
             _g.lastexit = _g.timer.duration
             os.chdir(ROOT_DIR)
@@ -696,6 +698,13 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                         drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
+            elif "-record" in launch_command:
+                # Update .inp with gameplay time in minutes
+                inp_path = os.path.join(_s.get_inp_dir(emu), inp_file)
+                if os.path.exists(inp_path):
+                    time_mins = round((time_end - time_start) / 60)
+                    if time_mins > 0:
+                        _s.move(inp_path, inp_path.replace("_0m",f"_{time_mins}m"))
         else:
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
@@ -706,8 +715,11 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
 def playback_rom(info, inpfile):
     # playback the specified inp file
-    launch_command, launch_directory, competing = _s.build_launch_command(info, True, False)
+    launch_command, launch_directory, competing, _ = _s.build_launch_command(info, True, False)
     if os.path.exists(launch_directory):
+        close_menu()
+        clear_screen(and_reset_display=True)
+
         playback_command = ""
         retain = True
         for arg in launch_command.split(" "):
@@ -725,10 +737,8 @@ def playback_rom(info, inpfile):
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
         os.system(playback_command)
-        _s.debounce()
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
-        close_menu()
 
 
 def show_hammers():

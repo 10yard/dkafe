@@ -272,6 +272,9 @@ How many coins Jumpman starts out with.
 `TIMER_START = 8000`    
 Number to start the countdown timer from.
 
+`INP_FAVOURITE = 10`    
+Number of minutes gameplay required for a recording to be flagged as favourite.
+
 
 ### Emulator Settings
 
