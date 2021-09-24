@@ -132,26 +132,31 @@ Credit is given to the original authors below.
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
 
 
+## Optional Plugins
+
+These plugins are used by DKAFE to add features to some roms.
+
+#### DKCoach
+
+The coaching plugin can help you master the springs and barrels stages.
+
+[![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=ax-xDwVr7No)
+<sup>Click image to watch gameplay video</sup>
+
+#### DKChorus
+
+The chorus plugin replaces the default samples and music with acapella sounds.
+
+[![DKChorus](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
+<sup>Click image to watch gameplay video</sup>
+
+
 ## DKWolf
 
 DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers.
 
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
 
-
-## DKCoach
-
-The coaching plugin can help you master the springs and barrels stages.
-
-![Coach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)
-
-
-## DKChorus
-
-The chorus plugin replaces the default samples and music with acapella sounds.
-
-[![Link to video](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
-* Click image to watch gameplay video
 
 ## How to install
 

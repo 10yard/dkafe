@@ -704,7 +704,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 if os.path.exists(inp_path):
                     time_mins = round((time_end - time_start) / 60)
                     if time_mins > 0:
-                        _s.move(inp_path, inp_path.replace("_0m",f"_{time_mins}m"))
+                        _s.move(inp_path, inp_path.replace("_0m", f"_{time_mins}m"))
         else:
             play_sound_effect("sounds/error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)

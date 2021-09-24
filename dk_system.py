@@ -45,7 +45,7 @@ def get_datetime():
 
 def format_datetime(datestring, suffix=""):
     datetime_object = datetime.strptime(datestring, '%Y%m%d-%H%M%S')
-    return datetime_object.strftime(f"%d %b %y at %H:%M{suffix}")
+    return datetime_object.strftime(f"%d %b,%y at %H:%M{suffix}")
 
 
 def intro_frames(climb_scene_only=False):
@@ -147,8 +147,8 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None):
     else:
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
 
-    # Are we using coaching?
-    if launch_plugin and not "-plugin" in launch_command:
+    # Are we using a plugin?
+    if launch_plugin and "-plugin" not in launch_command:
         launch_command += f" -plugin {launch_plugin}"
 
     if not FULLSCREEN:
