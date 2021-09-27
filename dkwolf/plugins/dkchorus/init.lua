@@ -84,7 +84,7 @@ function dkchorus.startplugin()
 					last_jump = play("jump")
 				end
 				if (mem:read_u8(0x6225) == 1 or mem:read_u8(0x6340) == 1) and clock - last_bonus > 0.5 then
-					last_bonus = play("bonus")
+					last_bonus = play("bonus", 125)
 				end
 				if hammer == 1 and clock - last_hammer > 2.5 then
 					last_hammer = play("hammer")

@@ -159,7 +159,7 @@ GREY = (128, 128, 128)
 DARKBLUE = (4, 2, 220)
 
 # Alpha value for faded/locked arcade machines
-FADE_LEVEL = 85
+FADE_LEVEL = 75
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = [
@@ -181,16 +181,10 @@ CONTROL_ASSIGNMENTS = [
   ("start", CONTROL_P1)]
 
 # Text description of prize placing
-PRIZE_PLACINGS = {
-    1: "1ST",
-    2: "2ND",
-    3: "3RD"}
+PRIZE_PLACINGS = {1: "1ST", 2: "2ND", 3: "3RD"}
 
 # Sounds that are played during walk sequence. Not all steps will trigger a sound.
-WALK_SOUNDS = {
-  1: "sounds/walk0.wav",
-  5: "sounds/walk1.wav",
-  9: "sounds/walk2.wav"}
+WALK_SOUNDS = {1: "sounds/walk0.wav", 5: "sounds/walk1.wav", 9: "sounds/walk2.wav"}
 
 # Defines scene numbers in the intro when sounds should be played
 SCENE_SOUNDS = {

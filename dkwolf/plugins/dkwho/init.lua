@@ -24,6 +24,7 @@ function dkwho.startplugin()
 	local math_random = math.random
 	local string_sub = string.sub
 	local string_len = string.len
+	local last_teleport = 0
 
 	-- Colours
 	BLACK = 0xff000000
@@ -232,7 +233,6 @@ function dkwho.startplugin()
 					end
 				end
 			end
-
 			draw_stars()
 		end
 	end
@@ -290,13 +290,45 @@ function dkwho.startplugin()
 		end
 	end
 
+	function check_teleports()
+		if stage ~= 3 and mem:read_u8(0xc6218) ~= 0 and os.clock() - last_teleport > 1 then
+			-- Jumpman is attempting to grab a hammer
+			local jumpman_y = mem:read_i8(0xc6205)  -- Jumpman's Y position			
+			if stage == 1 then
+				if jumpman_y < 0 then
+					update_teleport_ram(36, 100, 113)
+				else
+					update_teleport_ram(187, 192, -46)
+				end
+			elseif stage == 2 then
+				if jumpman_y < -100 then
+					update_teleport_ram(124, 180, -45)
+				else
+					update_teleport_ram(27, 140, -96)
+				end
+			elseif stage == 4 then
+				if jumpman_y > 100 then
+					update_teleport_ram(33, -110, -96)
+				else
+					update_teleport_ram(126, 106, 120)
+				end
+			elseif stage == 5 then
+				if jumpman_y > -40 then
+					update_teleport_ram(90, -78, -65)
+				else
+					update_teleport_ram(65, -30, -17)
+				end
+			end
+		end
+	end
+
 	function update_teleport_ram(update_x, update_y, update_ly)
-	  -- force 0 to disable the hammer
+		-- force 0 to disable the hammer
 		mem:write_u8(0xc6217, 0)
 		mem:write_u8(0xc6218, 0)
 		mem:write_u8(0xc6345, 0)
 		mem:write_u8(0xc6350, 0)
-
+		
 		-- update position
 		mem:write_u8(0xc6203, update_x)   -- Update Jumpman's X position
 		mem:write_u8(0xc6205, update_y)   -- Update Jumpman's Y position
@@ -314,6 +346,8 @@ function dkwho.startplugin()
 		else
 			mem:write_u8(0xc6089, 11)
 		end
+		
+		last_teleport = os.clock()
 	end
 
 	function draw_tardis(y1, x1, y2, x2)
@@ -370,49 +404,6 @@ function dkwho.startplugin()
 		_y = mem:read_u8(value)
 		if _y == 124 or _y == 204 then
 				mem:write_u8(value, _y - 4)
-			end
-		end
-	end
-
-	function check_teleports()
-		if stage ~= 3 and mem:read_u8(0xc6218) ~= 0 then
-			-- Jumpman is attempting to grab a hammer
-			local jumpman_y = mem:read_i8(0xc6205)  -- Jumpman's Y position
-
-			if stage == 1 then
-				if emu.romname() == "dkongx11" or data_subfolder == "dkongrdemo" then
-					-- jumps for remix
-					if jumpman_y > - 80 then
-						update_teleport_ram(210, 140, -110)
-					else
-						update_teleport_ram(210, 192, -46)
-					end
-				else
-					-- jumps for regular dkong
-					if jumpman_y < 0 then
-						update_teleport_ram(36, 100, 113)
-					else
-						update_teleport_ram(187, 192, -46)
-					end
-				end
-			elseif stage == 2 then
-				if jumpman_y < -100 then
-					update_teleport_ram(124, 180, -45)
-				else
-					update_teleport_ram(27, 140, -96)
-				end
-			elseif stage == 4 then
-				if jumpman_y > 100 then
-					update_teleport_ram(33, -110, -96)
-				else
-					update_teleport_ram(126, 106, 120)
-				end
-			elseif stage == 5 then
-				if jumpman_y > -40 then
-					update_teleport_ram(90, -78, -65)
-				else
-					update_teleport_ram(65, -30, -17)
-				end
 			end
 		end
 	end
