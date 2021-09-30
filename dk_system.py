@@ -25,13 +25,7 @@ def debounce():
 
 def is_pi():
     # Check for Raspberry Pi.  Are we running on Arm architecture?
-    try:
-        if os.uname().machine.startswith("arm"):
-            return True
-        else:
-            return False
-    except AttributeError:
-        return False
+    return "uname" in dir(os) and os.uname().machine.startswith("arm")
 
 
 def get_datetime():
@@ -39,8 +33,7 @@ def get_datetime():
 
 
 def format_datetime(datestring, suffix=""):
-    datetime_object = datetime.strptime(datestring, '%Y%m%d-%H%M%S')
-    return datetime_object.strftime(f"%d %b,%y at %H:%M{suffix}")
+    return datetime.strptime(datestring, '%Y%m%d-%H%M%S').strftime(f"%d %b,%y at %H:%M{suffix}")
 
 
 def intro_frames(climb_scene_only=False):
@@ -48,10 +41,9 @@ def intro_frames(climb_scene_only=False):
 
 
 def apply_skill(base_score):
-    score = base_score
-    if score and score.isnumeric() and 1 <= SKILL_LEVEL <= 10:
-        score = str(int(score) * SKILL_LEVEL)
-    return score
+    if base_score and base_score.isnumeric() and 1 <= SKILL_LEVEL <= 10:
+        return str(int(base_score) * SKILL_LEVEL)
+    return base_score
 
 
 def read_romlist():
@@ -103,8 +95,7 @@ def get_inp_dir(emu):
 
 def get_inp_files(emu, name, sub, num):
     # Return the 5 most recent .inp recordings for the specified rom
-    _recordings = glob(os.path.join(get_inp_dir(emu), f"{name}_{sub}_*.inp"))
-    return sorted(_recordings, reverse=True)[:num]
+    return sorted(glob(os.path.join(get_inp_dir(emu), f"{name}_{sub}_*.inp")), reverse=True)[:num]
 
 
 def build_launch_command(info, basic_mode=False, launch_plugin=None):

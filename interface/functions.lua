@@ -29,8 +29,8 @@ function int_to_bin(x)
 	return string_format("%08d", tostring(x)..ret)
 end
 
-function string:split(sep)
-	local sep, fields = sep or ":", {}
+function string:split(separator)
+	local sep, fields = separator or ",", {}
 	local pattern = string_format("([^%s]+)", sep)
 	self:gsub(pattern, function(c) fields[#fields+1] = c end)
 	return fields
@@ -40,7 +40,7 @@ function get_formatted_data(var_name)
 	-- read environment variable and convert CSV data to a table
 	local var_data = os.getenv(var_name)
 	if var_data ~= nil then
-		return var_data:split(",")
+		return var_data:split()
 	else
 		return {}
 	end

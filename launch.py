@@ -4,7 +4,7 @@ ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
  888    888  888888         8  88      888ooo8      888ooo8
  888    888  888  88o      8oooo88     888          888
 o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
-                                      by Jon Wilson (10yard)
+                                        by Jon Wilson (10yard)
 
 Main program
 ------------
@@ -260,9 +260,6 @@ def play_sound_effect(effect=None, stop=False):
 def play_intro_animation():
     play_sound_effect(effect="sounds/jump.wav")
     if SHOW_SPLASHSCREEN:
-        # Preload images
-        for _key in _s.intro_frames(climb_scene_only=True):
-            get_image(_key)
         for _key in _s.intro_frames():
             check_for_input()
             if _g.jump or _g.start or _g.skip:

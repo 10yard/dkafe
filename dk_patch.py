@@ -28,11 +28,10 @@ def apply_patches():
             for ips in ips_files:
                 name = os.path.splitext(os.path.basename(ips))[0]
                 subfolder = os.path.join(ROM_DIR, name)
-                target_zip = os.path.join(subfolder, "dkong.zip")
                 if not os.path.exists(subfolder):
                     os.mkdir(subfolder)
                     patch = Patch.load(ips)
-                    with open(target_zip, 'w+b') as f_out:
+                    with open(os.path.join(subfolder, "dkong.zip"), 'w+b') as f_out:
                         f_out.write(patch.apply(dkong_binary))
                         applied_patches_list.append(name)
     return applied_patches_list

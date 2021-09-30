@@ -14,8 +14,7 @@ Show prizes and progress in the game (optional).
 --------------------------------------------------------------
 ]]
 
-data_includes_folder = os.getenv("DATA_INCLUDES")
-package.path = package.path .. ";" .. data_includes_folder .. "/?.lua;"
+package.path = package.path .. ";" .. os.getenv("DATA_INCLUDES") .. "/?.lua;"
 require "functions"
 require "graphics"
 require "globals"
