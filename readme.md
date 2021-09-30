@@ -8,20 +8,8 @@ An arcade game launcher based on Donkey Kong, made for arcade cabinets, with inc
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
 
-### The frontend includes:
- - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
- - A rom patcher that will automatically generate hacked roms from the many included patch files.
- - Donkey Kong hacks made by me for use with the DKAFE frontend: DK Lava Panic, DK Shooter, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
- - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - MAME plugins to add functionality to some of my rom hacks and also provide a coaching mode.
- - LUA scripts to interface MAME with the frontend.
 
-### The frontend does not include:
- - Roms or information on how to obtain them.
-
-
-
-### Get DKAFE for your system
+## Get DKAFE for your system
 
 The latest releases are available to download from below.  Refer to the **How to Install** section.
 
@@ -34,9 +22,7 @@ The latest releases are available to download from below.  Refer to the **How to
 | [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.24.zip)                                                | All                                           |
 
 
-
-### About DKAFE
-
+## About DKAFE
 
 The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
@@ -59,6 +45,18 @@ If you're not up for the challenge then it is possible to adjust things and have
 The frontend can be configured to launch other emulators and roms.
 
 
+### The frontend includes:
+ - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
+ - A rom patcher that will automatically generate hacked roms from the many included patch files.
+ - Donkey Kong hacks made by me for use with the DKAFE frontend: DK Lava Panic, DK Shooter, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
+ - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
+ - MAME plugins to add functionality to some of my rom hacks and also provide a coaching mode.
+ - LUA scripts to interface MAME with the frontend.
+
+### The frontend does not include:
+ - Roms or information on how to obtain them.
+
+
 ## Automatically generated roms
 
 DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work.
@@ -71,7 +69,7 @@ All patch files are included in the **/patch folder**.
 Credit is given to the original authors below.
 
 
-#### By Jon Wilson (me)
+### By Jon Wilson (me)
  - Donkey Kong Lava Panic! (dkonglava)
  - Donkey Kong Shooter (dkongshooter)
  - DK Who and the Daleks (dkongwho)
@@ -80,7 +78,7 @@ Credit is given to the original authors below.
  - DK Springs Only (dkongspringy)
  - DK Barrels Only (dkongbarrels)
 
-#### By Paul Goes - https://donkeykonghacks.net/
+### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition (dkongcb)
  - Donkey Kong Championship Edition (dkongce)
  - Donkey Kong Randomized Edition (dkongrnd)
@@ -93,7 +91,7 @@ Credit is given to the original authors below.
  - Donkey Kong Barrelpalooza (dkongbarpal)
  - Donkey Kong 40th Anniversary Edition (dkong40)
 
-#### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
+### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix (dkongspooky)
  - Donkey Kong Christmas Remix (dkongxmas)
  - Donkey Kong Springs Trainer (dkongst2)
@@ -101,27 +99,27 @@ Credit is given to the original authors below.
  - Donkey Kong Pace (dkongpace)
  - Donkey Kong Rainbow (dkongrainbow)
 
-#### By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
+### By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
  - Donkey Kong 2 Jumpman Returns (dkongd2k)
  - Donkey Kong Foundry (dkongf)
  - Donkey Kong Barrel Control Colouring (dkongbcc)
 
-#### By Mike Mika and Clay Cowgill - http://www.multigame.com/dkp_arcade.html
+### By Mike Mika and Clay Cowgill - http://www.multigame.com/dkp_arcade.html
  - Donkey Kong Pauline Edition (dkongpe)
 
-#### By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
+### By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Killscreen Fix (dkongksfix)
 
-#### By Tim Appleton - https://www.oocities.org/wigglebeat
+### By Tim Appleton - https://www.oocities.org/wigglebeat
  - Donkey Kong Pac-Man (dkongpac)
 
-#### By Vic Twenty George
+### By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics (dkong2600)
 
-#### By Raulitokong
+### By Raulitokong
  - Donkey Kong Fireballs Only (dkongfireball)
 
-#### By others
+### By others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
  - Donkey Kong 2 Marios (dkong2m)
  - Donkey Kong Naked (dkongnad)
@@ -132,18 +130,18 @@ Credit is given to the original authors below.
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
 
 
-## Optional Plugins
+## Feature Plugins
 
-These plugins are used by DKAFE to add features to some roms.
+These plugins add extra features to some roms.
 
-#### DKCoach
+### DKCoach
 
 The coaching plugin can help you master the springs and barrels stages.
 
 [![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=ax-xDwVr7No)
 <sup>Click image to watch gameplay video</sup>
 
-#### DKChorus
+### DKChorus
 
 The chorus plugin replaces the default samples and music with acapella sounds.
 
@@ -153,7 +151,7 @@ The chorus plugin replaces the default samples and music with acapella sounds.
 
 ## DKWolf
 
-DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers.
+DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior and DK 3).
 
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
 
@@ -218,7 +216,7 @@ The settings.txt contains the emulator, rom path, controls and other configurati
 The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
 
 
-## Display Resolution
+### Display Resolution
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 
@@ -407,7 +405,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ```
 
 
-## How to use romlist.csv
+### How to use romlist.csv
 
 A default romlist.csv is provided for use with the automatically generated roms (see above).
 
