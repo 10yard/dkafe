@@ -1,17 +1,14 @@
-#
-#       ___   ___                    .--.
-#      (   ) (   )                  /    \
-#    .-.| |   | |   ___     .---.   | .`. ;    .--.
-#   /   \ |   | |  (   )   / .-, \  | |(___)  /    \
-#  |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
-#  | |  | |   | |,' /       .'`  | (   __)   |  | | |
-#  | |  | |   | .  '.      / .'| |  | |      |  |/  |
-#  | |  | |   | | `. \    | /  | |  | |      |  ' _.'
-#  | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
-#  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
-#   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
-#
-#  ---------------------------------------------------------------------------------------------
+"""
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                      by Jon Wilson (10yard)
+
+Main program
+------------
+"""
 import sys
 import dk_system as _s
 import dk_global as _g
@@ -24,7 +21,7 @@ import pickle
 
 
 def exit_program(confirm=False):
-    # Exit and prompt for confirmation if required.
+    """Exit and prompt for confirmation if required."""
     if confirm:
         open_menu(_g.exitmenu)
     else:
@@ -69,9 +66,7 @@ def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
             _g.score, _g.timer_adjust = pickle.load(f)
-    except EOFError:
-        _g.score, _g.timer_adjust = SCORE_START, 0
-    except FileNotFoundError:
+    except (EOFError, FileNotFoundError):
         _g.score, _g.timer_adjust = SCORE_START, 0
 
 
@@ -82,7 +77,7 @@ def check_patches_available():
         x_offset, y_offset = 8, 24
         write_text(f"APPLYING PATCH FILES...", font=dk_font, x=8, y=8, fg=RED)
         for i, patch in enumerate(applied_patches):
-            write_text(patch, font=dk_font, x=x_offset, y=y_offset, fg=WHITE)
+            write_text(patch, font=dk_font, x=x_offset, y=y_offset)
             update_screen(delay_ms=20)
             y_offset += 9
             if y_offset > 220:
@@ -92,7 +87,7 @@ def check_patches_available():
 
 
 def check_roms_available():
-    # Check roms are provided in the configured rom folder and warn if necessary
+    """Check roms are provided in the configured rom folder and warn if necessary."""
     if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
         clear_screen()
         for i, line in enumerate(NO_ROMS_MESSAGE):
@@ -102,7 +97,7 @@ def check_roms_available():
 
 
 def jump_to_continue():
-    # Show Jump to continue message at foot of screen and wait for button press
+    """Show Jump to continue message at foot of screen and wait for button press."""
     flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, cycles=8, clear=False)
     while True:
         check_for_input(force_exit=True)
@@ -111,7 +106,7 @@ def jump_to_continue():
 
 
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
-    # Write text to screen at given position using fg and bg colour (None for transparent)
+    """Write text to screen at given position using fg and bg colour (None for transparent)"""
     if text:
         img = font.render(text, False, fg, bg)
         w, h = img.get_width(), img.get_height()
@@ -125,7 +120,7 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
                 for point in ((_x - 2, y - 2), (_x + w, y - 2), (_x - 2, y + h), (_x + w, y + h)):
                     _g.screen.set_at(point, BLACK)
                 pygame.draw.polygon(_g.screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
-                pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)], 1)
+                pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
 
 
 def flash_message(message, x, y, cycles=6, delay_ms=50, clear=True):
@@ -139,7 +134,7 @@ def flash_message(message, x, y, cycles=6, delay_ms=50, clear=True):
 
 
 def get_image(image_key, fade=False):
-    # Load image or read prevously loaded image from the dictionary/cache
+    """Load image or read prevously loaded image from the dictionary/cache"""
     _key = image_key + str(fade)
     if _key not in _g.image_cache:
         _g.image_cache[_key] = pygame.image.load(image_key).convert_alpha()
@@ -149,7 +144,7 @@ def get_image(image_key, fade=False):
 
 
 def read_map(x, y):
-    # Return R colour value from pixel at provided x, y position on the screen map
+    """Return R colour value from pixel at provided x, y position on the screen map"""
     try:
         return _g.screen_map.get_at((int(x), int(y)))[0]
     except IndexError:
@@ -157,7 +152,7 @@ def read_map(x, y):
 
 
 def get_map_info(direction=None, x=0, y=0, platforms_only=False):
-    # Return information from map e.g. ladders and obstacles preventing movement in intended direction
+    """Return information from map e.g. ladders and obstacles preventing movement in intended direction"""
     map_info = []
     _x = int(x) if x else int(_g.xpos) + SPRITE_HALF
     _y = int(y) if y else int(_g.ypos) + SPRITE_FULL
@@ -190,7 +185,7 @@ def take_screenshot():
 
 
 def reset_all_inputs():
-    # Push KEYUP events which can be lost after calling external programs
+    """Push KEYUP events which can be lost after calling external programs"""
     _s.debounce()
     for attr, control in CONTROL_ASSIGNMENTS:
         event = pygame.event.Event(pygame.KEYUP, {'key': control})
@@ -219,7 +214,7 @@ def check_for_input(force_exit=False):
             if event.key == CONTROL_TAB:
                 open_settings_menu()
             if event.key == CONTROL_P2 and ENABLE_MENU:
-                build_menus(initial=False)
+                build_menus()
                 open_menu(_g.menu)
             if event.key == CONTROL_COIN:
                 _g.showinfo = not _g.showinfo
@@ -243,7 +238,7 @@ def check_for_input(force_exit=False):
             if button == BUTTON_EXIT:
                 exit_program(confirm=CONFIRM_EXIT and not force_exit)
             if button == BUTTON_P2 and ENABLE_MENU:
-                build_menus(initial=False)
+                build_menus()
                 open_menu(_g.menu)
             if button == BUTTON_COIN:
                 _g.showinfo = not _g.showinfo
@@ -295,9 +290,9 @@ def play_intro_animation():
                         display_slots(version_only=True)
 
                 # Title and messages
-                write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, fg=WHITE, bg=BLACK)
-                write_text(" DK ARCADE ", font=dk_font, x=69, y=0, fg=RED, bg=BLACK)
-                write_text(" FRONT END ", font=dk_font, x=69, y=8, fg=WHITE, bg=BLACK)
+                write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, bg=BLACK)
+                write_text(" DK ARCADE ", font=dk_font, x=69, fg=RED, bg=BLACK)
+                write_text(" FRONT END ", font=dk_font, x=69, y=8, bg=BLACK)
 
             show_score()
             update_screen(delay_ms=40)
@@ -308,10 +303,10 @@ def display_slots(version_only=False, logo_scene=False):
         if not version_only:
             for i, slot in enumerate(SLOTS):
                 _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
-                write_text("  ", pl_font, SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
-                write_text(str(i + 1).zfill(2), pl_font, SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK, fg=WHITE)
-        write_text(text="VERSION", font=dk_font, x=224, y=0, fg=RED, bg=BLACK, rj_adjust=True)
-        write_text(text=VERSION, font=dk_font, x=224, y=8, fg=WHITE, bg=BLACK, rj_adjust=True)
+                write_text("  ", SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
+                write_text(str(i + 1).zfill(2), SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK)
+        write_text(text="VERSION", font=dk_font, x=224, fg=RED, bg=BLACK, rj_adjust=True)
+        write_text(text=VERSION, font=dk_font, x=224, y=8, bg=BLACK, rj_adjust=True)
 
 
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
@@ -356,7 +351,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     p_des = f'${str(PLAY_COST)} TO PLAY'
                 if not _g.awarded:
                     # don't announce if Pauline already informing of an award
-                    write_text(p_des.upper(), x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+                    write_text(p_des.upper(), x=108, y=37, bg=MAGENTA, bubble=True)
                 if unlocked:
                     nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                     _g.selected = p_des
@@ -365,7 +360,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
                     # Show recording text above icon
                     if _g.timer.duration % 2 < 1:
-                        write_text("REC", x=_x, y=_y - 6, fg=WHITE, bg=RED)
+                        write_text("REC", x=_x, y=_y - 6, bg=RED)
             if _g.showinfo:
                 info_list.append((des, _x, _y, w, unlocked))
     if _g.showinfo:
@@ -377,7 +372,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
 
 def adjust_jumpman():
-    # Adjust Jumpman's vertical position with the sloping platform
+    """Adjust Jumpman's vertical position with the sloping platform"""
     for i in range(0, 10):
         map_info = get_map_info(platforms_only=True)
         if "FOOT_UNDER_PLATFORM" in map_info or "TOP_OF_ANY_LADDER" in map_info:
@@ -469,7 +464,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 
 def build_menus(initial=False):
-    # Game selection menu
+    """Game selection menu"""
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
@@ -511,7 +506,7 @@ def build_menus(initial=False):
 
 
 def build_launch_menu():
-    # Special launch menu
+    """Special launch menu"""
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
@@ -577,7 +572,7 @@ def save_menu_settings():
                             f_out.write(f"SPEED_ADJUST = {SPEED_ADJUST}\n")
                         else:
                             f_out.write(line)
-            write_text(text="  Changes have been saved  ", font=dk_font, x=0, y=232, fg=PINK, bg=RED)
+            write_text(text="  Changes have been saved  ", font=dk_font, y=232, fg=PINK, bg=RED)
             update_screen(delay_ms=750)
 
 
@@ -646,7 +641,8 @@ def shutdown_system():
 
 
 def launch_rom(info, launch_plugin=None, override_emu=None):
-    # Launch the rom using provided info.  Override is used to change emu number in case of recordings (to rec number).
+    """Launch the rom using provided info.
+       Override is used to change emu number in case of recordings (to rec number)."""
     if _g.active and info:
         sub, name, emu, rec, unlock, st3, st2, st1 = info
         if override_emu:
@@ -714,7 +710,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
 
 def playback_rom(info, inpfile):
-    # playback the specified inp file
+    """playback the specified inp file"""
     launch_command, launch_directory, competing, _ = _s.build_launch_command(info, True, False)
     if os.path.exists(launch_directory):
         close_menu()
@@ -748,15 +744,16 @@ def show_hammers():
 
 
 def show_score():
-    # Flashing 1UP, score and level
-    write_text("1UP", font=dk_font, x=25, y=0, fg=(BLACK, RED)[pygame.time.get_ticks() % 550 < 275], bg=None)
-    write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, fg=WHITE, bg=BLACK)
+    """Flashing 1UP, score and level"""
+    write_text("1UP", font=dk_font, x=25, fg=(BLACK, RED)[pygame.time.get_ticks() % 550 < 275])
+    write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, bg=BLACK)
     if _g.active:
         write_text(f"L={str(SKILL_LEVEL).zfill(2)}", font=dk_font, x=170, y=24, fg=DARKBLUE, bg=BLACK)
 
 
 def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=0):
-    # Drop a coin at x, y location, rotate sprite no, movement direction, use ladders?, coin type id, coin was awarded?
+    """Drop a coin at x, y location, rotate sprite no, movement direction, use ladders?,
+       coin type id, coin was awarded?"""
     _g.coins.append((x, y, rotate, movement, use_ladders, coin_type, awarded))
 
 
@@ -774,11 +771,11 @@ def show_timeup_animation(sprite_number, loss=0):
 
     # Display items that don't get updated in this loop
     show_score()
-    write_text(" 000", font=dk_font, x=177, y=48, fg=MAGENTA, bg=None)
+    write_text(" 000", font=dk_font, x=177, y=48, fg=MAGENTA)
     _g.screen.blit(get_image("artwork/sprite/dk0.png"), (11, 52))
 
     if loss > 0:
-        write_text(f"-{str(loss)}", x=_g.xpos, y=_g.ypos - 10, fg=WHITE, bg=RED, box=True)
+        write_text(f"-{str(loss)}", x=_g.xpos, y=_g.ypos - 10, bg=RED, box=True)
 
     animate_rolling_coins(out_of_time=True)
     update_screen()
@@ -790,7 +787,7 @@ def process_interrupts():
     # Start up messages from Pauline
     if not _g.lastmove and not display_icons(detect_only=True):
         message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY or BASIC_MODE)]
-        write_text(message[int(_g.timer.duration) % len(message)], x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+        write_text(message[int(_g.timer.duration) % len(message)], x=108, y=37, bg=MAGENTA, bubble=True)
     show_score()
 
     # Bonus timer
@@ -828,7 +825,7 @@ def process_interrupts():
             _g.timer_adjust = 0
             music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
-    write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour, bg=None)
+    write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour)
 
     if _g.awarded:
         # Animate DK grabbing the trophy
@@ -882,7 +879,7 @@ def process_interrupts():
 
 
 def get_prize_placing(awarded):
-    # Return the awarded prize placing e.g. "1", "1st"
+    """Return the awarded prize placing e.g. '1', '1st'"""
     place = 3 - AWARDS.index(awarded)
     return place, PRIZE_PLACINGS[place]
 
@@ -893,7 +890,7 @@ def animate_rolling_coins(out_of_time=False):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
         if co_awarded:
             place, place_text = get_prize_placing(co_awarded)
-            write_text(f"YOU WON {place_text} PRIZE!", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+            write_text(f"YOU WON {place_text} PRIZE!", x=108, y=37, bg=MAGENTA, bubble=True)
             _g.awarded = co_awarded
             _g.lastaward = _g.timer.duration
 
@@ -937,7 +934,7 @@ def inactivity_check():
         else:
             lines = (INSTRUCTION, CONTROLS)[pause_mod > 12000]
             for i, line in enumerate(lines.split("\n")):
-                write_text(line + (" " * 28), x=0, y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
+                write_text(line + (" " * 28), y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
         show_score()
         if _g.active:
             _g.timer.stop()
@@ -979,7 +976,7 @@ def teleport_between_hammers():
                 _g.ypos = 188 - (92 - _g.ypos)
                 _g.teleport_ticks = pygame.time.get_ticks()
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
-            write_text("TELEPORT JUMP!", x=108, y=37, fg=WHITE, bg=MAGENTA, bubble=True)
+            write_text("TELEPORT JUMP!", x=108, y=37, bg=MAGENTA, bubble=True)
 
 
 def main(initial=True):

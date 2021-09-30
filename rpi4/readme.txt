@@ -1,18 +1,12 @@
-      ___   ___                    .--.
-     (   ) (   )                  /    \
-   .-.| |   | |   ___     .---.   | .`. ;    .--.
-  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
- |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
- | |  | |   | |,' /       .'`  | (   __)   |  | | |
- | |  | |   | .  '.      / .'| |  | |      |  |/  |
- | |  | |   | | `. \    | /  | |  | |      |  ' _.'
- | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
- ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade
-  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                        by Jon Wilson (10yard)
 
------------------------------------------------------------------------------------
- Raspberry Pi 4 Install.  This readme file is bundled with the binary release ZIP.
------------------------------------------------------------------------------------
+Raspberry Pi 4 Install Steps
+----------------------------
 
 1. Format a new SD Card,  minimum 4GB size
 2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.

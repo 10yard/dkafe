@@ -10,11 +10,11 @@ An arcade game launcher based on Donkey Kong, made for arcade cabinets, with inc
 
 ### The frontend includes:
  - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
- - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - A rom patcher that will automatically generate hacked roms from the many included patch files.
- - LUA scripts to interface MAME with the frontend.
  - Donkey Kong hacks made by me for use with the DKAFE frontend: DK Lava Panic, DK Shooter, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
+ - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - MAME plugins to add functionality to some of my rom hacks and also provide a coaching mode.
+ - LUA scripts to interface MAME with the frontend.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.

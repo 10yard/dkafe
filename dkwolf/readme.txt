@@ -1,18 +1,12 @@
-      ___   ___                    .--.
-     (   ) (   )                  /    \
-   .-.| |   | |   ___     .---.   | .`. ;    .--.
-  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
- |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
- | |  | |   | |,' /       .'`  | (   __)   |  | | |
- | |  | |   | .  '.      / .'| |  | |      |  |/  |
- | |  | |   | | `. \    | /  | |  | |      |  ' _.'
- | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
- ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
-  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                        by Jon Wilson (10yard)
 
---------------------------------------------------------------------------------
- Notes on DKWolf
---------------------------------------------------------------------------------
+Notes on DKWolf
+---------------
 
 DKWolf is a custom build of WolfMAME (v0.196) built for DKAFE which supports only Donkey Kong drivers.
 It a lightweight emulator less than 15mb size.
@@ -66,9 +60,9 @@ Build time was less than 10 minutes!
 For making a lightweight build to support multiple drivers:
   SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/pacman.cpp,src/mame/drivers/galaga.cpp etc..
 
-----------------------------------------------------------------------------------------------
- Raspberry Pi
-----------------------------------------------------------------------------------------------
+
+Raspberry Pi
+------------
 Compiling on Raspberry Pi 4:
 
 Use Raspberry Pi Imager to write "Raspberry Pi Desktop" to an SD card and boot it up.

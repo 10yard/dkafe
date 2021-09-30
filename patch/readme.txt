@@ -1,18 +1,12 @@
-      ___   ___                    .--.
-     (   ) (   )                  /    \
-   .-.| |   | |   ___     .---.   | .`. ;    .--.
-  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
- |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
- | |  | |   | |,' /       .'`  | (   __)   |  | | |
- | |  | |   | .  '.      / .'| |  | |      |  |/  |
- | |  | |   | | `. \    | /  | |  | |      |  ' _.'
- | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
- ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
-  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                        by Jon Wilson (10yard)
 
---------------------------------------------------------------------------------
- Notes on automatically generating roms from .ips patch files
---------------------------------------------------------------------------------
+Notes on automatically generating roms from .ips patch files
+------------------------------------------------------------
 
 DKAFE builds the default frontend using patches of the original "dkong.zip" (US Set 1) arcade rom.
 
@@ -78,14 +72,17 @@ By Others
  - Donkey Kong Japan (dkongjapan)
 
 
----- Creating patches
+Creating patches
+----------------
 
 To make a complete patch file for a hack you need to:
  1. add/replace all files related to the hack into a copy of dkong.zip (you may need to rename some files so that they overwrite originals.  It should be obvious when the files are replacements.)
  2. use IPS patch tool to create a patch of the differences between original dkong.zip and the modified dkong.zip
  3. save the .ips file to patch folder
 
----- Converting old zips other than those already included
+
+Notes on converting older rom hacks for use with dkafe
+------------------------------------------------------
 
 dkong.zip files from early versions of mame make use of different file names.  Archive filenames should be renamed as follows.  Filenames can differ for some hacks.
 
@@ -102,9 +99,20 @@ dk.5e to c_5et_g.bin
 dk.3f to s_3j_b.bin
 dk.3h to s_3i_b.bin
 
---------------------------------------------------------------------------------
- Notes on making the DK Pies Hack
---------------------------------------------------------------------------------
+
+Notes on memory offsets
+-----------------------
+
+The main program code is split across 4 files:
+
+0x0000-0fff is stored in c_5et_g.bin
+0x1000-1fff is stored in c_5ct_g.bin
+0x2000-2fff is stored in c_5bt_g.bin
+0x3000-3fff is stored in c_5at_g.bin
+
+
+Notes on making the DK Pies Hack
+--------------------------------
 
 Changes made to regular dkong rom to make it pies only.
 

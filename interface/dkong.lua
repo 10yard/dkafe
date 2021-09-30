@@ -1,22 +1,17 @@
 --[[
-#      ___   ___                    .--.
-#     (   ) (   )                  /    \
-#   .-.| |   | |   ___     .---.   | .`. ;    .--.
-#  /   \ |   | |  (   )   / .-, \  | |(___)  /    \
-# |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
-# | |  | |   | |,' /       .'`  | (   __)   |  | | |
-# | |  | |   | .  '.      / .'| |  | |      |  |/  |
-# | |  | |   | | `. \    | /  | |  | |      |  ' _.'
-# | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
-# ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
-#  `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                        by Jon Wilson (10yard)
 
- DKAFE Interface for Donkey Kong
-------------------------------------------------------------------------------------------------
- Set target score, registered player names and player scores.
- Dump highscore to file when finished.
- Show prizes and progress in the game (optional).
-------------------------------------------------------------------------------------------------
+Interface routine for Donkey Kong
+--------------------------------------------------------------
+Set target score, registered player names and player scores.
+Dump highscore to file when finished.
+Show prizes and progress in the game (optional).
+--------------------------------------------------------------
 ]]
 
 data_includes_folder = os.getenv("DATA_INCLUDES")

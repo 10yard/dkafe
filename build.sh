@@ -1,5 +1,5 @@
 #
-#  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
+#  DKAFE by Jon Wilson (10yard)
 #
 # ----------------------------------------------------------------------------------------------
 #  Build and package the Raspberry Pi binary release

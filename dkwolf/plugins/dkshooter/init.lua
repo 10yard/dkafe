@@ -40,8 +40,8 @@ function dkshooter.startplugin()
 	
 	local ship_y = -8
 	local ship_x = 48
-	local missile_y = nil
-	local missile_x = nil	
+	local missile_y
+	local missile_x	
 	local bonus = 0
 	local hit_count = 0
 	local last_bonus = 0

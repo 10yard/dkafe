@@ -1,3 +1,10 @@
+# ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+#  888    88o  888  o88        888       888          888
+#  888    888  888888         8  88      888ooo8      888ooo8
+#  888    888  888  88o      8oooo88     888          888
+# o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+#                                          by Jon Wilson (10yard)
+#
 # Front End Features
 FREE_PLAY = 0
 UNLOCK_MODE = 1
@@ -25,7 +32,7 @@ EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID>
 # DKWolf/Interface Settings
 CREDITS = 1
 AUTOSTART = 1
-SKIP_INTRO = 1
+ALLOW_SKIP_INTRO = 1
 ALLOW_COIN_TO_END_GAME = 1
 SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1

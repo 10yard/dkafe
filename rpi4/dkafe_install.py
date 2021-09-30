@@ -1,36 +1,32 @@
-#
-#       ___   ___                    .--.
-#      (   ) (   )                  /    \
-#    .-.| |   | |   ___     .---.   | .`. ;    .--.
-#   /   \ |   | |  (   )   / .-, \  | |(___)  /    \
-#  |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
-#  | |  | |   | |,' /       .'`  | (   __)   |  | | |
-#  | |  | |   | .  '.      / .'| |  | |      |  |/  |
-#  | |  | |   | | `. \    | /  | |  | |      |  ' _.'
-#  | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
-#  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
-#   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
-#
-# ----------------------------------------------------------------------------------------------
-#  Install program for Raspberry Pi4
-# ----------------------------------------------------------------------------------------------
-#  Invoked from install_script.sh after installing binary files to /home/pi/dkafe_bin folder
-#  This program handles optional setup items by prompting user.
-#
-#  The recommended setup is to answer "y" to the following questions:
-#  1) Rotate the display
-#  2) Launch DKAFE on boot
-#  3) Hide startup messages
-#  4) Hide the Pi taskbar
-#  5) Hide the Pi desktop
-#  6) Hide the Pi mouse cursor
-#  7) Use headphone jack for audio
-#  8) Force 640x480 mode on boot (for scan line generators)
-#  9) Map GPIO to keyboard input controls
-#  10) Disable non-essential Services
-#  11) Disable networking services (WiFi, SSH)
-#  12) Reboot now
-# ----------------------------------------------------------------------------------------------
+"""
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                        by Jon Wilson (10yard)
+
+Install program for Raspberry Pi4
+---------------------------------
+
+Invoked from install_script.sh after installing binary files to /home/pi/dkafe_bin folder
+This program handles optional setup items by prompting user.
+
+The recommended setup is to answer "y" to the following questions:
+  1) Rotate the display
+  2) Launch DKAFE on boot
+  3) Hide startup messages
+  4) Hide the Pi taskbar
+  5) Hide the Pi desktop
+  6) Hide the Pi mouse cursor
+  7) Use headphone jack for audio
+  8) Force 640x480 mode on boot (for scan line generators)
+  9) Map GPIO to keyboard input controls
+  10) Disable non-essential Services
+  11) Disable networking services (WiFi, SSH)
+  12) Reboot now
+"""
+
 import os
 AUTOSTART_FILE = "/etc/xdg/lxsession/LXDE-pi/autostart"
 AUTOSTART_FILE_BU = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP"

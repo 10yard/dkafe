@@ -1,19 +1,16 @@
-#
-#       ___   ___                    .--.
-#      (   ) (   )                  /    \
-#    .-.| |   | |   ___     .---.   | .`. ;    .--.
-#   /   \ |   | |  (   )   / .-, \  | |(___)  /    \
-#  |  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ;
-#  | |  | |   | |,' /       .'`  | (   __)   |  | | |
-#  | |  | |   | .  '.      / .'| |  | |      |  |/  |
-#  | |  | |   | | `. \    | /  | |  | |      |  ' _.'
-#  | '  | |   | |   \ \   ; |  ; |  | |      |  .'.-.
-#  ' `-'  /   | |    \ .  ' `-'  |  | |      '  `-' /  Donkey Kong Arcade Frontend
-#   `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'   by Jon Wilson
-#
-#  ---------------------------------------------------------------------------------------------
+"""
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                        by Jon Wilson (10yard)
+
+MAME Interface routines
+-----------------------
+"""
 import os
-from dk_config import ROOT_DIR, AWARDS, CREDITS, AUTOSTART, ALLOW_SKIP_INTRO, ALLOW_COIN_TO_END_GAME
+from dk_config import ROOT_DIR, AWARDS
 from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")

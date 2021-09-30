@@ -1,5 +1,5 @@
 echo
-echo  D  K  A  F  E  -  Donkey Kong Arcade Frontend by Jon Wilson
+echo  DKAFE by Jon Wilson (10yard)
 echo
 echo -----------------------------------------------------------------------------------------------
 echo  Build and package the Windows XP binary release
