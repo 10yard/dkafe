@@ -2,7 +2,7 @@
 
 ## Donkey Kong Arcade Frontend
 
-An arcade game launcher based on Donkey Kong, made for arcade cabinets, with incentives to play and unlock arcade games.  It comes bundled with features and ready to go.  You just need to provide your own dkong.zip.  
+An arcade game launcher based on Donkey Kong with incentives to play and unlock arcade games.  It comes bundled with features and ready to go.  You just need to provide your own dkong.zip.  
 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
@@ -15,18 +15,18 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Operating System                              |
 | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [dkafe_win64_binary_v0.24.zip](https://github.com/10yard/dkafe/releases/download/v0.24/dkafe_win64_binary_v0.24.zip) | Windows 64 bit (x64) systems                  |
-| [dkafe_win32_binary_v0.24.zip](https://github.com/10yard/dkafe/releases/download/v0.24/dkafe_win32_binary_v0.24.zip) | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
-| [dkafe_winxp_binary_v0.24.zip](https://github.com/10yard/dkafe/releases/download/v0.24/dkafe_winxp_binary_v0.24.zip) | Windows XP only                               |
-| [dkafe_rpi4_binary_v0.23.zip](https://github.com/10yard/dkafe/releases/download/v0.23/dkafe_rpi4_binary_v0.23.zip)   | Raspberry Pi 4 and 400 only                   |
-| [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.24.zip)                                                | All                                           |
+| [dkafe_win64_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_win64_binary_v0.25.zip) | Windows 64 bit (x64) systems                  |
+| [dkafe_win32_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_win32_binary_v0.25.zip) | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
+| [dkafe_winxp_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_winxp_binary_v0.25.zip) | Windows XP only                               |
+| [dkafe_rpi4_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_rpi4_binary_v0.25.zip)   | Raspberry Pi 4 and 400 only                   |
+| [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.25.zip)                                                | All                                           |
 
 
 ## About DKAFE
 
 The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
-The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically for this frontend. 
+The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically by me for this frontend. 
 
 The built-in reward system will payout coins when you play well.  Earning coins will allow you to unlock and play more machines.
 
@@ -47,11 +47,10 @@ The frontend can be configured to launch other emulators and roms.
 
 ### The frontend includes:
  - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
- - A rom patcher that will automatically generate hacked roms from the many included patch files.
- - Donkey Kong hacks made by me for use with the DKAFE frontend: DK Lava Panic, DK Shooter, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
+ - A rom patcher that automatically generates hacked roms from the many included patch files.
+ - Donkey Kong hacks made by me for use with this frontend: DK Lava Panic, DK Shooter, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - MAME plugins to add functionality to some of my rom hacks and also provide a coaching mode.
- - LUA scripts to interface MAME with the frontend.
+ - MAME plugins and scripts interface MAME with the frontend and add cool features to rom hacks such as a coaching/learning mode.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -149,7 +148,7 @@ The chorus plugin replaces the default samples and music with acapella sounds.
 <sup>Click image to watch gameplay video</sup>
 
 
-## DKWolf
+## DKWolf Emulator
 
 DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior and DK 3).
 
@@ -164,30 +163,25 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 ### Windows
 
 1. Download the latest DKAFE binary release for your version of Windows and extract contents to a folder.
-
 2. Run "launch.exe".
 
 
 ### Raspberry Pi
 
 1. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool to an SD Card.
-
 2. Extract contents of the DKAFE Binary Release Zip to the boot partition of the SD card.
-
 3. Copy dkong.zip to the boot partition of the SD card.  Roms are not provided.
-
 4. Verify that your /boot partition contains these files before continuing:
 ```  
      dkafe_bin
      dkafe_install.sh
      dkong.zip
-```
-	 
+```	 
 5. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
-
 6. Run the install script in a terminal.
+```
      /boot/dkafe_install.sh
-
+```
 7. The assisted setup will ask the following questions.
 ```	 
 	 Rotate the display?
@@ -433,17 +427,14 @@ Otherwise, my recommendations are:
 
 ### For Windows
 
-1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.
-
+1. Mame v0.196 to v0.135 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against these versions.
 2. Wolfmame (for competition/recording) from https://github.com/mahlemiut/wolfmame/releases/
-
 3. HB Mame (Dedicated to hacks and homebrew) from https://www.progettosnaps.net/hbmame/
 
 
 ### For Raspberry Pi (Model 4)
 
-1. Mame v0.196 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
-
+1. Mame v0.196 to v0.135 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
 2. Advance Mame from https://www.advancemame.it/download
   
 

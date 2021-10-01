@@ -71,7 +71,7 @@ Recommand to change the desktop resolution to 640x480
 sudo apt-get update
 sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default python3-pip
 
-# Get wolfmame source
+# Get wolfmame source (you can grab the latest version if preferred)
 wget https://github.com/mahlemiut/wolfmame/archive/wolf196.zip
 unzip wolf196
 
