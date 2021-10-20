@@ -4,19 +4,19 @@ local db
 
 local function check_db(msg)
 	if db:errcode() > sql.OK then
-		emu.print_error("Error: " .. msg .. " (" .. db:errcode() .. " - " .. db:errmsg() .. ")\n")
+		emu.print_error(string.format("Error: %s (%s - %s)\n", msg, db:errcode(), db:errmsg()))
 	end
 end
 
 do
-	local dbpath = lfs.env_replace(mame_manager:ui():options().entries.historypath:value():match("([^;]+)"))
+	local dbpath = emu.subst_env(mame_manager.ui.options.entries.historypath:value():match("([^;]+)"))
 	db = sql.open(dbpath .. "/history.db")
 	if not db then
 		lfs.mkdir(dbpath)
 		db = sql.open(dbpath .. "/history.db")
 		if not db then
 			emu.print_error("Unable to create history.db\n")
-			return nil
+			return false
 		end
 		check_db("opening database")
 	end
@@ -38,4 +38,4 @@ end
 local dbtable = { prepare = function(...) return db:prepare(...) end,
 		  exec = function(...) return db:exec(...) end, ROW = sql.ROW, check = check_db }
 
-return db and dbtable or nil
+return db and dbtable or false

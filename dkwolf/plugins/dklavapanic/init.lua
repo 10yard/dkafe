@@ -34,23 +34,21 @@ function dklavapanic.startplugin()
 	function initialize()
 		mame_version = tonumber(emu.app_version())
 		if mame_version >= 0.227 then
-			cpu = manager.machine.devices[":maincpu"]
-			scr = manager.machine.screens[":screen"]
+			mac = manager.machine
 		elseif mame_version >= 0.196 then
-			cpu = manager:machine().devices[":maincpu"]
-			scr = manager:machine().screens[":screen"]
+			mac = manager:machine()
 		else
-			print("--------------------------------------------------------------")
-			print("The dklavapanic plugin requires MAME version 0.196 or greater.")
-			print("--------------------------------------------------------------")
+			print("ERROR: The dklavapanic plugin requires MAME version 0.196 or greater.")
 		end
-		if cpu ~= nil then
+		if mac ~= nil then
+			scr = mac.screens[":screen"]
+			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
-			change_text()
+			change_title()
 		end
 	end
 
-	function change_text()
+	function change_title()
 		-- Change high score text in rom to LAVA PANIC
 		for k, i in pairs({0x1c,0x11,0x26,0x11,0x10,0x20,0x11,0x1e,0x19,0x13}) do
 			mem:write_direct_u8(0x36b4 + k - 1, i)

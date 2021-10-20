@@ -12,14 +12,23 @@ Global variables
 
 -- Memory/state
 ---------------------------------------------------------------
-machine = manager:machine()
-ports = machine:ioport().ports
-video = machine:video()
-screen = machine.screens[":screen"]
-cpu = machine.devices[":maincpu"]
-mem = cpu.spaces["program"]
-soundcpu = machine.devices[":soundcpu"]
-soundmem = soundcpu.spaces["data"]
+mame_version = tonumber(emu.app_version())
+if mame_version >= 0.227 then
+	mac = manager.machine
+elseif mame_version >= 0.196 then
+	mac = manager:machine()
+else
+	print("ERROR: The dkcoach plugin requires MAME version 0.196 or greater.")
+end
+if mac ~= nil then
+	ports = mac.ioport.ports
+	video = mac.video
+	screen = mac.screens[":screen"]
+	cpu = mac.devices[":maincpu"]
+	mem = cpu.spaces["program"]
+	soundcpu = mac.devices[":soundcpu"]			
+	soundmem = soundcpu.spaces["data"]
+end
 
 -- Options data
 ---------------------------------------------------------------

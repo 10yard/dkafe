@@ -427,14 +427,14 @@ Otherwise, my recommendations are:
 
 ### For Windows
 
-1. Mame v0.196 to v0.135 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against these versions.
+1. Mame v0.196 to v0.236 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against these versions.
 2. Wolfmame (for competition/recording) from https://github.com/mahlemiut/wolfmame/releases/
 3. HB Mame (Dedicated to hacks and homebrew) from https://www.progettosnaps.net/hbmame/
 
 
 ### For Raspberry Pi (Model 4)
 
-1. Mame v0.196 to v0.135 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
+1. Mame v0.196 to v0.236 from https://www.mamedev.org/ . LUA interface and plugins are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
 2. Advance Mame from https://www.advancemame.it/download
   
 
@@ -467,19 +467,18 @@ The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replac
 
 I wanted to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
-I frequently play the original Donkey Kong and aim to improve on my high score of 255,120.  I need to master those springs!
+I frequently play the original Donkey Kong and aim to improve on my high score of 266,500.  I need to master those springs!
 
 
 ## What's next?
 
- - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs a bit more work too.
+ - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs more work too.
  - Add more cab friendly features including a test screen for player controls and a welcome screen to set the initial frontend settings.
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Update the old "Donkey Kong 2600 Graphics" hack, replacing regular Kong for Gingerbread Kong.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
  - Maybe extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
-
  
 ## Thanks to
 

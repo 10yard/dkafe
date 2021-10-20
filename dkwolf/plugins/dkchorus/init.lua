@@ -28,20 +28,19 @@ function dkchorus.startplugin()
 	function initialize()
 		mame_version = tonumber(emu.app_version())
 		if mame_version >= 0.227 then
-			cpu = manager.machine.devices[":maincpu"]
-			soundcpu = manager.machine.devices[":soundcpu"]
+			mac = manager.machine
 		elseif mame_version >= 0.196 then
-			cpu = manager:machine().devices[":maincpu"]
-			soundcpu = manager:machine().devices[":soundcpu"]
+			mac = manager:machine()
 		else
-			print("------------------------------------------------------------")
-			print("The dkchorus plugin requires MAME version 0.196 or greater.")
-			print("------------------------------------------------------------")
+			print("ERROR: The dkchorus plugin requires MAME version 0.196 or greater.")
 		end
-		if cpu ~= nil then
-			play("donkeykong")
+		if mac ~= nil then
+			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
-			soundmem = soundcpu.spaces["data"]
+			s_cpu = mac.devices[":soundcpu"]			
+			s_mem = s_cpu.spaces["data"]
+		
+			play("donkeykong")
 		end
 	end
 
@@ -137,7 +136,7 @@ function dkchorus.startplugin()
 	function clear_sounds()
 		-- clear music on soundcpu
 		for key=0, 32 do
-			soundmem:write_u8(0x0 + key, 0x00)
+			s_mem:write_u8(0x0 + key, 0x00)
 		end
 				
 		-- clear soundfx buffer (retain the walking 0x6080 sound)

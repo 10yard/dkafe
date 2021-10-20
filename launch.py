@@ -32,7 +32,7 @@ def exit_program(confirm=False):
                 with open('save.p', 'wb') as f:
                     pickle.dump([_g.score, _g.timer_adjust], f)
                 break
-            except Exception:
+            except (EOFError, FileNotFoundError, IOError):
                 pygame.time.delay(250 * attempt)
         pygame.quit()
         sys.exit()
@@ -66,7 +66,7 @@ def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
             _g.score, _g.timer_adjust = pickle.load(f)
-    except (EOFError, FileNotFoundError):
+    except (EOFError, FileNotFoundError, IOError):
         _g.score, _g.timer_adjust = SCORE_START, 0
 
 

@@ -124,17 +124,15 @@ function dkwho.startplugin()
 	function initialize()
 		mame_version = tonumber(emu.app_version())
 		if mame_version >= 0.227 then
-			cpu = manager.machine.devices[":maincpu"]
-			scr = manager.machine.screens[":screen"]
+			mac = manager.machine
 		elseif mame_version >= 0.196 then
-			cpu = manager:machine().devices[":maincpu"]
-			scr = manager:machine().screens[":screen"]
+			mac = manager:machine()
 		else
-			print("--------------------------------------------------------")
-			print("The dkwho plugin requires MAME version 0.196 or greater.")
-			print("--------------------------------------------------------")
+			print("ERROR: The dkwho plugin requires MAME version 0.196 or greater.")
 		end
-		if cpu ~= nil then
+		if mac ~= nil then
+			scr = mac.screens[":screen"]
+			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
 
 			--Generate a starfield

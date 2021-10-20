@@ -2,7 +2,7 @@
 "plugin": {
 "name": "dkshooter",
 "description": "Donkey Kong Shooter",
-"version": "0.1",
+"version": "0.2",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
 "start": "false"
