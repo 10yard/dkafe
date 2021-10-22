@@ -1,7 +1,7 @@
 -- DK SHOOTER with Galaga theme
 -- by Jon Wilson (10yard)
 --
--- Tested with latest MAME version 0.235
+-- Tested with latest MAME version 0.236
 -- Compatible with MAME versions from 0.196
 --
 -- Jumpman is assisted by an accompanying ship which can take out barrels, fireballs, firefoxes, pies and springs.  
@@ -42,11 +42,13 @@ function dkshooter.startplugin()
 	local missile_x	
 	local bonus = 0
 	local pickup = false
-	local custom_sound = false
 	local hit_count = 0
 	local last_bonus = 0
 	local last_hit_cleanup = 0
 	local last_starfield = 0
+	local name_entry = 0
+	local started = false
+	local end_of_level = false
 	
 	local enemy_data = 
 		{0x6700, 0x6720, 0x6740, 0x6760, 0x6780, 0x67a0, 0x67c0, 0x67e0, 
@@ -105,6 +107,7 @@ function dkshooter.startplugin()
 	pickup_table[4] = {8, 192}
 	
 	function initialize()
+		play("load")	
 		mame_version = tonumber(emu.app_version())
 		if mame_version >= 0.227 then
 			mac = manager.machine
@@ -120,7 +123,6 @@ function dkshooter.startplugin()
 			s_cpu = mac.devices[":soundcpu"]			
 			s_mem = s_cpu.spaces["data"]
 
-			play("load")	
 			change_title()
 			
 			--Generate a starfield
@@ -139,7 +141,7 @@ function dkshooter.startplugin()
 		if cpu ~= nil then
 			local mode2 = mem:read_u8(0x600a)
 			local stage = mem:read_u8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets
-				
+							
 			-- Do not allow alternating 1UP, 2UP style gameplay.  We have a co-op mode for 2 players.
 			if mem:read_u8(0x600f) == 1 then
 				play_mode = 2
@@ -152,30 +154,50 @@ function dkshooter.startplugin()
 			
 			draw_stars()			
 			
-			-- Alternative "How high can you get" intro sound
-			if mode2 == 0x07 and mem:read_u8(0xc638e) > 10 then
-				clear_sounds()
-				if not custom_sound then
-					stop()
-					play("start")
-					custom_sound = true
+			-- Alternative coin entry sound
+			if mode2 == 0x01 then
+				started = false
+				if	mem:read_u8(0x6083) == 2 then
+					clear_sounds()
+					play("coin")
 				end
-			else
-				custom_sound = false
 			end
-						
+			
+			-- Alternative intro music
+			if mode2 == 0x07 then
+				if mem:read_u8(0x608a) == 1 then
+					clear_sounds()
+					if not started then
+						play("start")
+					end
+					started = true
+				end
+			end
+			
+			-- Ship appears on the how high screen
+			if mode2 == 0xa then
+				draw_ship(24, 160, 1)
+				if started then
+					stop(start)
+					started = false
+				end
+			end
+									
 			-- During gameplay
 			---------------------------------------------------------------------------------
 			if mode2 == 0xc or mode2 == 0xb or mode2 == 0xd then
 				local jumpman_x = mem:read_u8(0x6203) - 15
 				local jumpman_y = mem:read_u8(0x6205)
-				local left, right, fire = get_inputs()		
+				local left, right, fire = get_inputs()
+				local clock = os.clock()
+				
 				if mode2 == 0xb then
-					-- reset ship, missiles, pickup and bonus
+					-- reset some things
+					pickup = false
 					ship_x = 230
 					missile_y = nil
 					bonus = 0
-					pickup = false
+					name_entry = 0
 				elseif mode2 == 0xc then
 					-- adjust ship y with jumpman when at screen bottom
 					ship_y = 230 - jumpman_y
@@ -242,7 +264,7 @@ function dkshooter.startplugin()
 											-- destroy a fireball, firefox or pie
 											mem:write_u8(address + 6, 1)   -- flag an unused address for later cleanup								
 											mem:write_u8(address+7, 0x53)  -- switch to blank sprites										
-											last_hit_cleanup = os.clock()
+											last_hit_cleanup = clock
 											missile_y = missile_y + 10     -- move missile further to prevent double-hit
 										elseif address >= 0x6500 and address < 0x65a0 then
 											-- destory a spring, err, move the spring off screen
@@ -277,7 +299,7 @@ function dkshooter.startplugin()
 											mem:write_u8(0x6a31, sprite)
 											mem:write_u8(0x6a32, 0x07)
 											mem:write_u8(0x6a33, 256 - missile_y)
-											last_bonus = os.clock()
+											last_bonus = clock
 										
 											--update score in ram
 											score = string.format("%06d", tonumber(get_score_segment(0x60b4)..get_score_segment(0x60b3)..get_score_segment(0x60b2)) + bonus)
@@ -301,7 +323,7 @@ function dkshooter.startplugin()
 					end
 					
 					-- Clean up any destroyed fireballs
-					if os.clock() - last_hit_cleanup > 0.25 then
+					if clock - last_hit_cleanup > 0.25 then
 						for _, address in pairs(enemy_data) do
 							if mem:read_u8(address + 6) == 1 then
 								mem:write_u8(address, 0)
@@ -312,7 +334,7 @@ function dkshooter.startplugin()
 					end
 									
 					-- clear awarded point sprites
-					if last_bonus ~= 0 and os.clock() - last_bonus > 1 then
+					if last_bonus ~= 0 and clock - last_bonus > 1 then
 						mem:write_u8(0x6a30, 0x0)
 						last_bonus = 0
 					end
@@ -322,6 +344,30 @@ function dkshooter.startplugin()
 					end
 				end
 			end
+			
+			-- Alternative end of level music
+			if mode2 == 0x16 then
+				if mem:read_u8(0x608a) == 12 then
+					clear_sounds()
+					if not end_of_level then
+						play("level")
+					end
+					end_of_level = true
+				end
+			end
+						
+			-- Alternative name entry music
+			if mode2 == 0x15 then
+				clear_sounds()
+				if name_entry == 0 then
+					name_entry = 1
+					play("name")
+				end
+			end
+			if mode2 == 0x14 and name_entry == 1 then
+				stop("name")
+				name_entry = 2
+			end			
 		end
 	end
 
@@ -424,6 +470,7 @@ function dkshooter.startplugin()
 		-- draw the starfield background
 		local _starfield = starfield
 	  	local _ypos, _xpos, _col = 0, 0, 0xff000000
+		local clock = os.clock()
 		
 		for key=1, number_of_stars, 3 do
 			_ypos, _xpos, _col = _starfield[key], _starfield[key+1], _starfield[key+2]
@@ -431,7 +478,7 @@ function dkshooter.startplugin()
 			version_draw_box(_ypos, _xpos, _ypos+1, _xpos+1, _col, _col)
 
 			--do we regenerate the starfield colours
-			if os.clock() - last_starfield > 0.15 then
+			if clock - last_starfield > 0.15 then
 
 				_col = 0xff000000
 				if math.random(4) >= 2 then
@@ -449,8 +496,8 @@ function dkshooter.startplugin()
 			end
 		end
 
-		if os.clock() - last_starfield > 0.15 then
-			last_starfield = os.clock()
+		if clock - last_starfield > 0.15 then
+			last_starfield = clock
 		end
 
 	end
@@ -510,7 +557,6 @@ function dkshooter.startplugin()
 	function play(sound, volume)
 		volume = volume or 100
 		io.popen("start "..sounder_path.." /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkshooter/sounds/"..sound..".wav")
-		return os.clock()
 	end
 	
 	function stop()

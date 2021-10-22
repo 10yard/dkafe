@@ -51,7 +51,6 @@ sudo cp roms/---* dist/roms
 # create minimal dkwolf folder
 sudo mkdir dist/dkwolf
 sudo cp dkwolf/dkwolfrpi dist/dkwolf
-sudo cp dkwolf/playback.bat dist/dkwolf
 sudo cp -r dkwolf/*.txt dist/dkwolf
 sudo cp -r dkwolf/*.md dist/dkwolf
 sudo cp -r dkwolf/plugins dist/dkwolf

@@ -1,6 +1,6 @@
 -- DK Coach by Jon Wilson (10yard)
 --
--- Tested with latest MAME versions 0.235 and 0.196
+-- Tested with latest MAME version 0.236
 -- Compatible with MAME versions from 0.196
 -- Use P2 to toggle the helpfulness setting between 3 (Max), 2 (Min) and 1 (None)
 --
@@ -96,28 +96,22 @@ function dkcoach.startplugin()
 
 	function initialize()
 		mame_version = tonumber(emu.app_version())
-				
 		if mame_version >= 0.227 then
-			maincpu = manager.machine.devices[":maincpu"]
-			screen = manager.machine.screens[":screen"]
-			video = manager.machine.video
-			ports = manager.machine.ioport.ports
-			soundcpu = manager.machine.devices[":soundcpu"]
+			mac = manager.machine
 		elseif mame_version >= 0.196 then
-			maincpu = manager:machine().devices[":maincpu"]
-			screen = manager:machine().screens[":screen"]
-			video = manager:machine():video()
-			ports = manager:machine():ioport().ports			
-			soundcpu = manager:machine().devices[":soundcpu"]
+			mac = manager:machine()
 		else
-			print("----------------------------------------------------------")
-			print("The dkcoach plugin requires MAME version 0.196 or greater.")
-			print("----------------------------------------------------------")
+			print("ERROR: The dkcoach plugin requires MAME version 0.196 or greater.")
 		end
-		if maincpu ~= nil then
+		if mac ~= nil then
+			screen = mac.screens[":screen"]
+			maincpu = mac.devices[":maincpu"]
 			mem = maincpu.spaces["program"]
+			soundcpu = mac.devices[":soundcpu"]			
 			soundmem = soundcpu.spaces["data"]
-			
+			video = mac.video
+			ports = mac.ioport.ports
+
 			data_credits = os.getenv("DATA_CREDITS")
 			data_autostart = os.getenv("DATA_AUTOSTART")
 			data_allow_skip_intro = os.getenv("DATA_ALLOW_SKIP_INTRO")

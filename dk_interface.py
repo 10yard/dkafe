@@ -118,8 +118,6 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
                 os.environ["ROM_SCORES"] = ""
                 os.environ["RAM_HIGH"] = ""
             if subfolder == "dkongbarpal":
-                # do not autostart as this seems to impact the randomness
-                os.environ["DATA_AUTOSTART"] = "0"
                 # do not overwrite the author information in the non-standard score table of Barrelpalooza
                 os.environ["RAM_PLAYERS"] = "0xc610f,0xc6110,0xc6111,0xc6131,0xc6132,0xc6133,0xc6153,0xc6154,0xc6155,0xc6175,0xc6176,0xc6177"
                 os.environ["DATA_PLAYERS"] = "16,16,16,16,16,16,16,16,16,16,16,16"
@@ -150,7 +148,7 @@ def get_award(rom, score3, score2, score1):
                 return AWARDS[0]  # Got 3rd prize award
             else:
                 return 0  # Got nothing
-    except Exception:
+    except (EOFError, FileNotFoundError, IOError):
         return 0
     return 0
 

@@ -1,6 +1,6 @@
 -- DK Lava Panic! by Jon Wilson (10yard)
 --
--- Tested with latest MAME versions 0.235 and 0.196
+-- Tested with latest MAME version 0.236
 -- Compatible with MAME versions from 0.196
 --
 -- Minimum start up arguments:
