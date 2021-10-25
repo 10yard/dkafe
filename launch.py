@@ -14,7 +14,7 @@ import dk_system as _s
 import dk_global as _g
 from dk_config import *
 from dk_interface import get_award, format_K
-from dk_patch import apply_patches
+from dk_patch import apply_patches, validate_rom
 from random import randint
 from subprocess import Popen
 import pickle
@@ -71,18 +71,28 @@ def load_frontend_state():
 
 
 def check_patches_available():
-    applied_patches = apply_patches()
-    if applied_patches:
-        clear_screen()
-        x_offset, y_offset = 8, 24
-        write_text(f"APPLYING PATCH FILES...", font=dk_font, x=8, y=8, fg=RED)
-        for i, patch in enumerate(applied_patches):
-            write_text(patch, font=dk_font, x=x_offset, y=y_offset)
-            update_screen(delay_ms=20)
-            y_offset += 9
-            if y_offset > 220:
-                x_offset, y_offset = 120, 24
-        flash_message("ALL GOOD!", x=8, y=232, cycles=4, clear=False)
+    if validate_rom():
+        applied_patches = apply_patches()
+        if applied_patches:
+            clear_screen()
+            x_offset, y_offset = 8, 24
+            write_text(f"APPLYING PATCH FILES...", font=dk_font, x=8, y=8, fg=RED)
+            for i, patch in enumerate(applied_patches):
+                write_text(patch, font=dk_font, x=x_offset, y=y_offset)
+                update_screen(delay_ms=20)
+                y_offset += 9
+                if y_offset > 220:
+                    x_offset, y_offset = 120, 24
+            flash_message("ALL GOOD!", x=8, y=232, cycles=4, clear=False)
+            jump_to_continue()
+    else:
+        write_text(f"ERROR WITH DONKEY KONG ROM", font=dk_font, x=8, y=8, fg=RED)
+        write_text(f"Your DKONG.ZIP file is not", font=dk_font, x=8, y=33)
+        write_text(f"valid. Please fix and retry", font=dk_font, x=8, y=42)
+        write_text(f"The zip should contain ONLY", font=dk_font, x=8, y=60)
+        write_text(f"the following 15 files:", font=dk_font, x=8, y=69)
+        for i in range(0, 15):
+            write_text(f" · {ROM_CONTENT[i][0].ljust(12)}", font=dk_font, x=8, y=87+(i*9))
         jump_to_continue()
 
 

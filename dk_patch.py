@@ -12,7 +12,14 @@ Automatically generate roms from .ips patch files
 import os
 from ips_util import Patch
 from glob import glob
-from dk_config import ROM_DIR, DKONG_ZIP, PATCH_DIR
+import hashlib
+from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP
+
+
+def validate_rom():
+    """Validate MD5 matches the expected value"""
+    buffer = open(DKONG_ZIP, 'rb').read()
+    return hashlib.md5(buffer).hexdigest() == "a13e81d6ef342d763dc897fe03893392"
 
 
 def apply_patches():

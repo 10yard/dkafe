@@ -240,6 +240,24 @@ NO_ROMS_MESSAGE = [
     "DKONG.ZIP   IS REQUIRED",
     "DKONGJR.ZIP IS OPTIONAL"]
 
+ROM_CONTENT = [
+    ("c-2j.bpr", 256),
+    ("c-2k.bpr", 256),
+    ("c_5at_g.bin", 4096),
+    ("c_5bt_g.bin", 4096),
+    ("c_5ct_g.bin", 4096),
+    ("c_5et_g.bin", 4096),
+    ("l_4m_b.bin", 2048),
+    ("l_4n_b.bin", 2048),
+    ("l_4r_b.bin", 2048),
+    ("l_4s_b.bin", 2048),
+    ("s_3i_b.bin", 2048),
+    ("s_3j_b.bin", 2048),
+    ("v-5e.bpr", 256),
+    ("v_3pt.bin", 2048),
+    ("v_5h_b.bin", 2048),
+]
+
 INSTRUCTION = """
 
 Donkey Kong has captured
