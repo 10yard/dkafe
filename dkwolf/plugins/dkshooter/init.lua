@@ -108,14 +108,15 @@ function dkshooter.startplugin()
 	
 	function initialize()
 		play("load")	
-		mame_version = tonumber(emu.app_version())
-		if mame_version >= 0.227 then
-			mac = manager.machine
-		elseif mame_version >= 0.196 then
-			mac = manager:machine()
+		if tonumber(emu.app_version()) >= 0.196 then
+			if type(manager.machine) == "userdata" then
+				mac = manager.machine
+			else
+				mac =  manager:machine()
+			end			
 		else
 			print("ERROR: The dkshooter plugin requires MAME version 0.196 or greater.")
-		end
+		end						
 		if mac ~= nil then
 			scr = mac.screens[":screen"]
 			cpu = mac.devices[":maincpu"]
@@ -145,7 +146,9 @@ function dkshooter.startplugin()
 			-- Do not allow alternating 1UP, 2UP style gameplay.  We have a co-op mode for 2 players.
 			if mem:read_u8(0x600f) == 1 then
 				play_mode = 2
-				mem:write_direct_u8(0x600f, 0)
+				mem:write_direct_u8(0x600d, 0x00)
+				mem:write_direct_u8(0x600e, 0x00)
+				mem:write_direct_u8(0x600f, 0x00)
 			end
 			
 			if play_mode == 2 then
@@ -401,34 +404,25 @@ function dkshooter.startplugin()
 		return left, right, fire
 	end
 
-	function version_draw_box(y1, x1, y2, x2, c1, c2)
-		-- Handle the version specific syntax of draw_box
-		if mame_version >= 0.227 then
-			scr:draw_box(y1, x1, y2, x2, c2, c1)
-		else
-			scr:draw_box(y1, x1, y2, x2, c1, c2)
-		end
-	end
-
 	function draw_missile(y, x)
-		version_draw_box(y+4, x-1, y+6, x+2, 0xff0000ff, 0xff0000ff)
-		version_draw_box(y, x, y+4, x+1, 0xffff0000, 0xffff0000)
-		version_draw_box(y+4, x, y+5, x+1, 0xffffffff, 0xffffffff)
-		version_draw_box(y+5, x, y+8, x+1, 0xff0000ff, 0xff0000ff)
+		scr:draw_box(y+4, x-1, y+6, x+2, 0xff0000ff, 0xff0000ff)
+		scr:draw_box(y, x, y+4, x+1, 0xffff0000, 0xffff0000)
+		scr:draw_box(y+4, x, y+5, x+1, 0xffffffff, 0xffffffff)
+		scr:draw_box(y+5, x, y+8, x+1, 0xff0000ff, 0xff0000ff)
 	end
 
 	function draw_pickup(y, x)
-		version_draw_box(y+3, x, y+12, x+7, WHITE, WHITE)
-		version_draw_box(y+2, x+1, y+3, x+6, WHITE, WHITE)
-		version_draw_box(y+1, x+2, y+2, x+5, WHITE, WHITE)
-		version_draw_box(y, x+3, y+1, x+4, WHITE, WHITE)
-		version_draw_box(y+6, x, y+8, x+7, RED, RED)
-		version_draw_box(y+9, x, y+11, x+7, RED, RED)
-		version_draw_box(y+4, x+1, y+5, x+2, BLUE, BLUE)
-		version_draw_box(y+3, x+2, y+4, x+3, BLUE, BLUE)
-		version_draw_box(y+2, x+3, y+3, x+4, BLUE, BLUE)
-		version_draw_box(y+3, x+4, y+4, x+5, BLUE, BLUE)
-		version_draw_box(y+4, x+5, y+5, x+6, BLUE, BLUE)
+		scr:draw_box(y+3, x, y+12, x+7, WHITE, WHITE)
+		scr:draw_box(y+2, x+1, y+3, x+6, WHITE, WHITE)
+		scr:draw_box(y+1, x+2, y+2, x+5, WHITE, WHITE)
+		scr:draw_box(y, x+3, y+1, x+4, WHITE, WHITE)
+		scr:draw_box(y+6, x, y+8, x+7, RED, RED)
+		scr:draw_box(y+9, x, y+11, x+7, RED, RED)
+		scr:draw_box(y+4, x+1, y+5, x+2, BLUE, BLUE)
+		scr:draw_box(y+3, x+2, y+4, x+3, BLUE, BLUE)
+		scr:draw_box(y+2, x+3, y+3, x+4, BLUE, BLUE)
+		scr:draw_box(y+3, x+4, y+4, x+5, BLUE, BLUE)
+		scr:draw_box(y+4, x+5, y+5, x+6, BLUE, BLUE)
 
 	end
 
@@ -437,33 +431,33 @@ function dkshooter.startplugin()
 		-- _y, _x relates to bottom left corner
 		local _y = y
 		local _x = x - 7
-		version_draw_box(_y+2, _x+6, _y+13, _x+9, WHITE, WHITE)
-		version_draw_box(_y, _x+7, _y+16, _x+8, WHITE, WHITE)
-		version_draw_box(_y+3, _x+3, _y+8, _x+12, WHITE, WHITE)
-		version_draw_box(_y+8, _x+5, _y+9, _x+10, WHITE, WHITE)
-		version_draw_box(_y+2, _x+7, _y+3, _x+9, WHITE, WHITE)		
-		version_draw_box(_y, _x, _y+8, _x+1, WHITE, WHITE)
-		version_draw_box(_y, _x+14, _y+8, _x+15, WHITE, WHITE)
-		version_draw_box(_y+1, _x+1, _y+4, _x+2, WHITE, WHITE)
-		version_draw_box(_y+2, _x+2, _y+5, _x+3, WHITE, WHITE)
-		version_draw_box(_y+1, _x+13, _y+4, _x+14, WHITE, WHITE)
-		version_draw_box(_y+2, _x+12, _y+5, _x+13, WHITE, WHITE)
-		version_draw_box(_y+6, _x, _y+8, _x+1, RED, RED)
-		version_draw_box(_y+6, _x+14, _y+8, _x+15, RED, RED)
-		version_draw_box(_y+6, _x+14, _y+8, _x+15, RED, RED)
-		version_draw_box(_y+8, _x+3, _y+10, _x+4, RED, RED)
-		version_draw_box(_y+8, _x+11, _y+10, _x+12, RED, RED)
-		version_draw_box(_y+1, _x+4, _y+3, _x+6, RED, RED)
-		version_draw_box(_y+1, _x+9, _y+3, _x+11, RED, RED)
-		version_draw_box(_y+3, _x+5, _y+4, _x+6, RED, RED)
-		version_draw_box(_y+3, _x+9, _y+4, _x+10, RED, RED)
-		version_draw_box(_y+5, _x+6, _y+7, _x+7, RED, RED)
-		version_draw_box(_y+6, _x+7, _y+8, _x+8, RED, RED)
-		version_draw_box(_y+5, _x+8, _y+7, _x+9, RED, RED)
-		version_draw_box(_y+6, _x+3, _y+7, _x+4, BLUE, BLUE)
-		version_draw_box(_y+7, _x+4, _y+8, _x+5, BLUE, BLUE)
-		version_draw_box(_y+6, _x+11, _y+7, _x+12, BLUE, BLUE)
-		version_draw_box(_y+7, _x+10, _y+8, _x+11, BLUE, BLUE)
+		scr:draw_box(_y+2, _x+6, _y+13, _x+9, WHITE, WHITE)
+		scr:draw_box(_y, _x+7, _y+16, _x+8, WHITE, WHITE)
+		scr:draw_box(_y+3, _x+3, _y+8, _x+12, WHITE, WHITE)
+		scr:draw_box(_y+8, _x+5, _y+9, _x+10, WHITE, WHITE)
+		scr:draw_box(_y+2, _x+7, _y+3, _x+9, WHITE, WHITE)		
+		scr:draw_box(_y, _x, _y+8, _x+1, WHITE, WHITE)
+		scr:draw_box(_y, _x+14, _y+8, _x+15, WHITE, WHITE)
+		scr:draw_box(_y+1, _x+1, _y+4, _x+2, WHITE, WHITE)
+		scr:draw_box(_y+2, _x+2, _y+5, _x+3, WHITE, WHITE)
+		scr:draw_box(_y+1, _x+13, _y+4, _x+14, WHITE, WHITE)
+		scr:draw_box(_y+2, _x+12, _y+5, _x+13, WHITE, WHITE)
+		scr:draw_box(_y+6, _x, _y+8, _x+1, RED, RED)
+		scr:draw_box(_y+6, _x+14, _y+8, _x+15, RED, RED)
+		scr:draw_box(_y+6, _x+14, _y+8, _x+15, RED, RED)
+		scr:draw_box(_y+8, _x+3, _y+10, _x+4, RED, RED)
+		scr:draw_box(_y+8, _x+11, _y+10, _x+12, RED, RED)
+		scr:draw_box(_y+1, _x+4, _y+3, _x+6, RED, RED)
+		scr:draw_box(_y+1, _x+9, _y+3, _x+11, RED, RED)
+		scr:draw_box(_y+3, _x+5, _y+4, _x+6, RED, RED)
+		scr:draw_box(_y+3, _x+9, _y+4, _x+10, RED, RED)
+		scr:draw_box(_y+5, _x+6, _y+7, _x+7, RED, RED)
+		scr:draw_box(_y+6, _x+7, _y+8, _x+8, RED, RED)
+		scr:draw_box(_y+5, _x+8, _y+7, _x+9, RED, RED)
+		scr:draw_box(_y+6, _x+3, _y+7, _x+4, BLUE, BLUE)
+		scr:draw_box(_y+7, _x+4, _y+8, _x+5, BLUE, BLUE)
+		scr:draw_box(_y+6, _x+11, _y+7, _x+12, BLUE, BLUE)
+		scr:draw_box(_y+7, _x+10, _y+8, _x+11, BLUE, BLUE)
 	end
 
 	function draw_stars()
@@ -475,7 +469,7 @@ function dkshooter.startplugin()
 		for key=1, number_of_stars, 3 do
 			_ypos, _xpos, _col = _starfield[key], _starfield[key+1], _starfield[key+2]
 					
-			version_draw_box(_ypos, _xpos, _ypos+1, _xpos+1, _col, _col)
+			scr:draw_box(_ypos, _xpos, _ypos+1, _xpos+1, _col, _col)
 
 			--do we regenerate the starfield colours
 			if clock - last_starfield > 0.15 then

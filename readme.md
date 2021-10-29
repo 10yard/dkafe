@@ -72,6 +72,7 @@ Credit is given to the original authors below.
  - Donkey Kong Lava Panic! (dkonglava)
  - Donkey Kong Shooter (dkongshooter)
  - DK Who and the Daleks (dkongwho)
+ - Konkey Dong (dkongkonkey)
  - DK Pies Only (dkongpies)
  - DK Rivets Only (dkongrivets)
  - DK Springs Only (dkongspringy)

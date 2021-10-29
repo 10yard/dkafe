@@ -136,6 +136,7 @@ DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 PLUGINS = [
   ("dkonglava", "dklavapanic"),
   ("dkongshooter", "dkshooter"),
+  ("dkongkonkey", "konkeydong"),
   ("dkongwho", "dkwho")]
 
 # Roms that are compatible with my plugins
@@ -240,23 +241,27 @@ NO_ROMS_MESSAGE = [
     "DKONG.ZIP   IS REQUIRED",
     "DKONGJR.ZIP IS OPTIONAL"]
 
-ROM_CONTENT = [
-    ("c-2j.bpr", 256),
-    ("c-2k.bpr", 256),
-    ("c_5at_g.bin", 4096),
-    ("c_5bt_g.bin", 4096),
-    ("c_5ct_g.bin", 4096),
-    ("c_5et_g.bin", 4096),
-    ("l_4m_b.bin", 2048),
-    ("l_4n_b.bin", 2048),
-    ("l_4r_b.bin", 2048),
-    ("l_4s_b.bin", 2048),
-    ("s_3i_b.bin", 2048),
-    ("s_3j_b.bin", 2048),
-    ("v-5e.bpr", 256),
-    ("v_3pt.bin", 2048),
-    ("v_5h_b.bin", 2048),
-]
+INVALID_ROM_MESSAGE = [
+    "ERROR WITH DONKEY KONG ROM", "",
+    "Your DKONG.ZIP file is not",
+    "valid. Please replace it.", "",
+    "The zip should contain the",
+    "following 15 files only:", "",
+    "  · c_5at_g.bin",
+    "  · c_5bt_g.bin",
+    "  · c_5ct_g.bin",
+    "  · c_5et_g.bin",
+    "  · c-2j.bpr",
+    "  · c-2k.bpr",
+    "  · l_4m_b.bin",
+    "  · l_4n_b.bin",
+    "  · l_4r_b.bin",
+    "  · l_4s_b.bin",
+    "  · s_3i_b.bin",
+    "  · s_3j_b.bin",
+    "  · v_3pt.bin",
+    "  · v_5h_b.bin",
+    "  · v-5e.bpr"]
 
 INSTRUCTION = """
 

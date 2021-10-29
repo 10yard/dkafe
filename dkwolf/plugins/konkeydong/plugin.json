@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "konkeydong",
+"description": "Konkey Dong",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}
