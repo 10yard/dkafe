@@ -34,8 +34,6 @@ function dkshooter.startplugin()
 	-- 1) Single player mode:  mirrors Jumpman's movements
 	-- 2) Co-op mode:  the ship is controlled by player 2 using "P1 Start", "P2 Start" and "Coin".
 	local play_mode = 1
-	local sounder_path = "plugins/dkshooter/bin/sounder.exe"
-	
 	local ship_y = -10
 	local ship_x = 230
 	local missile_y
@@ -105,8 +103,9 @@ function dkshooter.startplugin()
 	pickup_table[2] = {8, 208}
 	pickup_table[3] = {48, 212}
 	pickup_table[4] = {8, 192}
-	
+
 	function initialize()
+		is_pi = is_pi()
 		play("load")	
 		if tonumber(emu.app_version()) >= 0.196 then
 			if type(manager.machine) == "userdata" then
@@ -548,13 +547,25 @@ function dkshooter.startplugin()
 		end
 	end
 	
+	function is_pi()
+		return package.config:sub(1,1) == "/"
+	end
+	
 	function play(sound, volume)
 		volume = volume or 100
-		io.popen("start "..sounder_path.." /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkshooter/sounds/"..sound..".wav")
+		if is_pi then
+			io.popen("aplay -q plugins/dkshooter/sounds/"..sound..".wav")
+		else
+			io.popen("start plugins/dkshooter/bin/sounder.exe /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkshooter/sounds/"..sound..".wav")
+		end
 	end
 	
 	function stop()
-		io.popen("start "..sounder_path.." /stop")
+		if is_pi then
+			io.popen("killall -q aplay")
+		else
+			io.popen("start plugins/dkshooter/bin/sounder.exe /stop")
+		end
 	end
 	
 	emu.register_start(function()
