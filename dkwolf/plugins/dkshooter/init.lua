@@ -22,7 +22,7 @@
 
 local exports = {}
 exports.name = "dkshooter"
-exports.version = "0.2"
+exports.version = "0.21"
 exports.description = "Donkey Kong Shooter"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -126,7 +126,7 @@ function dkshooter.startplugin()
 			change_title()
 			
 			--Generate a starfield
-			number_of_stars = 390 -- (130 x 3)
+			number_of_stars = 375 -- (125 x 3)
 			starfield={}
 			math.randomseed(os.time())
 			for _=1, number_of_stars do

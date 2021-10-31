@@ -512,7 +512,7 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
-        show_coach, show_chorus = sub in COACH_FRIENDLY, sub in CHORUS_FRIENDLY and not _s.is_pi()
+        show_coach, show_chorus = sub in COACH_FRIENDLY, sub in CHORUS_FRIENDLY
         inps = _s.get_inp_files(emu, name, sub, 12 - show_coach - show_chorus)
 
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
