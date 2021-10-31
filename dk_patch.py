@@ -18,8 +18,11 @@ from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP
 
 def validate_rom():
     """Validate MD5 matches the expected value"""
-    buffer = open(DKONG_ZIP, 'rb').read()
-    return hashlib.md5(buffer).hexdigest() == "a13e81d6ef342d763dc897fe03893392"
+    if os.path.exists(DKONG_ZIP):
+        buffer = open(DKONG_ZIP, 'rb').read()
+        return hashlib.md5(buffer).hexdigest() == "a13e81d6ef342d763dc897fe03893392"
+    else:
+        return True
 
 
 def apply_patches():
