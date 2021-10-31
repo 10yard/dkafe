@@ -1,4 +1,5 @@
--- Konkey Dong
+-- Konkey Dong Plugin for MAME/WolfMAME
+-- by Jon Wilson (10yard)
 --
 -- Tested with latest MAME version 0.236
 -- Compatible with MAME versions from 0.196
@@ -16,12 +17,14 @@ exports.author = { name = "Jon Wilson (10yard)" }
 local konkeydong = exports
 
 function konkeydong.startplugin()
+	local BLACK, RED = 0xff000000, 0xffE8070A
 	local flipped = false
+	local reposition = false
 	local char_table = {}
-	local BLACK = 0xff000000
-	local RED = 0xffE8070A
 
 	function initialize()
+		-- MAME LUA machine initialisation
+		-- Handles historic changes to back to MAME v0.196 release
 		if tonumber(emu.app_version()) >= 0.196 then
 			if type(manager.machine) == "userdata" then
 				mac = manager.machine
@@ -37,6 +40,7 @@ function konkeydong.startplugin()
 		else
 			print("ERROR: The konkeydong plugin requires MAME version 0.196 or greater.")
 		end				
+		
 		if tgt ~= nil then
 			scr = mac.screens[":screen"]
 			cpu = mac.devices[":maincpu"]
@@ -45,7 +49,6 @@ function konkeydong.startplugin()
 			char_table = build_character_table()
 		end
 	end
-	
 	
 	function main()
 		if scr ~= nil and mem ~= nil then
@@ -61,6 +64,23 @@ function konkeydong.startplugin()
 				mem:write_direct_u8(0x600d, 0x00)
 				mem:write_direct_u8(0x600e, 0x00)
 				mem:write_direct_u8(0x600f, 0x00)
+			end
+			
+			if stage == 2 then
+				if mode == 0xb then
+					reposition = false
+				elseif mode == 0xc then
+					-- Jumpman dies on pies if he drops off the bottom of screen
+					if mem:read_u8(0x6205) >= 247 then
+						mem:write_u8(0xc6200, 0)
+					end
+					-- Move jumpman start position on pies
+					if not reposition then
+						mem:write_u8(0x694c, 30)
+						mem:write_u8(0x6203, 30)
+						reposition = true
+					end
+				end
 			end
 			
 			if stage == 1 and ((mode >= 0x0b and mode <= 0x0d) or (mode >=02 and mode <= 0x04) or  mode == 0x10 or mode == 0x16) then
@@ -101,7 +121,7 @@ function konkeydong.startplugin()
 				-- Flip Jumpman's lives graphics and move to opposite side of screen
 				write_graphics(0x7503, "       ")
 				lives = (mem:read_u8(0x6228))
-				for i=1, lives do
+				for i=1, lives-1 do
 					mem:write_u8(0x7443 + (i*0x20), 0xfa)
 				end
 								
@@ -259,7 +279,7 @@ function konkeydong.startplugin()
 		c["a"] = 0x9b
 		c["m"] = 0x9c
 		c["v"] = 0x9d
-
+		
 		-- The following 4 characters make the BONUS graphic
 		c["<"] = 0xb9
 		c[">"] = 0xba

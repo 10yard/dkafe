@@ -1,13 +1,15 @@
 -- Donkey Kong Chorus by Jon Wilson (10yard)
 --
--- Tested with latest MAME versions 0.235 and 0.196
+-- Tested with latest MAME versions 0.236 and 0.196
 -- Compatible with MAME versions from 0.196
 --
 -- DK sounds are replaced with chorus singers.  The sounds were taken from this video:
 -- https://youtu.be/BsfkXoJHyKc
 --
--- External sounds were realised using "sounder" by Eli Fulkerston:
+-- External sounds on Windows systems using "sounder" by Eli Fulkerston:
 -- https://download.elifulkerson.com/files/sounder/
+--
+-- External sounds on Raspberry Pi using "aplay".
 --
 -- Minimum start up arguments:
 --   mame dkong -plugin dkchorus
@@ -15,7 +17,7 @@
 
 local exports = {}
 exports.name = "dkchorus"
-exports.version = "0.11"
+exports.version = "0.12"
 exports.description = "Donkey Kong Chorus"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -23,17 +25,19 @@ local dkchorus = exports
 
 function dkchorus.startplugin()
 	local last_jump,last_bonus,last_bg,last_dead,last_walk,last_hammer,last_smash = 0,0,0,0,0,0,0
-	local sounder_path = "plugins/dkchorus/bin/sounder.exe"
 	
 	function initialize()
-		mame_version = tonumber(emu.app_version())
-		if mame_version >= 0.227 then
-			mac = manager.machine
-		elseif mame_version >= 0.196 then
-			mac = manager:machine()
+		is_pi = is_pi()
+		if tonumber(emu.app_version()) >= 0.196 then
+			if type(manager.machine) == "userdata" then
+				mac = manager.machine
+			else
+				mac =  manager:machine()
+			end			
 		else
 			print("ERROR: The dkchorus plugin requires MAME version 0.196 or greater.")
-		end
+		end						
+
 		if mac ~= nil then
 			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
@@ -123,14 +127,26 @@ function dkchorus.startplugin()
 		end
 	end
 
+	function is_pi()
+		return package.config:sub(1,1) == "/"
+	end
+	
 	function play(sound, volume)
 		volume = volume or 100
-		io.popen("start "..sounder_path.." /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkchorus/sounds/"..sound..".wav")
+		if is_pi then
+			io.popen("aplay -q plugins/dkchorus/sounds/"..sound..".wav &")
+		else
+			io.popen("start plugins/dkchorus/bin/sounder.exe /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkchorus/sounds/"..sound..".wav")
+		end
 		return os.clock()
 	end
 	
 	function stop()
-		io.popen("start "..sounder_path.." /stop")
+		if is_pi then
+			io.popen("pkill aplay &")
+		else
+			io.popen("start plugins/dkchorus/bin/sounder.exe /stop")
+		end
 	end
 	
 	function clear_sounds()

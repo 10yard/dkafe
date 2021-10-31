@@ -554,7 +554,7 @@ function dkshooter.startplugin()
 	function play(sound, volume)
 		volume = volume or 100
 		if is_pi then
-			io.popen("aplay -q plugins/dkshooter/sounds/"..sound..".wav")
+			io.popen("aplay -q plugins/dkshooter/sounds/"..sound..".wav &")
 		else
 			io.popen("start plugins/dkshooter/bin/sounder.exe /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkshooter/sounds/"..sound..".wav")
 		end
@@ -562,7 +562,7 @@ function dkshooter.startplugin()
 	
 	function stop()
 		if is_pi then
-			io.popen("killall -q aplay")
+			io.popen("pkill aplay &")
 		else
 			io.popen("start plugins/dkshooter/bin/sounder.exe /stop")
 		end
