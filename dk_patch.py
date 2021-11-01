@@ -12,23 +12,49 @@ Automatically generate roms from .ips patch files
 import os
 from ips_util import Patch
 from glob import glob
+import shutil
 import hashlib
 from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP
+
+FIX_ALTERNATIVE_MD5 = "f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", \
+                      "aa282b72ac409793b36780c99b26d07b", "e883b4225a76a79f38cf1db7c340aa8e"
 
 
 def validate_rom():
     """Validate MD5 matches the expected value"""
     if os.path.exists(DKONG_ZIP):
         buffer = open(DKONG_ZIP, 'rb').read()
-        return hashlib.md5(buffer).hexdigest() == "a13e81d6ef342d763dc897fe03893392"
+        md5 = hashlib.md5(buffer).hexdigest()
+        if md5 == "a13e81d6ef342d763dc897fe03893392":
+            # ZIP is verified
+            return True
+        elif md5 in FIX_ALTERNATIVE_MD5:
+            # ZIP has a recognised MD5 and can be converted using patch file
+            alt_zip = os.path.join(ROM_DIR, f"dkong_{md5}.zip")
+            shutil.copy(DKONG_ZIP, alt_zip)
+            if os.path.exists(alt_zip):
+                # Read the alternative ZIP binary
+                with open(alt_zip, 'rb') as f_in:
+                    alt_binary = f_in.read()
+                ips = os.path.join(PATCH_DIR, f"fix_{md5}.ips")
+                if os.path.exists(ips):
+                    # Apply patch and write the fixed DKONG.ZIP to roms
+                    patch = Patch.load(ips)
+                    with open(DKONG_ZIP, 'w+b') as f_out:
+                        f_out.write(patch.apply(alt_binary))
+                    return True
+            return False
+        else:
+            return False
     else:
+        # No rom file so a verification error not is returned
         return True
 
 
 def apply_patches():
     applied_patches_list = []
     if os.path.exists(DKONG_ZIP):
-        ips_files = glob(os.path.join(PATCH_DIR, "*.ips"))
+        ips_files = glob(os.path.join(PATCH_DIR, "dkong*.ips"))
         if ips_files:
             # Read the original ZIP binary
             with open(DKONG_ZIP, 'rb') as f_in:
