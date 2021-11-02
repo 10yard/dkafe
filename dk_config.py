@@ -140,8 +140,8 @@ PLUGINS = [
   ("dkongwho", "dkwho")]
 
 # Roms that are compatible with my plugins
-COACH_FRIENDLY = ["", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongbcc"]
-CHORUS_FRIENDLY = ["", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongbcc", "dkongrivets", "dkongrnd",
+COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongbcc"]
+CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongbcc", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpe", "dkongfr", "dkongl05", "dkongce", "dkongrev"]
 
 # Colours
@@ -152,7 +152,7 @@ BROWN = (172, 5, 7)
 CYAN = (20, 243, 255)
 MAGENTA = (236, 49, 148)
 WHITE = (254, 252, 255)
-PINK = (255, 188, 160)
+PINK = (255, 210, 190)
 GREY = (128, 128, 128)
 DARKBLUE = (4, 2, 220)
 
@@ -229,8 +229,8 @@ JUMP_SHORTEN = 1.25
 
 # In game messages and instructions
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
-COIN_INFO = ['HEY JUMPMAN!', '', 'COLLECT COINS', 'TO PLAY GAMES', '', 'PUSH COIN', 'FOR GAME INFO', '']
-FREE_INFO = ['HEY JUMPMAN!', '', 'ALL MACHINES', 'ARE FREE TO PLAY', '', 'PUSH COIN', 'FOR GAME INFO', '']
+COIN_INFO = ['Hey Jumpman!', '', 'You must collect coins...', 'to unlock more games', '', 'Push COIN for game info', '']
+FREE_INFO = ['Hey Jumpman!', '', 'All arcades are free to play', '', 'Push COIN to for game info', '']
 
 NO_ROMS_MESSAGE = [
     "NO ROMS WERE FOUND!", "",
@@ -309,11 +309,11 @@ Down     and down ladders.
 Jump   — Launch machine that
          Jumpman is facing.
 
-P1     - Call up launch menu
-         for machine that
-         Jumpman is facing.
+P1     - Show launch options
+         for machine that 
+         Jumpman is facing
           
-P2     — Call up the quick
+P2     — Call up a quick
          access game list
 
 Coin   - Show game info

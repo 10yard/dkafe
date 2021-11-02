@@ -39,6 +39,8 @@ SHOW_AWARD_TARGETS = 1
 SHOW_HUD = 1
 
 # Controls
+# NOTE: These controls apply to the DKAFE frontend only.  
+# If you change controls here then you should also change controls in your emulator menu (accessed using tab key).
 CONTROL_LEFT = left
 CONTROL_RIGHT = right
 CONTROL_UP = up
@@ -51,7 +53,6 @@ CONTROL_COIN = 5
 CONTROL_EXIT = escape
 CONTROL_SETTINGS = tab
 
-# Notes:
-# If DKWolf emulation is slow then try changing "-video gdi" to "-video opengl" in OPTIONS above.
+#
 # For a complete list of settings visit - https://github.com/10yard/dkafe#frontend-settings
 #

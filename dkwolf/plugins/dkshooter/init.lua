@@ -22,7 +22,7 @@
 
 local exports = {}
 exports.name = "dkshooter"
-exports.version = "0.21"
+exports.version = "0.22"
 exports.description = "Donkey Kong Shooter"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -330,7 +330,11 @@ function dkshooter.startplugin()
 							if mem:read_u8(address + 6) == 1 then
 								mem:write_u8(address, 0)
 								mem:write_u8(address + 6, 0)
-								mem:write_u8(address + 7, 0x4d)							
+								if stage == 1 or stage == 2 then
+									mem:write_u8(address + 7, 0x3d)
+								else
+									mem:write_u8(address + 7, 0x4d)
+								end
 							end
 						end
 					end

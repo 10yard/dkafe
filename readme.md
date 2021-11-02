@@ -139,6 +139,7 @@ These plugins add extra features to some roms.
 The coaching plugin can help you master the springs and barrels stages.
 
 [![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=ax-xDwVr7No)
+
 <sup>Click image to watch gameplay video</sup>
 
 ### DKChorus
@@ -146,6 +147,7 @@ The coaching plugin can help you master the springs and barrels stages.
 The chorus plugin replaces the default samples and music with acapella sounds.
 
 [![DKChorus](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
+
 <sup>Click image to watch gameplay video</sup>
 
 
@@ -215,7 +217,9 @@ The romlist.csv contains information about the roms, which slot they should appe
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 
-The command line argument `-view "Pixel Aspect (7:8)"` is used by default to override MAME's default 4:3 aspect.
+The OPTION `-view "Pixel Aspect (7:8)"` is used by default to override MAME's default 4:3 aspect.  
+
+If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to fill the screen.
 
 
 ### Frontend Settings
@@ -361,6 +365,9 @@ CONTROL_EXIT = escape
 CONTROL_SETTINGS = tab
 CONTROL_SNAP = F12
 ```
+
+IMPORTANT NOTE: The controls configured in the frontend do not apply to the emulator.  If your controls are not default then you will also have to configure your controls in the emulator menu (tab). 
+
 
 #### Joystick Controls
 

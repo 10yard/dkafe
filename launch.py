@@ -112,20 +112,27 @@ def jump_to_continue():
 
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
     """Write text to screen at given position using fg and bg colour (None for transparent)"""
+
     if text:
         img = font.render(text, False, fg, bg)
         w, h = img.get_width(), img.get_height()
         _x = x - w + rj_adjust if rj_adjust else x
         _g.screen.blit(img, (_x, y))
         if box or bubble:
-            pygame.draw.line(_g.screen, bg, (_x - 1, y - 1), (_x + w, y - 1))
-            pygame.draw.rect(_g.screen, fg, (_x - 2, y - 2, w + 3, h + 3), 1)
+            # fill missing parts of box inside
+            pygame.draw.line(_g.screen, bg, (_x - 1, y - 1), (_x + w - 1, y - 1))
             pygame.draw.line(_g.screen, bg, (_x - 1, y), (_x - 1, y + 5))
+
+            # draw box outline
+            pygame.draw.line(_g.screen, fg, (_x - 1, y - 2), (_x + w - 1, y - 2))
+            pygame.draw.line(_g.screen, fg, (_x - 1, y + h), (_x + w - 1, y + h))
+            pygame.draw.line(_g.screen, fg, (_x - 2, y - 1), (_x - 2, y + h - 1))
+            pygame.draw.line(_g.screen, fg, (_x + w, y - 1), (_x + w, y + h - 1))
+
             if bubble:
-                for point in ((_x - 2, y - 2), (_x + w, y - 2), (_x - 2, y + h), (_x + w, y + h)):
-                    _g.screen.set_at(point, BLACK)
-                pygame.draw.polygon(_g.screen, bg, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
-                pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 2), (_x - 6, y + 3), (_x - 2, y + 4)])
+                # make box into a speech bubble
+                pygame.draw.polygon(_g.screen, bg, [(_x - 2, y + 1), (_x - 6, y + 2), (_x - 2, y + 3)])
+                pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 1), (_x - 6, y + 2), (_x - 2, y + 3)])
 
 
 def flash_message(message, x, y, cycles=6, delay_ms=50, clear=True):
@@ -336,24 +343,24 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
             if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
-                    p_des = f"UNLOCK AT {unlock}"
+                    p_des = f"Unlock at {unlock}"
                 elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
                     if since_last_move() % 5 > 4:
-                        p_des = f'1ST PRIZE AT {format_K(st1)}'
+                        p_des = f'1st prize at {format_K(st1)}'
                     elif since_last_move() % 5 > 3:
-                        p_des = f'2ND PRIZE AT {format_K(st2)}'
+                        p_des = f'2nd prize at {format_K(st2)}'
                     elif since_last_move() % 5 > 2:
-                        p_des = f'3RD PRIZE AT {format_K(st3)}'
+                        p_des = f'3rd prize at {format_K(st3)}'
                 elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
                     # In case the default emu is for recordings
-                    p_des = 'FOR RECORDING!'
+                    p_des = 'For recording!'
                 elif not st3.strip() and since_last_move() % 4 > 2:
-                    p_des = 'FOR PRACTICE!'
+                    p_des = 'For practice!'
                 elif not int(FREE_PLAY or BASIC_MODE) and since_last_move() % 4 > 2:
-                    p_des = f'${str(PLAY_COST)} TO PLAY'
-                if not _g.awarded:
+                    p_des = f'${str(PLAY_COST)} to play'
+                if not _g.awarded and not _g.ready:
                     # don't announce if Pauline already informing of an award
-                    write_text(p_des.upper(), x=108, y=37, bg=MAGENTA, bubble=True)
+                    write_text(p_des, x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
                 if unlocked:
                     nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                     _g.selected = p_des
@@ -512,7 +519,8 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
-        show_coach, show_chorus = sub in COACH_FRIENDLY, sub in CHORUS_FRIENDLY
+        show_coach = sub in COACH_FRIENDLY or (name == "dkong" and sub == "")
+        show_chorus = sub in CHORUS_FRIENDLY or (name == "dkong" and sub == "")
         inps = _s.get_inp_files(emu, name, sub, 12 - show_coach - show_chorus)
 
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
@@ -789,7 +797,7 @@ def process_interrupts():
     # Start up messages from Pauline
     if not _g.lastmove and not display_icons(detect_only=True):
         message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY or BASIC_MODE)]
-        write_text(message[int(_g.timer.duration) % len(message)], x=108, y=37, bg=MAGENTA, bubble=True)
+        write_text(message[int(int(_g.timer.duration) % (len(message) * 2) / 2)], x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
     show_score()
 
     # Bonus timer
@@ -879,6 +887,15 @@ def process_interrupts():
     # Purge coins
     _g.coins = [i for i in _g.coins if i[0] > -10]
 
+    # DK shouts out the launch options
+    if _g.ready:
+        if since_last_move() % 4 <= 2:
+            write_text("Push P1 START for options...", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("P1 START", x=128, y=38, bg=MAGENTA)
+        else:
+            write_text("or push JUMP to play", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("JUMP", x=140, y=38, bg=MAGENTA)
+
 
 def get_prize_placing(awarded):
     """Return the awarded prize placing e.g. '1', '1st'"""
@@ -892,7 +909,7 @@ def animate_rolling_coins(out_of_time=False):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
         if co_awarded:
             place, place_text = get_prize_placing(co_awarded)
-            write_text(f"YOU WON {place_text} PRIZE!", x=108, y=37, bg=MAGENTA, bubble=True)
+            write_text(f"You won {place_text} prize!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
             _g.awarded = co_awarded
             _g.lastaward = _g.timer.duration
 
@@ -978,7 +995,7 @@ def teleport_between_hammers():
                 _g.ypos = 188 - (92 - _g.ypos)
                 _g.teleport_ticks = pygame.time.get_ticks()
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
-            write_text("TELEPORT JUMP!", x=108, y=37, bg=MAGENTA, bubble=True)
+            write_text("Teleport Jump!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
 
 
 def main(initial=True):
