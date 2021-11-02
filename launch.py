@@ -305,8 +305,8 @@ def display_slots(version_only=False, logo_scene=False):
         if not version_only:
             for i, slot in enumerate(SLOTS):
                 _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
-                write_text("  ", SLOTS[i][0] + 1, SLOTS[i][1] + 1, bg=BLACK)
-                write_text(str(i + 1).zfill(2), SLOTS[i][0] + 2, SLOTS[i][1] + 2, bg=BLACK)
+                write_text("  ", x=SLOTS[i][0] + 1, y=SLOTS[i][1] + 1, bg=BLACK)
+                write_text(str(i + 1).zfill(2), x=SLOTS[i][0] + 2, y=SLOTS[i][1] + 2, bg=BLACK)
         write_text(text="VERSION", font=dk_font, x=224, fg=RED, bg=BLACK, rj_adjust=True)
         write_text(text=VERSION, font=dk_font, x=224, y=8, bg=BLACK, rj_adjust=True)
 

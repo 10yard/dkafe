@@ -25,7 +25,7 @@ ROM_DIR = <ROOT>/roms
 ALLOW_ROM_OVERWRITE = 0
 
 # Emulator Settings for Windows
-OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)" -nofilter
+OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)" -nofilter -video opengl
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID> 
 

@@ -16,6 +16,7 @@ import shutil
 import hashlib
 from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP
 
+
 FIX_ALTERNATIVE_MD5 = "f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", \
                       "aa282b72ac409793b36780c99b26d07b", "e883b4225a76a79f38cf1db7c340aa8e"
 

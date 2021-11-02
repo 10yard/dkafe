@@ -18,7 +18,7 @@ The latest releases are available to download from below.  Refer to the **How to
 | [dkafe_win64_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_win64_binary_v0.26.zip) | Windows 64 bit (x64) systems                  |
 | [dkafe_win32_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_win32_binary_v0.26.zip) | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
 | [dkafe_winxp_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_winxp_binary_v0.25.zip) | Windows XP only                               |
-| [dkafe_rpi4_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_rpi4_binary_v0.25.zip)   | Raspberry Pi 4 and 400 only                   |
+| [dkafe_rpi4_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_rpi4_binary_v0.26.zip)   | Raspberry Pi 4 and 400 only                   |
 | [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.26.zip)                                                | All                                           |
 
 
@@ -294,7 +294,7 @@ EMU_8 = (optional)
 `ROM_DIR = <ROOT>/roms`    
 The rom directory is set to the DKAFE roms folder by default.
 
-`OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)"`    
+`OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)" -video opengl`    
 General arguments can be stored into <OPTIONS> rather than repeating for each emulator.
 
 The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>` and `<RECORD_ID>` used above are replaced with their actual values at runtime.
@@ -435,7 +435,7 @@ Otherwise, my recommendations are:
 
 ### For Raspberry Pi (Model 4)
 
-1. Mame v0.196 to v0.236 from https://www.mamedev.org/ . LUA interface and plugins are tested against this version.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
+1. Mame v0.196 to v0.236 from https://www.mamedev.org/ . LUA interface and plugins are tested against these versions.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
 2. Advance Mame from https://www.advancemame.it/download
   
 
@@ -478,7 +478,6 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Update the old "Donkey Kong 2600 Graphics" hack, replacing regular Kong for Gingerbread Kong.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
- - Maybe extend the default frontend setup to include support for NES Donkey Kong hacks.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
  
 ## Thanks to
