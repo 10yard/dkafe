@@ -171,7 +171,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ### Raspberry Pi 4/400
 
-1. Download the latest raspberry Pi image from the releases page and burn to an SD card (mimimum 4GB size)
+1. Download the latest image .gz and burn to an SD card (mimimum 4GB size)
 2. Copy dkong.zip to the /boot partition of the SD card.
 3. Boot your Raspberry Pi with card inserted.
 4. The DKAFE install script will ask the following questions. 
