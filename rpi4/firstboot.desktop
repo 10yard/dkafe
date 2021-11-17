@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=DKAFE First Boot
+Comment=Launch DKAFE installer on first boot via /etc/xdg/autostart/firstboot.desktop
+Exec=lxterminal -e /boot/dkafe_install.sh

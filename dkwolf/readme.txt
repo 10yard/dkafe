@@ -68,11 +68,11 @@ Use Raspberry Pi Imager to write "Raspberry Pi Desktop" to an SD card and boot i
 Recommand to change the desktop resolution to 640x480
 
 sudo apt-get update
-sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default python3-pip
+sudo apt-get install build-essential libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default
 
 # Get wolfmame source (you can grab the latest version if preferred)
-wget https://github.com/mahlemiut/wolfmame/archive/wolf196.zip
-unzip wolf196
+wget https://github.com/mahlemiut/wolfmame/archive/wolf236.zip
+unzip wolf236
 
 # Overwrite wolfmame source files with the updates file from the relevant changes folder.  File paths are provided in the above notes.
 

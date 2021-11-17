@@ -18,7 +18,7 @@ The latest releases are available to download from below.  Refer to the **How to
 | [dkafe_win64_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_win64_binary_v0.26.zip) | Windows 64 bit (x64) systems                  |
 | [dkafe_win32_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_win32_binary_v0.26.zip) | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
 | [dkafe_winxp_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_winxp_binary_v0.25.zip) | Windows XP only                               |
-| [dkafe_rpi4_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_rpi4_binary_v0.26.zip)   | Raspberry Pi 4 and 400 only                   |
+| [dkafe_rpi4_image_v0.26.gz](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_rpi4_image_v0.26.gz)       | Raspberry Pi 4 and 400 only                   |
 | [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.26.zip)                                                | All                                           |
 
 
@@ -169,23 +169,12 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 2. Run "launch.exe".
 
 
-### Raspberry Pi
+### Raspberry Pi 4/400
 
-1. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool to an SD Card.
-2. Extract contents of the DKAFE Binary Release Zip to the boot partition of the SD card.
-3. Copy dkong.zip to the boot partition of the SD card.  Roms are not provided.
-4. Verify that your /boot partition contains these files before continuing:
-```  
-     dkafe_bin
-     dkafe_install.sh
-     dkong.zip
-```	 
-5. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
-6. Run the install script in a terminal.
-```
-     /boot/dkafe_install.sh
-```
-7. The assisted setup will ask the following questions.
+1. Download the latest raspberry Pi image from the releases page and burn to an SD card (mimimum 4GB size)
+2. Copy dkong.zip to the /boot partition of the SD card.
+3. Boot your Raspberry Pi with card inserted.
+4. The DKAFE install script will ask the following questions. 
 ```	 
 	 Rotate the display?
 	 Launch DKAFE on boot?                    (Recommend Y)
@@ -198,7 +187,15 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Map GPIO to keyboard input controls?     (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
 	 Disable networking services (WiFi, SSH)?
-	 Reboot now?                              (Recommend Y)
+	 Reboot now?                              (Recommend Y)	 
+```
+
+#### Raspberry Pi 400 and HDMI sound
+
+If you are using an HDMI to VGA adapter with a 3.5mm audio jack then you may have to add the following lines to /boot/config.txt
+```
+hdmi_drive=2
+config_hdmi_boost=6
 ```
 
 ## How to set up?
@@ -475,7 +472,7 @@ The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replac
 
 I wanted to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
-I frequently play the original Donkey Kong and aim to improve on my high score of 266,500.  I need to master those springs!
+I frequently play the original Donkey Kong and aim to improve on my high score of 309,500.
 
 
 ## What's next?

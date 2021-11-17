@@ -16,18 +16,10 @@ The binary distribution should be extracted to /home/pi or you can use the autom
 
 Assisted setup of binary distribution
 -------------------------------------
-1. Format a new SD Card,  minimum 4GB size
-2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
-3. Extract contents of the DKAFE binary release zip to the boot partition of the SD card.
-4. Copy dkong.zip to the boot partition of the SD card.  Roms are not provided.
-5. Verify that your /boot partition contains these files before continuing:     
-     dkafe_bin
-     dkafe_install.sh
-     dkong.zip
-6. Boot your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
-7. Run the install script in a terminal.
-     /boot/dkafe_install.sh
-8. The assisted setup will ask the following questions.
+1. Download the latest raspberry Pi image from the releases page and burn to an SD card (mimimum 4GB size)
+2. Copy dkong.zip to the /boot partition of the SD card.
+3. Boot your Raspberry Pi with card inserted.
+4. The DKAFE install script will ask the following questions. 
 	 Rotate the display?
 	 Launch DKAFE on boot?                    (Recommend Y)
 	 Hide startup messages?                   (Recommend Y)
@@ -39,7 +31,7 @@ Assisted setup of binary distribution
 	 Map GPIO to keyboard input controls?     (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
 	 Disable networking services (WiFi, SSH)?
-	 Reboot now?                              (Recommend Y)
+	 Reboot now?                              (Recommend Y)	 
 
 
 Launch DKAFE from terminal manually
@@ -55,30 +47,16 @@ for binary:
 
 Set up environment when using sources
 -------------------------------------
-pip3 install -r requirements.txt
+sudo pip3 install -r requirements.txt
 
 
 Resolution and frontend display scale
 -------------------------------------
 The resolution and display scale are set in dkafe_start.sh file.
-e.g. for 7:8 aspect ratio (0.875) with a rotated display use the following:
-	xrandr --output HDMI-1 --scale 1x0.875 --rotate left
-
-Note: 0.8 and 0.85 scale looks crisper for unknown reason so DKAFE default is:
+e.g. for 7:8 aspect ratio with a rotated display use the following:
 	xrandr --output HDMI-1 --scale 1x0.8 --rotate left
-
-
-Window management
------------------
-MAME launches much faster in window mode (-window argument)
-To take advantage we launch with -window and switch to full screen using the provided fs.sh
-bash script.
-You will need to install wmctrl using: "apt-get install wmctrl"
-The script runs after emulator starts and is specified in settings:
-EMU_ENTER = <ROOT>/w_enter.sh
-
-To ensure safe switching back to DKAFE when emulator exits we specify in settings:
-EMU_EXIT = nohup <ROOT>/w_exit.sh > /dev/null 2>&1 & wmctrl -Fa DKAFE > /dev/null 2>&1
+	
+NOTE: If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to your settings.txt file to fill the screen.
 
 
 Scan line generator
@@ -88,6 +66,10 @@ disable_overscan=1
 hdmi_group=1
 hdmi_mode=1
 
+
+HDMI Sound
+----------
+If you are using an HDMI to VGA adapter with a 3.5mm audio jack then you may have to uncomment the line hdmi_drive=2 (to use HDMI voltage) in the \boot\config.txt file and reboot your system.
 
 GPIO input
 ----------
@@ -112,19 +94,23 @@ Refer to pinout guide at https://pinout.xyz/
 Build DKAFE (Optional - if you prefer not to run as Python script)
 ------------------------------------------------------------------
 cd
+sudo pip3 uninstall pygame (remove any existing pygame library before we start)
 sudo pip3 install -r requirements.txt (sudo requirements are needed for pyinstaller)
+                                      ********************************************
+sudo apt install zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0 libsdl2-image-2.0.0
+
 git clone https://github.com/pyinstaller/pyinstaller
 	build pyinstaller - we need to make a bootloader for Rpi too
 	------------------------------------------------------------
 	cd pyinstaller/bootloader
-	python ./waf all --target-arch=32bit
+	python ./waf all
 	cp /home/pi/pyinstaller/build/release/run /home/pi/pyinstaller/bootloader
 	cd pyinstaller	
 	sudo python3 setup.py install
 
 	build the Frontend
 	------------------
-	sudo pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
+	pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
 	
 	copy executable back to the dkafe folder which holds all the resources needed to run
 	------------------------------------------------------------------------------------

@@ -11,20 +11,6 @@ Install program for Raspberry Pi4
 
 Invoked from install_script.sh after installing binary files to /home/pi/dkafe_bin folder
 This program handles optional setup items by prompting user.
-
-The recommended setup is to answer "y" to the following questions:
-  1) Rotate the display
-  2) Launch DKAFE on boot
-  3) Hide startup messages
-  4) Hide the Pi taskbar
-  5) Hide the Pi desktop
-  6) Hide the Pi mouse cursor
-  7) Use headphone jack for audio
-  8) Force 640x480 mode on boot (for scan line generators)
-  9) Map GPIO to keyboard input controls
-  10) Disable non-essential Services
-  11) Disable networking services (WiFi, SSH)
-  12) Reboot now
 """
 
 import os
@@ -73,7 +59,7 @@ cd /home/pi/dkafe_bin
 
 
 def yesno(question):
-    print("--------------------------------------------------")
+    print('')
     prompt = f'{question} ? (y/n): '
     ans = input(prompt).strip().lower()
     if ans not in ['y', 'n']:
@@ -85,22 +71,6 @@ def yesno(question):
 
 
 def main():
-    print("""
-     ___   ___                    .--.              
-    (   ) (   )                  /    \\            
-  .-.| |   | |   ___     .---.   | .`. ;    .--.   
- /   \\ |   | |  (   )   / .-, \\  | |(___)  /    \\  
-|  .-. |   | |  ' /    (__) ; |  | |_     |  .-. ; 
-| |  | |   | |,' /       .'`  | (   __)   |  | | | 
-| |  | |   | .  '.      / .'| |  | |      |  |/  | 
-| |  | |   | | `. \\    | /  | |  | |      |  ' _.' 
-| '  | |   | |   \\ \\   ; |  ; |  | |      |  .'.-. 
-' `-'  /   | |    \\ .  ' `-'  |  | |      '  `-' / 
- `.__,'   (___ ) (___) `.__.'_. (___)      `.__.'  
- 
---------  I n s t a l l    O p t i o n s  --------
- 
- """)
     changes_made = False
 
     # 1) Rotate the Display
@@ -149,12 +119,12 @@ def main():
                                     cmd = f_in.readline()
                                     cmd = cmd.replace("loglevel=3", "loglevel=0")
                                     cmd = cmd.replace("console=tty1", "console=tty3")
-                                    if " logo.nologo " not in cmd:
-                                        cmd += " logo.nologo"
-                                    if " quiet " not in cmd:
-                                        cmd += " quiet"
-                                    if "vt.global_cursor_default=0" not in cmd:
-                                        cmd += " vt.global_cursor_default=0"
+                                    if " logo.nologo" not in cmd:
+                                        cmd = "logo.nologo " + cmd
+                                    if " quiet" not in cmd:
+                                        cmd = "quiet " + cmd
+                                    if " vt.global_cursor_default=0" not in cmd:
+                                        cmd = "vt.global_cursor_default=0 " + cmd
                                     f_out.write(cmd)
             # ----
             os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU2}")

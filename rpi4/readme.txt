@@ -8,27 +8,25 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 Raspberry Pi 4 Install Steps
 ----------------------------
 
-1. Format a new SD Card,  minimum 4GB size
-2. Write the Raspberry Pi OS Desktop image (that's the default one ) using Raspberry Pi Image tool.
-3. Extract contents of this zip file to the boot partition of the SD card.
-4. Copy dkong.zip to the boot partition of the SD card.  Roms are not provided.
-5. Verify that your /boot partition contains the following before continuing:
-     ▪ dkafe_bin
-     ▪ dkafe_install.sh
-     ▪ dkong.zip
-6. Boot up your Raspberry Pi and complete the "Welcome to Raspberry Pi" setup.  You can skip options.
-7. Run the DKAFE install script in a terminal by typing the following:
-     /boot/dkafe_install.sh
-8. The assisted setup will ask the following questions.  Y is recommended for all.
-     ▪ Rotate the display?
-     ▪ Launch DKAFE on boot?
-     ▪ Hide startup messages?
-     ▪ Hide the Pi taskbar?
-     ▪ Hide the Pi desktop?
-     ▪ Hide the Pi mouse cursor?
-     ▪ Use headphone jack for audio?
-     ▪ Force 640x480 mode on boot?
-     ▪ Map GPIO to keyboard input controls?
-     ▪ Disable non-essential Services?
-     ▪ Disable networking services (WiFi, SSH)?
-     ▪ Reboot now?
+1. Download the latest raspberry Pi image from the releases page and burn to an SD card (mimimum 4GB size)
+2. Copy dkong.zip to the /boot partition of the SD card.
+3. Boot your Raspberry Pi with card inserted.
+4. The DKAFE install script ask the following questions. 
+	 Rotate the display?
+	 Launch DKAFE on boot?                    (Recommend Y)
+	 Hide startup messages?                   (Recommend Y)
+	 Hide the Pi taskbar?                     (Recommend Y)
+	 Hide the Pi desktop?                     (Recommend Y)
+	 Hide the Pi mouse cursor?                (Recommend Y)
+	 Use headphone jack for audio?            (Recommend Y)
+	 Force 640x480 mode on boot?              (Recommend Y)
+	 Map GPIO to keyboard input controls?     (Recommend Y)
+	 Disable non-essential Services?          (Recommend Y)
+	 Disable networking services (WiFi, SSH)?
+	 Reboot now?                              (Recommend Y)	 
+
+	 
+Notes
+-----
+If you are using an HDMI to VGA adapter with a 3.5mm audio jack then you may have to uncomment the line hdmi_drive=2 in the \boot\config.txt file and reboot your system.
+If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to your settings.txt file to fill the screen.

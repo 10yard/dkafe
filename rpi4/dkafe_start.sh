@@ -20,4 +20,4 @@ sudo xset s noblank
 
 # Run the binary from dkafe_bin folder
 cd /home/pi/dkafe_bin
-./launch
+./launch >nul 2>&1
