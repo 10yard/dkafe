@@ -196,9 +196,9 @@ def main():
                             if "disable_overscan=" in line.lower():
                                 f_out.write("disable_overscan=1\n")
                             elif "hdmi_group=" in line.lower():
-                                f_out.write("hdmi_group=1\n")
+                                f_out.write("hdmi_group=2\n")
                             elif "hdmi_mode=" in line.lower():
-                                f_out.write("hdmi_mode=1\n")
+                                f_out.write("hdmi_mode=4\n")
                             else:
                                 f_out.write(line)
             # 9) Map GPIO to keyboard input controls

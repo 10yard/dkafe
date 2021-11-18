@@ -190,13 +190,6 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Reboot now?                              (Recommend Y)	 
 ```
 
-#### Raspberry Pi 400 and HDMI sound
-
-If you are using an HDMI to VGA adapter with a 3.5mm audio jack then you may have to add the following lines to your /boot/config.txt file.
-```
-hdmi_drive=2
-config_hdmi_boost=4
-```
 
 ## How to set up?
 

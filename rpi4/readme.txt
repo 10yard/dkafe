@@ -28,5 +28,4 @@ Raspberry Pi 4 Install Steps
 	 
 Notes
 -----
-If you are using an HDMI to VGA adapter with a 3.5mm audio jack then you may have to uncomment the line hdmi_drive=2 in the \boot\config.txt file and reboot your system.
 If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to your settings.txt file to fill the screen.
