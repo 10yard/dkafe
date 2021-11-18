@@ -18,7 +18,7 @@ The latest releases are available to download from below.  Refer to the **How to
 | [dkafe_win64_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_win64_binary_v0.26.zip) | Windows 64 bit (x64) systems                  |
 | [dkafe_win32_binary_v0.26.zip](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_win32_binary_v0.26.zip) | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
 | [dkafe_winxp_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_winxp_binary_v0.25.zip) | Windows XP only                               |
-| [dkafe_rpi4_image_v0.26.gz](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_rpi4_image_v0.26.gz)       | Raspberry Pi 4 and 400 only                   |
+| [dkafe_rpi4_image_v0.26.gz](https://github.com/10yard/dkafe/releases/download/v0.26/dkafe_rpi4_image_v0.26.img.gz)   | Raspberry Pi 4 and 400 only                   |
 | [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.26.zip)                                                | All                                           |
 
 
@@ -50,7 +50,7 @@ The frontend can be configured to launch other emulators and roms.
  - A rom patcher that automatically generates hacked roms from the many included patch files.
  - Donkey Kong hacks made by me for use with this frontend: DK Lava Panic, DK Shooter, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - MAME plugins and scripts interface MAME with the frontend and add cool features to rom hacks such as a coaching/learning mode.
+ - MAME plugins and scripts interface MAME with the frontend and add cool features such as a coaching/learning mode.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -173,7 +173,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 1. Download the latest image .gz and burn to an SD card (mimimum 4GB size)
 2. Copy dkong.zip to the /boot partition of the SD card.
-3. Boot your Raspberry Pi with card inserted.
+3. Boot your Raspberry Pi with the SD card inserted.
 4. The DKAFE install script will ask the following questions. 
 ```	 
 	 Rotate the display?
@@ -192,10 +192,10 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 #### Raspberry Pi 400 and HDMI sound
 
-If you are using an HDMI to VGA adapter with a 3.5mm audio jack then you may have to add the following lines to /boot/config.txt
+If you are using an HDMI to VGA adapter with a 3.5mm audio jack then you may have to add the following lines to your /boot/config.txt file.
 ```
 hdmi_drive=2
-config_hdmi_boost=6
+config_hdmi_boost=4
 ```
 
 ## How to set up?
