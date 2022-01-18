@@ -127,7 +127,7 @@ Credit is given to the original authors below.
  - Donkey Kong Japan (dkongjapan)
 
 
-![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_galakong.png)
+![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/galakong_gameplay.png)
