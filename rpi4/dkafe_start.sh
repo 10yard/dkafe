@@ -13,6 +13,9 @@
 xrandr --output HDMI-1 --auto
 xrandr --output HDMI-1 --mode 640x480 --scale 1x1
 
+# Stop the composition manager
+killall xcompmgr
+
 # Disable screen blanking
 sudo xset s off
 sudo xset -dpms

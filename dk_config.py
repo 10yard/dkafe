@@ -135,7 +135,7 @@ DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 # Plugins add functionality to certain roms
 PLUGINS = [
   ("dkonglava", "dklavapanic"),
-  ("dkongshooter", "dkshooter"),
+  ("dkonggalakong", "galakong"),
   ("dkongkonkey", "konkeydong"),
   ("dkongwho", "dkwho")]
 

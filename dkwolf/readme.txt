@@ -36,7 +36,7 @@ The code changes from WolfMAME 0.196 and 0.236 are included in the "changes" fol
   frontend/mame/luaengine.cpp (0.196 only)
     fixed issue with lua engine preventing the rightmost pixels from being drawn to screen
 
-  osd/modules/render/drawbgfx.cpp (0.196 only)
+  osd/modules/render/drawbgfx.cpp (Rpi Only)
     Fix bug in mame source which was effecting RPI build
 
 A useful reference to compiling MAME can be found at:
@@ -55,28 +55,3 @@ Other optimisations/flags were
   SYMLEVEL=1
   STRIP_SYMBOLS=1 
   TOOLS=0 
-
-For making a lightweight build to support multiple drivers:
-  SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/pacman.cpp,src/mame/drivers/galaga.cpp etc..
-
-
-Raspberry Pi
-------------
-Compiling on Raspberry Pi 4:
-
-Use Raspberry Pi Imager to write "Raspberry Pi Desktop" to an SD card and boot it up.
-Recommand to change the desktop resolution to 640x480
-
-sudo apt-get update
-sudo apt-get install build-essential libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default
-
-# Get wolfmame source (you can grab the latest version if preferred)
-wget https://github.com/mahlemiut/wolfmame/archive/wolf236.zip
-unzip wolf236
-
-# Overwrite wolfmame source files with the updates file from the relevant changes folder.  File paths are provided in the above notes.
-
-# Adjust makefile (as per above notes) and build
-sudo nano makefile
-make
-

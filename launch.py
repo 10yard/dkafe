@@ -236,27 +236,27 @@ def check_for_input(force_exit=False):
                 take_screenshot()
 
         # Optional joystick controls
-        if USE_JOYSTICK and event.type == pygame.JOYAXISMOTION:
-            _g.active = True
-            _g.lastmove = _g.timer.duration
-            _g.left = event.axis == 0 and int(event.value) == -1
-            _g.right = event.axis == 0 and int(event.value) == 1
-            _g.up = event.axis == 1 and int(event.value) == -1
-            _g.down = event.axis == 1 and int(event.value) == 1
-        if USE_JOYSTICK and event.type == pygame.JOYBUTTONDOWN:
-            button = event.button if event.joy == 1 else event.button + 20
-            _g.jump = button == BUTTON_JUMP
-            _g.start = button == BUTTON_P1
-            if button == BUTTON_EXIT:
-                exit_program(confirm=CONFIRM_EXIT and not force_exit)
-            if button == BUTTON_P2 and ENABLE_MENU:
-                build_menus()
-                open_menu(_g.menu)
-            if button == BUTTON_COIN:
-                _g.showinfo = not _g.showinfo
-            if button == BUTTON_ACTION:
-                _g.showslots = not _g.showslots
-
+        if USE_JOYSTICK:
+            if event.type == pygame.JOYAXISMOTION:
+                _g.active = True
+                _g.lastmove = _g.timer.duration
+                _g.left = event.axis == 0 and int(event.value) == -1
+                _g.right = event.axis == 0 and int(event.value) == 1
+                _g.up = event.axis == 1 and int(event.value) == -1
+                _g.down = event.axis == 1 and int(event.value) == 1
+            if event.type == pygame.JOYBUTTONDOWN:
+                button = event.button if event.joy == 1 else event.button + 20
+                _g.jump = button == BUTTON_JUMP
+                _g.start = button == BUTTON_P1
+                if button == BUTTON_EXIT:
+                    exit_program(confirm=CONFIRM_EXIT and not force_exit)
+                if button == BUTTON_P2 and ENABLE_MENU:
+                    build_menus()
+                    open_menu(_g.menu)
+                if button == BUTTON_COIN:
+                    _g.showinfo = not _g.showinfo
+                if button == BUTTON_ACTION:
+                    _g.showslots = not _g.showslots
         if event.type == pygame.QUIT:
             exit_program()
 
@@ -945,7 +945,7 @@ def animate_rolling_coins(out_of_time=False):
 
 def inactivity_check():
     if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
-        _g.ready = False  # Jumpman status is changed so he is not ready to play.
+        _g.ready = False  # Jumpman status changed to be not ready to play.
         _g.facing = 1
         pause_mod = (pygame.time.get_ticks() - _g.pause_ticks) % 21000
         if pause_mod < 3000:

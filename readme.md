@@ -48,7 +48,7 @@ The frontend can be configured to launch other emulators and roms.
 ### The frontend includes:
  - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A rom patcher that automatically generates hacked roms from the many included patch files.
- - Donkey Kong hacks made by me for use with this frontend: DK Lava Panic, DK Shooter, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
+ - Donkey Kong hacks made by me for use with this frontend: GalaKong, Konkey Dong, DK Lava Panic, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - MAME plugins and scripts interface MAME with the frontend and add cool features such as a coaching/learning mode.
 
@@ -69,10 +69,10 @@ Credit is given to the original authors below.
 
 
 ### By Jon Wilson (me)
- - Donkey Kong Lava Panic! (dkonglava)
- - Donkey Kong Shooter (dkongshooter)
- - DK Who and the Daleks (dkongwho)
+ - GalaKong (dkonggalakong)
  - Konkey Dong (dkongkonkey)
+ - DK Lava Panic! (dkonglava)
+ - DK Who and the Daleks (dkongwho)
  - DK Pies Only (dkongpies)
  - DK Rivets Only (dkongrivets)
  - DK Springs Only (dkongspringy)
@@ -127,7 +127,10 @@ Credit is given to the original authors below.
  - Donkey Kong Japan (dkongjapan)
 
 
-![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
+![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_galakong.png)
+
+
+![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/galakong_gameplay.png)
 
 
 ## Feature Plugins
@@ -470,8 +473,9 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
 
 ## What's next?
 
- - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs more work too.
+ - Add challenging stages to DK Shooter/Galaga hack
  - Add more cab friendly features including a test screen for player controls and a welcome screen to set the initial frontend settings.
+ - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs more work too.
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Update the old "Donkey Kong 2600 Graphics" hack, replacing regular Kong for Gingerbread Kong.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
