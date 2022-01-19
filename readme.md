@@ -15,11 +15,11 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                          | Operating System                              |
 | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [dkafe_win64_binary_v0.27.zip](https://github.com/10yard/dkafe/releases/download/v0.27/dkafe_win64_binary_v0.27.zip)   | Windows 64 bit (x64) systems                  |
-| [dkafe_win32_binary_v0.27.zip](https://github.com/10yard/dkafe/releases/download/v0.27/dkafe_win32_binary_v0.27.zip)   | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
+| [dkafe_win64_binary_v0.28.zip](https://github.com/10yard/dkafe/releases/download/v0.28/dkafe_win64_binary_v0.28.zip)   | Windows 64 bit (x64) systems                  |
+| [dkafe_win32_binary_v0.28.zip](https://github.com/10yard/dkafe/releases/download/v0.28/dkafe_win32_binary_v0.28.zip)   | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
 | [dkafe_winxp_binary_v0.25.zip](https://github.com/10yard/dkafe/releases/download/v0.25/dkafe_winxp_binary_v0.25.zip)   | Windows XP only                               |
 | [dkafe_rpi4_image_v0.27.img.gz](https://github.com/10yard/dkafe/releases/download/v0.27/dkafe_rpi4_image_v0.27.img.gz) | Raspberry Pi 4 and 400 only                   |
-| [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.27.zip)                                                  | All                                           |
+| [Source](https://github.com/10yard/dkafe/archive/refs/tags/v0.28.zip)                                                  | All                                           |
 
 
 ## About DKAFE

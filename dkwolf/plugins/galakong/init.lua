@@ -198,7 +198,7 @@ function galakong.startplugin()
 			end			
 		else
 			print("ERROR: The galakong plugin requires MAME version 0.196 or greater.")
-		end						
+		end
 		if mac ~= nil then
 			scr = mac.screens[":screen"]
 			cpu = mac.devices[":maincpu"]
@@ -230,6 +230,8 @@ function galakong.startplugin()
 																	
 			-- CO-OP mode.  Do not allow alternating 1UP, 2UP style gameplay.
 			mem:write_direct_u8(0x6048, 0x00)
+
+			-- 1 or 2 player game chosen?
 			if mem:read_u8(0x600f) == 1 then
 				play_mode = 2
 				mem:write_direct_u8(0x600d, 0x00)
@@ -276,8 +278,7 @@ function galakong.startplugin()
 						play("start")
 					end
 					started = true
-					score = "000000"
-					last_score = "000000"
+					score, last_score = "000000", "000000"
 					million_wraps = 0
 				end
 			end
@@ -338,16 +339,12 @@ function galakong.startplugin()
 				end
 												
 				if not pickup and mode2 ~= 0xd then
-					local pickup_y = pickup_table[stage][1]
-					local pickup_x = pickup_table[stage][2]
+					local pickup_y, pickup_x = pickup_table[stage][1], pickup_table[stage][2]
 					draw_pickup(pickup_y, pickup_x)
-
-					--TESTS
-					--visualise hit box for shield pickup
+					--visualise hit box for shield pickup with Jumpman's position
 					--scr:draw_box(pickup_y + 12, pickup_x, pickup_y, pickup_x + 7, RED, RED)
-					--visualise jumpman y, x position
 					--scr:draw_box(256 - jumpman_y, jumpman_x, 256 - jumpman_y, jumpman_x, WHITE, WHITE)
-					
+
 					-- Test for Jumpman collision with pickup
 					if jumpman_x >= pickup_x and jumpman_x <= pickup_x + 7 and 256 - jumpman_y <= pickup_y + 12 and 256 - jumpman_y >= pickup_y then
 						if not pickup then
@@ -622,17 +619,14 @@ function galakong.startplugin()
 		
 		for key=1, _stars, 3 do
 			_ypos, _xpos, _col = _starfield[key], _starfield[key+1], _starfield[key+2]
-								
 
-			--FROM MAME VERSION 0,227 onwards
-			--Only display a star when the video pixel is black.   This ensures stars only appear in background.
+			--Only display a star when the video pixel is black (for MAME versions from 0.227 which support pixel()).
+			--This ensures stars only appear in background.
 			--NOTE: There is an offset when reading pixels (0, 16).  This was a pain in the ass to work out!
-			if mame_version >= 0.227 then
-				if scr:pixel(_ypos, _xpos + 16) == BLACK and scr:pixel(_ypos + 1, _xpos + 17) == BLACK then
-					scr:draw_box(_ypos, _xpos, _ypos + 1, _xpos + 1, _col, _col)
-				end
+			if mame_version < 0.227 or (scr:pixel(_ypos, _xpos + 16) == BLACK and scr:pixel(_ypos + 1, _xpos + 17) == BLACK) then
+				scr:draw_box(_ypos, _xpos, _ypos + 1, _xpos + 1, _col, _col)
 			end
-			
+
 			--do we regenerate the starfield colours
 			if clock - last_starfield > 0.2 then
 				_col = 0xff000000
