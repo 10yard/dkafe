@@ -550,7 +550,7 @@ def build_launch_menu():
             if show_chorus:
                 _g.launchmenu.add_button('♪ Launch with chorus sound', launch_rom, nearby, "dkchorus")
             if show_shoot:
-                _g.launchmenu.add_button('♪ Launch with shooter', launch_rom, nearby, "galakong")
+                _g.launchmenu.add_button('▲ Launch with shooter', launch_rom, nearby, "galakong")
 
         _g.launchmenu.add_vertical_margin(10)
         _g.launchmenu.add_button('Close', close_menu)
