@@ -497,13 +497,16 @@ function galakong.startplugin()
 			
 			-- Alternative end of level music
 			if mode2 == 0x16 then
-				if mem:read_u8(0x608a) == 12 then
+				music = mem:read_u8(0x608a)
+				if music == 12 or music == 5 then
 					clear_sounds()
 					if not end_of_level then
 						play("level")
 					end
 					end_of_level = true
 				end
+			else
+				end_of_level = false
 			end
 						
 			-- Alternative name entry music
