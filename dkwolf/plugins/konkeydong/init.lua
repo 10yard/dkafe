@@ -83,7 +83,7 @@ function konkeydong.startplugin()
 				end
 			end
 			
-			if stage == 1 and ((mode >= 0x0b and mode <= 0x0d) or (mode >=02 and mode <= 0x04) or  mode == 0x10 or mode == 0x16) then
+			if stage == 1 and ((mode >= 0x0b and mode <= 0x0d) or (mode >=0x02 and mode <= 0x04) or  mode == 0x10 or mode == 0x16) then
 				-- Barrels stage during gameplay or attract mode
 				if not flipped then
 					-- flip the screen horizontally
@@ -180,7 +180,7 @@ function konkeydong.startplugin()
 					write_graphics(0x7680, "kONKEYdONG")
 				end				
 
-				if flipped then
+				if flipped and mode == 0x0a then  -- wait for the how high screen to appear before flipping back
 					-- reset screen orientation
 					tgt.orientation = initial_orientation
 	

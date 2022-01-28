@@ -34,7 +34,9 @@ CONTROL_EXIT = pygame.K_ESCAPE
 CONTROL_TAB = pygame.K_TAB
 CONTROL_SNAP = pygame.K_F12
 
-# Joystick Options and Button Assignments (Device 1 buttons start from 0,  Device 2 buttons start from 20)
+# Joystick Options and Button Assignments
+# Note: DPAD and first analog axis are automatically mapped to directions
+# Device 1 buttons start from 0,  Device 2 buttons start from 20
 USE_JOYSTICK = False
 BUTTON_JUMP = 0
 BUTTON_ACTION = 1
@@ -78,7 +80,7 @@ COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always,
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = 3              # Chance of coin dropping down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+LADDER_CHANCE = 3              # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
 
 # Root directory of frontend
@@ -137,6 +139,7 @@ PLUGINS = [
   ("dkonglava", "dklavapanic"),
   ("dkonggalakong", "galakong"),
   ("dkongkonkey", "konkeydong"),
+  ("dkong2600", "gingerbreadkong"),
   ("dkongwho", "dkwho")]
 
 # Roms that are compatible with my plugins
@@ -157,7 +160,7 @@ PINK = (255, 210, 190)
 GREY = (128, 128, 128)
 DARKBLUE = (4, 2, 220)
 
-# Alpha value for faded/locked arcade machines
+# Alpha channel value for faded/locked arcade machines
 FADE_LEVEL = 75
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
@@ -193,7 +196,7 @@ SCENE_SOUNDS = {
   856: "sounds/howhigh.wav"}
 
 # Defines when icons should be displayed on the climb intro.  The entries relate to the various platforms.
-# data is: appear from scene, appear to scene, below y, above y, smash animation to scene)
+# data is: appear from scene, appear to scene, below y, above y, smash animation to scene
 SCENE_ICONS = [
     (481, 856, 68, 40, 502),
     (544, 856, 101, 68, 565),

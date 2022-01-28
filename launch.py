@@ -10,6 +10,9 @@ Main program
 ------------
 """
 import sys
+
+import pygame
+
 import dk_system as _s
 import dk_global as _g
 from dk_config import *
@@ -237,15 +240,23 @@ def check_for_input(force_exit=False):
 
         # Optional joystick controls
         if USE_JOYSTICK:
+            print(event.type)
             if event.type == pygame.JOYAXISMOTION:
                 _g.active = True
                 _g.lastmove = _g.timer.duration
-                _g.left = event.axis == 0 and int(event.value) == -1
-                _g.right = event.axis == 0 and int(event.value) == 1
-                _g.up = event.axis == 1 and int(event.value) == -1
-                _g.down = event.axis == 1 and int(event.value) == 1
+                if event.axis == 0:
+                    _g.left = event.value < -0.5
+                    _g.right = event.value > 0.5
+                elif event.axis == 1:
+                    _g.up = event.value < -0.5
+                    _g.down = event.value > 0.5
+            if event.type == pygame.JOYHATMOTION:
+                _g.left = event.value[0] == -1
+                _g.right = event.value[0] == 1
+                _g.up = event.value[1] == 1
+                _g.down = event.value[1] == -1
             if event.type == pygame.JOYBUTTONDOWN:
-                button = event.button if event.joy == 1 else event.button + 20
+                button = event.button if event.joy == 0 else event.button + 20
                 _g.jump = button == BUTTON_JUMP
                 _g.start = button == BUTTON_P1
                 if button == BUTTON_EXIT:
@@ -548,9 +559,9 @@ def build_launch_menu():
             if show_coach:
                 _g.launchmenu.add_button('Č Launch with coaching', launch_rom, nearby, "dkcoach")
             if show_chorus:
-                _g.launchmenu.add_button('♪ Launch with chorus sound', launch_rom, nearby, "dkchorus")
+                _g.launchmenu.add_button('♪ Launch with chorus  ', launch_rom, nearby, "dkchorus")
             if show_shoot:
-                _g.launchmenu.add_button('▲ Launch with shooter', launch_rom, nearby, "galakong")
+                _g.launchmenu.add_button('▲ Launch with shooter ', launch_rom, nearby, "galakong")
 
         _g.launchmenu.add_vertical_margin(10)
         _g.launchmenu.add_button('Close', close_menu)

@@ -26,7 +26,7 @@
 
 local exports = {}
 exports.name = "galakong"
-exports.version = "0.4"
+exports.version = "0.41"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -136,7 +136,7 @@ function galakong.startplugin()
 	local pickup_table = {}
 	pickup_table[1] = {15, 212}
 	pickup_table[2] = {8, 208}
-  	pickup_table[3] = {145, 188}
+  	pickup_table[3] = {121, 73}
 	pickup_table[4] = {8, 192}
 	
 	local char_table = {}

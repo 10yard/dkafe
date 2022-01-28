@@ -364,8 +364,8 @@ IMPORTANT NOTE: The controls configured in the frontend do not apply to the emul
 
 #### Joystick Controls
 
-Joystick controls are disabled by default.
-The up, down, left, right controls are taken from the first detected joystick axis movement.
+Joystick controls are disabled by default.  Set """USE_JOYSTICK = 1""" to enable joystick controls.
+The up, down, left, right controls are automatically mapped from the DPAD and first detected joystick axis.
 Buttons can be customised in the settings.txt file as per the following example.  
 Button numbers 0-19 relate to the first joystick and 20-39 relate to the second joystick.
 
@@ -473,8 +473,8 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
 
 ## What's next?
 
- - Add challenging stages to DK Shooter/Galaga hack
- - Add more cab friendly features including a test screen for player controls and a welcome screen to set the initial frontend settings.
+ - Add challenging stages to GalaKong hack
+ - Add a test screen for the player controls and a welcome screen to set the initial frontend settings.
  - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs more work too.
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Update the old "Donkey Kong 2600 Graphics" hack, replacing regular Kong for Gingerbread Kong.

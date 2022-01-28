@@ -1,6 +1,6 @@
 -- Donkey Kong Chorus by Jon Wilson (10yard)
 --
--- Tested with latest MAME versions 0.236 and 0.196
+-- Tested with latest MAME version 0.238
 -- Compatible with MAME versions from 0.196
 --
 -- DK sounds are replaced with chorus singers.  The sounds were taken from this video:
