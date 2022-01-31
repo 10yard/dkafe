@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "gingerbreadkong",
+"description": "Overlay a gingerbread kong sprite to the Atari 2600 rom hack",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}
