@@ -1,7 +1,7 @@
 -- GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong
 -- by Jon Wilson (10yard)
 --
--- Tested with latest MAME version 0.239
+-- Tested with latest MAME version 0.240
 -- Fully compatible with all MAME versions from 0.227
 --
 -- Jumpman is assisted by an accompanying ship which can take out barrels, fireballs, firefoxes, pies and springs.  
@@ -26,7 +26,7 @@
 
 local exports = {}
 exports.name = "galakong"
-exports.version = "0.41"
+exports.version = "0.5"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -184,7 +184,11 @@ function galakong.startplugin()
 	char_table[")"] = 0x31
 	char_table["!"] = 0x38
 	char_table["'"] = 0x3a
+	char_table["="] = 0x7c -- horizontal bar
 	char_table["?"] = 0xfb
+
+	local total_shots = {}
+	local total_hits = {}
 	
 	function initialize()
 		mame_version = tonumber(emu.app_version())
@@ -209,7 +213,7 @@ function galakong.startplugin()
 			change_title()
 						
 			--Generate a starfield
-			number_of_stars = 270 --(90x3)
+			number_of_stars = 255 --(85x3)
 			if os.getenv("GALAKONG_NOSTARS") == "1" then
 				number_of_stars = 0
 			end
@@ -219,15 +223,19 @@ function galakong.startplugin()
 				table.insert(starfield, math.random(255))
 				table.insert(starfield, math.random(223))
 				table.insert(starfield, 0xff000000)
-			end			
+			end	
+			
+			--Add more delay to the GAME OVER screen
+			mem:write_direct_u8(0x132f, 0xff)
 		end
 	end
 	
 	function main()
 		if cpu ~= nil then
-			local mode2 = mem:read_u8(0x600a)
 			local stage = mem:read_u8(0x6227)  -- 1-girders, 2-pies, 3-elevator, 4-rivets
-																	
+			local level = mem:read_u8(0x6229)
+			local mode2 = mem:read_u8(0x600a)
+
 			-- CO-OP mode.  Do not allow alternating 1UP, 2UP style gameplay.
 			mem:write_direct_u8(0x6048, 0x00)
 
@@ -241,15 +249,20 @@ function galakong.startplugin()
 			if mode2 == 0x10 then
 				--reset to default 1 player mode at end of game
 				play_mode = 1
+				
+				--display end of game stats
+				game_stats()
 			end
 			if play_mode == 2 then
-				write_message(0x7504, "CO-OP")
+				write_ram_message(0x7504, "CO-OP")
 			end
 
 			if mode2 == 0x01 then
 				-- coins entered fixed at 2. Don't display number of credits on bottom line
 				scr:draw_box(0,0, 8, 224, BLACK, BLACK)
-				mem:write_direct_u8(0x6001, 0x02)
+				if mem:read_u8(0x6001) ~= 2 then
+					mem:write_direct_u8(0x6001, 0x02)
+				end
 			end
 			
 			draw_stars(mode2)
@@ -258,7 +271,7 @@ function galakong.startplugin()
 			if mode2 == 0x01 then
 				draw_logo(galakong_logo_data, 224, 60)
 				draw_logo(yard_logo_data, 19, 175)
-				write_message(0x77be, " VERSION "..exports.version)
+				write_ram_message(0x77be, " VERSION "..exports.version)
 			end
 						
 			-- Alternative coin entry sound
@@ -280,6 +293,7 @@ function galakong.startplugin()
 					started = true
 					score, last_score = "000000", "000000"
 					million_wraps = 0
+					total_shots, total_hits = {}, {}
 				end
 			end
 			
@@ -298,16 +312,11 @@ function galakong.startplugin()
 					-- random chance of displaying alternative message
 					_rand = math.random(2)
 					if _rand == 1 then
-						write_message(0xc777e, "    ALL YOUR BASE ARE       ")
-						write_message(0xc777f, "     BELONG TO US !!        ")
+						write_ram_message(0xc777e, "    ALL YOUR BASE ARE       ")
+						write_ram_message(0xc777f, "     BELONG TO US !!        ")
 					end
 					howhigh_ready = false
 				end
-				
-				-- Pace calculation
-				---------------------------------------------------------------------------------
-				--total = tonumber(get_score_segment(0x60b4)..get_score_segment(0x60b3)..get_score_segment(0x60b2)) + (1000000 * million_wraps)
-				--print(total)
 			end
 									
 			-- During gameplay
@@ -317,7 +326,7 @@ function galakong.startplugin()
 				local jumpman_y = mem:read_u8(0x6205)
 				local left, right, fire = get_inputs()
 				local clock = os.clock()
-								
+
 				if mode2 == 0xb then
 					-- reset some things
 					pickup = false
@@ -380,6 +389,12 @@ function galakong.startplugin()
 							missile_y = ship_y
 							missile_x = ship_x
 							hit_count = 0
+							
+							if total_shots[level] == nil then
+								total_shots[level] = 1
+							else
+								total_shots[level] = total_shots[level] + 1
+							end
 						end
 											
 						-- animate the missile
@@ -441,7 +456,7 @@ function galakong.startplugin()
 											set_score_segment(0x60b2, string.sub(score, 5,6))
 											
 											-- update score on screen
-											write_message(0x7781, score)											
+											write_ram_message(0x7781, score)
 										end
 									end
 								end
@@ -450,6 +465,15 @@ function galakong.startplugin()
 							draw_missile(missile_y, missile_x)
 							missile_y = missile_y + 5
 							if missile_y >= 240 then
+							
+								if bonus > 0 then
+									-- register that the shot was a hit
+									if total_hits[level] == nil then
+										total_hits[level] = 1
+									else
+										total_hits[level] = total_hits[level] + 1
+									end
+								end
 								missile_y = nil
 								bonus = 0
 							end
@@ -496,9 +520,11 @@ function galakong.startplugin()
 			end
 			
 			-- Alternative end of level music
-			if mode2 == 0x16 then
+			if mode2 == 0x16 then			
 				music = mem:read_u8(0x608a)
-				if music == 12 or music == 5 then
+				if music == 12 or music == 5 then				
+					level_stats(total_shots[level], total_hits[level])
+					
 					clear_sounds()
 					if not end_of_level then
 						play("level")
@@ -508,7 +534,7 @@ function galakong.startplugin()
 			else
 				end_of_level = false
 			end
-						
+									
 			-- Alternative name entry music
 			if mode2 == 0x15 then
 				clear_sounds()
@@ -614,7 +640,7 @@ function galakong.startplugin()
 		local _starfield = starfield
 	  	local _ypos, _xpos, _col = 0, 0, 0xff000000
 		local clock = os.clock()
-		
+
 		_stars = number_of_stars
 		if mode2 == 0x01 then
 			_stars = 0
@@ -626,7 +652,7 @@ function galakong.startplugin()
 			--Only display a star when the video pixel is black (for MAME versions from 0.227 which support pixel()).
 			--This ensures stars only appear in background.
 			--NOTE: There is an offset when reading pixels (0, 16).  This was a pain in the ass to work out!
-			if mame_version < 0.227 or (scr:pixel(_ypos, _xpos + 16) == BLACK and scr:pixel(_ypos + 1, _xpos + 17) == BLACK) then
+			if mame_version < 0.227 or (scr:pixel(_ypos, _xpos + 16) == BLACK) then
 				scr:draw_box(_ypos, _xpos, _ypos + 1, _xpos + 1, _col, _col)
 			end
 
@@ -644,7 +670,7 @@ function galakong.startplugin()
 			if not mac.paused then
 				_starfield[key] = _starfield[key] - 0.75
 				if _starfield[key] < 0 then
-					_starfield[key] = 256
+					_starfield[key] = 255
 				end
 			end
 		end
@@ -665,6 +691,50 @@ function galakong.startplugin()
 		end
 	end
 		
+	function level_stats(shots, hits)
+		local format = string.format
+		local _shots = shots or 0
+		local _hits = hits or 0
+		local _ratio = 0
+		if _shots > 0 and _hits > 0 then
+			_ratio = (_hits / _shots) * 100
+		end
+		stats_box("LEVEL STATS", format("%d", _shots), format("%d", _hits), format("%.1f", _ratio))
+	end
+	
+	function game_stats()
+		local format = string.format
+		_shots = 0
+		_hits = 0
+		_ratio = 0
+		for _level=1,22 do
+			if total_shots[_level] ~= nil then
+				_shots = _shots + total_shots[_level]
+			end
+			if total_hits[_level] ~= nil then
+				_hits = _hits + total_hits[_level]
+			end
+		end
+		if _shots > 0 and _hits > 0 then
+			_ratio = (_hits / _shots) * 100
+		end
+		stats_box("GAME STATS", format("%d", _shots), format("%d", _hits), format("%.1f", _ratio))
+	end
+
+	function stats_box(title, var1, var2, var3)
+		write_ram_message(0x774e, "======================")
+		write_ram_message(0x768e, title)
+		write_ram_message(0x774f, "                      ")
+		write_ram_message(0x7750, "                      ")
+		write_ram_message(0x7751, "                      ")
+		write_ram_message(0x7752, "                      ")
+		write_ram_message(0x7753, "                      ")
+		write_ram_message(0x7754, "======================")
+		write_ram_message(0x7730, "SHOTS FIRED:   "..var1)
+		write_ram_message(0x7731, "NUMBER OF HITS:"..var2)
+		write_ram_message(0x7732, "HIT-MISS RATIO:"..var3)
+	end
+
 	function int_to_bin(x)
 		-- convert integer to binary
 		local ret = ""
@@ -676,7 +746,7 @@ function galakong.startplugin()
 		return string.format("%08d", ret)
     end	
 	
-	function write_message(start_address, text)
+	function write_ram_message(start_address, text)
 		-- write characters of message to DK's video ram
 		local _char_table = char_table
 		for key=1, string.len(text) do
@@ -733,7 +803,6 @@ function galakong.startplugin()
 		for key=0, 32 do
 			s_mem:write_u8(0x0 + key, 0x00)
 		end
-				
 		-- clear soundfx buffer (retain the walking 0x6080 sound)
 		for key=0, 11 do
 			mem:write_u8(0x6081 + key, 0x00)
