@@ -222,7 +222,7 @@ function galakong.startplugin()
 			for _=1, number_of_stars do
 				table.insert(starfield, math.random(255))
 				table.insert(starfield, math.random(223))
-				table.insert(starfield, 0xff000000)
+				table.insert(starfield, BLACK)
 			end	
 			
 			--Add more delay to the GAME OVER screen
@@ -638,7 +638,7 @@ function galakong.startplugin()
 	function draw_stars(mode2)
 		-- draw the starfield background
 		local _starfield = starfield
-	  	local _ypos, _xpos, _col = 0, 0, 0xff000000
+	  	local _ypos, _xpos, _col = 0, 0, BLACK
 		local clock = os.clock()
 
 		_stars = number_of_stars
@@ -658,7 +658,7 @@ function galakong.startplugin()
 
 			--do we regenerate the starfield colours
 			if clock - last_starfield > 0.2 then
-				_col = 0xff000000
+				_col = BLACK
 				if math.random(4) >= 2 then
 					-- generate a random bright colour
 					_col = 0xff * (math.random(64) + 192) * (math.random(64) + 192) * (math.random(64) + 192)
@@ -699,7 +699,7 @@ function galakong.startplugin()
 		if _shots > 0 and _hits > 0 then
 			_ratio = (_hits / _shots) * 100
 		end
-		stats_box("LEVEL STATS", format("%d", _shots), format("%d", _hits), format("%.1f", _ratio))
+		stats_box("LEVEL STATS", 1, format("%d", _shots), format("%d", _hits), format("%.1f", _ratio))
 	end
 	
 	function game_stats()
@@ -718,21 +718,21 @@ function galakong.startplugin()
 		if _shots > 0 and _hits > 0 then
 			_ratio = (_hits / _shots) * 100
 		end
-		stats_box("GAME STATS", format("%d", _shots), format("%d", _hits), format("%.1f", _ratio))
+		stats_box("GAME OVER", 7, format("%d", _shots), format("%d", _hits), format("%.1f", _ratio))
 	end
 
-	function stats_box(title, var1, var2, var3)
-		write_ram_message(0x774e, "======================")
-		write_ram_message(0x768e, title)
-		write_ram_message(0x774f, "                      ")
-		write_ram_message(0x7750, "                      ")
-		write_ram_message(0x7751, "                      ")
-		write_ram_message(0x7752, "                      ")
-		write_ram_message(0x7753, "                      ")
-		write_ram_message(0x7754, "======================")
-		write_ram_message(0x7730, "SHOTS FIRED:   "..var1)
-		write_ram_message(0x7731, "NUMBER OF HITS:"..var2)
-		write_ram_message(0x7732, "HIT-MISS RATIO:"..var3)
+	function stats_box(title, offset, var1, var2, var3)
+		write_ram_message(0x774e + offset, "======================")
+		write_ram_message(0x768e + offset, title)
+		write_ram_message(0x774f + offset, "                      ")
+		write_ram_message(0x7750 + offset, "                      ")
+		write_ram_message(0x7751 + offset, "                      ")
+		write_ram_message(0x7752 + offset, "                      ")
+		write_ram_message(0x7753 + offset, "                      ")
+		write_ram_message(0x7754 + offset, "======================")
+		write_ram_message(0x7730 + offset, "SHOTS FIRED:   "..var1)
+		write_ram_message(0x7731 + offset, "NUMBER OF HITS:"..var2)
+		write_ram_message(0x7732 + offset, "HIT-MISS RATIO:"..var3)
 	end
 
 	function int_to_bin(x)
