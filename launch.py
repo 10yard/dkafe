@@ -10,9 +10,6 @@ Main program
 ------------
 """
 import sys
-
-import pygame
-
 import dk_system as _s
 import dk_global as _g
 from dk_config import *
