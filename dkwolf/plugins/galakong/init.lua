@@ -69,6 +69,7 @@ function galakong.startplugin()
 	
 	local last_bonus = 0
 	local last_hit_cleanup = 0
+	local number_of_stars
 	local last_starfield = 0
 	
 	local BLACK = 0xff000000
@@ -345,8 +346,11 @@ function galakong.startplugin()
 	char_table["="] = 0x7c -- horizontal bar
 	char_table["?"] = 0xfb
 
+	local mame_version
+	local is_pi
+	local mac, scr, cpu, mem, s_cpu, s_mem
+
 	function initialize()
-		local _random = math.random
 		mame_version = tonumber(emu.app_version())
 		is_pi = is_pi()
 		play("load")	
@@ -367,22 +371,25 @@ function galakong.startplugin()
 			s_mem = s_cpu.spaces["data"]
 
 			change_title()
-						
+
 			--Generate a starfield
 			number_of_stars = 255 --(85x3)
+			--Option to disable the starfield
 			if os.getenv("GALAKONG_NOSTARS") == "1" then
 				number_of_stars = 0
 			end
+			for _=1, number_of_stars do
+				table.insert(starfield, math.random(255))
+				table.insert(starfield, math.random(223))
+				table.insert(starfield, BLACK)
+			end	
+
+			--Option to disable explosion animation
 			if os.getenv("GALAKONG_NOEXPLOSIONS") == "1" then
 				animation = {}
 				animation_frames = 0
 			end
-			for _=1, number_of_stars do
-				table.insert(starfield, _random(255))
-				table.insert(starfield, _random(223))
-				table.insert(starfield, BLACK)
-			end	
-			
+
 			--Add more delay to the GAME OVER screen
 			mem:write_direct_u8(0x132f, 0xff)
 		end
@@ -395,13 +402,16 @@ function galakong.startplugin()
 		local _ceil = math.ceil
 		local _format = string.format
 		local _sub = string.sub
+		local _music
+		local _sprite
+		local _exp_y, _exp_x
 
 		if cpu ~= nil then
 			local stage = mem:read_u8(0x6227)  -- 1-girders, 2-pies, 3-elevator, 4-rivets
 			local level = mem:read_u8(0x6229)
 			local mode2 = mem:read_u8(0x600a)
 			local left, right, fire
-			local _clock = os.clock()
+			local _frame = scr:frame_number()
 
 			if mode2 == 0x1 then -- Initial screen
 				started = false
@@ -432,7 +442,7 @@ function galakong.startplugin()
 					mem:write_direct_u8(0x600f, 0x0)
 				end
 			else
-				draw_stars(_clock)
+				draw_stars()
 			end
 
 			-- CO-OP appears top-right for 2 player mode
@@ -462,7 +472,7 @@ function galakong.startplugin()
 				explosions = {}
 				draw_ship(24, 160, 1)
 				if started then
-					stop(start)
+					stop("start")
 					started = false
 				end
 				if howhigh_ready then
@@ -572,26 +582,26 @@ function galakong.startplugin()
 									enemy_y = 256 - enemy_y
 									if missile_y > enemy_y - 7 and missile_y < enemy_y + 7 and missile_x > enemy_x - 7 and missile_x < enemy_x + 7 then
 										hit_count = hit_count + 1
-										exp_y = _format("%03d", enemy_y)
-										exp_x = _format("%03d", enemy_x)
+										_exp_y = _format("%03d", enemy_y)
+										_exp_x = _format("%03d", enemy_x)
 
 										if (address >= 0x6400 and address < 0x6500) or (address >= 0x65a0 and address < 0x6600) then
 											-- destroy a fireball, firefox or pie.  Move off screen and clean up later.
-											explosions[exp_y..exp_x] = animation_frames
+											explosions[_exp_y.._exp_x] = animation_frames
 											mem:write_u8(address+0x3, 250)
 											mem:write_u8(address+0x5, 8)
 											mem:write_u8(address+0xe, 250)
 											mem:write_u8(address+0xf, 8)
-											last_hit_cleanup = _clock
+											last_hit_cleanup = _frame
 											missile_y = missile_y + 10     -- move missile further to prevent double-hit
 										elseif address >= 0x6500 and address < 0x65a0 then
 											-- destroy a spring. Move the spring off screen
-											explosions[exp_y..exp_x] = animation_frames
+											explosions[_exp_y.._exp_x] = animation_frames
 											mem:write_u8(address + 3, 2)
 											mem:write_u8(address + 5, 80)
 										else
 											-- destroy a barrel
-											explosions[exp_y..exp_x] = _ceil(animation_frames / 2)
+											explosions[_exp_y.._exp_x] = _ceil(animation_frames / 2)
 											mem:write_u8(address + 3, 0)
 											mem:write_u8(address + 5, 0)
 										end
@@ -602,13 +612,13 @@ function galakong.startplugin()
 										-- calculate bonus for destroying multiple enemies.
 										if hit_count == 1 then
 											bonus = 300
-											sprite = 0x7d
+											_sprite = 0x7d
 										elseif hit_count == 2 then
 											bonus = 200  -- +200 = 500 total
-											sprite = 0x7e
+											_sprite = 0x7e
 										elseif hit_count == 3 then  -- stop awarding when 800 points is reached
 											bonus = 300  -- +300 = 800 total
-											sprite = 0x7f
+											_sprite = 0x7f
 										else
 											bonus = 0
 										end
@@ -616,10 +626,10 @@ function galakong.startplugin()
 										if bonus > 0 then
 											--display bonus points
 											mem:write_u8(0x6a30, missile_x + 15)
-											mem:write_u8(0x6a31, sprite)
+											mem:write_u8(0x6a31, _sprite)
 											mem:write_u8(0x6a32, 0x7)
 											mem:write_u8(0x6a33, 256 - missile_y)
-											last_bonus = _clock
+											last_bonus = _frame
 
 											--7 digits for the calculation purposes incase we tick over the million
 											score = _format("%07d", tonumber(get_score_segment(0x60b4)..get_score_segment(0x60b3)..get_score_segment(0x60b2)) + bonus)
@@ -657,7 +667,7 @@ function galakong.startplugin()
 					end
 
 					-- Clean up any destroyed fireballs
-					if _clock - last_hit_cleanup > 1 then
+					if _frame - last_hit_cleanup > 1 then
 						for _, address in pairs(enemy_data) do
 							if mem:read_u8(address + 3) == 250 then
 								mem:write_u8(address, 0)         -- set status to inactive
@@ -666,7 +676,7 @@ function galakong.startplugin()
 					end
 
 					-- clear awarded point sprites
-					if last_bonus ~= 0 and _clock - last_bonus > 1 then
+					if last_bonus ~= 0 and _frame - last_bonus > 60 then
 						mem:write_u8(0x6a30, 0x0)
 						last_bonus = 0
 					end
@@ -678,9 +688,9 @@ function galakong.startplugin()
 					-- animate explosions
 					for location, phase in pairs(explosions) do
 						if phase > 0 then
-							exp_y = _sub(location, 1,3) + 16
-							exp_x = _sub(location, 4,6) - 16
-							draw_graphic(animation[_ceil(phase / (animation_frames / 5))], exp_y, exp_x)
+							_exp_y = _sub(location, 1,3) + 16
+							_exp_x = _sub(location, 4,6) - 16
+							draw_graphic(animation[_ceil(phase / (animation_frames / 5))], _exp_y, _exp_x)
 							if not mac.paused then
 								explosions[location] = phase - 1
 							end
@@ -702,8 +712,8 @@ function galakong.startplugin()
 			end
 
 			if mode2 == 0x16 then  -- end of level
-				music = mem:read_u8(0x608a)
-				if music == 12 or music == 5 then
+				_music = mem:read_u8(0x608a)
+				if _music == 12 or _music == 5 then
 					level_stats(total_shots[level], total_hits[level])
 					clear_sounds()
 					if not end_of_level then
@@ -816,11 +826,10 @@ function galakong.startplugin()
 
 	function draw_stars()
 		-- draw the starfield background
-	  	local _ypos, _xpos = 0, 0
-		local _col = BLACK
+		local _ypos, _xpos, _col
 		local _stars = number_of_stars
 		local _random = math.random
-		local _clock = os.clock()
+		local _frame = scr:frame_number()
 
 		for key=1, _stars, 3 do
 			_ypos, _xpos, _col = starfield[key], starfield[key+1], starfield[key+2]
@@ -836,11 +845,12 @@ function galakong.startplugin()
 			end
 
 			--do we regenerate the starfield colours
-			if _clock - last_starfield > 0.25 then
+			if _frame - last_starfield > 15 then
 				_col = BLACK
-				if _random(2) == 2 then
+				_r = _random(255)
+				if _r > 128 then
 					-- generate a random bright colour
-					_col = 0xff * (_random(64) + 192) * (_random(64) + 192) * (_random(64) + 192)
+					_col = BLACK + (_r << 16) + (_random(128, 255) << 8) + _random(128, 255)
 				end
 				starfield[key+2] = _col
 			end
@@ -854,14 +864,15 @@ function galakong.startplugin()
 			end
 		end
 
-		if _clock - last_starfield > 0.25 then
-			last_starfield = _clock
+		if _frame - last_starfield > 15 then
+			last_starfield = _frame
 		end
 	end
 	
 	function draw_graphic(data, pos_y, pos_x)
 		local _len = string.len
 		local _sub = string.sub
+		local _col
 		for _y, line in pairs(data) do
 			for _x=1, _len(line) do
 				_col = _sub(line, _x, _x)
