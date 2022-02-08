@@ -476,7 +476,6 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
  - Add a test screen for the player controls and a welcome screen to set the initial frontend settings.
  - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs more work too.
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
- - Update the old "Donkey Kong 2600 Graphics" hack, replacing regular Kong for Gingerbread Kong.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
  
