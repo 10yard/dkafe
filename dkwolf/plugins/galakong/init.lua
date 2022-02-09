@@ -26,7 +26,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "0.61"
+exports.version = "0.7"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -668,11 +668,11 @@ function galakong.startplugin()
 					end
 
 					-- Clean up any destroyed fireballs
-					if _frame - last_hit_cleanup > 1 then
+					if _frame - last_hit_cleanup > 10 then
 						for _, address in pairs(enemy_data) do
 							if mem:read_u8(address + 3) == 250 then
 								mem:write_u8(address, 0)         -- set status to inactive
-								--test
+								-- clear position
 								mem:write_u8(address+0x3, 0)
 								mem:write_u8(address+0x5, 0)
 								mem:write_u8(address+0xe, 0)
