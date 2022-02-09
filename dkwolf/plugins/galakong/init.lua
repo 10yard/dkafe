@@ -48,13 +48,13 @@ function galakong.startplugin()
 	local enemy_x
 	local pickup_y
 	local pickup_x
-	local pickup = false
 
 	local starfield = {}
 	local explosions = {}
 	local total_shots = {}
 	local total_hits = {}
 
+	local pickup = false
 	local started = false
 	local howhigh_ready = false
 	local end_of_level = false
@@ -64,9 +64,9 @@ function galakong.startplugin()
 	local score = "000000"
 	local last_score = "000000"
 	local million_wraps = 0
+
 	local bonus = 0
 	local hit_count = 0
-	
 	local last_bonus = 0
 	local last_hit_cleanup = 0
 	local number_of_stars
@@ -402,6 +402,7 @@ function galakong.startplugin()
 		local _ceil = math.ceil
 		local _format = string.format
 		local _sub = string.sub
+
 		local _music
 		local _sprite
 		local _exp_y, _exp_x
@@ -495,7 +496,7 @@ function galakong.startplugin()
 				jumpman_y = mem:read_u8(0x6205)
 
 				if pickup then
-					-- shield was collected so the ship can now be controlled
+					-- shield was collected, the ship can now be controlled
 					left, right, fire = get_inputs()
 				end
 
@@ -671,6 +672,11 @@ function galakong.startplugin()
 						for _, address in pairs(enemy_data) do
 							if mem:read_u8(address + 3) == 250 then
 								mem:write_u8(address, 0)         -- set status to inactive
+								--test
+								mem:write_u8(address+0x3, 0)
+								mem:write_u8(address+0x5, 0)
+								mem:write_u8(address+0xe, 0)
+								mem:write_u8(address+0xf, 0)
 							end
 						end
 					end
@@ -845,12 +851,12 @@ function galakong.startplugin()
 			end
 
 			--do we regenerate the starfield colours
-			if _frame - last_starfield > 15 then
-				_col = BLACK
-				_r = _random(255)
-				if _r > 128 then
+			if _frame - last_starfield > 10 then
+				if _random(2) == 1 then
 					-- generate a random bright colour
-					_col = BLACK + (_r << 16) + (_random(128, 255) << 8) + _random(128, 255)
+					_col = _random(0xff808080, 0xffffffff)
+				else
+					_col = BLACK
 				end
 				starfield[key+2] = _col
 			end
@@ -864,7 +870,7 @@ function galakong.startplugin()
 			end
 		end
 
-		if _frame - last_starfield > 15 then
+		if _frame - last_starfield > 10 then
 			last_starfield = _frame
 		end
 	end
