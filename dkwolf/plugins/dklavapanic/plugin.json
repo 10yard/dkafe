@@ -2,7 +2,7 @@
 "plugin": {
 "name": "dklavapanic",
 "description": "Donkey Kong Lava Panic!",
-"version": "0.12",
+"version": "0.2",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
 "start": "false"
