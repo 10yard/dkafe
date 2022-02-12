@@ -26,7 +26,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "0.7"
+exports.version = "0.8"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -612,14 +612,17 @@ function galakong.startplugin()
 
 										-- calculate bonus for destroying multiple enemies.
 										if hit_count == 1 then
-											bonus = 300
-											_sprite = 0x7d
+											bonus = 200  -- 200 total
+											_sprite = 0x7c
 										elseif hit_count == 2 then
-											bonus = 200  -- +200 = 500 total
+											bonus = 300  -- +300 = 500 total
 											_sprite = 0x7e
-										elseif hit_count == 3 then  -- stop awarding when 800 points is reached
+										elseif hit_count == 3 then
 											bonus = 300  -- +300 = 800 total
 											_sprite = 0x7f
+										elseif hit_count == 4 then  -- stop awarding at max 1200 points
+											bonus = 400  -- +400 = 1200 total
+											_sprite = 0x76 -- love heart sprite
 										else
 											bonus = 0
 										end
@@ -628,7 +631,12 @@ function galakong.startplugin()
 											--display bonus points
 											mem:write_u8(0x6a30, missile_x + 15)
 											mem:write_u8(0x6a31, _sprite)
-											mem:write_u8(0x6a32, 0x7)
+											if hit_count < 4 then
+												mem:write_u8(0x6a32, 0x7)  --white colouring
+											else
+												mem:write_u8(0x6a32, 0x9)  --pink colouring
+												play("bonus")
+											end
 											mem:write_u8(0x6a33, 256 - missile_y)
 											last_bonus = _frame
 
