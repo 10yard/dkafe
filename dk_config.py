@@ -148,6 +148,11 @@ CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpe", "dkongfr", "dkongl05", "dkongce", "dkongrev"]
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
 
+# Roms that don't support some DKAFE features fully
+HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet"]
+AUTOSTART_UNFRIENDLY = ["dkongwizardry", "dkongbarpal"]
+AUTHOR_UNFRIENDLY = ["dkongwizardry", "dkongbarpal"]
+
 # Colours
 RED = (232, 7, 10)
 BLUE = (4, 3, 255)

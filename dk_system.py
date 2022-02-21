@@ -155,7 +155,7 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None):
         os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart
         os.environ["DATA_ALLOW_COIN_TO_END_GAME"] = str(ALLOW_COIN_TO_END_GAME)
         os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
-        if subfolder == "dkongbarpal":
+        if subfolder in AUTOSTART_UNFRIENDLY:
             os.environ["DATA_AUTOSTART"] = "0"
 
     return launch_command, launch_directory, competing, inp_file

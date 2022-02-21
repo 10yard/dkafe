@@ -2,7 +2,7 @@
 dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
 dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,GalaKong Shoot 'Em Up,5,1,2,,20000,40000,65000
-dkong,dkongrivets,DK Rivets,DK Rivets Only,8,1,2,1000,10000,20000,40000
+dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,1000,10000,20000,40000
 dkongx11,dkongspooky,DK Spooky,DK Spooky Remix,10,1,2,2000,10000,15000,30000
 dkong,dkong40,DK 40!!,DK Anniversary Edition,11,1,2,4000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,12,1,2,6000,10000,15000,30000
@@ -16,7 +16,7 @@ dkong,dkongbarrels,DK Barrels,DK Barrels Only,21,1,2,20000,10000,20000,40000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,22,1,2,22000,10000,20000,40000
 dkong,dkongotr,DK OnTheRun,DK On The Run,24,1,2,24000,10000,15000,30000
 dkongx,dkongd2k,D2K,D2K Jumpman Returns,25,1,2,26000,5000,10000,25000
-dkongj,dkongjapan,DKJapan,DK Japan Version,26,1,2,28000,10000,20000,40000
+dkong,dkongrivets,DKRivet,DK Rivets Only,26,1,2,28000,10000,20000,40000
 dkong,dkongrnd,DK Random,DK Randomized,27,1,2,30000,10000,25000,50000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,29,1,2,32000,10000,25000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,31,1,2,34000,10000,20000,40000
@@ -37,3 +37,5 @@ dkongf,dkongst2,DK Springs Trainer,,99,1,2,,,,
 dkong,dkongpace,DK Pace,,99,1,2,,,,
 dkong,dkongrainbow,DK Rainbow,DK Rainbow,99,1,2,,,,
 dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,2,,,,
+dkong,dkongduel,DK Duel,DK Duel,99,1,2,,,,
+dkongj,dkongjapan,DK Japan,DK Japan,99,1,2,,,,

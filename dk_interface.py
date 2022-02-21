@@ -11,7 +11,7 @@ MAME Interface routines
 """
 import os
 from dk_config import ROOT_DIR, AWARDS
-from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD
+from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD, HUD_UNFRIENDLY, AUTHOR_UNFRIENDLY
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
@@ -53,7 +53,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         # Are we going to show the awards targets and progress while playing the game
         os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
         os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
-        os.environ["DATA_SHOW_HUD"] = str(SHOW_HUD)
+        os.environ["DATA_SHOW_HUD"] = "0" if subfolder in HUD_UNFRIENDLY else str(SHOW_HUD)
 
         for i, award in enumerate([("SCORE3", score3), ("SCORE2", score2), ("SCORE1", score1)]):
             os.environ[f"DATA_{award[0]}"] = str(award[1])
@@ -117,7 +117,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
                 os.environ["RAM_PLAYERS"] = offset_addresses(RAM_PLAYERS, 1)
                 os.environ["ROM_SCORES"] = ""
                 os.environ["RAM_HIGH"] = ""
-            if subfolder == "dkongbarpal":
+            if subfolder in AUTHOR_UNFRIENDLY:
                 # do not overwrite the author information in the non-standard score table of Barrelpalooza
                 os.environ["RAM_PLAYERS"] = "0xc610f,0xc6110,0xc6111,0xc6131,0xc6132,0xc6133,0xc6153,0xc6154,0xc6155,0xc6175,0xc6176,0xc6177"
                 os.environ["DATA_PLAYERS"] = "16,16,16,16,16,16,16,16,16,16,16,16"

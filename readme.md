@@ -47,7 +47,7 @@ The frontend can be configured to launch other emulators and roms.
 ### The frontend includes:
  - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A rom patcher that automatically generates hacked roms from the many included patch files.
- - Donkey Kong hacks made by me for use with this frontend: GalaKong, Konkey Dong, DK Lava Panic, DK Who and the Daleks, DK Pies Only, DK Springs Only, DK Rivets Only and DK Barrels Only.
+ - Several Donkey Kong hacks made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - MAME plugins and scripts interface MAME with the frontend and add cool features such as a coaching/learning mode.
 
@@ -68,62 +68,64 @@ Credit is given to the original authors below.
 
 
 ### By Jon Wilson (me)
- - GalaKong (dkonggalakong)
- - Konkey Dong (dkongkonkey)
- - DK Lava Panic! (dkonglava)
- - DK Who and the Daleks (dkongwho)
- - DK Pies Only (dkongpies)
- - DK Rivets Only (dkongrivets)
- - DK Springs Only (dkongspringy)
- - DK Barrels Only (dkongbarrels)
-
+ - Konkey Dong
+ - Lava Panic!
+ - DK Who and the Daleks
+ - Donkey Kong Pies Only
+ - Donkey Kong Rivets Only
+ - Donkey Kong Springs Only
+ - Donkey Kong Barrels Only
+ - Donkey Kong Coach
+ - Donkey Kong Chorus
+ - GalaKong
+ - Galakong Junior (for Donkey Kong Junior) 
+ 
 ### By Paul Goes - https://donkeykonghacks.net/
- - Donkey Kong Crazy Barrels Edition (dkongcb)
- - Donkey Kong Championship Edition (dkongce)
- - Donkey Kong Randomized Edition (dkongrnd)
- - Donkey Kong Freerun Edition (dkongfr)
- - Donkey Kong Into The Dark (dkongitd)
- - Donkey Kong Skip Start (dkongl05)
- - Donkey Kong Reverse (dkongrev)
- - Donkey Kong On The Run (dkongotr)
- - Donkey Kong Twisted Jungle (dkongtj)
- - Donkey Kong Barrelpalooza (dkongbarpal)
- - Donkey Kong 40th Anniversary Edition (dkong40)
+ - Donkey Kong Crazy Barrels Edition
+ - Donkey Kong Championship Edition
+ - Donkey Kong Randomized Edition
+ - Donkey Kong Freerun Edition
+ - Donkey Kong Into The Dark
+ - Donkey Kong Skip Start
+ - Donkey Kong Reverse
+ - Donkey Kong On The Run
+ - Donkey Kong Twisted Jungle
+ - Donkey Kong Barrelpalooza
+ - Donkey Kong 40th Anniversary Edition
+ - Donkey Kong Duel
+ - Donkey Kong Wizardry
 
 ### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
- - Donkey Kong Spooky Remix (dkongspooky)
- - Donkey Kong Christmas Remix (dkongxmas)
- - Donkey Kong Springs Trainer (dkongst2)
- - Donkey Kong Trainer (dkongtrn)
- - Donkey Kong Pace (dkongpace)
- - Donkey Kong Rainbow (dkongrainbow)
+ - Donkey Kong Spooky Remix
+ - Donkey Kong Christmas Remix
+ - Donkey Kong Springs Trainer
+ - Donkey Kong Trainer
+ - Donkey Kong Pace
+ - Donkey Kong Rainbow
 
 ### By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
- - Donkey Kong 2 Jumpman Returns (dkongd2k)
- - Donkey Kong Foundry (dkongf)
- - Donkey Kong Barrel Control Colouring (dkongbcc)
+ - Donkey Kong 2 Jumpman Returns
+ - Donkey Kong Foundry
+ - Donkey Kong Barrel Control Colouring
 
 ### By Mike Mika and Clay Cowgill - http://www.multigame.com/dkp_arcade.html
- - Donkey Kong Pauline Edition (dkongpe)
+ - Donkey Kong Pauline Edition
 
 ### By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
- - Donkey Kong Killscreen Fix (dkongksfix)
+ - Donkey Kong Killscreen Fix
 
 ### By Tim Appleton - https://www.oocities.org/wigglebeat
- - Donkey Kong Pac-Man (dkongpac)
+ - Donkey Kong Pac-Man
 
 ### By Vic Twenty George
- - Donkey Kong Atari 2600 Graphics (dkong2600)
-
-### By Raulitokong
- - Donkey Kong Fireballs Only (dkongfireball)
+ - Donkey Kong Atari 2600 Graphics
 
 ### By others
- - Donkey Kong Wild Barrel Hack (dkongwbh)
- - Donkey Kong 2 Marios (dkong2m)
- - Donkey Kong Naked (dkongnad)
- - Donkey Kong Hard (dkonghrd)
- - Donkey Kong Japan (dkongjapan)
+ - Donkey Kong Wild Barrel Hack
+ - Donkey Kong 2 Marios
+ - Donkey Kong Naked
+ - Donkey Kong Hard
+ - Donkey Kong Japan
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)

@@ -23,6 +23,7 @@ By Jon Wilson (me)
  - DK Rivets Only (dkongrivets)
  - DK Barrels Only (dkongbarrels)
  - DK Springs Only (dkongspringy)
+ - Galakong (dkonggalakong)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -36,6 +37,8 @@ By Paul Goes
  - Donkey Kong Twisted Jungle (dkongtj)
  - Donkey Kong Barrelpalooza (dkongbp)
  - Donkey Kong 40th Anniversary Edition (dkong40)
+ - Donkey Kong Duel (dkongduel)
+ - Donkey Kong Wizardry (dkongwizardry)
 
 By John Kowalski (Sock Master) 
  - Donkey Kong Spooky Remix (dkongspooky)
@@ -61,9 +64,6 @@ By Tim Appleton
 
 By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics (dkong2600)
-
-By Raulitokong
- - Donkey Kong Fireballs Only (dkongfireball)
 
 By Others
  - Donkey Kong Wild Barrel Hack (dkongwbh)
