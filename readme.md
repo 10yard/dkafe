@@ -78,7 +78,7 @@ Credit is given to the original authors below.
  - Donkey Kong Coach
  - Donkey Kong Chorus
  - GalaKong
- - Galakong Junior (for Donkey Kong Junior) 
+ - Galakong Junior (*for DK Junior) 
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition

@@ -14,7 +14,7 @@ from ips_util import Patch
 from glob import glob
 import shutil
 import hashlib
-from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP
+from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, PLUGINS
 
 
 FIX_ALTERNATIVE_MD5 = "f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", \
@@ -67,10 +67,18 @@ def apply_patches():
                 subfolder = os.path.join(ROM_DIR, name)
                 if not os.path.exists(subfolder):
                     os.mkdir(subfolder)
-                    patch = Patch.load(ips)
-                    with open(os.path.join(subfolder, "dkong.zip"), 'w+b') as f_out:
-                        f_out.write(patch.apply(dkong_binary))
+
+                    if name.startswith("dkongjr"):
+                        # Copying DK Junior plugin hacks to subfolder. No patching - IPS is empty.
+                        shutil.copy(DKONGJR_ZIP, os.path.join(ROM_DIR, subfolder))
                         applied_patches_list.append(name)
+                    else:
+                        # Patching DK rom and writing to subfolder
+                        patch = Patch.load(ips)
+                        with open(os.path.join(subfolder, "dkong.zip"), 'w+b') as f_out:
+                            f_out.write(patch.apply(dkong_binary))
+                            applied_patches_list.append(name)
+
     return applied_patches_list
 
 

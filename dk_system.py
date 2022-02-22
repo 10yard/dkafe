@@ -54,27 +54,29 @@ def read_romlist():
             data = row.replace('"', '')
             if not data.startswith("#") and data.count(",") >= 10:
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
-                if not emu.strip():
-                    emu = "1"
-                if not rec.strip():
-                    rec = "0"
-                if not unlock:
-                    unlock = "0"
-
-                # DK Junior is optional in the default frontend so replace with DK Pies if not available
-                if not os.path.exists(os.path.join(ROM_DIR, "dkongjr.zip")):
-                    if name == "dkongjr" and slot == "3":
-                        name, sub, des, alt = "dkong", "dkongpies", "DK Pies", "DK Pies Only"
-                    elif sub == "dkongpies" and slot == "99":
-                        continue
-
-                if "-record" in get_emulator(int(emu)).lower():
-                    # Score targets are not considered for recordings
-                    st3, st2, st1 = ("",) * 3
-
                 if name and des:
+                    if not emu.strip():
+                        emu = "1"
+                    if not rec.strip():
+                        rec = "0"
+                    if not unlock:
+                        unlock = "0"
                     if not alt:
                         alt = des
+
+                    if os.path.exists(DKONGJR_ZIP):
+                        # We have Donkey Kong Junior rom so we can try to swap some hacks to include Junior by default
+                        for default_sub, default_slot, swap_sub, swap_des, swap_alt in JUNIOR_DEFAULT_SWAPS:
+                            if sub == default_sub and slot == default_slot:
+                                # The default hack is made accessible from the quick start menu
+                                romlist.append((name, sub, des, alt, -1, -1, int(emu), int(rec), int(unlock), '', '', ''))
+                                # The Donkey Kong Junior hack is swapped in
+                                name, sub, des, alt =  "dkongjr", swap_sub, swap_des, swap_alt
+
+                    if "-record" in get_emulator(int(emu)).lower():
+                        # Score targets are not considered for recordings
+                        st3, st2, st1 = ("",) * 3
+
                     icx, icy = -1, -1
                     if 0 < int(slot) <= len(SLOTS):
                         icx, icy = SLOTS[int(slot) - 1]

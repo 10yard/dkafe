@@ -1,6 +1,6 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
 dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
-dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
+dkong,dkongpies,DK Pies,DK Pies Only,3,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,GalaKong Shoot 'Em Up,5,1,2,,20000,40000,65000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,1000,10000,20000,40000
 dkongx11,dkongspooky,DK Spooky,DK Spooky Remix,10,1,2,2000,10000,15000,30000
@@ -23,13 +23,12 @@ dkong,dkongcb,DK Crazy,DK Crazy Barrels,31,1,2,34000,10000,20000,40000
 dkongf,dkongrdemo,DK Remix,DK Remix Demo,33,1,2,36000,10000,20000,45000
 dkongf,dkongf,DK Foundry,,34,1,2,38000,10000,25000,50000
 dkonghrd,dkonghrd,DK Hard,,35,1,2,40000,10000,15000,25000
-dkong,dkongl05,DK SkipStart,DK Skip Start,37,1,2,42000,8000,15000,25000
+dkong,dkongl05,DK SkipStart,DK Skip Start,37,1,2,42000,10000,15000,25000
 dkong,dkongce,DK Champs.,DK Championship Edition,40,1,2,44000,10000,25000,50000
 dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,42,1,2,46000,8000,15000,25000
 dkong,dkongbarpal,DK Barrelpalooza,DK Barrelpalooza,45,1,2,48000,10000,25000,50000
 dkong,dkongkonkey,Konkey Dong,Konkey Dong,46,1,2,50000,,,
 dkong,dkongfr,DK FreeRun,DK Freerun Edition,99,1,2,,,,
-dkong,dkongpies,DK Pies Only,DK Pies Only,99,1,2,,,,
 dkong,dkongpac,DK Pac-Man,,99,1,2,,,,
 dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,,,,
 dkong,dkongtrn,DK Trainer,,99,1,2,,,,

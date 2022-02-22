@@ -24,6 +24,7 @@ By Jon Wilson (me)
  - DK Barrels Only (dkongbarrels)
  - DK Springs Only (dkongspringy)
  - Galakong (dkonggalakong)
+ - Galakong Junior (dkongjrgala)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)

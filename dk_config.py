@@ -131,16 +131,24 @@ if os.path.exists("VERSION"):
     with open("VERSION", 'r') as vf:
         VERSION = vf.readline().strip()
 
-# Expected location of original DK zip (not provided with software)
+# Expected location of original DK zips (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
+DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
+
+# Roms that can be swapped out form default frontend when Donkey Kong Junior rom is provided
+# (Data is: Default subfolder, default slot, swap subfolder, swap description, swap alt-description)
+JUNIOR_DEFAULT_SWAPS = [
+    ("dkongpies", "3", "", "DK Junior", "Donkey Kong Junior"),
+    ("dkonghrd", "35", "dkongjrgala", "Gala Jr", "Galakong Junior")]
 
 # Plugins add functionality to certain roms
 PLUGINS = [
-  ("dkonglava", "dklavapanic"),
-  ("dkonggalakong", "galakong"),
-  ("dkongkonkey", "konkeydong"),
-  ("dkong2600", "gingerbreadkong"),
-  ("dkongwho", "dkwho")]
+    ("dkonglava", "dklavapanic"),
+    ("dkongkonkey", "konkeydong"),
+    ("dkong2600", "gingerbreadkong"),
+    ("dkongwho", "dkwho"),
+    ("dkonggalakong", "galakong"),
+    ("dkongjrgala", "galakong")]
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd"]
@@ -150,7 +158,7 @@ SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
 
 # Roms that don't support some DKAFE features fully
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet"]
-AUTOSTART_UNFRIENDLY = ["dkongwizardry", "dkongbarpal"]
+AUTOSTART_UNFRIENDLY = ["dkongbarpal",]
 AUTHOR_UNFRIENDLY = ["dkongwizardry", "dkongbarpal"]
 
 # Colours

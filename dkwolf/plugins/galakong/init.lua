@@ -1,4 +1,4 @@
--- GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong
+-- GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)
 -- by Jon Wilson (10yard)
 --
 -- Tested with latest MAME version 0.240
@@ -26,8 +26,8 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "0.8"
-exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong"
+exports.version = "0.9"
+exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
 local galakong = exports
@@ -71,27 +71,28 @@ function galakong.startplugin()
 	local last_hit_cleanup = 0
 	local number_of_stars
 	local last_starfield = 0
+	local last_level = 0
 	
 	local BLACK = 0xff000000
 	local WHITE = 0xffdedede
 	local RED = 0xffff0000
 	local BLUE = 0xff0068de	
 
-	local graphics_palette = {}
-	graphics_palette["@"] = 0xff095562
-	graphics_palette[":"] = 0xff4ba49c
-	graphics_palette["?"] = 0xfffc0202
-	graphics_palette["%"] = 0xfffb512c
-	graphics_palette["&"] = 0xffd2aa49
-	graphics_palette["'"] = 0xff6161ff
-	graphics_palette["+"] = 0xff0d9ca3
-	graphics_palette["!"] = 0xffff0000
-	graphics_palette["#"] = 0xffffff00
-	graphics_palette["$"] = 0xffdedede
-	graphics_palette["("] = WHITE
-	graphics_palette["*"] = BLACK
+	local palette_table = {}
+	palette_table["@"] = 0xff095562
+	palette_table[":"] = 0xff4ba49c
+	palette_table["?"] = 0xfffc0202
+	palette_table["%"] = 0xfffb512c
+	palette_table["&"] = 0xffd2aa49
+	palette_table["'"] = 0xff6161ff
+	palette_table["+"] = 0xff0d9ca3
+	palette_table["!"] = 0xffff0000
+	palette_table["#"] = 0xffffff00
+	palette_table["$"] = 0xffdedede
+	palette_table["("] = WHITE
+	palette_table["*"] = BLACK
 	
-	local galakong_logo_data = {
+	local galakong_logo_table = {
 		"                                           %%?%%%%&&&&&&&%%%%%%%",
 		"                                      %%?%%&&&::::::::::::::::&&&%%%      :",
 		"                                   %?%&&&:::::&&&&&&&&&&&&&&&&:::::&&%%% :",
@@ -128,7 +129,19 @@ function galakong.startplugin()
 		"   %?????%  %&%?",
 		"            ??"}
 
-	local yard_logo_data = {
+	local junior_logo_table = {
+		"  ???????????????????????",
+		" ?(((((((((((((((((((((((?",
+		"?((???(?(?(?((?(?((?((??((?",
+		"?(((?((?(?(??(?(?(?(?(?(?(?",
+		"?(((?((?(?(????(?(?(?(??((?",
+		"?(?(?((?(?(?(??(?(?(?(??((?",
+		"?((?((((?((?((?(?((?((?(?(?",
+		" ?(((((((((((((((((((((((?",
+		"  ???????????????????????"}
+
+
+	local yard_logo_table = {
 		"  +",
 		" ++                               ++",
 		"+++    ++++                         +",
@@ -145,7 +158,7 @@ function galakong.startplugin()
 		"              +  +",
 		"               ++"}
 
-	local explode1_data = {
+	local explode1_table = {
 		"",
 		"",
 		"",
@@ -166,7 +179,7 @@ function galakong.startplugin()
 		"            ! !!",
 		"                !"}
 
-	local explode2_data = {
+	local explode2_table = {
 		"",
 		"",
 		"",
@@ -190,7 +203,7 @@ function galakong.startplugin()
 		"             ##!  !",
 		"             $  !"}
 
-	local explode3_data = {
+	local explode3_table = {
 		"",
 		"",
 		"",
@@ -216,7 +229,7 @@ function galakong.startplugin()
 		"           $ $$$       $",
 		"        #  # # $  !"}
 
-	local explode4_data = {
+	local explode4_table = {
 		"",
 		"",
 		"          !",
@@ -248,7 +261,7 @@ function galakong.startplugin()
 		"",
 		"                    $"}
 
-	local explode5_data = {
+	local explode5_table = {
 		"                !",
 		"           #          $       $",
 		"   $       #",
@@ -282,10 +295,10 @@ function galakong.startplugin()
 		"   #                       $",
 		"  #"}
 
-	local animation = {explode5_data, explode4_data, explode3_data, explode2_data, explode1_data}
+	local animation_table = { explode5_table, explode4_table, explode3_table, explode2_table, explode1_table }
 	local animation_frames = 30
 
-	local enemy_data = 
+	local enemy_table =
 		{0x6700, 0x6720, 0x6740, 0x6760, 0x6780, 0x67a0, 0x67c0, 0x67e0, 
 		 0x6400, 0x6420, 0x6440, 0x6460, 0x6480, 
 		 0x6500, 0x6510, 0x6520, 0x6530, 0x6540, 0x6550, 0x6550,
@@ -297,7 +310,14 @@ function galakong.startplugin()
 	pickup_table[2] = {8, 208}
   	pickup_table[3] = {121, 73}
 	pickup_table[4] = {8, 192}
-	
+
+	-- Point scored for multiple missile hits and associated sprite display
+	local bonus_table = {}
+	bonus_table[1] = {200, 0x7c} -- +200 points
+	bonus_table[2] = {300, 0x7e} -- +300 points = 500
+	bonus_table[3] = {300, 0x7f} -- +300 points = 800
+	bonus_table[4] = {400, 0x76} -- +400 points = 1200 (love heart)
+
 	local char_table = {}
 	char_table["0"] = 0x0
 	char_table["1"] = 0x1
@@ -354,14 +374,16 @@ function galakong.startplugin()
 		mame_version = tonumber(emu.app_version())
 		is_pi = is_pi()
 		play("load")	
-		if mame_version >= 0.196 then
-			if type(manager.machine) == "userdata" then
-				mac = manager.machine
+		if emu.romname() == "dkong" or emu.romname() == "dkongjr" then
+			if mame_version >= 0.196 then
+				if type(manager.machine) == "userdata" then
+					mac = manager.machine
+				else
+					mac =  manager:machine()
+				end			
 			else
-				mac =  manager:machine()
-			end			
-		else
-			print("ERROR: The galakong plugin requires MAME version 0.196 or greater.")
+				print("ERROR: The galakong plugin requires MAME version 0.196 or greater.")
+			end
 		end
 		if mac ~= nil then
 			scr = mac.screens[":screen"]
@@ -386,12 +408,31 @@ function galakong.startplugin()
 
 			--Option to disable explosion animation
 			if os.getenv("GALAKONG_NOEXPLOSIONS") == "1" then
-				animation = {}
+				animation_table = {}
 				animation_frames = 0
 			end
 
 			--Add more delay to the GAME OVER screen
 			mem:write_direct_u8(0x132f, 0xff)
+			
+			-- Donkey Kong Junior specific initialisation
+			if emu.romname() == "dkongjr" then
+				enemy_table =
+					{0x6700, 0x6720, 0x6740, 0x6760, 0x6780, 0x67a0, 0x67c0, 0x67e0, 
+					0x6400, 0x6420, 0x6440, 0x6460, 0x6480, 
+					0x6500, 0x6510, 0x6520, 0x6530, 0x6540, 0x6550, 0x6550}
+
+				pickup_table[1] = {24, 96} -- springboard
+				pickup_table[2] = {16, 48}  -- vines
+				pickup_table[3] = {8, 144}  -- chains
+				pickup_table[4] = {8, 44}	-- hideout
+
+				bonus_table[1] = {200, 0x7a} -- +200 points
+				bonus_table[2] = {200, 0x7c} -- +200 points = 400
+				bonus_table[3] = {400, 0x7d} -- +300 points = 800
+				bonus_table[4] = {400, 0x7e} -- +400 points = 1200
+			end
+			
 		end
 	end
 	
@@ -424,8 +465,13 @@ function galakong.startplugin()
 				end
 
 				-- Display GalaKong logo and other bits
-				draw_graphic(galakong_logo_data, 224, 60)
-				draw_graphic(yard_logo_data, 19, 175)
+				if emu.romname() == "dkongjr" then
+					draw_graphic(galakong_logo_table, 224, 50)
+					draw_graphic(junior_logo_table, 200, 152)
+				else
+					draw_graphic(galakong_logo_table, 224, 60)
+				end
+				draw_graphic(yard_logo_table, 19, 175)
 				write_ram_message(0x77be, " VERSION "..exports.version)
 
 				-- Alternative coin entry sound
@@ -452,26 +498,30 @@ function galakong.startplugin()
 			end
 
 			if mode2 == 0x7 then  -- Intro screen
-				if mem:read_u8(0x608a) == 1 then
+				_music = mem:read_u8(0x608a)
+				if _music == 1 or (_music == 8 and emu.romname() == "dkongjr") then
 					clear_sounds()
 					if not started then
 						play("start")
+						started = true
+						score, last_score = "000000", "000000"
+						million_wraps = 0
+						total_shots, total_hits = {}, {}
 					end
-					started = true
-					score, last_score = "000000", "000000"
-					million_wraps = 0
-					total_shots, total_hits = {}, {}
 				end
 			end
 
-			if mode2 == 0x8 then -- before how high screen
+
+			if mode2 == 0x8 then -- before how high screen (not on DK JR)
 				howhigh_ready = true
 			end
 
 			if mode2 == 0xa then  --how high screen
 				dead = false
 				explosions = {}
-				draw_ship(24, 160, 1)
+				if emu.romname() ~= "dkongjr" then
+					draw_ship(24, 160, 1)
+				end
 				if started then
 					stop("start")
 					started = false
@@ -574,7 +624,7 @@ function galakong.startplugin()
 						-- animate the missile
 						if missile_y ~= nil then
 							-- check for enemy hit
-							for _, address in pairs(enemy_data) do
+							for _, address in pairs(enemy_table) do
 								enemy_x = mem:read_u8(address + 3)
 								enemy_y = mem:read_u8(address + 5)
 
@@ -594,11 +644,10 @@ function galakong.startplugin()
 											mem:write_u8(address+0xe, 250)
 											mem:write_u8(address+0xf, 8)
 											last_hit_cleanup = _frame
-											missile_y = missile_y + 10     -- move missile further to prevent double-hit
 										elseif address >= 0x6500 and address < 0x65a0 then
 											-- destroy a spring. Move the spring off screen
 											explosions[_exp_y.._exp_x] = animation_frames
-											mem:write_u8(address + 3, 2)
+											mem:write_u8(address + 3, 0)
 											mem:write_u8(address + 5, 80)
 										else
 											-- destroy a barrel
@@ -611,18 +660,8 @@ function galakong.startplugin()
 										mem:write_u8(0x6085, 1)
 
 										-- calculate bonus for destroying multiple enemies.
-										if hit_count == 1 then
-											bonus = 200  -- 200 total
-											_sprite = 0x7c
-										elseif hit_count == 2 then
-											bonus = 300  -- +300 = 500 total
-											_sprite = 0x7e
-										elseif hit_count == 3 then
-											bonus = 300  -- +300 = 800 total
-											_sprite = 0x7f
-										elseif hit_count == 4 then  -- stop awarding at max 1200 points
-											bonus = 400  -- +400 = 1200 total
-											_sprite = 0x76 -- love heart sprite
+										if hit_count >= 1 and hit_count <= 4 then
+											bonus, _sprite = bonus_table[hit_count][1], bonus_table[hit_count][2]
 										else
 											bonus = 0
 										end
@@ -677,10 +716,10 @@ function galakong.startplugin()
 
 					-- Clean up any destroyed fireballs
 					if _frame - last_hit_cleanup > 10 then
-						for _, address in pairs(enemy_data) do
+						for _, address in pairs(enemy_table) do
 							if mem:read_u8(address + 3) == 250 then
-								mem:write_u8(address, 0)         -- set status to inactive
-								-- clear position
+								-- set status to inactive and clear position
+								mem:write_u8(address, 0)
 								mem:write_u8(address+0x3, 0)
 								mem:write_u8(address+0x5, 0)
 								mem:write_u8(address+0xe, 0)
@@ -704,7 +743,7 @@ function galakong.startplugin()
 						if phase > 0 then
 							_exp_y = _sub(location, 1,3) + 16
 							_exp_x = _sub(location, 4,6) - 16
-							draw_graphic(animation[_ceil(phase / (animation_frames / 5))], _exp_y, _exp_x)
+							draw_graphic(animation_table[_ceil(phase / (animation_frames / 5))], _exp_y, _exp_x)
 							if not mac.paused then
 								explosions[location] = phase - 1
 							end
@@ -724,15 +763,16 @@ function galakong.startplugin()
 					mem:write_u8(0x77a1, 0x70 + million_wraps)
 				end
 			end
-
+			
 			if mode2 == 0x16 then  -- end of level
 				_music = mem:read_u8(0x608a)
-				if _music == 12 or _music == 5 then
-					level_stats(total_shots[level], total_hits[level])
-					clear_sounds()
+				if _music == 12 or _music == 5 or (_music == 14 and emu.romname() == "dkongjr") then
 					if not end_of_level then
+						last_level = level
 						play("level")
 					end
+					level_stats(total_shots[last_level], total_hits[last_level])
+					clear_sounds()
 					end_of_level = true
 				end
 			else
@@ -891,7 +931,7 @@ function galakong.startplugin()
 			for _x=1, _len(line) do
 				_col = _sub(line, _x, _x)
 				if _col ~= " " then
-					scr:draw_box(pos_y -_y, pos_x + _x, pos_y -_y + 1, pos_x +_x + 1, graphics_palette[_col], graphics_palette[_col])
+					scr:draw_box(pos_y -_y, pos_x + _x, pos_y -_y + 1, pos_x +_x + 1, palette_table[_col], palette_table[_col])
 				end
 			end
 		end
