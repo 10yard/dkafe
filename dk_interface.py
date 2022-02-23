@@ -53,7 +53,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         # Are we going to show the awards targets and progress while playing the game
         os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
         os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
-        os.environ["DATA_SHOW_HUD"] = "0" if subfolder in HUD_UNFRIENDLY else str(SHOW_HUD)
+        os.environ["DATA_SHOW_HUD"] = "0" if (subfolder in HUD_UNFRIENDLY or rom == "dkongjr") else str(SHOW_HUD)
 
         for i, award in enumerate([("SCORE3", score3), ("SCORE2", score2), ("SCORE1", score1)]):
             os.environ[f"DATA_{award[0]}"] = str(award[1])

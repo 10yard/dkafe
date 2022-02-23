@@ -139,7 +139,7 @@ DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 # (Data is: Default subfolder, default slot, swap subfolder, swap description, swap alt-description)
 JUNIOR_DEFAULT_SWAPS = [
     ("dkongpies", "3", "", "DK Junior", "Donkey Kong Junior"),
-    ("dkonghrd", "35", "dkongjrgala", "Gala Jr", "Galakong Junior")]
+    ("dkongrnd", "27", "dkongjrgala", "GalaKong Jr", "GalaKong Junior")]
 
 # Plugins add functionality to certain roms
 PLUGINS = [
@@ -158,7 +158,7 @@ SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
 
 # Roms that don't support some DKAFE features fully
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet"]
-AUTOSTART_UNFRIENDLY = ["dkongbarpal",]
+AUTOSTART_UNFRIENDLY = ["dkongbarpal"]
 AUTHOR_UNFRIENDLY = ["dkongwizardry", "dkongbarpal"]
 
 # Colours

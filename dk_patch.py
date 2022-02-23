@@ -14,7 +14,7 @@ from ips_util import Patch
 from glob import glob
 import shutil
 import hashlib
-from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, PLUGINS
+from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP
 
 
 FIX_ALTERNATIVE_MD5 = "f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", \
