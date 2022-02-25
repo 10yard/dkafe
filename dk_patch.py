@@ -66,14 +66,15 @@ def apply_patches():
                 name = os.path.splitext(os.path.basename(ips))[0]
                 subfolder = os.path.join(ROM_DIR, name)
                 if not os.path.exists(subfolder):
-                    os.mkdir(subfolder)
-
                     if name.startswith("dkongjr"):
-                        # Copying DK Junior plugin hacks to subfolder. No patching - IPS is empty.
-                        shutil.copy(DKONGJR_ZIP, os.path.join(ROM_DIR, subfolder))
-                        applied_patches_list.append(name)
+                        if os.path.exists(DKONGJR_ZIP):
+                            # Copying DK Junior plugin hacks to subfolder. No patching - IPS is empty.
+                            os.mkdir(subfolder)
+                            shutil.copy(DKONGJR_ZIP, os.path.join(ROM_DIR, subfolder))
+                            applied_patches_list.append(name)
                     else:
                         # Patching DK rom and writing to subfolder
+                        os.mkdir(subfolder)
                         patch = Patch.load(ips)
                         with open(os.path.join(subfolder, "dkong.zip"), 'w+b') as f_out:
                             f_out.write(patch.apply(dkong_binary))

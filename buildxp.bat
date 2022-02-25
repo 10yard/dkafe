@@ -50,7 +50,7 @@ echo **** create empty roms folder
 xcopy roms\---* dist\launchxp\roms /S /i /Y
 
 echo **** create minimal dkwolf folder
-xcopy dkwolf\dkwolf32.exe dist\launchxp\dkwolf\dkwolf.exe* /Y
+xcopy dkwolf\dkwolfxp.exe dist\launchxp\dkwolf\dkwolf.exe* /Y
 xcopy dkwolf\*.txt dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\*.md dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\plugins dist\launchxp\dkwolf\plugins /S /i /Y
