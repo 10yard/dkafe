@@ -26,7 +26,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "0.9"
+exports.version = "1.0"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -391,7 +391,7 @@ function galakong.startplugin()
 
 	function initialize()
 		mame_version = tonumber(emu.app_version())
-		is_pi = is_pi()
+		is_pi = is_raspberry_pi()
 		play("load")	
 		if emu.romname() == "dkong" or emu.romname() == "dkongjr" then
 			if mame_version >= 0.196 then
@@ -1076,7 +1076,7 @@ function galakong.startplugin()
 		end
 	end
 
-	function is_pi()
+	function is_raspberry_pi()
 		return package.config:sub(1,1) == "/"
 	end
 	
