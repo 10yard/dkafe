@@ -780,7 +780,7 @@ function galakong.startplugin()
 
 				-- Check for wrapping of score at million
 				score = _format("%06d", tonumber(get_score_segment(0x60b4)..get_score_segment(0x60b3)..get_score_segment(0x60b2)))
-				if tonumber(score) < 5000 and tonumber(score) < tonumber(last_score) then
+				if tonumber(score) < 8000 and tonumber(score) < tonumber(last_score) then
 					million_wraps = million_wraps + 1
 				end
 				last_score = score

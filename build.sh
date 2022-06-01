@@ -12,6 +12,7 @@
 
 # remove existing build folders
 sudo rm -r -f /home/pi/dkafe_bin
+sudo rm -r -f /boot/dkafe_bin
 
 # set full permission on sources
 cd /home/pi
@@ -61,16 +62,24 @@ sudo cp rpi4/mame.ini dist/dkwolf
 sudo chown -R pi:pi dist
 sudo chmod -R 777 dist
 
-# Move binaries to /home/pi
-mv dist /home/pi/dkafe_bin
+# Launch the installer on first boot
+sudo cp rpi4/firstboot.desktop /etc/xdg/autostart
+
+## Move binaries to /home/pi
+##mv dist /home/pi/dkafe_bin
+
+
+## Move binaries to boot partition
+mv dist /boot/dkafe_bin
 
 # Clean up
 sudo rm -r build
 
-# Package everything into a versioned ZIP for easy distribution
-version=$(cat /home/pi/dkafe/VERSION)
-cd /home/pi
-zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_bin
-cd /home/pi/dkafe/rpi4
-zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_install.sh
-zip -r /home/pi/dkafe_rpi4_binary_${version}.zip readme.txt
+## Commented out since we are now providing an SD image
+## Package everything into a versioned ZIP for easy distribution
+##version=$(cat /home/pi/dkafe/VERSION)
+##cd /home/pi
+##zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_bin
+##cd /home/pi/dkafe/rpi4
+##zip -r /home/pi/dkafe_rpi4_binary_${version}.zip dkafe_install.sh
+##zip -r /home/pi/dkafe_rpi4_binary_${version}.zip readme.txt

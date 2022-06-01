@@ -68,7 +68,9 @@ Credit is given to the original authors below.
 
 
 ### By Jon Wilson (me)
- - Konkey Dong
+ - VectorKong
+ - GalaKong
+ - Galakong Junior
  - Lava Panic!
  - DK Who and the Daleks
  - Donkey Kong Pies Only
@@ -77,8 +79,7 @@ Credit is given to the original authors below.
  - Donkey Kong Barrels Only
  - Donkey Kong Coach
  - Donkey Kong Chorus
- - GalaKong
- - Galakong Junior (*for DK Junior) 
+ - Konkey Dong
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition
@@ -94,6 +95,7 @@ Credit is given to the original authors below.
  - Donkey Kong 40th Anniversary Edition
  - Donkey Kong Duel
  - Donkey Kong Wizardry
+ - Donkey Kong RNDMZR
 
 ### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix

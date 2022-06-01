@@ -113,3 +113,11 @@ git clone https://github.com/pyinstaller/pyinstaller
 	sudo cp /home/pi/dkafe/dist/launch /home/pi/dkafe
         cd /home/pi/dkafe	
 	./launch
+
+
+Make an image of SD
+-------------------
+lsblk (shows the mount point and the sizes)
+sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sd.img bs=1M
+cd /media/pi/USB
+sudo pishrink.sh -z dkafe_sd.img

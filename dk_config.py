@@ -147,6 +147,7 @@ PLUGINS = [
     ("dkongkonkey", "konkeydong"),
     ("dkong2600", "gingerbreadkong"),
     ("dkongwho", "dkwho"),
+    ("dkongvector", "vectorkong"),
     ("dkonggalakong", "galakong"),
     ("dkongjrgala", "galakong")]
 
