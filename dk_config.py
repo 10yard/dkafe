@@ -159,7 +159,7 @@ SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
 
 # Roms that don't support some DKAFE features fully
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet"]
-AUTOSTART_UNFRIENDLY = ["dkongbarpal"]
+AUTOSTART_UNFRIENDLY = ["dkongbarpal", "dkongrndmzr"]
 AUTHOR_UNFRIENDLY = ["dkongwizardry", "dkongbarpal", "dkongrndmzr"]
 
 # Colours
