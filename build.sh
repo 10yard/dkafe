@@ -70,9 +70,10 @@ sudo cp rpi4/firstboot.desktop /etc/xdg/autostart
 
 
 ## Move binaries to boot partition
-mv dist /boot/dkafe_bin
+sudo cp -r dist /boot/dkafe_bin
 
 # Clean up
+sudo rm -r dist
 sudo rm -r build
 
 ## Commented out since we are now providing an SD image

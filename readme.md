@@ -49,7 +49,7 @@ The frontend can be configured to launch other emulators and roms.
  - A rom patcher that automatically generates hacked roms from the many included patch files.
  - Several Donkey Kong hacks made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - MAME plugins and scripts interface MAME with the frontend and add cool features such as a coaching/learning mode.
+ - MAME plugins and scripts interface MAME with the frontend and add cool features such as a coaching mode.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -213,7 +213,7 @@ The romlist.csv contains information about the roms, which slot they should appe
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
 
-The OPTION `-view "Pixel Aspect (7:8)"` is used by default to override MAME's default 4:3 aspect.  
+The OPTION `-view "Screen 0 Pixel Aspect (7:8)"` is used by default to override MAME's default 4:3 aspect.  
 
 If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to fill the screen.
 
@@ -294,7 +294,7 @@ EMU_8 = (optional)
 `ROM_DIR = <ROOT>/roms`    
 The rom directory is set to the DKAFE roms folder by default.
 
-`OPTIONS = -rompath <ROM_DIR> -view "Pixel Aspect (7:8)" -video opengl`    
+`OPTIONS = -rompath <ROM_DIR> -view "Screen 0 Pixel Aspect (7:8)" -video opengl`    
 General arguments can be stored into <OPTIONS> rather than repeating for each emulator.
 
 The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>` and `<RECORD_ID>` used above are replaced with their actual values at runtime.
@@ -476,9 +476,8 @@ I frequently play the original Donkey Kong and aim to improve on my high score o
 
 ## What's next?
 
- - Add challenging stages to GalaKong hack
  - Add a test screen for the player controls and a welcome screen to set the initial frontend settings.
- - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to bed added.  Barrels needs more work too.
+ - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to be added.  Barrels needs more work too.
  - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Maybe add Crazy Kong and Donkey Kong 3 with interface support to the default frontend.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.

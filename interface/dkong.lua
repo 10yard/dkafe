@@ -77,7 +77,7 @@ emu.register_frame(function()
 		score = get_score()
 
 		-- Release P1 START button (after autostart)
-		if data_autostart == "1" and mode1 == 3 and mode2 == 7 then
+		if data_autostart == "1" and mode1 == 3 then
 			ports[":IN2"].fields["1 Player Start"]:set_value(0)
 			data_autostart = "0"
 		end

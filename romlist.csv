@@ -9,15 +9,15 @@ dkong,dkongspringy,DK Springy,DK Springs Only,12,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,14,1,2,8000,10000,20000,40000
 dkong,dkongwho,DK Who,DK Who and the Daleks,15,1,2,10000,10000,20000,40000
 dkong,dkongwbh,DK Wild,DK Wild Barrels,17,1,2,12000,1000,2000,5000
-dkong,dkongrev,DK Reverse,DK Reverse,18,1,2,14000,10000,20000,40000
+dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,18,1,2,14000,10000,20000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,19,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,20,1,2,18000,10000,15000,30000
-dkong,dkongbarrels,DK Barrels,DK Barrels Only,21,1,2,20000,10000,20000,40000
+dkong,dkongvector,VectorKong,Vector Kong,21,1,2,20000,10000,20000,40000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,22,1,2,22000,10000,20000,40000
 dkong,dkongotr,DK OnTheRun,DK On The Run,24,1,2,24000,10000,15000,30000
 dkongx,dkongd2k,D2K,D2K Jumpman Returns,25,1,2,26000,5000,10000,25000
 dkong,dkongrivets,DKRivet,DK Rivets Only,26,1,2,28000,10000,20000,40000
-dkong,dkongrnd,DK Random,DK Randomized,27,1,2,30000,10000,25000,50000
+dkong,dkongrev,DK Reverse,DK Reverse,27,1,2,30000,10000,25000,50000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,29,1,2,32000,10000,25000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,31,1,2,34000,10000,20000,40000
 dkongf,dkongrdemo,DK Remix,DK Remix Demo,33,1,2,36000,10000,20000,45000
@@ -28,6 +28,8 @@ dkong,dkongce,DK Champs.,DK Championship Edition,40,1,2,44000,10000,25000,50000
 dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,42,1,2,46000,8000,15000,25000
 dkong,dkongbarpal,DK Barrelpalooza,DK Barrelpalooza,45,1,2,48000,10000,25000,50000
 dkong,dkongkonkey,Konkey Dong,Konkey Dong,46,1,2,50000,,,
+dkong,dkongbarrels,DK Barrels,DK Barrels Only,99,1,2,,,,
+dkong,dkongrnd,DK Random,DK Randomized,99,1,2,,,,
 dkong,dkongfr,DK FreeRun,DK Freerun Edition,99,1,2,,,,
 dkong,dkongpac,DK Pac-Man,,99,1,2,,,,
 dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,,,,
@@ -38,5 +40,3 @@ dkong,dkongrainbow,DK Rainbow,DK Rainbow,99,1,2,,,,
 dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,2,,,,
 dkong,dkongduel,DK Duel,DK Duel,99,1,2,,,,
 dkongj,dkongjapan,DK Japan,DK Japan,99,1,2,,,,
-dkong,dkongvector,Vector Kong,Vector Kong,99,1,2,,,,
-dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,99,1,2,,,,
