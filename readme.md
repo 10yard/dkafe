@@ -13,12 +13,12 @@ An arcade game launcher based on Donkey Kong with incentives to play and unlock 
 
 The latest releases are available to download from below.  Refer to the **How to Install** section.
 
-| Download Link                                                                                                          | Version | Operating System                              |
-| ---------------------------------------------------------------------------------------------------------------------- | ------- | --------------------------------------------- |
-| [dkafe_win64_binary_v0.31.zip](https://github.com/10yard/dkafe/releases/download/v0.31/dkafe_win64_binary_v0.31.zip)   | 0.31    | Windows 64 bit (x64) systems                  |
-| [dkafe_win32_binary_v0.31.zip](https://github.com/10yard/dkafe/releases/download/v0.31/dkafe_win32_binary_v0.31.zip)   | 0.31    | Windows 32 bit (x86) systems: Vista, 7, 8, 10 |
-| [dkafe_winxp_binary_v0.31.zip](https://github.com/10yard/dkafe/releases/download/v0.31/dkafe_winxp_binary_v0.31.zip)   | 0.31    | Windows XP only                               |
-| [dkafe_rpi4_image_v0.27.img.gz](https://github.com/10yard/dkafe/releases/download/v0.27/dkafe_rpi4_image_v0.27.img.gz) | 0.27    | Raspberry Pi 4 and 400 only                   |
+| Download Link                                                                                                        | Version | Operating System                          |
+| -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
+| [dkafe_win64_binary_v0.32.zip](https://github.com/10yard/dkafe/releases/download/v0.32/dkafe_win64_binary_v0.32.zip) | 0.32    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_rpi4_image_v0.32.gz](https://github.com/10yard/dkafe/releases/download/v0.32/dkafe_rpi4_image_v0.32.gz)       | 0.32    | Raspberry Pi 4 and 400 only               |
+| [dkafe_win32_binary_v0.31.zip](https://github.com/10yard/dkafe/releases/download/v0.31/dkafe_win32_binary_v0.31.zip) | 0.31    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_winxp_binary_v0.31.zip](https://github.com/10yard/dkafe/releases/download/v0.31/dkafe_winxp_binary_v0.31.zip) | 0.31    | Windows XP only                           |
 
 
 ## About DKAFE
