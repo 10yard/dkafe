@@ -68,7 +68,7 @@ Credit is given to the original authors below.
 
 
 ### By Jon Wilson (me)
- - VectorKong
+ - Vector Kong
  - GalaKong
  - Galakong Junior
  - Lava Panic!
@@ -177,10 +177,10 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ### Raspberry Pi 4/400
 
-1. Download the latest image .gz and burn to an SD card (mimimum 4GB size)
+1. Download the latest SD card image and burn to an SD card (minimum 4GB size).
 2. Copy dkong.zip to the /boot partition of the SD card.
 3. Boot your Raspberry Pi with the SD card inserted.
-4. The DKAFE install script will ask the following questions. 
+4. The DKAFE install script will ask some questions. 
 ```	 
 	 Rotate the display?
 	 Launch DKAFE on boot?                    (Recommend Y)
@@ -188,11 +188,11 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Hide the Pi taskbar?                     (Recommend Y)
 	 Hide the Pi desktop?                     (Recommend Y)
 	 Hide the Pi mouse cursor?                (Recommend Y)
-	 Use headphone jack for audio?            (Recommend Y)
+	 Use headphone jack for audio?
 	 Force 640x480 mode on boot?              (Recommend Y)
 	 Map GPIO to keyboard input controls?     (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
-	 Disable networking services (WiFi, SSH)?
+	 Disable networking services (WiFi, SSH)? (Recommend Y)
 	 Reboot now?                              (Recommend Y)	 
 ```
 
