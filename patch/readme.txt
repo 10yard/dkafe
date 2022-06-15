@@ -25,6 +25,7 @@ By Jon Wilson (me)
  - DK Springs Only (dkongspringy)
  - Galakong (dkonggalakong)
  - Galakong Junior (dkongjrgala)
+ - VectorKong (dkongvector)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)
@@ -40,6 +41,8 @@ By Paul Goes
  - Donkey Kong 40th Anniversary Edition (dkong40)
  - Donkey Kong Duel (dkongduel)
  - Donkey Kong Wizardry (dkongwizardry)
+ - Donkey Kong RNDMZR (dkongrndmzr)
+ - Donkey Kong Springfinity (dkongsprfin)
 
 By John Kowalski (Sock Master) 
  - Donkey Kong Spooky Remix (dkongspooky)

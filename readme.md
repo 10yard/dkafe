@@ -96,6 +96,7 @@ Credit is given to the original authors below.
  - Donkey Kong Duel
  - Donkey Kong Wizardry
  - Donkey Kong RNDMZR
+ - Donkey Kong Springfinity
 
 ### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix

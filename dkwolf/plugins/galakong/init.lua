@@ -1,7 +1,7 @@
 -- GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)
 -- by Jon Wilson (10yard)
 --
--- Tested with latest MAME version 0.240
+-- Tested with latest MAME version 0.244
 -- Fully compatible with all MAME versions from 0.227
 --
 -- Jumpman is assisted by an accompanying ship which can take out barrels, fireballs, firefoxes, pies and springs.  
@@ -26,7 +26,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "1.0"
+exports.version = "1.1"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -1084,7 +1084,8 @@ function galakong.startplugin()
 		if is_pi then
 			io.popen("aplay -q plugins/galakong/sounds/"..sound..".wav &")
 		else
-			io.popen("start /B /HIGH plugins/galakong/bin/sounder.exe /id "..sound.." /stopbyid "..sound.." plugins/galakong/sounds/"..sound..".wav")
+			--io.popen("start /B /HIGH plugins/galakong/bin/sounder.exe /id "..sound.." /stopbyid "..sound.." plugins/galakong/sounds/"..sound..".wav")
+			io.popen("start /B /HIGH plugins/galakong/bin/wavplay.exe plugins/galakong/sounds/"..sound..".wav")
 		end
 	end
 	
@@ -1092,7 +1093,8 @@ function galakong.startplugin()
 		if is_pi then
 			io.popen("pkill aplay &")
 		else
-			io.popen("start /B /HIGH plugins/galakong/bin/sounder.exe /stop")
+			--io.popen("start /B /HIGH plugins/galakong/bin/sounder.exe /stop")
+			io.popen("start /B /HIGH taskkill /IM wavplay.exe /F 2> nul")
 		end
 	end
 	
