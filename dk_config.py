@@ -149,13 +149,15 @@ PLUGINS = [
     ("dkongwho", "dkwho"),
     ("dkongvector", "vectorkong"),
     ("dkonggalakong", "galakong"),
+    ("dkongxgalakong", "galakong"),
     ("dkongjrgala", "galakong")]
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd"]
 CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpe", "dkongfr", "dkongl05", "dkongce", "dkongrev"]
-SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
+SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac", "dkongwbh"]
+START5_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix"]
 
 # Roms that don't support some DKAFE features fully
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet"]

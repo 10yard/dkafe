@@ -1,7 +1,7 @@
 -- GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)
 -- by Jon Wilson (10yard)
 --
--- Tested with latest MAME version 0.244
+-- Tested with latest MAME version 0.245
 -- Fully compatible with all MAME versions from 0.227
 --
 -- Jumpman is assisted by an accompanying ship which can take out barrels, fireballs, firefoxes, pies and springs.  
@@ -26,7 +26,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "1.1"
+exports.version = "1.2"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -430,10 +430,15 @@ function galakong.startplugin()
 				animation_table = {}
 				animation_frames = 0
 			end
-
+			
 			--Add more delay to the GAME OVER screen
 			mem:write_direct_u8(0x132f, 0xff)
-						
+			
+			-- Is this the wild barrel hack?  Offset 3FBA to 3FBF is not used in regular DK
+			if emu.romname() == "dkong" and mem:read_direct_u32(0x3fba) == 0xc31977dd and mem:read_direct_u16(0x3fbe) == 0x2153 then
+				pickup_table[1] = {10, 5} -- make pickup location easier on barrels
+			end
+			
 			-- Donkey Kong Junior specific initialisation
 			if emu.romname() == "dkongjr" then
 				enemy_table =
@@ -1084,7 +1089,6 @@ function galakong.startplugin()
 		if is_pi then
 			io.popen("aplay -q plugins/galakong/sounds/"..sound..".wav &")
 		else
-			--io.popen("start /B /HIGH plugins/galakong/bin/sounder.exe /id "..sound.." /stopbyid "..sound.." plugins/galakong/sounds/"..sound..".wav")
 			io.popen("start /B /HIGH plugins/galakong/bin/wavplay.exe plugins/galakong/sounds/"..sound..".wav")
 		end
 	end
@@ -1093,7 +1097,6 @@ function galakong.startplugin()
 		if is_pi then
 			io.popen("pkill aplay &")
 		else
-			--io.popen("start /B /HIGH plugins/galakong/bin/sounder.exe /stop")
 			io.popen("start /B /HIGH taskkill /IM wavplay.exe /F 2> nul")
 		end
 	end

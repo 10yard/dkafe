@@ -472,7 +472,7 @@ The frontend was developed for my own DIY Donkey Kong arcade cabinet as a replac
 
 I wanted to bring together all the amazing Donkey Kong roms and hacks into one place with an incentive to play them along with tools to aid my own progression (trainers) and .inp recording capability for score submissions.
 
-I frequently play the original Donkey Kong and aim to improve on my high score of 309,500.
+I would love to get to the infamous killscreen on level 22.  My current PB is 513,900 points at level 15.
 
 
 ## What's next?

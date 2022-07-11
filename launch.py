@@ -529,8 +529,9 @@ def build_launch_menu():
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
         show_coach = sub in COACH_FRIENDLY or (name == "dkong" and sub == "")
         show_chorus = sub in CHORUS_FRIENDLY or (name == "dkong" and sub == "")
+        show_start5 = sub in START5_FRIENDLY  or (name == "dkong" and sub == "")
         show_shoot = sub in SHOOT_FRIENDLY
-        inps = _s.get_inp_files(emu, name, sub, 12 - show_coach - show_chorus - show_shoot)
+        inps = _s.get_inp_files(emu, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5)
 
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
                                     theme=dkafe_theme, onclose=close_menu)
@@ -551,8 +552,10 @@ def build_launch_menu():
                     except ValueError:
                         pass
 
-        if show_coach or show_chorus or show_shoot:
+        if show_coach or show_chorus or show_shoot or show_start5:
             _g.launchmenu.add_vertical_margin(10)
+            if show_start5:
+                _g.launchmenu.add_button('↑ Launch from level 5 ', launch_rom, nearby, "dkstart5")
             if show_coach:
                 _g.launchmenu.add_button('Č Launch with coaching', launch_rom, nearby, "dkcoach")
             if show_chorus:
