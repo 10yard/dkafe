@@ -21,6 +21,8 @@
 -- SET GALAKONG_NOSTARS=1
 -- SET GALAKONG_NOEXPLOSIONS=1
 --
+-- The hack becomes "Extreme Galakong" when used in combination with the "Wild Barrel Hack" rom.
+--
 -- Minimum start up arguments:
 --   mame dkong -plugin galakong
 -----------------------------------------------------------------------------------------
@@ -60,6 +62,7 @@ function galakong.startplugin()
 	local howhigh_ready = false
 	local end_of_level = false
 	local dead = false
+	local extreme = false
 	local name_entry = 0
 	
 	local score = "000000"
@@ -177,6 +180,13 @@ function galakong.startplugin()
 		"              +  +",
 		"               ++"}
 
+	local extreme_logo_table = {
+	"!! ! ! !!! !!  !!  !!!  !!",
+	"!  ! !  !  ! ! !  ! ! ! !",
+	"!!  !   !  !!  !! ! ! ! !!",
+	"!  ! !  !  ! ! !  ! ! ! !",
+	"!! ! !  !  ! ! !! ! ! ! !!"}
+	
 	local explode1_table = {
 		"",
 		"",
@@ -326,9 +336,9 @@ function galakong.startplugin()
 	-- Position of shield pickup by stage number
 	local pickup_table = {}
 	pickup_table[1] = {15, 212}
-	pickup_table[2] = {8, 208}
+	pickup_table[2] = {8, 161}
   	pickup_table[3] = {121, 73}
-	pickup_table[4] = {8, 192}
+	pickup_table[4] = {8, 161}
 
 	-- Point scored for multiple missile hits and associated sprite display
 	local bonus_table = {}
@@ -411,6 +421,12 @@ function galakong.startplugin()
 			s_cpu = mac.devices[":soundcpu"]
 			s_mem = s_cpu.spaces["data"]
 
+			-- Is this the wild barrel hack (i.e. extreme galakong)?  Offset 3FBA to 3FBF is not used in regular DK
+			if emu.romname() == "dkong" and mem:read_direct_u64(0x3fba) == 0x4d212153c31977dd then
+				extreme = true
+				pickup_table[1] = {10, 96} -- easier pickup location on barrels
+			end
+
 			change_title()
 
 			--Generate a starfield
@@ -433,12 +449,7 @@ function galakong.startplugin()
 			
 			--Add more delay to the GAME OVER screen
 			mem:write_direct_u8(0x132f, 0xff)
-			
-			-- Is this the wild barrel hack?  Offset 3FBA to 3FBF is not used in regular DK
-			if emu.romname() == "dkong" and mem:read_direct_u32(0x3fba) == 0xc31977dd and mem:read_direct_u16(0x3fbe) == 0x2153 then
-				pickup_table[1] = {10, 5} -- make pickup location easier on barrels
-			end
-			
+						
 			-- Donkey Kong Junior specific initialisation
 			if emu.romname() == "dkongjr" then
 				enemy_table =
@@ -480,6 +491,24 @@ function galakong.startplugin()
 			local left, right, fire
 			local _frame = scr:frame_number()
 
+			if extreme then
+				-- Adjust start level for extreme Galakong
+				if level == 1 then
+					mem:write_u8(0x6229, 5)  -- update to level 5 
+					mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
+				end
+				-- Switch palette for extreme Galakong
+				if stage == 1 then -- Girders
+					mem:write_u8(0xc7d86, 1)
+					mem:write_u8(0xc7d87, 0)
+				elseif stage == 2 then -- Pies/Conveyors
+					mem:write_u8(0xc7d86, 0)
+					mem:write_u8(0xc7d87, 1)
+				elseif stage == 4 then -- Rivets
+					mem:write_u8(0xc7d86, 0)
+				end				
+			end
+
 			if mode2 == 0x1 then -- Initial screen
 				started = false
 
@@ -498,6 +527,10 @@ function galakong.startplugin()
 				end
 				draw_graphic(yard_logo_table, 19, 175)
 				write_ram_message(0x77be, " VERSION "..exports.version)
+
+				if extreme then
+					draw_graphic(extreme_logo_table, 224, 59)
+				end
 
 				-- Alternative coin entry sound
 				if mem:read_u8(0x6083) == 2 then
@@ -576,7 +609,7 @@ function galakong.startplugin()
 			if mode2 >= 0xb and mode2 <= 0xd then  -- during gameplay
 				jumpman_x = mem:read_u8(0x6203) - 15
 				jumpman_y = mem:read_u8(0x6205)
-
+				
 				if pickup then
 					-- shield was collected, the ship can now be controlled
 					left, right, fire = get_inputs()
@@ -1048,7 +1081,11 @@ function galakong.startplugin()
 			-- change "HIGH SCORE" to "DK SHOOTER"
 			-- HIGH SCORE is 10 characters, pad with space if necessary
 			--                        1234567890
-			write_rom_message(0x36b4," GALAKONG ")
+			if extreme then
+				write_rom_message(0x36b4,"X-GALAKONG")
+			else
+				write_rom_message(0x36b4," GALAKONG ")
+			end	
 
 			-- Change "HOW HIGH CAN YOU GET" text in rom to "HOW UP CAN YOU SCHMUP ?"
 			-- how high is 23 characters, pad with space if necessary

@@ -156,11 +156,11 @@ PLUGINS = [
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd"]
 CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpe", "dkongfr", "dkongl05", "dkongce", "dkongrev"]
-SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac", "dkongwbh"]
+SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac"]
 START5_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix"]
 
 # Roms that don't support some DKAFE features fully
-HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet"]
+HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]
 AUTOSTART_UNFRIENDLY = ["dkongbarpal", "dkongrndmzr"]
 AUTHOR_UNFRIENDLY = ["dkongwizardry", "dkongbarpal", "dkongrndmzr"]
 

@@ -13,7 +13,7 @@ import os
 from datetime import datetime
 from time import sleep, time
 from glob import glob
-from shutil import copy, move
+from shutil import copy, move, copytree
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from dk_config import *
 from dk_interface import lua_interface
@@ -95,16 +95,18 @@ def get_inp_dir(emu):
     return os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp")
 
 
-def get_inp_files(emu, name, sub, num):
+def get_inp_files(rec, name, sub, num):
     # Return the 5 most recent .inp recordings for the specified rom
-    return sorted(glob(os.path.join(get_inp_dir(emu), f"{name}_{sub}_*.inp")), reverse=True)[:num]
+    return sorted(glob(os.path.join(get_inp_dir(rec), f"{name}_{sub}_*.inp")), reverse=True)[:num]
 
 
-def build_launch_command(info, basic_mode=False, launch_plugin=None):
+def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=False):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
     subfolder, name, emu, rec, unlock, score3, score2, score1 = info
+    if playback:  # playback using the original emulator/settings
+        emu = rec
     emu_args = get_emulator(emu)
     inp_file = f"{name}_{subfolder}_{get_datetime()}_0m.inp"
     emu_args = emu_args.replace("<RECORD_ID>", inp_file)
@@ -130,7 +132,14 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None):
         for plugin, plugin_folder in PLUGINS:
             if plugin == subfolder:
                 launch_command += f" -plugin {plugin_folder}"
-                break
+
+                if "dkwolf" not in launch_directory.lower():
+                    # Not using standard emulator so check the plugin path exists and copy if necessary
+                    plugin_target = os.path.join(launch_directory, "plugins", plugin_folder)
+                    if not os.path.exists(plugin_target):
+                        plugin_source = os.path.join(ROOT_DIR, "dkwolf", "plugins", plugin_folder)
+                        copytree(plugin_source, plugin_target)
+                    break
 
     else:
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)

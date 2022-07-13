@@ -237,7 +237,6 @@ def check_for_input(force_exit=False):
 
         # Optional joystick controls
         if USE_JOYSTICK:
-            print(event.type)
             if event.type == pygame.JOYAXISMOTION:
                 _g.active = True
                 _g.lastmove = _g.timer.duration
@@ -531,7 +530,7 @@ def build_launch_menu():
         show_chorus = sub in CHORUS_FRIENDLY or (name == "dkong" and sub == "")
         show_start5 = sub in START5_FRIENDLY  or (name == "dkong" and sub == "")
         show_shoot = sub in SHOOT_FRIENDLY
-        inps = _s.get_inp_files(emu, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5)
+        inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5)
 
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
                                     theme=dkafe_theme, onclose=close_menu)
@@ -735,7 +734,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
 def playback_rom(info, inpfile):
     """playback the specified inp file"""
-    launch_command, launch_directory, competing, _ = _s.build_launch_command(info, True, False)
+    launch_command, launch_directory, competing, _ = _s.build_launch_command(info, True, False, True)
     if os.path.exists(launch_directory):
         close_menu()
         clear_screen(and_reset_display=True)
