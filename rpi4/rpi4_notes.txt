@@ -5,18 +5,13 @@ ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
 o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
                                         by Jon Wilson (10yard)
 
-Notes on setting up Raspberry Pi4
----------------------------------
-
-Manual setup
-------------
-Source files should be extracted to /home/pi/dkafe
-The binary distribution should be extracted to /home/pi or you can use the automated setup below.
+## Notes on setting up Raspberry Pi4
 
 
-Assisted setup of binary distribution
--------------------------------------
-1. Download the latest raspberry Pi image from the releases page and burn to an SD card (mimimum 4GB size)
+### Assisted setup of binary
+
+1. Download the latest raspberry Pi image from the releases page 
+2. Write image to an SD card (mimimum 4GB size) using Raspberry Pi Imager
 2. Copy dkong.zip to the /boot partition of the SD card.
 3. Boot your Raspberry Pi with card inserted.
 4. The DKAFE install script will ask the following questions. 
@@ -34,8 +29,19 @@ Assisted setup of binary distribution
 	 Reboot now?                              (Recommend Y)	 
 
 
-Launch DKAFE from terminal manually
------------------------------------
+### Manual setup
+
+Source files should be extracted to /home/pi/dkafe
+The binary distribution should be extracted to /home/pi or you can use the automated setup above.
+
+
+#### Setting up the sources environment
+
+sudo pip3 install -r requirements.txt
+
+
+#### Manually launching DKAFE from terminal
+
 for sources (set up environment first, see below):
 	cd dkafe
 	python3 launch.py
@@ -45,95 +51,118 @@ for binary:
 	./dkafe_start.sh
 
 
-Set up environment when using sources
--------------------------------------
-sudo pip3 install -r requirements.txt
+### Resolution and frontend display scale
 
-
-Resolution and frontend display scale
--------------------------------------
 The resolution and display scale are set in dkafe_start.sh file.
+
 e.g. for 7:8 aspect ratio with a rotated display use the following:
 	xrandr --output HDMI-1 --scale 1x0.8 --rotate left
 	
 NOTE: If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to your settings.txt file to fill the screen.
 
 
-Scan line generator
--------------------
-If using with a scan line generator then you should force 640x480 during boot and disable overscan i.e.
+### Scan line generators
+
+If using with a VGA scan line generator then you should force 640x480 during boot and disable overscan i.e.
+
+[code]
 disable_overscan=1
 hdmi_group=2
 hdmi_mode=4
+[/code]
 
 
-HDMI TO RGB Scart (with VGA2SCART)
-------------------------------
+### CRT Displays
+
+
+#### HDMI TO RGB Scart (with VGA2SCART)
+
 This connects Pi using HDMI/VGA adapter to a VGA2SCART adapter (RGB scart https://www.retroupgrades.co.uk/product/vga2scart/)
 I was able to make it work well in 1 video mode: 576i at 50hz
 
+[code]
 hdmi_group=1
 hdmi_mode=26
-config_hdmi_boost=1 (increase if there is signal interference)
+config_hdmi_boost=1
 
-disable_overscan=0  (there was no benefit using overscan or a custom framebuffer.  Leave that alone)
+disable_overscan=0
+[code]
 
-Comment out the FKMS video driver overlay.
+If there is interference then increase the value of '''config_hdml_boost'''
+
+The KMS graphics driver overlay should be commented out i.e.
+
+[code]
+# dtoverlay=vc4-kms-v3d
+# max_framebuffers=2
+[/code]
 
 
-HDMI to Composite SCART
------------------------
-Use DKAFE default settings but ensure 288p resolution (for PAL) or 240p resolution (for NTSC)
-Don't bother with framebuffer height/width config
+#### HDMI to Composite SCART
 
-Update dkafe_start.sh and change the scale to fit your CRT display e.g. --scale 0.7x1  (to stretch the x) 
+Use DKAFE default settings but ensure 288p resolution (for PAL) or 240p resolution (for NTSC).
+Don't bother with framebuffer height/width config settings.
+
+Optionally, update '''dkafe_start.sh''' and change the scale to fit your CRT display perfectly e.g. --scale 0.7x1  (to stretch the X) 
 
 Optionally use overscan config to fine tune the display positioning e.g.
+
+[code]
 disable_overscan=0
 overscan_left=-8
 overscan_right=-8
 overscan_top=-8
 overscan_bottom=-8
+[/code]
 
 
-Composite TV Output
--------------------
-The Pi4 supports composite AV output for connection to a CRT TV.
+#### Composite TV Output
+
+The Pi4 supports composite AV output for direct connection to a CRT TV.
 You will need a "3.5mm to 3x RCA composite A/V cable" such as this one - https://thepihut.com/products/av-composite-cable-3-5mm-to-3-x-rca-3m
 The composite is disabled by default (it reduces performance a little) so you need to enable it.
 Add extra config lines to the /boot/config.txt
 
+[code]
 sdtv_mode=2
 sdtv_aspect=1
 enable_tvout=1
+[/code]
 
-(Set sdtv mode=0 for NTSC).  Refer to options at https://www.raspberrypi.com/documentation/computers/config_txt.html#composite-video-mode
+The above is for PAL.  For NTSC you should set '''sdtv mode=0'''.  Refer to options at https://www.raspberrypi.com/documentation/computers/config_txt.html#composite-video-mode
 
-The KMS graphics driver options should be commented out i.e.
+The KMS graphics driver overlay should be commented out i.e.
 
+[code]
 # dtoverlay=vc4-kms-v3d
 # max_framebuffers=2
+[/code]
 
 To stretch the graphics to full screen I recommend changing the framebuffer size (in factors of 224x256) e.g.
 
+
+[code]
 framebuffer_width=448
 framebuffer_height=512
+[/code]
 
-and then align left/right of picture to fit the screen (if necessary) by enabling overscan e.g.
+Optionally,  align picture to fit the screen by enabling overscan e.g.
 
+[code]
 disable_overscan=0
 overscan_left=40
 overscan_right=8
+[/code]
 
-Optionally,  comment out all of the xrandr and xbset options from dkafe_start.sh
 
+#### GPIO input
 
-GPIO input
-----------
 GPIO pins can be mapped to keyboard input in the /boot/config.txt file
 This makes it easy to wire up arcade controls.
 
 Default assignments for DKAFE controls are as follows:
+
+[code]
 dtoverlay=gpio-key,gpio=17,keycode=105,label="KEY_LEFT"
 dtoverlay=gpio-key,gpio=27,keycode=106,label="KEY_RIGHT"
 dtoverlay=gpio-key,gpio=22,keycode=103,label="KEY_UP"
@@ -144,49 +173,67 @@ dtoverlay=gpio-key,gpio=5,keycode=2,label="KEY_1"
 dtoverlay=gpio-key,gpio=6,keycode=3,label="KEY_2"
 dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
 dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
+[/code]
 
 Refer to pinout guide at https://pinout.xyz/
 
 
-SSH
----
+### SSH
+
 Create an empty file on the /boot partition named "ssh" to enable SSH access.
-You can then connect to Rasp Pi via IP (over port 22) using the default credentials.
+You can then connect to Raspberry Pi remotely via IP (over port 22) using the default credentials.
 User: pi
 Password: "raspberry"
 
 
-Build DKAFE (Optional - if you prefer not to run as Python script)
-------------------------------------------------------------------
+### Build DKAFE (from latest sources)
+
+Install dependencies.
+
+[code]
 cd
-sudo pip3 uninstall pygame (remove any existing pygame library before we start)
-sudo pip3 install -r requirements.txt (sudo requirements are needed for pyinstaller)
-                                      ********************************************
+sudo pip3 uninstall pygame
+sudo pip3 install -r requirements.txt
 sudo apt install zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0 libsdl2-image-2.0.0
+pip install pyinstaller
+[/code]
 
-git clone https://github.com/pyinstaller/pyinstaller
-	build pyinstaller - we need to make a bootloader for Rpi too
-	------------------------------------------------------------
-	cd pyinstaller/bootloader
-	python ./waf all
-	cp /home/pi/pyinstaller/build/release/run /home/pi/pyinstaller/bootloader
-	cd pyinstaller	
-	sudo python3 setup.py install
+Build the frontend.
 
-	build the Frontend
-	------------------
-	pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
+[code]
+pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
+[/code]
 	
-	copy executable back to the dkafe folder which holds all the resources needed to run
-	------------------------------------------------------------------------------------
-	sudo cp /home/pi/dkafe/dist/launch /home/pi/dkafe
-        cd /home/pi/dkafe	
-	./launch
+Copy executables to the '''dkafe''' folder which contains all other resources required to run.
+
+[code]
+sudo cp /home/pi/dkafe/dist/launch /home/pi/dkafe
+[/code]
+
+Launch DKAFE.
+
+[code]
+cd /home/pi/dkafe	
+./launch
+[/code]
 
 
-Make an image of SD
--------------------
-lsblk (shows the mount point and the sizes)
+### Make an SD Card Image
+
+A USB memory stick should be connected after Pi is booted.
+
+Discover the mount point and drive sizes.
+
+[code]
+lsblk
+[/code]
+
+Assuming USB drive is named '''USB''' we can make an SD image and shrink it down.
+
+[code]
 sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sd.img bs=1M
 cd /media/pi/USB
 sudo pishrink.sh -z dkafe_sd.img
+[/code]
+
+This results in '''dkafe.sd.img.gz''' file.
