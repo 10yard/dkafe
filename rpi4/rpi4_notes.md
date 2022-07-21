@@ -1,9 +1,11 @@
+```
 ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
  888    88o  888  o88        888       888          888
  888    888  888888         8  88      888ooo8      888ooo8
  888    888  888  88o      8oooo88     888          888
 o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
                                         by Jon Wilson (10yard)
+```
 
 ## Notes on setting up Raspberry Pi4
 
@@ -42,13 +44,19 @@ sudo pip3 install -r requirements.txt
 
 #### Manually launching DKAFE from terminal
 
-for sources (set up environment first, see below):
-	cd dkafe
-	python3 launch.py
+for sources (set up environment first):
+
+```
+cd dkafe
+python3 launch.py
+```
 
 for binary:
-	cd dkafe_bin
-	./dkafe_start.sh
+
+```
+cd dkafe_bin
+./dkafe_start.sh
+```
 
 
 ### Resolution and frontend display scale
@@ -65,11 +73,11 @@ NOTE: If rotating your monitor then you may want to add the OPTION `-nokeepaspec
 
 If using with a VGA scan line generator then you should force 640x480 during boot and disable overscan i.e.
 
-[code]
+```
 disable_overscan=1
 hdmi_group=2
 hdmi_mode=4
-[/code]
+```
 
 
 ### CRT Displays
@@ -80,22 +88,22 @@ hdmi_mode=4
 This connects Pi using HDMI/VGA adapter to a VGA2SCART adapter (RGB scart https://www.retroupgrades.co.uk/product/vga2scart/)
 I was able to make it work well in 1 video mode: 576i at 50hz
 
-[code]
+```
 hdmi_group=1
 hdmi_mode=26
 config_hdmi_boost=1
 
 disable_overscan=0
-[code]
+```
 
-If there is interference then increase the value of '''config_hdml_boost'''
+If there is interference then increase the value of ```config_hdml_boost```.
 
 The KMS graphics driver overlay should be commented out i.e.
 
-[code]
+```
 # dtoverlay=vc4-kms-v3d
 # max_framebuffers=2
-[/code]
+```
 
 
 #### HDMI to Composite SCART
@@ -103,17 +111,17 @@ The KMS graphics driver overlay should be commented out i.e.
 Use DKAFE default settings but ensure 288p resolution (for PAL) or 240p resolution (for NTSC).
 Don't bother with framebuffer height/width config settings.
 
-Optionally, update '''dkafe_start.sh''' and change the scale to fit your CRT display perfectly e.g. --scale 0.7x1  (to stretch the X) 
+Optionally, update ```dkafe_start.sh``` and change the scale to fit your CRT display perfectly e.g. --scale 0.7x1  (to stretch the X) 
 
 Optionally use overscan config to fine tune the display positioning e.g.
 
-[code]
+```
 disable_overscan=0
 overscan_left=-8
 overscan_right=-8
 overscan_top=-8
 overscan_bottom=-8
-[/code]
+```
 
 
 #### Composite TV Output
@@ -123,36 +131,36 @@ You will need a "3.5mm to 3x RCA composite A/V cable" such as this one - https:/
 The composite is disabled by default (it reduces performance a little) so you need to enable it.
 Add extra config lines to the /boot/config.txt
 
-[code]
+```
 sdtv_mode=2
 sdtv_aspect=1
 enable_tvout=1
-[/code]
+```
 
-The above is for PAL.  For NTSC you should set '''sdtv mode=0'''.  Refer to options at https://www.raspberrypi.com/documentation/computers/config_txt.html#composite-video-mode
+The above is for PAL.  For NTSC you should set ```sdtv mode=0```.  Refer to options at https://www.raspberrypi.com/documentation/computers/config_txt.html#composite-video-mode
 
 The KMS graphics driver overlay should be commented out i.e.
 
-[code]
+```
 # dtoverlay=vc4-kms-v3d
 # max_framebuffers=2
-[/code]
+```
 
 To stretch the graphics to full screen I recommend changing the framebuffer size (in factors of 224x256) e.g.
 
 
-[code]
+```
 framebuffer_width=448
 framebuffer_height=512
-[/code]
+```
 
 Optionally,  align picture to fit the screen by enabling overscan e.g.
 
-[code]
+```
 disable_overscan=0
 overscan_left=40
 overscan_right=8
-[/code]
+```
 
 
 #### GPIO input
@@ -162,7 +170,7 @@ This makes it easy to wire up arcade controls.
 
 Default assignments for DKAFE controls are as follows:
 
-[code]
+```
 dtoverlay=gpio-key,gpio=17,keycode=105,label="KEY_LEFT"
 dtoverlay=gpio-key,gpio=27,keycode=106,label="KEY_RIGHT"
 dtoverlay=gpio-key,gpio=22,keycode=103,label="KEY_UP"
@@ -173,7 +181,7 @@ dtoverlay=gpio-key,gpio=5,keycode=2,label="KEY_1"
 dtoverlay=gpio-key,gpio=6,keycode=3,label="KEY_2"
 dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
 dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
-[/code]
+```
 
 Refer to pinout guide at https://pinout.xyz/
 
@@ -182,40 +190,43 @@ Refer to pinout guide at https://pinout.xyz/
 
 Create an empty file on the /boot partition named "ssh" to enable SSH access.
 You can then connect to Raspberry Pi remotely via IP (over port 22) using the default credentials.
+
+```
 User: pi
 Password: "raspberry"
+```
 
 
 ### Build DKAFE (from latest sources)
 
 Install dependencies.
 
-[code]
+```
 cd
 sudo pip3 uninstall pygame
 sudo pip3 install -r requirements.txt
 sudo apt install zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0 libsdl2-image-2.0.0
 pip install pyinstaller
-[/code]
+```
 
 Build the frontend.
 
-[code]
+```
 pyinstaller launch.py --onefile --clean --noconsole --icon artwork/dkafe.ico
-[/code]
+```
 	
-Copy executables to the '''dkafe''' folder which contains all other resources required to run.
+Copy executables to the ```dkafe``` folder which contains all other resources required to run.
 
-[code]
+```
 sudo cp /home/pi/dkafe/dist/launch /home/pi/dkafe
-[/code]
+```
 
 Launch DKAFE.
 
-[code]
+```
 cd /home/pi/dkafe	
 ./launch
-[/code]
+```
 
 
 ### Make an SD Card Image
@@ -224,16 +235,16 @@ A USB memory stick should be connected after Pi is booted.
 
 Discover the mount point and drive sizes.
 
-[code]
+```
 lsblk
-[/code]
+```
 
-Assuming USB drive is named '''USB''' we can make an SD image and shrink it down.
+Assuming USB drive is named ```USB``` we can make an SD image and shrink it down.
 
-[code]
+```
 sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sd.img bs=1M
 cd /media/pi/USB
 sudo pishrink.sh -z dkafe_sd.img
-[/code]
+```
 
-This results in '''dkafe.sd.img.gz''' file.
+This results in ```dkafe.sd.img.gz``` file.
