@@ -198,7 +198,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Reboot now?                              (Recommend Y)	 
 ```
 
-Refer to [Raspberry Pi Notes](rpi4/rpi4_notes.txt) for information on connecting to a CRT TV via RGB Scart or Composite.
+Refer to [Raspberry Pi Notes](rpi4/rpi4_notes.md) for information on connecting to a CRT TV via RGB Scart or Composite.
 
 ![CRT goodness](https://github.com/10yard/dkafe/blob/master/artwork/about/crt_rgb.png)
 
@@ -459,7 +459,7 @@ pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 
 See build.bat for an example Windows build script making use of venv (virtual environment for Python).
 
-See build.sh and rpi4/rpi_notes.txt for building a Raspberry Pi binary.
+See build.sh and [Raspberry Pi Notes](rpi4/rpi_notes.md) for building a Raspberry Pi binary.
 
 
 ### How to compile DKWolf?
