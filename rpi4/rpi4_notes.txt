@@ -67,6 +67,67 @@ hdmi_group=2
 hdmi_mode=4
 
 
+HDMI TO RGB Scart (with VGA2SCART)
+------------------------------
+This connects Pi using HDMI/VGA adapter to a VGA2SCART adapter (RGB scart https://www.retroupgrades.co.uk/product/vga2scart/)
+I was able to make it work well in 1 video mode: 576i at 50hz
+
+hdmi_group=1
+hdmi_mode=26
+config_hdmi_boost=1 (increase if there is signal interference)
+
+disable_overscan=0  (there was no benefit using overscan or a custom framebuffer.  Leave that alone)
+
+Comment out the FKMS video driver overlay.
+
+
+HDMI to Composite SCART
+-----------------------
+Use DKAFE default settings but ensure 288p resolution (for PAL) or 240p resolution (for NTSC)
+Don't bother with framebuffer height/width config
+
+Update dkafe_start.sh and change the scale to fit your CRT display e.g. --scale 0.7x1  (to stretch the x) 
+
+Optionally use overscan config to fine tune the display positioning e.g.
+disable_overscan=0
+overscan_left=-8
+overscan_right=-8
+overscan_top=-8
+overscan_bottom=-8
+
+
+Composite TV Output
+-------------------
+The Pi4 supports composite AV output for connection to a CRT TV.
+You will need a "3.5mm to 3x RCA composite A/V cable" such as this one - https://thepihut.com/products/av-composite-cable-3-5mm-to-3-x-rca-3m
+The composite is disabled by default (it reduces performance a little) so you need to enable it.
+Add extra config lines to the /boot/config.txt
+
+sdtv_mode=2
+sdtv_aspect=1
+enable_tvout=1
+
+(Set sdtv mode=0 for NTSC).  Refer to options at https://www.raspberrypi.com/documentation/computers/config_txt.html#composite-video-mode
+
+The KMS graphics driver options should be commented out i.e.
+
+# dtoverlay=vc4-kms-v3d
+# max_framebuffers=2
+
+To stretch the graphics to full screen I recommend changing the framebuffer size (in factors of 224x256) e.g.
+
+framebuffer_width=448
+framebuffer_height=512
+
+and then align left/right of picture to fit the screen (if necessary) by enabling overscan e.g.
+
+disable_overscan=0
+overscan_left=40
+overscan_right=8
+
+Optionally,  comment out all of the xrandr and xbset options from dkafe_start.sh
+
+
 GPIO input
 ----------
 GPIO pins can be mapped to keyboard input in the /boot/config.txt file
@@ -85,6 +146,14 @@ dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
 dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 
 Refer to pinout guide at https://pinout.xyz/
+
+
+SSH
+---
+Create an empty file on the /boot partition named "ssh" to enable SSH access.
+You can then connect to Rasp Pi via IP (over port 22) using the default credentials.
+User: pi
+Password: "raspberry"
 
 
 Build DKAFE (Optional - if you prefer not to run as Python script)

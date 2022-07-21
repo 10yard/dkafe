@@ -178,7 +178,8 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ### Raspberry Pi 4/400
 
-1. Download the latest SD card image and burn to an SD card (minimum 4GB size).
+1. Download the latest SD card image 
+2. Burn image to an SD card (minimum 4GB size) using Raspberry Pi Imager.
 2. Copy dkong.zip to the /boot partition of the SD card.
 3. Boot your Raspberry Pi with the SD card inserted.
 4. The DKAFE install script will ask some questions. 
@@ -196,6 +197,10 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Disable networking services (WiFi, SSH)? (Recommend Y)
 	 Reboot now?                              (Recommend Y)	 
 ```
+
+Refer to [Raspberry Pi Notes](rpi4/rpi4_notes.txt) for information on connecting to a CRT TV via RGB Scart or Composite.
+
+![CRT goodness](https://github.com/10yard/dkafe/blob/master/artwork/about/crt_rgb.png)
 
 
 ## How to set up?
@@ -385,7 +390,7 @@ BUTTON_COIN = 7
 
 #### GPIO Inputs
 
-GPIO input is supported on Raspberry Pi and it is my recommended option for interfacing with arcade controls.  The DKAFE install script can set this up automatically.
+GPIO input is supported on Raspberry Pi4 and it is my recommended option for interfacing with arcade controls.  The DKAFE install script can set this up automatically.
 
 GPIO inputs can be mapped to keyboard inputs in the /boot/config.txt file. The chosen defaults avoid using GPIO pins that may be used with other Raspberry Pi peripherals:
 
