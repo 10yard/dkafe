@@ -10,7 +10,7 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 ## Notes on setting up Raspberry Pi4
 
 
-### Assisted setup of binary
+### Assisted setup
 
 1. Download the latest raspberry Pi image from the releases page 
 2. Write image to an SD card (mimimum 4GB size) using Raspberry Pi Imager
@@ -35,28 +35,6 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 
 Source files should be extracted to /home/pi/dkafe
 The binary distribution should be extracted to /home/pi or you can use the automated setup above.
-
-
-#### Setting up the sources environment
-
-sudo pip3 install -r requirements.txt
-
-
-#### Manually launching DKAFE from terminal
-
-for sources (set up environment first):
-
-```
-cd dkafe
-python3 launch.py
-```
-
-for binary:
-
-```
-cd dkafe_bin
-./dkafe_start.sh
-```
 
 
 ### Resolution and frontend display scale
@@ -183,15 +161,13 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 
 Refer to pinout guide at https://pinout.xyz/
 
-
 ### SSH
 
-Create an empty file on the /boot partition named "ssh" to enable SSH access.
-You can then connect to Raspberry Pi remotely via IP (over port 22) using the default credentials.
+Connect to Raspberry Pi4 remotely via IP (over port 22) using these credentials:
 
 ```
 User: pi
-Password: "raspberry"
+Password: dkafe
 ```
 
 

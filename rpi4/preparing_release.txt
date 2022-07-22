@@ -38,8 +38,11 @@ We can see the USB drive size and mountpoint.  The mounpoint is used in command 
 $ sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sdcard.img bs=1M
 This will make image of the SD Card (mmcblk0) and save to USB stick.  It will take a while.
 
-$ sudo pishrink.sh -z /media/pi/USB/dkafe_sdcard.img
-$ ls -l /media/pi/USB
+$ cd /media/pi/USB
+$ sudo pishrink.sh -z dkafe_sdcard.img
 This will shrink the image and package into .gz file.  It will take a while.
 
-Remove USB stick and transfer over to another computer.  Job done.
+$ ls -l /media/pi/USB
+Job done.
+
+Remove USB stick and transfer over to another computer.
