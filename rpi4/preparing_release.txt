@@ -4,26 +4,27 @@ Pi4 version update steps
 Insert master SD card (can be created from latest image) and boot to Pi OS Desktop
 Press CTRL-ALT-T to start terminal
 
+Abort out of the automated install - if it starts
+
 $ ls
-There will be an existing installed "dkafe_bin" folder.
+There may be an existing installed "dkafe_bin" folder.
 This will be removed automatically by the build script.
 
 $ git clone https://github.com/10yard/dkafe.git
-Should create "dkafe" folder containing sources
+Should create a "dkafe" folder containing the sources
 
 $ ls
 $ cd dkafe
 $ chmod a+rwx build.sh
 $ ./build.sh
 
-We should now have a "dkafe_bin" folder on the /boot partition
+The build script will run.  It should create a "dkafe_bin" folder on the /boot partition
 
 S ls /boot
 
-If all OK we can now clean up
+If all OK we can now remove the sources
 
-$ cd ~
-$ sudo rm -r dkafe
+$ sudo rm -r /home/pi/dkafe
 
 Now we're ready to make an SD card image.  Don't reboot - the install script would kick in.
 The Desktop should be clear of icons.
