@@ -19,6 +19,7 @@ $ chmod a+rwx build.sh
 $ ./build.sh
 
 The build script will run.  It should create a "dkafe_bin" folder on the /boot partition
+There should be no other dkafe or rom stuff on the /boot partition
 
 S ls /boot
 
@@ -34,10 +35,10 @@ Insert USB stick - this will be target for the SD card image.  Recommend minimum
 $ lsblk
 We can see the USB drive size and mountpoint.  The mounpoint is used in command below i.e. /media/pi/USB
 
-$ sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sd.img bs=1M
+$ sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sdcard.img bs=1M
 This will make image of the SD Card (mmcblk0) and save to USB stick.  It will take a while.
 
-$ sudo pishrink.sh -z /media/pi/USB/dkafe_sd.img
+$ sudo pishrink.sh -z /media/pi/USB/dkafe_sdcard.img
 $ ls -l /media/pi/USB
 This will shrink the image and package into .gz file.  It will take a while.
 
