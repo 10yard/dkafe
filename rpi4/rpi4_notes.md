@@ -225,24 +225,3 @@ Launch DKAFE.
 cd /home/pi/dkafe	
 ./launch
 ```
-
-
-### Make an SD Card Image
-
-A USB memory stick should be connected after Pi is booted.
-
-Discover the mount point and drive sizes.
-
-```
-lsblk
-```
-
-Assuming USB drive is named ```USB``` we can make an SD image and shrink it down.
-
-```
-sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sd.img bs=1M
-cd /media/pi/USB
-sudo pishrink.sh -z dkafe_sd.img
-```
-
-This results in ```dkafe.sd.img.gz``` file.

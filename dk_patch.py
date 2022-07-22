@@ -15,6 +15,7 @@ from glob import glob
 import shutil
 import hashlib
 from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP
+from dk_system import is_pi, copy
 
 
 FIX_ALTERNATIVE_MD5 = "f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", \
@@ -54,6 +55,12 @@ def validate_rom():
 
 def apply_patches():
     applied_patches_list = []
+    if not os.path.exists(DKONG_ZIP) and is_pi():
+        # For Raspberry Pi, look for DK roms in the /boot partition
+        # User may not have provided them at install time
+        for rom_file in glob('/boot/dk*.zip'):
+            copy(rom_file, ROM_DIR)
+
     if os.path.exists(DKONG_ZIP):
         ips_files = glob(os.path.join(PATCH_DIR, "dkong*.ips"))
         if ips_files:

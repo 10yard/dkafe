@@ -112,7 +112,6 @@ def jump_to_continue():
 
 def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=False, box=False, rj_adjust=0):
     """Write text to screen at given position using fg and bg colour (None for transparent)"""
-
     if text:
         img = font.render(text, False, fg, bg)
         w, h = img.get_width(), img.get_height()

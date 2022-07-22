@@ -1,0 +1,43 @@
+Pi4 version update steps
+------------------------
+
+Insert master SD card (can be created from latest image) and boot to Pi OS Desktop
+Press CTRL-ALT-T to start terminal
+
+$ ls
+There will be an existing installed "dkafe_bin" folder.
+This will be removed automatically by the build script.
+
+$ git clone https://github.com/10yard/dkafe.git
+Should create "dkafe" folder containing sources
+
+$ ls
+$ cd dkafe
+$ chmod a+rwx build.sh
+$ ./build.sh
+
+We should now have a "dkafe_bin" folder on the /boot partition
+
+S ls /boot
+
+If all OK we can now clean up
+
+$ cd ~
+$ sudo rm -r dkafe
+
+Now we're ready to make an SD card image.  Don't reboot - the install script would kick in.
+The Desktop should be clear of icons.
+
+Insert USB stick - this will be target for the SD card image.  Recommend minimum 8GB USB stick.
+
+$ lsblk
+We can see the USB drive size and mountpoint.  The mounpoint is used in command below i.e. /media/pi/USB
+
+$ sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sd.img bs=1M
+This will make image of the SD Card (mmcblk0) and save to USB stick.  It will take a while.
+
+$ sudo pishrink.sh -z /media/pi/USB/dkafe_sd.img
+$ ls -l /media/pi/USB
+This will shrink the image and package into .gz file.  It will take a while.
+
+Remove USB stick and transfer over to another computer.  Job done.
