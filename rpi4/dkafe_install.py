@@ -182,7 +182,20 @@ def main():
     if os.path.exists(CONFIG_FILE) and not os.path.exists(CONFIG_FILE_BU):
         os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
         if os.path.exists(CONFIG_FILE_BU):
-            # 8) Force 640x480 mode on boot
+            # 8) Optimise framebuffer size (recommended for VGA)
+            answer = yesno("Optimise framebuffer (recommended for VGA)")
+            if answer:
+                changes_made = True
+                with open(CONFIG_FILE, "w") as f_out:
+                    with open(CONFIG_FILE_BU, "r") as f_in:
+                        for line in f_in.readlines():
+                            if "framebuffer_width=" in line.lower():
+                                f_out.write("framebuffer_width=448\n")
+                            elif "framebuffer_height=" in line.lower():
+                                f_out.write("framebuffer_height=512\n")
+                            else:
+                                f_out.write(line)
+            # 9) Force 640x480 mode on boot
             answer = yesno("Force 640x480 mode on boot (for scan line generators)")
             if answer:
                 changes_made = True
@@ -197,7 +210,7 @@ def main():
                                 f_out.write("hdmi_mode=4\n")
                             else:
                                 f_out.write(line)
-            # 9) Map GPIO to keyboard input controls
+            # 10) Map GPIO to keyboard input controls
             answer = yesno("Map GPIO to keyboard input controls ?")
             if answer:
                 changes_made = True
@@ -206,9 +219,9 @@ def main():
                     f_out.write(GPIO_MAPPING)
 
 
-    # 10) Disable non-essential services
+    # 11) Disable non-essential services
     # and
-    # 11) Disable networking services
+    # 12) Disable networking services
     answer = yesno("Disable non-essential services")
     if answer:
         changes_made = True
@@ -231,7 +244,7 @@ def main():
             os.system("sudo systemctl disable ssh.service --quiet")
             os.system("sudo systemctl disable wpa_supplicant.service --quiet")
 
-    # 12) Reboot system
+    # 13) Reboot system
     answer = yesno("Reboot now")
     if answer:
         os.system("reboot")

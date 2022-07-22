@@ -19,6 +19,7 @@ Raspberry Pi 4 Install Steps
 	 Hide the Pi desktop?                     (Recommend Y)
 	 Hide the Pi mouse cursor?                (Recommend Y)
 	 Use headphone jack for audio?            (Recommend Y)
+	 Optmise framebuffer size?                (Recommend Y)
 	 Force 640x480 mode on boot?              (Recommend Y)
 	 Map GPIO to keyboard input controls?     (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
