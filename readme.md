@@ -198,10 +198,6 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Reboot now?                              (Recommend Y)	 
 ```
 
-Refer to [Raspberry Pi Notes](rpi4/rpi4_notes.md) for information on connecting to a CRT TV via RGB Scart or Composite.
-
-![CRT goodness](https://github.com/10yard/dkafe/blob/master/artwork/about/crt_rgb.png)
-
 
 ## How to set up?
 
@@ -223,10 +219,14 @@ The OPTION `-view "Screen 0 Pixel Aspect (7:8)"` is used by default to override 
 
 If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to fill the screen.
 
+For Raspberry Pi,  refer to [Raspberry Pi Notes](rpi4/rpi4_notes.md) for information on connecting to a CRT TV via RGB Scart or Composite AV.
+
+![CRT goodness](https://github.com/10yard/dkafe/blob/master/artwork/about/crt_rgb.png)
+
 
 ### Frontend Settings
 
-Default settings can be changed in the settings.txt file.  Some settings can be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB).
+Default settings can be changed in the `settings.txt` file.  Some settings can be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB key).
 
 `FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
@@ -301,7 +301,7 @@ EMU_8 = (optional)
 The rom directory is set to the DKAFE roms folder by default.
 
 `OPTIONS = -rompath <ROM_DIR> -view "Screen 0 Pixel Aspect (7:8)" -video opengl`    
-General arguments can be stored into <OPTIONS> rather than repeating for each emulator.
+General arguments can be stored into `<OPTIONS>` rather than repeating for each emulator.
 
 The special tags `<ROOT>`, `<ROM_DIR>`, `<OPTIONS>` and `<RECORD_ID>` used above are replaced with their actual values at runtime.
 
@@ -338,7 +338,7 @@ Allow the DK climb scene to be quickly skipped in game by pressing Jump button
 1 to show award targets for 1st, 2nd and 3rd prize when playing game (appears during the DK intro/climb scene)
 
 `SHOW_HUD = 1`    
-1, 2 or 3 to enable the HUD to be displayed in the top right corner.  Use P2 Start to toggle the data.
+1, 2 or 3 to enable the HUD to be displayed in the top right corner.  Press `P2 Start` to toggle the data.
 1=Targets, 2=Awards, 3=No data, 0 to disable the HUD.
 
 
@@ -350,7 +350,7 @@ Allow the DK climb scene to be quickly skipped in game by pressing Jump button
 
 #### Keyboard Controls
 
-Keyboard controls can be customised in the settings.txt file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
+Keyboard controls can be customised in the `settings.txt` file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
 The default controls are aligned with MAME keys as follows.
 
 ```
@@ -373,7 +373,7 @@ IMPORTANT NOTE: The controls configured in the frontend do not apply to the emul
 
 #### Joystick Controls
 
-Joystick controls are disabled by default.  Set """USE_JOYSTICK = 1""" to enable joystick controls.
+Joystick controls are disabled by default.  Set `USE_JOYSTICK = 1` to enable joystick controls.
 The up, down, left, right controls are automatically mapped from the DPAD and first detected joystick axis.
 Buttons can be customised in the settings.txt file as per the following example.  
 Button numbers 0-19 relate to the first joystick and 20-39 relate to the second joystick.
@@ -392,7 +392,7 @@ BUTTON_COIN = 7
 
 GPIO input is supported on Raspberry Pi4 and it is my recommended option for interfacing with arcade controls.  The DKAFE install script can set this up automatically.
 
-GPIO inputs can be mapped to keyboard inputs in the /boot/config.txt file. The chosen defaults avoid using GPIO pins that may be used with other Raspberry Pi peripherals:
+GPIO inputs can be mapped to keyboard inputs in the `/boot/config.txt` file. The chosen defaults avoid using GPIO pins that may be used with other Raspberry Pi peripherals:
 
 ```
 # GPIO to keyboard inputs
@@ -411,19 +411,19 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 
 ### How to use romlist.csv
 
-A default romlist.csv is provided for use with the automatically generated roms (see above).
+A default `romlist.csv` is provided for use with the automatically generated roms (see above).
 
 The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
-If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See ALLOW_ROM_OVERWRITE option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. **/roms/original**) to prevent it from being overwritten.
+If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See `ALLOW_ROM_OVERWRITE` option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. `/roms/original`) to prevent it from being overwritten.
 
-All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in settings.txt), a slot position (between 1 and 46) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
+All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 46) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
 
 As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 
-The special subfolder name **shell** can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the **/shell** subfolder.  The emulator number can be left blank.
+The special subfolder name `shell` can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the `/shell` subfolder.  The emulator number can be left blank.
 
-An accompanying icon in .png format should be placed into the **artwork/icons** folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.
+An accompanying icon in .png format should be placed into the `artwork/icons` folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)
@@ -450,7 +450,7 @@ Otherwise, my recommendations are:
 
 ### How to build DKAFE binary?
 
-Requires Python3 (v3.7 upwards) with installed packages from requirements.txt
+Requires Python3 (v3.7 upwards) with installed packages from `requirements.txt`
 
 Pyinstaller can be used to build the application binary.
 ```
@@ -464,7 +464,7 @@ See build.sh and [Raspberry Pi Notes](rpi4/rpi_notes.md) for building a Raspberr
 
 ### How to compile DKWolf?
 
-Refer to readme.txt in the **/DKWolf** folder.
+Refer to `readme.txt` in the `/DKWolf` folder.
 
 
 

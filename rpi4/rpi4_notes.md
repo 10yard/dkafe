@@ -91,12 +91,10 @@ I was able to make it work well in 1 video mode: 576i at 50hz
 ```
 hdmi_group=1
 hdmi_mode=26
-config_hdmi_boost=1
-
 disable_overscan=0
 ```
 
-If there is interference then increase the value of ```config_hdml_boost```.
+If there is interference then increase then set ```config_hdml_boost=5``` and increase or reduce value to resolve.
 
 The KMS graphics driver overlay should be commented out i.e.
 
