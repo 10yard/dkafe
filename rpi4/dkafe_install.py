@@ -80,16 +80,12 @@ def main():
         answer = yesno("Rotate to the Left")
         if answer:
             changes_made = True
-            # script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate left")
-            # 0.8 looks crisper
             script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate left")
             os.system("xrandr --output HDMI-1 --rotate left")  # rotate now to assist install
         else:
             answer = yesno("Rotate to the Right")
             if answer:
                 changes_made = True
-                # script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.875 --rotate right")
-                # 0.8 looks crisper
                 script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate right")
                 os.system("xrandr --output HDMI-1 --rotate right")  # rotate now to assist install
     if script:
@@ -209,10 +205,6 @@ def main():
                 with open(CONFIG_FILE, "a") as f_out:
                     f_out.write(GPIO_MAPPING)
 
-            # disable the annoying splash screen while we're here
-            with open(CONFIG_FILE, "a") as f_out:
-                f_out.write("# Disable the rainbow splash screen\n")
-                f_out.write("disable_splash=1\n")
 
     # 10) Disable non-essential services
     # and
