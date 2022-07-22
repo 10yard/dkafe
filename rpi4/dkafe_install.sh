@@ -15,6 +15,9 @@ echo " 888    888  888  88o      8oooo88     888          888"
 echo "o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888"
 echo "INSTALL OPTIONS                         by Jon Wilson (10yard)"
 echo ""
+
+read -p "Press any key to proceed with install"
+echo
 echo "Preparing files,  please wait..."
 
 # 1) Install DKAFE to /home/pi/dkafe_bin folder
