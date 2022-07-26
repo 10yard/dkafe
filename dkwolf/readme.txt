@@ -36,8 +36,6 @@ The code changes from WolfMAME 0.196 and 0.236 are included in the "changes" fol
   frontend/mame/luaengine.cpp (0.196 only)
     fixed issue with lua engine preventing the rightmost pixels from being drawn to screen
 
-  osd/modules/render/drawbgfx.cpp (Rpi Only)
-    Fix bug in mame source which was effecting RPI build
 
 A useful reference to compiling MAME can be found at:
   http://forum.arcadecontrols.com/index.php?topic=149545.0
