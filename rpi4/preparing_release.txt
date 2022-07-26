@@ -1,5 +1,5 @@
-Pi4 version update steps
-------------------------
+Pi4 build and release notes
+---------------------------
 
 Insert master SD card (can be created from latest image) and boot to Pi OS Desktop
 Press CTRL-ALT-T to start terminal

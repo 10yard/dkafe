@@ -23,6 +23,8 @@ sudo cp -r /boot/dkafe_bin /home/pi
 # 2) Copy dkong roms (if found in /boot partition)
 sudo cp -f /boot/dkong.zip /home/pi/dkafe_bin/roms 2>/dev/null
 sudo cp -f /boot/dkongjr.zip /home/pi/dkafe_bin/roms 2>/dev/null
+sudo cp -f /boot/dkong3.zip /home/pi/dkafe_bin/roms 2>/dev/null
+sudo cp -f /boot/ckongpt2.zip /home/pi/dkafe_bin/roms 2>/dev/null
 
 # 3) Grant all permissions
 cd /home/pi

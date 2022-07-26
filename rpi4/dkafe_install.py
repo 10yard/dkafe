@@ -182,8 +182,8 @@ def main():
     if os.path.exists(CONFIG_FILE) and not os.path.exists(CONFIG_FILE_BU):
         os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
         if os.path.exists(CONFIG_FILE_BU):
-            # 8) Optimise framebuffer size (recommended for VGA)
-            answer = yesno("Optimise framebuffer (recommended for VGA)")
+            # 8) Optimise framebuffer size (recommended for HDMI output)
+            answer = yesno("Optimise framebuffer (recommended for HDMI output)")
             if answer:
                 changes_made = True
                 with open(CONFIG_FILE, "w") as f_out:
