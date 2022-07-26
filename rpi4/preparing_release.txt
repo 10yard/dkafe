@@ -27,9 +27,7 @@ If all OK we can now remove the sources
 
 $ sudo rm -r /home/pi/dkafe
 
-Now we're ready to make an SD card image.  Don't reboot - the install script would kick in.
-The Desktop should be clear of icons.
-
+Now we're ready to make an SD card image.
 Insert USB stick - this will be target for the SD card image.  Recommend minimum 8GB USB stick.
 
 $ lsblk

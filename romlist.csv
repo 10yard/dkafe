@@ -1,5 +1,6 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
 dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
+dkongjr,,DK JR,DK Junior,3,1,2,,10000,15000,30000
 dkong,dkongpies,DK Pies,DK Pies Only,3,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,GalaKong Shoot 'Em Up,5,1,2,,20000,40000,65000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,1000,10000,20000,40000
@@ -13,6 +14,7 @@ dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,18,1,2,14000,10000,20000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,19,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,20,1,2,18000,10000,15000,30000
 dkong,dkongvector,VectorKong,Vector Kong,21,1,2,20000,10000,20000,40000
+dkongjr,dkongjrgala,Gala JR,Galakong JR,22,1,2,22000,10000,20000,30000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,22,1,2,22000,10000,20000,40000
 dkong,dkongotr,DK OnTheRun,DK On The Run,24,1,2,24000,10000,15000,30000
 dkongx,dkongd2k,D2K,D2K Jumpman Returns,25,1,2,26000,5000,10000,25000
@@ -28,6 +30,7 @@ dkong,dkongce,DK Champs.,DK Championship Edition,40,1,2,44000,10000,25000,50000
 dkong,dkongbarpal,Barrelpalooza,DK Barrelpalooza,42,1,2,46000,10000,25000,50000
 dkong,dkongkonkey,K-D,Konkey Dong,43,1,2,46000,,,
 dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,45,1,2,48000,8000,15000,25000
+dkong3,,DK 3,DK 3,46,1,2,50000,,,
 dkong,dkongksfix,KS Fix,DK Killscreen Fix,46,1,2,50000,,,
 dkong,dkongbarrels,DK Barrels,DK Barrels Only,99,1,2,,,,
 dkong,dkonghrd,DK Hard,,99,1,2,,,,

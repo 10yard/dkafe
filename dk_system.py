@@ -49,12 +49,17 @@ def apply_skill(base_score):
 def read_romlist():
     # read romlist and return info about available roms (and shell scripts)
     romlist = []
+    usedslots = []
     with open("romlist.csv", "r") as rl:
         for row in rl.readlines():
             data = row.replace('"', '')
             if not data.startswith("#") and data.count(",") >= 10:
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
-                if name and des:
+                if name and des and int(slot) not in usedslots:
+                    if name == "dkongjr" and not os.path.exists(DKONGJR_ZIP):
+                        continue
+                    if name == "dkong3" and not os.path.exists(DKONG3_ZIP):
+                        continue
                     if not emu.strip():
                         emu = "1"
                     if not rec.strip():
@@ -64,14 +69,14 @@ def read_romlist():
                     if not alt:
                         alt = des
 
-                    if os.path.exists(DKONGJR_ZIP):
-                        # We have a Donkey Kong Junior rom, so we can swap in hacks to include Junior by default
-                        for default_sub, default_slot, swap_sub, swap_des, swap_alt in JUNIOR_DEFAULT_SWAPS:
-                            if sub == default_sub and slot == default_slot:
-                                # The default hack is made accessible from the quick start menu
-                                romlist.append((name, sub, des, alt, -1, -1, int(emu), int(rec), int(unlock), '', '', ''))
-                                # The Donkey Kong Junior hack is swapped in
-                                name, sub, des, alt = "dkongjr", swap_sub, swap_des, swap_alt
+                    #if os.path.exists(DKONGJR_ZIP):
+                    #    # We have a Donkey Kong Junior rom, so we can swap in hacks to include Junior by default
+                    #    for default_sub, default_slot, swap_sub, swap_des, swap_alt in JUNIOR_DEFAULT_SWAPS:
+                    #        if sub == default_sub and slot == default_slot:
+                    #            # The default hack is made accessible from the quick start menu
+                    #            romlist.append((name, sub, des, alt, -1, -1, int(emu), int(rec), int(unlock), '', '', ''))
+                    #            # The Donkey Kong Junior hack is swapped in
+                    #            name, sub, des, alt = "dkongjr", swap_sub, swap_des, swap_alt
 
                     if "-record" in get_emulator(int(emu)).lower():
                         # Score targets are not considered for recordings
@@ -83,6 +88,8 @@ def read_romlist():
                     st1 = apply_skill(st1)
                     st2 = apply_skill(st2)
                     st3 = apply_skill(st3)
+
+                    usedslots.append(int(slot))
                     romlist.append((name, sub, des, alt, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
     return romlist
 

@@ -134,12 +134,7 @@ if os.path.exists("VERSION"):
 # Expected location of original DK zips (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
-
-# Roms that can be swapped out form default frontend when Donkey Kong Junior rom is provided
-# (Data is: Default subfolder, default slot, swap subfolder, swap description, swap alt-description)
-JUNIOR_DEFAULT_SWAPS = [
-    ("dkongpies", "3", "", "DK Junior", "Donkey Kong Junior"),
-    ("dkongrnd", "27", "dkongjrgala", "GalaKong Jr", "GalaKong Junior")]
+DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 
 # Plugins add functionality to certain roms
 PLUGINS = [
@@ -259,7 +254,8 @@ NO_ROMS_MESSAGE = [
     "DKAFE\\ROMS DIRECTORY",
     "THEN RESTART.", "",
     "DKONG.ZIP   IS REQUIRED",
-    "DKONGJR.ZIP IS OPTIONAL"]
+    "DKONGJR.ZIP IS OPTIONAL",
+    "DKONG3.ZIP  IS OPTIONAL"]
 
 INVALID_ROM_MESSAGE = [
     "ERROR WITH DONKEY KONG ROM", "",
