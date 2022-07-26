@@ -75,16 +75,17 @@ def check_patches_available():
         applied_patches = apply_patches()
         if applied_patches:
             clear_screen()
-            x_offset, y_offset = 8, 24
-            write_text(f"APPLYING PATCH FILES...", font=dk_font, x=8, y=8, fg=RED)
+            x_offset, y_offset = 0, 24
+            write_text(f"APPLYING PATCH FILES...", font=dk_font, x=0, y=8, fg=RED)
             for i, patch in enumerate(applied_patches):
                 write_text(patch, font=dk_font, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
-                y_offset += 9
-                if y_offset > 220:
-                    x_offset, y_offset = 120, 24
-            flash_message("ALL GOOD!", x=8, y=232, cycles=4, clear=False)
-            jump_to_continue()
+                y_offset += 8
+                print(y_offset)
+                if y_offset > 216:
+                    x_offset, y_offset = 112, 24
+            flash_message("ALL GOOD!", x=0, y=232, cycles=4, clear=False)
+            jump_to_continue(0)
     else:
         for i, line in enumerate(INVALID_ROM_MESSAGE):
             write_text(line, font=dk_font, x=8, y=17 + (i * 9), fg=[WHITE, RED][i == 0])
@@ -101,9 +102,9 @@ def check_roms_available():
         jump_to_continue()
 
 
-def jump_to_continue():
+def jump_to_continue(xpos=8):
     """Show Jump to continue message at foot of screen and wait for button press."""
-    flash_message("PRESS JUMP TO CONTINUE", x=8, y=242, cycles=8, clear=False)
+    flash_message("PRESS JUMP TO CONTINUE", x=xpos, y=242, cycles=8, clear=False)
     while True:
         check_for_input(force_exit=True)
         if _g.jump or _g.start:
@@ -371,7 +372,8 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                     _g.selected = p_des
             if not detect_only:
-                _g.screen.blit(img, (_x, _y))
+                if not(_x == 90 and _y == 34):
+                    _g.screen.blit(img, (_x, _y))
                 if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
                     # Show recording text above icon
                     if _g.timer.duration % 2 < 1:

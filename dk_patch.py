@@ -56,9 +56,11 @@ def validate_rom():
 def apply_patches():
     applied_patches_list = []
     if not os.path.exists(DKONG_ZIP) and is_pi():
-        # For Raspberry Pi, look for DK roms in the /boot partition
+        # For Raspberry Pi, look for DK roms (and Crazy Kong) in the /boot partition
         # User may not have provided them at install time
         for rom_file in glob('/boot/dk*.zip'):
+            copy(rom_file, ROM_DIR)
+        for rom_file in glob('/boot/ck*.zip'):
             copy(rom_file, ROM_DIR)
 
     if os.path.exists(DKONG_ZIP):

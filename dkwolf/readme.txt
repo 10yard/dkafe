@@ -44,8 +44,8 @@ A useful reference to compiling MAME can be found at:
 
 MAME build tools are available at https://github.com/mamedev/buildtools/releases
 
-To build with dkong only driver the SOURCES flag was used in the makefile along with REGENIE i.e.
-  SOURCES=src/mame/drivers/dkong.cpp
+To build with only DK (and crazy kong) drivers the SOURCES flag was used in the makefile along with REGENIE i.e.
+  SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp
   REGENIE=1
   NOWERROR=1
 
@@ -55,3 +55,6 @@ Other optimisations/flags were
   SYMLEVEL=1
   STRIP_SYMBOLS=1 
   TOOLS=0 
+  
+Pi4 build requires these dependencies to be installed:
+sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default

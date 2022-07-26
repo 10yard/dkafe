@@ -135,6 +135,7 @@ if os.path.exists("VERSION"):
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
+CKONG_ZIP = os.path.join(ROM_DIR, "ckongpt2.zip")
 
 # Plugins add functionality to certain roms
 PLUGINS = [
@@ -181,7 +182,7 @@ SLOTS = [
     (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
     (194, 132), (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
     (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (210, 87),
-    (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62)
+    (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62), (90, 34)
 ]
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
@@ -253,9 +254,10 @@ NO_ROMS_MESSAGE = [
     "PUT DKONG.ZIP INTO THE",
     "DKAFE\\ROMS DIRECTORY",
     "THEN RESTART.", "",
-    "DKONG.ZIP   IS REQUIRED",
-    "DKONGJR.ZIP IS OPTIONAL",
-    "DKONG3.ZIP  IS OPTIONAL"]
+    "DKONG.ZIP    IS REQUIRED",
+    "DKONGJR.ZIP  IS OPTIONAL",
+    "DKONG3.ZIP   IS OPTIONAL",
+    "CKONGPT2.ZIP IS OPTIONAL"]
 
 INVALID_ROM_MESSAGE = [
     "ERROR WITH DONKEY KONG ROM", "",
