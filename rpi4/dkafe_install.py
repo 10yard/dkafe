@@ -25,6 +25,7 @@ CMDLINE_FILE = "/boot/cmdline.txt"
 CMDLINE_FILE_BU = "/boot/cmdline_DKAFEBACKUP.txt"
 CONFIG_FILE = "/boot/config.txt"
 CONFIG_FILE_BU = "/boot/config_DKAFEBACKUP.txt"
+CONFIG_FILE_BU2 = "/boot/config_DKAFEBACKUP2.txt"
 
 GPIO_MAPPING = '''
 # GPIO to keyboard inputs
@@ -150,9 +151,10 @@ def main():
             # --------------------------------------------------------------------
             answer = yesno("Optimise framebuffer (recommend for HDMI and VGA displays)")
             if answer:
+                os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU2}")
                 changes_made = True
                 with open(CONFIG_FILE, "w") as f_out:
-                    with open(CONFIG_FILE_BU, "r") as f_in:
+                    with open(CONFIG_FILE_BU2, "r") as f_in:
                         for line in f_in.readlines():
                             if "framebuffer_width=" in line.lower():
                                 f_out.write("framebuffer_width=448\n")
@@ -164,9 +166,10 @@ def main():
             # --------------------------------------------
             answer = yesno("Force 640x480 mode on boot (for scan line generators)")
             if answer:
+                os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU2}")
                 changes_made = True
                 with open(CONFIG_FILE, "w") as f_out:
-                    with open(CONFIG_FILE_BU, "r") as f_in:
+                    with open(CONFIG_FILE_BU2, "r") as f_in:
                         for line in f_in.readlines():
                             if "disable_overscan=" in line.lower():
                                 f_out.write("disable_overscan=1\n")
