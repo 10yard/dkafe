@@ -37,5 +37,4 @@ sudo systemctl enable networking.service --quiet
 sudo systemctl enable ssh.service --quiet
 sudo systemctl enable wpa_supplicant.service --quiet
 
-xrandr --output HDMI-1 --rotate left
 sudo rm -r /home/pi/dkafe_bin

@@ -41,23 +41,6 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 
 '''
 
-START_SCRIPT = """# Run this script to start DKAFE
-#
-# Set screen resolution and launch DKAFE
-xrandr --output HDMI-1 --auto
-xrandr --output HDMI-1 --mode 640x480 <SELECTION>
-
-# Disable screen blanking
-sudo xset s off
-sudo xset -dpms
-sudo xset s noblank
-
-# Run the binary from dkafe_bin folder
-cd /home/pi/dkafe_bin
-./launch
-"""
-
-
 def yesno(question):
     print('')
     prompt = f'{question} ? (y/n): '
@@ -73,30 +56,11 @@ def yesno(question):
 def main():
     changes_made = False
 
-    # 1) Rotate the Display
-    script = START_SCRIPT.replace("<SELECTION>", "--scale 1x1")
-    answer = yesno("Rotate the display")
-    if answer:
-        answer = yesno("Rotate to the Left")
-        if answer:
-            changes_made = True
-            script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate left")
-            os.system("xrandr --output HDMI-1 --rotate left")  # rotate now to assist install
-        else:
-            answer = yesno("Rotate to the Right")
-            if answer:
-                changes_made = True
-                script = START_SCRIPT.replace("<SELECTION>", "--scale 1x0.8 --rotate right")
-                os.system("xrandr --output HDMI-1 --rotate right")  # rotate now to assist install
-    if script:
-        # Overwrite the default start script
-        with open("/home/pi/dkafe_bin/dkafe_start.sh", "w") as f:
-            f.write(script)
-
     if os.path.exists(AUTOSTART_FILE) and not os.path.exists(AUTOSTART_FILE_BU):
         os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU}")
         if os.path.exists(AUTOSTART_FILE_BU):
-            # 2) Launch DKAFE on boot
+            # -------- Launch DKAFE on boot --------
+            # --------------------------------------
             answer = yesno("Launch DKAFE on boot")
             if answer:
                 # append DKAFE start script to autoboot file
@@ -105,7 +69,8 @@ def main():
 
             os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU2}")
             if os.path.exists(AUTOSTART_FILE_BU2):
-                # 3) Hide the Raspberry Pi taskbar
+                # -------- Hide the Raspberry Pi taskbar --------
+                # -----------------------------------------------
                 answer = yesno("Hide the Pi taskbar")
                 if answer:
                     changes_made = True
@@ -118,7 +83,8 @@ def main():
                                 else:
                                     f_out.write(line)
 
-    # 4) Hide the Raspberry Pi Desktop (Icon, background and welcome image)
+    # -------- Hide the Raspberry Pi Desktop (Icon, background and welcome image) --------
+    # ------------------------------------------------------------------------------------
     if os.path.exists(PCMAN_CONFIG_FILE) and not os.path.exists(PCMAN_CONFIG_FILE_BU):
         os.system(f"sudo cp {PCMAN_CONFIG_FILE} {PCMAN_CONFIG_FILE_BU}")
         if os.path.exists(PCMAN_CONFIG_FILE_BU):
@@ -142,7 +108,8 @@ def main():
                             else:
                                 f_out.write(line)
 
-    # 5) Hide the Raspberry Pi mouse cursor
+    # -------- Hide the Raspberry Pi mouse cursor --------
+    # ----------------------------------------------------
     if os.path.exists(DESKTOP_CONFIG_FILE) and not os.path.exists(DESKTOP_CONFIG_FILE_BU):
         os.system(f"sudo cp {DESKTOP_CONFIG_FILE} {DESKTOP_CONFIG_FILE_BU}")
         if os.path.exists(DESKTOP_CONFIG_FILE_BU):
@@ -153,7 +120,8 @@ def main():
                 with open(DESKTOP_CONFIG_FILE, "a") as f:
                     f.write("xserver-command=X -nocursor\n")
 
-    # 6) Use headphone jack for audio
+    # -------- Use headphone jack for audio --------
+    # ----------------------------------------------
     answer = yesno("Use headphone jack for audio")
     if answer:
         changes_made = True
@@ -162,7 +130,23 @@ def main():
     if os.path.exists(CONFIG_FILE) and not os.path.exists(CONFIG_FILE_BU):
         os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
         if os.path.exists(CONFIG_FILE_BU):
-            # 7) Optimise framebuffer (recommended for HDMI output)
+            # -------- Rotate display --------
+            # --------------------------------
+            answer = yesno("Rotate display")
+            if answer:
+                answer = yesno("Rotate display to the left")
+                if answer:
+                    changes_made = True
+                    with open(CONFIG_FILE, "w") as f_out:
+                        f_out.write("display_rotate=3\n")
+                else:
+                    answer = yesno("Rotate display to the right")
+                    if answer:
+                        f_out.write("display_rotate=1\n")
+                        changes_made = True
+
+            # -------- Optimise framebuffer (recommended for HDMI output) --------
+            # --------------------------------------------------------------------
             answer = yesno("Optimise framebuffer (recommend for HDMI and VGA displays)")
             if answer:
                 changes_made = True
@@ -175,7 +159,8 @@ def main():
                                 f_out.write("framebuffer_height=512\n")
                             else:
                                 f_out.write(line)
-            # 8) Force 640x480 mode on boot
+            # -------- Force 640x480 mode on boot --------
+            # --------------------------------------------
             answer = yesno("Force 640x480 mode on boot (for scan line generators)")
             if answer:
                 changes_made = True
@@ -190,7 +175,8 @@ def main():
                                 f_out.write("hdmi_mode=4\n")
                             else:
                                 f_out.write(line)
-            # 9) Map GPIO to keyboard input controls
+            # -------- Map GPIO to keyboard input controls --------
+            # -----------------------------------------------------
             answer = yesno("Map GPIO to keyboard input (for arcade controls)")
             if answer:
                 changes_made = True
@@ -199,9 +185,8 @@ def main():
                     f_out.write(GPIO_MAPPING)
 
 
-    # 10) Disable non-essential services
-    # and
-    # 11) Disable networking services
+    # -------- Disable non-essential services --------
+    # ------------------------------------------------
     answer = yesno("Disable non-essential services")
     if answer:
         changes_made = True
@@ -215,7 +200,9 @@ def main():
         os.system("sudo systemctl disable systemd-timesyncd.service --quiet")
         os.system("sudo systemctl disable gldriver-test.service --quiet")
         os.system("sudo systemctl disable systemd-rfkill.service --quiet")
-        # ----
+
+        # -------- Disable networking services --------
+        # ---------------------------------------------
         answer = yesno("Disable network services (WiFi, SSH)")
         if answer:
             print("Disabling services, please wait...")
@@ -224,7 +211,8 @@ def main():
             os.system("sudo systemctl disable ssh.service --quiet")
             os.system("sudo systemctl disable wpa_supplicant.service --quiet")
 
-    # 12) Reboot system
+    # -------- Reboot system --------
+    # -------------------------------
     answer = yesno("Reboot now")
     if answer:
         os.system("reboot")

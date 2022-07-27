@@ -81,7 +81,6 @@ def check_patches_available():
                 write_text(patch, font=dk_font, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
                 y_offset += 8
-                print(y_offset)
                 if y_offset > 216:
                     x_offset, y_offset = 112, 24
             flash_message("ALL GOOD!", x=0, y=232, cycles=4, clear=False)

@@ -8,10 +8,6 @@
 #  Run this script to start DKAFE on Raspberry Pi4
 #  i.e. /home/pi/dkafe_bin/dkafe_start.sh
 #
-#
-# Set screen resolution and scale
-xrandr --output HDMI-1 --auto
-xrandr --output HDMI-1 --mode 640x480 --scale 1x1
 
 # Stop the composition manager
 killall xcompmgr
