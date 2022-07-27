@@ -37,16 +37,6 @@ Source files should be extracted to /home/pi/dkafe
 The binary distribution should be extracted to /home/pi or you can use the automated setup above.
 
 
-### Resolution and frontend display scale
-
-The resolution and display scale are set in dkafe_start.sh file.
-
-e.g. for 7:8 aspect ratio with a rotated display use the following:
-	xrandr --output HDMI-1 --scale 1x0.8 --rotate left
-	
-NOTE: If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to your settings.txt file to fill the screen.
-
-
 ### Scan line generators
 
 If using with a VGA scan line generator then you should force 640x480 during boot and disable overscan i.e.
@@ -66,6 +56,8 @@ hdmi_mode=4
 This connects Pi using HDMI/VGA adapter to a VGA2SCART adapter (RGB scart https://www.retroupgrades.co.uk/product/vga2scart/)
 I was able to make it work well in 1 video mode: 576i at 50hz
 
+Update the config.txt before booting.
+
 ```
 hdmi_group=1
 hdmi_mode=26
@@ -74,7 +66,7 @@ disable_overscan=0
 
 If there is interference then increase then set ```config_hdml_boost=5``` and increase or reduce value to resolve.
 
-The KMS graphics driver overlay should be commented out i.e.
+The KMS graphics driver overlay should be commented out.  It is by defaut. i.e.
 
 ```
 # dtoverlay=vc4-kms-v3d
@@ -86,8 +78,6 @@ The KMS graphics driver overlay should be commented out i.e.
 
 Use DKAFE default settings but ensure 288p resolution (for PAL) or 240p resolution (for NTSC).
 Don't bother with framebuffer height/width config settings.
-
-Optionally, update ```dkafe_start.sh``` and change the scale to fit your CRT display perfectly e.g. --scale 0.7x1  (to stretch the X) 
 
 Optionally use overscan config to fine tune the display positioning e.g.
 

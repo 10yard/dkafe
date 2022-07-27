@@ -139,13 +139,13 @@ def main():
                 if answer:
                     changes_made = True
                     with open(CONFIG_FILE, "a") as f_out:
-                        f_out.write("display_rotate=3\n")
+                        f_out.write("\n# Rotate display\ndisplay_rotate=3\n")
                 else:
                     answer = yesno("Rotate display to the right")
                     if answer:
                         changes_made = True
                         with open(CONFIG_FILE, "a") as f_out:
-                            f_out.write("display_rotate=1\n")
+                            f_out.write("\n# Rotate display\ndisplay_rotate=1\n")
 
             # -------- Optimise framebuffer (recommended for HDMI output) --------
             # --------------------------------------------------------------------
