@@ -2,13 +2,13 @@ Pi4 build and release notes
 ---------------------------
 
 Insert master SD card (can be created from latest image) and boot to Pi OS Desktop
-Press CTRL-ALT-T to start terminal
 
 Abort out of the automated install - if it starts
+Press CTRL-ALT-T to start terminal,  or use SSH to remotely connect to user: "pi", password "dkafe".
 
 $ ls
-There may be an existing installed "dkafe_bin" folder.
-This will be removed automatically by the build script.
+There may be existing "dkafe_bin" folders at /boot/dkafe_bin and /home/pi/dkafe_bin
+These will be automatically removed by the build script.
 
 $ git clone https://github.com/10yard/dkafe.git
 Should create a "dkafe" folder containing the sources
@@ -28,19 +28,20 @@ If all OK we can now remove the sources
 $ sudo rm -r /home/pi/dkafe
 
 Now we're ready to make an SD card image.
-Insert USB stick - this will be target for the SD card image.  Recommend minimum 8GB USB stick.
+Insert an empty USB stick - this will be target for the SD card image.  Recommend minimum 8GB USB stick.
 
 $ lsblk
-We can see the USB drive size and mountpoint.  The mounpoint is used in command below i.e. /media/pi/USB
+We can see the USB drive size and mountpoint.  Assuming the drive is named "USB"  
+The mountpoint used in commands below is /media/pi/USB
 
 $ sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sdcard.img bs=1M
-This will make image of the SD Card (mmcblk0) and save to USB stick.  It will take a while.
+This will make an image of the SD Card (mmcblk0) and save to USB stick.  It will take a while.
 
 $ cd /media/pi/USB
 $ sudo pishrink.sh -z dkafe_sdcard.img
 This will shrink the image and package into .gz file.  It will take a while.
 
-$ ls -l /media/pi/USB
+$ ls -l
 Job done.
 
 Remove USB stick and transfer over to another computer.

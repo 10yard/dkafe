@@ -103,29 +103,9 @@ def main():
                 with open(AUTOSTART_FILE, "a") as f:
                     f.write("@/home/pi/dkafe_bin/dkafe_start.sh\n")
 
-                if os.path.exists(CMDLINE_FILE) and not os.path.exists(CMDLINE_FILE_BU):
-                    os.system(f"sudo cp {CMDLINE_FILE} {CMDLINE_FILE_BU}")
-                    if os.path.exists(CMDLINE_FILE_BU):
-                        # 3) Hide startup messages
-                        answer = yesno("Hide system startup messages")
-                        if answer:
-                            # update /boot/cmdline.txt
-                            with open(CMDLINE_FILE, "w") as f_out:
-                                with open(CMDLINE_FILE_BU, "r") as f_in:
-                                    cmd = f_in.readline()
-                                    cmd = cmd.replace("loglevel=3", "loglevel=0")
-                                    cmd = cmd.replace("console=tty1", "console=tty3")
-                                    if " logo.nologo" not in cmd:
-                                        cmd = "logo.nologo " + cmd
-                                    if " quiet" not in cmd:
-                                        cmd = "quiet " + cmd
-                                    if " vt.global_cursor_default=0" not in cmd:
-                                        cmd = "vt.global_cursor_default=0 " + cmd
-                                    f_out.write(cmd)
-            # ----
             os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU2}")
             if os.path.exists(AUTOSTART_FILE_BU2):
-                # 4) Hide the Raspberry Pi taskbar
+                # 3) Hide the Raspberry Pi taskbar
                 answer = yesno("Hide the Pi taskbar")
                 if answer:
                     changes_made = True
@@ -138,7 +118,7 @@ def main():
                                 else:
                                     f_out.write(line)
 
-    # 5) Hide the Raspberry Pi Desktop (Icon, background and welcome image)
+    # 4) Hide the Raspberry Pi Desktop (Icon, background and welcome image)
     if os.path.exists(PCMAN_CONFIG_FILE) and not os.path.exists(PCMAN_CONFIG_FILE_BU):
         os.system(f"sudo cp {PCMAN_CONFIG_FILE} {PCMAN_CONFIG_FILE_BU}")
         if os.path.exists(PCMAN_CONFIG_FILE_BU):
@@ -162,7 +142,7 @@ def main():
                             else:
                                 f_out.write(line)
 
-    # 6) Hide the Raspberry Pi mouse cursor
+    # 5) Hide the Raspberry Pi mouse cursor
     if os.path.exists(DESKTOP_CONFIG_FILE) and not os.path.exists(DESKTOP_CONFIG_FILE_BU):
         os.system(f"sudo cp {DESKTOP_CONFIG_FILE} {DESKTOP_CONFIG_FILE_BU}")
         if os.path.exists(DESKTOP_CONFIG_FILE_BU):
@@ -173,7 +153,7 @@ def main():
                 with open(DESKTOP_CONFIG_FILE, "a") as f:
                     f.write("xserver-command=X -nocursor\n")
 
-    # 7) Use headphone jack for audio
+    # 6) Use headphone jack for audio
     answer = yesno("Use headphone jack for audio")
     if answer:
         changes_made = True
@@ -182,8 +162,8 @@ def main():
     if os.path.exists(CONFIG_FILE) and not os.path.exists(CONFIG_FILE_BU):
         os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
         if os.path.exists(CONFIG_FILE_BU):
-            # 8) Optimise framebuffer size (recommended for HDMI output)
-            answer = yesno("Optimise framebuffer (recommended for HDMI output)")
+            # 7) Optimise framebuffer (recommended for HDMI output)
+            answer = yesno("Optimise framebuffer (recommend for HDMI and VGA displays)")
             if answer:
                 changes_made = True
                 with open(CONFIG_FILE, "w") as f_out:
@@ -195,7 +175,7 @@ def main():
                                 f_out.write("framebuffer_height=512\n")
                             else:
                                 f_out.write(line)
-            # 9) Force 640x480 mode on boot
+            # 8) Force 640x480 mode on boot
             answer = yesno("Force 640x480 mode on boot (for scan line generators)")
             if answer:
                 changes_made = True
@@ -210,8 +190,8 @@ def main():
                                 f_out.write("hdmi_mode=4\n")
                             else:
                                 f_out.write(line)
-            # 10) Map GPIO to keyboard input controls
-            answer = yesno("Map GPIO to keyboard input controls ?")
+            # 9) Map GPIO to keyboard input controls
+            answer = yesno("Map GPIO to keyboard input (for arcade controls)")
             if answer:
                 changes_made = True
                 # update /boot/config.txt
@@ -219,9 +199,9 @@ def main():
                     f_out.write(GPIO_MAPPING)
 
 
-    # 11) Disable non-essential services
+    # 10) Disable non-essential services
     # and
-    # 12) Disable networking services
+    # 11) Disable networking services
     answer = yesno("Disable non-essential services")
     if answer:
         changes_made = True
@@ -244,7 +224,7 @@ def main():
             os.system("sudo systemctl disable ssh.service --quiet")
             os.system("sudo systemctl disable wpa_supplicant.service --quiet")
 
-    # 13) Reboot system
+    # 12) Reboot system
     answer = yesno("Reboot now")
     if answer:
         os.system("reboot")
