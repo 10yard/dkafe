@@ -13,7 +13,6 @@ These will be automatically removed by the build script.
 $ git clone https://github.com/10yard/dkafe.git
 Should create a "dkafe" folder containing the sources
 
-$ ls
 $ cd dkafe
 $ chmod a+rwx build.sh
 $ ./build.sh

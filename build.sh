@@ -69,3 +69,17 @@ sudo cp -r dist /boot/dkafe_bin
 # Clean up
 sudo rm -r dist
 sudo rm -r build
+
+# Remove log files
+sudo rm -r /var/log/*
+
+echo
+echo ---- Build Finished ----
+
+# Report free space on disk
+echo Free space on disk: 
+df -BM /tmp | tail -1 | awk '{print $4}'
+echo
+
+# Clear the terminal cache
+history -c && history -w
