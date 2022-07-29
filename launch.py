@@ -530,6 +530,7 @@ def build_launch_menu():
         show_chorus = sub in CHORUS_FRIENDLY or (name == "dkong" and sub == "")
         show_start5 = sub in START5_FRIENDLY  or (name == "dkong" and sub == "")
         show_shoot = sub in SHOOT_FRIENDLY
+        show_stage = sub in STAGE_FRIENDLY or (name == "ckongpt2" and sub == "")
         inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5)
 
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
@@ -561,6 +562,13 @@ def build_launch_menu():
                 _g.launchmenu.add_button('♪ Launch with chorus  ', launch_rom, nearby, "dkchorus")
             if show_shoot:
                 _g.launchmenu.add_button('▲ Launch with shooter ', launch_rom, nearby, "galakong")
+
+        if show_stage:
+            _g.launchmenu.add_vertical_margin(10)
+            _g.launchmenu.add_button('- Practice barrels    ', launch_rom, nearby, "dkstart5:1")
+            _g.launchmenu.add_button('- Practice pies       ', launch_rom, nearby, "dkstart5:2")
+            _g.launchmenu.add_button('- Practice springs    ', launch_rom, nearby, "dkstart5:3")
+            _g.launchmenu.add_button('- Practice rivets     ', launch_rom, nearby, "dkstart5:4")
 
         _g.launchmenu.add_vertical_margin(10)
         _g.launchmenu.add_button('Close', close_menu)
@@ -900,7 +908,7 @@ def process_interrupts():
     # Purge coins
     _g.coins = [i for i in _g.coins if i[0] > -10]
 
-    # DK shouts out the launch options
+    # Pauline shouts out the launch options
     if _g.ready:
         if since_last_move() % 4 <= 2:
             write_text("Push P1 START for options...", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)

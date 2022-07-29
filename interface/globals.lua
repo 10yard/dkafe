@@ -28,7 +28,7 @@ if mac ~= nil then
 	screen = mac.screens[":screen"]
 	cpu = mac.devices[":maincpu"]
 	mem = cpu.spaces["program"]
-	soundcpu = mac.devices[":soundcpu"]			
+	soundcpu = mac.devices[":soundcpu"]
 	soundmem = soundcpu.spaces["data"]
 end
 

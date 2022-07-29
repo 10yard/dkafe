@@ -4,21 +4,30 @@
 -- Tested with latest MAME version 0.245
 -- Compatible with MAME versions from 0.196
 --
+--A simple plugin to start the game at level 5 for practice purposes.
+--You can also play a specific stage by setting a parameter before launching MAME
+--e.g.
+--SET DKSTART5_PARAMETER=4 
+--
 -- Minimum start up arguments:
 --   mame dkong -plugin dkstart5
 -----------------------------------------------------------------------------------------
 
 local exports = {}
 exports.name = "dkstart5"
-exports.version = "0.1"
+exports.version = "0.2"
 exports.description = "DK Start 5"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
+
 local dkstart5 = exports
 
 function dkstart5.startplugin()
+	local stage
 
 	function initialize()
+		local _s
+		
 		-- MAME LUA machine initialisation
 		-- Handles historic changes back to MAME v0.196 release
 		if tonumber(emu.app_version()) >= 0.196 then
@@ -35,13 +44,21 @@ function dkstart5.startplugin()
 			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
 		end
+		
+		_s = tonumber(os.getenv("DKSTART5_PARAMETER")) or nil
+		if _s >= 1 and _s <= 4 then
+			stage = _s
+		end	
 	end
 	
 	function main()
-		if mem ~= nil then
+		if mem ~= nil then		
 			if mem:read_u8(0x6229) == 1 then
 				mem:write_u8(0x6229, 5)  -- update to level 5 
 				mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
+			end
+			if stage then
+				mem:write_u8(0x6227, stage) -- play a specific stage only
 			end
 		end
 	end

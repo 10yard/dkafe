@@ -159,6 +159,7 @@ START5_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]
 AUTOSTART_UNFRIENDLY = ["dkongbarpal", "dkongrndmzr"]
 AUTHOR_UNFRIENDLY = ["dkongwizardry", "dkongbarpal", "dkongrndmzr"]
+STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongpe", "dkongitd", "dkonghrd", "dkong40", "dkongf"]
 
 # Colours
 RED = (232, 7, 10)

@@ -146,6 +146,10 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
 
     # Are we using a plugin?
     if launch_plugin and "-plugin" not in launch_command:
+        # Are there any parameters for the plugin?
+        if ":" in launch_plugin:
+            launch_plugin, parameter, *_ = launch_plugin.split(":")
+            os.environ[launch_plugin + "_PARAMETER"] = parameter
         launch_command += f" -plugin {launch_plugin}"
 
     if not FULLSCREEN:
