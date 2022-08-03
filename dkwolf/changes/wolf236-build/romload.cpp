@@ -516,6 +516,7 @@ void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view n
 		m_warnings++;
 	}
 
+
 	if (hashes.flag(util::hash_collection::FLAG_NO_DUMP))
 	{
 		// If there is no good dump known, write it
@@ -524,6 +525,7 @@ void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view n
 	}
 	else
 	{
+		/* 10yard - ignore none critical warnings as we are expecting some CRC check failures with the DK hacks
 		// verify checksums
 		util::hash_collection const &acthashes = file->hashes(hashes.hash_types());
 		if (hashes != acthashes)
@@ -542,6 +544,7 @@ void rom_load_manager::verify_length_and_hash(emu_file *file, std::string_view n
 			m_errorstring.append(string_format("%s ROM NEEDS REDUMP\n", name));
 			m_knownbad++;
 		}
+		*/
 	}
 }
 

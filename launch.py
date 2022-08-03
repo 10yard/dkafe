@@ -528,11 +528,11 @@ def build_launch_menu():
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
         show_coach = sub in COACH_FRIENDLY or (name == "dkong" and sub == "")
         show_chorus = sub in CHORUS_FRIENDLY or (name == "dkong" and sub == "")
-        show_start5 = sub in START5_FRIENDLY  or (name == "dkong" and sub == "")
+        show_start5 = sub in START5_FRIENDLY or (name == "dkong" and sub == "")
         show_shoot = sub in SHOOT_FRIENDLY
         show_stage = sub in STAGE_FRIENDLY or (name == "ckongpt2" and sub == "")
-        inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5)
-
+        inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5
+                                - (show_stage*4))
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
                                     theme=dkafe_theme, onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):

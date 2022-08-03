@@ -35,7 +35,7 @@ Coins are awarded after beating target scores (for 3rd, 2nd and 1st prize).  Coi
 ![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
 
 
-Pauline helps out providing game information, score targets and unlock requirements as you walk towards an arcade machine.  
+Pauline helps out by providing game information, score targets and unlock requirements as you walk towards an arcade machine.  
 
 You begin with 500 coins, and you must collect coins which are thrown by Donkey Kong.  You'll be charged 100 coins to launch a game.  Be aware of the countdown timer too,  if the timer runs out you'll lose 150 coins!
 
@@ -71,15 +71,15 @@ Credit is given to the original authors below.
  - Vector Kong
  - GalaKong
  - Galakong Junior
- - Lava Panic!
+ - DK Lava Panic!
  - DK Who and the Daleks
+ - Konkey Dong
  - Donkey Kong Pies Only
  - Donkey Kong Rivets Only
  - Donkey Kong Springs Only
  - Donkey Kong Barrels Only
  - Donkey Kong Coach
  - Donkey Kong Chorus
- - Konkey Dong
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition
@@ -201,7 +201,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ## How to set up?
 
-The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place dkongjr.zip and dkong3.zip into the dkafe/roms folder.  
+The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place dkongjr.zip, dkong3.zip and ckongpt2.zip into the dkafe/roms folder.  
 The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.
 
 The application requires settings.txt and romlist.csv to be present in the installation folder.  Defaults are provided.
@@ -421,7 +421,7 @@ All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as d
 
 As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 
-If there are multiple entries for the same slot number then the first valid entry will be used.  This allows the optional roms *dkongjr* and *dkong3* to become active when they are provided.
+If there are multiple entries for the same slot number then the first valid entry will be used.  This allows the optional roms *dkongjr*, *dkong3* and *ckongpt2* to become active when they are provided.
 
 The special subfolder name `shell` can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the `/shell` subfolder.  The emulator number can be left blank.
 
@@ -440,14 +440,14 @@ Otherwise, my recommendations are:
 
 ### For Windows
 
-1. Mame v0.196 to v0.236 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against these versions.
+1. Mame v0.196 to v0.241 from https://www.mamedev.org/ . Rom hacks and lua interface hacks are tested against these versions.
 2. Wolfmame (for competition/recording) from https://github.com/mahlemiut/wolfmame/releases/
 3. HB Mame (Dedicated to hacks and homebrew) from https://www.progettosnaps.net/hbmame/
 
 
 ### For Raspberry Pi (Model 4)
 
-1. Mame v0.196 to v0.236 from https://www.mamedev.org/ . LUA interface and plugins are tested against these versions.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
+1. Mame v0.196 to v0.241 from https://www.mamedev.org/ . LUA interface and plugins are tested against these versions.  Mamedev binaries are not generally available for Raspberry Pi so you will have to compile your own.  See readme.txt in **\dkwolf** folder
 2. Advance Mame from https://www.advancemame.it/download
   
 

@@ -144,7 +144,7 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
     else:
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
 
-    # Are we using a plugin?
+    # Are we using a launch plugin?
     if launch_plugin and "-plugin" not in launch_command:
         # Are there any parameters for the plugin?
         if ":" in launch_plugin:

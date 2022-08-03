@@ -11,7 +11,7 @@ Notes on DKWolf
 DKWolf is a custom build of WolfMAME built for DKAFE which supports only Donkey Kong drivers.
 It a lightweight emulator with reduced size and functionality removed for save and load states, cheats, throttling etc.
 
-The code changes from WolfMAME 0.196 and 0.236 are included in the "changes" folder.
+The code changes for WolfMAME 0.196, 0.236 and 0.241 are included in the "changes" folder.
 
   frontend/mame/ui/ui.cpp
     removed startup up messages
@@ -22,20 +22,12 @@ The code changes from WolfMAME 0.196 and 0.236 are included in the "changes" fol
     removed "WARNING: the machine might not run correctly."
     removed "WRONG CHECKSUMS" message as we are expecting this with our DK hacks.
     removed ROM loading messages
-    changed missing ROM error to show message "ROM file was not found.  Please check DKAFE configuration".
-
-  emu/video.h
-    Increase the max frameskip so we can more quickly skip the dk intro scene when user presses jump button.
 
   frontend/mame/mame.cpp
     removed "Initializing..." message
 
-  frontend/mame/language.cpp (0.236 only)
+  frontend/mame/language.cpp
     Remove translation error messages
-
-  frontend/mame/luaengine.cpp (0.196 only)
-    fixed issue with lua engine preventing the rightmost pixels from being drawn to screen
-
 
 A useful reference to compiling MAME can be found at:
   http://forum.arcadecontrols.com/index.php?topic=149545.0
@@ -53,6 +45,10 @@ Other optimisations/flags were
   SYMLEVEL=1
   STRIP_SYMBOLS=1 
   TOOLS=0 
+  DEBUG=0
+  USE_QTDEBUG=0
   
-Pi4 build requires these dependencies to be installed:
-sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default
+Pi4 build requires a 8GB minimum SDcard and some dependencies to be installed:
+  sudo apt update
+  sudo apt upgrade
+  sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default

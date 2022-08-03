@@ -24,6 +24,7 @@ local dkstart5 = exports
 
 function dkstart5.startplugin()
 	local stage
+	local updated = false
 
 	function initialize()
 		local _s
@@ -57,8 +58,18 @@ function dkstart5.startplugin()
 				mem:write_u8(0x6229, 5)  -- update to level 5 
 				mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
 			end
-			if stage then
+			if stage then				
 				mem:write_u8(0x6227, stage) -- play a specific stage only
+
+				if stage ~= 4 and mem:read_u8(0xc600a) == 22 then
+					if not updated then
+						-- If stage was completed (and not playing rivets) then we need to increment the level
+						mem:write_u8(0x6229, mem:read_u8(0x6229) + 1)
+						updated = true
+					end	
+				else
+					updated = false
+				end
 			end
 		end
 	end
