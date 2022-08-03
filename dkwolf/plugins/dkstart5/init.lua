@@ -27,7 +27,7 @@ function dkstart5.startplugin()
 	local updated = false
 
 	function initialize()
-		local _s
+		local _param
 		
 		-- MAME LUA machine initialisation
 		-- Handles historic changes back to MAME v0.196 release
@@ -46,9 +46,9 @@ function dkstart5.startplugin()
 			mem = cpu.spaces["program"]
 		end
 		
-		_s = tonumber(os.getenv("DKSTART5_PARAMETER")) or nil
-		if _s >= 1 and _s <= 4 then
-			stage = _s
+		_param = os.getenv("DKSTART5_PARAMETER")
+		if _param and _param >= "1" and _param <= "4" then
+			stage = tonumber(_param)
 		end	
 	end
 	
