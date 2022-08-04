@@ -128,10 +128,10 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
             if os.path.exists(rom_source):
                 copy(rom_source, rom_target)
 
-        # Does the rom have a plugin?
-        for plugin, plugin_folder in PLUGINS:
-            if plugin == subfolder:
-                launch_command += f" -plugin {plugin_folder}"
+        # Does the rom have a dedicated plugin?
+        for plugin_folder, plugin in PLUGINS:
+            if plugin_folder == subfolder:
+                launch_command += f" -plugin {plugin}"
 
                 if "dkwolf" not in launch_directory.lower():
                     # Not using standard emulator so check the plugin path exists and copy if necessary
@@ -144,12 +144,14 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
     else:
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
 
-    # Are we using a launch plugin?
+    # Are we using an optional launch plugin?
     if launch_plugin and "-plugin" not in launch_command:
         # Are there any parameters for the plugin?
         if ":" in launch_plugin:
             launch_plugin, parameter, *_ = launch_plugin.split(":")
-            os.environ[launch_plugin + "_PARAMETER"] = parameter
+            os.environ[launch_plugin.upper() + "_PARAMETER"] = parameter
+        else:
+            os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
         launch_command += f" -plugin {launch_plugin}"
 
     if not FULLSCREEN:

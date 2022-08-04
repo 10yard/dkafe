@@ -136,7 +136,7 @@ function dkwho.startplugin()
 			mem = cpu.spaces["program"]
 
 			--Generate a starfield
-			number_of_stars = 400
+			number_of_stars = 250
 			starfield={}
 			math.randomseed(os.time())
 			for _=1, number_of_stars do
@@ -236,7 +236,7 @@ function dkwho.startplugin()
 	end
 
 	function version_draw_box(y1, x1, y2, x2, c1, c2)
-		-- Handle the version specific syntax of draw_box
+		-- Handle the version specific arguments of draw_box
 		if mame_version >= 0.227 then
 			scr:draw_box(y1, x1, y2, x2, c2, c1)
 		else
@@ -378,10 +378,10 @@ function dkwho.startplugin()
 	  	local _ypos, _xpos = 0, 0
 		for key=1, number_of_stars, 2 do
 			_ypos, _xpos = _starfield[key], _starfield[key+1]
-			scr:draw_line(_ypos, _xpos, _ypos, _xpos, 0xbbffffff)
+			scr:draw_box(_ypos, _xpos, _ypos, _xpos, 0xbbffffff, 0xbbffffff)
 			
 			--slowly scroll the starfield
-			_starfield[key], _starfield[key+1] = math_fmod(_ypos + 0.01, 256), math_fmod(_xpos + 0.05,224)
+			_starfield[key], _starfield[key+1] = math_fmod(_ypos + 0.1, 256), math_fmod(_xpos + 0.2,224)
 		end
 	end
 
