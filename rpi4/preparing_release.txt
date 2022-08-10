@@ -10,17 +10,14 @@ $ ls
 There may be existing "dkafe_bin" folders at /boot/dkafe_bin and /home/pi/dkafe_bin
 These will be automatically removed by the build script.
 
-$ sudo bleachbit
-Run this occasionally to clean up system.  Avoid the "Memory" option.
-
 $ git clone https://github.com/10yard/dkafe.git
-Should create a "dkafe" folder containing the sources
+Will create a "dkafe" folder containing the sources
 
 $ cd dkafe
 $ chmod a+rwx build.sh
 $ ./build.sh
 
-The build script will run.  It should create a "dkafe_bin" folder on the /boot partition
+The build script will run.  It will create a "dkafe_bin" folder on the /boot partition
 There should be no other dkafe or rom stuff on the /boot partition
 
 S ls /boot
@@ -36,6 +33,9 @@ $ lsblk
 We can see the USB drive size and mountpoint.  Assuming the drive is named "USB"  
 The mountpoint used in commands below is /media/pi/USB
 
+$ sudo bleachbit
+Run this occasionally to clean up system.  Enable all options except "Memory".
+
 $ history -c && history -w
 To clear the terminal history
 
@@ -48,5 +48,4 @@ This will shrink the image and package into .gz file.  It will take a while.
 
 $ ls -l
 Job done.
-
-Remove USB stick and transfer over to another computer.
+Remove USB stick.

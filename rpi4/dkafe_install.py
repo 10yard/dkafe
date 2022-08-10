@@ -42,6 +42,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 
 '''
 
+
 def yesno(question):
     print('')
     prompt = f'{question} ? (y/n): '
@@ -187,7 +188,6 @@ def main():
                 # update /boot/config.txt
                 with open(CONFIG_FILE, "a") as f_out:
                     f_out.write(GPIO_MAPPING)
-
 
     # -------- Disable non-essential services --------
     # ------------------------------------------------

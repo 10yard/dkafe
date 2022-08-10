@@ -310,7 +310,7 @@ def play_intro_animation():
                 write_text(" FRONT END ", font=dk_font, x=69, y=8, bg=BLACK)
 
             show_score()
-            update_screen(delay_ms=40)
+            update_screen(delay_ms=39)
 
 
 def display_slots(version_only=False, logo_scene=False):
