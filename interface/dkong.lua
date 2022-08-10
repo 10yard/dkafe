@@ -8,7 +8,7 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 
 Interface routine for Donkey Kong
 --------------------------------------------------------------
-Set target score, registered player names and player scores.
+Set target score and player scores.
 Dump highscore to file when finished.
 Show prizes and progress in the game (optional).
 --------------------------------------------------------------
@@ -37,7 +37,7 @@ emu.register_frame(function()
 		max_frameskip(data_allow_skip_intro == "1" and emu.romname() == "dkongx")
 
 		-- Update RAM when ready
-		if mem:read_u8(ram_players[1]) > 0 and ( emu.romname() ~= "dkongx" or mem:read_u8("0xc0000") < 0 ) then
+		if emu.romname() ~= "dkongx" or mem:read_u8("0xc0000") < 0 then
 			emu["loaded"] = 2
 			for key, value in pairs(ram_high) do
 				mem:write_u8(value, data_high[key])
@@ -50,9 +50,6 @@ emu.register_frame(function()
 			end
 			for key, value in pairs(ram_scores_DOUBLE) do
 				mem:write_u8(value, data_scores_DOUBLE[key])
-			end
-			for key, value in pairs(ram_players) do
-				mem:write_u8(value, data_players[key])
 			end
 		end
 	end

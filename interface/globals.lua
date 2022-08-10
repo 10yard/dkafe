@@ -75,7 +75,6 @@ data_scores_DOUBLE = get_formatted_data("DATA_SCORES_DOUBLE")
 data_high = get_formatted_data("DATA_HIGH")
 data_high_DOUBLE = get_formatted_data("DATA_HIGH_DOUBLE")
 data_scores = get_formatted_data("DATA_SCORES")
-data_players = get_formatted_data("DATA_PLAYERS")
 
 -- ROM addresses
 ---------------------------------------------------------------
@@ -87,4 +86,3 @@ ram_high = get_formatted_data("RAM_HIGH")
 ram_high_DOUBLE = get_formatted_data("RAM_HIGH_DOUBLE")
 ram_scores = get_formatted_data("RAM_SCORES")
 ram_scores_DOUBLE = get_formatted_data("RAM_SCORES_DOUBLE")
-ram_players = get_formatted_data("RAM_PLAYERS")

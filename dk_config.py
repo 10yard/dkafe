@@ -158,7 +158,6 @@ START5_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "
 # Roms that don't support some DKAFE features fully
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]
 AUTOSTART_UNFRIENDLY = ["dkongbarpal", "dkongrndmzr"]
-AUTHOR_UNFRIENDLY = ["dkongwizardry", "dkongbarpal", "dkongrndmzr"]
 STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongpe", "dkongitd", "dkonghrd", "dkong40", "dkongf"]
 
 # Colours

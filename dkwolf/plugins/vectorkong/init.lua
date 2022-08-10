@@ -1,7 +1,7 @@
 -- Vector Kong by Jon Wilson (10yard)
 -- This plugin replaces DK pixel graphics with high resolution vectors
 --
--- Tested with latest MAME version 0.244
+-- Tested with latest MAME version 0.245
 -- Compatible with MAME versions from 0.196
 --
 -- Minimum start up arguments:
@@ -10,7 +10,7 @@
 
 local exports = {}
 exports.name = "vectorkong"
-exports.version = "0.12"
+exports.version = "0.13"
 exports.description = "Vector Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -260,7 +260,11 @@ function vectorkong.startplugin()
 		local _addr = VRAM_TR
 		for _x=223, 0, -8 do
 			for _y=255, 0, -8 do
-				draw_object(mem:read_u8(_addr), _y - 6, _x - 6)
+				if _y == 255 then
+					draw_object(mem:read_u8(_addr), _y - 6, _x - 6, RED)
+				else
+					draw_object(mem:read_u8(_addr), _y - 6, _x - 6)
+				end
 				_addr = _addr + 1
 			end
 		end
@@ -342,12 +346,20 @@ function vectorkong.startplugin()
 
 	function draw_fireballs()
 		local _y, _x, _flip
+
+		fireball_color = YEL
+		flame_color = RED
+		if read(0x6217) == 1 then
+			fireball_color = BLU
+			flame_color = CYN
+		end
+
 		for _, _addr in ipairs(FIREBALLS) do
 			if read(_addr, 1) then  -- fireball is active
 				_y, _x = 247 - read(_addr+5), read(_addr+3) - 22
 				if read(_addr+0xd, 1) then _flip = 13 end  -- fireball moving right so flip the vectors
-				draw_object("fireball", _y, _x, YEL, _flip) -- draw body
-				draw_object("fb-flame", _y+math.random(0,3), _x, RED, _flip) -- draw flames extending upwards
+				draw_object("fireball", _y, _x, fireball_color, _flip) -- draw body
+				draw_object("fb-flame", _y+math.random(0,3), _x, flame_color, _flip) -- draw flames extending upwards
 			end
 		end
 	end
@@ -380,7 +392,7 @@ function vectorkong.startplugin()
 
 				_grab = read(0x6218, 1)
 				if _grab then -- grabbing hammer
-					if _sprite < 128 then _sprite = 10 else _sprite = 138 end  -- change default rite to a hammer grab
+					if _sprite < 128 then _sprite = 10 else _sprite = 138 end  -- change default sprite to a hammer grab
 				end
 
 				-- Display one of Jumpman's various sprites
@@ -414,7 +426,7 @@ function vectorkong.startplugin()
 				-- Add smashed item?
 				_sprite = read(0x6a2d)
 				if read(0x6a2c) > 0 and _sprite >= 0x60 and _sprite <= 0x63 then
-					draw_object(0xf00 + _sprite, _y+_smash_offset, read(0x6a2c) - 21, BLU)
+					draw_object(0xf00 + _sprite, _y+_smash_offset, read(0x6a2c) - 17, BLU)
 				end
 			end
 		end
@@ -623,8 +635,10 @@ function vectorkong.startplugin()
 		-- Item was smashed
 		_lib[0xf60] = {6,1,9,1,13,5,13,10,9,14,6,14,2,10,2,5,6,1,BR,YEL,6,2,9,2,12,5,12,10,9,13,6,13,3,10,3,5,6,2}
 		_lib[0xf61] = {7,3,4,6,4,9,7,12,8,12,11,9,11,6,8,3,7,3,BR,YEL,7,4,5,6,5,9,7,11,8,11,10,9,10,6,8,4,7,4,BR,RED,7,5,6,6,6,9,7,10,8,10,9,9,9,6,8,5,7,5}
-		_lib[0xf62] = {7,5,5,7,5,8,7,10,8,10,10,8,10,7,8,5,7,5,BR,YEL,7,6,6,7,6,8,7,9,8,9,9,8,9,7,8,6,7,6,BR,RED,7,7,7,8,8,8,8,7,7,7}
-		_lib[0xf63] = {BR,YEL,8,3,8,0,BR,BR,5,4,1,0,BR,BR,4,7,1,7,BR,BR,5,11,1,15,BR,BR,8,12,8,15,BR,BR,10,11,14,15,BR,BR,11,7,14,7,BR,BR,10,4,14,0,BR,RED,8,6,8,8,BR,BR,7,7,9,7}
+		_lib[0xf62] = _lib[0xf60]  -- simplify smash animation
+		_lib[0xf63] = _lib[0xf61]  -- simplify smash animation
+		--_lib[0xf62] = {7,5,5,7,5,8,7,10,8,10,10,8,10,7,8,5,7,5,BR,YEL,7,6,6,7,6,8,7,9,8,9,9,8,9,7,8,6,7,6,BR,RED,7,7,7,8,8,8,8,7,7,7}
+		--_lib[0xf63] = {BR,YEL,8,3,8,0,BR,BR,5,4,1,0,BR,BR,4,7,1,7,BR,BR,5,11,1,15,BR,BR,8,12,8,15,BR,BR,10,11,14,15,BR,BR,11,7,14,7,BR,BR,10,4,14,0,BR,RED,8,6,8,8,BR,BR,7,7,9,7}
 
 		-- Non-character objects:
 		_lib["logo"] = {0,32,39,32,BR,BR,20,32,0,55,BR,BR,20,32,39,55,BR,BR,0,64,0,87,39,87,39,64,0,64,BR,BR,0,96,39,96,0,119,39,119,BR,BR,20,140,20,151,0,151,0,128,39,128,39,151,BR,BR,95,0,56,12,95,23,BR,BR,56,55,56,32,95,32,95,55,BR,BR,76,32,76,55,BR,BR,56,87,56,64,95,64,95,87,BR,BR,95,96,95,119,BR,BR,95,108,56,108,BR,BR,56,128,56,151,95,151,95,128,56,128,BR,BR,56,160,95,160,95,183,76,183,76,160,56,183} -- vectorkong logo
@@ -671,7 +685,7 @@ function vectorkong.startplugin()
 		_lib["jm-15"] = {10,4,11,4,11,6,10,6,10,4,BR,BR,11,4,10,6,BR,BR,10,4,11,6,BR,BR,14,9,13,10,11,9,11,10,12,11,12,12,10,12,10,14,14,12,BR,BR,9,11,9,13,7,16,6,16,BR,BR,6,12,7,13,6,14,BR,BR,7,3,8,4,9,6,9,8,BR,BR,5,4,6,5,7,7,7,8,BR,BR,2,1,3,2,2,3,3,4,1,5,0,3,2,1,BR,BR,2,6,3,7,2,8,3,9,1,10,0,8,2,6,BR,RED,14,4,14,12,16,11,16,9,14,6,BR,BR,3,4,4,5,6,6,7,8,7,10,6,12,3,13,1,10,BR,BR,1,5,2,6,BR,BR,3,9,4,10,BR,GRY,14,7,13,6,12,4,11,3,11,4,10,5,9,5,9,6,BR,BR,8,11,10,12,BR,BR,13,7,13,8,12,8,12,7,13,7,BR,BR,7,3,6,2,5,2,4,3,5,4,BR,BR,6,14,5,14,4,15,4,16,6,16,BR,BR,0,12,1,13,2,15,BR,BR,0,14,1,16}
 		_lib["jm-120"] = {14,4,10,3,10,4,14,6,BR,BR,14,11,10,12,14,9,BR,BR,11,5,11,6,10,7,10,8,11,9,11,11,10,10,10,9,9,8,9,7,10,6,10,5,11,5,BR,BR,9,5,8,4,9,2,BR,BR,9,10,8,11,9,13,BR,BR,6,4,6,3,8,1,BR,BR,6,11,6,12,8,14,BR,BR,6,5,6,6,5,6,5,5,6,5,BR,BR,6,9,6,10,5,10,5,9,6,9,BR,BR,4,3,2,5,1,4,2,1,3,1,4,3,BR,BR,2,10,4,12,3,13,3,14,2,14,1,11,2,10,BR,RED,14,4,15,5,16,7,16,8,15,10,14,11,14,4,BR,BR,4,3,6,4,7,5,8,5,8,6,7,6,6,7,6,8,7,9,8,9,8,10,7,10,6,11,4,12,BR,BR,2,5,3,7,3,8,2,10,BR,GRY,13,6,13,7,12,7,12,6,13,6,BR,BR,13,8,13,9,12,9,12,8,13,8,BR,BR,10,4,8,6,BR,BR,10,11,8,9,BR,BR,8,1,9,0,10,0,10,1,9,2,BR,BR,9,13,10,14,10,15,9,15,8,14,BR,BR,10,4,12,4,BR,BR,10,11,12,11}
 		_lib["jm-121"] = {10,2,11,1,14,2,14,3,13,3,12,4,10,2,BR,BR,5,2,3,4,2,3,1,3,1,2,4,1,5,2,BR,BR,10,5,10,6,9,6,9,5,10,5,BR,BR,6,5,6,6,5,6,5,5,6,5,BR,BR,11,6,12,6,14,8,BR,BR,10,9,11,8,13,9,BR,BR,4,6,3,6,1,8,BR,BR,5,9,4,8,2,9,BR,BR,9,14,11,10,12,10,11,14,BR,BR,6,14,4,10,3,10,4,14,BR,BR,10,11,9,11,8,10,7,10,6,11,4,11,5,10,6,10,7,9,8,9,9,10,10,10,10,11,BR,RED,11,14,10,15,8,16,7,16,5,15,4,14,11,14,BR,BR,12,4,11,6,10,7,10,8,9,8,9,7,8,6,7,6,6,7,6,8,5,8,5,7,4,6,3,4,BR,BR,10,2,8,3,7,3,5,2,BR,GRY,14,8,15,9,15,10,14,10,13,9,BR,BR,2,9,1,10,0,10,0,9,1,8,BR,BR,9,8,11,10,BR,BR,6,8,4,10,BR,BR,9,12,9,13,8,13,8,12,9,12,BR,BR,7,12,7,13,6,13,6,12,7,12}
-		_lib["jm-122"] = {10,2,12,3,11,7,10,7,10,6,9,5,10,2,BR,BR,6,5,6,6,5,6,5,5,6,5,BR,BR,2,2,2,5,4,7,3,8,2,8,0,6,0,0,1,0,2,2,BR,BR,8,10,8,11,5,11,5,10,8,10,BR,BR,8,10,5,11,BR,BR,8,11,5,10,BR,BR,0,14,0,9,1,8,1,11,2,11,1,13,2,14,BR,RED,0,14,8,14,BR,BR,0,14,1,16,3,16,6,14,BR,BR,13,8,14,9,14,13,13,14,12,14,11,13,11,9,12,8,13,8,BR,BR,10,2,9,1,6,0,4,0,2,1,BR,BR,9,5,8,4,7,4,6,7,5,8,BR,GRY,2,2,2,1,1,0,0,0,0,2,BR,BR,5,8,5,9,6,10,BR,BR,8,11,9,11,8,12,6,13,5,14,BR,BR,5,12,5,13,4,13,4,12,5,12}
+		_lib["jm-122"] = {10,2,12,3,11,7,10,7,10,6,9,5,10,2,BR,BR,6,5,6,6,5,6,5,5,6,5,BR,BR,2,2,2,5,4,7,3,8,2,8,0,6,0,0,1,0,2,2,BR,BR,8,10,8,11,5,11,5,10,8,10,BR,BR,8,10,5,11,BR,BR,8,11,5,10,BR,BR,0,14,0,9,1,8,1,11,2,11,1,13,2,14,BR,RED,0,14,8,14,BR,BR,0,14,1,16,3,16,6,14,BR,BR,10,2,9,1,6,0,4,0,2,1,BR,BR,9,5,8,4,7,4,6,7,5,8,BR,GRY,2,2,2,1,1,0,0,0,0,2,BR,BR,5,8,5,9,6,10,BR,BR,8,11,9,11,8,12,6,13,5,14,BR,BR,5,12,5,13,4,13,4,12,5,12}
 		return _lib
 	end
 
