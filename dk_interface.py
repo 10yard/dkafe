@@ -15,28 +15,14 @@ from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD, HUD_UNF
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
-# Memory addresses for scores and players data
-# 6 Bytes per score
-ROM_SCORES = "0xc356c,0xc356d,0xc356e,0xc356f,0xc3570,0xc3571,0xc358e,0xc358f,0xc3590,0xc3591,0xc3592,0xc3593,0xc35b0,0xc35b1,0xc35b2,0xc35b3,0xc35b4,0xc35b5,0xc35d2,0xc35d3,0xc35d4,0xc35d5,0xc35d6,0xc35d7,0xc35f4,0xc35f5,0xc35f6,0xc35f7,0xc35f8,0xc35f9"
-RAM_SCORES = "0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194"
-RAM_HIGH = "0xc7641,0xc7621,0xc7601,0xc75e1,0xc75c1,0xc75a1"
-
-# 7 bytes per score
-RAM_SCORES_LONG = "0xc6107,0xc6108,0xc6109,0xc610a,0xc610b,0xc610c,0xc610d,0xc6129,0xc612a,0xc612b,0xc612c,0xc612d,0xc612e,0xc612f,0xc614b,0xc614c,0xc614d,0xc614e,0xc614f,0xc6150,0xc6151,0xc616d,0xc616e,0xc616f,0xc6170,0xc6171,0xc6172,0xc6173,0xc618f,0xc6190,0xc6191,0xc6192,0xc6193,0xc6194,0xc6194"
-
-# 3 bytes per score with 2 digits per byte
-RAM_SCORES_DOUBLE = "0xc611f,0xc611e,0xc611d,0xc6141,0xc6140,0xc613f,0xc6163,0xc6162,0xc6161,0xc6185,0xc6184,0xc6183,0xc61A7,0xc61A6,0xc61A5"
-RAM_HIGH_DOUBLE = "0xc60ba,0xc60b9,0xc60b8"
-
-# 4 bytes per score with 2 digits per byte
-RAM_SCORES_DOUBLE_LONG = "0xc611f,0xc611e,0xc611d,0xc611c,0xc6141,0xc6140,0xc613f,0xc613e,0xc6163,0xc6162,0xc6161,0xc6160,0xc6185,0xc6184,0xc6183,0xc6182,0xc61a7,0xc61a6,0xc61a5,0xc61a4"
-RAM_HIGH_DOUBLE_LONG = "0xc60ba,0xc60b9,0xc60b8,0xc60b7"
-
 
 def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None, basic=0):
     # Logic is driven by the rom name but there are exceptions were the subfolder name of a specific rom is needed.
     script = None
-    if score3:
+    if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd", "dkongj") and not basic:
+        script = "dkong.lua"
+
+    if script and score3:
         if os.path.exists(COMPETE_FILE):
             os.remove(COMPETE_FILE)
 
@@ -56,66 +42,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
             os.environ[f"DATA_{award[0]}_K"] = format_K(str(award[1]))
             os.environ[f"DATA_{award[0]}_AWARD"] = str(AWARDS[i])
 
-        # Award prizes
-        os.environ["DATA_AWARD1"] = str(AWARDS[2])
-        os.environ["DATA_AWARD2"] = str(AWARDS[1])
-        os.environ["DATA_AWARD3"] = str(AWARDS[0])
-
-        # Clear exising addresses
-        os.environ["RAM_HIGH"] = ""
-        os.environ["RAM_HIGH_DOUBLE"] = ""
-        os.environ["RAM_SCORES"] = ""
-        os.environ["RAM_SCORES_DOUBLE"] = ""
-        os.environ["ROM_SCORES"] = ""
-
-        # We are concerned with 3rd score to set the game highscore and to later establish if it was beaten.
-        if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd", "dkongj") and not basic:
-
-            script = "dkong.lua"
-            score_width, double_width = 6, 6
-            if rom == "dkongx" or rom == "dkongx11" or subfolder == "dkongrdemo":
-                score_width, double_width = 7, 8
-            scores = [score3.zfill(score_width)] * 5
-
-            # Default memory addresses
-            os.environ["RAM_HIGH"] = RAM_HIGH
-            os.environ["RAM_HIGH_DOUBLE"] = RAM_HIGH_DOUBLE
-            os.environ["RAM_SCORES"] = RAM_SCORES
-            os.environ["RAM_SCORES_DOUBLE"] = RAM_SCORES_DOUBLE
-            os.environ["ROM_SCORES"] = ROM_SCORES
-
-            # Default data
-            os.environ["DATA_HIGH"] = format_numeric_data(scores, first_only=True)
-            os.environ["DATA_HIGH_DOUBLE"] = format_double_data(scores, width=double_width, first_only=True)
-            os.environ["DATA_SCORES"] = format_numeric_data(scores, width=score_width)
-            os.environ["DATA_SCORES_DOUBLE"] = format_double_data(scores, width=double_width)
-
-            # Adjustments based on ROM
-            if rom == "dkongf":
-                os.environ["ROM_SCORES"] = ""
-            if rom == "dkongx":
-                os.environ["DATA_SCORES_DOUBLE"] = \
-                    format_double_data(scores, width=double_width, justify_single_digit_right=True)
-                os.environ["RAM_SCORES"] = offset_addresses(RAM_SCORES_LONG, -1)
-                os.environ["RAM_SCORES_DOUBLE"] = offset_addresses(RAM_SCORES_DOUBLE_LONG, 1)
-                os.environ["RAM_HIGH_DOUBLE"] = ""
-                os.environ["ROM_SCORES"] = ""
-                os.environ["RAM_HIGH"] = ""
-            if rom == "dkongx11" or subfolder == "dkongrdemo":
-                os.environ["RAM_HIGH_DOUBLE"] = RAM_HIGH_DOUBLE_LONG
-                os.environ["RAM_SCORES"] = RAM_SCORES_LONG
-                os.environ["RAM_SCORES_DOUBLE"] = RAM_SCORES_DOUBLE_LONG
-                os.environ["ROM_SCORES"] = ""
-                os.environ["RAM_HIGH"] = ""
     return script
-
-
-def offset_addresses(array, offset):
-    # adjust all the memory addresses in the array by a given offset
-    new_array = ""
-    for address in array.replace("\n", "").split(","):
-        new_array += str(int(address, 16) + offset) + ","
-    return new_array.strip(",")
 
 
 def get_award(rom, score3, score2, score1):
@@ -126,38 +53,17 @@ def get_award(rom, score3, score2, score1):
             score = cf.readline().replace("\n", "")
         os.remove(COMPETE_FILE)
         if rom == name and score.isnumeric():
-            if int(score) > int(score1):
+            if int(score) >= int(score1):
                 return AWARDS[2]  # Got 1st prize award
-            elif int(score) > int(score2):
+            elif int(score) >= int(score2):
                 return AWARDS[1]  # Got 2nd prize award
-            elif int(score) > int(score3):
+            elif int(score) >= int(score3):
                 return AWARDS[0]  # Got 3rd prize award
             else:
                 return 0  # Got nothing
     except (EOFError, FileNotFoundError, IOError):
         return 0
     return 0
-
-
-def format_double_data(scores, width=6, first_only=False, justify_single_digit_right=False):
-    data = ""
-    for score in scores:
-        score_text = (score.ljust(width), score.rjust(width))[int(justify_single_digit_right)].replace(" ", "0")
-        for i in range(0, width, 2):
-            data += str(int(score_text[i:i+2], 16)) + ","
-        if first_only:
-            break
-    return data.strip(",")
-
-
-def format_numeric_data(top_scores, width=6, first_only=False):
-    data = ""
-    for score in top_scores:
-        for char in score.zfill(width)[:width]:
-            data += char + ","
-        if first_only:
-            break
-    return data.strip(",")
 
 
 def format_K(number):

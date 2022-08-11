@@ -55,6 +55,7 @@ xcopy dkwolf\*.txt dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\*.md dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\plugins dist\launchxp\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
+rmdir dist\dkwolf\inp /s /Q
 
 echo **** clean up
 rmdir build /s /Q

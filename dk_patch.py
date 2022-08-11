@@ -57,17 +57,16 @@ def apply_patches():
     applied_patches_list = []
 
     if is_pi():
-        # For Raspberry Pi, look for DK roms (and Crazy Kong) in the /boot partition
+        # Look for DK roms (and Crazy Kong) on the /boot partition of Pi when not found in the roms folder
         # User may not have provided them at install time
         for rom in DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP:
             if not os.path.exists(rom):
-                for rom_file in glob('/boot/dk*.zip'):
-                    copy(rom_file, ROM_DIR)
-                for rom_file in glob('/boot/ck*.zip'):
-                    copy(rom_file, ROM_DIR)
-                break
+                copy(f'/boot/{os.path.basename}', ROM_DIR)
+            if not os.path.exists(rom):
+                copy(f'/boot/dkafe_bin/{os.path.basename}', ROM_DIR)
 
     if os.path.exists(DKONG_ZIP):
+        # Proceed with the patching
         ips_files = glob(os.path.join(PATCH_DIR, "dkong*.ips"))
         if ips_files:
             # Read the original ZIP binary

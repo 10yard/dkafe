@@ -33,7 +33,6 @@ EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -nvram_directory /dev/null -record <RE
 CREDITS = 1
 AUTOSTART = 1
 ALLOW_SKIP_INTRO = 1
-ALLOW_COIN_TO_END_GAME = 1
 SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1
 SHOW_HUD = 1

@@ -8,8 +8,7 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 Notes on DKWolf
 ---------------
 
-DKWolf is a custom build of WolfMAME built for DKAFE which supports only Donkey Kong drivers.
-It a lightweight emulator with reduced size and functionality removed for save and load states, cheats, throttling etc.
+DKWolf is a custom lightweight build of WolfMAME which supports only Donkey Kong drivers.
 
 The code changes for WolfMAME 0.196, 0.236 and 0.241 are included in the "changes" folder.
 

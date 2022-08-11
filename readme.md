@@ -160,7 +160,7 @@ The chorus plugin replaces the default samples and music with acapella sounds.
 
 ## DKWolf Emulator
 
-DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior and DK 3).
+DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior, DK3 and Crazy Kong).
 
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
 
@@ -327,9 +327,6 @@ These settings relate to Donkey Kong hacks.
 
 `ALLOW_SKIP_INTRO = 1`
 Allow the DK climb scene to be quickly skipped in game by pressing Jump button
-
-`ALLOW_COIN_TO_END_GAME = 1`
-1 to allow push of coin during gameplay to trigger end of game, sacrificing all remaining lives, so a score can be registered.
 
 `SHOW_AWARD_PROGRESS = 1`    
 1 to show award progress when playing game (replaces highscore at top of screen)

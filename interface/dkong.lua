@@ -6,11 +6,7 @@ ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
 o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
                                         by Jon Wilson (10yard)
 
-Interface routine for Donkey Kong
---------------------------------------------------------------
-Set target score and player scores.
-Dump highscore to file when finished.
-Show prizes and progress in the game (optional).
+DKAFE Interface routine for Donkey Kong
 --------------------------------------------------------------
 ]]
 
@@ -25,75 +21,64 @@ emu.register_frame(function()
 	_, loaded = pcall(get_loaded)
 
 	if loaded == nil then
-		-- Update ROM on start
-		emu["loaded"] = 1
-		for key, value in pairs(rom_scores) do
-			mem:write_direct_u8(value, data_scores[key])
+		-- Wait for ROM to start
+		if emu.romname() == "dkongx" and mem:read_u8(0xc600a) ~= 1 then
+			-- Speed through the power up self test
+			max_frameskip(true)
+		else
+			emu["loaded"] = 1
 		end
 	end
 
 	if loaded == 1 then
-		-- Skip past startup screen of DK2 when required
-		max_frameskip(data_allow_skip_intro == "1" and emu.romname() == "dkongx")
+		max_frameskip(false)
 
-		-- Update RAM when ready
-		if emu.romname() ~= "dkongx" or mem:read_u8("0xc0000") < 0 then
-			emu["loaded"] = 2
-			for key, value in pairs(ram_high) do
-				mem:write_u8(value, data_high[key])
-			end
-			for key, value in pairs(ram_high_DOUBLE) do
-				mem:write_u8(value, data_high_DOUBLE[key])
-			end
-			for key, value in pairs(ram_scores) do
-				mem:write_u8(value, data_scores[key])
-			end
-			for key, value in pairs(ram_scores_DOUBLE) do
-				mem:write_u8(value, data_scores_DOUBLE[key])
-			end
-		end
-	end
+		-- Reset P1 best score for this session
+		best_score = 0
 
-	if loaded == 2 then
 		-- Insert coins automatically when required
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
 			mem:write_u8(0x6001, data_credits)
 		end
+
 		-- Start game automatically when required
 		if data_autostart == "1" then
 			ports[":IN2"].fields["1 Player Start"]:set_value(1)
 		end
-		emu["loaded"] = 3
+		emu["loaded"] = 2
 		emu.register_frame_done(dkong_overlay, "frame")
 	end
 
-	if loaded == 3 then
+	if loaded == 2 then
 		mode1 = mem:read_u8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
 		mode2 = mem:read_u8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
 		stage = mem:read_u8(0xc6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 		score = get_score()
 
-		-- Release P1 START button (after autostart)
-		if data_autostart == "1" and mode1 == 3 then
-			ports[":IN2"].fields["1 Player Start"]:set_value(0)
-			data_autostart = "0"
+		if mode1 == 3 and last_mode1 == 3 then
+			-- Keep track of best P1 score achieved this session
+			if score > best_score then
+				best_score = score
+			end
+
+			-- Release P1 START button (after autostart)
+			if data_autostart == "1" then
+				ports[":IN2"].fields["1 Player Start"]:set_value(0)
+				data_autostart = "0"
+			end
 		end
 
 		-- Player can skip through the DK climb scene by pressing JUMP button
 		fast_skip_intro()
 
-		-- Player can end game early by pressing COIN button
-		if mode1 == 3 and data_coin_ends == "1" and string.sub(int_to_bin(mem:read_u8(0xc7d00)), 1, 1) == "1" then
-			mem:write_u8(0xc6228, 1)
-			mem:write_u8(0xc6200, 0)
-		end
+		last_mode1 = mode1
 	end
 end)
 
 -- Callback function for frame updates
 ------------------------------------------------------------------------------------------------
 function dkong_overlay()
-	-- Show award targets and progress during gameplay (optional)
+	-- Show award targets and progress during gameplay
 	display_awards()
 end
 
