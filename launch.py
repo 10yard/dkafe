@@ -526,11 +526,11 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
-        show_coach = sub in COACH_FRIENDLY or (sub == "" and name == "dkong")
-        show_chorus = sub in CHORUS_FRIENDLY or (sub == "" and name == "dkong")
-        show_start5 = sub in START5_FRIENDLY or (sub == "" and name in ["dkong", "dkongjr", "ckongpt2"])
+        show_coach = sub in COACH_FRIENDLY or (not sub and name in COACH_FRIENDLY)
+        show_chorus = sub in CHORUS_FRIENDLY or (not sub and name in CHORUS_FRIENDLY)
+        show_start5 = sub in START5_FRIENDLY or (not sub and name in START5_FRIENDLY)
+        show_stage = sub in STAGE_FRIENDLY or (not sub and name in STAGE_FRIENDLY)
         show_shoot = sub in SHOOT_FRIENDLY
-        show_stage = sub in STAGE_FRIENDLY or (sub == "" and name in ["dkongjr", "ckongpt2"])
         inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5
                                 - (show_stage*4))
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,

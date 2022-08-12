@@ -50,12 +50,13 @@ def read_romlist():
     # read romlist and return info about available roms (and shell scripts)
     romlist = []
     usedslots = []
+    usedsubs = []
     with open("romlist.csv", "r") as rl:
         for row in rl.readlines():
             data = row.replace('"', '')
             if not data.startswith("#") and data.count(",") >= 10:
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
-                if name and des and int(slot) not in usedslots:
+                if (name and des and slot not in usedslots) or (slot == "99" and sub not in usedsubs):
                     if name == "dkongjr" and not os.path.exists(DKONGJR_ZIP):
                         continue
                     if name == "dkong3" and not os.path.exists(DKONG3_ZIP):
@@ -82,7 +83,8 @@ def read_romlist():
                     st2 = apply_skill(st2)
                     st3 = apply_skill(st3)
 
-                    usedslots.append(int(slot))
+                    usedslots.append(slot)
+                    usedsubs.append(sub)
                     romlist.append((name, sub, des, alt, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
     return romlist
 

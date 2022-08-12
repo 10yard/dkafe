@@ -148,15 +148,17 @@ PLUGINS = [
     ("dkongjrgala", "galakong")]
 
 # Roms that are compatible with my plugins
-COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd"]
-CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
-                   "dkongwbh", "dkongpies", "dkongjapan", "dkongpe", "dkongfr", "dkongl05", "dkongce", "dkongrev"]
+COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
+CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd", "dkongwbh",
+                   "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev", "dkong"]
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac"]
-START5_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix", "dkongd2k"]
-STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongpe", "dkongitd", "dkonghrd", "dkong40", "dkongf",
-                  "dkongd2k"]
+START5_FRIENDLY = ["dkongspringy", "dkongpac", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix", "dkongd2k",
+                   "dkongwizardry", "dkongitd", "dkongotr", "dkongrev", "dkongtj", "dkongcb", "dkongfoundry",
+                   "dkong40", "dkongpauline", "dkong", "dkongjr", "ckongpt2"]
+STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongitd", "dkonghrd", "dkong40", "dkongf",
+                  "dkongd2k", "dkongotr", "dkongtj", "dkongfoundry", "dkongpauline", "dkong", "dkongjr", "ckongpt2"]
 
-# Roms that don't support some DKAFE features fully
+# Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]
 
 # Colours

@@ -23,7 +23,7 @@ dkong,dkongrev,DK Reverse,DK Reverse,27,1,2,30000,10000,25000,50000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,29,1,2,32000,10000,25000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,31,1,2,34000,10000,20000,40000
 dkongf,dkongrdemo,DK Remix,DK Remix Demo,33,1,2,36000,10000,20000,45000
-dkongf,dkongf,DK Foundry,,34,1,2,38000,10000,25000,50000
+dkongf,dkongfoundry,DK Foundry,,34,1,2,38000,10000,25000,50000
 dkong,dkongwbh,DK Wild,,35,1,2,40000,1000,2000,5000
 dkong,dkongxgalakong,X-Galakong,Extreme Galakong,37,1,2,42000,5000,10000,15000
 ckongpt2,,Crazy Kong,Crazy Kong,40,1,2,44000,,,
@@ -32,8 +32,10 @@ dkong,dkongbarpal,DK Barrelpalooza,DK Barrelpalooza,43,1,2,46000,10000,25000,500
 dkong,dkongkonkey,Konkey Dong,Konkey Dong,45,1,2,48000,,,
 dkong3,,DK 3,DK 3,46,1,2,50000,,,
 dkong,dkongksfix,KS Fix,DK Killscreen Fix,46,1,2,50000,,,
-dkongpe,dkongpe,DK Pauline Ed,DK Pauline Edition,47,1,2,50000,8000,15000,25000
+dkongpe,dkongpauline,DK Pauline Ed,DK Pauline Edition,47,1,2,50000,8000,15000,25000
 dkong,dkongbarrels,DK Barrels,DK Barrels Only,99,1,2,,,,
+dkong,dkongpies,DK Pies,DK Pies Only,99,1,2,,,,
+dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,99,1,2,,,,
 dkong,dkonghrd,DK Hard,,99,1,2,,,,
 dkong,dkongrnd,DK Random,DK Randomized,99,1,2,,,,
 dkong,dkongfr,DK FreeRun,DK Freerun Edition,99,1,2,,,,
@@ -45,3 +47,4 @@ dkong,dkongbcc,DK Barrel Control,DK Barrel Control,99,1,2,,,,
 dkong,dkongduel,DK Duel,DK Duel,99,1,2,,,,
 dkongj,dkongjapan,DK Japan,DK Japan,99,1,2,,,,
 dkong,dkongsprfin,DK Springfinity,DK Springfinity,99,1,2,,,,
+dkong,dkongce,DK Champs.,DK Championship Edition,99,1,2,,,,
