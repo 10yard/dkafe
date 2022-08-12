@@ -152,12 +152,12 @@ COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd"]
 CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpe", "dkongfr", "dkongl05", "dkongce", "dkongrev"]
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac"]
-START5_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix"]
+START5_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix", "dkongd2k"]
+STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongpe", "dkongitd", "dkonghrd", "dkong40", "dkongf",
+                  "dkongd2k"]
 
 # Roms that don't support some DKAFE features fully
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]
-AUTOSTART_UNFRIENDLY = ["dkongbarpal", "dkongrndmzr"]
-STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongpe", "dkongitd", "dkonghrd", "dkong40", "dkongf"]
 
 # Colours
 RED = (232, 7, 10)

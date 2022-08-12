@@ -21,6 +21,8 @@ emu.register_frame(function()
 	_, loaded = pcall(get_loaded)
 
 	if loaded == nil then
+		autostart_delay = math.random(1, 20)
+		
 		-- Wait for ROM to start
 		if emu.romname() == "dkongx" and mem:read_u8(0xc600a) ~= 1 then
 			-- Speed through the power up self test
@@ -39,14 +41,22 @@ emu.register_frame(function()
 		-- Insert coins automatically when required
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
 			mem:write_u8(0x6001, data_credits)
+			data_credits = "0"
 		end
 
 		-- Start game automatically when required
 		if data_autostart == "1" then
-			ports[":IN2"].fields["1 Player Start"]:set_value(1)
+			if screen:frame_number() > autostart_delay then
+				ports[":IN2"].fields["1 Player Start"]:set_value(1)
+				data_autostart = "0"
+			end	
 		end
-		emu["loaded"] = 2
-		emu.register_frame_done(dkong_overlay, "frame")
+		
+		-- Wait for autostart (when necessary) before continuing
+		if data_autostart ~= "1" then
+			emu["loaded"] = 2
+			emu.register_frame_done(dkong_overlay, "frame")
+		end	
 	end
 
 	if loaded == 2 then

@@ -526,11 +526,11 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
-        show_coach = sub in COACH_FRIENDLY or (name == "dkong" and sub == "")
-        show_chorus = sub in CHORUS_FRIENDLY or (name == "dkong" and sub == "")
-        show_start5 = sub in START5_FRIENDLY or (name == "dkong" and sub == "")
+        show_coach = sub in COACH_FRIENDLY or (sub == "" and name == "dkong")
+        show_chorus = sub in CHORUS_FRIENDLY or (sub == "" and name == "dkong")
+        show_start5 = sub in START5_FRIENDLY or (sub == "" and name in ["dkong", "dkongjr", "ckongpt2"])
         show_shoot = sub in SHOOT_FRIENDLY
-        show_stage = sub in STAGE_FRIENDLY or (name == "ckongpt2" and sub == "")
+        show_stage = sub in STAGE_FRIENDLY or (sub == "" and name in ["dkongjr", "ckongpt2"])
         inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5
                                 - (show_stage*4))
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
@@ -565,10 +565,16 @@ def build_launch_menu():
 
         if show_stage:
             _g.launchmenu.add_vertical_margin(10)
-            _g.launchmenu.add_button('- Practice barrels    ', launch_rom, nearby, "dkstart5:1")
-            _g.launchmenu.add_button('- Practice pies       ', launch_rom, nearby, "dkstart5:2")
-            _g.launchmenu.add_button('- Practice springs    ', launch_rom, nearby, "dkstart5:3")
-            _g.launchmenu.add_button('- Practice rivets     ', launch_rom, nearby, "dkstart5:4")
+            if name == "dkongjr":
+                _g.launchmenu.add_button('- Practice springboard', launch_rom, nearby, "dkstart5:1")
+                _g.launchmenu.add_button('- Practice vines      ', launch_rom, nearby, "dkstart5:2")
+                _g.launchmenu.add_button('- Practice chains     ', launch_rom, nearby, "dkstart5:3")
+                _g.launchmenu.add_button('- Practice hideout    ', launch_rom, nearby, "dkstart5:4")
+            else:
+                _g.launchmenu.add_button('- Practice barrels    ', launch_rom, nearby, "dkstart5:1")
+                _g.launchmenu.add_button('- Practice pies       ', launch_rom, nearby, "dkstart5:2")
+                _g.launchmenu.add_button('- Practice springs    ', launch_rom, nearby, "dkstart5:3")
+                _g.launchmenu.add_button('- Practice rivets     ', launch_rom, nearby, "dkstart5:4")
 
         _g.launchmenu.add_vertical_margin(10)
         _g.launchmenu.add_button('Close', close_menu)

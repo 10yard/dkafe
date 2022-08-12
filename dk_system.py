@@ -171,8 +171,6 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
         os.environ["DATA_CREDITS"] = str(CREDITS)
         os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 else "0"  # need credits to autostart
         os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
-        if subfolder in AUTOSTART_UNFRIENDLY:
-            os.environ["DATA_AUTOSTART"] = "0"
 
     return launch_command, launch_directory, competing, inp_file
 

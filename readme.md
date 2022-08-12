@@ -201,7 +201,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ## How to set up?
 
-The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place dkongjr.zip, dkong3.zip and ckongpt2.zip into the dkafe/roms folder.  
+The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place **dkongjr.zip**, **dkong3.zip** and **ckongpt2.zip** into the dkafe/roms folder.  
 The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.
 
 The application requires settings.txt and romlist.csv to be present in the installation folder.  Defaults are provided.
