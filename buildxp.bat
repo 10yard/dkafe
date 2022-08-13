@@ -55,6 +55,7 @@ xcopy dkwolf\*.txt dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\*.md dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\plugins dist\launchxp\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
+copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
 rmdir dist\dkwolf\inp /s /Q
 
 echo **** clean up
