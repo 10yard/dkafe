@@ -58,6 +58,10 @@ xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
 copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
 rmdir dist\dkwolf\inp /s /Q
 
+echo *** pull in plugin dependencies from Wolfmame 196 overwriting DKAFE default
+xcopy C:\wolfmame_0196\plugins dist\launchxp\dkwolf\plugins /S /i /Y
+
+
 echo **** clean up
 rmdir build /s /Q
 del /q *.spec

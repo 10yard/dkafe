@@ -18,6 +18,7 @@ COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
 def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=None, score1=None, basic=0):
     # Logic is driven by the rom name but there are exceptions were the subfolder name of a specific rom is needed.
+    script = None
     if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd", "dkongj") and not basic:
         script = "dkong.lua"
 
