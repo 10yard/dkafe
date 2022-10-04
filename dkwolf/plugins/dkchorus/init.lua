@@ -1,6 +1,6 @@
 -- Donkey Kong Chorus by Jon Wilson (10yard)
 --
--- Tested with latest MAME version 0.238
+-- Tested with latest MAME version 0.245
 -- Compatible with MAME versions from 0.196
 --
 -- DK sounds are replaced with chorus singers.  The sounds were taken from this video:
@@ -17,7 +17,7 @@
 
 local exports = {}
 exports.name = "dkchorus"
-exports.version = "0.12"
+exports.version = "0.13"
 exports.description = "Donkey Kong Chorus"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -27,7 +27,6 @@ function dkchorus.startplugin()
 	local last_jump,last_bonus,last_bg,last_dead,last_walk,last_hammer,last_smash = 0,0,0,0,0,0,0
 	
 	function initialize()
-		is_pi = is_pi()
 		if tonumber(emu.app_version()) >= 0.196 then
 			if type(manager.machine) == "userdata" then
 				mac = manager.machine
@@ -44,6 +43,8 @@ function dkchorus.startplugin()
 			s_cpu = mac.devices[":soundcpu"]			
 			s_mem = s_cpu.spaces["data"]
 		
+			is_pi = is_pi()  -- are we running on Pi hardware?
+			is_skip = mem:read_u16(0x36b8) == 0x5b5f  -- skip climb and intro sounds (2NUTKONG hack doesn't have these)
 			play("donkeykong")
 		end
 	end
@@ -64,12 +65,16 @@ function dkchorus.startplugin()
 			if mode2 == 7 and not climbing then
 				climbing = true
 				stop()
-				play("climb")
+				if not is_skip then
+					play("climb")
+				end
 			end
 						
-			if mode2 == 10 and not howhigh then
+			if mode2 == 10 and not howhigh and not is_skip then
 				howhigh = true
-				play("howhigh")
+				if not is_skip then
+					play("howhigh")
+				end
 				dead, complete = false, false
 			end
 

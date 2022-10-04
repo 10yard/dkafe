@@ -68,16 +68,19 @@ Credit is given to the original authors below.
 
 
 ### By Jon Wilson (me)
- - Vector Kong
+ - VectorKong
  - GalaKong
- - Galakong Junior
+ - GalaKong Junior
+ - Allen Kong
+ - OctoMonkey
+ - Half Kong
+ - Quarter Kong
+ - 2NUT Kong
+ - NoLuck Kong
  - DK Lava Panic!
  - DK Who and the Daleks
  - Konkey Dong
- - Donkey Kong Pies Only
- - Donkey Kong Rivets Only
- - Donkey Kong Springs Only
- - Donkey Kong Barrels Only
+ - Donkey Kong Barrels, Pies, Springs, Rivets Only
  - Donkey Kong Coach
  - Donkey Kong Chorus
  
@@ -116,6 +119,9 @@ Credit is given to the original authors below.
 
 ### By Don Hodges - http://www.donhodges.com/how_high_can_you_get.htm
  - Donkey Kong Killscreen Fix
+ 
+### By Kirai Shouen and 125scratch - https://www.romhacking.net/hacks/6689/
+ - Kana Kong 
 
 ### By Tim Appleton - https://www.oocities.org/wigglebeat
  - Donkey Kong Pac-Man

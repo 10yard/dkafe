@@ -15,17 +15,22 @@ The orginal Donkey Kong rom is not provided with the software and must be obtain
 DKAFE will then apply patches and generate the following hacked version of Donkey Kong automatically for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
 
 By Jon Wilson (me)
+ - VectorKong (dkongvector)
+ - Galakong (dkonggalakong)
+ - Galakong Junior (dkongjrgala)
+ - Allen Kong
+ - OctoMonkey (dkongoctomonkey)
+ - Half Kong (dkonghalf)
+ - Quarter Kong (dkonghalf)
+ - 2NUT Kong
+ - NoLuck Kong
  - Donkey Kong Lava Panic! (dkonglava)
- - Donkey Kong Shooter (dkongshooter)
  - DK Who and the Daleks (dkongwho)
  - Konkey Dong (dkongkonkey)
  - DK Pies Only (dkongpies)
  - DK Rivets Only (dkongrivets)
  - DK Barrels Only (dkongbarrels)
  - DK Springs Only (dkongspringy)
- - Galakong (dkonggalakong)
- - Galakong Junior (dkongjrgala)
- - VectorKong (dkongvector)
 
 By Paul Goes
  - Donkey Kong Crazy Barrels Edition (dkongcb)

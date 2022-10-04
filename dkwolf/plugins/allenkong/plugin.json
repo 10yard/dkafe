@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "allenkong",
+"description": "Allen Kong",
+"version": "1.2",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

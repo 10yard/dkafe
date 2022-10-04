@@ -145,12 +145,14 @@ PLUGINS = [
     ("dkongvector", "vectorkong"),
     ("dkonggalakong", "galakong"),
     ("dkongxgalakong", "galakong"),
+    ("dkongallen", "allenkong"),
     ("dkongjrgala", "galakong")]
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
 CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd", "dkongwbh",
-                   "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev", "dkong"]
+                   "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
+                   "dkong2nut", "dkong"]
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac"]
 START5_FRIENDLY = ["dkongspringy", "dkongpac", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix", "dkongd2k",
                    "dkongwizardry", "dkongitd", "dkongotr", "dkongrev", "dkongtj", "dkongcb", "dkongfoundry",
@@ -178,7 +180,7 @@ FADE_LEVEL = 75
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = [
-    (2, 226), (34, 226), (50, 226), (66, 226), (98, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
+    (2, 226), (34, 226), (50, 226), (66, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
     (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
     (194, 132), (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
@@ -355,6 +357,7 @@ clock = pygame.time.Clock()
 
 # Font setup (pygame)
 dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
+dk_font7 = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 7)
 pl_font = pygame.font.Font('fonts/tom-thumb.bdf', 5)
 
 # Menu theme setup
