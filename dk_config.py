@@ -35,9 +35,9 @@ CONTROL_TAB = pygame.K_TAB
 CONTROL_SNAP = pygame.K_F12
 
 # Joystick Options and Button Assignments
+USE_JOYSTICK = 0
 # Note: DPAD and first analog axis are automatically mapped to directions
 # Device 1 buttons start from 0,  Device 2 buttons start from 20
-USE_JOYSTICK = False
 BUTTON_JUMP = 0
 BUTTON_ACTION = 1
 BUTTON_P1 = 9
