@@ -57,6 +57,8 @@ def read_romlist():
             if not data.startswith("#") and data.count(",") >= 10:
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                 if (name and des and slot not in usedslots) or (slot == "99" and sub not in usedsubs):
+                    des = des.replace("DK ","$ ").replace("DK", "$ ").replace("1/2","{ ").replace("1/4","} ")  # custom
+
                     if name == "dkongjr" and not os.path.exists(DKONGJR_ZIP):
                         continue
                     if name == "dkong3" and not os.path.exists(DKONG3_ZIP):
