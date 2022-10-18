@@ -1,0 +1,13 @@
+DONKEY KONG 3
+
+Help Stanley gets rid of Donkey Kong, and the bugs 
+by using his bug spray, if Donkey Kong comes down, 
+or you get touched by a bug, you will lose a life.
+
+Stanley must shoot insect repellent at Kong to drive 
+him to the top of the screen while avoiding/shooting 
+insects. He must protecting five plants at the bottom
+of the screen from being carried off by the various 
+insects.
+
+Developed by Nintendo

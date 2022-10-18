@@ -1,0 +1,13 @@
+DONKEY KONG JUNIOR
+
+The game's basic concept is the same as Donkey Kong 
+except the good guys and bad guys have changed places.
+The player controls Donkey Kong Junior, a small ape 
+who must rescue his father, Donkey Kong, from his 
+nemesis Mario.
+
+The game has several distinct levels with similar 
+goals. Fruit can be dropped on enemies leg traps and 
+birds to kill them.
+
+Developed by Nintendo

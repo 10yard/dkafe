@@ -1,0 +1,11 @@
+QUARTER KONG
+
+A short game of Donkey Kong.
+
+You play quarter of a regular game with 4x the points
+awarded. 
+The game starts at level 17-1 with 1 life.
+
+Can you get to the Kill Screen with 1 million points?
+
+Hack Developed by Jon Wilson (10yard)

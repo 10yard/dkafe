@@ -1,0 +1,10 @@
+OCTO MONKEY
+
+An extremely short game of Donkey Kong.
+
+You play 1/8 of a game with x8 points awarded. 
+The game starts at level 19-4 with 1 life.
+
+Can you get to the Kill Screen with 1 million points?
+
+Hack Developed by Jon Wilson (10yard)

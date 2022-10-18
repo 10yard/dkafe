@@ -46,6 +46,15 @@ def apply_skill(base_score):
     return base_score
 
 
+def load_game_texts():
+    # load game texts
+    texts = []
+    for filename in glob(os.path.join(PATCH_DIR, "*kong*.txt")):
+        with open(filename, 'r') as f_in:
+            texts.append([os.path.basename(filename).split(".")[0], f_in.readlines()])
+    return texts
+
+
 def read_romlist():
     # read romlist and return info about available roms (and shell scripts)
     romlist = []

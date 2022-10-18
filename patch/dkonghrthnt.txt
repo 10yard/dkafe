@@ -1,0 +1,12 @@
+Donkey Kong Heart Hunt
+
+Pauline has placed three hearts on each board. Jumpman
+will only be able to finish after he has collected all
+three hearts. 
+
+The hearts make the final ladder to Pauline appear on
+barrels. On pies it makes the retractable ladders 
+start moving. On rivets it breaks the chains that hold 
+up Donkey Kong. 
+
+Hack Developed by Paul Goes

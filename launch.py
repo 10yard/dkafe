@@ -914,14 +914,34 @@ def process_interrupts():
     # Purge coins
     _g.coins = [i for i in _g.coins if i[0] > -10]
 
-    # Pauline shouts out the launch options
     if _g.ready:
+        # Pauline shouts out the launch options
         if since_last_move() % 4 <= 2:
             write_text("Push P1 START for options...", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
             write_text("P1 START", x=128, y=38, bg=MAGENTA)
         else:
             write_text("or push JUMP to play", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
             write_text("JUMP", x=140, y=38, bg=MAGENTA)
+
+        # Display game text
+        sub, name,  *_ = display_icons(detect_only=True)
+        selected = sub if sub else name
+        for rom, text_lines in _g.gametext:
+            if rom == selected and text_lines:
+                # Text appears above or below Jumpman based on his Y position
+                text_y = _g.ypos - (len(text_lines)+2) * 6 if _g.ypos >= 138 else _g.ypos + 32
+                # Clear a space for text and draw border
+                pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 223, len(text_lines)*6+8))
+                pygame.draw.rect(_g.screen, GREY, (0, text_y - 5, 223, 14))
+                pygame.draw.rect(_g.screen, GREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
+                # Display the game text
+                for i, line in enumerate(text_lines):
+                    text = line.replace("\n","").replace("\r","")
+                    if i == 0:
+                        # Center align the title
+                        text = " "*int((55 - len(text.strip())) / 2)+text.strip()
+                    write_text(text[:55], x=4, y=text_y+(i*6))
+                break
 
 
 def get_prize_placing(awarded):
@@ -1034,6 +1054,7 @@ def main(initial=True):
     detect_joysticks()
     check_patches_available()
     build_menus(initial=True)
+    _g.gametext = _s.load_game_texts()
 
     # Launch front end
     check_roms_available()

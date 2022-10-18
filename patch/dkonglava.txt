@@ -1,0 +1,9 @@
+Donkey Kong Lava Panic!
+
+Jumpman must keep his cool and move quickly up the 
+platforms to avoid rising Lava.  Don't let the lava
+rise above Jumpman.
+
+...and try not to panic!
+
+Hack Developed by Jon Wilson (10yard)

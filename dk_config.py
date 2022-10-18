@@ -173,6 +173,7 @@ MAGENTA = (236, 49, 148)
 WHITE = (254, 252, 255)
 PINK = (255, 210, 190)
 GREY = (128, 128, 128)
+DARKGREY = (40, 40, 40)
 DARKBLUE = (4, 2, 220)
 
 # Alpha channel value for faded/locked arcade machines

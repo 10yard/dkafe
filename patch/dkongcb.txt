@@ -1,0 +1,12 @@
+Donkey Kong Crazy Barrels Edition
+
+You play the barrels screen over and over again. But 
+the internal difficulty starts where the original 
+stops: at level 5. This is called the Agitation Level
+of Donkey Kong, displayed on the screen as A=5 and 
+goes up with each board that you clear. 
+ 
+Donkey Kong throws a lot more wild barrels than in the
+original game.
+
+Hack Developed by Paul Goes
