@@ -15,8 +15,8 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
-| [dkafe_win64_binary_v0.37.zip](https://github.com/10yard/dkafe/releases/download/v0.37/dkafe_win64_binary_v0.37.zip) | 0.37    | Windows 64 bit (x64) systems: 10, 11      |
-| [dkafe_win32_binary_v0.37.zip](https://github.com/10yard/dkafe/releases/download/v0.37/dkafe_win32_binary_v0.37.zip) | 0.37    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_win64_binary_v0.38.zip](https://github.com/10yard/dkafe/releases/download/v0.38/dkafe_win64_binary_v0.38.zip) | 0.38    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_win32_binary_v0.38.zip](https://github.com/10yard/dkafe/releases/download/v0.38/dkafe_win32_binary_v0.38.zip) | 0.38    | Windows 32 bit (x86) systems: Vista, 7, 8 |
 | [dkafe_rpi4_image_v0.36.gz](https://github.com/10yard/dkafe/releases/download/v0.36/dkafe_rpi4_image_v0.36.gz)       | 0.36    | Raspberry Pi 4 and 400 only               |
 | [dkafe_winxp_binary_v0.36.zip](https://github.com/10yard/dkafe/releases/download/v0.36/dkafe_winxp_binary_v0.36.zip) | 0.36    | Windows XP only                           |
 
@@ -252,6 +252,9 @@ Default settings can be changed in the `settings.txt` file.  Some settings can b
 
 `SHOW_SPLASHSCREEN = 1`
 1 to show the DKAFE splash screen and animation on startup.  0 to skip the splash screen.
+
+`SHOW_GAMETEXT = 1`
+1 to show the game text descriptions when Jumpman faces an arcade machine.  0 to hide the game descriptions.
 
 `SPEED_ADJUST = 0`
 Increase the frontend speed.  0 is normal.  If frontend is running slow then try incrementing by 1 until desired speed is achieved.
@@ -489,9 +492,8 @@ I would love to get to the infamous killscreen on level 22.  My current PB is 51
 
 ## What's next?
 
+ - Adding descriptive text for each of the games.
  - Add a test screen for the player controls and a welcome screen to set the initial frontend settings.
- - Complete work on the coaching plugin.  Helpers for Rivets and Pies stages to be added.  Barrels needs more work too.
- - Unlock achievements for one-off objectives in the game such as completing stages for the first time (barrels, rivets, elevators, pies) or reaching levels for the first time.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
  
 ## Thanks to

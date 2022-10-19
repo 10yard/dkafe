@@ -36,8 +36,8 @@ jump_sequence = 0  # Sequence number of jump.  0 = Not jumping.  Refer to JUMP_P
 wall_bounce = 1    # Adjustment for bouncing off edges. -1 will flip direction of Jumpman's movement
 
 # Toggle display options
-showinfo = False    # Press coin2 to show description above the icons
-showslots = False   # Press S to show the arcade machine slots (to assist with front end setup)
+showinfo = False    # Press coin button to show description above the icons
+showslots = False   # Press alt button to show the arcade machine slots (to assist with front end setup)
 skip = False        # Skip the animation
 warning = False     # Warning timer active
 grab = False        # DK grabbed a coin
@@ -65,7 +65,7 @@ image_cache = {}
 screen, screen_map, screen_copy, last_image = (None,) * 4
 
 # Menu
-menu, exitmenu, settingmenu, launchmenu = (None,) * 4
+menu, exitmenu, setmenu, launchmenu = (None,) * 4
 selected = None
 
 # Active Window

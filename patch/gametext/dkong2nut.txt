@@ -1,0 +1,11 @@
+2NUT KONG
+
+Relentless barrel boards without breaks so you must 
+try to retain focus.  All delays have been removed
+from the game.
+
+This game starts at level 17-1 and there are 3 barrel
+boards per level.
+
+Hack Developed by Jon Wilson (10yard)
+Based on ideas from Luke (mr2nut123)

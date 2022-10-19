@@ -1,0 +1,8 @@
+Donkey Kong Championship Edition
+
+This romhack introduces the famous Kill Screen at an 
+earlier level resulting in a much shorter game. 
+
+This game defaults to a Kill Screen at level 11.
+
+Hack Developed by Paul Goes

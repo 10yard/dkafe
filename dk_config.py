@@ -54,6 +54,7 @@ SKILL_LEVEL = 1                # How difficult are the target scores. 1 (Beginne
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
+SHOW_GAMETEXT = 1              # Show the game text description when Jumpman faces an arcade machine
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
 
@@ -173,6 +174,7 @@ MAGENTA = (236, 49, 148)
 WHITE = (254, 252, 255)
 PINK = (255, 210, 190)
 GREY = (128, 128, 128)
+MIDGREY = (104, 104, 104)
 DARKGREY = (40, 40, 40)
 DARKBLUE = (4, 2, 220)
 
@@ -249,8 +251,9 @@ JUMP_SHORTEN = 1.25
 
 # In game messages and instructions
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
-COIN_INFO = ['Hey Jumpman!', '', 'You must collect coins...', 'to unlock more games', '', 'Push COIN for game info', '']
-FREE_INFO = ['Hey Jumpman!', '', 'All arcades are free to play', '', 'Push COIN to for game info', '']
+COIN_INFO = ["Hey Jumpman!", '', "You must collect coins...", "to unlock more games", "", "Push COIN for game info", ""]
+FREE_INFO = ["Hey Jumpman!", '', "All arcades are free to play", "", "Push COIN to for game info", ""]
+TEXT_INFO = [["", "Push 'JUMP' to play or 'P1 START' for game options"], ["", "Push 'COIN' to hide this game information"]]
 
 NO_ROMS_MESSAGE = [
     "NO ROMS WERE FOUND!", "",

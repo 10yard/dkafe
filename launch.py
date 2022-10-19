@@ -228,7 +228,11 @@ def check_for_input(force_exit=False):
                 build_menus()
                 open_menu(_g.menu)
             if event.key == CONTROL_COIN:
-                _g.showinfo = not _g.showinfo
+                if _g.ready:
+                    globals()["SHOW_GAMETEXT"] = not SHOW_GAMETEXT
+                    set_gametext(None, SHOW_GAMETEXT, external=True) # Fix pygamemenu issue
+                else:
+                    _g.showinfo = not _g.showinfo
             if event.key == CONTROL_ACTION:
                 _g.showslots = not _g.showslots
             if event.key == CONTROL_SNAP:
@@ -260,7 +264,11 @@ def check_for_input(force_exit=False):
                     build_menus()
                     open_menu(_g.menu)
                 if button == BUTTON_COIN:
-                    _g.showinfo = not _g.showinfo
+                    if _g.ready:
+                        globals()["SHOW_GAMETEXT"] = not SHOW_GAMETEXT
+                        set_gametext(None, SHOW_GAMETEXT, external=True)  # Fix pygamemenu issue
+                    else:
+                        _g.showinfo = not _g.showinfo
                 if button == BUTTON_ACTION:
                     _g.showslots = not _g.showslots
         if event.type == pygame.QUIT:
@@ -502,23 +510,22 @@ def build_menus(initial=False):
         _g.exitmenu.add_button('Shutdown', shutdown_system)
 
     # Setting menu
-    _g.settingmenu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], "    FRONTEND SETTINGS", mouse_visible=False,
-                                 mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
-    _g.settingmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
-    _g.settingmenu.add_selector('     Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
-    _g.settingmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN,
-                                onchange=set_fullscreen)
-    _g.settingmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
-    _g.settingmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN,
-                                onchange=set_splash)
-    _g.settingmenu.add_selector(' Speed Adjust: ',
-                                [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7),
+    _g.setmenu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], "    FRONTEND SETTINGS", mouse_visible=False,
+                             mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
+    _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
+    _g.setmenu.add_selector('     Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
+    _g.setmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
+    _g.setmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
+    _g.setmenu.add_selector('Show Game Text: ', [('Off', 0), ('On', 1)], default=SHOW_GAMETEXT, onchange=set_gametext)
+    _g.setmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN, onchange=set_splash)
+    _g.setmenu.add_selector(' Speed Adjust: ',
+                            [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7),
                                  ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
-    _g.settingmenu.add_vertical_margin(15)
-    _g.settingmenu.add_selector('DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
-    _g.settingmenu.add_vertical_margin(15)
-    _g.settingmenu.add_button('Save Changes to File', save_menu_settings)
-    _g.settingmenu.add_button('Close Menu', close_menu)
+    _g.setmenu.add_vertical_margin(15)
+    _g.setmenu.add_selector('DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
+    _g.setmenu.add_vertical_margin(15)
+    _g.setmenu.add_button('Save Changes to File', save_menu_settings)
+    _g.setmenu.add_button('Close Menu', close_menu)
 
 
 def build_launch_menu():
@@ -581,7 +588,7 @@ def build_launch_menu():
 
 
 def open_settings_menu():
-    open_menu(_g.settingmenu)
+    open_menu(_g.setmenu)
     reset_all_inputs()
 
 
@@ -605,6 +612,8 @@ def save_menu_settings():
                             f_out.write(f"BASIC_MODE = {BASIC_MODE}\n")
                         elif "SHOW_SPLASHSCREEN=" in line_packed:
                             f_out.write(f"SHOW_SPLASHSCREEN = {SHOW_SPLASHSCREEN}\n")
+                        elif "SHOW_GAMETEXT=" in line_packed:
+                            f_out.write(f"SHOW_GAMETEXT = {SHOW_GAMETEXT}\n")
                         elif "SPEED_ADJUST=" in line_packed:
                             f_out.write(f"SPEED_ADJUST = {SPEED_ADJUST}\n")
                         else:
@@ -633,6 +642,20 @@ def set_speed(_, setting_value):
     globals()["SPEED_ADJUST"] = setting_value
 
 
+def set_confirm(_, setting_value):
+    globals()["CONFIRM_EXIT"] = setting_value
+
+
+def set_gametext(_, setting_value, external=False):
+    globals()["SHOW_GAMETEXT"] = setting_value
+    if external:
+        # Hack to fix pygamemenu when updating outside of the menu
+        for i, w in enumerate(_g.setmenu._widgets):
+            if w._title.startswith("Show Game Text"):
+                _g.setmenu._widgets[i]._index = int(SHOW_GAMETEXT)
+                break
+
+
 def set_fullscreen(_, setting_value):
     if FULLSCREEN != setting_value:
         globals()["FULLSCREEN"] = setting_value
@@ -640,10 +663,6 @@ def set_fullscreen(_, setting_value):
         pygame.event.set_grab(FULLSCREEN == 1)
         pygame.display.init()
         pygame.display.set_icon(get_image("artwork/dkafe.ico"))
-
-
-def set_confirm(_, setting_value):
-    globals()["CONFIRM_EXIT"] = setting_value
 
 
 def open_menu(menu):
@@ -661,7 +680,7 @@ def close_menu():
     intermission_channel.stop()
     _g.menu.disable()
     _g.exitmenu.disable()
-    _g.settingmenu.disable()
+    _g.setmenu.disable()
     if _g.launchmenu:
         _g.launchmenu.disable()
     update_screen()
@@ -917,31 +936,34 @@ def process_interrupts():
     if _g.ready:
         # Pauline shouts out the launch options
         if since_last_move() % 4 <= 2:
-            write_text("Push P1 START for options...", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
-            write_text("P1 START", x=128, y=38, bg=MAGENTA)
+            write_text("Push JUMP to play or..", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("JUMP", x=128, y=38, bg=MAGENTA)
         else:
-            write_text("or push JUMP to play", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
-            write_text("JUMP", x=140, y=38, bg=MAGENTA)
+            write_text("P1 START for options", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("P1 START", x=108, y=38, bg=MAGENTA)
 
         # Display game text
-        sub, name,  *_ = display_icons(detect_only=True)
-        selected = sub if sub else name
-        for rom, text_lines in _g.gametext:
-            if rom == selected and text_lines:
-                # Text appears above or below Jumpman based on his Y position
-                text_y = _g.ypos - (len(text_lines)+2) * 6 if _g.ypos >= 138 else _g.ypos + 32
-                # Clear a space for text and draw border
-                pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 223, len(text_lines)*6+8))
-                pygame.draw.rect(_g.screen, GREY, (0, text_y - 5, 223, 14))
-                pygame.draw.rect(_g.screen, GREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
-                # Display the game text
-                for i, line in enumerate(text_lines):
-                    text = line.replace("\n","").replace("\r","")
-                    if i == 0:
-                        # Center align the title
-                        text = " "*int((55 - len(text.strip())) / 2)+text.strip()
-                    write_text(text[:55], x=4, y=text_y+(i*6))
-                break
+        if SHOW_GAMETEXT:
+            sub, name,  *_ = display_icons(detect_only=True)
+            selected = sub if sub else name
+            for rom, text_lines in _g.gametext:
+                if rom == selected and text_lines:
+                    # Text appears above or below Jumpman based on his Y position
+                    text_y = _g.ypos - (len(text_lines)+5) * 6 if _g.ypos >= 138 else _g.ypos + 32
+                    # Clear a space for text and draw borders
+                    pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 224, len(text_lines)*6+8))
+                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y - 5, 224, 14))
+                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
+                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y+len(text_lines)*6+2, 224, 14))
+                    # Display the game text
+                    info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
+                    for i, line in enumerate(text_lines + TEXT_INFO[info_index]):
+                        text = line.replace("\n","").replace("\r","")
+                        if i == 0:
+                            # Center align the title
+                            text = " "*int((55 - len(text.strip())) / 2)+text.strip()
+                        write_text(text[:55], x=4, y=text_y+(i*6))
+                    break
 
 
 def get_prize_placing(awarded):

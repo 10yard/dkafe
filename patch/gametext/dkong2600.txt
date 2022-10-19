@@ -1,0 +1,7 @@
+Donkey Kong Atari 2600 Graphics
+
+This hack is made to appear like the ATARI VCS version
+of Donkey Kong.
+
+Hack Developed by Vic 20 George
+using 'Gingerbread Kong' plugin by Jon Wilson (10yard)

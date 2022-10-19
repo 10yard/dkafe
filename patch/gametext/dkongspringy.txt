@@ -1,0 +1,9 @@
+Donkey Kong Springs Only
+
+This hack plays only the springs stage,  starting from
+level 1 - which you don't get to see in the original
+Donkey Kong.  You should be able to easily navigate 
+level 1 and 2.  Just like the original, things get 
+more difficult from the 3rd stage.  
+
+Hack Developed by Jon Wilson (10yard)

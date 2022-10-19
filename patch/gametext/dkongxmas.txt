@@ -1,0 +1,6 @@
+Donkey Kong Christmas Remix
+
+A Christmas themed version of Donkey Kong with new 
+challenging stages and bonus levels.
+
+ROM Developed by John Kowalski (SockMaster)

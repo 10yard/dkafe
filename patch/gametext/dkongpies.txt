@@ -1,0 +1,8 @@
+Donkey Kong Pies Only
+
+You play only the pie boards starting from level 1.
+
+Levels 1 and 2 are easily mastered. You don't get to
+see these levels in the original Donkey Kong.
+
+Hack Developed by Jon Wilson (10yard)

@@ -1,0 +1,13 @@
+Extreme GalaKong
+
+An extreme version of GalaKong which is played with
+wild barrels only. You'll need to pickup the ship 
+a.s.a.p. and shoot barrels to survive. The jump 
+button also shoots. 
+
+The ship can be controlled independantly when you are 
+on a ladder.
+
+Bonus points awarded for destroying multiple targets.  
+
+Hack Developed by Jon Wilson (10yard)

@@ -1,0 +1,11 @@
+Donkey Kong Barrel Palooza
+
+A barrel boards only hack with twelve variations:
+'Steering Bonus', 'Into The Dark', 'Crazy Kong', 
+'More Wilds', 'Pauline's Heart', 'Both Hammers',
+'Reverse Run', 'Slow Barrels', 'Shifted Girders', 
+'Pauline's Items', 'Spring Time' and 'Anti-Gravity'. 
+
+The game has a randomized board selection.
+
+Hack Developed by Paul Goes

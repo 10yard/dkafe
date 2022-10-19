@@ -1,0 +1,13 @@
+GALAKONG JUNIOR
+
+A Donkey Kong Junior version of my Galakong hack.  It
+mashes up Donkey Kong Junior with Galaga.
+Jumpman is assisted by an accompanying ship which can 
+take out enemies. Bonus points are awarded for hitting
+multiple targets.  The jump button also shoots.
+
+Your ship follows Jumpman's position automatically. 
+The ship can be controlled independently when you are
+on a vine. 
+
+Hack Developed by Jon Wilson (10yard)

@@ -49,7 +49,7 @@ def apply_skill(base_score):
 def load_game_texts():
     # load game texts
     texts = []
-    for filename in glob(os.path.join(PATCH_DIR, "*kong*.txt")):
+    for filename in glob(os.path.join(PATCH_DIR, "gametext", "*.txt")):
         with open(filename, 'r') as f_in:
             texts.append([os.path.basename(filename).split(".")[0], f_in.readlines()])
     return texts
@@ -65,6 +65,8 @@ def read_romlist():
             data = row.replace('"', '')
             if not data.startswith("#") and data.count(",") >= 10:
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
+                if not alt:
+                    alt = des
                 if (name and des and slot not in usedslots) or (slot == "99" and sub not in usedsubs):
                     des = des.replace("DK ","$ ").replace("DK", "$ ")
                     des = des.replace("1/2","{ ").replace("1/4","} ")
@@ -82,8 +84,6 @@ def read_romlist():
                         rec = "0"
                     if not unlock:
                         unlock = "0"
-                    if not alt:
-                        alt = des
 
                     if "-record" in get_emulator(int(emu)).lower():
                         # Score targets are not considered for recordings

@@ -12,74 +12,11 @@ DKAFE builds the default frontend using patches of the original "dkong.zip" (US 
 
 The .ips patches are included with the software.
 The orginal Donkey Kong rom is not provided with the software and must be obtained and placed into the dkafe/roms folder as dkong.zip.  
-DKAFE will then apply patches and generate the following hacked version of Donkey Kong automatically for you.  The hacked versions will be organised into subfolders of the roms folder.  Folder name shown in brackets below.
+DKAFE will then apply patches and generate hacked versions of Donkey Kong automatically for you.  
+The hacked versions will be organised into subfolders of the roms folder.
 
-By Jon Wilson (me)
- - VectorKong (dkongvector)
- - Galakong (dkonggalakong)
- - Galakong Junior (dkongjrgala)
- - Allen Kong
- - OctoMonkey (dkongoctomonkey)
- - Half Kong (dkonghalf)
- - Quarter Kong (dkonghalf)
- - 2NUT Kong
- - NoLuck Kong
- - Donkey Kong Lava Panic! (dkonglava)
- - DK Who and the Daleks (dkongwho)
- - Konkey Dong (dkongkonkey)
- - DK Pies Only (dkongpies)
- - DK Rivets Only (dkongrivets)
- - DK Barrels Only (dkongbarrels)
- - DK Springs Only (dkongspringy)
-
-By Paul Goes
- - Donkey Kong Crazy Barrels Edition (dkongcb)
- - Donkey Kong Championship Edition (dkongce)
- - Donkey Kong Randomized Edition (dkongrnd)
- - Donkey Kong Freerun Edition (dkongfr)
- - Donkey Kong Into The Dark (dkongitd)
- - Donkey Kong Skip Start (dkongl05)
- - Donkey Kong Reverse (dkongrev)
- - Donkey Kong On The Run (dkongotr)
- - Donkey Kong Twisted Jungle (dkongtj)
- - Donkey Kong Barrelpalooza (dkongbp)
- - Donkey Kong 40th Anniversary Edition (dkong40)
- - Donkey Kong Duel (dkongduel)
- - Donkey Kong Wizardry (dkongwizardry)
- - Donkey Kong RNDMZR (dkongrndmzr)
- - Donkey Kong Springfinity (dkongsprfin)
-
-By John Kowalski (Sock Master) 
- - Donkey Kong Spooky Remix (dkongspooky)
- - Donkey Kong Christmas Remix (dkongxmas)
- - Donkey Kong Springs Trainer (dkongst2)
- - Donkey Kong Trainer (dkongtrn)
- - Donkey Kong Pace (dkongpace)
- - Donkey Kong Rainbow (dkongrainbow)
-
-By Jeff Kulczycki
- - Donkey Kong 2 Jumpman Returns (dkongd2k)
- - Donkey Kong Foundry (dkongf)
- - Donkey Kong Barrel Control Colouring (dkongbcc)
-
-By Mike Mika and Clay Cowgill
- - Donkey Kong Pauline Edition (dkongpe)
-
-By Don Hodges 
- - Donkey Kong Killscreen Fix (dkongksfix)
-
-By Tim Appleton
- - Donkey Kong Pac-Man (dkongpac)
-
-By Vic Twenty George
- - Donkey Kong Atari 2600 Graphics (dkong2600)
-
-By Others
- - Donkey Kong Wild Barrel Hack (dkongwbh)
- - Donkey Kong 2 Marios (dkong2m)
- - Donkey Kong Naked (dkongnad)
- - Donkey Kong Hard (dkonghrd)
- - Donkey Kong Japan (dkongjapan)
+For a list of generated roms, refer to: 
+https://github.com/10yard/dkafe#automatically-generated-roms
 
 
 Creating patches
