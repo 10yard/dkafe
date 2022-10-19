@@ -10,7 +10,7 @@
 
 local exports = {}
 exports.name = "vectorkong"
-exports.version = "0.13"
+exports.version = "0.14"
 exports.description = "Vector Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -255,6 +255,19 @@ function vectorkong.startplugin()
 		polyline({y,x,y+h,x,y+h,x+w,y,x+w,y,x})
 	end
 
+	function circle(y, x, r, color)
+		-- draw a segmented circle at given position with radius
+		local _save_segy, _save_segx
+		vector_color = color or vector_color
+		for _segment=0, 360, 24 do
+			local _angle = _segment * (math.pi / 180)
+			local _segy, _segx = y + r * math.sin(_angle), x + r * math.cos(_angle)
+			if _save_segy then vector(_save_segy, _save_segx, _segy, _segx) end
+			_save_segy, _save_segx = _segy, _segx
+		end
+		vector_color = WHT
+	end
+
 	function draw_vector_characters()
 		-- Output vector characters based on contents of video ram ($7400-77ff)
 		local _addr = VRAM_TR
@@ -426,7 +439,9 @@ function vectorkong.startplugin()
 				-- Add smashed item?
 				_sprite = read(0x6a2d)
 				if read(0x6a2c) > 0 and _sprite >= 0x60 and _sprite <= 0x63 then
-					draw_object(0xf00 + _sprite, _y+_smash_offset, read(0x6a2c) - 17, BLU)
+					-- v0.14 - prefer growing circle effect to the sprites
+					circle(_y+_smash_offset+4, read(0x6a2c) - 13, (_sprite - 95) * 5, 0xff444444 + math.random(0xbbbbbb))
+					--draw_object(0xf00 + _sprite, _y+_smash_offset, read(0x6a2c) - 17, BLU)
 				end
 			end
 		end

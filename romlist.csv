@@ -3,14 +3,14 @@ dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
 dkongjr,,DK Junior,DK Junior,3,1,2,,10000,15000,30000
 dkong,dkongpies,DK Pies,DK Pies Only,3,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,GalaKong Shoot 'Em Up,5,1,2,,20000,40000,60000
-dkong,dkongoctomonkey,DK Octo,OctoMonkey,7,1,2,1000,20000,40000,65000
+dkong,dkongoctomonkey,DK Octo,OctoMonkey,7,1,2,1000,80000,200000,320000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,9,1,2,1000,10000,20000,40000
 dkongx11,dkongspooky,Spooky,DK Spooky Remix,10,1,2,2000,10000,15000,30000
 dkong,dkong40,DK 40!!,DK Anniversary Edition,11,1,2,4000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,12,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,14,1,2,8000,10000,20000,40000
 dkong,dkongwho,DK Who,DK Who and the Daleks,15,1,2,10000,10000,20000,40000
-dkong,dkongquarter,1/4 Kong,Quarter Kong,17,1,2,12000,20000,30000,60000
+dkong,dkongquarter,1/4 Kong,Quarter Kong,17,1,2,12000,40000,100000,160000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,18,1,2,14000,10000,20000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,19,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,20,1,2,18000,10000,15000,30000
@@ -27,7 +27,7 @@ dkong,dkongtj,DK Jungle,DK Twisted Jungle,31,1,2,36000,10000,25000,45000
 dkongf,dkongrdemo,DKRemix,DK Remix Demo,32,1,2,38000,10000,20000,45000
 dkong,dkongkonkey,KD,Konkey Dong,33,1,2,38000,,,
 dkongf,dkongfoundry,DK Foundry,,34,1,2,40000,10000,25000,50000
-dkong,dkonghalf,1/2 Kong,Half Kong,35,1,2,42000,20000,30000,60000
+dkong,dkonghalf,1/2 Kong,Half Kong,35,1,2,42000,20000,50000,80000
 dkong,dkongxgalakong,X-Gala,Extreme Galakong,37,1,2,44000,5000,10000,15000
 dkong,dkongkana,Kana,Kana Kong,39,1,2,46000,10000,20000,40000
 ckongpt2,,CrazyKong,Crazy Kong,40,1,2,48000,,,
