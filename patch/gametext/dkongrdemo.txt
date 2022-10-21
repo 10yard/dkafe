@@ -1,3 +1,7 @@
 Donkey Kong Remix Demo
 
+Donkey Kong Remix includies 6 new stages, three bonus 
+stages plus all the original stages, along with lots
+of new gameplay challenges.
+
 ROM Developed by John Kowalski (SockMaster)

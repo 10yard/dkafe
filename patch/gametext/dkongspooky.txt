@@ -3,4 +3,11 @@ Donkey Kong Spooky Remix
 A halloween themed version of Donkey Kong with new 
 challenging stages and bonus levels.
 
+It's challenging to play because the scenarios are 
+more complex with more elements mixed together and 
+more things to process/anticipate simultaneously 
+while playing. It's also challenging because the new 
+levels force you to break the muscle memory of DK's 
+familiar gameplay patterns & habits.
+
 ROM Developed by John Kowalski (SockMaster)

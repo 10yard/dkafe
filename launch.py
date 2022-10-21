@@ -480,6 +480,10 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             # Jumpman is in position to play a game
             sprite_file = sprite_file.replace("#", "0")
             _g.ready = True
+        elif direction == "d" and _g.ready:
+            # Step away from the machine
+            sprite_file = f'artwork/sprite/jmr0.png'
+            _g.ready = False
 
     img = _g.last_image if "#" in sprite_file else get_image(sprite_file)
     _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
@@ -1132,7 +1136,7 @@ def main(initial=True):
         update_screen()
 
         # -- restart game after level is completed --
-        # if _g.score >= 50000:
+        # if _g.score >= 58000:
         #     import importlib
         #     importlib.reload(_g)
         #     main(initial=False)

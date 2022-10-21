@@ -2,7 +2,7 @@
 "plugin": {
 "name": "galakong",
 "description": "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong",
-"version": "1.2",
+"version": "1.3",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
 "start": "false"

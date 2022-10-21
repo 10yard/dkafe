@@ -28,7 +28,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "1.2"
+exports.version = "1.3"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -696,7 +696,7 @@ function galakong.startplugin()
 								if mem:read_u8(address) ~= 0 and enemy_y > 0 and enemy_x ~= 250 then
 									enemy_x = enemy_x - 15
 									enemy_y = 256 - enemy_y
-									if missile_y > enemy_y - 7 and missile_y < enemy_y + 7 and missile_x > enemy_x - 7 and missile_x < enemy_x + 7 then
+									if missile_y > enemy_y - 8 and missile_y < enemy_y + 8 and missile_x > enemy_x - 8 and missile_x < enemy_x + 8 then
 										hit_count = hit_count + 1
 										_exp_y = _format("%03d", enemy_y)
 										_exp_x = _format("%03d", enemy_x)

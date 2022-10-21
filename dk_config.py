@@ -253,7 +253,7 @@ JUMP_SHORTEN = 1.25
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
 COIN_INFO = ["Hey Jumpman!", '', "You must collect coins...", "to unlock more games", "", "Push COIN for game info", ""]
 FREE_INFO = ["Hey Jumpman!", '', "All arcades are free to play", "", "Push COIN to for game info", ""]
-TEXT_INFO = [["", "Push 'JUMP' to play or 'P1 START' for game options"], ["", "Push 'COIN' to hide this game information"]]
+TEXT_INFO = [["", "Push 'JUMP' to play or 'P1 START' for game options"], ["", "Push 'COIN' to disable these information messages"]]
 
 NO_ROMS_MESSAGE = [
     "NO ROMS WERE FOUND!", "",
