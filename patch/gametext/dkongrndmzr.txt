@@ -1,10 +1,9 @@
 Donkey Kong RNDMZR
 
-In this romhack, the boards are randomly constructed, 
-resulting in a unique layout for each board played. 
-The barrels board lends itself best for randomization,
-with an algorithm that results in 49000 possible 
-variations. 
+The boards are randomly constructed, resulting in a 
+unique layout for each board played.  The barrels 
+board lends itself best for randomization, with an 
+algorithm that results in 49000 possible variations. 
 
 The game mechanics are not changed, so the game plays 
 exactly the same as the original.
