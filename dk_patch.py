@@ -14,7 +14,8 @@ from ips_util import Patch
 from glob import glob
 import shutil
 import hashlib
-from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP
+import zipfile
+from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP
 from dk_system import is_pi, copy
 
 
@@ -48,7 +49,13 @@ def validate_rom():
                     return True
             return False
         else:
-            return False
+            # Last resort:
+            # Check the ZIP contains all of the required files
+            z = zipfile.ZipFile(DKONG_ZIP)
+            for filename in ROM_CONTENTS:
+                if filename not in z.namelist():
+                    return False
+            return True
     else:
         # No rom file so a verification error not is returned
         return True

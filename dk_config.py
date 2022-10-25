@@ -266,12 +266,16 @@ NO_ROMS_MESSAGE = [
     "DKONG3.ZIP   IS OPTIONAL",
     "CKONGPT2.ZIP IS OPTIONAL"]
 
+ROM_CONTENTS = ["c_5at_g.bin", "c_5bt_g.bin", "c_5ct_g.bin", "c_5et_g.bin", "c-2j.bpr", "c-2k.bpr", "l_4m_b.bin",
+                "l_4n_b.bin", "l_4r_b.bin", "l_4s_b.bin", "s_3i_b.bin", "s_3j_b.bin", "v_3pt.bin", "v_5h_b.bin",
+                "v-5e.bpr"]
+
 INVALID_ROM_MESSAGE = [
     "ERROR WITH DONKEY KONG ROM", "",
     "Your DKONG.ZIP file is not",
     "valid. Please replace it.", "",
     "The zip should contain the",
-    "following 15 files only:", "",
+    "following files:", "",
     "  · c_5at_g.bin",
     "  · c_5bt_g.bin",
     "  · c_5ct_g.bin",
