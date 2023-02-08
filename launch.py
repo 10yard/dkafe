@@ -230,7 +230,7 @@ def check_for_input(force_exit=False):
             if event.key == CONTROL_COIN:
                 if _g.ready:
                     globals()["SHOW_GAMETEXT"] = not SHOW_GAMETEXT
-                    set_gametext(None, SHOW_GAMETEXT, external=True) # Fix pygamemenu issue
+                    set_gametext(None, SHOW_GAMETEXT, external=True)  # Fix pygamemenu issue
                 else:
                     _g.showinfo = not _g.showinfo
             if event.key == CONTROL_ACTION:
@@ -962,7 +962,7 @@ def process_interrupts():
                     # Display the game text
                     info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
                     for i, line in enumerate(text_lines + TEXT_INFO[info_index]):
-                        text = line.replace("\n","").replace("\r","")
+                        text = line.replace("\n", "").replace("\r", "")
                         if i == 0:
                             # Center align the title
                             text = " "*int((55 - len(text.strip())) / 2)+text.strip()

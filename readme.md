@@ -492,9 +492,9 @@ I would love to get to the infamous killscreen on level 22.  My current PB is 51
 
 ## What's next?
 
- - Adding descriptive text for each of the games.
  - Add a test screen for the player controls and a welcome screen to set the initial frontend settings.
  - Create an alternative frontend made for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
+ - Add support for console versions of DK
  
 ## Thanks to
 
