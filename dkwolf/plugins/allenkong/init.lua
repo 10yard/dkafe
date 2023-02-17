@@ -579,8 +579,8 @@ function allenkong.startplugin()
 			return
 		end
 		if is_pi then
-			io.popen("pkill aplay &")
-			io.popen("aplay -q allenkong/sounds/".._sound..".mp3 &")
+			--io.popen("pkill mpg321 &")
+			io.popen("mpg321 -q plugins/allenkong/sounds/"..sound..".mp3 &")
 		else
 			if uninterrupted then
 				io.popen("start /B /HIGH taskkill /IM mp3play*.exe /F 2> nul")
