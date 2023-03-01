@@ -7,6 +7,7 @@ An arcade game launcher based on Donkey Kong with incentives to play and unlock 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
+![A really short video review](https://www.youtube.com/shorts/_RtjCKfJuoo)
 
 
 ## Get DKAFE for your system
@@ -69,7 +70,7 @@ Credit is given to the original authors below.
 
 ### By Jon Wilson (me)
  - VectorKong
- - GalaKong
+ - GalaKong, Extreme Galakong
  - GalaKong Junior
  - Allen Kong
  - OctoMonkey
