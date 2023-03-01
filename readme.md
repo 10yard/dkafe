@@ -7,7 +7,7 @@ An arcade game launcher based on Donkey Kong with incentives to play and unlock 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-https://www.youtube.com/shorts/_RtjCKfJuoo
+A very short video review - https://www.youtube.com/shorts/_RtjCKfJuoo
 
 
 ## Get DKAFE for your system
