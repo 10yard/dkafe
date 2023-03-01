@@ -7,7 +7,7 @@ An arcade game launcher based on Donkey Kong with incentives to play and unlock 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-![A really short video review](https://www.youtube.com/shorts/_RtjCKfJuoo)
+https://www.youtube.com/shorts/_RtjCKfJuoo
 
 
 ## Get DKAFE for your system
@@ -33,7 +33,7 @@ The built-in reward system will payout coins when you play well.  Earning coins 
 Coins are awarded after beating target scores (for 3rd, 2nd and 1st prize).  Coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
 
 
-![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
+[DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
 
 
 Pauline helps out by providing game information, score targets and unlock requirements as you walk towards an arcade machine.  
