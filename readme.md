@@ -12,7 +12,7 @@ A very short video review - https://www.youtube.com/shorts/_RtjCKfJuoo
 
 ## Get DKAFE for your system
 
-The latest releases are available to download from below.  Refer to the **How to Install** section.
+The latest releases are available to download from below.  Refer to the **How to Install** and **Troubleshooting** sections.
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
@@ -33,7 +33,7 @@ The built-in reward system will payout coins when you play well.  Earning coins 
 Coins are awarded after beating target scores (for 3rd, 2nd and 1st prize).  Coins will drop from the top of the screen (after returning to the frontend) and Jumpman must do his best to collect them before they disappear off the bottom.
 
 
-[DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
+![DKAFE awards](https://github.com/10yard/dkafe/blob/master/artwork/about/awards.png) 
 
 
 Pauline helps out by providing game information, score targets and unlock requirements as you walk towards an arcade machine.  
@@ -523,9 +523,20 @@ DKAFE is a free, open source, cross-platform front-end for emulators.
 It is licensed under GNU GPLv3. 
 
 
+## Troubleshooting
+
+#### A game fails to launch in MAME, and you get a black screen (on Windows)
+
+In the settings.txt file,  change `OPTIONS` under the emulator settings to use `gdi` instead of `opengl` i.e.
+```OPTIONS = -rompath <ROM_DIR> -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video gdi```
+
+Also, check that the DKAFE folder is granted full permissions.
+
+
 ## Feedback
 
 Please send feedback to jon123wilson@hotmail.com
+
 
 Jon
 
