@@ -27,7 +27,7 @@ If all OK we can now remove the sources
 $ sudo rm -r /home/pi/dkafe
 
 Now we're ready to make an SD card image.
-Insert an empty USB stick - this will be target for the SD card image.  Recommend minimum 8GB USB stick.
+Insert an empty USB stick - this will be target for the SD card image.  Recommend minimum 4GB USB stick.
 
 $ lsblk
 We can see the USB drive size and mountpoint.  Assuming the drive is named "USB"  
