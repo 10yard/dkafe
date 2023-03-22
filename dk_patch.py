@@ -68,10 +68,10 @@ def apply_patches():
         # Look for DK roms (and Crazy Kong) on the /boot partition of Pi when not found in the roms folder
         # User may not have provided them at install time
         for rom in DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP:
-            if not os.path.exists(rom):
-                copy(f'/boot/{os.path.basename}', ROM_DIR)
-            if not os.path.exists(rom):
-                copy(f'/boot/dkafe_bin/{os.path.basename}', ROM_DIR)
+            if not os.path.exists(rom) and os.path.exists(f'/boot/{os.path.basename(rom)}'):
+                copy(f'/boot/{os.path.basename(rom)}', ROM_DIR)
+            if not os.path.exists(rom) and os.path.exists(f'/boot/dkafe_bin/{os.path.basename(rom)}'):
+                copy(f'/boot/dkafe_bin/{os.path.basename(rom)}', ROM_DIR)
 
     if os.path.exists(DKONG_ZIP):
         # Proceed with the patching
