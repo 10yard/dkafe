@@ -22,7 +22,7 @@ from dk_system import is_pi, copy
 FIX_ALTERNATIVE_MD5 = "f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", \
                       "aa282b72ac409793b36780c99b26d07b", "e883b4225a76a79f38cf1db7c340aa8e", \
                       "eb6571036ff25e8e5db5289f5524ab76", "5897e79286e19c91eb3eca657a8c574c", \
-                      "480d0f113e8c7069b50ba807cf4b2a24"
+                      "480d0f113e8c7069b50ba807cf4b2a24", "394a7d367c9926c1d151dd87814c77f4"
 
 
 def validate_rom():
