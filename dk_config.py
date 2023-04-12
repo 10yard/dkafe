@@ -159,7 +159,8 @@ START5_FRIENDLY = ["dkongspringy", "dkongpac", "dkongbarrels", "dkongpies", "dko
                    "dkongwizardry", "dkongitd", "dkongotr", "dkongrev", "dkongtj", "dkongcb", "dkongfoundry",
                    "dkong40", "dkongpauline", "dkong", "dkongjr", "ckongpt2"]
 STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongitd", "dkonghrd", "dkong40", "dkongf",
-                  "dkongd2k", "dkongotr", "dkongtj", "dkongfoundry", "dkongpauline", "dkong", "dkongjr", "ckongpt2"]
+                  "dkongd2k", "dkongotr", "dkongtj", "dkongfoundry", "dkongpauline", "dkong", "dkongjr", "ckongpt2",
+                  "dkonghrthnt"]
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]
