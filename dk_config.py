@@ -59,6 +59,7 @@ ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammer
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
 
 # DKWolf/Interface options
+HIGH_SCORE_SAVE = 1            # Retain high scores (they are specific to each hack)
 CREDITS = 1                    # Automatically set credits in MAME at start of game - when using interface
 AUTOSTART = 1                  # Automatically start the game in MAME (by simulating P1 start) when using interface
 ALLOW_SKIP_INTRO = 1           # Allow the DK climb scene to be quickly skipped in game by pressing Jump button

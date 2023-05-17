@@ -169,6 +169,13 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
             os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
         launch_command += f" -plugin {launch_plugin}"
 
+    # Are we using the hiscore plugin?
+    if HIGH_SCORE_SAVE:
+        if "-plugin" in launch_command:
+            launch_command += ",hiscore"
+        else:
+            launch_command += " -plugin hiscore"
+
     if not FULLSCREEN:
         launch_command += " -window"
 

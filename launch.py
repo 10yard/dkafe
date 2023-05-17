@@ -517,7 +517,7 @@ def build_menus(initial=False):
     _g.setmenu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], "    FRONTEND SETTINGS", mouse_visible=False,
                              mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
     _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
-    _g.setmenu.add_selector('     Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
+    _g.setmenu.add_selector('      Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
     _g.setmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
     _g.setmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
     _g.setmenu.add_selector('Show Game Text: ', [('Off', 0), ('On', 1)], default=SHOW_GAMETEXT, onchange=set_gametext)
@@ -526,7 +526,9 @@ def build_menus(initial=False):
                             [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7),
                                  ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
     _g.setmenu.add_vertical_margin(15)
-    _g.setmenu.add_selector('DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
+    _g.setmenu.add_selector('  DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
+    _g.setmenu.add_vertical_margin(15)
+    _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
     _g.setmenu.add_vertical_margin(15)
     _g.setmenu.add_button('Save Changes to File', save_menu_settings)
     _g.setmenu.add_button('Close Menu', close_menu)
@@ -620,6 +622,8 @@ def save_menu_settings():
                             f_out.write(f"SHOW_GAMETEXT = {SHOW_GAMETEXT}\n")
                         elif "SPEED_ADJUST=" in line_packed:
                             f_out.write(f"SPEED_ADJUST = {SPEED_ADJUST}\n")
+                        elif "HIGH_SCORE_SAVE=" in line_packed:
+                            f_out.write(f"HIGH_SCORE_SAVE = {HIGH_SCORE_SAVE}\n")
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, y=232, fg=PINK, bg=RED)
@@ -644,6 +648,10 @@ def set_splash(_, setting_value):
 
 def set_speed(_, setting_value):
     globals()["SPEED_ADJUST"] = setting_value
+
+
+def set_high(_, setting_value):
+    globals()["HIGH_SCORE_SAVE"] = setting_value
 
 
 def set_confirm(_, setting_value):
@@ -729,6 +737,13 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             if os.path.exists(launch_directory):
                 os.chdir(launch_directory)
             clear_screen()
+
+            if HIGH_SCORE_SAVE and sub:
+                if os.path.exists(f"hiscore/dkong.hi"):
+                    _s.copy("hiscore/dkong.hi", "hiscore/dkong_backup.hi")  # backup the regular DK high score
+                if os.path.exists(f"hiscore/{sub}_dkong.hi"):
+                    _s.copy(f"hiscore/{sub}_dkong.hi", "hiscore/dkong.hi")  # set the hack specific DK high score
+
             if EMU_ENTER:
                 Popen(EMU_ENTER, shell=False)
             if EMU_EXIT:
@@ -738,6 +753,13 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             time_end = _s.time()
             _s.debounce()
             _g.lastexit = _g.timer.duration
+
+            if HIGH_SCORE_SAVE and sub:
+                if os.path.exists(f"hiscore/dkong.hi"):
+                    _s.copy("hiscore/dkong.hi", f"hiscore/{sub}_dkong.hi")  # save the hack specific DK high score
+                if os.path.exists(f"hiscore/dkong_backup.hi"):
+                    _s.copy("hiscore/dkong_backup.hi", "hiscore/dkong.hi")  # restore the regular DK high score
+
             os.chdir(ROOT_DIR)
 
             clear_screen(and_reset_display=True)
