@@ -344,6 +344,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     for _x, _y, name, sub, des, alt, emu, rec, unlock, st3, st2, st1 in _g.icons:
         p_des = alt if alt.strip() else des
         unlocked = True
+        up = False
         if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
             unlocked = False
         if not below_y or not above_y or (below_y >= _y >= above_y):
@@ -378,9 +379,14 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 if unlocked:
                     nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                     _g.selected = p_des
+                    up = True
+
             if not detect_only:
                 if not(_x == 90 and _y == 34):
                     _g.screen.blit(img, (_x, _y))
+                    if up and not _g.ready:
+                        if pygame.time.get_ticks() % 550 < 275:
+                            _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
                 if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
                     # Show recording text above icon
                     if _g.timer.duration % 2 < 1:

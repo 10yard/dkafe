@@ -263,6 +263,9 @@ Increase the frontend speed.  0 is normal.  If frontend is running slow then try
 `SKILL_LEVEL = 1`
 How difficult are the target scores. 1 (Beginner) to 10 (Expert).
 
+`HIGH_SCORE_SAVE = 1`
+Save your high score tables for each game.
+
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 
@@ -381,7 +384,7 @@ IMPORTANT NOTE: The controls configured in the frontend do not apply to the emul
 
 #### Joystick Controls
 
-Joystick controls are disabled by default.  Set `USE_JOYSTICK = 1` to enable joystick controls.
+Joystick controls are enabled by default.  Set `USE_JOYSTICK = 0` to disable joystick controls.
 The up, down, left, right controls are automatically mapped from the DPAD and first detected joystick axis.
 Buttons can be customised in the settings.txt file as per the following example.  
 Button numbers 0-19 relate to the first joystick and 20-39 relate to the second joystick.
