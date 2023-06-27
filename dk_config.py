@@ -158,10 +158,11 @@ CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac"]
 START5_FRIENDLY = ["dkongspringy", "dkongpac", "dkongbarrels", "dkongpies", "dkongrivets", "dkongksfix", "dkongd2k",
                    "dkongwizardry", "dkongitd", "dkongotr", "dkongrev", "dkongtj", "dkongcb", "dkongfoundry",
-                   "dkong40", "dkongpauline", "dkong", "dkongjr", "ckongpt2"]
+                   "dkong40", "dkongpauline", "dkong", "dkongjr", "ckongpt2", "dkongvector", "dkongspooky",
+                   "dkongrndmzr"]
 STAGE_FRIENDLY = ["dkongwizardry", "dkongpac", "dkongrev", "dkongitd", "dkonghrd", "dkong40", "dkongf",
                   "dkongd2k", "dkongotr", "dkongtj", "dkongfoundry", "dkongpauline", "dkong", "dkongjr", "ckongpt2",
-                  "dkonghrthnt"]
+                  "dkonghrthnt", "dkongrndmzr", "dkongwho", "dkongoctomonkey", "dkonghalf", "dkongquarter"]
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]

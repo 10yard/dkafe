@@ -355,7 +355,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 icon_image = os.path.join("artwork/icon/default.png")
             img = get_image(icon_image, fade=not unlocked)
             w, h = img.get_width(), img.get_height()
-            if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h):
+            if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h) and not intro:
                 # Pauline to announce the game found near Jumpman.  Return the game icon information.
                 if not unlocked and since_last_move() % 4 > 2:
                     p_des = f"Unlock at {unlock}"
@@ -836,7 +836,7 @@ def show_score():
     write_text("1UP", font=dk_font, x=25, fg=(BLACK, RED)[pygame.time.get_ticks() % 550 < 275])
     write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, bg=BLACK)
     if _g.active:
-        write_text(f"L={str(SKILL_LEVEL).zfill(2)}", font=dk_font, x=170, y=24, fg=DARKBLUE, bg=BLACK)
+        write_text(f"L={str(SKILL_LEVEL).zfill(2)}", font=dk_font, x=169, y=24, fg=DARKBLUE, bg=BLACK)
 
 
 def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=0):

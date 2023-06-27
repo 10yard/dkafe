@@ -160,17 +160,20 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
 
     # Are we using an optional launch plugin?
-    if launch_plugin and "-plugin" not in launch_command:
+    if launch_plugin:
         # Are there any parameters for the plugin?
         if ":" in launch_plugin:
             launch_plugin, parameter, *_ = launch_plugin.split(":")
             os.environ[launch_plugin.upper() + "_PARAMETER"] = parameter
         else:
             os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
-        launch_command += f" -plugin {launch_plugin}"
+        if "-plugin" in launch_command:
+            launch_command += f",{launch_plugin}"
+        else:
+            launch_command += f" -plugin {launch_plugin}"
 
-    # Are we using the hiscore plugin?
-    if HIGH_SCORE_SAVE:
+    # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
+    if HIGH_SCORE_SAVE and not launch_plugin:
         if "-plugin" in launch_command:
             launch_command += ",hiscore"
         else:

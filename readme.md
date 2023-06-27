@@ -473,12 +473,12 @@ pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 
 See build.bat for an example Windows build script making use of venv (virtual environment for Python).
 
-See build.sh and [Raspberry Pi Notes](rpi4/rpi_notes.md) for building a Raspberry Pi binary.
+See build.sh and [Raspberry Pi Notes](rpi4/rpi4_notes.md) for building a Raspberry Pi binary.
 
 
 ### How to compile DKWolf?
 
-Refer to `readme.txt` in the `/DKWolf` folder.
+Refer to [dkwolf/readme.txt](dkwolf/readme.txt).
 
 
 
