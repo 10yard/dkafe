@@ -12,13 +12,12 @@
 -- Minimum start up arguments:
 --   mame dkong -plugin dkstart5
 -----------------------------------------------------------------------------------------
-
-local exports = {}
-exports.name = "dkstart5"
-exports.version = "0.2"
-exports.description = "DK Start 5"
-exports.license = "GNU GPLv3"
-exports.author = { name = "Jon Wilson (10yard)" }
+local exports = {
+	name = "dkstart5",
+	version = "0.3",
+	description = "DK Start 5",
+	license = "GNU GPLv3",
+	author = { name = "Jon Wilson (10yard)" } }
 
 local dkstart5 = exports
 
@@ -26,7 +25,7 @@ function dkstart5.startplugin()
 	local stage
 	local updated = false
 
-	function initialize()
+	function dkstart5_initialize()
 		local _param
 		
 		-- MAME LUA machine initialisation
@@ -52,7 +51,7 @@ function dkstart5.startplugin()
 		end	
 	end
 	
-	function main()
+	function dkstart5_main()
 		if mem ~= nil then		
 			if mem:read_u8(0x6229) == 1 then
 				mem:write_u8(0x6229, 5)  -- update to level 5 
@@ -75,10 +74,10 @@ function dkstart5.startplugin()
 	end
 	
 	emu.register_start(function()
-		initialize()
+		dkstart5_initialize()
 	end)
 
-	emu.register_frame_done(main, "frame")
+	emu.register_frame_done(dkstart5_main, "frame")
 	
 end
 return exports

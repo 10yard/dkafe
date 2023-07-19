@@ -547,8 +547,8 @@ def build_launch_menu():
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
         show_coach = sub in COACH_FRIENDLY or (not sub and name in COACH_FRIENDLY)
         show_chorus = sub in CHORUS_FRIENDLY or (not sub and name in CHORUS_FRIENDLY)
-        show_start5 = sub in START5_FRIENDLY or (not sub and name in START5_FRIENDLY)
-        show_stage = sub in STAGE_FRIENDLY or (not sub and name in STAGE_FRIENDLY)
+        show_start5 = sub not in START5_UNFRIENDLY or (not sub and name not in START5_UNFRIENDLY)
+        show_stage = sub not in STAGE_UNFRIENDLY or (not sub and name not in STAGE_UNFRIENDLY)
         show_shoot = sub in SHOOT_FRIENDLY
         inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5
                                 - (show_stage*4))
