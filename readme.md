@@ -328,6 +328,10 @@ Optional system command to issue before launching emulator
 `EMU_EXIT`
 Optional system command to issue after exiting emulator
 
+`REFOCUS_WINDOW = 0`
+Attempt to refocus DKAFE window when exiting from LUA interface (Windows Only)
+
+
 
 ### DK Interface Settings
 

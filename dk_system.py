@@ -184,6 +184,13 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
         else:
             launch_command += " -plugin hiscore"
 
+    # Are we using the refocus plugin
+    if REFOCUS_WINDOW:
+        if "-plugin" in launch_command:
+            launch_command += ",refocus"
+        else:
+            launch_command += " -plugin refocus"
+
     if not FULLSCREEN:
         launch_command += " -window"
 

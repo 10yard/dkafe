@@ -38,6 +38,7 @@ ALLOW_SKIP_INTRO = 1
 SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1
 SHOW_HUD = 1
+REFOCUS_WINDOW = 0
 
 # Controls
 # NOTE: These controls apply to the DKAFE frontend only.  
