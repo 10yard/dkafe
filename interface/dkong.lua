@@ -38,7 +38,7 @@ emu.register_frame(function()
 
 		-- Reset P1 best score for this session
 		best_score = 0
-
+		
 		-- Insert coins automatically when required
 		if tonumber(data_credits) > 0 and tonumber(data_credits) < 90 then
 			mem:write_u8(0x6001, data_credits)
@@ -50,7 +50,7 @@ emu.register_frame(function()
 			if screen:frame_number() > autostart_delay then
 				ports[":IN2"].fields["1 Player Start"]:set_value(1)
 				data_autostart = "0"
-			end	
+			end
 		end
 		
 		-- Wait for autostart (when necessary) before continuing
@@ -65,7 +65,7 @@ emu.register_frame(function()
 		mode2 = mem:read_u8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
 		stage = mem:read_u8(0xc6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
 		score = get_score()
-
+		
 		if mode1 == 3 and last_mode1 == 3 then
 			-- Keep track of best P1 score achieved this session
 			if score > best_score then

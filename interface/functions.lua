@@ -134,13 +134,23 @@ function display_awards()
 		-- Show progress against targets at top of screen replacing high score
 		if best_score >= data_score3 then
 			write_message(0xc76e0, "              ")
-			if best_score >= data_score1 then
-				write_message(0xc76a0, "1ST WON " .. data_score1_award .. "  ")
-			elseif best_score >= data_score2 then
-				write_message(0xc76a0, "2ND WON " .. data_score2_award .. "  ")
+			if data_subfolder == "dkongwizardry" then -- this rom has a custom palette, see https://github.com/10yard/dkafe/issues/7
+				if best_score >= data_score1 then
+					write_message(0xc7660, "WON 1ST!")
+				elseif best_score >= data_score2 then
+					write_message(0xc7660, "WON 2ND!")
+				else
+					write_message(0xc7660, "WON 3RD!")
+				end
 			else
-				write_message(0xc76a0, "3RD WON " .. data_score3_award .. "  ")
-			end
+				if best_score >= data_score1 then
+					write_message(0xc76a0, "1ST WON " .. data_score1_award .. "  ")
+				elseif best_score >= data_score2 then
+					write_message(0xc76a0, "2ND WON " .. data_score2_award .. "  ")
+				else
+					write_message(0xc76a0, "3RD WON " .. data_score3_award .. "  ")
+				end
+			end	
 		end
 	end
 
