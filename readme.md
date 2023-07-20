@@ -168,7 +168,7 @@ The chorus plugin replaces the default samples and music with acapella sounds.
 
 ## DKWolf Emulator
 
-DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior, DK3 and Crazy Kong).
+DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior, DK3, Crazy Kong and Big Kong).
 
 It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
 

@@ -137,6 +137,7 @@ DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 CKONG_ZIP = os.path.join(ROM_DIR, "ckongpt2.zip")
+BIGKONG_ZIP = os.path.join(ROM_DIR, "bigkong.zip")
 
 # Plugins add functionality to certain roms
 PLUGINS = [
@@ -263,7 +264,8 @@ NO_ROMS_MESSAGE = [
     "DKONG.ZIP    IS REQUIRED",
     "DKONGJR.ZIP  IS OPTIONAL",
     "DKONG3.ZIP   IS OPTIONAL",
-    "CKONGPT2.ZIP IS OPTIONAL"]
+    "CKONGPT2.ZIP IS OPTIONAL",
+    "BIGKONG.ZIP  IS OPTIONAL"]
 
 ROM_CONTENTS = ["c_5at_g.bin", "c_5bt_g.bin", "c_5ct_g.bin", "c_5et_g.bin", "c-2j.bpr", "c-2k.bpr", "l_4m_b.bin",
                 "l_4n_b.bin", "l_4r_b.bin", "l_4s_b.bin", "s_3i_b.bin", "s_3j_b.bin", "v_3pt.bin", "v_5h_b.bin",

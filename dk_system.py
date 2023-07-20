@@ -78,6 +78,8 @@ def read_romlist():
                         continue
                     if name == "ckongpt2" and not os.path.exists(CKONG_ZIP):
                         continue
+                    if name == "bigkong" and not os.path.exists(BIGKONG_ZIP):
+                        continue
                     if not emu.strip():
                         emu = "1"
                     if not rec.strip():
@@ -158,6 +160,9 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
 
     else:
         launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
+
+    # Reset the optional start and level parameters
+    os.environ["DKSTART5_PARAMETER"] = ""
 
     # Are we using an optional launch plugin?
     if launch_plugin:
