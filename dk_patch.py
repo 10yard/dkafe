@@ -15,7 +15,7 @@ from glob import glob
 import shutil
 import hashlib
 import zipfile
-from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP, BIGKONG_ZIP
+from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP, CKONGPT2_ZIP, BIGKONG_ZIP
 from dk_system import is_pi, copy
 
 
@@ -68,7 +68,7 @@ def apply_patches():
     if is_pi():
         # Look for DK roms (and Crazy Kong) on the /boot partition of Pi when not found in the roms folder
         # User may not have provided them at install time
-        for rom in DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP, BIGKONG_ZIP:
+        for rom in DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP, CKONGPT2_ZIP, BIGKONG_ZIP:
             if not os.path.exists(rom) and os.path.exists(f'/boot/{os.path.basename(rom)}'):
                 copy(f'/boot/{os.path.basename(rom)}', ROM_DIR)
             if not os.path.exists(rom) and os.path.exists(f'/boot/dkafe_bin/{os.path.basename(rom)}'):

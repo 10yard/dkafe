@@ -22,14 +22,12 @@ elseif mame_version >= 0.196 then
 	ports = mac:ioport().ports
 	video = mac:video()
 else
-	print("ERROR: The dkcoach plugin requires MAME version 0.196 or greater.")
+	print("ERROR: The DKAFE system requires MAME version 0.196 or greater.")
 end
 if mac ~= nil then
 	screen = mac.screens[":screen"]
 	cpu = mac.devices[":maincpu"]
 	mem = cpu.spaces["program"]
-	soundcpu = mac.devices[":soundcpu"]
-	soundmem = soundcpu.spaces["data"]
 end
 
 -- Options data

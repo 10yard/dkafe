@@ -23,17 +23,19 @@ function int_to_bin(x)
 	return string.format("%08d", tostring(x)..ret)
 end
 
-function get_score()
+function get_score(offset)
 	-- read P1 score from the top line,  allowing for 6 and 7 digit scores
-	local _score, _s
+	-- address offset can be used for not DK roms (such as crazy kong) 
+	local _score, _s, _offset
 	_score = 0
-
-	_s = tostring(mem:read_u8(0xc7781))
-	if _s ~= "16" then
-		_score = _s
+	_offset = offset or 0 
+	
+	_s = mem:read_u8(0xc7781 + _offset)
+	if _s <= 9 then
+		_score = tostring(_s)
 		for k, v in ipairs({0xc7761, 0xc7741, 0xc7721, 0xc7701, 0xc76e1, 0xc76c1}) do
-			_s = mem:read_u8(v)
-			if k < 6 or _s ~= 16 then
+			_s = mem:read_u8(v + _offset)
+			if k < 6 or _s <= 9 then
 				_score = _score..tostring(_s)
 			end
 		end
@@ -99,33 +101,34 @@ function fast_skip_intro()
 	end
 end
 
-function display_awards()
+function display_awards(rom_offset)
+	local _rom_offset = rom_offset or 0
 	if data_show_award_targets == "1" and mode1 == 3 and mode2 == 7 then
 		-- Show score awards during the DK climb scene/intro
-		local dkclimb = mem:read_u8(0xc638e)
-		local offset = 0
+		local _dkclimb = mem:read_u8(0xc638e)
+		local _adjust = 0 -- vertical adjustment
 		if emu.romname() == "dkongjr" then
-			offset = 1
-			dkclimb = dkclimb - 36
+			_adjust = 1
+			_dkclimb = _dkclimb - 36
 		end
 		if emu.romname() == "dkongx" then
-			dkclimb = math.floor((mem:read_u8(0xc691f) + 51) / 8)
+			_dkclimb = math.floor((mem:read_u8(0xc691f) + 51) / 8)
 		end
-		if dkclimb >= 10 then
-			if dkclimb <= 17 then
-				write_message(0xc7770 + (offset * 7), "1ST PRIZE")
-				write_message(0xc7570 + (offset * 7), "AT "..tostring(data_score1))
+		if _dkclimb >= 10 then
+			if _dkclimb <= 17 then
+				write_message(0xc7770 + _rom_offset + (_adjust * 7), "1ST PRIZE")
+				write_message(0xc7570 + _rom_offset + (_adjust * 7), "AT "..tostring(data_score1))
 			end
-			if dkclimb <= 21 then
-				write_message(0xc7774 + (offset * 5), "2ND PRIZE")
-				write_message(0xc7574 + (offset * 5), "AT "..tostring(data_score2))
+			if _dkclimb <= 21 then
+				write_message(0xc7774 + _rom_offset + (_adjust * 5), "2ND PRIZE")
+				write_message(0xc7574 + _rom_offset + (_adjust * 5), "AT "..tostring(data_score2))
 			end
-			if dkclimb <= 25 then
-				write_message(0xc7778 + (offset * 3), "3RD PRIZE")
-				write_message(0xc7578 + (offset * 3), "AT "..tostring(data_score3))
+			if _dkclimb <= 25 then
+				write_message(0xc7778 + _rom_offset + (_adjust * 3), "3RD PRIZE")
+				write_message(0xc7578 + _rom_offset + (_adjust * 3), "AT "..tostring(data_score3))
 			end
-			if dkclimb <= 29 then
-				write_message(0xc777c + offset, "PLAY TO WIN COINS")
+			if _dkclimb <= 29 then
+				write_message(0xc777c + _rom_offset + _adjust, "PLAY TO WIN COINS")
 			end
 		end
 	end
@@ -136,19 +139,19 @@ function display_awards()
 			write_message(0xc76e0, "              ")
 			if data_subfolder == "dkongwizardry" then -- this rom has a custom palette, see https://github.com/10yard/dkafe/issues/7
 				if best_score >= data_score1 then
-					write_message(0xc7660, "WON 1ST!")
+					write_message(0xc7660 + _rom_offset, "WON 1ST!")
 				elseif best_score >= data_score2 then
-					write_message(0xc7660, "WON 2ND!")
+					write_message(0xc7660 + _rom_offset, "WON 2ND!")
 				else
-					write_message(0xc7660, "WON 3RD!")
+					write_message(0xc7660 + _rom_offset, "WON 3RD!")
 				end
 			else
 				if best_score >= data_score1 then
-					write_message(0xc76a0, "1ST WON " .. data_score1_award .. "  ")
+					write_message(0xc76a0 + _rom_offset, "1ST WON " .. data_score1_award .. "  ")
 				elseif best_score >= data_score2 then
-					write_message(0xc76a0, "2ND WON " .. data_score2_award .. "  ")
+					write_message(0xc76a0 + _rom_offset, "2ND WON " .. data_score2_award .. "  ")
 				else
-					write_message(0xc76a0, "3RD WON " .. data_score3_award .. "  ")
+					write_message(0xc76a0 + _rom_offset, "3RD WON " .. data_score3_award .. "  ")
 				end
 			end	
 		end
@@ -174,9 +177,9 @@ function display_awards()
 		elseif data_toggle_hud == 3 then
 			data_toggle_hud = 0
 		end
-		write_message(0xc7500, msg1)
-		write_message(0xc7501, msg2)
-		write_message(0xc7502, msg3)
+		write_message(0xc7500 + _rom_offset, msg1)
+		write_message(0xc7501 + _rom_offset, msg2)
+		write_message(0xc7502 + _rom_offset, msg3)
 	end
 end
 

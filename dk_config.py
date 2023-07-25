@@ -137,7 +137,8 @@ if os.path.exists("VERSION"):
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
-CKONG_ZIP = os.path.join(ROM_DIR, "ckongpt2.zip")
+CKONG_ZIP = os.path.join(ROM_DIR, "ckong.zip")
+CKONGPT2_ZIP = os.path.join(ROM_DIR, "ckongpt2.zip")
 BIGKONG_ZIP = os.path.join(ROM_DIR, "bigkong.zip")
 
 # Plugins add functionality to certain roms

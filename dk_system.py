@@ -68,15 +68,17 @@ def read_romlist():
                 if not alt:
                     alt = des
                 if (name and des and slot not in usedslots) or (slot == "99" and sub not in usedsubs):
-                    des = des.replace("DK ","$ ").replace("DK", "$ ")
-                    des = des.replace("1/2","{ ").replace("1/4","} ")
-                    des = des.replace("NO","| ") if des[:2] == "NO" else des
+                    des = des.replace("DK ", "$ ").replace("DK", "$ ")
+                    des = des.replace("1/2", "{ ").replace("1/4", "} ")
+                    des = des.replace("NO", "| ") if des[:2] == "NO" else des
 
                     if name == "dkongjr" and not os.path.exists(DKONGJR_ZIP):
                         continue
                     if name == "dkong3" and not os.path.exists(DKONG3_ZIP):
                         continue
-                    if name == "ckongpt2" and not os.path.exists(CKONG_ZIP):
+                    if name == "ckongpt2" and not os.path.exists(CKONGPT2_ZIP):
+                        continue
+                    if name == "ckong" and not os.path.exists(CKONG_ZIP):
                         continue
                     if name == "bigkong" and not os.path.exists(BIGKONG_ZIP):
                         continue
@@ -99,7 +101,7 @@ def read_romlist():
                     st3 = apply_skill(st3)
 
                     usedslots.append(slot)
-                    usedsubs.append(sub)
+                    usedsubs.append(sub or des)
                     romlist.append((name, sub, des, alt, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
     return romlist
 

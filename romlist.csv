@@ -24,14 +24,15 @@ dkong,dkongrev,DK Reverse,DK Reverse,27,1,2,30000,10000,25000,50000
 dkong,dkonghrthnt,DK ~,DK Heart Hunt,28,1,2,32000,10000,20000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,29,1,2,34000,10000,20000,40000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,31,1,2,36000,10000,25000,45000
-bigkong,,BigKong,Big Kong,32,1,2,38000,,,
+bigkong,,BigKong,Big Kong,32,1,2,38000,5000,15000,25000
 dkongf,dkongrdemo,DKRemix,DK Remix Demo,32,1,2,38000,10000,20000,45000
 dkong,dkongkonkey,KD,Konkey Dong,33,1,2,38000,,,
 dkongf,dkongfoundry,DK Foundry,,34,1,2,40000,10000,25000,50000
 dkong,dkonghalf,1/2 Kong,Half Kong,35,1,2,42000,20000,50000,80000
 dkong,dkongxgalakong,X-Gala,Extreme Galakong,37,1,2,44000,5000,10000,15000
 dkong,dkongkana,Kana,Kana Kong,39,1,2,46000,10000,20000,40000
-ckongpt2,,CrazyKong,Crazy Kong,40,1,2,48000,,,
+ckongpt2,,CrazyKong,Crazy Kong (Part II),40,1,2,48000,10000,25000,40000
+ckong,,CrazyKong,Crazy Kong (Part I),40,1,2,48000,10000,25000,40000
 dkong,dkongce,DK Champs.,DK Championship Edition,40,1,2,48000,10000,25000,50000
 dkong3,,DK 3,DK 3,41,1,2,50000,,,
 dkong,dkongnoluck,NOLuck,NoLuck Kong,41,1,2,50000,15000,25000,50000
@@ -58,3 +59,4 @@ dkong,dkongsprfin,DK Springfinity,DK Springfinity,99,1,2,,,,
 dkong,dkongce,DK Champs.,DK Championship Edition,99,1,2,,,,
 dkong,dkongl05,DK Skip Start,DK Skip Start,99,1,2,,,,
 dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,,,,
+ckong,,CrazyKong,Crazy Kong (Part I),99,1,2,,,,
