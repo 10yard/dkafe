@@ -63,6 +63,7 @@ dkchars["["] = 0x49 -- copyright part 1
 dkchars["]"] = 0x4a -- copyright part 2
 dkchars["("] = 0x4b -- ITC part 1
 dkchars[")"] = 0x4c -- ITC part 2
+dkchars["|"] = 0x71 -- Alternate 1
 dkchars["^"] = 0xb0 -- rivet block
 dkchars["?"] = 0xfb
 dkchars["@"] = 0xff -- extra mario icon
@@ -73,4 +74,13 @@ function write_message(start_address, text)
     for key=1, string.len(text) do
 		mem:write_u8(start_address - ((key - 1) * 32), _dkchars[string.sub(text, key, key)])
     end
+end
+
+function draw_1()
+	-- fix to colour of 1 in score targets for rom hacks with adjusted palette 
+	-- e.g. DK Hearthunt "1 = 45K"
+	local _red = 0xffe8070a
+	screen:draw_box(256, 172, 249, 174, 0, _red)
+	screen:draw_box(250, 170, 249, 176, 0, _red)
+	screen:draw_box(255, 171, 254, 172, 0, _red)
 end

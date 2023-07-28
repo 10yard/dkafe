@@ -172,6 +172,10 @@ function display_awards(rom_offset)
 		end
 		if data_toggle_hud == 1 then
 			msg1, msg2, msg3 = "1"..sep[1]..data_score1_k, "2"..sep[1]..data_score2_k, "3"..sep[1]..data_score3_k
+			if data_subfolder == "dkonghrthnt" then
+				msg1 = " "..sep[1]..data_score1_k  -- Workaround alternative palette colour for DK Hearthunt
+				draw_1()
+			end
 		elseif data_toggle_hud == 2 then
 			msg1, msg2, msg3 = data_score1_award..sep[2], data_score2_award..sep[2], data_score3_award..sep[2]
 		elseif data_toggle_hud == 3 then
