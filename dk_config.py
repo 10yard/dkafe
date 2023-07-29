@@ -155,6 +155,7 @@ PLUGINS = [
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
+COACH_L5_FRIENDLY = ["dkongspringy", "dkongbarrels"]
 CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd", "dkongwbh",
                    "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
                    "dkong2nut", "dkong"]

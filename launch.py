@@ -546,18 +546,19 @@ def build_launch_menu():
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
         show_coach = sub in COACH_FRIENDLY or (not sub and name in COACH_FRIENDLY)
+        show_coach_l5 = sub in COACH_L5_FRIENDLY or (not sub and name in COACH_L5_FRIENDLY)
         show_chorus = sub in CHORUS_FRIENDLY or (not sub and name in CHORUS_FRIENDLY)
         show_start5 = sub not in START5_UNFRIENDLY or (not sub and name not in START5_UNFRIENDLY)
         show_stage = sub not in STAGE_UNFRIENDLY or (not sub and name not in STAGE_UNFRIENDLY)
         show_shoot = sub in SHOOT_FRIENDLY
-        inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_chorus - show_shoot - show_start5
+        inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_coach_l5 - show_chorus - show_shoot - show_start5
                                 - (show_stage*4))
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
                                     theme=dkafe_theme, onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):
-            _g.launchmenu.add_button('Launch game', launch_rom, nearby)
+            _g.launchmenu.add_button('Launch game               ', launch_rom, nearby)
         if rec > 0:
-            _g.launchmenu.add_button('Launch and record game', launch_rom, nearby, False, rec)
+            _g.launchmenu.add_button('Launch and record game    ', launch_rom, nearby, False, rec)
             if inps:
                 _g.launchmenu.add_vertical_margin(10)
                 _g.launchmenu.add_label('Playback latest recordings:', selectable=False)
@@ -571,29 +572,31 @@ def build_launch_menu():
                     except ValueError:
                         pass
 
-        if show_coach or show_chorus or show_shoot or show_start5:
+        if show_coach or show_chorus or show_shoot or show_start5 or show_coach_l5:
             _g.launchmenu.add_vertical_margin(10)
             if show_start5:
-                _g.launchmenu.add_button('↑ Launch from level 5 ', launch_rom, nearby, "dkstart5")
+                _g.launchmenu.add_button('↑ Launch from level 5     ', launch_rom, nearby, "dkstart5")
             if show_coach:
-                _g.launchmenu.add_button('Č Launch with coaching', launch_rom, nearby, "dkcoach")
+                _g.launchmenu.add_button('Č Launch with coach       ', launch_rom, nearby, "dkcoach")
+            if show_coach_l5:
+                _g.launchmenu.add_button('Č Launch with coach at L=5',  launch_rom, nearby, "dkcoach,dkstart5")
             if show_chorus:
-                _g.launchmenu.add_button('♪ Launch with chorus  ', launch_rom, nearby, "dkchorus")
+                _g.launchmenu.add_button('♪ Launch with chorus      ', launch_rom, nearby, "dkchorus")
             if show_shoot:
-                _g.launchmenu.add_button('▲ Launch with shooter ', launch_rom, nearby, "galakong")
+                _g.launchmenu.add_button('▲ Launch with shooter     ', launch_rom, nearby, "galakong")
 
         if show_stage:
             _g.launchmenu.add_vertical_margin(10)
             if name == "dkongjr":
-                _g.launchmenu.add_button('- Practice springboard', launch_rom, nearby, "dkstart5:1")
-                _g.launchmenu.add_button('- Practice vines      ', launch_rom, nearby, "dkstart5:2")
-                _g.launchmenu.add_button('- Practice chains     ', launch_rom, nearby, "dkstart5:3")
-                _g.launchmenu.add_button('- Practice hideout    ', launch_rom, nearby, "dkstart5:4")
+                _g.launchmenu.add_button('- Practice springboard    ', launch_rom, nearby, "dkstart5:1")
+                _g.launchmenu.add_button('- Practice vines          ', launch_rom, nearby, "dkstart5:2")
+                _g.launchmenu.add_button('- Practice chains         ', launch_rom, nearby, "dkstart5:3")
+                _g.launchmenu.add_button('- Practice hideout        ', launch_rom, nearby, "dkstart5:4")
             else:
-                _g.launchmenu.add_button('- Practice barrels    ', launch_rom, nearby, "dkstart5:1")
-                _g.launchmenu.add_button('- Practice pies       ', launch_rom, nearby, "dkstart5:2")
-                _g.launchmenu.add_button('- Practice springs    ', launch_rom, nearby, "dkstart5:3")
-                _g.launchmenu.add_button('- Practice rivets     ', launch_rom, nearby, "dkstart5:4")
+                _g.launchmenu.add_button('- Practice barrels        ', launch_rom, nearby, "dkstart5:1")
+                _g.launchmenu.add_button('- Practice pies           ', launch_rom, nearby, "dkstart5:2")
+                _g.launchmenu.add_button('- Practice springs        ', launch_rom, nearby, "dkstart5:3")
+                _g.launchmenu.add_button('- Practice rivets         ', launch_rom, nearby, "dkstart5:4")
 
         _g.launchmenu.add_vertical_margin(10)
         _g.launchmenu.add_button('Close', close_menu)
