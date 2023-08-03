@@ -26,7 +26,7 @@ emu.register_frame(function()
 
 	if loaded == nil then
 		math.randomseed(os.time())
-		autostart_delay = screen:frame_number() + math.random(1, 30)
+		autostart_delay = screen:frame_number() + math.random(5, 30)
 		
 		-- Wait for ROM to start
 		if emu.romname() == "dkongx" and mem:read_u8(0xc600a) ~= 1 then
