@@ -747,12 +747,6 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 os.chdir(launch_directory)
             clear_screen()
 
-            if HIGH_SCORE_SAVE and sub:
-                if os.path.exists(f"hiscore/dkong.hi"):
-                    _s.copy("hiscore/dkong.hi", "hiscore/dkong_backup.hi")  # backup the regular DK high score
-                if os.path.exists(f"hiscore/{sub}_dkong.hi"):
-                    _s.copy(f"hiscore/{sub}_dkong.hi", "hiscore/dkong.hi")  # set the hack specific DK high score
-
             if EMU_ENTER:
                 Popen(EMU_ENTER, shell=False)
             if EMU_EXIT:
@@ -762,12 +756,6 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             time_end = _s.time()
             _s.debounce()
             _g.lastexit = _g.timer.duration
-
-            if HIGH_SCORE_SAVE and sub:
-                if os.path.exists(f"hiscore/dkong.hi"):
-                    _s.copy("hiscore/dkong.hi", f"hiscore/{sub}_dkong.hi")  # save the hack specific DK high score
-                if os.path.exists(f"hiscore/dkong_backup.hi"):
-                    _s.copy("hiscore/dkong_backup.hi", "hiscore/dkong.hi")  # restore the regular DK high score
 
             os.chdir(ROOT_DIR)
 
@@ -979,26 +967,28 @@ def process_interrupts():
 
         # Display game text
         if SHOW_GAMETEXT:
-            sub, name,  *_ = display_icons(detect_only=True)
-            selected = sub if sub else name
-            for rom, text_lines in _g.gametext:
-                if rom == selected and text_lines:
-                    # Text appears above or below Jumpman based on his Y position
-                    text_y = _g.ypos - (len(text_lines)+5) * 6 if _g.ypos >= 138 else _g.ypos + 32
-                    # Clear a space for text and draw borders
-                    pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 224, len(text_lines)*6+8))
-                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y - 5, 224, 14))
-                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
-                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y+len(text_lines)*6+2, 224, 14))
-                    # Display the game text
-                    info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
-                    for i, line in enumerate(text_lines + TEXT_INFO[info_index]):
-                        text = line.replace("\n", "").replace("\r", "")
-                        if i == 0:
-                            # Center align the title
-                            text = " "*int((55 - len(text.strip())) / 2)+text.strip()
-                        write_text(text[:55], x=4, y=text_y+(i*6))
-                    break
+            icons = display_icons(detect_only=True)
+            if icons:
+                sub, name, *_ = icons
+                selected = sub if sub else name
+                for rom, text_lines in _g.gametext:
+                    if rom == selected and text_lines:
+                        # Text appears above or below Jumpman based on his Y position
+                        text_y = _g.ypos - (len(text_lines)+5) * 6 if _g.ypos >= 138 else _g.ypos + 32
+                        # Clear a space for text and draw borders
+                        pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 224, len(text_lines)*6+8))
+                        pygame.draw.rect(_g.screen, MIDGREY, (0, text_y - 5, 224, 14))
+                        pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
+                        pygame.draw.rect(_g.screen, MIDGREY, (0, text_y+len(text_lines)*6+2, 224, 14))
+                        # Display the game text
+                        info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
+                        for i, line in enumerate(text_lines + TEXT_INFO[info_index]):
+                            text = line.replace("\n", "").replace("\r", "")
+                            if i == 0:
+                                # Center align the title
+                                text = " "*int((55 - len(text.strip())) / 2)+text.strip()
+                            write_text(text[:55], x=4, y=text_y+(i*6))
+                        break
 
 
 def get_prize_placing(awarded):

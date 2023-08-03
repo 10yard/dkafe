@@ -166,7 +166,7 @@ HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey"]
 START5_UNFRIENDLY = ["dkongce", "dkongspooky", "dkongoctomonkey", "dkonghalf", "dkongquarter"]
 STAGE_UNFRIENDLY = ["dkongpies", "dkongspringy", "dkongbarrels", "dkongrivets", "dkongvector", "dkongspooky",
                     "dkongoctomonkey", "dkonghalf", "dkongquarter"]
-AUTOSTART_UNFRIENDLY = ["dkongwizardry", ]
+AUTOSTART_UNFRIENDLY = []
 
 # Colours
 RED = (232, 7, 10)

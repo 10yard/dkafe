@@ -208,11 +208,15 @@ function hiscore.startplugin()
 
 	local function get_file_name()
 	  local r;
+	  -- modification by 10yard --------------------------------
+	  local dkafe_subfolder = os.getenv("DKAFE_SUBFOLDER") or ""
+	  ----------------------------------------------------------
 	  if emu.softname() ~= "" then
 		local soft = emu.softname():match("([^:]*)$")
 		r = get_data_path() .. '/' .. emu.romname() .. "_" .. soft .. ".hi";
 	  else
-		r = get_data_path() .. '/' .. emu.romname() .. ".hi";
+		--r = get_data_path() .. '/' .. emu.romname() .. "_" .. soft .. ".hi";
+		r = get_data_path() .. '/' .. dkafe_subfolder .. emu.romname() .. ".hi";
 	  end
 	  return r;
 	end

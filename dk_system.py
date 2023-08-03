@@ -63,43 +63,50 @@ def read_romlist():
     with open("romlist.csv", "r") as rl:
         for row in rl.readlines():
             data = row.replace('"', '')
-            if not data.startswith("#") and data.count(",") >= 10:
+            if not data.startswith("#") and data.strip() and data.count(",") >= 10:
+                # read romlist data and tweak the descriptions
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                 if not alt:
                     alt = des
-                if (name and des and slot not in usedslots) or (slot == "99" and sub not in usedsubs):
-                    des = des.replace("DK ", "$ ").replace("DK", "$ ")
-                    des = des.replace("1/2", "{ ").replace("1/4", "} ")
-                    des = des.replace("NO", "| ") if des[:2] == "NO" else des
+                des = des.replace("DK ", "$ ").replace("DK", "$ ")
+                des = des.replace("1/2", "{ ").replace("1/4", "} ")
+                des = des.replace("NO", "| ") if des[:2] == "NO" else des
 
-                    if name == "dkongjr" and not os.path.exists(DKONGJR_ZIP):
-                        continue
-                    if name == "dkong3" and not os.path.exists(DKONG3_ZIP):
-                        continue
-                    if name == "ckongpt2" and not os.path.exists(CKONGPT2_ZIP):
-                        continue
-                    if name == "ckong" and not os.path.exists(CKONG_ZIP):
-                        continue
-                    if name == "bigkong" and not os.path.exists(BIGKONG_ZIP):
-                        continue
-                    if not emu.strip():
-                        emu = "1"
-                    if not rec.strip():
-                        rec = "0"
-                    if not unlock:
-                        unlock = "0"
+                # Skip over rom if the file is not found
+                if name == "dkongjr" and not os.path.exists(DKONGJR_ZIP):
+                    continue
+                if name == "dkong3" and not os.path.exists(DKONG3_ZIP):
+                    continue
+                if name == "ckongpt2" and not os.path.exists(CKONGPT2_ZIP):
+                    continue
+                if name == "ckong" and not os.path.exists(CKONG_ZIP):
+                    continue
+                if name == "bigkong" and not os.path.exists(BIGKONG_ZIP):
+                    continue
 
-                    if "-record" in get_emulator(int(emu)).lower():
-                        # Score targets are not considered for recordings
-                        st3, st2, st1 = ("",) * 3
+                # Assume defaults when not provided
+                if not emu.strip():
+                    emu = "1"
+                if not rec.strip():
+                    rec = "0"
+                if not unlock:
+                    unlock = "0"
 
-                    icx, icy = -1, -1
-                    if 0 < int(slot) <= len(SLOTS):
-                        icx, icy = SLOTS[int(slot) - 1]
-                    st1 = apply_skill(st1)
-                    st2 = apply_skill(st2)
-                    st3 = apply_skill(st3)
+                # Get the score targets
+                if "-record" in get_emulator(int(emu)).lower():
+                    # Score targets are not considered for recordings
+                    st3, st2, st1 = ("",) * 3
+                icx, icy = -1, -1
+                if 0 < int(slot) <= len(SLOTS):
+                    icx, icy = SLOTS[int(slot) - 1]
+                st1 = apply_skill(st1)
+                st2 = apply_skill(st2)
+                st3 = apply_skill(st3)
 
+                if name and des:
+                    if slot in usedslots:
+                        slot = "99"
+                        icx, icy = -1, -1
                     usedslots.append(slot)
                     usedsubs.append(sub or des)
                     romlist.append((name, sub, des, alt, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
@@ -180,7 +187,8 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
             launch_command += f" -plugin {launch_plugin}"
 
     # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
-    if HIGH_SCORE_SAVE and not launch_plugin:
+    if HIGH_SCORE_SAVE and subfolder and not launch_plugin:
+        os.environ["DKAFE_SUBFOLDER"] = subfolder + "_" if subfolder else ""
         if "-plugin" in launch_command:
             launch_command += ",hiscore"
         else:
