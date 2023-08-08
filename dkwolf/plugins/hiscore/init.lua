@@ -157,7 +157,14 @@ function hiscore.startplugin()
 		local soft = emu.softname():match("([^:]*)$")
 		rm_match = '^' .. emu.romname() .. ',' .. soft .. ':';
 	  else
-		rm_match = '^' .. emu.romname() .. ':';
+		-- modification by 10yard --------------------------------
+		local dkafe_subfolder = os.getenv("DKAFE_SUBFOLDER") or ""
+	    if dkafe_subfolder == 'dkongrdemo_' then
+			rm_match = '^dkongrdemo:';
+		else
+		----------------------------------------------------------	  
+			rm_match = '^' .. emu.romname() .. ':';
+		end	
 	  end
 	  local cluster = "";
 	  local current_is_match = false;

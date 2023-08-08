@@ -4824,13 +4824,13 @@ hunchbkd:
 
 
 dkong:
-dkongf:
 dkonghrd:
 dkongj:
 dkongjo:
 dkongjo1:
 dkongo:
 dkongpe:
+dkongf:
 @:maincpu,program,6100,aa,94,76
 @:maincpu,program,60b8,03,50,00
 @:maincpu,program,7641,01,00,00
@@ -4840,7 +4840,7 @@ dkongpe:
 @:maincpu,program,75c1,01,05,05
 @:maincpu,program,75a1,01,00,00
 
-;dongspooky and dkongxmas added by 10yard
+;dkongspooky and dkongxmas added by 10yard
 dkongx11:
 @:maincpu,program,6100,aa,94,76
 @:maincpu,program,60b8,03,65,00
@@ -4851,11 +4851,21 @@ dkongx11:
 @:maincpu,program,75c1,01,05,05
 @:maincpu,program,75a1,01,00,00
 
-
-;dongd2k added by 10yard
+;dkongd2k added by 10yard
 dkongx:
 @:maincpu,program,6100,aa,94,77
 @:maincpu,program,60b8,03,50,00
+@:maincpu,program,7641,01,00,00
+@:maincpu,program,7621,01,00,00
+@:maincpu,program,7601,01,07,07
+@:maincpu,program,75e1,01,06,06
+@:maincpu,program,75c1,01,05,05
+@:maincpu,program,75a1,01,00,00
+
+;dkongrdemo added by 10yard
+dkongrdemo:
+@:maincpu,program,6100,aa,94,76
+@:maincpu,program,60b8,03,65,00
 @:maincpu,program,7641,01,00,00
 @:maincpu,program,7621,01,00,00
 @:maincpu,program,7601,01,07,07
@@ -4882,7 +4892,7 @@ dkongjrpb:
 @:maincpu,program,7661,1,10,10
 @:maincpu,program,7641,1,00,00
 @:maincpu,program,7621,1,00,00
-@:maincpu,program,7601,1,07,07
+@:maincpu,program,7601,1
 @:maincpu,program,75e1,1,06,06
 @:maincpu,program,75c1,1,05,05
 @:maincpu,program,75a1,1,00,00
