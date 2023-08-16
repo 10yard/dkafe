@@ -753,7 +753,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
             time_start = _s.time()
-            call(launch_command)
+            os.system(launch_command) if _s.is_pi() else call(launch_command)
             time_end = _s.time()
             _s.debounce()
             _g.lastexit = _g.timer.duration
@@ -812,7 +812,7 @@ def playback_rom(info, inpfile):
             Popen(EMU_ENTER, shell=False)
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
-        call(playback_command)
+        os.system(playback_command) if _s.is_pi() else call(playback_command)
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
 
