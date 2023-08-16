@@ -16,7 +16,7 @@ from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches, validate_rom
 from random import randint
-from subprocess import Popen
+from subprocess import Popen, call
 import pickle
 
 
@@ -667,6 +667,7 @@ def set_confirm(_, setting_value):
     globals()["CONFIRM_EXIT"] = setting_value
 
 
+# noinspection PyProtectedMember
 def set_gametext(_, setting_value, external=False):
     globals()["SHOW_GAMETEXT"] = setting_value
     if external:
@@ -752,7 +753,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
             time_start = _s.time()
-            os.system(launch_command)
+            call(launch_command)
             time_end = _s.time()
             _s.debounce()
             _g.lastexit = _g.timer.duration
@@ -811,7 +812,7 @@ def playback_rom(info, inpfile):
             Popen(EMU_ENTER, shell=False)
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
-        os.system(playback_command)
+        call(playback_command)
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
 

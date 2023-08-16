@@ -90,7 +90,7 @@ ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults
 ROM_DIR = '<ROOT>/roms'
-OPTIONS = '-rompath <ROM_DIR> -view "Pixel Aspect (7:8)'
+OPTIONS = '-rompath "<ROM_DIR>" -view "Pixel Aspect (7:8)"'
 EMU_1 = '<ROOT>/dkwolf/dkwolf <OPTIONS>'
 EMU_2 = '<ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID>'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6

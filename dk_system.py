@@ -118,7 +118,11 @@ def get_emulator(emu_number):
 
 
 def get_inp_dir(emu):
-    return os.path.join(os.path.dirname(get_emulator(emu).split(" ")[0]), "inp")
+    emu_param = get_emulator(emu).split(" ")[0]
+    if "dkwolf" in get_emulator(emu).lower() and "dkwolf" not in emu_param.lower():
+        return os.path.join(ROOT_DIR, "dkwolf", "inp")
+    else:
+        return os.path.join(os.path.dirname(emu_param), "inp")
 
 
 def get_inp_files(rec, name, sub, num):
@@ -136,17 +140,26 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
     emu_args = get_emulator(emu)
     inp_file = f"{name}_{subfolder}_{get_datetime()}_0m.inp"
     emu_args = emu_args.replace("<RECORD_ID>", inp_file)
-    launch_directory = os.path.dirname(emu_args.split(" ")[0])
+    emu_param = os.path.normpath(emu_args.split(" ")[0])
+    launch_directory = os.path.normpath(os.path.dirname(emu_param))
     launch_command = f'{emu_args} {name}'
     competing = False
+
+    if "dkwolf" in emu_args.lower() and "dkwolf" not in emu_param.lower():
+        # Assume dkwolf defaults when there is an issue with the target path
+        launch_directory = os.path.normpath(os.path.join(ROOT_DIR, "dkwolf"))
+        if "-record" in emu_args:
+            launch_command = f'"{os.path.join(launch_directory, "dkwolf")}" {OPTIONS} -record {inp_file} {name}'
+        else:
+            launch_command = f'"{os.path.join(launch_directory, "dkwolf")}" {OPTIONS} {name}'
 
     if subfolder:
         if subfolder == "shell":
             # Launch a batch file or shell script from the shell subfolder
             launch_command = os.path.join(ROOT_DIR, "shell", name)
-        elif "<ROM_DIR>" in emu_args:
+        elif "<ROM_DIR>" in launch_command:
             # Launch a rom and provide rom path
-            launch_command = launch_command.replace("<ROM_DIR>", os.path.join(ROM_DIR, subfolder))
+            launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(os.path.join(ROM_DIR, subfolder)))
         elif int(ALLOW_ROM_OVERWRITE):
             # Copy rom to fixed rom path before launch. For emulators without a rompath argument e.g. Advmame.
             rom_source = os.path.join(ROM_DIR, subfolder, name + ".zip")
@@ -159,16 +172,17 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
             if plugin_folder == subfolder:
                 launch_command += f" -plugin {plugin}"
 
-                if "dkwolf" not in launch_directory.lower():
+                if "dkwolf" not in launch_command.lower():
                     # Not using standard emulator so check the plugin path exists and copy if necessary
-                    plugin_target = os.path.join(launch_directory, "plugins", plugin_folder)
+                    plugin_target = os.path.join(launch_directory, "plugins", plugin)
                     if not os.path.exists(plugin_target):
-                        plugin_source = os.path.join(ROOT_DIR, "dkwolf", "plugins", plugin_folder)
-                        copytree(plugin_source, plugin_target)
+                        plugin_source = os.path.join(ROOT_DIR, "dkwolf", "plugins", plugin)
+                        if os.path.exists(plugin_source):
+                            copytree(plugin_source, plugin_target)
                     break
 
     else:
-        launch_command = launch_command.replace("<ROM_DIR>", ROM_DIR)
+        launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(ROM_DIR))
 
     # Reset the optional start and level parameters
     os.environ["DKSTART5_PARAMETER"] = ""
@@ -211,7 +225,7 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
         if script:
             # An interface script is available
             competing = True
-            launch_command += f' -noconsole -autoboot_script {os.path.join(ROOT_DIR, "interface", script)}'
+            launch_command += f' -noconsole -autoboot_script "{os.path.join(ROOT_DIR, "interface", script)}"'
 
     if competing or launch_plugin:
         # Update options
