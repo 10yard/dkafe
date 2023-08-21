@@ -44,7 +44,7 @@ def initialise_screen(reset=False):
     pygame.mouse.set_visible(False)
     if not reset:
         _g.screen_map = _g.screen.copy()
-        _g.screen_map.blit(get_image("artwork/map.png"), TOPLEFT)
+        _g.screen_map.blit(get_image(f"artwork/map{str(_g.stage)}.png"), TOPLEFT)
     pygame.display.set_caption(TITLE)
     pygame.display.set_icon(get_image("artwork/dkafe.ico"))
 
@@ -334,7 +334,7 @@ def display_slots(version_only=False, logo_scene=False):
 
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
     if with_background:
-        _g.screen.blit(get_image("artwork/background.png"), TOPLEFT)
+        _g.screen.blit(get_image(f"artwork/background{str(_g.stage)}.png"), TOPLEFT)
         show_hammers()
         show_score()
 
@@ -1078,6 +1078,18 @@ def activity_check():
                 os.system(EMU_EXIT)
 
 
+def stage_check():
+    # Check if Jumpman is exiting the stage
+    if _g.ypos < 20 and _g.stage == 1:
+        _g.stage = 2
+        _g.ypos = 238
+        initialise_screen()
+    elif _g.ypos > 239 and _g.stage == 2:
+        _g.stage = 1
+        _g.ypos = 20
+        initialise_screen()
+
+
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
@@ -1153,6 +1165,7 @@ def main(initial=True):
                     adjust_jumpman()
                     animate_jumpman(("l", "r")[_g.facing], horizontal_movement=0)
 
+        stage_check()
         activity_check()
         inactivity_check()
         update_screen()

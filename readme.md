@@ -81,7 +81,10 @@ Credit is given to the original authors below.
  - DK Lava Panic!
  - DK Who and the Daleks
  - Konkey Dong
- - Donkey Kong Barrels, Pies, Springs, Rivets Only
+ - Donkey Kong Barrels Only
+ - Donkey Kong Pies Only
+ - Donkey Kong Springs Only
+ - Donkey Kong Rivets Only
  - Donkey Kong Coach
  - Donkey Kong Chorus
  
@@ -101,6 +104,7 @@ Credit is given to the original authors below.
  - Donkey Kong Wizardry
  - Donkey Kong RNDMZR
  - Donkey Kong Springfinity
+ - Donkey Kong Barrel Boss
  - Donkey Kong Heart Hunt
 
 ### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
