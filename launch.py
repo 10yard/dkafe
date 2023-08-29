@@ -15,7 +15,7 @@ import dk_global as _g
 from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches, validate_rom
-from random import randint
+from random import randint, choice
 from subprocess import Popen, call
 import pickle
 
@@ -44,7 +44,7 @@ def initialise_screen(reset=False):
     pygame.mouse.set_visible(False)
     if not reset:
         _g.screen_map = _g.screen.copy()
-        _g.screen_map.blit(get_image(f"artwork/map{str(_g.stage)}.png"), TOPLEFT)
+        _g.screen_map.blit(get_image(f"artwork/map{_g.stage}.png"), TOPLEFT)
     pygame.display.set_caption(TITLE)
     pygame.display.set_icon(get_image("artwork/dkafe.ico"))
 
@@ -334,7 +334,7 @@ def display_slots(version_only=False, logo_scene=False):
 
 def display_icons(detect_only=False, with_background=False, below_y=None, above_y=None, intro=False, smash=False):
     if with_background:
-        _g.screen.blit(get_image(f"artwork/background{str(_g.stage)}.png"), TOPLEFT)
+        _g.screen.blit(get_image(f"artwork/background{_g.stage}.png"), TOPLEFT)
         show_hammers()
         show_score()
 
@@ -375,7 +375,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     p_des = f'${str(PLAY_COST)} to play'
                 if not _g.awarded and not _g.ready:
                     # don't announce if Pauline already informing of an award
-                    write_text(p_des, x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+                    write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
                 if unlocked:
                     nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                     _g.selected = p_des
@@ -819,7 +819,7 @@ def playback_rom(info, inpfile):
 
 def show_hammers():
     if ENABLE_HAMMERS:
-        for position in [(16, 98), (167, 190)]:
+        for position in HAMMER_POSITIONS[_g.stage - 1]:
             _g.screen.blit(get_image(f"artwork/sprite/hammer.png"), position)
 
 
@@ -852,7 +852,7 @@ def show_timeup_animation(sprite_number, loss=0):
     # Display items that don't get updated in this loop
     show_score()
     write_text(" 000", font=dk_font, x=177, y=48, fg=MAGENTA)
-    _g.screen.blit(get_image("artwork/sprite/dk0.png"), (11, 52))
+    _g.screen.blit(get_image("artwork/sprite/dk0.png"), (11 + _g.dkx, 52 + _g.dky))
 
     if loss > 0:
         write_text(f"-{str(loss)}", x=_g.xpos, y=_g.ypos - 10, bg=RED, box=True)
@@ -867,8 +867,8 @@ def process_interrupts():
     # Start up messages from Pauline
     if not _g.lastmove and not display_icons(detect_only=True):
         message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY or BASIC_MODE)]
-        write_text(message[int(int(_g.timer.duration) % (len(message) * 2) / 2)], x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
-    show_score()
+        write_text(message[int(int(_g.timer.duration) % (len(message) * 2) / 2)], x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+    #show_score()
 
     # Bonus timer
     previous_warning = _g.warning
@@ -912,19 +912,19 @@ def process_interrupts():
         place, place_text = get_prize_placing(_g.awarded)
         if _g.timer.duration > 1:
             if _g.timer.duration < 2:
-                _g.screen.blit(get_image(f"artwork/sprite/dkg1.png"), (11, 52))
-                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5, 62))
+                _g.screen.blit(get_image(f"artwork/sprite/dkg1.png"), (11 + _g.dkx, 52 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5 + _g.dkx, 62 + _g.dky))
             elif _g.timer.duration < 3:
-                _g.screen.blit(get_image(f"artwork/sprite/dka1.png"), (11, 52))
-                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33, 60))
+                _g.screen.blit(get_image(f"artwork/sprite/dka1.png"), (11 + _g.dkx, 52 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 60 + _g.dky))
             else:
-                _g.screen.blit(get_image(f"artwork/sprite/dka2.png"), (11, 45))
-                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33, 29))
+                _g.screen.blit(get_image(f"artwork/sprite/dka2.png"), (11 + _g.dkx, 45 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33+ _g.dkx, 29 + _g.dky))
         else:
-            _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11, 52))
-            _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5, 62))
+            _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11 + _g.dkx, 52 + _g.dky))
+            _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5 + _g.dkx, 62 + _g.dky))
     elif _g.timer.duration - _g.lastaward < 2:
-        _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11, 52))
+        _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11 + _g.dkx, 52 + _g.dky))
     else:
         # Animate DK stomping,  sometimes DK will grab a coin
         prefix = ("dk", "dkg")[_g.grab]
@@ -934,24 +934,23 @@ def process_interrupts():
 
         for i, mod in enumerate((500, 1000, 1500)):
             if ticks % 5000 < mod:
-                _g.screen.blit(get_image(f"artwork/sprite/{prefix}{str(i + 1)}.png"), (11, 52))
+                _g.screen.blit(get_image(f"artwork/sprite/{prefix}{str(i + 1)}.png"), (11 + _g.dkx, 52 + _g.dky))
                 if _g.grab:
-                    _g.screen.blit(get_image(f"artwork/sprite/coin{_g.cointype}3.png"), ((12, 38, 64)[i], 74))
+                    _g.screen.blit(get_image(f"artwork/sprite/coin{_g.cointype}3.png"), ((12, 38, 64)[i] + _g.dkx, 74 + _g.dky))
                 break
 
         # If DK grabbed a coin then it will start rolling
         if ticks % 5000 >= 1500:
             if ticks % 5000 < 2000:
                 if _g.grab:
-                    drop_coin(coin_type=_g.cointype)
+                    drop_coin(x=(67, 147)[_g.stage - 1], y=(73, 77)[_g.stage - 1], coin_type=_g.cointype)
                 _g.grab = False
                 _g.cointype = 0
-            if ticks % 5000 > 4500:
+            if ticks % 5000 > 4500: # and _g.stage == 1:
                 # Will DK grab a coin?
                 _g.grab = randint(1, COIN_FREQUENCY) == 1
-            _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11, 52))
+            _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
-    # Animate rolling coins
     animate_rolling_coins()
 
     # Purge coins
@@ -1028,9 +1027,16 @@ def animate_rolling_coins(out_of_time=False):
         # Move the coin along the platform and down ladders
         if "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
-        elif "ANY_LADDER" in map_info:
+        elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info:
-                co_dir *= -1  # Flip horizontal movement
+                if _g.stage == 1:
+                    co_dir *= -1  # Flip horizontal movement
+                else:
+                    if co_x < 122:
+                        co_dir = choice([1, 1, 1, -1])
+                    else:
+                        co_dir = choice([-1, -1, -1, 1])
+
             co_y += COIN_SPEED
         else:
             co_x += co_dir * COIN_SPEED  # Increment horizontal movement
@@ -1079,14 +1085,20 @@ def activity_check():
 
 
 def stage_check():
-    # Check if Jumpman is exiting the stage
+    # Check if Jumpman is exiting the stage via ladders
     if _g.ypos < 20 and _g.stage == 1:
         _g.stage = 2
         _g.ypos = 238
+        _g.dkx, _g.dky = 80, 4
+        _g.psx, _g.psy = 16, -12
+        _g.coins = []
         initialise_screen()
     elif _g.ypos > 239 and _g.stage == 2:
         _g.stage = 1
         _g.ypos = 20
+        _g.dkx, _g.dky = 0, 0
+        _g.psx, _g.psy = 0, 0
+        _g.coins = []
         initialise_screen()
 
 

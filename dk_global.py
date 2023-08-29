@@ -71,3 +71,11 @@ selected = None
 
 # Active Window
 window = None
+
+# Kong offset position
+dkx = 0
+dky = 0
+
+# Pauline speech offset position
+psx = 0
+psy = 0

@@ -1,0 +1,9 @@
+Donkey Kong Springfinity
+
+This romhack lets you practice level L=05 elevator
+springs infinitely. When jumpman is hit by a spring
+the 'death' sound is played to indicate a failed run. 
+But jumpman doesn't actually die, and you can continue
+trying.
+
+Hack Developed by Paul Goes

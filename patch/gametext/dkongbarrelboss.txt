@@ -1,0 +1,13 @@
+Donkey Kong Barrel Boss
+
+When you start a game, you are thrown in the barrels
+board and you do not die when hit by a barrel or a
+fireball. When that happens the romhack plays the 
+dying music and flashes the background, but you can
+continue playing. You can still die when you fall off
+a girder. In that case the board starts again and you
+have unlimited lifes.
+
+Press P2 to toggle the internal difficulty level.
+
+Hack Developed by Paul Goes

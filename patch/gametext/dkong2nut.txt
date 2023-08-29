@@ -7,5 +7,8 @@ from the game.
 This game starts at level 17-1 and there are 3 barrel
 boards per level.
 
+This is a great hack for practicing your barrel 
+grouping. 
+
 Hack Developed by Jon Wilson (10yard)
 Based on ideas from Luke (mr2nut123)
