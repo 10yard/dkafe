@@ -771,7 +771,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     _g.timer.reset()
                     _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
-                        drop_coin(x=0, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored)
+                        drop_coin(x=_g.stage * 36, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
             elif "-record" in launch_command:
@@ -819,7 +819,7 @@ def playback_rom(info, inpfile):
 
 def show_hammers():
     if ENABLE_HAMMERS:
-        for position in HAMMER_POSITIONS[_g.stage - 1]:
+        for position in HAMMER_POSITIONS[_g.stage]:
             _g.screen.blit(get_image(f"artwork/sprite/hammer.png"), position)
 
 
@@ -868,7 +868,7 @@ def process_interrupts():
     if not _g.lastmove and not display_icons(detect_only=True):
         message = (COIN_INFO, FREE_INFO)[int(FREE_PLAY or BASIC_MODE)]
         write_text(message[int(int(_g.timer.duration) % (len(message) * 2) / 2)], x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-    #show_score()
+    # show_score()
 
     # Bonus timer
     previous_warning = _g.warning
@@ -919,7 +919,7 @@ def process_interrupts():
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 60 + _g.dky))
             else:
                 _g.screen.blit(get_image(f"artwork/sprite/dka2.png"), (11 + _g.dkx, 45 + _g.dky))
-                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33+ _g.dkx, 29 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 29 + _g.dky))
         else:
             _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11 + _g.dkx, 52 + _g.dky))
             _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5 + _g.dkx, 62 + _g.dky))
@@ -943,10 +943,10 @@ def process_interrupts():
         if ticks % 5000 >= 1500:
             if ticks % 5000 < 2000:
                 if _g.grab:
-                    drop_coin(x=(67, 147)[_g.stage - 1], y=(73, 77)[_g.stage - 1], coin_type=_g.cointype)
+                    drop_coin(x=(67, 147)[_g.stage], y=(73, 77)[_g.stage], coin_type=_g.cointype)
                 _g.grab = False
                 _g.cointype = 0
-            if ticks % 5000 > 4500: # and _g.stage == 1:
+            if ticks % 5000 > 4500:
                 # Will DK grab a coin?
                 _g.grab = randint(1, COIN_FREQUENCY) == 1
             _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11 + _g.dkx, 52 + _g.dky))
@@ -954,7 +954,7 @@ def process_interrupts():
     animate_rolling_coins()
 
     # Purge coins
-    _g.coins = [i for i in _g.coins if i[0] > -10]
+    _g.coins = [i for i in _g.coins if -10 < i[0] < 234]
 
     if _g.ready:
         # Pauline shouts out the launch options
@@ -1003,7 +1003,7 @@ def animate_rolling_coins(out_of_time=False):
         co_x, co_y, co_rot, co_dir, co_ladder, co_type, co_awarded = coin
         if co_awarded:
             place, place_text = get_prize_placing(co_awarded)
-            write_text(f"You won {place_text} prize!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text(f"You won {place_text} prize!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
             _g.awarded = co_awarded
             _g.lastaward = _g.timer.duration
 
@@ -1020,7 +1020,7 @@ def animate_rolling_coins(out_of_time=False):
 
         # Toggle ladders.  Virtual ladders are always active.
         if "APPROACHING_LADDER" in map_info:
-            co_ladder = not randint(1, LADDER_CHANCE) == 1
+            co_ladder = not randint(1, LADDER_CHANCE[_g.stage]) == 1
         elif "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
             map_info = []
 
@@ -1029,13 +1029,14 @@ def animate_rolling_coins(out_of_time=False):
             co_y += 1  # coin moves down the sloped girder to touch the platform
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info:
-                if _g.stage == 1:
-                    co_dir *= -1  # Flip horizontal movement
+                if _g.stage == 0:
+                    co_dir *= -1  # Flip horizontal direction
                 else:
-                    if co_x < 122:
-                        co_dir = choice([1, 1, 1, -1])
+                    # Favour a particular direction change based on x position
+                    if co_x <= GRAPHICS[0] / 2:
+                        co_dir = choice([1, 1, 1, 1, 1, -1])
                     else:
-                        co_dir = choice([-1, -1, -1, 1])
+                        co_dir = choice([-1, -1, -1, -1, -1, 1])
 
             co_y += COIN_SPEED
         else:
@@ -1086,15 +1087,15 @@ def activity_check():
 
 def stage_check():
     # Check if Jumpman is exiting the stage via ladders
-    if _g.ypos < 20 and _g.stage == 1:
-        _g.stage = 2
+    if _g.ypos < 20 and _g.stage == 0:
+        _g.stage = 1
         _g.ypos = 238
         _g.dkx, _g.dky = 80, 4
         _g.psx, _g.psy = 16, -12
         _g.coins = []
         initialise_screen()
-    elif _g.ypos > 239 and _g.stage == 2:
-        _g.stage = 1
+    elif _g.ypos > 239 and _g.stage == 1:
+        _g.stage = 0
         _g.ypos = 20
         _g.dkx, _g.dky = 0, 0
         _g.psx, _g.psy = 0, 0
@@ -1105,13 +1106,12 @@ def stage_check():
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
-            if 160 <= _g.xpos <= 172 and 188 <= _g.ypos <= 195:
-                _g.xpos = 14
-                _g.ypos = 91 - (190 - _g.ypos)
+            h1, h2 = HAMMER_POSITIONS[_g.stage][0], HAMMER_POSITIONS[_g.stage][1]
+            if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
+                _g.xpos, _g.ypos = h2[0] - 2, h2[1] + 6 - (_g.stage * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
-            elif 10 <= _g.xpos <= 22 and 91 <= _g.ypos <= 100:
-                _g.xpos = 165
-                _g.ypos = 188 - (92 - _g.ypos)
+            elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
+                _g.xpos, _g.ypos = h1[0], h1[1] - 6 + (_g.stage * 8)
                 _g.teleport_ticks = pygame.time.get_ticks()
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
             write_text("Teleport Jump!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)

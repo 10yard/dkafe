@@ -82,7 +82,7 @@ COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always,
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = 3              # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc). Integer
+LADDER_CHANCE = [3, 2]         # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc) per stage.
 INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
 
 # Root directory of frontend
