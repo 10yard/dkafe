@@ -44,10 +44,12 @@ dkongpe,dkongpauline,DK Pauline,DK Pauline Edition,47,1,2,58000,8000,15000,25000
 dkongj,dkongjapan,DK Japan,,48,1,2,60000,10000,25000,40000
 dkong,dkongpac,DK PacMan,DK Pac-Man,50,1,2,62000,10000,20000,35000
 dkong,dkongbarrels,DK Barrels,DK Barrels Only,51,1,2,64000,10000,20000,35000
-dkong,dkonghrd,DK Hard,,53,1,2,66000,10000,20000,30000
+dkong,dkonghrd,DK Hard,DK Hard Mode,53,1,2,66000,10000,20000,30000
 dkong,dkongfr,DK FreeRun,DK Freerun Edition,55,1,2,68000,20000,40000,60000
 dkong,dkongrainbow,DK Rainbow,,58,1,2,70000,10000,25000,40000
-dkong,dkongrnd,DK Random,DK Randomized,99,1,2,,,,
+dkong,dkongrnd,DK Random,DK Randomized,61,1,2,72000,10000,20000,40000
+dkong,dkongchorus,DK Chorus,,64,1,2,74000,10000,20000,40000
+dkong,dkongksfix,KS Fix,DK Killscreen Fix,66,1,2,76000,20000,35000,50000
 dkong,dkongtrn,DK Trainer,,99,1,2,,,,
 dkongf,dkongst2,DK Springs Trainer,,99,1,2,,,,
 dkong,dkongpace,DK Pace,,99,1,2,,,,
@@ -56,4 +58,3 @@ dkong,dkongduel,DK Duel,,99,1,2,,,,
 dkong,dkongbarrelboss,DK Barrel Boss,,99,1,2,,,,
 dkong,dkongsprfin,DK Springfinity,,99,1,2,,,,
 dkong,dkongl05,DK Skip Start,,99,1,2,,,,
-dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,,,,

@@ -1,0 +1,5 @@
+DONKEY KONG HARD MODE
+
+A version of Donkey Kong with increased difficulty.
+
+Developed by Nintendo 

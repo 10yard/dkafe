@@ -1,0 +1,13 @@
+Donkey Kong Freerun Edition
+
+In the Freerun Edition you can play the complete game 
+without enemies. So there are no barrels, no 
+fireballs/firefoxes, no pies and no springs. 
+
+You are free to roam the level screens for as long as 
+the bonus timer allows. But beware: you still die when 
+you fall off a girder, fall through a rivet hole, jump 
+in a burning oil can or miscalculate a jump to an 
+elevator.
+
+Developed by Paul Goes (as a rom hacking prototype)

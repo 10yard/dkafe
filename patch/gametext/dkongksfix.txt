@@ -1,0 +1,9 @@
+DONKEY KONG KILLSCREEN FIX
+
+This hack fixes the killscreen bug which occurs on 
+level 22-1.
+
+If you're good enough to get to that level then how 
+much further can you go?
+
+Hack developed by Don Hodges (logic by Jeff Kulczycki)

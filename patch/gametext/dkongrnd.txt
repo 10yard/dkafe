@@ -1,0 +1,13 @@
+Donkey Kong Randomized Edition
+
+In this romhack each board is selected randomly: a 
+random level (between 1 and 5) and a random screen 
+(barrels, pies, springs, rivets). 
+
+The selection of each board is random without knowing 
+what it selected before. To get a more interesting
+game for skilled Donkey Kong players, the 
+randomization doesn't distribute the levels and 
+screens evenly. 
+
+Hack Developed by Paul Goes

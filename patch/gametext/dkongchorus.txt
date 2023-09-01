@@ -1,0 +1,7 @@
+Donkey Kong Chorus
+
+The samples and music of Donkey Kong are replaced 
+with acapella sounds (taken from a music video by
+Maytree).
+
+Hack Developed by Jon Wilson (10yard)

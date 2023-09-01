@@ -152,7 +152,8 @@ PLUGINS = [
     ("dkonggalakong", "galakong"),
     ("dkongxgalakong", "galakong"),
     ("dkongallen", "allenkong"),
-    ("dkongjrgala", "galakong")]
+    ("dkongjrgala", "galakong"),
+    ("dkongchorus", "dkchorus")]
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
@@ -168,7 +169,7 @@ START5_UNFRIENDLY = ["dkongce", "dkongspooky", "dkongoctomonkey", "dkonghalf", "
 STAGE_UNFRIENDLY = ["dkongpies", "dkongspringy", "dkongbarrels", "dkongrivets", "dkongvector", "dkongspooky",
                     "dkongoctomonkey", "dkonghalf", "dkongquarter"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
-AUTOSTART_UNFRIENDLY = []
+AUTOSTART_UNFRIENDLY = ["dkongchorus"]
 
 # Colours
 RED = (232, 7, 10)
@@ -201,7 +202,10 @@ SLOTS = [
     (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (210, 87),
     (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62), (90, 34),
     (18, 226), (34, 226), (50, 226), (90, 226), (114, 226), (130, 226), (146, 226), (162, 226), (178, 226), (194, 226),
-    (26, 186)
+    (26, 186), (42, 186), (58, 186), (82, 186), (98, 186), (114, 186), (130, 186), (154, 186), (170, 186), (186, 186),
+    (34, 146), (50, 146), (66, 146), (82, 146), (114, 146), (130, 146), (146, 146), (162, 146), (178, 146),
+    (42, 106), (74, 106), (90, 106), (106, 106), (122, 106), (138, 106), (170, 106),
+    (42, 66), (74, 66), (90, 66), (106, 66), (170, 66)
 ]
 
 # Number of slots that appear on barrels stage (including slot 0)
