@@ -51,6 +51,7 @@ FULLSCREEN = 1
 FREE_PLAY = 1                  # Jumpman does not have to pay to play
 UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score increases
 SKILL_LEVEL = 1                # How difficult are the target scores. 1 (Beginner) to 10 (Expert).
+START_STAGE = 0                # Stage to start the frontend on. 0 (Barrels) or 1 (Rivets)
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
@@ -182,6 +183,11 @@ GREY = (128, 128, 128)
 MIDGREY = (104, 104, 104)
 DARKGREY = (40, 40, 40)
 DARKBLUE = (4, 2, 220)
+MIDBLUE = (4, 3, 255)
+YELLOW = (244, 186, 21)
+
+# Bonus Timer colors
+BONUS_COLORS = [(CYAN, MAGENTA), (YELLOW, MIDBLUE)]
 
 # Alpha channel value for faded/locked arcade machines
 FADE_LEVEL = 75
@@ -193,8 +199,13 @@ SLOTS = [
     (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
     (194, 132), (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
     (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (210, 87),
-    (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62), (90, 34)
+    (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62), (90, 34),
+    (18, 226), (34, 226), (50, 226), (90, 226), (114, 226), (130, 226), (146, 226), (162, 226), (178, 226), (194, 226),
+    (26, 186)
 ]
+
+# Number of slots that appear on barrels stage (including slot 0)
+BARREL_SLOTS = 46
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = [
@@ -259,7 +270,7 @@ JUMP_SHORTEN = 1.25
 
 # In game messages and instructions
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
-COIN_INFO = ["Hey Jumpman!", '', "You must collect coins...", "to unlock more games", "", "Push COIN for game info", ""]
+COIN_INFO = ["Hey Jumpman!", '', "You must collect coins..", "to unlock more games", "", "Push COIN for game info", ""]
 FREE_INFO = ["Hey Jumpman!", '', "All arcades are free to play", "", "Push COIN to for game info", ""]
 TEXT_INFO = [["", "Push 'JUMP' to play or 'P1 START' for game options"], ["", "Push 'COIN' to disable these information messages"]]
 

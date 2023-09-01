@@ -1,4 +1,6 @@
-Donkey Kong Pies Only
+Donkey Kong Barrels Only
+
+Can you master the barrel stage?
 
 You play only the barrel boards starting from level 1.
 

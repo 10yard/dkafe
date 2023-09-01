@@ -20,6 +20,7 @@ ENABLE_SHUTDOWN = 0
 INACTIVE_TIME = 20
 SPEED_ADJUST = 0
 SKILL_LEVEL = 1
+START_STAGE = 0
 HIGH_SCORE_SAVE = 1
 
 # Emulator Settings
@@ -30,7 +31,6 @@ ALLOW_ROM_OVERWRITE = 0
 OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video opengl
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID> 
-
 
 # DKWolf/Interface Settings
 CREDITS = 1

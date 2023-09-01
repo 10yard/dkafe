@@ -109,7 +109,7 @@ def read_romlist():
                         icx, icy = -1, -1
                     usedslots.append(slot)
                     usedsubs.append(sub or des)
-                    romlist.append((name, sub, des, alt, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
+                    romlist.append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
     return romlist
 
 
@@ -244,4 +244,4 @@ def calculate_bonus(duration):
     # return bonus_display, colour, warning status, end of countdown
     bonus_timer = get_bonus_timer(duration)
     bonus_display = " 000" if bonus_timer <= 100 else str(int(bonus_timer)).rjust(4)[:2] + "00"
-    return bonus_display, (CYAN, MAGENTA)[bonus_timer < 1000], bonus_timer < 1000, bonus_timer <= -200
+    return bonus_display, (0, 1)[bonus_timer < 1000], bonus_timer < 1000, bonus_timer <= -200

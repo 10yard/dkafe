@@ -325,9 +325,10 @@ def display_slots(version_only=False, logo_scene=False):
     if _g.showslots or logo_scene:
         if not version_only:
             for i, slot in enumerate(SLOTS):
-                _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
-                write_text("  ", x=SLOTS[i][0] + 1, y=SLOTS[i][1] + 1, bg=BLACK)
-                write_text(str(i + 1).zfill(2), x=SLOTS[i][0] + 2, y=SLOTS[i][1] + 2, bg=BLACK)
+                if (_g.stage == 0 and i <= BARREL_SLOTS) or (_g.stage == 1 and i > BARREL_SLOTS):
+                    _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
+                    write_text("  ", x=SLOTS[i][0] + 1, y=SLOTS[i][1] + 1, bg=BLACK)
+                    write_text(str(i + 1).zfill(2), x=SLOTS[i][0] + 2, y=SLOTS[i][1] + 2, bg=BLACK)
         write_text(text="VERSION", font=dk_font, x=224, fg=RED, bg=BLACK, rj_adjust=True)
         write_text(text=VERSION, font=dk_font, x=224, y=8, bg=BLACK, rj_adjust=True)
 
@@ -341,58 +342,59 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     nearby = None
     info_list = []
     # Display icons and return icon that is near to Jumpman
-    for _x, _y, name, sub, des, alt, emu, rec, unlock, st3, st2, st1 in _g.icons:
-        p_des = alt if alt.strip() else des
-        unlocked = True
-        up = False
-        if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
-            unlocked = False
-        if not below_y or not above_y or (below_y >= _y >= above_y):
-            icon_image = os.path.join("artwork/icon", sub, name + ".png")
-            if smash:
-                icon_image = f"artwork/sprite/smash{str(randint(0, 3))}.png"
-            if not os.path.exists(icon_image):
-                icon_image = os.path.join("artwork/icon/default.png")
-            img = get_image(icon_image, fade=not unlocked)
-            w, h = img.get_width(), img.get_height()
-            if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h) and not intro:
-                # Pauline to announce the game found near Jumpman.  Return the game icon information.
-                if not unlocked and since_last_move() % 4 > 2:
-                    p_des = f"Unlock at {unlock}"
-                elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
-                    if since_last_move() % 5 > 4:
-                        p_des = f'1st prize at {format_K(st1)}'
-                    elif since_last_move() % 5 > 3:
-                        p_des = f'2nd prize at {format_K(st2)}'
-                    elif since_last_move() % 5 > 2:
-                        p_des = f'3rd prize at {format_K(st3)}'
-                elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
-                    # In case the default emu is for recordings
-                    p_des = 'For recording!'
-                elif not st3.strip() and since_last_move() % 4 > 2:
-                    p_des = 'For practice!'
-                elif not int(FREE_PLAY or BASIC_MODE) and since_last_move() % 4 > 2:
-                    p_des = f'${str(PLAY_COST)} to play'
-                if not _g.awarded and not _g.ready:
-                    # don't announce if Pauline already informing of an award
-                    write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                if unlocked:
-                    nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
-                    _g.selected = p_des
-                    up = True
+    for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
+        if (_g.stage == 0 and int(slot) - 1 <= BARREL_SLOTS) or (_g.stage == 1 and int(slot) - 1 > BARREL_SLOTS):
+            p_des = alt if alt.strip() else des
+            unlocked = True
+            up = False
+            if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
+                unlocked = False
+            if not below_y or not above_y or (below_y >= _y >= above_y):
+                icon_image = os.path.join("artwork/icon", sub, name + ".png")
+                if smash:
+                    icon_image = f"artwork/sprite/smash{str(randint(0, 3))}.png"
+                if not os.path.exists(icon_image):
+                    icon_image = os.path.join("artwork/icon/default.png")
+                img = get_image(icon_image, fade=not unlocked)
+                w, h = img.get_width(), img.get_height()
+                if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h) and not intro:
+                    # Pauline to announce the game found near Jumpman.  Return the game icon information.
+                    if not unlocked and since_last_move() % 4 > 2:
+                        p_des = f"Unlock at {unlock}"
+                    elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
+                        if since_last_move() % 5 > 4:
+                            p_des = f'1st prize at {format_K(st1)}'
+                        elif since_last_move() % 5 > 3:
+                            p_des = f'2nd prize at {format_K(st2)}'
+                        elif since_last_move() % 5 > 2:
+                            p_des = f'3rd prize at {format_K(st3)}'
+                    elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
+                        # In case the default emu is for recordings
+                        p_des = 'For recording!'
+                    elif not st3.strip() and since_last_move() % 4 > 2:
+                        p_des = 'For practice!'
+                    elif not int(FREE_PLAY or BASIC_MODE) and since_last_move() % 4 > 2:
+                        p_des = f'${str(PLAY_COST)} to play'
+                    if not _g.awarded and not _g.ready:
+                        # don't announce if Pauline already informing of an award
+                        write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                    if unlocked:
+                        nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
+                        _g.selected = p_des
+                        up = True
 
-            if not detect_only:
-                if not(_x == 90 and _y == 34):
-                    _g.screen.blit(img, (_x, _y))
-                    if up and not _g.ready:
-                        if pygame.time.get_ticks() % 550 < 275:
-                            _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
-                if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
-                    # Show recording text above icon
-                    if _g.timer.duration % 2 < 1:
-                        write_text("REC", x=_x, y=_y - 6, bg=RED)
-            if _g.showinfo:
-                info_list.append((des, _x, _y, w, unlocked))
+                if not detect_only:
+                    if not(_x == 90 and _y == 34):
+                        _g.screen.blit(img, (_x, _y))
+                        if up and not _g.ready:
+                            if pygame.time.get_ticks() % 550 < 275:
+                                _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
+                    if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
+                        # Show recording text above icon
+                        if _g.timer.duration % 2 < 1:
+                            write_text("REC", x=_x, y=_y - 6, bg=RED)
+                if _g.showinfo:
+                    info_list.append((des, _x, _y, w, unlocked))
     if _g.showinfo:
         # Show game info above icons.  Done as last step so that icons do not overwrite the text.
         for des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
@@ -502,11 +504,11 @@ def build_menus(initial=False):
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
-    for name, sub, desc, alt, icx, icy, emu, rec, unlock, st3, st2, st1 in _s.read_romlist():
+    for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _s.read_romlist():
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             _g.menu.add_button(alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
-            _g.icons.append((int(icx), int(icy), name, sub, desc, alt, emu, rec, unlock, st3, st2, st1))
+            _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
     _g.menu.add_vertical_margin(10)
     _g.menu.add_button('Settings', open_settings_menu)
     _g.menu.add_button('Close Menu', close_menu)
@@ -905,7 +907,7 @@ def process_interrupts():
             _g.timer_adjust = 0
             music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
-    write_text(bonus_display, font=dk_font, x=177, y=48, fg=bonus_colour)
+    write_text(bonus_display, font=dk_font, x=177, y=48, fg=BONUS_COLORS[_g.stage][bonus_colour])
 
     if _g.awarded:
         # Animate DK grabbing the trophy
@@ -957,13 +959,13 @@ def process_interrupts():
     _g.coins = [i for i in _g.coins if -10 < i[0] < 234]
 
     if _g.ready:
-        # Pauline shouts out the launch options
+        # Pauline announces the launch options
         if since_last_move() % 4 <= 2:
-            write_text("Push JUMP to play or..", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
-            write_text("JUMP", x=128, y=38, bg=MAGENTA)
+            write_text("Push JUMP to play or..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("JUMP", x=128 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
         else:
-            write_text("P1 START for options", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
-            write_text("P1 START", x=108, y=38, bg=MAGENTA)
+            write_text("P1 START for options", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("P1 START", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
 
         # Display game text
         if SHOW_GAMETEXT:
@@ -1032,12 +1034,7 @@ def animate_rolling_coins(out_of_time=False):
                 if _g.stage == 0:
                     co_dir *= -1  # Flip horizontal direction
                 else:
-                    # Favour a particular direction change based on x position
-                    if co_x <= GRAPHICS[0] / 2:
-                        co_dir = choice([1, 1, 1, 1, 1, -1])
-                    else:
-                        co_dir = choice([-1, -1, -1, -1, -1, 1])
-
+                    co_dir = choice([-1, 1])  # Random direction change
             co_y += COIN_SPEED
         else:
             co_x += co_dir * COIN_SPEED  # Increment horizontal movement
@@ -1090,18 +1087,19 @@ def stage_check():
     if _g.ypos < 20 and _g.stage == 0:
         _g.stage = 1
         _g.ypos = 238
-        _g.dkx, _g.dky = 80, 4
-        _g.psx, _g.psy = 16, -12
         _g.coins = []
         initialise_screen()
     elif _g.ypos > 239 and _g.stage == 1:
         _g.stage = 0
         _g.ypos = 20
-        _g.dkx, _g.dky = 0, 0
-        _g.psx, _g.psy = 0, 0
         _g.coins = []
         initialise_screen()
-
+    if _g.stage == 0:
+        _g.dkx, _g.dky = 0, 0
+        _g.psx, _g.psy = 0, 0
+    else:
+        _g.dkx, _g.dky = 80, 4
+        _g.psx, _g.psy = 16, -12
 
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
@@ -1121,6 +1119,7 @@ def main(initial=True):
     # Prepare front end
     assert (VERSION.startswith("v")), "The version number could not be determined"
     _g.active = False
+    _g.stage = START_STAGE if START_STAGE == 0 or START_STAGE == 1 else 0
     initialise_screen()
     load_frontend_state()
     detect_joysticks()

@@ -265,7 +265,11 @@ Default settings can be changed in the `settings.txt` file.  Some settings can b
 Increase the frontend speed.  0 is normal.  If frontend is running slow then try incrementing by 1 until desired speed is achieved.
 
 `SKILL_LEVEL = 1`
-How difficult are the target scores. 1 (Beginner) to 10 (Expert).
+How difficult are the target scores.  1 (Beginner) to 10 (Expert).
+
+`START_STAGE = 0`
+The stage to start the frontend on.  0 is barrels stage.  1 is rivets stage.
+
 
 `HIGH_SCORE_SAVE = 1`
 Save your high score tables for each game.

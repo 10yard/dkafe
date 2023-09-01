@@ -1,0 +1,8 @@
+Donkey Kong Pac-Man Graphics
+
+The hack uses some Pac-Man graphics. 
+
+The Jumpman character is replaced by Pac-Man and 
+Pauline is replaced by Ms. Pac-Man.
+
+Hack Developed by Tim Appleton
