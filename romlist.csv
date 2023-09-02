@@ -49,7 +49,8 @@ dkong,dkongfr,DK FreeRun,DK Freerun Edition,55,1,2,68000,20000,40000,60000
 dkong,dkongrainbow,DK Rainbow,,58,1,2,70000,10000,25000,40000
 dkong,dkongrnd,DK Random,DK Randomized,61,1,2,72000,10000,20000,40000
 dkong,dkongchorus,DK Chorus,,64,1,2,74000,10000,20000,40000
-dkong,dkongksfix,KS Fix,DK Killscreen Fix,66,1,2,76000,20000,35000,50000
+dkong,dkongl05,DK SkipStart,DK Skip Start,66,1,2,76000,20000,35000,50000
+dkong,dkongksfix,KS Fix,DK Killscreen Fix,68,1,2,78000,20000,35000,50000
 dkong,dkongtrn,DK Trainer,,99,1,2,,,,
 dkongf,dkongst2,DK Springs Trainer,,99,1,2,,,,
 dkong,dkongpace,DK Pace,,99,1,2,,,,
@@ -57,4 +58,3 @@ dkong,dkongbcc,DK Barrel Control,,99,1,2,,,,
 dkong,dkongduel,DK Duel,,99,1,2,,,,
 dkong,dkongbarrelboss,DK Barrel Boss,,99,1,2,,,,
 dkong,dkongsprfin,DK Springfinity,,99,1,2,,,,
-dkong,dkongl05,DK Skip Start,,99,1,2,,,,

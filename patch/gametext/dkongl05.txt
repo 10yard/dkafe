@@ -1,0 +1,13 @@
+Donkey Kong Skip Start
+
+The original Donkey Kong arcade game increases in 
+difficulty in the first four levels. At level L=05
+the maximum difficulty is reached and stays the same 
+for the remainder of the game. 
+For pro Donkey Kong players this is considered the 
+real start of the game. 
+
+In this romhack the first four levels are skipped and 
+the game starts at level L=05.
+
+Hack Developed by Paul Goes
