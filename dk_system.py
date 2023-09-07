@@ -66,23 +66,17 @@ def read_romlist():
             if not data.startswith("#") and data.strip() and data.count(",") >= 10:
                 # read romlist data and tweak the descriptions
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
+
+                # Skip over top level roms when files are not found - these are typically the optional roms:
+                #   dkongjr, dkong3, ckongpt2, bigkong etc
+                if not sub and name != "dkong" and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
+                    continue
+
                 if not alt:
                     alt = des
                 des = des.replace("DK ", "$ ").replace("DK", "$ ")
                 des = des.replace("1/2", "{ ").replace("1/4", "} ")
                 des = des.replace("NO", "| ") if des[:2] == "NO" else des
-
-                # Skip over rom if the file is not found
-                if name == "dkongjr" and not os.path.exists(DKONGJR_ZIP):
-                    continue
-                if name == "dkong3" and not os.path.exists(DKONG3_ZIP):
-                    continue
-                if name == "ckongpt2" and not os.path.exists(CKONGPT2_ZIP):
-                    continue
-                if name == "ckong" and not os.path.exists(CKONG_ZIP):
-                    continue
-                if name == "bigkong" and not os.path.exists(BIGKONG_ZIP):
-                    continue
 
                 # Assume defaults when not provided
                 if not emu.strip():

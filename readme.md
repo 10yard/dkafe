@@ -16,15 +16,15 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
-| [dkafe_win64_binary_v0.44.zip](https://github.com/10yard/dkafe/releases/download/v0.44/dkafe_win64_binary_v0.44.zip) | 0.44    | Windows 64 bit (x64) systems: 10, 11      |
-| [dkafe_win32_binary_v0.44.zip](https://github.com/10yard/dkafe/releases/download/v0.44/dkafe_win32_binary_v0.44.zip) | 0.44    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_win64_binary_v0.45.zip](https://github.com/10yard/dkafe/releases/download/v0.45/dkafe_win64_binary_v0.45.zip) | 0.45    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_win32_binary_v0.45.zip](https://github.com/10yard/dkafe/releases/download/v0.45/dkafe_win32_binary_v0.45.zip) | 0.45    | Windows 32 bit (x86) systems: Vista, 7, 8 |
 | [dkafe_rpi4_image_v0.44.gz](https://github.com/10yard/dkafe/releases/download/v0.44/dkafe_rpi4_image_v0.44.gz)       | 0.44    | Raspberry Pi 4 and 400 only               |
 | [dkafe_winxp_binary_v0.39.zip](https://github.com/10yard/dkafe/releases/download/v0.39/dkafe_winxp_binary_v0.39.zip) | 0.39    | Windows XP only                           |
 
 
 ## About DKAFE
 
-The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girders stage and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
+The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girder and rivet stages and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
 The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically by me for this frontend. 
 
@@ -51,6 +51,7 @@ The frontend can be configured to launch other emulators and roms.
  - Several Donkey Kong hacks made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
  - MAME plugins and scripts interface MAME with the frontend and add cool features such as a coaching mode.
+ - Extensive configuration options
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -220,7 +221,8 @@ The application requires settings.txt and romlist.csv to be present in the insta
  
 The settings.txt contains the emulator, rom path, controls and other configuration.  See **Frontend Settings** section below.
 
-The romlist.csv contains information about the roms, which slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
+The romlist.csv contains information about the roms, which game slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
+There are 88 configurable game slots in total. 
 
 
 ### Display Resolution
@@ -440,11 +442,11 @@ The file can be configured to launch roms from the default rom directory (by lea
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
 If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See `ALLOW_ROM_OVERWRITE` option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. `/roms/original`) to prevent it from being overwritten.
 
-All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 46) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
+All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 88) and a basic descriptive name.  Set the slot position to 0 or 99 if you want the rom to only appear in the menu. 
 
 As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 
-If there are multiple entries for the same slot number then the first valid entry will be used.  This allows the optional roms *dkongjr*, *dkong3* and *ckongpt2* to become active when they are provided.
+If there are multiple entries for the same slot number then the first valid entry will be used.  This allows the optional roms *dkongjr*, *dkong3*, *ckongpt2* and *bigkong* to become active when they are provided.
 
 The special subfolder name `shell` can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the `/shell` subfolder.  The emulator number can be left blank.
 
