@@ -26,7 +26,7 @@ emu.register_frame(function()
 
 	if loaded == nil then
 		math.randomseed(os.time())
-		autostart_delay = screen:frame_number() + math.random(5, 30)
+		autostart_delay = math.random(5, 20)
 		
 		-- Wait for ROM to start
 		if emu.romname() == "dkongx" and mem:read_u8(0xc600a) ~= 1 then
@@ -65,14 +65,14 @@ emu.register_frame(function()
 	end
 
 	if loaded == 2 then
-		-- Release P1 START button (after autostart)
-		if not mode1 then
-			ports[":IN2"].fields["1 Player Start"]:set_value(0)
-		end
-	
 		mode1 = mem:read_u8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
 		mode2 = mem:read_u8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
 		score = get_score()
+		
+		-- Release P1 START button (after autostart)	
+		if mode1 > 2 and screen:frame_number() < 60 then
+			ports[":IN2"].fields["1 Player Start"]:set_value(0)
+		end
 				
 		-- Keep track of best P1 score achieved this session
 		if mode1 == 3 and last_mode1 == 3 then

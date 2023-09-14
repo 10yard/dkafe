@@ -2,4 +2,16 @@ DONKEY KONG JAPAN
 
 The original Japanese release of Donkey Kong from 1981.
 
+It has a different level layout and the kill screen 
+comes earlier (Japan ends on screen 85; US ends on 117). 
+
+The barrel screens allow the player to effectively 
+"cheat" by waiting near the top of a ladder with no 
+risk of barrels rolling down onto Jumpman (the game 
+code was modified to disallow this a few months after 
+the first batch of American machines rolled out). 
+
+Other than fewer barrel boards and the ladder cheat, 
+gameplay is identical between the two versions.
+
 Developed by Nintendo 

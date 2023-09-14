@@ -137,7 +137,7 @@ function display_awards(rom_offset)
 		-- Show progress against targets at top of screen replacing high score
 		if best_score >= data_score3 then
 			write_message(0xc76e0, "              ")
-			if data_subfolder == "dkongwizardry" then -- this rom has a custom palette, see https://github.com/10yard/dkafe/issues/7
+			if data_subfolder == "dkongwizardry" or data_subfolder == "dkongaccelerate" then -- see https://github.com/10yard/dkafe/issues/7
 				if best_score >= data_score1 then
 					write_message(0xc7660 + _rom_offset, "WON 1ST!")
 				elseif best_score >= data_score2 then
@@ -188,7 +188,9 @@ function display_awards(rom_offset)
 end
 
 function record_in_compete_file()
-	compete_file = io.open(data_file, "w+")
-	compete_file:write(emu.romname()  .. "\n")
-	compete_file:write(tostring(best_score) .. "\n")
+	if data_file then
+		compete_file = io.open(data_file, "w+")
+		compete_file:write(emu.romname()  .. "\n")
+		compete_file:write(tostring(best_score) .. "\n")
+	end
 end

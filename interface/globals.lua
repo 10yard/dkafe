@@ -35,8 +35,8 @@ end
 data_emulator = os.getenv("DATA_EMULATOR")
 data_file = os.getenv("DATA_FILE")
 data_subfolder = os.getenv("DATA_SUBFOLDER")
-data_credits = os.getenv("DATA_CREDITS")
-data_autostart = os.getenv("DATA_AUTOSTART")
+data_credits = os.getenv("DATA_CREDITS") or "0"
+data_autostart = os.getenv("DATA_AUTOSTART") or "0"
 
 --Award targets and progress data
 ---------------------------------------------------------------

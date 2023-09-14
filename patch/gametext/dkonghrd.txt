@@ -1,5 +1,13 @@
-DONKEY KONG HARD MODE
+DONKEY KONG HARD KIT
 
 A version of Donkey Kong with increased difficulty.
+
+This was originally a rom replacement kit which 
+replaces the original Donkey Kong board hardware.
+
+It greatly increases the speed and amount of fireballs 
+showing on all levels. Such behavior can be seen 
+easily on the Rivet Board, where most of the fireballs 
+have appeared even before removing the first rivet.
 
 Developed by Nintendo 

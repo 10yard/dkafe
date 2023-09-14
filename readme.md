@@ -16,8 +16,8 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
-| [dkafe_win64_binary_v0.45.zip](https://github.com/10yard/dkafe/releases/download/v0.45/dkafe_win64_binary_v0.45.zip) | 0.45    | Windows 64 bit (x64) systems: 10, 11      |
-| [dkafe_win32_binary_v0.45.zip](https://github.com/10yard/dkafe/releases/download/v0.45/dkafe_win32_binary_v0.45.zip) | 0.45    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_win64_binary_v0.46.zip](https://github.com/10yard/dkafe/releases/download/v0.46/dkafe_win64_binary_v0.46.zip) | 0.46    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_win32_binary_v0.46.zip](https://github.com/10yard/dkafe/releases/download/v0.46/dkafe_win32_binary_v0.46.zip) | 0.46    | Windows 32 bit (x86) systems: Vista, 7, 8 |
 | [dkafe_rpi4_image_v0.44.gz](https://github.com/10yard/dkafe/releases/download/v0.44/dkafe_rpi4_image_v0.44.gz)       | 0.44    | Raspberry Pi 4 and 400 only               |
 | [dkafe_winxp_binary_v0.39.zip](https://github.com/10yard/dkafe/releases/download/v0.39/dkafe_winxp_binary_v0.39.zip) | 0.39    | Windows XP only                           |
 
@@ -107,10 +107,12 @@ Credit is given to the original authors below.
  - Donkey Kong Springfinity
  - Donkey Kong Barrel Boss
  - Donkey Kong Heart Hunt
+ - Donkey Kong Accelerate
 
 ### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix
  - Donkey Kong Christmas Remix
+ - Donkey Kong Remix Demo
  - Donkey Kong Springs Trainer
  - Donkey Kong Trainer
  - Donkey Kong Pace

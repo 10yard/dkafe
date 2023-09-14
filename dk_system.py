@@ -124,7 +124,7 @@ def get_inp_files(rec, name, sub, num):
     return sorted(glob(os.path.join(get_inp_dir(rec), f"{name}_{sub}_*.inp")), reverse=True)[:num]
 
 
-def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=False):
+def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=False, fullscreen=False, launch_plugin=None, playback=False):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
@@ -195,7 +195,7 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
             launch_command += f" -plugin {launch_plugin}"
 
     # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
-    if HIGH_SCORE_SAVE and subfolder and not launch_plugin:
+    if high_score_save and not launch_plugin and subfolder not in HISCORE_UNFRIENDLY:
         os.environ["DKAFE_SUBFOLDER"] = subfolder + "_" if subfolder else ""
         if "-plugin" in launch_command:
             launch_command += ",hiscore"
@@ -203,13 +203,13 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
             launch_command += " -plugin hiscore"
 
     # Are we using the refocus plugin
-    if REFOCUS_WINDOW:
+    if refocus:
         if "-plugin" in launch_command:
             launch_command += ",refocus"
         else:
             launch_command += " -plugin refocus"
 
-    if not FULLSCREEN:
+    if not fullscreen:
         launch_command += " -window"
 
     launch_command += " -skip_gameinfo -nonvram_save"
@@ -227,6 +227,7 @@ def build_launch_command(info, basic_mode=False, launch_plugin=None, playback=Fa
         os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
         os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
 
+    # print(launch_command)  # debug launch arguments
     return launch_command, launch_directory, competing, inp_file
 
 

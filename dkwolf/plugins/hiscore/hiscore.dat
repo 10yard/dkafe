@@ -4892,10 +4892,11 @@ dkongjrpb:
 @:maincpu,program,7661,1,10,10
 @:maincpu,program,7641,1,00,00
 @:maincpu,program,7621,1,00,00
-@:maincpu,program,7601,1
+@:maincpu,program,7601,1,07,07
 @:maincpu,program,75e1,1,06,06
 @:maincpu,program,75c1,1,05,05
 @:maincpu,program,75a1,1,00,00
+
 
 
 ;dkongjrb:******donkey kong jr. (bootleg)

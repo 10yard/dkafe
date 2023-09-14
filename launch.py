@@ -736,7 +736,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
         award_channel.stop()
         music_channel.pause()
 
-        launch_command, launch_directory, competing, inp_file = _s.build_launch_command(info, BASIC_MODE, launch_plugin)
+        launch_command, launch_directory, competing, inp_file = \
+            _s.build_launch_command(info, BASIC_MODE, HIGH_SCORE_SAVE, REFOCUS_WINDOW, FULLSCREEN, launch_plugin)
 
         if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
@@ -793,7 +794,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
 def playback_rom(info, inpfile):
     """playback the specified inp file"""
-    launch_command, launch_directory, competing, _ = _s.build_launch_command(info, True, False, True)
+    launch_command, launch_directory, competing, _ = \
+        _s.build_launch_command(info, basic_mode=True,  playback=True)
     if os.path.exists(launch_directory):
         close_menu()
         clear_screen(and_reset_display=True)
@@ -1100,6 +1102,7 @@ def stage_check():
     else:
         _g.dkx, _g.dky = 80, 4
         _g.psx, _g.psy = 16, -12
+
 
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
