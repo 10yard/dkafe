@@ -63,47 +63,54 @@ def read_romlist():
     with open("romlist.csv", "r") as rl:
         for row in rl.readlines():
             data = row.replace('"', '')
-            if not data.startswith("#") and data.strip() and data.count(",") >= 10:
+            if  data.strip() and not data.startswith("#") and data.count(",") >= 10:
                 # read romlist data and tweak the descriptions
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
+                if not sub or sub not in usedsubs:
+                    # Skip over top level roms when files are not found - these are typically the optional roms:
+                    #   dkongjr, dkong3, ckong, ckongpt2, bigkong etc
+                    if not sub and name != "dkong" and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
+                        continue
 
-                # Skip over top level roms when files are not found - these are typically the optional roms:
-                #   dkongjr, dkong3, ckongpt2, bigkong etc
-                if not sub and name != "dkong" and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
-                    continue
+                    # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
+                    if name in OPTIONAL_NAMES and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
+                        continue
 
-                if not alt:
-                    alt = des
-                des = des.replace("DK ", "$ ").replace("DK", "$ ")
-                des = des.replace("1/2", "{ ").replace("1/4", "} ")
-                des = des.replace("NO", "| ") if des[:2] == "NO" else des
+                    if not alt:
+                        alt = des
+                    des = des.replace("DK ", "$ ").replace("DK", "$ ")
+                    des = des.replace("1/2", "{ ").replace("1/4", "} ")
+                    des = des.replace("NO", "| ") if des[:2] == "NO" else des
 
-                # Assume defaults when not provided
-                if not emu.strip():
-                    emu = "1"
-                if not rec.strip():
-                    rec = "0"
-                if not unlock:
-                    unlock = "0"
+                    # Assume defaults when not provided
+                    if not emu:
+                        emu = "1"
+                    if not rec:
+                        rec = "0"
+                    if not unlock:
+                        unlock = "0"
 
-                # Get the score targets
-                if "-record" in get_emulator(int(emu)).lower():
-                    # Score targets are not considered for recordings
-                    st3, st2, st1 = ("",) * 3
-                icx, icy = -1, -1
-                if 0 < int(slot) <= len(SLOTS):
-                    icx, icy = SLOTS[int(slot) - 1]
-                st1 = apply_skill(st1)
-                st2 = apply_skill(st2)
-                st3 = apply_skill(st3)
+                    # Get the score targets
+                    if "-record" in get_emulator(int(emu)).lower():
+                        # Score targets are not considered for recordings
+                        st3, st2, st1 = ("",) * 3
+                    st1 = apply_skill(st1)
+                    st2 = apply_skill(st2)
+                    st3 = apply_skill(st3)
 
-                if name and des:
-                    if slot in usedslots:
-                        slot = "99"
-                        icx, icy = -1, -1
-                    usedslots.append(slot)
-                    usedsubs.append(sub or des)
-                    romlist.append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
+                    # Get slot location
+                    icx, icy = -1, -1
+                    if 0 < int(slot) <= len(SLOTS):
+                        icx, icy = SLOTS[int(slot) - 1]
+
+                    if name and des:
+                        if slot in usedslots:
+                            slot = "99"
+                            icx, icy = -1, -1
+                        elif sub:
+                            usedsubs.append(sub)
+                        romlist.append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
+                        usedslots.append(slot)
     return romlist
 
 

@@ -142,6 +142,9 @@ CKONG_ZIP = os.path.join(ROM_DIR, "ckong.zip")
 CKONGPT2_ZIP = os.path.join(ROM_DIR, "ckongpt2.zip")
 BIGKONG_ZIP = os.path.join(ROM_DIR, "bigkong.zip")
 
+# Optional rom names
+OPTIONAL_NAMES = ["dkong", "dkongjr", "dkong3", "ckong", "ckongpt2", "bigkong"]
+
 # Plugins add functionality to certain roms
 PLUGINS = [
     ("dkonglava", "dklavapanic"),
@@ -153,7 +156,9 @@ PLUGINS = [
     ("dkongxgalakong", "galakong"),
     ("dkongallen", "allenkong"),
     ("dkongjrgala", "galakong"),
-    ("dkongchorus", "dkchorus")]
+    ("dkongchorus", "dkchorus"),
+    ("dkongcontinue", "continue"),
+    ("dkongjrcontinue", "continue")]
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
@@ -167,7 +172,7 @@ SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "d
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
 START5_UNFRIENDLY = ["dkongce", "dkongspooky", "dkongoctomonkey", "dkonghalf", "dkongquarter"]
 STAGE_UNFRIENDLY = ["dkongpies", "dkongspringy", "dkongbarrels", "dkongrivets", "dkongvector", "dkongspooky",
-                    "dkongoctomonkey", "dkonghalf", "dkongquarter"]
+                    "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongcontinue"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
 AUTOSTART_UNFRIENDLY = ["dkongchorus"]
 
@@ -287,6 +292,7 @@ NO_ROMS_MESSAGE = [
     "DKONG.ZIP    IS REQUIRED",
     "DKONGJR.ZIP  IS OPTIONAL",
     "DKONG3.ZIP   IS OPTIONAL",
+    "CKONG.ZIP    IS OPTIONAL",
     "CKONGPT2.ZIP IS OPTIONAL",
     "BIGKONG.ZIP  IS OPTIONAL"]
 

@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "continue",
+"description": "Continue plugin",
+"version": "0.19",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

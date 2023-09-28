@@ -88,6 +88,7 @@ Credit is given to the original authors below.
  - Donkey Kong Rivets Only
  - Donkey Kong Coach
  - Donkey Kong Chorus
+ - Donkey Kong Continue
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition
