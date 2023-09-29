@@ -45,6 +45,9 @@ If you're not up for the challenge then it is possible to adjust things and have
 The frontend can be configured to launch other emulators and roms.
 
 
+![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
+
+
 ### The frontend includes:
  - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A rom patcher that automatically generates hacked roms from the many included patch files.
