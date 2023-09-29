@@ -673,7 +673,7 @@ def set_confirm(_, setting_value):
 def set_gametext(_, setting_value, external=False):
     globals()["SHOW_GAMETEXT"] = setting_value
     if external:
-        # Hack to fix pygamemenu when updating outside of the menu
+        # Hack to fix pygamemenu when updating outside the menu
         for i, w in enumerate(_g.setmenu._widgets):
             if w._title.startswith("Show Game Text"):
                 _g.setmenu._widgets[i]._index = int(SHOW_GAMETEXT)

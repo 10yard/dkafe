@@ -63,7 +63,7 @@ def read_romlist():
     with open("romlist.csv", "r") as rl:
         for row in rl.readlines():
             data = row.replace('"', '')
-            if  data.strip() and not data.startswith("#") and data.count(",") >= 10:
+            if data.strip() and not data.startswith("#") and data.count(",") >= 10:
                 # read romlist data and tweak the descriptions
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                 if not sub or sub not in usedsubs:

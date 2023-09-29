@@ -51,7 +51,7 @@ def validate_rom():
             return False
         else:
             # Last resort:
-            # Check the ZIP contains all of the required files
+            # Check the ZIP contains all the required files
             z = zipfile.ZipFile(DKONG_ZIP)
             for filename in ROM_CONTENTS:
                 if filename not in z.namelist():
