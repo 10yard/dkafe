@@ -164,9 +164,11 @@ These plugins add extra features to some roms.
 
 The coaching plugin can help you master the springs and barrels stages.
 
-[![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=ax-xDwVr7No)
 
-<sup>Click image to watch gameplay video</sup>
+[![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
+
+<sup>Click image to watch a video review of DKCoach by GenXGrownup</sup>
+
 
 ### DKChorus
 
@@ -220,7 +222,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ## How to set up?
 
-The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place **dkongjr.zip**, **dkong3.zip** and **ckongpt2.zip** into the dkafe/roms folder.  
+The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place **dkongjr.zip**, **dkong3.zip**, **ckongpt2.zip** and **bigkong.zip** into the dkafe/roms folder.  
 The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.
 
 The application requires settings.txt and romlist.csv to be present in the installation folder.  Defaults are provided.

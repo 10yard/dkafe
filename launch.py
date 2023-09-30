@@ -1185,7 +1185,7 @@ def main(initial=True):
         update_screen()
 
         # -- restart game after level is completed --
-        # if _g.score >= 58000:
+        # if _g.score >= 90000:
         #     import importlib
         #     importlib.reload(_g)
         #     main(initial=False)

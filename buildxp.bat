@@ -40,11 +40,13 @@ xcopy shell dist\launchxp\shell /S /i /Y
 xcopy sounds dist\launchxp\sounds /S /i /Y
 xcopy interface dist\launchxp\interface /S /i /Y
 xcopy patch dist\launchxp\patch /S /i /Y
-copy romlist.csv dist\launchxp\ /Y
 copy settings.txt dist\launchxp\ /Y
 copy readme.md dist\launchxp\ /Y
 copy VERSION dist\launchxp\ /Y
 copy COPYING dist\launchxp\ /Y
+
+echo *** remove the not supported ckong and bigkong from the default romlist.csv when copying
+type romlist.csv | findstr /v ckong | findstr /v bigkong > dist\launchxp\romlist.csv
 
 echo **** create empty roms folder
 xcopy roms\---* dist\launchxp\roms /S /i /Y
@@ -60,7 +62,6 @@ rmdir dist\dkwolf\inp /s /Q
 
 echo *** pull in plugin dependencies from Wolfmame 196 overwriting DKAFE default
 xcopy C:\wolfmame_0196\plugins dist\launchxp\dkwolf\plugins /S /i /Y
-
 
 echo **** clean up
 rmdir build /s /Q
