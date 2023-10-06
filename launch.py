@@ -76,13 +76,14 @@ def check_patches_available():
         if applied_patches:
             clear_screen()
             x_offset, y_offset = 0, 23
-            write_text(f"APPLYING PATCH FILES...", font=dk_font, x=0, y=8, fg=RED)
+            write_text(f"APPLYING {str(len(applied_patches))} PATCH FILES...", font=dk_font, x=0, y=8, fg=RED)
             for i, patch in enumerate(applied_patches):
-                write_text(patch.upper(), font=dk_font7, x=x_offset, y=y_offset)
+                write_text(patch.upper(), font=pl_font7, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
-                y_offset += 7
-                if y_offset > 224:
-                    x_offset, y_offset = 112, 24
+                y_offset += 8
+                if y_offset > 220:
+                    x_offset += 75
+                    y_offset = 24
             flash_message("ALL GOOD!", x=0, y=232, cycles=4, clear=False)
             jump_to_continue(0)
     else:

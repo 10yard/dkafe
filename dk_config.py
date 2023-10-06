@@ -138,12 +138,9 @@ if os.path.exists("VERSION"):
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
-CKONG_ZIP = os.path.join(ROM_DIR, "ckong.zip")
-CKONGPT2_ZIP = os.path.join(ROM_DIR, "ckongpt2.zip")
-BIGKONG_ZIP = os.path.join(ROM_DIR, "bigkong.zip")
 
 # Optional rom names
-OPTIONAL_NAMES = ["dkong", "dkongjr", "dkong3", "ckong", "ckongpt2", "bigkong"]
+OPTIONAL_NAMES = ["dkong", "dkongjr", "dkong3"]
 
 # Plugins add functionality to certain roms
 PLUGINS = [
@@ -291,10 +288,7 @@ NO_ROMS_MESSAGE = [
     "THEN RESTART.", "",
     "DKONG.ZIP    IS REQUIRED",
     "DKONGJR.ZIP  IS OPTIONAL",
-    "DKONG3.ZIP   IS OPTIONAL",
-    "CKONG.ZIP    IS OPTIONAL",
-    "CKONGPT2.ZIP IS OPTIONAL",
-    "BIGKONG.ZIP  IS OPTIONAL"]
+    "DKONG3.ZIP   IS OPTIONAL"]
 
 ROM_CONTENTS = ["c_5at_g.bin", "c_5bt_g.bin", "c_5ct_g.bin", "c_5et_g.bin", "c-2j.bpr", "c-2k.bpr", "l_4m_b.bin",
                 "l_4n_b.bin", "l_4r_b.bin", "l_4s_b.bin", "s_3i_b.bin", "s_3j_b.bin", "v_3pt.bin", "v_5h_b.bin",
@@ -395,8 +389,8 @@ clock = pygame.time.Clock()
 
 # Font setup (pygame)
 dk_font = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 8)
-dk_font7 = pygame.font.Font('fonts/PressStart2P-vaV7.ttf', 7)
 pl_font = pygame.font.Font('fonts/tom-thumb.bdf', 5)
+pl_font7 = pygame.font.Font('fonts/tom-thumb.bdf', 7)
 
 # Menu theme setup
 dkafe_theme = pymenu.themes.THEME_DEFAULT.copy()

@@ -141,6 +141,10 @@ Credit is given to the original authors below.
 
 ### By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics
+ 
+### By Falcon
+ - Crazy Kong
+ - Crazy Kong Part 2
 
 ### By others
  - Donkey Kong Wild Barrel Hack
@@ -148,6 +152,7 @@ Credit is given to the original authors below.
  - Donkey Kong Naked
  - Donkey Kong Hard
  - Donkey Kong Japan
+ - Big Kong
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
@@ -222,7 +227,7 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 
 ## How to set up?
 
-The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place **dkongjr.zip**, **dkong3.zip**, **ckongpt2.zip** and **bigkong.zip** into the dkafe/roms folder.  
+The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place **dkongjr.zip** and **dkong3.zip** into the dkafe/roms folder.  
 The frontend will automatically generate a bunch of Donkey Kong roms using patch files which are included with the software.
 
 The application requires settings.txt and romlist.csv to be present in the installation folder.  Defaults are provided.
@@ -454,7 +459,7 @@ All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as d
 
 As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 
-If there are multiple entries for the same slot number then the first valid entry will be used.  This allows the optional roms *dkongjr*, *dkong3*, *ckongpt2* and *bigkong* to become active when they are provided.
+If there are multiple entries for the same slot number then the first valid entry will be used.  This allows the optional roms *dkongjr* and *dkong3* to become active when they are provided.
 
 The special subfolder name `shell` can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the `/shell` subfolder.  The emulator number can be left blank.
 

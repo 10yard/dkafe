@@ -15,7 +15,7 @@ from glob import glob
 import shutil
 import hashlib
 import zipfile
-from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP, CKONGPT2_ZIP, BIGKONG_ZIP
+from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP
 from dk_system import is_pi, copy
 
 
@@ -66,17 +66,17 @@ def apply_patches():
     applied_patches_list = []
 
     if is_pi():
-        # Look for DK roms (and Crazy Kong) on the /boot partition of Pi when not found in the roms folder
+        # Look for DK roms on the /boot partition of Pi when not found in the roms folder
         # User may not have provided them at install time
-        for rom in DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, CKONG_ZIP, CKONGPT2_ZIP, BIGKONG_ZIP:
+        for rom in DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP:
             if not os.path.exists(rom) and os.path.exists(f'/boot/{os.path.basename(rom)}'):
                 copy(f'/boot/{os.path.basename(rom)}', ROM_DIR)
             if not os.path.exists(rom) and os.path.exists(f'/boot/dkafe_bin/{os.path.basename(rom)}'):
                 copy(f'/boot/dkafe_bin/{os.path.basename(rom)}', ROM_DIR)
 
     if os.path.exists(DKONG_ZIP):
-        # Proceed with the patching
-        ips_files = glob(os.path.join(PATCH_DIR, "dkong*.ips"))
+        # Proceed with the patching (ignoring the fix files)
+        ips_files = glob(os.path.join(PATCH_DIR, "[!fix_]*.ips"))
         if ips_files:
             # Read the original ZIP binary
             with open(DKONG_ZIP, 'rb') as f_in:
@@ -97,7 +97,8 @@ def apply_patches():
                         # Patching DK rom and writing to subfolder
                         os.mkdir(subfolder)
                         patch = Patch.load(ips)
-                        with open(os.path.join(subfolder, "dkong.zip"), 'w+b') as f_out:
+                        romfile = "dkong" if name.startswith("dkong") else name
+                        with open(os.path.join(subfolder, f"{romfile}.zip"), 'w+b') as f_out:
                             f_out.write(patch.apply(dkong_binary))
                             applied_patches_list.append(name)
 
