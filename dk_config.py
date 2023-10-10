@@ -173,6 +173,9 @@ STAGE_UNFRIENDLY = ["dkongpies", "dkongspringy", "dkongbarrels", "dkongrivets", 
 HISCORE_UNFRIENDLY = ["dkongd2k"]
 AUTOSTART_UNFRIENDLY = ["dkongchorus"]
 
+# Roms that are converted to Galaxian hardware
+GALAXIAN_HARDWARE = ["kong", "ckongmc", "ckongs", "ckongpt2b"]
+
 # Colours
 RED = (232, 7, 10)
 BLUE = (4, 3, 255)
@@ -207,7 +210,7 @@ SLOTS = [
     (26, 186), (42, 186), (58, 186), (82, 186), (98, 186), (114, 186), (130, 186), (154, 186), (170, 186), (186, 186),
     (34, 146), (50, 146), (66, 146), (82, 146), (114, 146), (130, 146), (146, 146), (162, 146), (178, 146),
     (42, 106), (74, 106), (90, 106), (106, 106), (122, 106), (138, 106), (170, 106),
-    (42, 66), (74, 66), (90, 66), (106, 66), (170, 66)
+    (42, 66), (74, 66), (90, 66), (146, 66), (170, 66)
 ]
 
 # Number of slots that appear on barrels stage (including slot 0)

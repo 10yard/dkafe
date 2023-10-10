@@ -145,6 +145,7 @@ Credit is given to the original authors below.
 ### By Falcon
  - Crazy Kong
  - Crazy Kong Part 2
+ - Crazy Kong Part 2 (Alternative Levels)
 
 ### By others
  - Donkey Kong Wild Barrel Hack
@@ -152,7 +153,12 @@ Credit is given to the original authors below.
  - Donkey Kong Naked
  - Donkey Kong Hard
  - Donkey Kong Japan
+
+### Bootlegs
  - Big Kong
+ - Donkey Kong converted to Galaxian Hardware
+ - Crazy Kong converted to Scramble Hardware
+ - Crazy Kong converted to Moon Cresta Hardware
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)

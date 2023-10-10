@@ -22,11 +22,15 @@ The code changes for WolfMAME 0.196, 0.236 and 0.241 are included in the "change
     removed "WRONG CHECKSUMS" message as we are expecting this with our DK hacks.
     removed ROM loading messages
 
+  emu/validity.cpp
+    increase check to 1000 roms before clones are validated.  This suppresses the warnings.
+
   frontend/mame/mame.cpp
     removed "Initializing..." message
 
   frontend/mame/language.cpp
     Remove translation error messages
+	
 
 A useful reference to compiling MAME can be found at:
   http://forum.arcadecontrols.com/index.php?topic=149545.0
@@ -34,7 +38,7 @@ A useful reference to compiling MAME can be found at:
 MAME build tools are available at https://github.com/mamedev/buildtools/releases
 
 To build with only DK (and crazy kong) drivers the SOURCES flag was used in the makefile along with REGENIE i.e.
-  SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp
+  SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp,src/mame/drivers/galaxian.cpp
   REGENIE=1
   NOWERROR=1
 

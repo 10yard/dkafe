@@ -79,6 +79,7 @@ def read_romlist():
                     if not alt:
                         alt = des
                     des = des.replace("DK ", "$ ").replace("DK", "$ ")
+                    des = des.replace("CK ", "# ").replace("CK", "# ")
                     des = des.replace("1/2", "{ ").replace("1/4", "} ")
                     des = des.replace("NO", "| ") if des[:2] == "NO" else des
 
@@ -89,6 +90,10 @@ def read_romlist():
                         rec = "0"
                     if not unlock:
                         unlock = "0"
+
+                    # Skip over Galaxian hardware based roms when system not supported
+                    if sub in GALAXIAN_HARDWARE and is_pi() and (emu == "1" or emu == "2"):
+                        continue
 
                     # Get the score targets
                     if "-record" in get_emulator(int(emu)).lower():

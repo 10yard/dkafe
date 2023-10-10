@@ -10,53 +10,57 @@ dkong,dkong40,DK 40!!,DK Anniversary Edition,11,1,2,4000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,12,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,14,1,2,8000,10000,20000,40000
 dkong,dkongwho,DK Who,DK Who and the Daleks,15,1,2,10000,10000,20000,40000
-dkong,dkongquarter,1/4 Kong,Quarter Kong,17,1,2,12000,40000,100000,160000
-dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,18,1,2,14000,10000,20000,40000
+dkong,dkongaccelerate,DK Accel,DK Accelerate,17,1,2,12000,10000,25000,40000
+ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),18,1,2,14000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,19,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,20,1,2,18000,10000,15000,30000
 dkong,dkongvector,VectorKong,Vector Kong,21,1,2,20000,10000,20000,40000
 dkongjr,dkongjrgala,Gala Jr,GalaKong Junior,22,1,2,22000,10000,20000,30000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,22,1,2,22000,10000,20000,40000
-dkong,dkongotr,DK OnTheRun,DK On The Run,24,1,2,24000,10000,15000,30000
-dkongx,dkongd2k,D2K,D2K Jumpman Returns,25,1,2,26000,5000,10000,25000
+dkong,dkongtj,DK Jungle,DK Twisted Jungle,24,1,2,24000,10000,25000,45000
+dkong,dkongfr,DK Free,DK Freerun Edition,25,1,2,26000,20000,40000,60000
 dkong,dkongrivets,DKRivet,DK Rivets Only,26,1,2,28000,10000,20000,40000
-dkong,dkongrev,DK Reverse,DK Reverse,27,1,2,30000,10000,25000,50000
-dkong,dkonghrthnt,DK ~,DK Heart Hunt,28,1,2,32000,8000,15000,35000
-dkong,dkongcb,DK Crazy,DK Crazy Barrels,29,1,2,34000,10000,20000,40000
-dkong,dkongtj,DK Jungle,DK Twisted Jungle,31,1,2,36000,10000,25000,45000
+dkongf,dkongfoundry,DK Foundry,,27,1,2,30000,10000,25000,50000
+dkong,dkongotr,DK OnTheRun,DK On The Run,29,1,2,32000,10000,15000,30000
+dkong,dkonghrthnt,DK ~,DK Heart Hunt,30,1,2,34000,8000,15000,35000
+dkong,dkongxgalakong,X-Gala,Extreme Galakong,31,1,2,36000,5000,10000,15000
 bigkong,bigkong,BigKong,Big Kong,32,1,2,38000,5000,15000,25000
-dkong,dkongkonkey,KD,Konkey Dong,33,1,2,38000,10000,15000,25000
-dkongf,dkongfoundry,DK Foundry,,34,1,2,40000,10000,25000,50000
-dkong,dkongaccelerate,DK Accel,DK Accelerate,35,1,2,42000,10000,25000,40000
-dkong,dkongxgalakong,X-Gala,Extreme Galakong,37,1,2,44000,5000,10000,15000
-dkong,dkongkana,Kana,Kana Kong,39,1,2,46000,10000,20000,40000
-ckongpt2,ckongpt2,CrazyKong,Crazy Kong (Part II),40,1,2,48000,10000,25000,40000
-dkong3,,DK 3,,41,1,2,50000,,,
-dkong,dkongnoluck,NOLuck,NoLuck Kong,41,1,2,50000,15000,25000,50000
-dkong,dkongbarpal,DK Palooza,DK Barrelpalooza,43,1,2,52000,10000,25000,50000
-dkong,dkongwbh,DK Wild,,44,1,2,54000,1000,2000,5000
-dkong,dkong2nut,2NUT,2NUT Kong,45,1,2,56000,10000,25000,50000
-dkong,dkongallen,AllenKong,Allen Kong,46,1,2,58000,,,
-dkongpe,dkongpauline,DK Pauline,DK Pauline Edition,47,1,2,58000,8000,15000,25000
-dkongj,dkongjapan,DK Japan,,48,1,2,60000,10000,25000,40000
-dkong,dkongpac,DK PacMan,DK Pac-Man,50,1,2,62000,10000,20000,35000
-dkong,dkongbarrels,DK Barrels,DK Barrels Only,51,1,2,64000,10000,20000,35000
-dkong,dkonghrd,DK Hard,DK Hard Kit,53,1,2,66000,10000,20000,30000
-dkong,dkongfr,DK FreeRun,DK Freerun Edition,55,1,2,68000,20000,40000,60000
-dkong,dkongrainbow,DK Rainbow,,58,1,2,70000,10000,25000,40000
-dkong,dkongrnd,DK Random,DK Randomized,61,1,2,72000,10000,20000,40000
-dkong,dkongchorus,DK Chorus,,64,1,2,74000,10000,20000,40000
-dkong,dkongl05,DK SkipStart,DK Skip Start,66,1,2,76000,20000,35000,50000
-dkong,dkonghalf,1/2 Kong,Half Kong,68,1,2,78000,20000,50000,80000
-dkong,dkongcontinue,DK Continue,,70,1,2,80000,10000,20000,40000
-dkongjr,dkongjrcontinue,DK JR Continue,,72,1,2,82000,10000,20000,40000
-dkongf,dkongrdemo,DKRemix,DK Remix Demo,76,1,2,84000,10000,20000,45000
-dkong,dkongnoluck,NOLuck,NoLuck Kong,77,1,2,86000,15000,25000,50000
-dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,78,1,2,88000,10000,20000,40000
-dkong,dkongpies,DK Pies,DK Pies Only,81,1,2,90000,10000,15000,30000
-dkong,dkongce,DK Champs.,DK Championship Edition,83,1,2,92000,10000,25000,50000
-ckong,ckong,CrazyKong Part 1,Crazy Kong (Part I),84,1,2,94000,10000,25000,40000
-dkong,dkongksfix,KS Fix,DK Killscreen Fix,88,1,2,96000,20000,35000,50000
+dkongx,dkongd2k,D2k,D2K Jumpman Returns,33,1,2,40000,5000,10000,25000
+dkong,dkongrev,DK Reverse,DK Reverse,34,1,2,42000,10000,25000,50000
+dkongf,dkongrdemo,DKRemix,DK Remix,35,1,2,44000,10000,20000,45000
+dkong,dkongcb,DK Crazy,DK Crazy Barrels,37,1,2,46000,10000,20000,40000
+dkong,dkongkana,Kana,Kana Kong,39,1,2,48000,10000,20000,40000
+dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,40,1,2,50000,10000,20000,40000
+dkong3,,DK 3,,41,1,2,52000,,,
+dkong,dkongnoluck,NOLuck,NoLuck Kong,41,1,2,52000,15000,25000,50000
+dkong,dkongbarpal,DK Palooza,DK Barrelpalooza,43,1,2,54000,10000,25000,50000
+dkong,dkongwbh,DK Wild,,44,1,2,56000,1000,2000,5000
+dkong,dkong2nut,2Nut,2Nut Kong,45,1,2,58000,10000,25000,50000
+dkong,dkongallen,AllenKong,Allen Kong,46,1,2,60000,,,
+dkongpe,dkongpauline,DK Pauline,DK Pauline Edition,47,1,2,60000,8000,15000,25000
+dkongj,dkongjapan,DK Japan,,48,1,2,62000,10000,25000,40000
+dkong,dkongpac,DK PacMan,DK Pac-Man,50,1,2,64000,10000,20000,35000
+dkong,dkongbarrels,DK Barrels,DK Barrels Only,51,1,2,66000,10000,20000,35000
+dkong,dkonghrd,DK Hard,DK Hard Kit,53,1,2,68000,10000,20000,30000
+dkong,dkongquarter,1/4 Kong,Quarter Kong,55,1,2,70000,40000,100000,160000
+ckong,ckong,CK Part1,Crazy Kong (Part I),57,1,2,72000,10000,25000,40000
+dkong,dkongpies,DK Pies,DK Pies Only,58,1,2,74000,10000,15000,30000
+dkong,dkongrnd,DK Random,DK Randomized,60,1,2,76000,10000,20000,40000
+ckongpt2b,ckongpt2b,CK Alternate,CK Alternative Levels,62,1,2,78000,4000,8000,12000
+dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,65,1,2,80000,10000,20000,40000
+dkong,dkongchorus,DK Chorus,,67,1,2,82000,10000,20000,40000
+dkong,dkonghalf,1/2 Kong,Half Kong,68,1,2,84000,20000,50000,80000
+dkong,dkongl05,DK SkipStart,DK Skip Start,70,1,2,86000,20000,35000,50000
+dkong,dkongce,DK Champ,DK Championship Edition,72,1,2,88000,10000,25000,50000
+dkong,dkongnoluck,NOLuck,NoLuck Kong,74,1,2,90000,15000,25000,50000
+dkong,dkongrainbow,DK Rainbow,,76,1,2,92000,10000,25000,40000
+dkongjr,dkongjrcontinue,JR Continue,DK Junior Continue,77,1,2,94000,10000,20000,40000
+dkong,dkongkonkey,KD,Konkey Dong,79,1,2,96000,10000,15000,25000
+dkong,dkongcontinue,DK Continue,,81,1,2,98000,10000,20000,40000
+dkong,dkongksfix,KS Fix,DK Killscreen Fix,83,1,2,100000,20000,35000,50000
+ckongs,ckongs,CK Scramble,CK Scramble Hardware,84,1,2,100000,,,
+ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,86,1,2,100000,,,
+kong,kong,DK Galaxian,DK Galaxian Hardware,87,1,2,100000,,,
 dkong,dkongtrn,DK Trainer,,99,1,2,,,,
 dkongf,dkongst2,DK Springs Trainer,,99,1,2,,,,
 dkong,dkongpace,DK Pace,,99,1,2,,,,
