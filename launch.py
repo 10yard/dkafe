@@ -389,7 +389,8 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                         _g.screen.blit(img, (_x, _y))
                         if up and not _g.ready:
                             if pygame.time.get_ticks() % 550 < 275:
-                                _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
+                                if not is_on_ladder():
+                                    _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
                     if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
                         # Show recording text above icon
                         if _g.timer.duration % 2 < 1:
@@ -498,6 +499,11 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
     _g.last_image = img
     play_sound_effect(sound_file)
+
+
+def is_on_ladder():
+    ladder_info = get_map_info("u") + get_map_info("d")
+    return "ANY_LADDER" in ladder_info and "TOP_OF_LADDER" not in ladder_info
 
 
 def build_menus(initial=False):
@@ -971,7 +977,7 @@ def process_interrupts():
             write_text("P1 START", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
 
         # Display game text
-        if SHOW_GAMETEXT:
+        if SHOW_GAMETEXT and not is_on_ladder():
             icons = display_icons(detect_only=True)
             if icons:
                 sub, name, *_ = icons

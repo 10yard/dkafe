@@ -159,6 +159,8 @@ Credit is given to the original authors below.
  - Donkey Kong converted to Galaxian Hardware
  - Crazy Kong converted to Scramble Hardware
  - Crazy Kong converted to Moon Cresta Hardware
+ - Crazy Kong converted to Galaxian Hardware
+
 
 
 ![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/dkwho_gameplay.png)
