@@ -174,7 +174,7 @@ HISCORE_UNFRIENDLY = ["dkongd2k"]
 AUTOSTART_UNFRIENDLY = ["dkongchorus"]
 
 # Roms that are converted to Galaxian hardware
-GALAXIAN_HARDWARE = ["kong", "ckongmc", "ckongs", "ckongpt2b"]
+GALAXIAN_HARDWARE = ["kong", "ckongmc", "ckongs", "ckongg"]
 
 # Colours
 RED = (232, 7, 10)

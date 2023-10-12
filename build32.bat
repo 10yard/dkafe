@@ -34,6 +34,9 @@ copy readme.md dist\ /Y
 copy VERSION dist\ /Y
 copy COPYING dist\ /Y
 
+echo **** clear the snaps folder
+del dist\artwork\snap\*.png /Q
+
 echo **** create empty roms folder
 xcopy roms\---* dist\roms /S /i /Y
 

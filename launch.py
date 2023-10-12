@@ -503,7 +503,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 def is_on_ladder():
     ladder_info = get_map_info("u") + get_map_info("d")
-    return "ANY_LADDER" in ladder_info and "TOP_OF_LADDER" not in ladder_info
+    return "ANY_LADDER" in ladder_info and "TOP_OF_LADDER" not in ladder_info and "VIRTUAL_LADDER" not in ladder_info
 
 
 def build_menus(initial=False):

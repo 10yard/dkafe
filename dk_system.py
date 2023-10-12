@@ -67,9 +67,8 @@ def read_romlist():
                 # read romlist data and tweak the descriptions
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                 if not sub or sub not in usedsubs:
-                    # Skip over top level roms when files are not found - these are typically the optional roms:
-                    #   dkongjr, dkong3
-                    if not sub and name != "dkong" and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
+                    # Skip over roms when files are not found
+                    if not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
                         continue
 
                     # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
