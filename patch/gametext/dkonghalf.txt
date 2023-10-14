@@ -1,4 +1,4 @@
-HALF KONG
+Half Kong
 
 A shorter game of Donkey Kong.
 

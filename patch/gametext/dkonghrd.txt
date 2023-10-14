@@ -1,4 +1,4 @@
-DONKEY KONG HARD KIT
+Donkey Kong Hard Kit
 
 A version of Donkey Kong with increased difficulty.
 

@@ -114,6 +114,9 @@ function display_awards(rom_offset)
 		if emu.romname() == "dkongx" then
 			_dkclimb = math.floor((mem:read_u8(0xc691f) + 51) / 8)
 		end
+		if emu.romname() == "ckongpt2b" then
+			_dkclimb = _dkclimb - (31 - _dkclimb)
+		end
 		if _dkclimb >= 10 then
 			if _dkclimb <= 17 then
 				write_message(0xc7770 + _rom_offset + (_adjust * 7), "1ST PRIZE")

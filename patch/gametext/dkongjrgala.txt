@@ -1,4 +1,4 @@
-GALAKONG JUNIOR
+GalaKong Junior
 
 A Donkey Kong Junior version of my Galakong hack.  It
 mashes up Donkey Kong Junior with Galaga.

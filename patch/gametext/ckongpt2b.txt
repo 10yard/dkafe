@@ -1,4 +1,4 @@
-CRAZY KONG (PART II) ALTERNATIVE LEVELS
+Crazy Kong (Part II) Alternative Levels
 
 This Donkey Kong clone retains all of the gameplay 
 elements of Donkey Kong, but has the graphics redrawn 

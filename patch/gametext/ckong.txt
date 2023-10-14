@@ -1,4 +1,4 @@
-CRAZY KONG (PART 1)
+Crazy Kong (Part I)
 
 This Donkey Kong clone retains all of the gameplay 
 elements of Donkey Kong, but has the graphics redrawn 

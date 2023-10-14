@@ -1,4 +1,4 @@
-GALAKONG
+GalaKong
 
 Jumpman is assisted by an accompanying spaceship which
 can take out enemies.  Bonus points are awarded for 

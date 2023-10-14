@@ -1,4 +1,4 @@
-DONKEY KONG KILLSCREEN FIX
+Donkey Kong Killscreen Fix
 
 This hack fixes the killscreen bug which occurs on 
 level 22-1.

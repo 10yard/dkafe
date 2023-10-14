@@ -1,4 +1,4 @@
-DONKEY KONG CONTINUE
+Donkey Kong Continue
 
 A continue option is added to the original Donkey
 Kong game allowing you to reach higher levels.  

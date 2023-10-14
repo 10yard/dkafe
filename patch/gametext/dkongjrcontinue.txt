@@ -1,4 +1,4 @@
-DONKEY KONG JUNIOR CONTINUE
+Donkey Kong Junior Continue
 
 A continue option is added to the original Donkey
 Kong Junior game allowing you to reach higher levels.  

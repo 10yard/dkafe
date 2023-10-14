@@ -1,4 +1,4 @@
-OCTO MONKEY
+Octo Monkey
 
 An extremely short game of Donkey Kong.
 

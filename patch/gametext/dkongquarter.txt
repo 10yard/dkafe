@@ -1,4 +1,4 @@
-QUARTER KONG
+Quarter Kong
 
 A short game of Donkey Kong.
 

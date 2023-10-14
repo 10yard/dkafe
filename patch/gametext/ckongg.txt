@@ -1,4 +1,4 @@
-CRAZY KONG BOOTLEG FOR GALAXIAN HARDWARE
+Crazy Kong Bootleg for Galaxian Hardware
 
 A well polished Crazy Kong version developed for
 Galaxian Hardware.
