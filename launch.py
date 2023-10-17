@@ -814,7 +814,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 def playback_rom(info, inpfile):
     """playback the specified inp file"""
     launch_command, launch_directory, competing, _ = \
-        _s.build_launch_command(info, basic_mode=True,  playback=True)
+        _s.build_launch_command(info, basic_mode=True,  playback=True, refocus=REFOCUS_WINDOW, fullscreen=FULLSCREEN)
+
     if os.path.exists(launch_directory):
         close_menu()
         clear_screen(and_reset_display=True)

@@ -135,7 +135,7 @@ def get_inp_files(rec, name, sub, num):
     return sorted(glob(os.path.join(get_inp_dir(rec), f"{name}_{sub}_*.inp")), reverse=True)[:num]
 
 
-def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=False, fullscreen=False, launch_plugin=None, playback=False):
+def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=False, fullscreen=True, launch_plugin=None, playback=False):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.

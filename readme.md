@@ -456,6 +456,7 @@ dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
 dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ```
 
+
 ### Music Playlist
 
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
