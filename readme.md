@@ -293,9 +293,11 @@ How difficult are the target scores.  1 (Beginner) to 10 (Expert).
 `START_STAGE = 0`
 The stage to start the frontend on.  0 is barrels stage.  1 is rivets stage.
 
-
 `HIGH_SCORE_SAVE = 1`
 Save your high score tables for each game.
+
+`ENABLE_PLAYLIST = 0`
+1 to play music files from the **playlist** folder instead of the regular Donkey kong background music.
 
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
@@ -454,6 +456,13 @@ dtoverlay=gpio-key,gpio=16,keycode=6,label="KEY_5"
 dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ```
 
+### Music Playlist
+
+You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
+Several default music files are provided for your enjoyment.  These files can be removed and replaced with your own favourite music tracks in **.mp3** or **.ogg** format. 
+
+The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key).
+
 
 ### How to use romlist.csv
 
@@ -553,6 +562,12 @@ https://docs.mamedev.org/
 
 WolfMAME by Mahlemiut
 https://github.com/mahlemiut/wolfmame
+
+The VRC6 Project by LeviR.star's Music.  4 of his DK remix tracks are used in the default playlist folder
+https://www.youtube.com/watch?v=Ufd9UC2wUpA
+
+DonkeyKong Classic Remix Music by MyNameIsBanks.  1 of his DK remix tracks is used in the default playlist folder.
+https://www.youtube.com/watch?v=MDw2goJSi4k
 
 
 ## License

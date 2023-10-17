@@ -3,4 +3,16 @@ Crazy Kong Bootleg for Galaxian Hardware
 A well polished Crazy Kong version developed for
 Galaxian Hardware.
 
+This clone retains all of the gameplay elements of 
+Donkey Kong, but has the graphics redrawn and 
+re-colorised.  Jumpman is blue and white.
+
+There are some deep booming sounds from Kong and
+contrasting chirpy walk sounds from Jumpman.  The
+noise of springs on the elevator screen is
+interesting!  
+
+Apparently the killscreen occurs on level 12 of
+this game.  Can you get to the killscreen?
+
 A Crazy Kong Bootleg

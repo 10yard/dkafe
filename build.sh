@@ -34,6 +34,7 @@ sudo cp -r sounds dist
 sudo cp -r interface dist
 sudo cp -r patch dist
 sudo cp -r rpi4 dist
+sudo cp -r playlist dist
 sudo cp romlist.csv dist
 sudo cp readme.md dist
 sudo cp VERSION dist

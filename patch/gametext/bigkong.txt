@@ -2,8 +2,11 @@ Big Kong
 
 A bootleg version of Falcon's "Crazy Kong".
 
-The barrels stage includes an extremely long ladder 
-variation.  
+This Donkey Kong clone retains all of the gameplay 
+elements of Donkey Kong, but has the graphics redrawn
+and re-colorised. 
 
-There are some serious quirks and graphic glitches 
-with this game!
+The barrels stage includes an extremely long ladder 
+variation and for this reason it is much more 
+difficult.  
+

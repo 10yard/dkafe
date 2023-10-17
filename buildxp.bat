@@ -40,6 +40,7 @@ xcopy shell dist\launchxp\shell /S /i /Y
 xcopy sounds dist\launchxp\sounds /S /i /Y
 xcopy interface dist\launchxp\interface /S /i /Y
 xcopy patch dist\launchxp\patch /S /i /Y
+xcopy playlist dist\launchxp\playlist /S /i /Y
 copy settings.txt dist\launchxp\ /Y
 copy readme.md dist\launchxp\ /Y
 copy VERSION dist\launchxp\ /Y

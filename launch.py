@@ -17,6 +17,7 @@ from dk_interface import get_award, format_K
 from dk_patch import apply_patches, validate_rom
 from random import randint, choice
 from subprocess import Popen, call
+from random import sample
 import pickle
 
 
@@ -347,7 +348,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         if (_g.stage == 0 and int(slot) - 1 <= BARREL_SLOTS) or (_g.stage == 1 and int(slot) - 1 > BARREL_SLOTS):
             p_des = alt if alt.strip() else des
             unlocked = True
-            up = False
+            up_arrow = False
             if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
                 unlocked = False
             if not below_y or not above_y or (below_y >= _y >= above_y):
@@ -382,15 +383,14 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     if unlocked:
                         nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
                         _g.selected = p_des
-                        up = True
+                        up_arrow = True
 
                 if not detect_only:
                     if not(_x == 90 and _y == 34):
                         _g.screen.blit(img, (_x, _y))
-                        if up and not _g.ready:
+                        if up_arrow and not _g.ready:
                             if pygame.time.get_ticks() % 550 < 275:
-                                if not is_on_ladder():
-                                    _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
+                                _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
                     if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
                         # Show recording text above icon
                         if _g.timer.duration % 2 < 1:
@@ -501,11 +501,6 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     play_sound_effect(sound_file)
 
 
-def is_on_ladder():
-    ladder_info = get_map_info("u") + get_map_info("d")
-    return "ANY_LADDER" in ladder_info and "TOP_OF_LADDER" not in ladder_info and "VIRTUAL_LADDER" not in ladder_info
-
-
 def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
@@ -544,6 +539,7 @@ def build_menus(initial=False):
     _g.setmenu.add_selector('  DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
     _g.setmenu.add_vertical_margin(15)
     _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
+    _g.setmenu.add_selector(' Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
     _g.setmenu.add_vertical_margin(15)
     _g.setmenu.add_button('Save Changes to File', save_menu_settings)
     _g.setmenu.add_button('Close Menu', close_menu)
@@ -642,6 +638,8 @@ def save_menu_settings():
                             f_out.write(f"SPEED_ADJUST = {SPEED_ADJUST}\n")
                         elif "HIGH_SCORE_SAVE=" in line_packed:
                             f_out.write(f"HIGH_SCORE_SAVE = {HIGH_SCORE_SAVE}\n")
+                        elif "ENABLE_PLAYLIST=" in line_packed:
+                            f_out.write(f"ENABLE_PLAYLIST = {ENABLE_PLAYLIST}\n")
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, y=232, fg=PINK, bg=RED)
@@ -672,6 +670,14 @@ def set_high(_, setting_value):
     globals()["HIGH_SCORE_SAVE"] = setting_value
 
 
+def set_playlist(_, setting_value):
+    globals()["ENABLE_PLAYLIST"] = setting_value
+    if setting_value == 1:
+        background_channel.stop()
+    else:
+        background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
+        playlist.stop()
+
 def set_confirm(_, setting_value):
     globals()["CONFIRM_EXIT"] = setting_value
 
@@ -700,7 +706,8 @@ def open_menu(menu):
     _g.timer.stop()
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
-    intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
+    if not ENABLE_PLAYLIST:
+        intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
     menu.enable()
     menu.mainloop(_g.screen)
     reset_all_inputs()
@@ -741,7 +748,10 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             _g.launchmenu.disable()
         intermission_channel.stop()
         award_channel.stop()
-        music_channel.pause()
+        if ENABLE_PLAYLIST:
+            playlist.pause()
+        else:
+            background_channel.pause()
 
         launch_command, launch_directory, competing, inp_file = \
             _s.build_launch_command(info, BASIC_MODE, HIGH_SCORE_SAVE, REFOCUS_WINDOW, FULLSCREEN, launch_plugin)
@@ -797,6 +807,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
         _g.skip = True
         _g.timer.start()  # Restart the timer
+        if ENABLE_PLAYLIST:
+            playlist.unpause()
 
 
 def playback_rom(info, inpfile):
@@ -817,8 +829,11 @@ def playback_rom(info, inpfile):
                     playback_command += arg + " "
                 retain = True
         os.chdir(launch_directory)
+        if ENABLE_PLAYLIST:
+            playlist.pause()
         playback_command += f" -playback {os.path.basename(inpfile)} -exit_after_playback"
         intermission_channel.stop()
+        award_channel.stop()
         if EMU_ENTER:
             Popen(EMU_ENTER, shell=False)
         if EMU_EXIT:
@@ -826,6 +841,8 @@ def playback_rom(info, inpfile):
         os.system(playback_command) if _s.is_pi() else call(playback_command)
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
+        if ENABLE_PLAYLIST:
+            playlist.unpause()
 
 
 def show_hammers():
@@ -885,8 +902,8 @@ def process_interrupts():
     previous_warning = _g.warning
     bonus_display, bonus_colour, _g.warning, out_of_time = _s.calculate_bonus(_g.timer.duration + _g.timer_adjust)
     if _g.warning:
-        if not previous_warning:
-            music_channel.play(pygame.mixer.Sound('sounds/countdown.wav'), -1)
+        if not previous_warning and not ENABLE_PLAYLIST:
+            background_channel.play(pygame.mixer.Sound('sounds/countdown.wav'), -1)
         if out_of_time:
             # Jumpman drops coins if he can afford it.
             loss, i = 0, 0
@@ -900,7 +917,7 @@ def process_interrupts():
                         i += 1
 
             # Show time up animation
-            music_channel.stop()
+            background_channel.stop()
             play_sound_effect("sounds/timeup.wav")
             for repeat in range(0, 3):
                 for i in range(0, 6):
@@ -914,7 +931,8 @@ def process_interrupts():
             # Reset timer and music
             _g.timer.reset()
             _g.timer_adjust = 0
-            music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
+            if not ENABLE_PLAYLIST:
+                background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     write_text(bonus_display, font=dk_font, x=177, y=48, fg=BONUS_COLORS[_g.stage][bonus_colour])
 
@@ -977,7 +995,7 @@ def process_interrupts():
             write_text("P1 START", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
 
         # Display game text
-        if SHOW_GAMETEXT and not is_on_ladder():
+        if SHOW_GAMETEXT:
             icons = display_icons(detect_only=True)
             if icons:
                 sub, name, *_ = icons
@@ -1125,6 +1143,12 @@ def teleport_between_hammers():
             write_text("Teleport Jump!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
 
 
+def generate_playlist():
+    if _g.tracklist:
+        playlist.load(sample(_g.tracklist, 1)[0])  # Play the first track
+        playlist.play()
+
+
 def main(initial=True):
     # Prepare front end
     assert (VERSION.startswith("v")), "The version number could not be determined"
@@ -1142,7 +1166,6 @@ def main(initial=True):
 
     if initial:
         play_intro_animation()
-    music_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
     # Initialise Jumpman
     _s.debounce()
@@ -1151,8 +1174,15 @@ def main(initial=True):
     _g.timer.reset()
     _g.active = True
 
+    # Initialise playlist/background music
+    _g.tracklist = _s.glob("playlist/*.mp3") + _s.glob("playlist/*.ogg")
+    if not ENABLE_PLAYLIST:
+        background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
+
     # Main game loop
     while True:
+        if ENABLE_PLAYLIST and not playlist.get_busy():
+            generate_playlist()
         if _g.active:
             display_icons(with_background=True)
             display_slots()

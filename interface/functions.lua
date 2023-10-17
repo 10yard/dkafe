@@ -116,6 +116,7 @@ function display_awards(rom_offset)
 		end
 		if emu.romname() == "ckongpt2b" then
 			_dkclimb = _dkclimb - (31 - _dkclimb)
+			if _dkclimb == -11 then _dkclimb = 17 end
 		end
 		if _dkclimb >= 10 then
 			if _dkclimb <= 17 then

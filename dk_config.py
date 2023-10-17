@@ -58,6 +58,7 @@ SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on s
 SHOW_GAMETEXT = 1              # Show the game text description when Jumpman faces an arcade machine
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
+ENABLE_PLAYLIST = 0            # Play background music from playlist folder
 
 # DKWolf/Interface options
 HIGH_SCORE_SAVE = 1            # Retain high scores (they are specific to each hack)
@@ -382,9 +383,10 @@ Exit   - Exit DKAFE
 
 # Sound setup
 pygame.mixer.init(frequency=48000)
-music_channel = pygame.mixer.Channel(1)
+background_channel = pygame.mixer.Channel(1)
 intermission_channel = pygame.mixer.Channel(2)
 award_channel = pygame.mixer.Channel(3)
+playlist = pygame.mixer.music
 
 # Initialisation
 pygame.init()

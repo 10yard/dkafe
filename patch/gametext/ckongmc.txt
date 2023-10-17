@@ -3,9 +3,11 @@ Crazy Kong Bootleg on Moon Cresta Hardware
 This bootleg of Crazy Kong was made to be played on
 Moon Cresta hardware.
 
-There are some quirks with the game. 
-If something moves, don't touch it. If it doesn't 
-move, it's either a hammer for bashing barrels or a 
-bonus item for picking up umbrella, purse, etc..
+This clone retains all of the gameplay elements of 
+Donkey Kong, but has the graphics redrawn and 
+re-colorised. 
+
+Push "Jump" button to start after inserting coins 
+instead of the "Player 1" button.
 
 A Crazy Kong Bootleg (originally by Falcon)
