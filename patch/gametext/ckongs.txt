@@ -7,10 +7,8 @@ Interesting version of Crazy Kong due mainly to the
 bright neon colours and the reuse of audio from the 
 Konami Turtles/Turpin game.
 
-The game starts with the equivalent of level 5 
-difficulty compared to regular Donkey Kong.
-
-Apparently the killscreen occurs on level 12 of this 
-game.  Can you get to the killscreen?
+The game effectively starts at level 11 so you
+are already half way to reaching a killscreen!
+The initial difficulty is increased though.
 
 A Crazy Kong Bootleg (originally by Falcon)

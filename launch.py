@@ -678,6 +678,7 @@ def set_playlist(_, setting_value):
         background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
         playlist.stop()
 
+
 def set_confirm(_, setting_value):
     globals()["CONFIRM_EXIT"] = setting_value
 
@@ -1146,7 +1147,7 @@ def teleport_between_hammers():
 
 def generate_playlist():
     if _g.tracklist:
-        playlist.load(sample(_g.tracklist, 1)[0])  # Play the first track
+        playlist.load(sample(_g.tracklist, 1)[0])  # Randomly load a track from the tracklist
         playlist.play()
 
 

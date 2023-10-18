@@ -6,10 +6,11 @@ as "Galaxian Kong".
 
 This clone retains all of the gameplay elements of 
 Donkey Kong, but has the graphics redrawn and 
-re-colorised. 
+re-colorised.  The game features the colourful 
+starfield background synonymous with Galaxian.
 
 There is a "Kong" logo upon bootup, and the jumping 
-is a lot more jerky than regular Donkey.
+is a lot more jerky than regular Donkey Kong.
 
 Push "Jump" button to start after inserting coins 
 instead of the "Player 1" button.

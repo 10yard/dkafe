@@ -6,8 +6,8 @@
 #                                          by Jon Wilson (10yard)
 #
 # Front End Features
-FREE_PLAY = 1
-UNLOCK_MODE = 0
+FREE_PLAY = 0
+UNLOCK_MODE = 1
 BASIC_MODE = 0
 
 # Front End Settings

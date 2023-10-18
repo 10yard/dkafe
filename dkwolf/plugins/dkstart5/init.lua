@@ -52,11 +52,18 @@ function dkstart5.startplugin()
 	end
 	
 	function dkstart5_main()
-		if mem ~= nil then		
-			if mem:read_u8(0x6229) == 1 then
-				mem:write_u8(0x6229, 5)  -- update to level 5 
+		if mem ~= nil then
+			if (emu.romname() == "ckongs" or emu.romname() == "ckongg" or emu.romname() == "ckongmc" or emu.romname() == "kong") and mem:read_u8(0x6229) == 11 then
+				-- These crazy kong bootlegs start at level 11 difficulty but report level 1 in the game.
+				mem:write_u8(0x6229, 15)  -- update to level 5
 				mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
-			end
+			else
+				-- Regular DK
+				if mem:read_u8(0x6229) == 1 then
+					mem:write_u8(0x6229, 5)  -- update to level 5 
+					mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
+				end
+			end	
 			if stage then				
 				mem:write_u8(0x6227, stage) -- play a specific stage only
 
