@@ -161,18 +161,33 @@ PLUGINS = [
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
 COACH_L5_FRIENDLY = ["dkongspringy", "dkongbarrels"]
-CHORUS_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd", "dkongwbh",
-                   "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
-                   "dkong2nut", "dkong"]
-SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpac"]
+CHORUS_FRIENDLY = ["dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
+                   "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
+                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter"]
+SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
+START5_FRIENDLY = ["dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
+                   "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
+                   "dkongjrgala", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
+                   "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongrdemo", "dkongcb",
+                   "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
+                   "dkongbarrels", "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow",
+                   "dkongcontinue", "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc",
+                   "dkongbarrelboss", "dkongsprfin"]
+STAGE_FRIENDLY = ["dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho",
+                  "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfr",
+                  "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev",
+                  "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
+                  "dkonghrd", "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey",
+                  "dkongrainbow", "ckongs", "ckongg", "ckongmc", "dkongksfix"]
 
-# Roms that are not fully compatible (or the stage/start5 practice doesn't apply)
+# Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
-START5_UNFRIENDLY = ["dkongce", "dkongspooky", "dkongoctomonkey", "dkonghalf", "dkongquarter", "kong"]
-STAGE_UNFRIENDLY = ["dkongpies", "dkongspringy", "dkongbarrels", "dkongrivets", "dkongvector", "dkongspooky",
-                    "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongcontinue", "kong"]
+
+#STAGE_UNFRIENDLY = ["dkongpies", "dkongspringy", "dkongbarrels", "dkongrivets", "dkongvector", "dkongcb", "dkongspooky",
+#                    "dkongxmas", "dkongrdemo", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongcontinue", "kong"]
+
 HISCORE_UNFRIENDLY = ["dkongd2k"]
-AUTOSTART_UNFRIENDLY = ["dkongchorus"]
+AUTOSTART_UNFRIENDLY = ["dkongchorus", "ckongs"]
 
 # Roms that are converted to Galaxian hardware
 GALAXIAN_HARDWARE = ["kong", "ckongmc", "ckongs", "ckongg"]
@@ -282,7 +297,7 @@ JUMP_SHORTEN = 1.25
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
 COIN_INFO = ["Hey Jumpman!", '', "You must collect coins..", "to unlock more games", "", "Push COIN for game info", ""]
 FREE_INFO = ["Hey Jumpman!", '', "All arcades are free to play", "", "Push COIN to for game info", ""]
-TEXT_INFO = [["", "Push 'JUMP' to play or 'P1 START' for game options"], ["", "Push 'COIN' to disable these information messages"]]
+TEXT_INFO = [["", "Push 'JUMP' to play or 'P1 START' for game options"], ["", "Push 'COIN' to disable these descriptive messages"]]
 
 NO_ROMS_MESSAGE = [
     "NO ROMS WERE FOUND!", "",

@@ -5,6 +5,6 @@ elements of Donkey Kong, but has the graphics redrawn
 and re-colorised. 
 
 In this variation,  the stages are made much more
-difficult and you are provided only 1 starting life!
+difficult and you are given only 1 starting life!
 
 A Donkey Kong Clone Developed by Falcon

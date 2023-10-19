@@ -4,6 +4,7 @@ Donkey Kong has kidnapped Pauline and taken her to his
 jungle. Jumpman has to save her in five brand new 
 jungle themed stages. But the jungle is Donkey Kong's 
 natural habitat, not Jumpman's! 
+
 Make sure you don't get hit by a coconut, watch out 
 when standing on disappearing ground, remove leaves 
 and tubers and evade worms, snapjaws and birds. 

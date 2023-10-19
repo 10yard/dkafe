@@ -2,9 +2,10 @@ Donkey Kong Into The Dark
 
 In this romhack Donkey Kong unplugs the power source. 
 This results in the lights to be switched off. So you 
-have to complete the boards in the dark. Once in a few
-seconds the lights flash to allow the player to 
-orientate. The higher the level the longer the pause 
-between the flashes.
+have to complete the boards in the dark. 
+
+Once every few seconds the lights flash to allow the 
+player to orientate. The higher the level the longer 
+the pause between the flashes.
 
 Hack Developed by Paul Goes

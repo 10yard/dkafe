@@ -6,8 +6,14 @@ The player controls Donkey Kong Junior, a small ape
 who must rescue his father, Donkey Kong, from his 
 nemesis Mario.
 
-The game has several distinct levels with similar 
-goals. Fruit can be dropped on enemies leg traps and 
-birds to kill them.
+There are several distinct levels with similar goals.
+
+DK Jr. can run left and right, jump, and grab 
+vines/chains/ropes to climb higher on the screen. 
+He can slide down faster by holding only one vine, or
+climb faster by holding two.
+
+Fruit can be dropped on enemies, snap jaws and birds 
+to kill them.
 
 Developed by Nintendo

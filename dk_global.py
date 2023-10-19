@@ -58,6 +58,7 @@ timer = Stopwatch()
 timer_adjust = 0
 pause_ticks = 0
 teleport_ticks = 0
+frames = 0
 
 # Image cache for performance
 image_cache = {}
@@ -82,3 +83,4 @@ psy = 0
 
 # Playlist
 tracklist = []
+lasttrack = None

@@ -4,7 +4,8 @@ In Donkey Kong Reverse, jumpman starts the stages at
 the top of the screen and has to grab Pauline's heart 
 at the bottom. And in the rivets stage, instead of 
 unplugging the rivets, jumpman has to plug them back 
-in. 
+in.
+ 
 In all stages it is a little easier to jump 
 fireballs/firefoxes: they do not change direction when
 jumpman jumps them.

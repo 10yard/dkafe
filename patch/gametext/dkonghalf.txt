@@ -2,10 +2,11 @@ Half Kong
 
 A shorter game of Donkey Kong.
 
-You play half of a regular game with twice the points 
-awarded. 
+You play half of a game with double the points awarded
+e.g. you get 200 points for jumping a single barrel!
+ 
 The game starts at level 12-1 with 1 life plus a 
-bonus life.
+single bonus life.
 
 Can you get to the Kill Screen with 1 million points?
 

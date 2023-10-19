@@ -1,7 +1,11 @@
 Vector Kong
 
-A hack of the original arcade game which suppresses
-the normal video output completely and renders high
-resolution vectors to the screen instead of pixels.
+A vector graphics version of Donkey Kong.  
+
+You play the barrel stage only.
+
+The hack suppresses the normal video output completely
+and renders high resolution vectors to the screen 
+instead of pixels.
 
 Hack Developed by Jon Wilson (10yard)

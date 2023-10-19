@@ -7,12 +7,12 @@ speed at level L=07.
 At the beginning of the game you must select one of 
 the four difficulty settings with different top 
 speeds: 
-Normal(150%), Hard(160%), Expert(170%) or Insane(200%). 
+Normal(150%), Hard(160%), Expert(170%) or Insane(200%).
 
 The gameplay is, besides the acceleration, exactly the 
 same as the original Donkey Kong arcade game and it 
 also killscreens at level L=22. 
 
-Have turbo fun and discover how fast you can get..
+Have turbo fun and discover how fast you can get.
 
 Hack Developed by Paul Goes

@@ -59,6 +59,7 @@ emu.register_frame(function()
 		mode1 = mem:read_u8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
 		mode2 = mem:read_u8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
 		score = get_score(0x1c00)
+		-- note ckongs (galaxian hardware) score offset is + 0x1460 if I decide to implement that
 		
 		-- Release P1 START button (after autostart)	
 		if mode1 > 2 and screen:frame_number() < 60 then

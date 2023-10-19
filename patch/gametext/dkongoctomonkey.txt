@@ -2,8 +2,11 @@ Octo Monkey
 
 An extremely short game of Donkey Kong.
 
-You play 1/8 of a game with x8 points awarded. 
-The game starts at level 19-4 with 1 life.
+You play 1/8 of a game with 8 times the points awarded
+e.g. you get 800 points for jumping a single barrel!
+ 
+The game starts at level 19-4 (elevator stage) with 1
+life and no bonus lives.
 
 Can you get to the Kill Screen with 1 million points?
 

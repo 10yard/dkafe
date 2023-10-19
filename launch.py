@@ -550,12 +550,12 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, emu, rec, unlock, st3, st2, st1 = nearby
+        show_chorus = sub in CHORUS_FRIENDLY or (not sub and name in CHORUS_FRIENDLY)
+        show_start5 = sub in START5_FRIENDLY or (not sub and name in START5_FRIENDLY)
+        show_stage = sub in STAGE_FRIENDLY  or (not sub and name in STAGE_FRIENDLY)
         show_coach = sub in COACH_FRIENDLY or (not sub and name in COACH_FRIENDLY)
         show_coach_l5 = sub in COACH_L5_FRIENDLY or (not sub and name in COACH_L5_FRIENDLY)
-        show_chorus = sub in CHORUS_FRIENDLY or (not sub and name in CHORUS_FRIENDLY)
-        show_start5 = sub not in START5_UNFRIENDLY or (not sub and name not in START5_UNFRIENDLY)
-        show_stage = sub not in STAGE_UNFRIENDLY or (not sub and name not in STAGE_UNFRIENDLY)
-        show_shoot = sub in SHOOT_FRIENDLY
+        show_shoot = sub in SHOOT_FRIENDLY or (not sub and name in SHOOT_FRIENDLY)
         inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_coach_l5 - show_chorus - show_shoot - show_start5
                                 - (show_stage*4))
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False,
@@ -1005,7 +1005,7 @@ def process_interrupts():
                 for rom, text_lines in _g.gametext:
                     if rom == selected and text_lines:
                         # Text appears above or below Jumpman based on his Y position
-                        text_y = _g.ypos - (len(text_lines)+5) * 6 if _g.ypos >= 138 else _g.ypos + 32
+                        text_y = _g.ypos - (len(text_lines)+5) * 6 if _g.ypos >= 138 else _g.ypos + 30
                         # Clear a space for text and draw borders
                         pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 224, len(text_lines)*6+8))
                         pygame.draw.rect(_g.screen, MIDGREY, (0, text_y - 5, 224, 14))
@@ -1145,11 +1145,16 @@ def teleport_between_hammers():
             write_text("Teleport Jump!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
 
 
-def generate_playlist():
+def play_from_tracklist():
+    #  Play a random track from the track list. If there's more than 1 track available then we don't repeat play.
     if _g.tracklist:
-        playlist.load(sample(_g.tracklist, 1)[0])  # Randomly load a track from the tracklist
-        playlist.play()
-
+        while True:
+            track = sample(_g.tracklist, 1)[0]
+            if track != _g.lasttrack or len(_g.tracklist) == 1:
+                playlist.load(track)
+                playlist.play()
+                _g.lasttrack = track
+                break
 
 def main(initial=True):
     # Prepare front end
@@ -1183,8 +1188,8 @@ def main(initial=True):
 
     # Main game loop
     while True:
-        if ENABLE_PLAYLIST and not playlist.get_busy():
-            generate_playlist()
+        if ENABLE_PLAYLIST and _g.frames % 30 == 0 and not playlist.get_busy():
+            play_from_tracklist()
         if _g.active:
             display_icons(with_background=True)
             display_slots()
@@ -1222,6 +1227,7 @@ def main(initial=True):
         activity_check()
         inactivity_check()
         update_screen()
+        _g.frames += 1
 
         # -- restart game after level is completed --
         # if _g.score >= 90000:

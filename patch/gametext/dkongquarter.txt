@@ -2,9 +2,12 @@ Quarter Kong
 
 A short game of Donkey Kong.
 
-You play quarter of a regular game with 4x the points
-awarded. 
-The game starts at level 17-1 with 1 life.
+You play quarter of a game with quadruple the points 
+awarded
+e.g. you get 400 points for jumping a single barrel!
+ 
+The game starts at level 17-1 with 1 life and no bonus
+lives.
 
 Can you get to the Kill Screen with 1 million points?
 

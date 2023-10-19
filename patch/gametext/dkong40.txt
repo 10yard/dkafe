@@ -1,12 +1,13 @@
 Donkey Kong Annversary Edition
 
 Celebrating 40 years of the Donkey Kong arcade game. 
-
 The original game was released on July 9th 1981. 
-Donkey Kong and Pauline decided to throw a party to 
-celebrate. They invited Jumpman and it is your job to 
-take him there. You should collect presents and 
-balloons on your way up. 
+
+Donkey Kong and Pauline have decided to throw a party
+to celebrate the anniversary. They've invited Jumpman 
+and it's your job to take him to the party. 
+
+You should collect presents and balloons on your way.
 The Boards are all variations of the original.
 
 Have fun ... and celebrate !!!

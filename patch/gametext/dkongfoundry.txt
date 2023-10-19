@@ -3,7 +3,8 @@ Donkey Kong Foundry
 Jump over flaming pits, ride moving steel beams, and 
 dodge shooting fireballs!
 
-Advanced difficulty.  Welcome to the Foundry! 
+Welcome to the Foundry! 
+This game has advanced difficulty.  
 
 Keep moving and hope that your timing is right on the 
 money. 
