@@ -192,6 +192,15 @@ The chorus plugin replaces the default samples and music with acapella sounds.
 <sup>Click image to watch gameplay video</sup>
 
 
+### DKContinue
+
+The continue plugin gives you the opportunity to continue playing when your game would normally be over.
+
+A continue option will appear with a 10 second countdown timer. Simply push the P1 Start button to continue your game and your score will be reset to zero.
+A tally of the total number of continues made will appear at the top of the screen.
+
+
+
 ## DKWolf Emulator
 
 DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior, DK3, Crazy Kong and Big Kong).

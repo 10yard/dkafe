@@ -15,20 +15,20 @@ require "functions"
 require "graphics"
 require "globals"
 
--- Crazy Kong has an offset memory address from DK
-local memory_offset = 0x1c00
-local loaded = 0
-
 -- Register function for each frame
 ------------------------------------------------------------------------------------------------
 emu.register_frame(function()
 
+	mode1 = mem:read_u8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
+	mode2 = mem:read_u8(0x600a)  -- 1-attract mode, 7-climb scene, 10-how high, 15-dead, 16-game over
+
+	print(mode1)
   -- load the game up quickly
 	if loaded == 0 then
 		max_frameskip(true)
 
 		-- Wait for ROM to start
-		if mem:read_u8(0xc6005) ~= 0 then
+		if mode1 ~= 0 then
 			math.randomseed(os.time())
 			autostart_delay = math.random(5, 20)
 			loaded = 1
@@ -50,9 +50,7 @@ emu.register_frame(function()
 		-- Start game automatically when required
 		if data_autostart == "1" then
 			if screen:frame_number() > autostart_delay then
-				--for k, v in pairs(ports[":IN1"].fields) do
-				--	print(k)  -- discover the name of the key representing the button
-				--end
+				--for k, v in pairs(ports[":IN1"].fields) do print(k) end -- debug to discover button names
 				if emu.romname() == "ckongg" or emu.romname() == "ckongs" then
 					ports[":IN1"].fields["1 Player Start"]:set_value(1)
 				elseif emu.romname() == "ckongmc" then
@@ -74,9 +72,7 @@ emu.register_frame(function()
 	end
 
 	if loaded == 2 then
-		mode1 = mem:read_u8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
-		mode2 = mem:read_u8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
-		score = get_score(memory_offset)
+		score = get_score(0x1c00)
 		
 		-- Release P1 START button (after autostart)	
 		if data_autostart == "9" and mode1 > 2 then
@@ -126,7 +122,7 @@ end
 ------------------------------------------------------------------------------------------------
 function ckong_overlay()
 	-- Show award targets and progress during gameplay
-	display_awards(memory_offset)
+	display_awards(0x1c00)
 end
 
 -- Register callback function on exit

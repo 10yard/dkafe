@@ -30,6 +30,9 @@ if mac ~= nil then
 	mem = cpu.spaces["program"]
 end
 
+-- Interface state
+loaded = 0
+
 -- Options data
 ---------------------------------------------------------------
 data_emulator = os.getenv("DATA_EMULATOR")

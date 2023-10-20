@@ -15,8 +15,6 @@ require "functions"
 require "graphics"
 require "globals"
 
-local loaded = 0
-
 -- additional globals for dkong sound
 soundcpu = mac.devices[":soundcpu"]
 soundmem = soundcpu.spaces["data"]
@@ -24,13 +22,15 @@ soundmem = soundcpu.spaces["data"]
 -- Register function for each frame
 ------------------------------------------------------------------------------------------------
 emu.register_frame(function()
+	mode1 = mem:read_u8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
+	mode2 = mem:read_u8(0x600a)  -- 1-attract mode, 7-climb scene, 10-how high, 15-dead, 16-game over
 
 	if loaded == 0 then
 		math.randomseed(os.time())
 		autostart_delay = math.random(5, 20)
 
 		-- Wait for ROM to start
-		if emu.romname() == "dkongx" and mem:read_u8(0x600a) ~= 1 then
+		if emu.romname() == "dkongx" and mode2 ~= 1 then
 			max_frameskip(true)
 		else
 			loaded = 1
@@ -65,8 +65,6 @@ emu.register_frame(function()
 	end
 
 	if loaded == 2 then
-		mode1 = mem:read_u8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
-		mode2 = mem:read_u8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
 		score = get_score()
 		
 		-- Release P1 START button (after autostart)	
