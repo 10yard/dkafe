@@ -37,12 +37,12 @@ A useful reference to compiling MAME can be found at:
 
 MAME build tools are available at https://github.com/mamedev/buildtools/releases
 
-To build with only DK (and crazy kong) drivers the SOURCES flag was used in the makefile along with REGENIE i.e.
+To build with only DK drivers (including DK conversions) the SOURCES flag was used in the makefile along with REGENIE i.e.
   SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp,src/mame/drivers/galaxian.cpp
   REGENIE=1
   NOWERROR=1
 
-Other optimisations/flags were
+Other optimisations/flags are:
   OPTIMIZE=3
   SYMBOLS=0
   SYMLEVEL=1
@@ -50,8 +50,25 @@ Other optimisations/flags were
   TOOLS=0 
   DEBUG=0
   USE_QTDEBUG=0
-  
-Pi4 build requires a 8GB minimum SDcard and some dependencies to be installed:
-  sudo apt update
-  sudo apt upgrade
-  sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default
+    
+Pi4 build specifics:
+  Build requires a 8GB minimum SDcard and some dependencies to be installed:
+    sudo apt update
+    sudo apt-get install git build-essential python libsdl2-dev libsdl2-ttf-dev libfontconfig-dev qt5-default
+
+  Grab sources for a specific release of WolfMAME prior to build:
+    wget https://github.com/mahlemiut/wolfmame/archive/refs/tags/wolf241.zip
+	unzip wolf241.zip
+	
+  Apply source changes (assuming the sources target):
+    cp ~/dkafe_bin/dkwolf/changes/wolf241-build/language.cpp ~/wolfmame-wolf241/src/frontend/mame/language.cpp
+	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/ui.cpp ~/wolfmame-wolf241/src/frontend/mame/ui/ui.cpp
+	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/romload.cpp ~/wolfmame-wolf241/src/emu/romload.cpp
+	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/validity.cpp ~/wolfmame-wolf241/src/emu/validity.cpp
+	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/mame.cpp ~/wolfmame-wolf241/src/frontend/mame/mame.cpp
+	
+  Additional Pi4 flags are:
+    NO_OPENGL=1
+	NO_X11=1
+	
+	

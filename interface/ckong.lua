@@ -15,17 +15,24 @@ require "functions"
 require "graphics"
 require "globals"
 
+-- Crazy Kong has an offset memory address from DK
+local memory_offset = 0x1c00
+local loaded = 0
+
 -- Register function for each frame
 ------------------------------------------------------------------------------------------------
 emu.register_frame(function()
-	_, loaded = pcall(get_loaded)
 
-	if loaded == nil then
-		math.randomseed(os.time())
-		autostart_delay = math.random(5, 20)
-		
+  -- load the game up quickly
+	if loaded == 0 then
+		max_frameskip(true)
+
 		-- Wait for ROM to start
-		emu["loaded"] = 1
+		if mem:read_u8(0xc6005) ~= 0 then
+			math.randomseed(os.time())
+			autostart_delay = math.random(5, 20)
+			loaded = 1
+		end
 	end
 
 	if loaded == 1 then
@@ -43,14 +50,25 @@ emu.register_frame(function()
 		-- Start game automatically when required
 		if data_autostart == "1" then
 			if screen:frame_number() > autostart_delay then
-				ports[":SYSTEM"].fields["1 Player Start"]:set_value(1)
-				data_autostart = "0"
+				--for k, v in pairs(ports[":IN1"].fields) do
+				--	print(k)  -- discover the name of the key representing the button
+				--end
+				if emu.romname() == "ckongg" or emu.romname() == "ckongs" then
+					ports[":IN1"].fields["1 Player Start"]:set_value(1)
+				elseif emu.romname() == "ckongmc" then
+					ports[":IN1"].fields["P1 Button 1"]:set_value(1)
+				elseif emu.romname() == "kong" then
+					ports[":IN1"].fields["One Player Start/Jump"]:set_value(1)
+				else
+					ports[":SYSTEM"].fields["1 Player Start"]:set_value(1)
+				end
+				data_autostart = "9" -- autostart has been done
 			end
 		end
 		
 		-- Wait for autostart (when necessary) before continuing
 		if data_autostart ~= "1" then
-			emu["loaded"] = 2
+			loaded = 2
 			emu.register_frame_done(ckong_overlay, "frame")
 		end	
 	end
@@ -58,14 +76,21 @@ emu.register_frame(function()
 	if loaded == 2 then
 		mode1 = mem:read_u8(0xc6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
 		mode2 = mem:read_u8(0xc600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
-		score = get_score(0x1c00)
-		-- note ckongs (galaxian hardware) score offset is + 0x1460 if I decide to implement that
+		score = get_score(memory_offset)
 		
 		-- Release P1 START button (after autostart)	
-		if mode1 > 2 and screen:frame_number() < 60 then
-			ports[":SYSTEM"].fields["1 Player Start"]:set_value(0)
+		if data_autostart == "9" and mode1 > 2 then
+			if emu.romname() == "ckongg" or emu.romname() == "ckongs" then
+				ports[":IN1"].fields["1 Player Start"]:set_value(0)
+			elseif emu.romname() == "ckongmc" then
+				ports[":IN1"].fields["P1 Button 1"]:set_value(0)
+			elseif emu.romname() == "kong" then
+				ports[":IN1"].fields["One Player Start/Jump"]:set_value(0)
+			else
+				ports[":SYSTEM"].fields["1 Player Start"]:set_value(0)
+			end
+			data_autostart = "0"
 		end
-
 						
 		if mode1 == 3 and last_mode1 == 3 then
 			-- Keep track of best P1 score achieved this session
@@ -76,7 +101,7 @@ emu.register_frame(function()
 
 		-- Player can skip through the DK climb scene by pressing JUMP button
 		fast_skip_ckong_intro()
-
+		
 		last_mode1 = mode1
 	end
 end)
@@ -87,7 +112,7 @@ function fast_skip_ckong_intro()
 		if mode2 == 7 then
 			if mem:read_u8(0x6011) == 0x10 then
 				skipped_intro = true
-				max_frameskip(true)
+				max_frameskip(true)	
 			end
 		elseif skipped_intro == true then
 			skipped_intro = false
@@ -101,7 +126,7 @@ end
 ------------------------------------------------------------------------------------------------
 function ckong_overlay()
 	-- Show award targets and progress during gameplay
-	display_awards(0x1c00)
+	display_awards(memory_offset)
 end
 
 -- Register callback function on exit

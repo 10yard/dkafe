@@ -15,6 +15,8 @@ require "functions"
 require "graphics"
 require "globals"
 
+local loaded = 0
+
 -- additional globals for dkong sound
 soundcpu = mac.devices[":soundcpu"]
 soundmem = soundcpu.spaces["data"]
@@ -22,18 +24,16 @@ soundmem = soundcpu.spaces["data"]
 -- Register function for each frame
 ------------------------------------------------------------------------------------------------
 emu.register_frame(function()
-	_, loaded = pcall(get_loaded)
 
-	if loaded == nil then
+	if loaded == 0 then
 		math.randomseed(os.time())
 		autostart_delay = math.random(5, 20)
-		
+
 		-- Wait for ROM to start
-		if emu.romname() == "dkongx" and mem:read_u8(0xc600a) ~= 1 then
-			-- Speed through the power up self test
+		if emu.romname() == "dkongx" and mem:read_u8(0x600a) ~= 1 then
 			max_frameskip(true)
 		else
-			emu["loaded"] = 1
+			loaded = 1
 		end
 	end
 
@@ -53,13 +53,13 @@ emu.register_frame(function()
 		if data_autostart == "1" then
 			if screen:frame_number() > autostart_delay then
 				ports[":IN2"].fields["1 Player Start"]:set_value(1)
-				data_autostart = "0"
+				data_autostart = "9"  -- autostart has been done
 			end
 		end
 		
 		-- Wait for autostart (when necessary) before continuing
 		if data_autostart ~= "1" then
-			emu["loaded"] = 2
+			loaded = 2
 			emu.register_frame_done(dkong_overlay, "frame")
 		end	
 	end
@@ -70,8 +70,9 @@ emu.register_frame(function()
 		score = get_score()
 		
 		-- Release P1 START button (after autostart)	
-		if mode1 > 2 and screen:frame_number() < 60 then
+		if data_autostart == "9" and mode1 > 2 then
 			ports[":IN2"].fields["1 Player Start"]:set_value(0)
+			data_autostart = "0"
 		end
 				
 		-- Keep track of best P1 score achieved this session

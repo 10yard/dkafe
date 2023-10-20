@@ -182,12 +182,8 @@ STAGE_FRIENDLY = ["dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
-
-#STAGE_UNFRIENDLY = ["dkongpies", "dkongspringy", "dkongbarrels", "dkongrivets", "dkongvector", "dkongcb", "dkongspooky",
-#                    "dkongxmas", "dkongrdemo", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongcontinue", "kong"]
-
 HISCORE_UNFRIENDLY = ["dkongd2k"]
-AUTOSTART_UNFRIENDLY = ["dkongchorus", "ckongs"]
+AUTOSTART_UNFRIENDLY = ["dkongchorus"]
 
 # Roms that are converted to Galaxian hardware
 GALAXIAN_HARDWARE = ["kong", "ckongmc", "ckongs", "ckongg"]

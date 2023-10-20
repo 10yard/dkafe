@@ -10,10 +10,6 @@ Functions
 ---------------------------------------------------------------
 ]]
 
-function get_loaded()
-	return emu["loaded"]
-end
-
 function int_to_bin(x)
 	local ret = ""
 	while x~=1 and x~=0 do
