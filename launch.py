@@ -174,10 +174,12 @@ def get_map_info(direction=None, x=0, y=0, platforms_only=False):
             map_info.append("BLOCKED_LEFT")
         if read_map(_x + SPRITE_HALF, _y) == 254:
             map_info.append("BLOCKED_RIGHT")
-        if read_map(_x, _y) == 236:
+        if read_map(_x, _y) in [236, 150]:
             map_info.append("FOOT_UNDER_PLATFORM")
         if read_map(_x, _y + 1) in [0, 90] or (platforms_only and read_map(_x, _y + 1) in [20, 100]):
             map_info.append("FOOT_ABOVE_PLATFORM")
+        if read_map(_x, _y + 1) == 150:
+            map_info.append("FOOT_ABOVE_OILCAN")
 
         # ladder detection based on direction of travel
         _r = read_map(_x - 1, _y + (direction == "d"))
@@ -397,6 +399,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                             write_text("REC", x=_x, y=_y - 6, bg=RED)
                 if _g.showinfo:
                     info_list.append((des, _x, _y, w, unlocked))
+
     if _g.showinfo:
         # Show game info above icons.  Done as last step so that icons do not overwrite the text.
         for des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
@@ -407,12 +410,12 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
 def adjust_jumpman():
     """Adjust Jumpman's vertical position with the sloping platform"""
-    for i in range(0, 10):
+    for i in range(0, 3):
         map_info = get_map_info(platforms_only=True)
         if "FOOT_UNDER_PLATFORM" in map_info or "TOP_OF_ANY_LADDER" in map_info:
             _g.ypos += -1
         elif "FOOT_ABOVE_PLATFORM" in map_info and "TOP_OF_ANY_LADDER" not in map_info:
-            _g.ypos += +1
+            _g.ypos += 1
         else:
             break
 
@@ -436,13 +439,13 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
                 # Allow full jump if started near to wall.  Don't keep ascending after bounce.
                 if 3 < _g.jump_sequence <= len(JUMP_PIXELS) / 2:
                     _g.jump_sequence = len(JUMP_PIXELS) - _g.jump_sequence + 1
+
         _g.xpos += ((_g.right + (_g.left * -1)) * _g.wall_bounce) / JUMP_SHORTEN
         if "FOOT_UNDER_PLATFORM" not in get_map_info(direction) or JUMP_PIXELS[_g.jump_sequence] < 0:
             if "FOOT_ABOVE_PLATFORM" not in get_map_info(direction) or _g.jump_sequence < len(JUMP_PIXELS) - 3:
                 _g.ypos += JUMP_PIXELS[_g.jump_sequence]
             else:
                 sprite_file = f"artwork/sprite/jm{direction}0.png"
-
     elif direction in ("l", "r"):
         _g.ready = False
         ladder_info = get_map_info("u") + get_map_info("d")
@@ -485,7 +488,6 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             if int(_g.sprite_index % 15) == 8:
                 sound_file = f"sounds/walk{('1', '0')[direction == 'u']}.wav"
             _g.sprite_index += 1
-
         elif direction == "u" and display_icons(detect_only=True):
             # Jumpman is in position to play a game
             sprite_file = sprite_file.replace("#", "0")
@@ -494,6 +496,12 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             # Step away from the machine
             sprite_file = f'artwork/sprite/jmr0.png'
             _g.ready = False
+        elif direction == "d" and "FOOT_ABOVE_OILCAN" in get_map_info():
+            play_sound_effect(effect="sounds/warp.wav")
+            stage_check(warp=True)
+    else:
+        # Ensure jumpman is not left floating after jumping from the oilcan
+        adjust_jumpman()
 
     img = _g.last_image if "#" in sprite_file else get_image(sprite_file)
     _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
@@ -579,13 +587,13 @@ def build_launch_menu():
         if show_coach or show_chorus or show_continue or show_shoot or show_start5 or show_coach_l5:
             _g.launchmenu.add_vertical_margin(10)
             if show_start5:
-                _g.launchmenu.add_button('↑ Launch from level 5     ', launch_rom, nearby, "dkstart5")
+                _g.launchmenu.add_button('↑ Launch at level 5       ', launch_rom, nearby, "dkstart5")
             if show_continue:
                 _g.launchmenu.add_button('» Launch with continues   ', launch_rom, nearby, "continue")
             if show_coach:
                 _g.launchmenu.add_button('Č Launch with coach       ', launch_rom, nearby, "dkcoach")
             if show_coach_l5:
-                _g.launchmenu.add_button('Č Launch with coach at L=5',  launch_rom, nearby, "dkcoach,dkstart5")
+                _g.launchmenu.add_button('Č Launch with coach at L=5', launch_rom, nearby, "dkcoach,dkstart5")
             if show_chorus:
                 _g.launchmenu.add_button('♪ Launch with chorus      ', launch_rom, nearby, "dkchorus")
             if show_shoot:
@@ -1021,6 +1029,10 @@ def process_interrupts():
                                 text = " "*int((55 - len(text.strip())) / 2)+text.strip()
                             write_text(text[:55], x=4, y=text_y+(i*6))
                         break
+    # Flash a down arrow when Jumpman is stood on the oilcan to indicate he can warp to next/previous stage.
+    if "FOOT_ABOVE_OILCAN" in get_map_info():
+        if pygame.time.get_ticks() % 550 < 275:
+            _g.screen.blit(get_image(f"artwork/sprite/down.png"), (20, 246))
 
 
 def get_prize_placing(awarded):
@@ -1112,16 +1124,16 @@ def activity_check():
                 os.system(EMU_EXIT)
 
 
-def stage_check():
+def stage_check(warp=False):
     # Check if Jumpman is exiting the stage via ladders
-    if _g.ypos < 20 and _g.stage == 0:
+    if (_g.ypos < 20 or warp) and _g.stage == 0:
         _g.stage = 1
-        _g.ypos = 238
+        _g.ypos = 238 + (warp * -160)
         _g.coins = []
         initialise_screen()
-    elif _g.ypos > 239 and _g.stage == 1:
+    elif (_g.ypos > 239 or warp) and _g.stage == 1:
         _g.stage = 0
-        _g.ypos = 20
+        _g.ypos = 20 + (warp * 200)
         _g.coins = []
         initialise_screen()
     if _g.stage == 0:
