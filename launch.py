@@ -1040,7 +1040,7 @@ def process_interrupts():
                 _g.screen.blit(get_image(f"artwork/sprite/down.png"), (176, 166))
 
     # After warping, Jumpman appears from inside the oilcan
-    if _g.timer.duration - _g.lastwarp < 1:
+    if _g.timer.duration - _g.lastwarp < 1 and _g.lastwarp > 0:
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         if _g.stage == 0:
             _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), (16, 232))
@@ -1172,7 +1172,7 @@ def teleport_between_hammers():
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
             h1, h2 = HAMMER_POSITIONS[_g.stage][0], HAMMER_POSITIONS[_g.stage][1]
             if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
-                _g.xpos, _g.ypos = h2[0] - 2, h2[1] + 6 - (_g.stage * 4)
+                _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 14 - (_g.stage * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
                 _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + (_g.stage * 8)

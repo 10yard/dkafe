@@ -44,6 +44,8 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be configured to launch other emulators and roms.
 
+Jumpman can traverse platforms using the unbroken ladders and by utilising hammers (to teleport short a distance).  Jumpman can climb on an oilcan to quickly warp between the barrel and rivet stages.
+
 
 ![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
 
