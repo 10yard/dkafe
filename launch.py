@@ -501,7 +501,8 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             stage_check(warp=True)
     else:
         # Ensure jumpman is not left floating after jumping from the oilcan
-        adjust_jumpman()
+        if _g.timer.duration - _g.lastwarpready < 1:
+            adjust_jumpman()
 
     img = _g.last_image if "#" in sprite_file else get_image(sprite_file)
     _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
@@ -1031,9 +1032,20 @@ def process_interrupts():
                         break
     # Flash a down arrow when Jumpman is stood on the oilcan to indicate he can warp to next/previous stage.
     if "FOOT_ABOVE_OILCAN" in get_map_info():
+        _g.lastwarpready = _g.timer.duration
         if pygame.time.get_ticks() % 550 < 275:
-            _g.screen.blit(get_image(f"artwork/sprite/down.png"), (20, 246))
+            if _g.stage == 0:
+                _g.screen.blit(get_image(f"artwork/sprite/down.png"), (20, 246))
+            elif _g.stage == 1:
+                _g.screen.blit(get_image(f"artwork/sprite/down.png"), (176, 166))
 
+    # After warping, Jumpman appears from inside the oilcan
+    if _g.timer.duration - _g.lastwarp < 1:
+        write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+        if _g.stage == 0:
+            _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), (16, 232))
+        elif _g.stage == 1:
+            _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), (172, 152))
 
 def get_prize_placing(awarded):
     """Return the awarded prize placing e.g. '1', '1st'"""
@@ -1125,17 +1137,28 @@ def activity_check():
 
 
 def stage_check(warp=False):
-    # Check if Jumpman is exiting the stage via ladders
+    # Reset Jumpmans position when exiting the stage via ladders or warping through an oilcan
+    if warp:
+        _g.jump = True
+        _g.lastwarp = _g.timer.duration
     if (_g.ypos < 20 or warp) and _g.stage == 0:
         _g.stage = 1
-        _g.ypos = 238 + (warp * -160)
+        if warp:
+            _g.ypos, _g.xpos = 152, 173
+        else:
+            _g.ypos = 238
         _g.coins = []
         initialise_screen()
     elif (_g.ypos > 239 or warp) and _g.stage == 1:
         _g.stage = 0
-        _g.ypos = 20 + (warp * 200)
+        if warp:
+            _g.ypos, _g.xpos = 232, 17
+        else:
+            _g.ypos = 20
         _g.coins = []
         initialise_screen()
+
+    # Reset Donkey Kong's position
     if _g.stage == 0:
         _g.dkx, _g.dky = 0, 0
         _g.psx, _g.psy = 0, 0
@@ -1152,10 +1175,10 @@ def teleport_between_hammers():
                 _g.xpos, _g.ypos = h2[0] - 2, h2[1] + 6 - (_g.stage * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
-                _g.xpos, _g.ypos = h1[0], h1[1] - 6 + (_g.stage * 8)
+                _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + (_g.stage * 8)
                 _g.teleport_ticks = pygame.time.get_ticks()
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
-            write_text("Teleport Jump!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("Teleport Jump!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
 
 
 def play_from_tracklist():
@@ -1190,7 +1213,7 @@ def main(initial=True):
     # Initialise Jumpman
     _s.debounce()
     animate_jumpman("r", horizontal_movement=0)
-    _g.lastmove = 0
+    _g.lastmove, _g.lastwarp = 0, 0
     _g.timer.reset()
     _g.active = True
 
