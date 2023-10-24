@@ -410,7 +410,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
 def adjust_jumpman():
     """Adjust Jumpman's vertical position with the sloping platform"""
-    for i in range(0, 3):
+    for i in range(0, 4):
         map_info = get_map_info(platforms_only=True)
         if "FOOT_UNDER_PLATFORM" in map_info or "TOP_OF_ANY_LADDER" in map_info:
             _g.ypos += -1
@@ -419,6 +419,11 @@ def adjust_jumpman():
         else:
             break
 
+    # Jumpman can grab a ladder when jumping from the oilcan
+    if pygame.time.get_ticks() - _g.lastwarpready < 1000 and _g.xpos >= 188 and _g.ypos < 152:
+        _g.xpos = 190
+        if "CLIMBING_LADDER" in get_map_info(platforms_only=True):
+            animate_jumpman("u")
 
 def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     sprite_file = f"artwork/sprite/jm{direction}#.png"
@@ -497,11 +502,14 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             sprite_file = f'artwork/sprite/jmr0.png'
             _g.ready = False
         elif direction == "d" and "FOOT_ABOVE_OILCAN" in get_map_info():
-            play_sound_effect(effect="sounds/warp.wav")
-            stage_check(warp=True)
+            if pygame.time.get_ticks() - _g.lastwarp > 1000:
+                play_sound_effect(effect="sounds/warp.wav")
+                stage_check(warp=True)
     else:
         # Ensure jumpman is not left floating after jumping from the oilcan
-        if _g.timer.duration - _g.lastwarpready < 1:
+        if "FOOT_ABOVE_PLATFORM" not in get_map_info():
+            _g.lastwarpready = 0
+        if pygame.time.get_ticks() - _g.lastwarpready < 1000:
             adjust_jumpman()
 
     img = _g.last_image if "#" in sprite_file else get_image(sprite_file)
@@ -802,7 +810,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     _g.timer.reset()
                     _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
-                        drop_coin(x=_g.stage * 36, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored)
+                        movement = 1 if _g.stage == 0 else choice([-1, 1])
+                        drop_coin(x=_g.stage * 36, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=movement)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
             elif "-record" in launch_command:
@@ -924,7 +933,10 @@ def process_interrupts():
                     if _g.score >= COIN_VALUES[coin_type] and loss + COIN_VALUES[coin_type] <= LIFE_COST:
                         loss += COIN_VALUES[coin_type]
                         _g.score -= COIN_VALUES[coin_type]
-                        movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
+                        if _g.stage == 0:
+                            movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
+                        else:
+                            movement = choice([-1, 1])
                         drop_coin(x=_g.xpos, y=_g.ypos + i, coin_type=coin_type, movement=movement)
                         i += 1
 
@@ -1032,7 +1044,7 @@ def process_interrupts():
                         break
     # Flash a down arrow when Jumpman is stood on the oilcan to indicate he can warp to next/previous stage.
     if "FOOT_ABOVE_OILCAN" in get_map_info():
-        _g.lastwarpready = _g.timer.duration
+        _g.lastwarpready = ticks
         if pygame.time.get_ticks() % 550 < 275:
             if _g.stage == 0:
                 _g.screen.blit(get_image(f"artwork/sprite/down.png"), (20, 246))
@@ -1040,7 +1052,7 @@ def process_interrupts():
                 _g.screen.blit(get_image(f"artwork/sprite/down.png"), (176, 166))
 
     # After warping, Jumpman appears from inside the oilcan
-    if _g.timer.duration - _g.lastwarp < 1 and _g.lastwarp > 0:
+    if ticks - _g.lastwarp < 1000 and _g.lastwarp > 0:
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         if _g.stage == 0:
             _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), (16, 232))
@@ -1083,6 +1095,8 @@ def animate_rolling_coins(out_of_time=False):
         # Move the coin along the platform and down ladders
         if "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
+        elif "FOOT_UNDER_PLATFORM" in map_info and _g.stage == 1:
+            co_y -= 1  # correct coin position by moving it up the girder
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info:
                 if _g.stage == 0:
@@ -1140,7 +1154,7 @@ def stage_check(warp=False):
     # Reset Jumpmans position when exiting the stage via ladders or warping through an oilcan
     if warp:
         _g.jump = True
-        _g.lastwarp = _g.timer.duration
+        _g.lastwarp = pygame.time.get_ticks()
     if (_g.ypos < 20 or warp) and _g.stage == 0:
         _g.stage = 1
         if warp:

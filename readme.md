@@ -16,8 +16,8 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
-| [dkafe_win64_binary_v0.49.zip](https://github.com/10yard/dkafe/releases/download/v0.49/dkafe_win64_binary_v0.49.zip) | 0.49    | Windows 64 bit (x64) systems: 10, 11      |
-| [dkafe_win32_binary_v0.49.zip](https://github.com/10yard/dkafe/releases/download/v0.49/dkafe_win32_binary_v0.49.zip) | 0.49    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_win64_binary_v0.50.zip](https://github.com/10yard/dkafe/releases/download/v0.50/dkafe_win64_binary_v0.50.zip) | 0.50    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_win32_binary_v0.50.zip](https://github.com/10yard/dkafe/releases/download/v0.50/dkafe_win32_binary_v0.50.zip) | 0.50    | Windows 32 bit (x86) systems: Vista, 7, 8 |
 | [dkafe_rpi4_image_v0.47.gz](https://github.com/10yard/dkafe/releases/download/v0.47/dkafe_rpi4_image_v0.47.gz)       | 0.47    | Raspberry Pi 4 and 400 only               |
 | [dkafe_winxp_binary_v0.47.zip](https://github.com/10yard/dkafe/releases/download/v0.47/dkafe_winxp_binary_v0.47.zip) | 0.47    | Windows XP only                           |
 
@@ -44,7 +44,7 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be configured to launch other emulators and roms.
 
-Jumpman can traverse platforms using the unbroken ladders and by utilising hammers (to teleport short a distance).  Jumpman can climb on an oilcan to quickly warp between the barrel and rivet stages.
+Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel and rivet stages.
 
 
 ![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
