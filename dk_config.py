@@ -173,21 +173,22 @@ START5_FRIENDLY = ["dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
                    "dkongbarrels", "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow",
                    "dkongcontinue", "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc",
-                   "dkongbarrelboss", "dkongsprfin"]
+                   "dkongbarrelboss", "dkongsprfin", "bigkonggx"]
 STAGE_FRIENDLY = ["dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfr",
                   "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev",
                   "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
                   "dkonghrd", "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey",
-                  "dkongrainbow", "ckongs", "ckongg", "ckongmc", "dkongksfix"]
+                  "dkongrainbow", "ckongs", "ckongg", "ckongmc", "dkongksfix", "bigkonggx"]
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
-AUTOSTART_UNFRIENDLY = ["dkongchorus"]
+AUTOSTART_UNFRIENDLY = []
+SKIPINTRO_UNFRIENDLY = ["dkongchorus"]
 
 # Roms that are converted to Galaxian hardware
-GALAXIAN_HARDWARE = ["kong", "ckongmc", "ckongs", "ckongg"]
+GALAXIAN_HARDWARE = ["kong", "ckongmc", "ckongs", "ckongg", "gkonggx"]
 
 # Colours
 RED = (232, 7, 10)

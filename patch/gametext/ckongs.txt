@@ -7,8 +7,9 @@ Interesting version of Crazy Kong due mainly to the
 bright neon colours and the reuse of audio from the 
 Konami Turtles/Turpin game.
 
-The game effectively starts at level 11 so you
-are already half way to reaching a killscreen!
-The initial difficulty is increased though.
+The game effectively starts at level 11 so you are 
+already half way to reaching a killscreen!
+The initial difficulty is increased right from the
+start though.
 
 A Crazy Kong Bootleg (originally by Falcon)

@@ -79,6 +79,7 @@ def read_romlist():
                         alt = des
                     des = des.replace("DK ", "$ ").replace("DK", "$ ")
                     des = des.replace("CK ", "# ").replace("CK", "# ")
+                    des = des.replace("BK ", "^ ").replace("BK", "^ ")
                     des = des.replace("1/2", "{ ").replace("1/4", "} ")
                     des = des.replace("NO", "| ") if des[:2] == "NO" else des
 
@@ -235,8 +236,11 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     if competing or launch_plugin:
         # Update options
         os.environ["DATA_CREDITS"] = str(CREDITS)
-        os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
-        os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO)
+        if competing:
+            os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
+        else:
+            os.environ["DATA_AUTOSTART"] = "0"
+        os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
 
     # print(launch_command)  # debug launch arguments
     return launch_command, launch_directory, competing, inp_file

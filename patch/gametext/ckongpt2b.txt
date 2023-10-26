@@ -4,7 +4,8 @@ This Donkey Kong clone retains all of the gameplay
 elements of Donkey Kong, but has the graphics redrawn 
 and re-colorised. 
 
-In this variation,  the stages are made much more
-difficult and you are given only 1 starting life!
+In this alternative levels variation,  the stages are 
+made much more difficult and you are given only 1 
+starting life.  You will need to be very careful!
 
 A Donkey Kong Clone Developed by Falcon

@@ -17,7 +17,7 @@
 
 local exports = {}
 exports.name = "dkchorus"
-exports.version = "0.13"
+exports.version = "0.14"
 exports.description = "Donkey Kong Chorus"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -45,7 +45,11 @@ function dkchorus.startplugin()
 		
 			is_pi = is_pi()  -- are we running on Pi hardware?
 			is_skip = mem:read_u16(0x36b8) == 0x5b5f  -- skip climb and intro sounds (2NUTKONG hack doesn't have these)
-			play("donkeykong")
+			
+			data_autostart = os.getenv("DATA_AUTOSTART") or "0"
+			if data_autostart == "0" then
+				play("donkeykong")
+			end	
 		end
 	end
 

@@ -1,0 +1,18 @@
+Big Kong Bootleg on Galaxian Hardware
+
+This bootleg of Crazy Kong was made to be played on
+Galaxian hardware.
+
+This clone retains all of the gameplay elements of 
+Donkey Kong, but has the graphics redrawn and 
+re-colorised. 
+
+Push "Jump" button to start after inserting coins 
+instead of the "Player 1" button.
+
+The game effectively starts at level 11 so you are 
+already half way to reaching a killscreen!
+The initial difficulty is increased right from the
+start though.
+
+A Crazy Kong Bootleg (originally by Falcon)

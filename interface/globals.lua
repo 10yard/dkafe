@@ -17,10 +17,16 @@ if mame_version >= 0.227 then
 	mac = manager.machine
 	ports = mac.ioport.ports
 	video = mac.video
+	sound = mac.sound
 elseif mame_version >= 0.196 then
 	mac = manager:machine()
 	ports = mac:ioport().ports
 	video = mac:video()
+	if mame_version >= 0.212 then 
+		sound = mac:sound() 
+	else 
+		sound = {} -- no lua sound control prior to mame version 0.212
+	end
 else
 	print("ERROR: The DKAFE system requires MAME version 0.196 or greater.")
 end
@@ -28,6 +34,9 @@ if mac ~= nil then
 	screen = mac.screens[":screen"]
 	cpu = mac.devices[":maincpu"]
 	mem = cpu.spaces["program"]
+	
+	--store the default sound level	
+	i_attenuation = sound.attenuation
 end
 
 -- Interface state

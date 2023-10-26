@@ -3,4 +3,6 @@ Donkey Kong Rainbow Hack
 A modified Donkey Kong that adds RAINBOW colors to the 
 game's stages.
 
+All gameplay elements are unchanged.
+
 Hack Developed by John Kowalski (SockMaster)

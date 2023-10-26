@@ -30,6 +30,9 @@ The code changes for WolfMAME 0.196, 0.236 and 0.241 are included in the "change
 
   frontend/mame/language.cpp
     Remove translation error messages
+
+  mame/drivers/galaxian.cpp, mame/includes/galaxian.h and mame/mame.lst
+	To add support for bigkonggx to v0.241
 	
 
 A useful reference to compiling MAME can be found at:
@@ -39,6 +42,7 @@ MAME build tools are available at https://github.com/mamedev/buildtools/releases
 
 To build with only DK drivers (including DK conversions) the SOURCES flag was used in the makefile along with REGENIE i.e.
   SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp,src/mame/drivers/galaxian.cpp
+  or SOURCES=src/mame/nintendo/dkong.cpp,src/mame/nichibutsu/cclimber.cpp,src/mame/galaxian/galaxian.cpp
   REGENIE=1
   NOWERROR=1
 

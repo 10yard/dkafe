@@ -11,4 +11,4 @@ This is a great hack for practicing your barrel
 grouping. 
 
 Hack Developed by Jon Wilson (10yard)
-Based on ideas from Luke (mr2nut123)
+Based on an idea from Luke (mr2nut123)

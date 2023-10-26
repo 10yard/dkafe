@@ -4,3 +4,4 @@ The 100% barrel steering and fixed points remove your
 reliance on luck when focussed on putting up a score.
 
 Hack Developed by Jon Wilson (10yard)
+Based on an idea from Luke (mr2nut123)

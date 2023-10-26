@@ -22,7 +22,6 @@ emu.register_frame(function()
 	mode1 = mem:read_u8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
 	mode2 = mem:read_u8(0x600a)  -- 1-attract mode, 7-climb scene, 10-how high, 15-dead, 16-game over
 
-	print(mode1)
   -- load the game up quickly
 	if loaded == 0 then
 		max_frameskip(true)
@@ -51,7 +50,7 @@ emu.register_frame(function()
 		if data_autostart == "1" then
 			if screen:frame_number() > autostart_delay then
 				--for k, v in pairs(ports[":IN1"].fields) do print(k) end -- debug to discover button names
-				if emu.romname() == "ckongg" or emu.romname() == "ckongs" then
+				if emu.romname() == "ckongg" or emu.romname() == "ckongs" or emu.romname() == "bigkonggx" then
 					ports[":IN1"].fields["1 Player Start"]:set_value(1)
 				elseif emu.romname() == "ckongmc" then
 					ports[":IN1"].fields["P1 Button 1"]:set_value(1)
@@ -76,7 +75,7 @@ emu.register_frame(function()
 		
 		-- Release P1 START button (after autostart)	
 		if data_autostart == "9" and mode1 > 2 then
-			if emu.romname() == "ckongg" or emu.romname() == "ckongs" then
+			if emu.romname() == "ckongg" or emu.romname() == "ckongs" or emu.romname() == "bigkonggx" then
 				ports[":IN1"].fields["1 Player Start"]:set_value(0)
 			elseif emu.romname() == "ckongmc" then
 				ports[":IN1"].fields["P1 Button 1"]:set_value(0)
@@ -108,11 +107,13 @@ function fast_skip_ckong_intro()
 		if mode2 == 7 then
 			if mem:read_u8(0x6011) == 0x10 then
 				skipped_intro = true
-				max_frameskip(true)	
+				max_frameskip(true)
+				sound.attenuation = -32  -- mute sounds
 			end
 		elseif skipped_intro == true then
 			skipped_intro = false
 			max_frameskip(false)
+			sound.attenuation = i_attenuation  -- restore sounds
 		end
 	end
 end

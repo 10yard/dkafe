@@ -1,8 +1,7 @@
 Donkey Kong Bootleg for Galaxian Hardware
 
 A bizarre Donkey Kong version by Taito that runs on 
-Namco's Galaxian hardware.  The bootleg is also known 
-as "Galaxian Kong".
+Namco's Galaxian hardware.
 
 This clone retains all of the gameplay elements of 
 Donkey Kong, but has the graphics redrawn and 

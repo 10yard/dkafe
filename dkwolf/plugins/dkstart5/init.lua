@@ -14,7 +14,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {
 	name = "dkstart5",
-	version = "0.3",
+	version = "0.4",
 	description = "DK Start 5",
 	license = "GNU GPLv3",
 	author = { name = "Jon Wilson (10yard)" } }
@@ -53,7 +53,7 @@ function dkstart5.startplugin()
 	
 	function dkstart5_main()
 		if mem ~= nil then
-			if (emu.romname() == "ckongs" or emu.romname() == "ckongg" or emu.romname() == "ckongmc" or emu.romname() == "kong") and mem:read_u8(0x6229) == 11 then
+			if (emu.romname() == "ckongs" or emu.romname() == "ckongg" or emu.romname() == "ckongmc" or emu.romname() == "kong" or emu.romname() == "bigkonggx") and mem:read_u8(0x6229) == 11 then
 				-- These crazy kong bootlegs start at level 11 difficulty but report level 1 in the game.
 				mem:write_u8(0x6229, 15)  -- update to level 5
 				mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
