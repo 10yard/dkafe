@@ -34,7 +34,7 @@ We can see the USB drive size and mountpoint.  Assuming the drive is named "USB"
 The mountpoint used in commands below is /media/pi/USB
 
 $ sudo bleachbit
-Run this occasionally to clean up system.  Enable all options except "Memory".
+Run occasionally to clean up system.  Enable all options except "Memory".
 
 $ history -c && history -w
 To clear the terminal history

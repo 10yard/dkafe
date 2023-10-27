@@ -1087,7 +1087,7 @@ def animate_rolling_coins(out_of_time=False):
         map_info = get_map_info(direction="d", x=int(co_x + (9, 4)[co_dir == 1]), y=int(co_y + 9))
 
         # Toggle ladders.  Virtual ladders are always active.
-        if "APPROACHING_LADDER" in map_info:
+        if "APPROACHING_LADDER" in map_info or ("TOP_OF_LADDER" in map_info and _g.stage == 1):
             co_ladder = not randint(1, LADDER_CHANCE[_g.stage]) == 1
         elif "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
             map_info = []
@@ -1095,7 +1095,7 @@ def animate_rolling_coins(out_of_time=False):
         # Move the coin along the platform and down ladders
         if "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
-        elif "FOOT_UNDER_PLATFORM" in map_info and _g.stage == 1:
+        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage == 1:
             co_y -= 1  # correct coin position by moving it up the girder
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info:
@@ -1186,7 +1186,7 @@ def teleport_between_hammers():
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
             h1, h2 = HAMMER_POSITIONS[_g.stage][0], HAMMER_POSITIONS[_g.stage][1]
             if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
-                _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 14 - (_g.stage * 4)
+                _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 3 + (_g.stage * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
                 _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + (_g.stage * 8)
