@@ -81,7 +81,6 @@ def read_romlist():
                     des = des.replace("CK ", "# ").replace("CK", "# ")
                     des = des.replace("BK ", "^ ").replace("BK", "^ ")
                     des = des.replace("1/2", "{ ").replace("1/4", "} ")
-                    des = des.replace("NO", "| ") if des[:2] == "NO" else des
 
                     # Assume defaults when not provided
                     if not emu:
@@ -90,10 +89,6 @@ def read_romlist():
                         rec = "0"
                     if not unlock:
                         unlock = "0"
-
-                    # Skip over Galaxian hardware based roms when system not supported
-                    if sub in GALAXIAN_HARDWARE and is_pi() and (emu == "1" or emu == "2"):
-                        continue
 
                     # Get the score targets
                     if "-record" in get_emulator(int(emu)).lower():
@@ -233,13 +228,12 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             competing = True
             launch_command += f' -noconsole -autoboot_script "{os.path.join(ROOT_DIR, "interface", script)}"'
 
+    os.environ["DATA_AUTOSTART"] = "0"
     if competing or launch_plugin:
         # Update options
         os.environ["DATA_CREDITS"] = str(CREDITS)
         if competing:
             os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
-        else:
-            os.environ["DATA_AUTOSTART"] = "0"
         os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
 
     # print(launch_command)  # debug launch arguments

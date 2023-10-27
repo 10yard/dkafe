@@ -1,15 +1,20 @@
 Donkey Kong Bootleg for Galaxian Hardware
 
 A bizarre Donkey Kong version by Taito that runs on 
-Namco's Galaxian hardware.
+Namco's Galaxian hardware.  This is a brazilian 
+language version but you can probably work out what 
+everything means.
 
-This clone retains all of the gameplay elements of 
+This clone retains most of the gameplay elements of 
 Donkey Kong, but has the graphics redrawn and 
 re-colorised.  The game features the colourful 
 starfield background synonymous with Galaxian.
 
-There is a "Kong" logo upon bootup, and the jumping 
-is a lot more jerky than regular Donkey Kong.
+The collision detection is not great and jumping is a
+lot more jerky than regular Donkey Kong.
+
+On the conveyor stage,  you must climb up past Donkey
+to reach Pauline via a disappearing ladder.   
 
 Push "Jump" button to start after inserting coins 
 instead of the "Player 1" button.

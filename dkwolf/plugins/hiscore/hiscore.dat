@@ -2406,6 +2406,7 @@ yamato2:
 
 ;******Big Kong
 bigkong:
+bigkonggx:
 @:maincpu,program,6109,a1,00,92
 @:maincpu,program,60b8,3,50,00
 
@@ -6444,7 +6445,6 @@ anteaterg:
 
 
 kong:
-bigkonggx:
 @:maincpu,program,827f,19,10,00
 @:maincpu,program,8296,1,46,46
 

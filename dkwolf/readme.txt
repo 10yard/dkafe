@@ -42,7 +42,6 @@ MAME build tools are available at https://github.com/mamedev/buildtools/releases
 
 To build with only DK drivers (including DK conversions) the SOURCES flag was used in the makefile along with REGENIE i.e.
   SOURCES=src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp,src/mame/drivers/galaxian.cpp
-  or SOURCES=src/mame/nintendo/dkong.cpp,src/mame/nichibutsu/cclimber.cpp,src/mame/galaxian/galaxian.cpp
   REGENIE=1
   NOWERROR=1
 
@@ -74,5 +73,6 @@ Pi4 build specifics:
   Additional Pi4 flags are:
     NO_OPENGL=1
 	NO_X11=1
+	ARCHOPTS = -mcpu=cortex-a72 -mtune=cortex-a72 -mfpu=neon-vfpv4 -mfloat-abi=hard -funsafe-math-optimizations -fexpensive-optimizations -fprefetch-loop-arrays
 	
-	
+  make LDFLAGS="-Wl,--copy-dt-needed-entries"

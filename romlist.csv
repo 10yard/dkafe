@@ -32,7 +32,7 @@ dkong,dkongcb,DK Crazy,DK Crazy Barrels,37,1,2,46000,10000,20000,40000
 dkong,dkongkana,Kana,Kana Kong,39,1,2,48000,10000,20000,40000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,40,1,2,50000,10000,20000,40000
 dkong3,,DK 3,,41,1,2,52000,,,
-dkong,dkongnoluck,NOLuck,NoLuck Kong,41,1,2,52000,15000,25000,50000
+dkong,dkongnoluck,NoLuck,NoLuck Kong,41,1,2,52000,15000,25000,50000
 dkong,dkongbarpal,DK Palooza,DK Barrelpalooza,43,1,2,54000,10000,25000,50000
 dkong,dkongwbh,DK Wild,,44,1,2,56000,1000,2000,5000
 dkong,dkong2nut,2Nut,2Nut Kong,45,1,2,58000,10000,25000,50000
@@ -59,9 +59,10 @@ dkong,dkongkonkey,KD,Konkey Dong,81,1,2,96000,10000,15000,25000
 dkongjr,dkongjrcontinue,JrCont.,DK Junior Continue,82,1,2,98000,10000,20000,40000
 ckongs,ckongs,CK Scramble,CK Scramble Hardware,83,1,2,100000,10000,25000,40000
 ckongg,ckongg,CK Galaxian,CK Galaxian Hardware,84,1,2,102000,10000,25000,40000
-bigkonggx,bigkonggx,BK Galaxian,BigKong Galaxian Hardware,86,1,2,104000,10000,20000,40000
+bigkonggx,bigkonggx,BK Galaxian,BK Galaxian Hardware,86,1,2,104000,10000,20000,40000
 kong,kong,DK Galaxian,DK Galaxian Hardware,88,1,2,106000,,,
 dkong,dkongksfix,KS Fix,DK Killscreen Fix,99,1,2,,10000,25000,40000
+ckongmc,ckongmc,CK MoonCresta,CK MoonCresta Hardware,99,1,2,,,,
 dkong,dkongtrn,DK Trainer,,99,1,2,,,,
 dkongf,dkongst2,DK Springs Trainer,,99,1,2,,,,
 dkong,dkongpace,DK Pace,,99,1,2,,,,

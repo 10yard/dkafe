@@ -16,8 +16,8 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
-| [dkafe_win64_binary_v0.50.zip](https://github.com/10yard/dkafe/releases/download/v0.50/dkafe_win64_binary_v0.50.zip) | 0.50    | Windows 64 bit (x64) systems: 10, 11      |
-| [dkafe_win32_binary_v0.50.zip](https://github.com/10yard/dkafe/releases/download/v0.50/dkafe_win32_binary_v0.50.zip) | 0.50    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_win64_binary_v0.51.zip](https://github.com/10yard/dkafe/releases/download/v0.51/dkafe_win64_binary_v0.51.zip) | 0.51    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_win32_binary_v0.51.zip](https://github.com/10yard/dkafe/releases/download/v0.51/dkafe_win32_binary_v0.51.zip) | 0.51    | Windows 32 bit (x86) systems: Vista, 7, 8 |
 | [dkafe_rpi4_image_v0.47.gz](https://github.com/10yard/dkafe/releases/download/v0.47/dkafe_rpi4_image_v0.47.gz)       | 0.47    | Raspberry Pi 4 and 400 only               |
 | [dkafe_winxp_binary_v0.47.zip](https://github.com/10yard/dkafe/releases/download/v0.47/dkafe_winxp_binary_v0.47.zip) | 0.47    | Windows XP only                           |
 
@@ -158,10 +158,11 @@ Credit is given to the original authors below.
 
 ### Bootlegs
  - Big Kong
- - Donkey Kong converted to Galaxian Hardware
- - Crazy Kong converted to Scramble Hardware
- - Crazy Kong converted to Moon Cresta Hardware
- - Crazy Kong converted to Galaxian Hardware
+ - Donkey Kong on Galaxian Hardware
+ - Crazy Kong on Scramble Hardware
+ - Crazy Kong on Moon Cresta Hardware
+ - Crazy Kong on Galaxian Hardware
+ - Big Kong on Galaxian Hardware
 
 
 
