@@ -14,18 +14,18 @@ This program handles optional setup items by prompting user.
 """
 
 import os
-AUTOSTART_FILE = "/etc/xdg/lxsession/LXDE-pi/autostart"
-AUTOSTART_FILE_BU = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP"
-AUTOSTART_FILE_BU2 = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP2"
-PCMAN_CONFIG_FILE = "/etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
-PCMAN_CONFIG_FILE_BU = "/etc/xdg/pcmanfm/LXDE-pi/desktop-items-0-DKAFEBACKUP.conf"
-DESKTOP_CONFIG_FILE = "/usr/share/lightdm/lightdm.conf.d/01_debian.conf"
-DESKTOP_CONFIG_FILE_BU = "/usr/share/lightdm/lightdm.conf.d/01_debian_DKAFEBACKUP.conf"
-CMDLINE_FILE = "/boot/cmdline.txt"
-CMDLINE_FILE_BU = "/boot/cmdline_DKAFEBACKUP.txt"
-CONFIG_FILE = "/boot/config.txt"
-CONFIG_FILE_BU = "/boot/config_DKAFEBACKUP.txt"
-CONFIG_FILE_BU2 = "/boot/config_DKAFEBACKUP2.txt"
+F_AUTOSTART = "/etc/xdg/lxsession/LXDE-pi/autostart"
+F_AUTOSTART_BU = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP"
+F_AUTOSTART_BU2 = "/etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP2"
+F_PCMAN_CONFIG = "/etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
+F_PCMAN_CONFIG_BU = "/etc/xdg/pcmanfm/LXDE-pi/desktop-items-0-DKAFEBACKUP.conf"
+F_DESKTOP_CONFIG = "/usr/share/lightdm/lightdm.conf.d/01_debian.conf"
+F_DESKTOP_CONFIG_BU = "/usr/share/lightdm/lightdm.conf.d/01_debian_DKAFEBACKUP.conf"
+F_CMDLINE = "/boot/cmdline.txt"
+F_CMDLINE_BU = "/boot/cmdline_DKAFEBACKUP.txt"
+F_CONFIG = "/boot/config.txt"
+F_CONFIG_BU = "/boot/config_DKAFEBACKUP.txt"
+F_CONFIG_BU2 = "/boot/config_DKAFEBACKUP2.txt"
 
 GPIO_MAPPING = '''
 # GPIO to keyboard inputs
@@ -58,27 +58,40 @@ def yesno(question):
 def main():
     changes_made = False
 
-    if os.path.exists(AUTOSTART_FILE) and not os.path.exists(AUTOSTART_FILE_BU):
-        os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU}")
-        if os.path.exists(AUTOSTART_FILE_BU):
+    # Reinstate the default autostart file if necessary
+    if not os.path.exists(F_AUTOSTART):
+        if os.path.exists(F_AUTOSTART_BU):
+            os.system(f"sudo cp {F_AUTOSTART_BU} {F_AUTOSTART}")
+        else:
+            os.system(f"sudo cp {F_AUTOSTART_BU2} {F_AUTOSTART}")
+
+    # Clean up DKAFE backup files ready for fresh install
+    for f in F_AUTOSTART_BU, F_AUTOSTART_BU2, F_PCMAN_CONFIG_BU, F_DESKTOP_CONFIG_BU, F_CMDLINE_BU, F_CONFIG_BU, F_CONFIG_BU2:
+        if os.path.exists(f):
+            os.system(f"sudo rm -f {f}")
+
+    # Proceed with install
+    if os.path.exists(F_AUTOSTART) and not os.path.exists(F_AUTOSTART_BU):
+        os.system(f"sudo cp {F_AUTOSTART} {F_AUTOSTART_BU}")
+        if os.path.exists(F_AUTOSTART_BU):
             # -------- Launch DKAFE on boot --------
             # --------------------------------------
             answer = yesno("Launch DKAFE on boot")
             if answer:
                 # append DKAFE start script to autoboot file
-                with open(AUTOSTART_FILE, "a") as f:
+                with open(F_AUTOSTART, "a") as f:
                     f.write("@/home/pi/dkafe_bin/dkafe_start.sh\n")
 
-            os.system(f"sudo cp {AUTOSTART_FILE} {AUTOSTART_FILE_BU2}")
-            if os.path.exists(AUTOSTART_FILE_BU2):
+            os.system(f"sudo cp {F_AUTOSTART} {F_AUTOSTART_BU2}")
+            if os.path.exists(F_AUTOSTART_BU2):
                 # -------- Hide the Raspberry Pi taskbar --------
                 # -----------------------------------------------
                 answer = yesno("Hide the Pi taskbar")
                 if answer:
                     changes_made = True
                     # comment the "lxpanel" line in autoboot file
-                    with open(AUTOSTART_FILE, "w") as f_out:
-                        with open(AUTOSTART_FILE_BU2, "r") as f_in:
+                    with open(F_AUTOSTART, "w") as f_out:
+                        with open(F_AUTOSTART_BU2, "r") as f_in:
                             for line in f_in.readlines():
                                 if "lxpanel" in line.lower():
                                     f_out.write("#" + line)
@@ -87,17 +100,17 @@ def main():
 
     # -------- Hide the Raspberry Pi Desktop (Icon, background and welcome image) --------
     # ------------------------------------------------------------------------------------
-    if os.path.exists(PCMAN_CONFIG_FILE) and not os.path.exists(PCMAN_CONFIG_FILE_BU):
-        os.system(f"sudo cp {PCMAN_CONFIG_FILE} {PCMAN_CONFIG_FILE_BU}")
-        if os.path.exists(PCMAN_CONFIG_FILE_BU):
+    if os.path.exists(F_PCMAN_CONFIG) and not os.path.exists(F_PCMAN_CONFIG_BU):
+        os.system(f"sudo cp {F_PCMAN_CONFIG} {F_PCMAN_CONFIG_BU}")
+        if os.path.exists(F_PCMAN_CONFIG_BU):
             answer = yesno("Hide the Pi Desktop")
             if answer:
                 changes_made = True
                 # Blank out the desktop splash image
                 os.system("sudo cp /home/pi/dkafe_bin/artwork/blank.png /usr/share/plymouth/themes/pix/splash.png")
                 # Update desktop options
-                with open(PCMAN_CONFIG_FILE, "w") as f_out:
-                    with open(PCMAN_CONFIG_FILE_BU, "r") as f_in:
+                with open(F_PCMAN_CONFIG, "w") as f_out:
+                    with open(F_PCMAN_CONFIG_BU, "r") as f_in:
                         for line in f_in.readlines():
                             if "wallpaper=" in line.lower():
                                 f_out.write("wallpaper=/home/pi/dkafe_bin/artwork/blank.png\n")
@@ -112,14 +125,14 @@ def main():
 
     # -------- Hide the Raspberry Pi mouse cursor --------
     # ----------------------------------------------------
-    if os.path.exists(DESKTOP_CONFIG_FILE) and not os.path.exists(DESKTOP_CONFIG_FILE_BU):
-        os.system(f"sudo cp {DESKTOP_CONFIG_FILE} {DESKTOP_CONFIG_FILE_BU}")
-        if os.path.exists(DESKTOP_CONFIG_FILE_BU):
+    if os.path.exists(F_DESKTOP_CONFIG) and not os.path.exists(F_DESKTOP_CONFIG_BU):
+        os.system(f"sudo cp {F_DESKTOP_CONFIG} {F_DESKTOP_CONFIG_BU}")
+        if os.path.exists(F_DESKTOP_CONFIG_BU):
             answer = yesno("Hide the Pi mouse cursor")
             if answer:
                 changes_made = True
                 # add no cursor command to end of desktop config file
-                with open(DESKTOP_CONFIG_FILE, "a") as f:
+                with open(F_DESKTOP_CONFIG, "a") as f:
                     f.write("xserver-command=X -nocursor\n")
 
     # -------- Use headphone jack for audio --------
@@ -129,9 +142,9 @@ def main():
         changes_made = True
         os.system("sudo raspi-config nonint do_audio 1")
 
-    if os.path.exists(CONFIG_FILE) and not os.path.exists(CONFIG_FILE_BU):
-        os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU}")
-        if os.path.exists(CONFIG_FILE_BU):
+    if os.path.exists(F_CONFIG) and not os.path.exists(F_CONFIG_BU):
+        os.system(f"sudo cp {F_CONFIG} {F_CONFIG_BU}")
+        if os.path.exists(F_CONFIG_BU):
             # -------- Rotate display --------
             # --------------------------------
             answer = yesno("Rotate display")
@@ -139,23 +152,23 @@ def main():
                 answer = yesno("Rotate display to the left")
                 if answer:
                     changes_made = True
-                    with open(CONFIG_FILE, "a") as f_out:
+                    with open(F_CONFIG, "a") as f_out:
                         f_out.write("\n# Rotate display\ndisplay_rotate=3\n")
                 else:
                     answer = yesno("Rotate display to the right")
                     if answer:
                         changes_made = True
-                        with open(CONFIG_FILE, "a") as f_out:
+                        with open(F_CONFIG, "a") as f_out:
                             f_out.write("\n# Rotate display\ndisplay_rotate=1\n")
 
             # -------- Optimise framebuffer (recommended for HDMI output) --------
             # --------------------------------------------------------------------
             answer = yesno("Optimise framebuffer (recommend for HDMI and VGA displays)")
             if answer:
-                os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU2}")
+                os.system(f"sudo cp {F_CONFIG} {F_CONFIG_BU2}")
                 changes_made = True
-                with open(CONFIG_FILE, "w") as f_out:
-                    with open(CONFIG_FILE_BU2, "r") as f_in:
+                with open(F_CONFIG, "w") as f_out:
+                    with open(F_CONFIG_BU2, "r") as f_in:
                         for line in f_in.readlines():
                             if "framebuffer_width=" in line.lower():
                                 f_out.write("framebuffer_width=448\n")
@@ -167,10 +180,10 @@ def main():
             # --------------------------------------------
             answer = yesno("Force 640x480 mode on boot (for scan line generators)")
             if answer:
-                os.system(f"sudo cp {CONFIG_FILE} {CONFIG_FILE_BU2}")
+                os.system(f"sudo cp {F_CONFIG} {F_CONFIG_BU2}")
                 changes_made = True
-                with open(CONFIG_FILE, "w") as f_out:
-                    with open(CONFIG_FILE_BU2, "r") as f_in:
+                with open(F_CONFIG, "w") as f_out:
+                    with open(F_CONFIG_BU2, "r") as f_in:
                         for line in f_in.readlines():
                             if "disable_overscan=" in line.lower():
                                 f_out.write("disable_overscan=1\n")
@@ -186,7 +199,7 @@ def main():
             if answer:
                 changes_made = True
                 # update /boot/config.txt
-                with open(CONFIG_FILE, "a") as f_out:
+                with open(F_CONFIG, "a") as f_out:
                     f_out.write(GPIO_MAPPING)
 
     # -------- Disable non-essential services --------
