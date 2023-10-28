@@ -1,1 +1,0 @@
-C:\emus\bgb\bgb c:\emus\roms\dkong_gb.gb

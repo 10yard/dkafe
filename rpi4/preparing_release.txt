@@ -1,7 +1,8 @@
 Pi4 build and release notes
 ---------------------------
 
-Insert master SD card (can be created from latest image) and boot to Pi OS Desktop
+Insert master SD card and boot to Pi OS Desktop
+A master SD card can be created from latest image ideally to 4GB card.
 
 Abort out of the automated install - if it starts
 Press CTRL-ALT-T to start terminal,  or use SSH to remotely connect to user: "pi", password "dkafe".
@@ -11,7 +12,7 @@ There may be existing "dkafe_bin" folders at /boot/dkafe_bin and /home/pi/dkafe_
 These will be automatically removed by the build script.
 
 $ git clone https://github.com/10yard/dkafe.git
-Will create a "dkafe" folder containing the sources
+To create a "dkafe" folder containing the sources
 
 $ cd dkafe
 $ chmod a+rwx build.sh
@@ -34,17 +35,17 @@ We can see the USB drive size and mountpoint.  Assuming the drive is named "USB"
 The mountpoint used in commands below is /media/pi/USB
 
 $ sudo bleachbit
-Run occasionally to clean up system.  Enable all options except "Memory".
+Optional to clean up and optimise system.  Enable all options except "Memory".
 
 $ history -c && history -w
-To clear the terminal history
+To clear terminal history
 
 $ sudo dd if=/dev/mmcblk0 of=/media/pi/USB/dkafe_sdcard.img bs=1M
-This will make an image of the SD Card (mmcblk0) and save to USB stick.  It will take a while.
+To make an image of the SD Card (mmcblk0) and save to USB stick.  It will take a while.
 
 $ cd /media/pi/USB
 $ sudo pishrink.sh -z dkafe_sdcard.img
-This will shrink the image and package into .gz file.  It will take a while.
+To shrink the image and package into .gz file.  It will take a while.
 
 $ ls -l
 Job done.

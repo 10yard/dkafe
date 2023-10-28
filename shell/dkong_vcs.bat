@@ -1,1 +1,0 @@
-C:\emus\Stella\64-bit\stella -fullscreen 1 c:\emus\roms\dkong_vcs.bin
