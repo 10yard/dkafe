@@ -62,7 +62,7 @@ def main():
     if not os.path.exists(F_AUTOSTART):
         if os.path.exists(F_AUTOSTART_BU):
             os.system(f"sudo cp {F_AUTOSTART_BU} {F_AUTOSTART}")
-        else:
+        elif os.path.exists(F_AUTOSTART_BU2):
             os.system(f"sudo cp {F_AUTOSTART_BU2} {F_AUTOSTART}")
 
     # Clean up DKAFE backup files ready for fresh install
@@ -71,7 +71,7 @@ def main():
             os.system(f"sudo rm -f {f}")
 
     # Proceed with install
-    if os.path.exists(F_AUTOSTART) and not os.path.exists(F_AUTOSTART_BU):
+    if os.path.exists(F_AUTOSTART):
         os.system(f"sudo cp {F_AUTOSTART} {F_AUTOSTART_BU}")
         if os.path.exists(F_AUTOSTART_BU):
             # -------- Launch DKAFE on boot --------
@@ -100,7 +100,7 @@ def main():
 
     # -------- Hide the Raspberry Pi Desktop (Icon, background and welcome image) --------
     # ------------------------------------------------------------------------------------
-    if os.path.exists(F_PCMAN_CONFIG) and not os.path.exists(F_PCMAN_CONFIG_BU):
+    if os.path.exists(F_PCMAN_CONFIG):
         os.system(f"sudo cp {F_PCMAN_CONFIG} {F_PCMAN_CONFIG_BU}")
         if os.path.exists(F_PCMAN_CONFIG_BU):
             answer = yesno("Hide the Pi Desktop")
@@ -125,7 +125,7 @@ def main():
 
     # -------- Hide the Raspberry Pi mouse cursor --------
     # ----------------------------------------------------
-    if os.path.exists(F_DESKTOP_CONFIG) and not os.path.exists(F_DESKTOP_CONFIG_BU):
+    if os.path.exists(F_DESKTOP_CONFIG):
         os.system(f"sudo cp {F_DESKTOP_CONFIG} {F_DESKTOP_CONFIG_BU}")
         if os.path.exists(F_DESKTOP_CONFIG_BU):
             answer = yesno("Hide the Pi mouse cursor")
@@ -142,7 +142,7 @@ def main():
         changes_made = True
         os.system("sudo raspi-config nonint do_audio 1")
 
-    if os.path.exists(F_CONFIG) and not os.path.exists(F_CONFIG_BU):
+    if os.path.exists(F_CONFIG):
         os.system(f"sudo cp {F_CONFIG} {F_CONFIG_BU}")
         if os.path.exists(F_CONFIG_BU):
             # -------- Rotate display --------
