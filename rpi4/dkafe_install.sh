@@ -20,18 +20,22 @@ echo "Preparing files,  please wait..."
 # 1) Install DKAFE to /home/pi/dkafe_bin folder
 sudo cp -r /boot/dkafe_bin /home/pi
 
-# 2) Copy dkong roms (if found in /boot partition)
+# 2) Copy default config.txt and cmdline.txt to /boot partition
+sudo cp -f /boot/dkafe_bin/rpi4/config.txt /boot/config.txt
+sudo cp -f /boot/dkafe_bin/rpi4/cmdline.txt /boot/cmdline.txt
+
+# 3) Copy dkong roms (if found in /boot partition)
 sudo cp -f /boot/dkong.zip /home/pi/dkafe_bin/roms 2>/dev/null
 sudo cp -f /boot/dkongjr.zip /home/pi/dkafe_bin/roms 2>/dev/null
 sudo cp -f /boot/dkong3.zip /home/pi/dkafe_bin/roms 2>/dev/null
 
-# 3) Grant all permissions
+# 4) Grant all permissions
 cd /home/pi
 sudo chown -R pi:pi dkafe_bin
 sudo chmod -R 777 dkafe_bin
 
-# 4) Remove the first boot script
+# 5) Remove the first boot script
 sudo rm /etc/xdg/autostart/firstboot.desktop 2>/dev/null
 
-# 5) Run Python script for optional setup
+# 6) Run Python script for optional setup
 sudo python3 /home/pi/dkafe_bin/rpi4/dkafe_install.py
