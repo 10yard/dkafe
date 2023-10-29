@@ -21,8 +21,6 @@ F_PCMAN_CONFIG = "/etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf"
 F_PCMAN_CONFIG_BU = "/etc/xdg/pcmanfm/LXDE-pi/desktop-items-0-DKAFEBACKUP.conf"
 F_DESKTOP_CONFIG = "/usr/share/lightdm/lightdm.conf.d/01_debian.conf"
 F_DESKTOP_CONFIG_BU = "/usr/share/lightdm/lightdm.conf.d/01_debian_DKAFEBACKUP.conf"
-F_CMDLINE = "/boot/cmdline.txt"
-F_CMDLINE_BU = "/boot/cmdline_DKAFEBACKUP.txt"
 F_CONFIG = "/boot/config.txt"
 F_CONFIG_BU = "/boot/config_DKAFEBACKUP.txt"
 F_CONFIG_BU2 = "/boot/config_DKAFEBACKUP2.txt"
@@ -66,7 +64,7 @@ def main():
             os.system(f"sudo cp {F_AUTOSTART_BU2} {F_AUTOSTART}")
 
     # Clean up DKAFE backup files ready for fresh install
-    for f in F_AUTOSTART_BU, F_AUTOSTART_BU2, F_PCMAN_CONFIG_BU, F_DESKTOP_CONFIG_BU, F_CMDLINE_BU, F_CONFIG_BU, F_CONFIG_BU2:
+    for f in F_AUTOSTART_BU, F_AUTOSTART_BU2, F_PCMAN_CONFIG_BU, F_DESKTOP_CONFIG_BU, F_CONFIG_BU, F_CONFIG_BU2:
         if os.path.exists(f):
             os.system(f"sudo rm -f {f}")
 
