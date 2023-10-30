@@ -1098,11 +1098,10 @@ def animate_rolling_coins(out_of_time=False):
         elif "FOOT_UNDER_PLATFORM" in map_info and _g.stage == 1:
             co_y -= 1  # correct coin position by moving it up the girder
         elif "ANY_LADDER" in map_info and co_y < 238:
-            if "TOP_OF_ANY_LADDER" in map_info:
-                if _g.stage == 0:
-                    co_dir *= -1  # Flip horizontal direction
-                else:
-                    co_dir = choice([-1, 1])  # Random direction change
+            if "TOP_OF_ANY_LADDER" in map_info and _g.stage == 0:
+                co_dir *= -1  # Flip horizontal direction
+            elif "APPROACHING_END_OF_LADDER" in map_info and _g.stage == 1:
+                co_dir = choice([-1, 1])  # Random direction change
             co_y += COIN_SPEED
         else:
             co_x += co_dir * COIN_SPEED  # Increment horizontal movement
