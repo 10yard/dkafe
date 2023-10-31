@@ -566,7 +566,9 @@ https://github.com/furrykef/dkdasm
 Paul Goes for an excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
-Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, Tim Appleton and Vic20 George.
+Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, Tim Appleton, Vic20 George, Kirai Shouen/125scratch.
+
+Feedback, feature contributions and development ideas from Superjustinbros (Justin De Lucia)
 
 The pygame community
 https://www.pygame.org/
@@ -577,11 +579,15 @@ https://docs.mamedev.org/
 WolfMAME by Mahlemiut
 https://github.com/mahlemiut/wolfmame
 
-The VRC6 Project by LeviR.star's Music.  4 of his DK remix tracks are used in the default playlist folder
+The VRC6 Project by LeviR.star's Music.  4 DK remix tracks are used in the default playlist folder
 https://www.youtube.com/watch?v=Ufd9UC2wUpA
 
-DonkeyKong Classic Remix Music by MyNameIsBanks.  1 of his DK remix tracks is used in the default playlist folder.
+DonkeyKong Classic Remix Music by MyNameIsBanks.  This track is used in the default playlist folder.
 https://www.youtube.com/watch?v=MDw2goJSi4k
+
+Donkey Kong Remix Music by SanHolo. This track is used in the default playlist folder.
+
+Main Theme Remix Music by Nintega Dario. This track is used in the default playlist folder.
 
 
 ## License
