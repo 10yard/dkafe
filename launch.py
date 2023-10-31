@@ -937,7 +937,7 @@ def process_interrupts():
                             movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
                         else:
                             movement = choice([-1, 1])
-                        drop_coin(x=_g.xpos, y=_g.ypos + i, coin_type=coin_type, movement=movement)
+                        drop_coin(x=_g.xpos + i, y=_g.ypos, coin_type=coin_type, movement=movement)
                         i += 1
 
             # Show time up animation
@@ -1089,14 +1089,16 @@ def animate_rolling_coins(out_of_time=False):
         # Toggle ladders.  Virtual ladders are always active.
         if "APPROACHING_LADDER" in map_info or ("TOP_OF_LADDER" in map_info and _g.stage == 1):
             co_ladder = not randint(1, LADDER_CHANCE[_g.stage]) == 1
-        elif "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
+        elif _g.stage == 0 and "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
             map_info = []
 
         # Move the coin along the platform and down ladders
-        if "FOOT_ABOVE_PLATFORM" in map_info:
-            co_y += 1  # coin moves down the sloped girder to touch the platform
-        elif "FOOT_UNDER_PLATFORM" in map_info and _g.stage == 1:
+        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage == 1:
             co_y -= 1  # correct coin position by moving it up the girder
+        elif "FOOT_ABOVE_PLATFORM" in map_info:
+            co_y += 1  # coin moves down the sloped girder to touch the platform
+            if _g.stage == 1 and int(co_y) in (232, 192, 152, 112):
+                co_dir *= -1  # Flip horizontal direction
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info and _g.stage == 0:
                 co_dir *= -1  # Flip horizontal direction
