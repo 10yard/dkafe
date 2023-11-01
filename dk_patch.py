@@ -6,8 +6,8 @@ ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
 o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
                                         by Jon Wilson (10yard)
 
-Automatically generate roms from .ips patch files
--------------------------------------------------
+Generate roms from .ips patch files
+-----------------------------------
 """
 import os
 from ips_util import Patch

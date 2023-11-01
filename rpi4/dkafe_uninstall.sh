@@ -9,12 +9,13 @@
 #  i.e. /home/pi/dkafe_bin/dkafe_uninstall.sh
 #
 #
-sudo cp /etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP /etc/xdg/lxsession/LXDE-pi/autostart
-sudo cp /etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP2 /etc/xdg/lxsession/LXDE-pi/autostart
-sudo cp /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0-DKAFEBACKUP.conf /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf
-sudo cp /usr/share/lightdm/lightdm.conf.d/01_debian_DKAFEBACKUP.conf /usr/share/lightdm/lightdm.conf.d/01_debian.conf
-sudo cp /boot/cmdline_DKAFEBACKUP.txt /boot/cmdline.txt
-sudo cp /boot/config_DKAFEBACKUP.txt /boot/config.txt
+
+sudo cp -f /etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP /etc/xdg/lxsession/LXDE-pi/autostart
+sudo cp -f /etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP2 /etc/xdg/lxsession/LXDE-pi/autostart
+sudo cp -f /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0-DKAFEBACKUP.conf /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf
+sudo cp -f /usr/share/lightdm/lightdm.conf.d/01_debian_DKAFEBACKUP.conf /usr/share/lightdm/lightdm.conf.d/01_debian.conf
+sudo cp -f /boot/config_DKAFEBACKUP.txt /boot/config.txt
+sudo cp -f /boot/config_DKAFEBACKUP2.txt /boot/config.txt
 
 sudo rm /etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP
 sudo rm /etc/xdg/lxsession/LXDE-pi/autostart_DKAFEBACKUP2

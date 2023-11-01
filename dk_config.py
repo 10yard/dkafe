@@ -53,7 +53,7 @@ UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score
 SKILL_LEVEL = 1                # How difficult are the target scores. 1 (Beginner) to 10 (Expert).
 START_STAGE = 0                # Stage to start the frontend on. 0 (Barrels) or 1 (Rivets)
 ENABLE_MENU = 1                # Allow selection from the quick access game list
-INACTIVE_TIME = 15             # Screensaver with game instructions after period in seconds of inactivity. Integer
+INACTIVE_TIME = 20             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
 SHOW_GAMETEXT = 1              # Show the game text description when Jumpman faces an arcade machine
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
@@ -360,27 +360,56 @@ beat all of the machines.
 
 """
 
+MORE_INSTRUCTION = """
+
+If you are not up for the 
+challenge then it is 
+possible to adjust things 
+and have all machines 
+unlocked and set to free 
+play. 
+
+
+Helpful hints
+~~~~~~~~~~~~~
+       
+• You can navigate Jumpman 
+  between stages using the 
+  exit ladders or by 
+  warping down an oilcan.
+
+• You can teleport Jumpman 
+  over short distances by 
+  jumping up for a hammer.  
+
+• Help Jumpman get better 
+  by using practice modes.  
+  Maybe you can help him 
+  reach the infamous 
+  killscreen level.
+
+"""
+
 CONTROLS = """
 
 The Controls are as follows:
 
 
-Left/ —  Move Jumpman along
+Left/  — Move Jumpman along
 Right    the platforms
 
-Up/    — Move Jumpman up
-Down     and down ladders.
-         Up faces Jumpman
-         towards a machine
+Up/    - Move Jumpman up and
+Down     down ladders.
+         Up faces a machine.
 
-Jump   — Launch machine that
+Jump   - Launch machine that
          Jumpman is facing.
 
 P1     - Show launch options
-         for machine that 
+         for a machine that 
          Jumpman is facing
           
-P2     — Call up a quick
+P2     - Call up a quick
          access game list
 
 Coin   - Show game info

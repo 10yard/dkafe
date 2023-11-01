@@ -16,6 +16,7 @@ from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches, validate_rom
 from random import randint, choice
+from math import floor
 from subprocess import Popen, call
 from random import sample
 import pickle
@@ -552,12 +553,10 @@ def build_menus(initial=False):
     _g.setmenu.add_selector(' Speed Adjust: ',
                             [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7),
                                  ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
-    _g.setmenu.add_vertical_margin(15)
-    _g.setmenu.add_selector('  DKAFE Features: ', [('Full', 0), ('Basic', 1)], default=BASIC_MODE, onchange=set_basic)
-    _g.setmenu.add_vertical_margin(15)
+    _g.setmenu.add_vertical_margin(10)
     _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
     _g.setmenu.add_selector(' Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
-    _g.setmenu.add_vertical_margin(15)
+    _g.setmenu.add_vertical_margin(10)
     _g.setmenu.add_button('Save Changes to File', save_menu_settings)
     _g.setmenu.add_button('Close Menu', close_menu)
 
@@ -662,10 +661,6 @@ def save_menu_settings():
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, y=232, fg=PINK, bg=RED)
             update_screen(delay_ms=750)
-
-
-def set_basic(_, setting_value):
-    globals()["BASIC_MODE"] = setting_value
 
 
 def set_unlock(_, setting_value):
@@ -1098,13 +1093,13 @@ def animate_rolling_coins(out_of_time=False):
         elif "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
             if _g.stage == 1 and int(co_y) in (232, 192, 152, 112):
-                co_dir *= -1  # Flip horizontal direction
+                co_dir *= -1  # Flip horizontal direction when falling off platform on rivets
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info and _g.stage == 0:
-                co_dir *= -1  # Flip horizontal direction
+                co_dir *= -1  # Flip horizontal direction after taking a ladder on barrels
             elif "APPROACHING_END_OF_LADDER" in map_info and _g.stage == 1:
-                co_dir = choice([-1, 1])  # Random direction change
-            co_y += COIN_SPEED
+                co_dir = choice([-1, 1])  # Random direction change after taking a ladder on rivets
+            co_y += COIN_SPEED  # Move down the ladder
         else:
             co_x += co_dir * COIN_SPEED  # Increment horizontal movement
         co_rot += co_dir * COIN_CYCLE
@@ -1115,11 +1110,11 @@ def inactivity_check():
     if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
         _g.ready = False  # Jumpman status changed to be not ready to play.
         _g.facing = 1
-        pause_mod = (pygame.time.get_ticks() - _g.pause_ticks) % 21000
-        if pause_mod < 3000:
+        pause_mod = ((pygame.time.get_ticks() - _g.pause_ticks) % 33000) - 3000
+        if pause_mod < 0:
             _g.screen.blit(get_image(f"artwork/intro/f{randint(0, 1)}.png"), TOPLEFT)
         else:
-            lines = (INSTRUCTION, CONTROLS)[pause_mod > 12000]
+            lines = (INSTRUCTION, MORE_INSTRUCTION, CONTROLS)[floor(pause_mod / 10000)]
             for i, line in enumerate(lines.split("\n")):
                 write_text(line + (" " * 28), y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
         show_score()
@@ -1189,9 +1184,11 @@ def teleport_between_hammers():
             if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
                 _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 3 + (_g.stage * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
+                play_sound_effect(effect="sounds/teleport.wav")
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
                 _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + (_g.stage * 8)
                 _g.teleport_ticks = pygame.time.get_ticks()
+                play_sound_effect(effect="sounds/teleport.wav")
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
             write_text("Teleport Jump!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
 
