@@ -414,7 +414,7 @@ Allow the DK climb scene to be quickly skipped in game by pressing Jump button
 
 #### Keyboard Controls
 
-Keyboard controls can be customised in the `settings.txt` file using the "common name" to identify the key.  [Refer to this table.](http://thepythongamebook.com/en:glossary:p:pygame:keycodes)
+Keyboard controls can be customised in the `settings.txt` file using the "common name" to identify the key.  [Refer to this table.](https://elearn.ellak.gr/mod/page/view.php?id=2786)
 The default controls are aligned with MAME keys as follows.
 
 ```
