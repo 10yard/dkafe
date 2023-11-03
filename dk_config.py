@@ -380,13 +380,13 @@ Helpful hints
 
 • You can teleport Jumpman 
   over short distances by 
-  jumping up for a hammer.  
+  jumping up to a hammer.  
 
 • Help Jumpman get better 
   by using practice modes.  
   Maybe you can help him 
   reach the infamous 
-  killscreen level.
+  Donkey Kong killscreen.
 
 """
 

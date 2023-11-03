@@ -1110,11 +1110,11 @@ def inactivity_check():
     if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
         _g.ready = False  # Jumpman status changed to be not ready to play.
         _g.facing = 1
-        pause_mod = ((pygame.time.get_ticks() - _g.pause_ticks) % 33000) - 3000
+        pause_mod = ((pygame.time.get_ticks() - _g.pause_ticks) % 39000) - 3000
         if pause_mod < 0:
             _g.screen.blit(get_image(f"artwork/intro/f{randint(0, 1)}.png"), TOPLEFT)
         else:
-            lines = (INSTRUCTION, MORE_INSTRUCTION, CONTROLS)[floor(pause_mod / 10000)]
+            lines = (INSTRUCTION, MORE_INSTRUCTION, CONTROLS)[floor(pause_mod / 12000)]
             for i, line in enumerate(lines.split("\n")):
                 write_text(line + (" " * 28), y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
         show_score()

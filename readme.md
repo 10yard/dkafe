@@ -569,6 +569,7 @@ https://donkeykonghacks.net/
 Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, Tim Appleton, Vic20 George, Kirai Shouen/125scratch.
 
 Feedback, feature contributions and development ideas from Superjustinbros (Justin De Lucia)
+https://superjustintheblog.blogspot.com/
 
 The pygame community
 https://www.pygame.org/
@@ -586,9 +587,10 @@ DonkeyKong Classic Remix Music by MyNameIsBanks.  This track is used in the defa
 https://www.youtube.com/watch?v=MDw2goJSi4k
 
 Donkey Kong Remix Music by SanHolo. This track is used in the default playlist folder.
+https://www.youtube.com/watch?v=_kdgB5SRqHw
 
 Main Theme Remix Music by Nintega Dario. This track is used in the default playlist folder.
-
+https://www.youtube.com/watch?v=VPT42lfFNMY
 
 ## License
 

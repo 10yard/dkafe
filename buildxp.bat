@@ -41,13 +41,11 @@ xcopy sounds dist\launchxp\sounds /S /i /Y
 xcopy interface dist\launchxp\interface /S /i /Y
 xcopy patch dist\launchxp\patch /S /i /Y
 xcopy playlist dist\launchxp\playlist /S /i /Y
+copy romlist.csv dist\launchxp\ /Y
 copy settings.txt dist\launchxp\ /Y
 copy readme.md dist\launchxp\ /Y
 copy VERSION dist\launchxp\ /Y
 copy COPYING dist\launchxp\ /Y
-
-echo *** remove the not supported ckong and bigkong from the default romlist.csv when copying
-type romlist.csv | findstr /v ckong | findstr /v bigkong > dist\launchxp\romlist.csv
 
 echo **** create empty roms folder
 xcopy roms\---* dist\launchxp\roms /S /i /Y
@@ -58,11 +56,12 @@ xcopy dkwolf\*.txt dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\*.md dist\launchxp\dkwolf\ /Y
 xcopy dkwolf\plugins dist\launchxp\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
-copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
-rmdir dist\dkwolf\inp /s /Q
+rmdir dist\launchxp\dkwolf\inp /s /Q
 
-echo *** pull in plugin dependencies from Wolfmame 196 overwriting DKAFE default
-xcopy C:\wolfmame_0196\plugins dist\launchxp\dkwolf\plugins /S /i /Y
+echo **** Use an alternative wav/mp3 player on XP
+copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
+copy dkwolf\plugins\allenkong\binxp\mp3play*.exe dist\launchxp\dkwolf\plugins\allenkong\bin /Y
+rmdir dist\launchxp\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** clean up
 rmdir build /s /Q

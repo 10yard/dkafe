@@ -36,8 +36,10 @@ xcopy dkwolf\*.md dist\dkwolf\ /Y
 xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
 rmdir dist\dkwolf\inp /s /Q
+
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
+rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** build the exe in virtual environment ****
 venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
