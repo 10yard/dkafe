@@ -242,6 +242,12 @@ def check_for_input(force_exit=False):
                 _g.showslots = not _g.showslots
             if event.key == CONTROL_SNAP:
                 take_screenshot()
+            if event.key == CONTROL_SKIP:
+                if ENABLE_PLAYLIST and playlist.get_busy():
+                    play_from_tracklist()
+            if event.key == CONTROL_PLAYLIST:
+                globals()["ENABLE_PLAYLIST"] = not ENABLE_PLAYLIST
+                set_playlist(None, ENABLE_PLAYLIST, external=True)  # Fix pygamemenu issue
 
         # Optional joystick controls
         if USE_JOYSTICK:
@@ -555,7 +561,10 @@ def build_menus(initial=False):
                                  ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
     _g.setmenu.add_vertical_margin(10)
     _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
-    _g.setmenu.add_selector(' Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
+    _g.setmenu.add_selector('Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
+    _g.setmenu.add_selector('   Music Volume: ',
+                            [('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6),
+                                 ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
     _g.setmenu.add_vertical_margin(10)
     _g.setmenu.add_button('Save Changes to File', save_menu_settings)
     _g.setmenu.add_button('Close Menu', close_menu)
@@ -657,6 +666,8 @@ def save_menu_settings():
                             f_out.write(f"HIGH_SCORE_SAVE = {HIGH_SCORE_SAVE}\n")
                         elif "ENABLE_PLAYLIST=" in line_packed:
                             f_out.write(f"ENABLE_PLAYLIST = {ENABLE_PLAYLIST}\n")
+                        elif "PLAYLIST_VOLUME=" in line_packed:
+                            f_out.write(f"PLAYLIST_VOLUME = {PLAYLIST_VOLUME}\n")
                         else:
                             f_out.write(line)
             write_text(text="  Changes have been saved  ", font=dk_font, y=232, fg=PINK, bg=RED)
@@ -679,17 +690,14 @@ def set_speed(_, setting_value):
     globals()["SPEED_ADJUST"] = setting_value
 
 
+def set_volume(_, setting_value):
+    globals()["PLAYLIST_VOLUME"] = setting_value
+    playlist.set_volume(setting_value / 10)
+
+
+
 def set_high(_, setting_value):
     globals()["HIGH_SCORE_SAVE"] = setting_value
-
-
-def set_playlist(_, setting_value):
-    globals()["ENABLE_PLAYLIST"] = setting_value
-    if setting_value == 1:
-        background_channel.stop()
-    else:
-        background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
-        playlist.stop()
 
 
 def set_confirm(_, setting_value):
@@ -702,8 +710,24 @@ def set_gametext(_, setting_value, external=False):
     if external:
         # Hack to fix pygamemenu when updating outside the menu
         for i, w in enumerate(_g.setmenu._widgets):
-            if w._title.startswith("Show Game Text"):
+            if "Show Game Text" in w._title:
                 _g.setmenu._widgets[i]._index = int(SHOW_GAMETEXT)
+                break
+
+
+# noinspection PyProtectedMember
+def set_playlist(_, setting_value, external=False):
+    globals()["ENABLE_PLAYLIST"] = setting_value
+    if setting_value == 1:
+        background_channel.stop()
+    else:
+        background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
+        playlist.stop()
+    if external:
+        # Hack to fix pygamemenu when updating outside the menu
+        for i, w in enumerate(_g.setmenu._widgets):
+            if "Music Playlist" in w._title:
+                _g.setmenu._widgets[i]._index = int(ENABLE_PLAYLIST)
                 break
 
 
@@ -1110,11 +1134,11 @@ def inactivity_check():
     if _g.timer.duration - _g.lastmove > INACTIVE_TIME:
         _g.ready = False  # Jumpman status changed to be not ready to play.
         _g.facing = 1
-        pause_mod = ((pygame.time.get_ticks() - _g.pause_ticks) % 39000) - 3000
+        pause_mod = ((pygame.time.get_ticks() - _g.pause_ticks) % 51000) - 3000
         if pause_mod < 0:
             _g.screen.blit(get_image(f"artwork/intro/f{randint(0, 1)}.png"), TOPLEFT)
         else:
-            lines = (INSTRUCTION, MORE_INSTRUCTION, CONTROLS)[floor(pause_mod / 12000)]
+            lines = (INSTRUCTION, MORE_INSTRUCTION, CONTROLS, THANKS_TO)[floor(pause_mod / 12000)]
             for i, line in enumerate(lines.split("\n")):
                 write_text(line + (" " * 28), y=i * 8 + 20, fg=CYAN, bg=BLACK, font=dk_font)
         show_score()
@@ -1233,6 +1257,7 @@ def main(initial=True):
     _g.tracklist = _s.glob("playlist/*.mp3") + _s.glob("playlist/*.ogg")
     if not ENABLE_PLAYLIST:
         background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
+    playlist.set_volume(PLAYLIST_VOLUME / 10)
 
     # Main game loop
     while True:

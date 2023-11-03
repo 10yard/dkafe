@@ -22,7 +22,8 @@ SPEED_ADJUST = 0
 SKILL_LEVEL = 1
 START_STAGE = 0
 HIGH_SCORE_SAVE = 1
-ENABLE_PLAYLIST = 0
+ENABLE_PLAYLIST = 1
+PLAYLIST_VOLUME = 5
 
 # Emulator Settings
 ROM_DIR = <ROOT>/roms
@@ -33,7 +34,7 @@ OPTIONS = -rompath <ROM_DIR> -view "Screen 0 Pixel Aspect (7:8)" -nofilter -vide
 EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -nvram_directory /dev/null -record <RECORD_ID>
 
-# Interface Settings
+# DKWolf/Interface Settings
 CREDITS = 1
 AUTOSTART = 1
 ALLOW_SKIP_INTRO = 1
@@ -42,6 +43,8 @@ SHOW_AWARD_TARGETS = 1
 SHOW_HUD = 1
 
 # Controls
+# NOTE: These controls apply to the DKAFE frontend only.  
+# If you change controls here then you should also change controls in your emulator menu (accessed using tab key).
 CONTROL_LEFT = left
 CONTROL_RIGHT = right
 CONTROL_UP = up
@@ -53,3 +56,18 @@ CONTROL_P2 = 2
 CONTROL_COIN = 5
 CONTROL_EXIT = escape
 CONTROL_SETTINGS = tab
+
+# Optional Joystick and Button Assignments
+# Note: DPAD and first analog axis are automatically mapped to directions
+# Device 1 buttons start from 0,  Device 2 buttons start from 20
+USE_JOYSTICK = 0
+BUTTON_JUMP = 0
+BUTTON_ACTION = 1
+BUTTON_P1 = 9
+BUTTON_P2 = 29
+BUTTON_EXIT = 6
+BUTTON_COIN = 7
+
+#
+# For a complete list of settings visit - https://github.com/10yard/dkafe#frontend-settings
+#

@@ -309,8 +309,11 @@ The stage to start the frontend on.  0 is barrels stage.  1 is rivets stage.
 `HIGH_SCORE_SAVE = 1`
 Save your high score tables for each game.
 
-`ENABLE_PLAYLIST = 0`
+`ENABLE_PLAYLIST = 1`
 1 to play music files from the **playlist** folder instead of the regular Donkey kong background music.
+
+'PLAYLIST_VOLUME = 5'
+Playlist music volume from 0 (minimum) to 10 (maximum).
 
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
@@ -427,6 +430,8 @@ CONTROL_INFO = 5
 CONTROL_EXIT = escape
 CONTROL_SETTINGS = tab
 CONTROL_SNAP = F12
+CONTROL_SKIP = s
+CONTROL_PLAYLIST = p
 ```
 
 IMPORTANT NOTE: The controls configured in the frontend do not apply to the emulator.  If your controls are not default then you will also have to configure your controls in the emulator menu (tab). 
@@ -475,7 +480,8 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
 Several default music files are provided for your enjoyment.  These files can be removed and replaced with your own favourite music tracks in **.mp3** or **.ogg** format. 
 
-The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key).
+The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key) or it can be toggle on/off by pressing the CONTROL_PLAYLIST key (p).
+When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).
 
 
 ### How to use romlist.csv
@@ -558,6 +564,7 @@ I would love to get to the infamous killscreen on level 22.  My current PB is 51
  - Create an alternative frontend for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
  - Add support for console versions of DK
  
+ 
 ## Thanks to
 
 The Donkey Kong rom hacking resource
@@ -580,17 +587,21 @@ https://docs.mamedev.org/
 WolfMAME by Mahlemiut
 https://github.com/mahlemiut/wolfmame
 
-The VRC6 Project by LeviR.star's Music.  4 DK remix tracks are used in the default playlist folder
+The VRC6 Project by LeviR.star's Music.  4 DK remix tracks are included in the default playlist folder
 https://www.youtube.com/watch?v=Ufd9UC2wUpA
 
-DonkeyKong Classic Remix Music by MyNameIsBanks.  This track is used in the default playlist folder.
+DonkeyKong Classic Remix Music by MyNameIsBanks.  This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=MDw2goJSi4k
 
-Donkey Kong Remix Music by SanHolo. This track is used in the default playlist folder.
+Donkey Kong Remix Music by SanHolo. This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=_kdgB5SRqHw
 
-Main Theme Remix Music by Nintega Dario. This track is used in the default playlist folder.
+Main Theme Remix Music by Nintega Dario. This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=VPT42lfFNMY
+
+Donkey Kong Arcade by MotionRide Music.  This track is included in the default playlist folder.
+https://www.youtube.com/watch?v=gy0C2a5QEu8
+
 
 ## License
 

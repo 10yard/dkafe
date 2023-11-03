@@ -33,6 +33,8 @@ CONTROL_COIN = pygame.K_5
 CONTROL_EXIT = pygame.K_ESCAPE
 CONTROL_TAB = pygame.K_TAB
 CONTROL_SNAP = pygame.K_F12
+CONTROL_PLAYLIST = pygame.K_p
+CONTROL_SKIP = pygame.K_s
 
 # Joystick Options and Button Assignments
 USE_JOYSTICK = 0
@@ -58,7 +60,8 @@ SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on s
 SHOW_GAMETEXT = 1              # Show the game text description when Jumpman faces an arcade machine
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
-ENABLE_PLAYLIST = 0            # Play background music from playlist folder
+ENABLE_PLAYLIST = 1            # Play background music from playlist folder
+PLAYLIST_VOLUME = 5            # Volume of playlist music from 0 to 10
 
 # DKWolf/Interface options
 HIGH_SCORE_SAVE = 1            # Retain high scores (they are specific to each hack)
@@ -128,6 +131,12 @@ if os.path.exists("settings.txt"):
                     print(f'Unknown setting "{key.strip()}" in settings.txt file')
                     pygame.quit()
                     exit()
+
+# Validate some settings
+if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
+if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
+if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
+if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 
 # Frontend version
 VERSION = ''
@@ -346,14 +355,14 @@ scattered around the site.
 
 The coins thrown by Donkey
 Kong must be collected by 
-Jumpman so he has money
-to play the arcades.
+Jumpman so he has money to
+play the arcades.
 
 Jumpman must play well to
-win prizes and unlock 
-arcade machines as he works
-his way to the top of the 
-building to rescue Pauline.  
+win prizes and unlock arcade
+machines as he works his way 
+to the top of the building 
+to rescue Pauline.  
 
 Pauline will ♥ it when you
 beat all of the machines.
@@ -373,20 +382,20 @@ play.
 Helpful hints
 ~~~~~~~~~~~~~
        
-• You can navigate Jumpman 
-  between stages using the 
-  exit ladders or by 
-  warping down an oilcan.
+• You can navigate Jumpman
+  between stages using the
+  exit ladders or by warping
+  down an oilcan.
 
 • You can teleport Jumpman 
   over short distances by 
   jumping up to a hammer.  
 
-• Help Jumpman get better 
-  by using practice modes.  
-  Maybe you can help him 
-  reach the infamous 
-  Donkey Kong killscreen.
+• Help Jumpman get better by
+  using practice modes.  
+  Maybe you can help him to 
+  reach the infamous Donkey
+  Kong killscreen.
 
 """
 
@@ -418,6 +427,37 @@ Coin   - Show game info
 Action - Show slot numbers
 
 Exit   - Exit DKAFE
+"""
+
+THANKS_TO = """
+
+Thanks to all these folks!
+
+
+Donkey Kong rom hacks: 
+   Paul Goes
+   Sockmaster
+   Jeff Kulczycki, 
+   Mike Mika & Clay Cowgill
+   Don Hodges
+   Tim Appleton 
+   Vic20 George
+   Kirai Shouen & 125scratch
+
+The DK rom hacking resource:
+   furrykef
+
+Feedback and feature ideas:
+   Superjustinbros
+
+Playlist music:
+   LeviR.star's Music
+   MyNameIsBanks
+   SanHolo
+   Nintega Dario
+   MotionRide Music
+
+
 """
 
 # Sound setup
