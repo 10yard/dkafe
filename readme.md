@@ -185,7 +185,7 @@ The coaching plugin can help you master the springs and barrels stages.
 
 [![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
 
-[Click image to watch a video review of DKCoach by GenXGrownup.](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
+[Click here to watch a video review of DKCoach by GenXGrownup.](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
 
 
 ### DK Chorus
