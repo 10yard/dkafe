@@ -53,9 +53,10 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
 ### The frontend includes:
  - An interactive launcher that comes preconfigured to work with classic Donkey Kong roms and hacks.
  - A rom patcher that automatically generates hacked roms from the many included patch files.
- - Several Donkey Kong hacks made by me specifically for use with this frontend.
- - A custom lightweight version of WolfMAME built specifically for Donkey Kong.
- - MAME plugins and scripts interface MAME with the frontend and add cool features such as a coaching mode.
+ - Several Donkey Kong hacks and plugins made by me specifically for use with this frontend.
+ - A custom lightweight version of WolfMAME built specifically for Donkey Kong, and it's clones and bootlegs.
+ - MAME plugins and scripts that interface with the frontend to add cool features such as score targets and a coaching mode.
+ - A built in playlist that features 8 default Donkey Kong music tracks.
  - Extensive configuration options
 
 ### The frontend does not include:
@@ -177,26 +178,36 @@ Credit is given to the original authors below.
 
 These plugins add extra features to some roms.
 
-### DKCoach
+### DK Coach
 
 The coaching plugin can help you master the springs and barrels stages.
 
 
 [![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
 
-<sup>Click image to watch a video review of DKCoach by GenXGrownup</sup>
+[Click image to watch a video review of DKCoach by GenXGrownup.](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
 
 
-### DKChorus
+### DK Chorus
 
 The chorus plugin replaces the default samples and music with acapella sounds.
 
-[![DKChorus](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
+[
+![DKChorus](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
 
-<sup>Click image to watch gameplay video</sup>
+[Click here to watch a gameplay video of DK Chorus.](https://www.youtube.com/watch?v=nYCNioYWcO4)
 
 
-### DKContinue
+### DK Practice
+
+The practice plugin allows you to practice playing a particular stage to refine your skills.    
+Typically you will be able to select from Barrels, Pies, Springs and Rivets.  There is also an option to start the game from level 5.
+ 
+ 
+![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/practice.png)
+
+
+### DK Continue
 
 The continue plugin gives you the opportunity to continue playing when your game would normally be over.
 
@@ -275,6 +286,10 @@ For Raspberry Pi,  refer to [Raspberry Pi Notes](rpi4/rpi4_notes.md) for informa
 ### Frontend Settings
 
 Default settings can be changed in the `settings.txt` file.  Some settings can be changed in the frontend settings menu (available at the bottom of the game list or by pressing TAB key).
+
+
+![Frontend Settings](https://github.com/10yard/dkafe/blob/master/artwork/about/settings.png)
+
 
 `FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
@@ -601,6 +616,9 @@ https://www.youtube.com/watch?v=VPT42lfFNMY
 
 Donkey Kong Arcade by MotionRide Music.  This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=gy0C2a5QEu8
+
+
+![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
 
 
 ## License
