@@ -249,11 +249,12 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 	 Hide the Pi desktop?                     (Recommend Y)
 	 Hide the Pi mouse cursor?                (Recommend Y)
 	 Use headphone jack for audio?
-	 Force 640x480 mode on boot?              (Recommend Y)
+	 Optimise framebuffer    (Recommend Y for HDMI and VGA)
+	 Force 640x480 mode on boot?
 	 Map GPIO to keyboard input controls?     (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
-	 Disable networking services (WiFi, SSH)? (Recommend Y)
-	 Reboot now?                              (Recommend Y)	 
+	 Disable networking services (WiFi, SSH)?
+	 Reboot now?	 
 ```
 
 
@@ -616,6 +617,7 @@ https://www.youtube.com/watch?v=VPT42lfFNMY
 
 Donkey Kong Arcade by MotionRide Music.  This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=gy0C2a5QEu8
+
 
 
 ![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
