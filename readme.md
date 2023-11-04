@@ -55,9 +55,9 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - A rom patcher that automatically generates hacked roms from the many included patch files.
  - Several Donkey Kong hacks and plugins made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong, and it's clones and bootlegs.
- - MAME plugins and scripts that interface with the frontend to add cool features such as score targets and a coaching mode.
- - A built in playlist that features 8 default Donkey Kong music tracks.
- - Extensive configuration options
+ - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
+ - A built in music playlist that features 8 fantastic Donkey Kong remix tracks.
+ - Extensive configuration options.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -180,10 +180,10 @@ These plugins add extra features to some roms.
 
 ### DK Coach
 
-The coaching plugin can help you master the springs and barrels stages.
+The coaching plugin can help you master the spring and barrel stages.
 
 
-[![DKCoach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
+[![DK Coach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
 
 [Click here to watch a video review of DKCoach by GenXGrownup.](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
 
@@ -193,7 +193,7 @@ The coaching plugin can help you master the springs and barrels stages.
 The chorus plugin replaces the default samples and music with acapella sounds.
 
 [
-![DKChorus](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
+![DK Chorus](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
 
 [Click here to watch a gameplay video of DK Chorus.](https://www.youtube.com/watch?v=nYCNioYWcO4)
 
@@ -204,7 +204,7 @@ The practice plugin allows you to practice playing a particular stage to refine 
 Typically you will be able to select from Barrels, Pies, Springs and Rivets.  There is also an option to start the game from level 5.
  
  
-![DKAFE hacks](https://github.com/10yard/dkafe/blob/master/artwork/about/practice.png)
+![DK Practice](https://github.com/10yard/dkafe/blob/master/artwork/about/practice.png)
 
 
 ### DK Continue
@@ -213,6 +213,9 @@ The continue plugin gives you the opportunity to continue playing when your game
 
 A continue option will appear with a 10 second countdown timer. Simply push the P1 Start button to continue your game and your score will be reset to zero.
 A tally of the total number of continues made will appear at the top of the screen.
+
+
+![DK Continue](https://github.com/10yard/dkafe/blob/master/artwork/about/continue.png)
 
 
 
@@ -551,7 +554,7 @@ Pyinstaller can be used to build the application binary.
 pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 ```
 
-See build.bat for an example Windows build script making use of venv (virtual environment for Python).
+See build.bat for a Windows build script making use of a Python virtual environment (venv).
 
 See build.sh and [Raspberry Pi Notes](rpi4/rpi4_notes.md) for building a Raspberry Pi binary.
 
