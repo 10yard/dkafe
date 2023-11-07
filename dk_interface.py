@@ -51,7 +51,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
 def get_award(rom, score3, score2, score1):
     # Read data from the compete.dat file to detemine if coins should be awarded to Jumpman.
     try:
-        with open(COMPETE_FILE, "r") as cf:
+        with open(COMPETE_FILE) as cf:
             name = cf.readline().replace("\n", "")
             score = cf.readline().replace("\n", "")
         os.remove(COMPETE_FILE)

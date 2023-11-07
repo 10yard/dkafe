@@ -9,17 +9,16 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 Main program
 ------------
 """
+import pickle
 import sys
-import dk_system as _s
+from math import floor
+from random import randint, choice, sample
+from subprocess import Popen, call
 import dk_global as _g
+import dk_system as _s
 from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches, validate_rom
-from random import randint, choice
-from math import floor
-from subprocess import Popen, call
-from random import sample
-import pickle
 
 
 def exit_program(confirm=False):
@@ -89,7 +88,7 @@ def check_patches_available():
             flash_message("ALL GOOD!", x=0, y=232, cycles=4, clear=False)
             jump_to_continue(0)
     else:
-        for i, line in enumerate(INVALID_ROM_MESSAGE):
+        for i, line in enumerate(INVALID_ROM_MESSAGE + ROM_CONTENTS):
             write_text(line, font=dk_font, x=8, y=17 + (i * 9), fg=[WHITE, RED][i == 0])
         jump_to_continue()
 
@@ -291,11 +290,11 @@ def play_sound_effect(effect=None, stop=False):
     if stop:
         pygame.mixer.stop()
     if effect:
-        pygame.mixer.Sound.play(pygame.mixer.Sound(effect))
+        pygame.mixer.Sound.play(pygame.mixer.Sound(os.path.join("sounds", effect)))
 
 
 def play_intro_animation():
-    play_sound_effect(effect="sounds/jump.wav")
+    play_sound_effect("jump.wav")
     if SHOW_SPLASHSCREEN:
         for _key in _s.intro_frames():
             check_for_input()
@@ -441,7 +440,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
         sprite_file = f"artwork/sprite/jmj{direction}.png"
         sprite_file = sprite_file.replace("#", "1")
         if _g.jump_sequence == 8:
-            sound_file = "sounds/jump.wav"
+            sound_file = "jump.wav"
         # Jumpman is jumping.  Check for landing platform and blocks
         if "BLOCKED_LEFT" in map_info or "BLOCKED_RIGHT" in map_info and _g.wall_bounce == 1:
             if _g.left or _g.right:
@@ -498,7 +497,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             _g.ypos += (0.5, -0.5)[direction == "u"]
 
             if int(_g.sprite_index % 15) == 8:
-                sound_file = f"sounds/walk{('1', '0')[direction == 'u']}.wav"
+                sound_file = f"walk{('1', '0')[direction == 'u']}.wav"
             _g.sprite_index += 1
         elif direction == "u" and display_icons(detect_only=True):
             # Jumpman is in position to play a game
@@ -510,7 +509,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             _g.ready = False
         elif direction == "d" and "FOOT_ABOVE_OILCAN" in get_map_info():
             if pygame.time.get_ticks() - _g.lastwarp > 1000:
-                play_sound_effect(effect="sounds/warp.wav")
+                play_sound_effect("warp.wav")
                 stage_check(warp=True)
     else:
         # Ensure jumpman is not left floating after jumping from the oilcan
@@ -590,7 +589,7 @@ def build_launch_menu():
             _g.launchmenu.add_button('Launch and record game    ', launch_rom, nearby, False, rec)
             if inps:
                 _g.launchmenu.add_vertical_margin(10)
-                _g.launchmenu.add_label('Playback latest recordings:', selectable=False)
+                _g.launchmenu.add_label('Playback latest recordings:')
                 for inp in inps:
                     try:
                         *_, time_stamp, time_mins = os.path.splitext(inp)[0].split("_")
@@ -643,7 +642,7 @@ def save_menu_settings():
         _s.copy("settings.txt", "settings_backup.txt")
         if os.path.exists("settings_backup.txt"):
             with open("settings.txt", "w") as f_out:
-                with open("settings_backup.txt", "r") as f_in:
+                with open("settings_backup.txt") as f_in:
                     for line in f_in.readlines():
                         line_packed = line.replace(" ", "")
                         if "UNLOCK_MODE=" in line_packed:
@@ -670,6 +669,7 @@ def save_menu_settings():
                             f_out.write(f"PLAYLIST_VOLUME = {PLAYLIST_VOLUME}\n")
                         else:
                             f_out.write(line)
+            # os.remove("settings_backup.txt")
             write_text(text="  Changes have been saved  ", font=dk_font, y=232, fg=PINK, bg=RED)
             update_screen(delay_ms=750)
 
@@ -695,7 +695,6 @@ def set_volume(_, setting_value):
     playlist.set_volume(setting_value / 10)
 
 
-
 def set_high(_, setting_value):
     globals()["HIGH_SCORE_SAVE"] = setting_value
 
@@ -704,18 +703,12 @@ def set_confirm(_, setting_value):
     globals()["CONFIRM_EXIT"] = setting_value
 
 
-# noinspection PyProtectedMember
 def set_gametext(_, setting_value, external=False):
     globals()["SHOW_GAMETEXT"] = setting_value
     if external:
-        # Hack to fix pygamemenu when updating outside the menu
-        for i, w in enumerate(_g.setmenu._widgets):
-            if "Show Game Text" in w._title:
-                _g.setmenu._widgets[i]._index = int(SHOW_GAMETEXT)
-                break
+        update_menu_selection("Show Game Text", int(SHOW_GAMETEXT))
 
 
-# noinspection PyProtectedMember
 def set_playlist(_, setting_value, external=False):
     globals()["ENABLE_PLAYLIST"] = setting_value
     if setting_value == 1:
@@ -724,11 +717,7 @@ def set_playlist(_, setting_value, external=False):
         background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
         playlist.stop()
     if external:
-        # Hack to fix pygamemenu when updating outside the menu
-        for i, w in enumerate(_g.setmenu._widgets):
-            if "Music Playlist" in w._title:
-                _g.setmenu._widgets[i]._index = int(ENABLE_PLAYLIST)
-                break
+        update_menu_selection("Music Playlist", int(ENABLE_PLAYLIST))
 
 
 def set_fullscreen(_, setting_value):
@@ -738,6 +727,15 @@ def set_fullscreen(_, setting_value):
         pygame.event.set_grab(FULLSCREEN == 1)
         pygame.display.init()
         pygame.display.set_icon(get_image("artwork/dkafe.ico"))
+
+
+# noinspection PyProtectedMember
+def update_menu_selection(title, index):
+    # Hack to update pygamemenu selection outside the menu
+    for i, w in enumerate(_g.setmenu._widgets):
+        if title in w._title:
+            _g.setmenu._widgets[i]._index = index
+            break
 
 
 def open_menu(menu):
@@ -796,7 +794,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
         if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
             _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
-            play_sound_effect("sounds/coin.wav")
+            play_sound_effect("coin.wav")
             if not competing and "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)  # Gameplay recording (i.e. Wolfmame)
 
@@ -841,7 +839,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     if time_mins > 0:
                         _s.move(inp_path, inp_path.replace("_0m", f"_{time_mins}m"))
         else:
-            play_sound_effect("sounds/error.wav")
+            play_sound_effect("error.wav")
             flash_message("YOU DON'T HAVE ENOUGH COINS !!", x=4, y=120)
 
         _g.skip = True
@@ -961,7 +959,7 @@ def process_interrupts():
 
             # Show time up animation
             background_channel.stop()
-            play_sound_effect("sounds/timeup.wav")
+            play_sound_effect("timeup.wav")
             for repeat in range(0, 3):
                 for i in range(0, 6):
                     if i <= 3 or repeat == 2:
@@ -1100,7 +1098,7 @@ def animate_rolling_coins(out_of_time=False):
         if (co_x - SPRITE_HALF <= _g.xpos < co_x + SPRITE_HALF) and (co_y >= _g.ypos > co_y - SPRITE_HALF):
             if not out_of_time and _g.timer.duration > 0.2:  # Jumpman cannot collect coins immediately after start/out of time
                 _g.score += COIN_VALUES[co_type]  # Jumpman collected the coin
-                play_sound_effect("sounds/getitem.wav")
+                play_sound_effect("getitem.wav")
                 co_x = -999
 
         map_info = get_map_info(direction="d", x=int(co_x + (9, 4)[co_dir == 1]), y=int(co_y + 9))
@@ -1182,6 +1180,7 @@ def stage_check(warp=False):
         else:
             _g.ypos = 238
         _g.coins = []
+        clear_screen()
         initialise_screen()
     elif (_g.ypos > 239 or warp) and _g.stage == 1:
         _g.stage = 0
@@ -1190,6 +1189,7 @@ def stage_check(warp=False):
         else:
             _g.ypos = 20
         _g.coins = []
+        clear_screen()
         initialise_screen()
 
     # Reset Donkey Kong's position
@@ -1208,11 +1208,11 @@ def teleport_between_hammers():
             if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
                 _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 3 + (_g.stage * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
-                play_sound_effect(effect="sounds/teleport.wav")
+                play_sound_effect("teleport.wav")
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
                 _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + (_g.stage * 8)
                 _g.teleport_ticks = pygame.time.get_ticks()
-                play_sound_effect(effect="sounds/teleport.wav")
+                play_sound_effect("teleport.wav")
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
             write_text("Teleport Jump!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
 

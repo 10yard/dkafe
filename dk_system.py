@@ -9,12 +9,11 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 System related functions
 ------------------------
 """
-import os
 from datetime import datetime
-from time import sleep, time
 from glob import glob
-from shutil import copy, move, copytree
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+from shutil import copy, copytree
+from time import sleep, time
+
 from dk_config import *
 from dk_interface import lua_interface
 
@@ -50,7 +49,7 @@ def load_game_texts():
     # load game texts
     texts = []
     for filename in glob(os.path.join(PATCH_DIR, "gametext", "*.txt")):
-        with open(filename, 'r') as f_in:
+        with open(filename) as f_in:
             texts.append([os.path.basename(filename).split(".")[0], f_in.readlines()])
     return texts
 
@@ -60,7 +59,7 @@ def read_romlist():
     romlist = []
     usedslots = []
     usedsubs = []
-    with open("romlist.csv", "r") as rl:
+    with open("romlist.csv") as rl:
         for row in rl.readlines():
             data = row.replace('"', '')
             if data.strip() and not data.startswith("#") and data.count(",") >= 10:

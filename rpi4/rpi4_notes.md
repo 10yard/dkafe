@@ -64,7 +64,7 @@ hdmi_mode=26
 disable_overscan=0
 ```
 
-If there is interference then increase then set ```config_hdml_boost=5``` and increase or reduce value to resolve.
+If there is interference then set ```config_hdml_boost=5``` and increase or reduce value to resolve.
 
 The KMS graphics driver overlay should be commented out.  It is by defaut. i.e.
 

@@ -10,6 +10,7 @@ Configuration options
 ---------------------
 """
 import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame
 import pygame_menu as pymenu
 
@@ -114,7 +115,7 @@ PATCH_DIR = os.path.join(ROOT_DIR, "patch")
 
 # Above defaults can be overridden in the settings.txt file
 if os.path.exists("settings.txt"):
-    with open("settings.txt", 'r') as sf:
+    with open("settings.txt") as sf:
         for setting in sf.readlines():
             if setting.count("=") == 1 and not setting.startswith("#"):
                 key, value = setting.replace("\n", "").split("=")
@@ -141,7 +142,7 @@ if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 # Frontend version
 VERSION = ''
 if os.path.exists("VERSION"):
-    with open("VERSION", 'r') as vf:
+    with open("VERSION") as vf:
         VERSION = vf.readline().strip()
 
 # Expected location of original DK zips (not provided with software)
@@ -227,10 +228,10 @@ SLOTS = [
     (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (210, 87),
     (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62), (90, 34),
     (18, 226), (34, 226), (50, 226), (90, 226), (114, 226), (130, 226), (146, 226), (162, 226), (178, 226), (194, 226),
-    (26, 186), (42, 186), (58, 186), (82, 186), (98, 186), (114, 186), (130, 186), (154, 186), (170, 186), (186, 186),
-    (34, 146), (50, 146), (66, 146), (82, 146), (114, 146), (130, 146), (146, 146), (162, 146), (178, 146),
-    (42, 106), (74, 106), (90, 106), (106, 106), (122, 106), (138, 106), (170, 106),
-    (42, 66), (74, 66), (90, 66), (146, 66), (170, 66)
+    (26, 186), (42, 186), (58, 186), (82, 186), (114, 186), (130, 186), (154, 186), (170, 186), (186, 186),
+    (34, 146), (50, 146), (82, 146), (114, 146), (130, 146), (154, 146),
+    (42, 106), (74, 106), (90, 106), (122, 106), (138, 106), (170, 106),
+    (42, 66), (74, 66), (90, 66), (170, 66)
 ]
 
 # Number of slots that appear on barrels stage (including slot 0)
@@ -249,14 +250,14 @@ CONTROL_ASSIGNMENTS = [
 PRIZE_PLACINGS = {1: "1ST", 2: "2ND", 3: "3RD"}
 
 # Sounds that are played during walk sequence. Not all steps will trigger a sound.
-WALK_SOUNDS = {1: "sounds/walk0.wav", 5: "sounds/walk1.wav", 9: "sounds/walk2.wav"}
+WALK_SOUNDS = {1: "walk0.wav", 5: "walk1.wav", 9: "walk2.wav"}
 
 # Defines scene numbers in the intro when sounds should be played
 SCENE_SOUNDS = {
-  160: "sounds/climb.wav",
-  481: "sounds/stomp.wav",
-  712: "sounds/roar.wav",
-  856: "sounds/howhigh.wav"}
+  160: "climb.wav",
+  481: "stomp.wav",
+  712: "roar.wav",
+  856: "howhigh.wav"}
 
 # Defines when icons should be displayed on the climb intro.  The entries relate to the various platforms.
 # data is: appear from scene, appear to scene, below y, above y, smash animation to scene
@@ -322,22 +323,7 @@ INVALID_ROM_MESSAGE = [
     "Your DKONG.ZIP file is not",
     "valid. Please replace it.", "",
     "The zip should contain the",
-    "following files:", "",
-    "  · c_5at_g.bin",
-    "  · c_5bt_g.bin",
-    "  · c_5ct_g.bin",
-    "  · c_5et_g.bin",
-    "  · c-2j.bpr",
-    "  · c-2k.bpr",
-    "  · l_4m_b.bin",
-    "  · l_4n_b.bin",
-    "  · l_4r_b.bin",
-    "  · l_4s_b.bin",
-    "  · s_3i_b.bin",
-    "  · s_3j_b.bin",
-    "  · v_3pt.bin",
-    "  · v_5h_b.bin",
-    "  · v-5e.bpr"]
+    "following files:", ""]
 
 INSTRUCTION = """
 
@@ -382,20 +368,20 @@ play.
 Helpful hints
 ~~~~~~~~~~~~~
        
-• You can navigate Jumpman
-  between stages using the
-  exit ladders or by warping
-  down an oilcan.
+• Navigate between stages by
+  climbing an exit ladder or
+  my warping down an oilcan.
 
-• You can teleport Jumpman 
-  over short distances by 
-  jumping up to a hammer.  
+• Use hammers to teleport
+  over short distances. 
 
-• Help Jumpman get better by
-  using practice modes.  
-  Maybe you can help him to 
-  reach the infamous Donkey
-  Kong killscreen.
+• Use the practice modes to
+  get better at each stage.  
+  Maybe you can reach the 
+  infamous Donkey Kong 
+  killscreen at level 22-1.
+
+Good luck!
 
 """
 

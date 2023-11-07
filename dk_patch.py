@@ -18,11 +18,10 @@ import zipfile
 from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP
 from dk_system import is_pi, copy
 
-
-FIX_ALTERNATIVE_MD5 = "f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", \
-                      "aa282b72ac409793b36780c99b26d07b", "e883b4225a76a79f38cf1db7c340aa8e", \
-                      "eb6571036ff25e8e5db5289f5524ab76", "5897e79286e19c91eb3eca657a8c574c", \
-                      "480d0f113e8c7069b50ba807cf4b2a24", "394a7d367c9926c1d151dd87814c77f4"
+DKONG_MD5 = "a13e81d6ef342d763dc897fe03893392"
+FIX_MD5 = ("f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", "aa282b72ac409793b36780c99b26d07b",
+           "e883b4225a76a79f38cf1db7c340aa8e", "eb6571036ff25e8e5db5289f5524ab76", "5897e79286e19c91eb3eca657a8c574c",
+           "480d0f113e8c7069b50ba807cf4b2a24", "394a7d367c9926c1d151dd87814c77f4")
 
 
 def validate_rom():
@@ -30,11 +29,11 @@ def validate_rom():
     if os.path.exists(DKONG_ZIP):
         buffer = open(DKONG_ZIP, 'rb').read()
         md5 = hashlib.md5(buffer).hexdigest()
-        if md5 == "a13e81d6ef342d763dc897fe03893392":
+        if md5 == DKONG_MD5:
             # ZIP is verified
             return True
-        elif md5 in FIX_ALTERNATIVE_MD5:
-            # ZIP has a recognised MD5 and can be converted using patch file
+        elif md5 in FIX_MD5:
+            # ZIP has a recognised MD5 and can be converted using a "fix" patch file
             alt_zip = os.path.join(ROM_DIR, f"dkong_{md5}.zip")
             shutil.copy(DKONG_ZIP, alt_zip)
             if os.path.exists(alt_zip):
@@ -50,8 +49,7 @@ def validate_rom():
                     return True
             return False
         else:
-            # Last resort:
-            # Check the ZIP contains all the required files
+            # Last resort. Check the ZIP contains all the required files
             z = zipfile.ZipFile(DKONG_ZIP)
             for filename in ROM_CONTENTS:
                 if filename not in z.namelist():

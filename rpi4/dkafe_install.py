@@ -89,7 +89,7 @@ def main():
                     changes_made = True
                     # comment the "lxpanel" line in autoboot file
                     with open(F_AUTOSTART, "w") as f_out:
-                        with open(F_AUTOSTART_BU2, "r") as f_in:
+                        with open(F_AUTOSTART_BU2) as f_in:
                             for line in f_in.readlines():
                                 if "lxpanel" in line.lower():
                                     f_out.write("#" + line)
@@ -108,7 +108,7 @@ def main():
                 os.system("sudo cp /home/pi/dkafe_bin/artwork/blank.png /usr/share/plymouth/themes/pix/splash.png")
                 # Update desktop options
                 with open(F_PCMAN_CONFIG, "w") as f_out:
-                    with open(F_PCMAN_CONFIG_BU, "r") as f_in:
+                    with open(F_PCMAN_CONFIG_BU) as f_in:
                         for line in f_in.readlines():
                             if "wallpaper=" in line.lower():
                                 f_out.write("wallpaper=/home/pi/dkafe_bin/artwork/blank.png\n")
@@ -166,7 +166,7 @@ def main():
                 os.system(f"sudo cp {F_CONFIG} {F_CONFIG_BU2}")
                 changes_made = True
                 with open(F_CONFIG, "w") as f_out:
-                    with open(F_CONFIG_BU2, "r") as f_in:
+                    with open(F_CONFIG_BU2) as f_in:
                         for line in f_in.readlines():
                             if "framebuffer_width=" in line.lower():
                                 f_out.write("framebuffer_width=448\n")
@@ -181,7 +181,7 @@ def main():
                 os.system(f"sudo cp {F_CONFIG} {F_CONFIG_BU2}")
                 changes_made = True
                 with open(F_CONFIG, "w") as f_out:
-                    with open(F_CONFIG_BU2, "r") as f_in:
+                    with open(F_CONFIG_BU2) as f_in:
                         for line in f_in.readlines():
                             if "disable_overscan=" in line.lower():
                                 f_out.write("disable_overscan=1\n")
