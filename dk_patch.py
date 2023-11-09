@@ -95,7 +95,7 @@ def apply_patches():
                         # Patching DK rom and writing to subfolder
                         os.mkdir(subfolder)
                         patch = Patch.load(ips)
-                        romfile = "dkong" if name.startswith("dkong") else name
+                        romfile = "dkong" if name.startswith("dkong") else name.split("_")[0]
                         with open(os.path.join(subfolder, f"{romfile}.zip"), 'w+b') as f_out:
                             f_out.write(patch.apply(dkong_binary))
                             applied_patches_list.append(name)

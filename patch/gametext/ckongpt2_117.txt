@@ -1,0 +1,19 @@
+Crazy Kong 117 (Crazy Kong Bootleg)
+
+This Donkey Kong clone retains all of the gameplay 
+elements of Donkey Kong, but has the graphics redrawn 
+and re-colorised. 
+
+This is an adapted version of Crazy Kong with an
+updated title screen and the Donkey Kong US level 
+order (consisting of 117 stages):
+ 1: Barrels, Rivets
+ 2: Barrels, Springs, Rivets
+ 3: Barrels, Pies, Springs, Rivets
+ 4: Barrels, Pies, Barrels, Springs, Rivets
+ 5+: Barrels, Pies, Barrels, Springs, Barrels, Rivets
+
+Crazy Kong was an officially-licensed clone of Donkey 
+Kong manufactured by Falcon.
+
+Crazy Kong patch created by ChrisP

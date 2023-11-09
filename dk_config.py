@@ -174,7 +174,8 @@ COACH_L5_FRIENDLY = ["dkongspringy", "dkongbarrels"]
 CHORUS_FRIENDLY = ["dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
                    "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter"]
-CONTINUE_FRIENDLY = ["dkong", "dkongjr", "dkongd2k", "dkongjapan"]
+CONTINUE_FRIENDLY = ["dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpe", "ckongpt2", "ckongpt2b", "ckongpt2_117",
+                     "dkongspooky", "dkongxmas"]
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
 START5_FRIENDLY = ["dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
@@ -183,13 +184,13 @@ START5_FRIENDLY = ["dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
                    "dkongbarrels", "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow",
                    "dkongcontinue", "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc",
-                   "dkongbarrelboss", "dkongsprfin", "bigkonggx"]
+                   "dkongbarrelboss", "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b"]
 STAGE_FRIENDLY = ["dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfr",
                   "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev",
                   "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
-                  "dkonghrd", "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey",
-                  "dkongrainbow", "ckongs", "ckongg", "ckongmc", "dkongksfix", "bigkonggx"]
+                  "dkonghrd", "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs",
+                  "ckongg", "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117"]
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]

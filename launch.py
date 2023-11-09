@@ -308,9 +308,9 @@ def play_intro_animation():
             else:
                 # Show DK climb scene
                 _g.screen.blit(get_image(_key), TOPLEFT)
-                current = int(_key.split("scene_")[1][:4])
 
                 # play sound if required for the current frame
+                current = int(_key[-8:-4])  # get frame number as integer
                 if current in SCENE_SOUNDS:
                     play_sound_effect(SCENE_SOUNDS[current])
 
@@ -328,7 +328,7 @@ def play_intro_animation():
                 write_text(" FRONT END ", font=dk_font, x=69, y=8, bg=BLACK)
 
             show_score()
-            update_screen(delay_ms=39)
+            update_screen(delay_ms=CLOCK_RATE)
 
 
 def display_slots(version_only=False, logo_scene=False):

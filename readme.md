@@ -56,7 +56,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - Several Donkey Kong hacks and plugins made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong, and it's clones and bootlegs.
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
- - A built in music playlist that features 8 fantastic Donkey Kong remix tracks.
+ - A built in music playlist that features 8 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
 
 ### The frontend does not include:
@@ -77,7 +77,7 @@ Credit is given to the original authors below.
 
 ### By Jon Wilson (me)
  - VectorKong
- - GalaKong, Extreme Galakong
+ - GalaKong and Extreme Galakong
  - GalaKong Junior
  - Allen Kong
  - OctoMonkey
@@ -94,7 +94,7 @@ Credit is given to the original authors below.
  - Donkey Kong Rivets Only
  - Donkey Kong Coach
  - Donkey Kong Chorus
- - Donkey Kong Continue
+ - Donkey Kong/Crazy Kong Continue
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition
@@ -145,10 +145,13 @@ Credit is given to the original authors below.
 ### By Vic Twenty George
  - Donkey Kong Atari 2600 Graphics
  
+### By ChrisP - https://donkeykongforum.net/index.php?topic=1215
+ - Crazy Kong 117
+
 ### By Falcon
  - Crazy Kong
- - Crazy Kong Part 2
- - Crazy Kong Part 2 (Alternative Levels)
+ - Crazy Kong Part II
+ - Crazy Kong Part II (Alternative Levels)
 
 ### By others
  - Donkey Kong Wild Barrel Hack
@@ -163,6 +166,7 @@ Credit is given to the original authors below.
  - Crazy Kong on Scramble Hardware
  - Crazy Kong on Moon Cresta Hardware
  - Crazy Kong on Galaxian Hardware
+ - Crazy Kong Spanish Bootleg
  - Big Kong on Galaxian Hardware
 
 
@@ -592,7 +596,7 @@ https://github.com/furrykef/dkdasm
 Paul Goes for an excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
-Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, Tim Appleton, Vic20 George, Kirai Shouen/125scratch.
+Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, ChrisP, Tim Appleton, Vic20 George, Kirai Shouen/125scratch.
 
 Feedback, feature contributions and development ideas from Superjustinbros (Justin De Lucia)
 https://superjustintheblog.blogspot.com/

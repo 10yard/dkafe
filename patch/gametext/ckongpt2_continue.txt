@@ -1,0 +1,14 @@
+Crazy Kong Continue
+
+A continue option is added to the Crazy Kong Part II
+game allowing you to reach higher levels.  
+
+The continue option appears before your game is over 
+with a 10 second countdown timer. Simply push the P1 
+Start button to continue your game and your score will 
+be reset to zero. 
+
+A tally of the number of continues made will appear on 
+screen.
+
+Hack Developed by Jon Wilson (10yard)

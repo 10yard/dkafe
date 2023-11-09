@@ -13,7 +13,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "continue"
-exports.version = "0.19"
+exports.version = "0.20"
 exports.description = "Continue plugin"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -41,6 +41,9 @@ function continue.startplugin()
 	rom_table["centiped"]   = {"centi_func", {001,001}, {102,054}, GRN, false, false, 1}
 	rom_table["cclimber"]   = {"climb_func", {010,049}, {156,080}, CYN, true,  true,  1}
 	rom_table["defender"]   = {"dfend_func", {000,001}, {188,080}, YEL, true,  true,  1}
+	rom_table["ckong"]      = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
+	rom_table["ckongpt2"]   = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
+	rom_table["ckongpt2b"]  = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["dkong"]      = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["dkongx"]     = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["dkongx11"]   = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
@@ -381,6 +384,35 @@ function continue.startplugin()
 		b_show_tally = h_mode >= 8 and h_mode <= 16
 		b_push_p1 = i_stop and to_bits(read(0x7d00))[3] == 1
 
+		-- Logic
+		if b_1p_game then
+			if b_almost_gameover and not i_stop then
+				i_stop = i_frame + 600
+			end
+			if i_stop and i_stop > i_frame then
+				mem:write_u8(0x6009, 8) -- suspend game
+				draw_continue_box()
+				if b_push_p1 then
+					i_tally = i_tally + 1 ; i_stop = nil
+					mem:write_u8(0x6228, h_start_lives + 1)
+					reset(0x60b2, 3)  -- reset score in memory
+					for _addr = 0x76e1, 0x7781, 0x20 do reset(_addr, 1) end  -- reset score on screen
+				end
+			end
+		end
+	end
+
+	function ckong_func()
+		-- Memory map similar to dkong
+		h_mode = read(0x600a)
+		h_start_lives = read(0x6020)
+		h_remain_lives = read(0x6228)
+		b_1p_game = read(0x600f, 0)
+		b_almost_gameover = h_mode == 13 and read(0x6228, 1) and read(0x639d, 2)
+		b_reset_tally = h_mode == 7 or i_tally == nil
+		b_show_tally = h_mode >= 8 and h_mode <= 16
+		b_push_p1 = i_stop and to_bits(ports[":SYSTEM"]:read())[3] == 0
+				
 		-- Logic
 		if b_1p_game then
 			if b_almost_gameover and not i_stop then
