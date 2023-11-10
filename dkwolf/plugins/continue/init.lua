@@ -44,6 +44,8 @@ function continue.startplugin()
 	rom_table["ckong"]      = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["ckongpt2"]   = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["ckongpt2b"]  = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
+	rom_table["bigkong"]    = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
+	rom_table["ckongs"]     = {"ckgal_func", {052,216}, {328,032}, WHT, true,  false, 3}
 	rom_table["dkong"]      = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["dkongx"]     = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["dkongx11"]   = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
@@ -410,9 +412,9 @@ function continue.startplugin()
 		b_1p_game = read(0x600f, 0)
 		b_almost_gameover = h_mode == 13 and read(0x6228, 1) and read(0x639d, 2)
 		b_reset_tally = h_mode == 7 or i_tally == nil
-		b_show_tally = h_mode >= 8 and h_mode <= 16
+		b_show_tally = h_mode >= 8 and h_mode <= 16		
 		b_push_p1 = i_stop and to_bits(ports[":SYSTEM"]:read())[3] == 0
-				
+	
 		-- Logic
 		if b_1p_game then
 			if b_almost_gameover and not i_stop then
@@ -430,6 +432,36 @@ function continue.startplugin()
 			end
 		end
 	end
+
+	function ckgal_func()
+		-- Crazy Kong conversions on Galaxian Hardware
+		h_mode = read(0x600a)
+		h_start_lives = read(0x6020)
+		h_remain_lives = read(0x6228)
+		b_1p_game = read(0x600f, 0)
+		b_almost_gameover = h_mode == 13 and read(0x6228, 1) and read(0x639d, 2)
+		b_reset_tally = h_mode == 7 or i_tally == nil
+		b_show_tally = h_mode >= 8 and h_mode <= 16		
+		b_push_p1 = i_stop and to_bits(ports[":IN1"]:read())[8] ~= 1
+	
+		-- Logic
+		if b_1p_game then
+			if b_almost_gameover and not i_stop then
+				i_stop = i_frame + 600
+			end
+			if i_stop and i_stop > i_frame then
+				mem:write_u8(0x6009, 8) -- suspend game
+				draw_continue_box()
+				if b_push_p1 then
+					i_tally = i_tally + 1 ; i_stop = nil
+					mem:write_u8(0x6228, h_start_lives + 1)
+					reset(0x60b2, 3)  -- reset score in memory
+					for _addr = 0x76e1 + 0x1c00, 0x7781 + 0x1c00, 0x20 do reset(_addr, 1) end  -- reset score on screen
+				end
+			end
+		end
+	end
+
 
 	function galax_func()
 		-- ROM disassembly at http://seanriddle.com/galaxian.asm
@@ -709,7 +741,7 @@ function continue.startplugin()
 			--mem:write_direct_u8(0xa03c, 0)  -- incrementing warrior aggression - we could cap it
 			--mem:write_direct_u8(0xa03c, 65)  -- incrementing warrior aggression - we could cap it
 			
-			print(mem:read_u8(0xa019))
+			--print(mem:read_u8(0xa019))
 			--mem:write_u8(0xa050, 0x3f)  -- test
 			--mem:write_u8(0xa013, 10)  -- have a bunch of sinibombs
 			--mem:write_u8(0x9ffc, 0x03)  -- retain 3 lives

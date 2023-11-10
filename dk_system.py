@@ -11,7 +11,7 @@ System related functions
 """
 from datetime import datetime
 from glob import glob
-from shutil import copy, copytree
+from shutil import copy, move, copytree
 from time import sleep, time
 
 from dk_config import *

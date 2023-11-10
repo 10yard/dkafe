@@ -174,8 +174,11 @@ COACH_L5_FRIENDLY = ["dkongspringy", "dkongbarrels"]
 CHORUS_FRIENDLY = ["dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
                    "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter"]
-CONTINUE_FRIENDLY = ["dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpe", "ckongpt2", "ckongpt2b", "ckongpt2_117",
-                     "dkongspooky", "dkongxmas"]
+CONTINUE_FRIENDLY = ["dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline", "ckong", "ckongpt2", "ckongpt2b",
+                     "ckongpt2_117", "dkongspooky", "dkongxmas", "dkongrdemo", "dkongrev", "dkongcb",
+                     "dkong40", "dkongitd", "dkong2600", "dkongtj", "dkongfoundry", "dkongotr", "dkonghrthunt",
+                     "dkongkana", "dkongnoluck", "dkongwbh", "dkongjapan", "dkongpac", "dkonghrd", "dkongrainbow",
+                     "dkongksfix", "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs"]
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
 START5_FRIENDLY = ["dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
