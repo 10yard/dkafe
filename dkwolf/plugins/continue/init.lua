@@ -427,7 +427,7 @@ function continue.startplugin()
 					i_tally = i_tally + 1 ; i_stop = nil
 					mem:write_u8(0x6228, h_start_lives + 1)
 					reset(0x60b2, 3)  -- reset score in memory
-					for _addr = 0x76e1, 0x7781, 0x20 do reset(_addr, 1) end  -- reset score on screen
+					for _addr = 0x76e1 + 0x1c00, 0x7781 + 0x1c00, 0x20 do reset(_addr, 1) end  -- reset score on screen
 				end
 			end
 		end

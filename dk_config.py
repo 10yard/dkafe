@@ -166,7 +166,8 @@ PLUGINS = [
     ("dkongjrgala", "galakong"),
     ("dkongchorus", "dkchorus"),
     ("dkongcontinue", "continue"),
-    ("dkongjrcontinue", "continue")]
+    ("dkongjrcontinue", "continue"),
+    ("ckongpt2_continue", "continue")]
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
