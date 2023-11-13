@@ -233,7 +233,7 @@ def check_for_input(force_exit=False):
                 open_menu(_g.menu)
             if event.key == CONTROL_COIN:
                 if _g.ready:
-                    globals()["SHOW_GAMETEXT"] = not SHOW_GAMETEXT
+                    globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
                     set_gametext(None, SHOW_GAMETEXT, external=True)  # Fix pygamemenu issue
                 else:
                     _g.showinfo = not _g.showinfo
@@ -245,7 +245,7 @@ def check_for_input(force_exit=False):
                 if ENABLE_PLAYLIST and playlist.get_busy():
                     play_from_tracklist()
             if event.key == CONTROL_PLAYLIST:
-                globals()["ENABLE_PLAYLIST"] = not ENABLE_PLAYLIST
+                globals()["ENABLE_PLAYLIST"] = 1 if ENABLE_PLAYLIST == 0 else 0
                 set_playlist(None, ENABLE_PLAYLIST, external=True)  # Fix pygamemenu issue
 
         # Optional joystick controls
@@ -275,7 +275,7 @@ def check_for_input(force_exit=False):
                     open_menu(_g.menu)
                 if button == BUTTON_COIN:
                     if _g.ready:
-                        globals()["SHOW_GAMETEXT"] = not SHOW_GAMETEXT
+                        globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
                         set_gametext(None, SHOW_GAMETEXT, external=True)  # Fix pygamemenu issue
                     else:
                         _g.showinfo = not _g.showinfo
