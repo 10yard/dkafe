@@ -776,7 +776,7 @@ function continue.startplugin()
 	---------------------------------------------------------------------------
 	-- Plugin functions
 	---------------------------------------------------------------------------
-	function initialize()
+	function continue_initialize()
 		if tonumber(emu.app_version()) >= 0.227 then
 			mac = manager.machine
 			ports = mac.ioport.ports
@@ -819,7 +819,7 @@ function continue.startplugin()
 		end
 	end
 
-	function main()
+	function continue_main()
 		if r_function ~= nil then
 			i_frame = scr:frame_number()
 			r_function()
@@ -956,10 +956,10 @@ function continue.startplugin()
 	end
 
 	emu.register_start(function()
-		initialize()
+		continue_initialize()
 	end)
 
-	emu.register_frame_done(main, "frame")
+	emu.register_frame_done(continue_main, "frame")
 end
 
 return exports
