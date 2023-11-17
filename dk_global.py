@@ -84,5 +84,4 @@ psx = 0
 psy = 0
 
 # Playlist
-tracklist = []
-lasttrack = None
+tracklist, trackhistory = [], []

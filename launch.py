@@ -79,7 +79,7 @@ def check_patches_available():
             x_offset, y_offset = 0, 23
             write_text(f"APPLYING {str(len(applied_patches))} PATCH FILES...", font=dk_font, x=0, y=8, fg=RED)
             for i, patch in enumerate(applied_patches):
-                write_text(patch.upper(), font=pl_font7, x=x_offset, y=y_offset)
+                write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
                 y_offset += 8
                 if y_offset > 220:
@@ -1218,14 +1218,16 @@ def teleport_between_hammers():
 
 
 def play_from_tracklist():
-    #  Play a random track from the track list. If there's more than 1 track available then we don't repeat play.
+    #  Play a random track from the track list.  Remember the last played tracks - history holds 1/2 available tracks.
+    #  If there's more than 1 track available then we don't repeat play.
     if _g.tracklist:
         while True:
             track = sample(_g.tracklist, 1)[0]
-            if track != _g.lasttrack or len(_g.tracklist) == 1:
+            if track not in _g.trackhistory or len(_g.tracklist) == 1:
                 playlist.load(track)
                 playlist.play()
-                _g.lasttrack = track
+                _g.trackhistory.append(track)
+                _g.trackhistory = _g.trackhistory[int(len(_g.tracklist) / 2) * -1:]
                 break
 
 def main(initial=True):

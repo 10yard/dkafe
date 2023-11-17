@@ -501,7 +501,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ### Music Playlist
 
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
-Several default music files are provided for your enjoyment.  These files can be removed and replaced with your own favourite music tracks in **.mp3** or **.ogg** format. 
+11 Donkey Kong music remixes are provided as default for your enjoyment - see thank you section below for a list of the included tracks.  These files can be removed and replaced with your own favourite music tracks in **.mp3** or **.ogg** format. 
 
 The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key) or it can be toggle on/off by pressing the CONTROL_PLAYLIST key (p).
 When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).
@@ -610,8 +610,11 @@ https://docs.mamedev.org/
 WolfMAME by Mahlemiut
 https://github.com/mahlemiut/wolfmame
 
-The VRC6 Project by LeviR.star's Music.  4 DK remix tracks are included in the default playlist folder
+The VRC6 Project by LeviR.star's Music.  4 tracks are included in the default playlist folder
 https://www.youtube.com/watch?v=Ufd9UC2wUpA
+
+Donkey Kong Arcade Theme Remixes by Nintega Dario. 2 tracks are included in the default playlist folder.
+https://www.youtube.com/watch?v=VPT42lfFNMY
 
 DonkeyKong Classic Remix Music by MyNameIsBanks.  This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=MDw2goJSi4k
@@ -619,14 +622,14 @@ https://www.youtube.com/watch?v=MDw2goJSi4k
 Donkey Kong Remix Music by SanHolo. This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=_kdgB5SRqHw
 
-Main Theme Remix Music by Nintega Dario. This track is included in the default playlist folder.
-https://www.youtube.com/watch?v=VPT42lfFNMY
-
 Donkey Kong Arcade by MotionRide Music.  This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=gy0C2a5QEu8
 
 Do the Donkey Kong (Instrumental) by Buckner & Garcia.  This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=oK0yLlZ4zsk
+
+Donkey Kong Arcade C64 Remix by Sascha Zeidler.  This track is included in the default playlist folder.
+https://www.c64.com/games/2464
 
 ![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
 

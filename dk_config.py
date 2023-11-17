@@ -181,22 +181,22 @@ CONTINUE_FRIENDLY = ["dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "dkongnoluck", "dkongwbh", "dkongjapan", "dkongpac", "dkonghrd", "dkongrainbow", "dkongksfix",
                      "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs", "dkongwizardry",
                      "dkongoctomonkey", "dkongaccelerate", "dkonghalf", "dkongquarter", "dkongwho", "dkonglava",
-                     "dkong2600", "dkongchorus"]
+                     "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong"]
 SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
 START5_FRIENDLY = ["dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
                    "dkongjrgala", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
-                   "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongrdemo", "dkongcb",
-                   "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
-                   "dkongbarrels", "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow",
-                   "dkongcontinue", "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc",
-                   "dkongbarrelboss", "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b"]
-STAGE_FRIENDLY = ["dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho",
-                  "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfr",
-                  "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev",
-                  "dkongkana", "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac",
-                  "dkonghrd", "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs",
-                  "ckongg", "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117"]
+                   "dkonghrthnt", "bigkong", "dkongd2k", "dkongrev", "dkongrdemo", "dkongcb", "dkongkana",
+                   "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkongbarrels",
+                   "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow", "dkongcontinue",
+                   "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
+                   "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b"]
+STAGE_FRIENDLY = ["dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
+                  "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
+                  "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
+                  "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkonghrd",
+                  "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
+                  "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117"]
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
@@ -321,9 +321,16 @@ NO_ROMS_MESSAGE = [
     "DKONGJR.ZIP  IS OPTIONAL",
     "DKONG3.ZIP   IS OPTIONAL"]
 
+# Expected content of the original DK rom
 ROM_CONTENTS = ["c_5at_g.bin", "c_5bt_g.bin", "c_5ct_g.bin", "c_5et_g.bin", "c-2j.bpr", "c-2k.bpr", "l_4m_b.bin",
                 "l_4n_b.bin", "l_4r_b.bin", "l_4s_b.bin", "s_3i_b.bin", "s_3j_b.bin", "v_3pt.bin", "v_5h_b.bin",
                 "v-5e.bpr"]
+
+# MD5 checksum of expected DK base rom and various fixes/patches to align the provided rom with the expected rom.
+DKONG_MD5 = "a13e81d6ef342d763dc897fe03893392"
+FIX_MD5 = ("f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", "aa282b72ac409793b36780c99b26d07b",
+           "e883b4225a76a79f38cf1db7c340aa8e", "eb6571036ff25e8e5db5289f5524ab76", "5897e79286e19c91eb3eca657a8c574c",
+           "480d0f113e8c7069b50ba807cf4b2a24", "394a7d367c9926c1d151dd87814c77f4")
 
 INVALID_ROM_MESSAGE = [
     "ERROR WITH DONKEY KONG ROM", "",
