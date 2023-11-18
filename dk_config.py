@@ -126,6 +126,8 @@ if os.path.exists("settings.txt"):
                         globals()[key] = pygame.key.key_code(value)
                     elif value.isnumeric():
                         globals()[key] = int(value)
+                    elif value.lower() in ("true", "false"):
+                        globals()[key] = 1 if value.lower() == "true" else 0
                     else:
                         globals()[key] = value.replace("<ROOT>", ROOT_DIR).replace("<OPTIONS>", OPTIONS)
                 except KeyError:
