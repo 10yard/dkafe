@@ -52,8 +52,8 @@ def get_award(rom, score3, score2, score1):
     # Read data from the compete.dat file to detemine if coins should be awarded to Jumpman.
     try:
         with open(COMPETE_FILE) as cf:
-            name = cf.readline().replace("\n", "")
-            score = cf.readline().replace("\n", "")
+            name = cf.readline().strip()
+            score = cf.readline().strip()
         os.remove(COMPETE_FILE)
         if rom == name and score.isnumeric():
             if int(score) >= int(score1):

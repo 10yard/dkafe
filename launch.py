@@ -1053,10 +1053,10 @@ def process_interrupts():
                         # Display the game text
                         info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
                         for i, line in enumerate(text_lines + TEXT_INFO[info_index]):
-                            text = line.replace("\n", "").replace("\r", "")
+                            text = line.strip()
                             if i == 0:
                                 # Center align the title
-                                text = " "*int((55 - len(text.strip())) / 2)+text.strip()
+                                text = " "*int((55 - len(text.strip())) / 2) + text
                             write_text(text[:55], x=4, y=text_y+(i*6))
                         break
     # Flash a down arrow when Jumpman is stood on the oilcan to indicate he can warp to next/previous stage.

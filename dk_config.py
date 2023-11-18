@@ -118,7 +118,7 @@ if os.path.exists("settings.txt"):
     with open("settings.txt") as sf:
         for setting in sf.readlines():
             if setting.count("=") == 1 and not setting.startswith("#"):
-                key, value = setting.replace("\n", "").split("=")
+                key, value = setting.split("=")
                 key = key.strip()
                 value = value.strip()
                 try:
@@ -126,8 +126,10 @@ if os.path.exists("settings.txt"):
                         globals()[key] = pygame.key.key_code(value)
                     elif value.isnumeric():
                         globals()[key] = int(value)
-                    elif value.lower() in ("true", "false"):
-                        globals()[key] = 1 if value.lower() == "true" else 0
+                    elif value.lower() == "true":
+                        globals()[key] = 1
+                    elif value.lower() == "false":
+                        globals()[key] = 0
                     else:
                         globals()[key] = value.replace("<ROOT>", ROOT_DIR).replace("<OPTIONS>", OPTIONS)
                 except KeyError:
