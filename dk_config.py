@@ -300,8 +300,10 @@ LADDER_ZONES = [
 # Jumpman's x position when centre of ladder
 LADDER_CENTRES = (4, 12, 20, 28, 60, 68, 76, 84, 92, 100, 108, 124, 140, 148, 164, 180, 188, 196, 204)
 
-# Hammer Positions
+# Positions by stage
 HAMMER_POSITIONS = [(16, 98), (167, 190)], [(7, 138), (104, 98)]
+OILCAN_POSITIONS = [(16, 232), (172, 152)]
+WARP_ARROW_POSITIONS = [(20, 246), (176, 166)]
 
 # Sprite helpers
 SPRITE_FULL = 15

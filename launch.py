@@ -1063,18 +1063,13 @@ def process_interrupts():
     if "FOOT_ABOVE_OILCAN" in get_map_info():
         _g.lastwarpready = ticks
         if pygame.time.get_ticks() % 550 < 275:
-            if _g.stage == 0:
-                _g.screen.blit(get_image(f"artwork/sprite/down.png"), (20, 246))
-            elif _g.stage == 1:
-                _g.screen.blit(get_image(f"artwork/sprite/down.png"), (176, 166))
+            _g.screen.blit(get_image(f"artwork/sprite/down.png"), WARP_ARROW_POSITIONS[_g.stage])
 
     # After warping, Jumpman appears from inside the oilcan
     if ticks - _g.lastwarp < 1000 and _g.lastwarp > 0:
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-        if _g.stage == 0:
-            _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), (16, 232))
-        elif _g.stage == 1:
-            _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), (172, 152))
+        _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), OILCAN_POSITIONS[_g.stage])
+
 
 def get_prize_placing(awarded):
     """Return the awarded prize placing e.g. '1', '1st'"""
