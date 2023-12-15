@@ -501,7 +501,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ### Music Playlist
 
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
-11 Donkey Kong music remixes are provided as default for your enjoyment - see thank you section below for a list of the included tracks.  These files can be removed and replaced with your own favourite music tracks in **.mp3** or **.ogg** format. 
+12 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3** or **.ogg** format. 
 
 The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key) or it can be toggle on/off by pressing the CONTROL_PLAYLIST key (p).
 When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).
@@ -593,12 +593,12 @@ I would love to get to the infamous killscreen on level 22.  My current PB is 51
 The Donkey Kong rom hacking resource
 https://github.com/furrykef/dkdasm 
 
-Paul Goes for an excellent set of Donkey Kong hacking reference material
+Paul Goes excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
 Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, ChrisP, Tim Appleton, Vic20 George, Kirai Shouen/125scratch.
 
-Feedback, feature contributions and development ideas from Superjustinbros (Justin De Lucia)
+Feedback and feature ideas from Superjustinbros (Justin De Lucia)
 https://superjustintheblog.blogspot.com/
 
 The pygame community
@@ -630,6 +630,10 @@ https://www.youtube.com/watch?v=oK0yLlZ4zsk
 
 Donkey Kong Arcade C64 Remix by Sascha Zeidler.  This track is included in the default playlist folder.
 https://www.c64.com/games/2464
+
+Hammer Time Remix by Mitchel Gatzke.  This track is included in the default playlist folder.
+https://www.youtube.com/watch?v=crhTHJGgFag
+
 
 ![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
 

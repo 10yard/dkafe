@@ -439,7 +439,6 @@ THANKS_TO = """
 
 Thanks to all these folks!
 
-
 Donkey Kong rom hacks: 
    Paul Goes
    Sockmaster
@@ -450,7 +449,7 @@ Donkey Kong rom hacks:
    Vic20 George
    Kirai Shouen & 125scratch
 
-The DK rom hacking resource:
+Donkey Kong hacking resource:
    furrykef
 
 Feedback and feature ideas:
@@ -463,7 +462,7 @@ Playlist music:
    Nintega Dario
    MotionRide Music
    Buckner & Garcia
-
+   Mitchel Gatzke
 """
 
 # Sound setup
