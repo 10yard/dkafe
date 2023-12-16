@@ -88,7 +88,7 @@ COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always,
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = [3, 2]         # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
+LADDER_CHANCE = [3, 2, 3]      # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
 INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
 
 # Root directory of frontend
@@ -225,7 +225,7 @@ MIDBLUE = (4, 3, 255)
 YELLOW = (244, 186, 21)
 
 # Bonus Timer colors
-BONUS_COLORS = [(CYAN, MAGENTA), (YELLOW, MIDBLUE)]
+BONUS_COLORS = [(CYAN, MAGENTA), (YELLOW, MIDBLUE), (CYAN, MAGENTA)]
 
 # Alpha channel value for faded/locked arcade machines
 FADE_LEVEL = 75
@@ -301,9 +301,9 @@ LADDER_ZONES = [
 LADDER_CENTRES = (4, 12, 20, 28, 60, 68, 76, 84, 92, 100, 108, 124, 140, 148, 164, 180, 188, 196, 204)
 
 # Positions by stage
-HAMMER_POSITIONS = [(16, 98), (167, 190)], [(7, 138), (104, 98)]
-OILCAN_POSITIONS = [(16, 232), (172, 152)]
-WARP_ARROW_POSITIONS = [(20, 246), (176, 166)]
+HAMMER_POSITIONS = [(16, 98), (167, 190)], [(7, 138), (104, 98)], [(16, 98), (167, 190)]
+OILCAN_POSITIONS = [(16, 232), (172, 152), (16, 232)]
+WARP_ARROW_POSITIONS = [(20, 246), (176, 166), (20, 246)]
 
 # Sprite helpers
 SPRITE_FULL = 15

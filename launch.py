@@ -827,7 +827,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     _g.timer.reset()
                     _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
-                        movement = 1 if _g.stage == 0 else choice([-1, 1])
+                        movement = 1 if _g.stage == 0 or _g.stage == 2 else choice([-1, 1])
                         drop_coin(x=_g.stage * 36, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=movement)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
@@ -950,7 +950,7 @@ def process_interrupts():
                     if _g.score >= COIN_VALUES[coin_type] and loss + COIN_VALUES[coin_type] <= LIFE_COST:
                         loss += COIN_VALUES[coin_type]
                         _g.score -= COIN_VALUES[coin_type]
-                        if _g.stage == 0:
+                        if _g.stage == 0 or _g.stage == 2:
                             movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
                         else:
                             movement = choice([-1, 1])
@@ -1013,7 +1013,7 @@ def process_interrupts():
         if ticks % 5000 >= 1500:
             if ticks % 5000 < 2000:
                 if _g.grab:
-                    drop_coin(x=(67, 147)[_g.stage], y=(73, 77)[_g.stage], coin_type=_g.cointype)
+                    drop_coin(x=(67, 147, 67)[_g.stage], y=(73, 77, 73)[_g.stage], coin_type=_g.cointype)
                 _g.grab = False
                 _g.cointype = 0
             if ticks % 5000 > 4500:
@@ -1101,7 +1101,7 @@ def animate_rolling_coins(out_of_time=False):
         # Toggle ladders.  Virtual ladders are always active.
         if "APPROACHING_LADDER" in map_info or ("TOP_OF_LADDER" in map_info and _g.stage == 1):
             co_ladder = not randint(1, LADDER_CHANCE[_g.stage]) == 1
-        elif _g.stage == 0 and "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
+        elif (_g.stage == 0 or _g.stage == 2) and "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
             map_info = []
 
         # Move the coin along the platform and down ladders
@@ -1112,7 +1112,7 @@ def animate_rolling_coins(out_of_time=False):
             if _g.stage == 1 and int(co_y) in (232, 192, 152, 112):
                 co_dir *= -1  # Flip horizontal direction when falling off platform on rivets
         elif "ANY_LADDER" in map_info and co_y < 238:
-            if "TOP_OF_ANY_LADDER" in map_info and _g.stage == 0:
+            if "TOP_OF_ANY_LADDER" in map_info and (_g.stage == 0 or _g.stage ==2):
                 co_dir *= -1  # Flip horizontal direction after taking a ladder on barrels
             elif "APPROACHING_END_OF_LADDER" in map_info and _g.stage == 1:
                 co_dir = choice([-1, 1])  # Random direction change after taking a ladder on rivets
@@ -1168,7 +1168,7 @@ def stage_check(warp=False):
     if warp:
         _g.jump = True
         _g.lastwarp = pygame.time.get_ticks()
-    if (_g.ypos < 20 or warp) and _g.stage == 0:
+    if (_g.ypos < 20 or warp) and (_g.stage == 0 or _g.stage == 2):
         _g.stage = 1
         if warp:
             _g.ypos, _g.xpos = 152, 173
@@ -1188,7 +1188,7 @@ def stage_check(warp=False):
         initialise_screen()
 
     # Reset Donkey Kong's position
-    if _g.stage == 0:
+    if _g.stage == 0 or _g.stage == 2:
         _g.dkx, _g.dky = 0, 0
         _g.psx, _g.psy = 0, 0
     else:
@@ -1229,7 +1229,7 @@ def main(initial=True):
     # Prepare front end
     assert (VERSION.startswith("v")), "The version number could not be determined"
     _g.active = False
-    _g.stage = START_STAGE if START_STAGE == 0 or START_STAGE == 1 else 0
+    _g.stage = START_STAGE if 0 <= START_STAGE <= 2 else 0
     initialise_screen()
     load_frontend_state()
     detect_joysticks()
