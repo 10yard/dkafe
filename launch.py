@@ -950,10 +950,10 @@ def process_interrupts():
                     if _g.score >= COIN_VALUES[coin_type] and loss + COIN_VALUES[coin_type] <= LIFE_COST:
                         loss += COIN_VALUES[coin_type]
                         _g.score -= COIN_VALUES[coin_type]
-                        if _g.stage == 0 or _g.stage == 2:
-                            movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
-                        else:
+                        if _g.stage == 1:
                             movement = choice([-1, 1])
+                        else:
+                            movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
                         drop_coin(x=_g.xpos + i, y=_g.ypos, coin_type=coin_type, movement=movement)
                         i += 1
 
@@ -1112,7 +1112,7 @@ def animate_rolling_coins(out_of_time=False):
             if _g.stage == 1 and int(co_y) in (232, 192, 152, 112):
                 co_dir *= -1  # Flip horizontal direction when falling off platform on rivets
         elif "ANY_LADDER" in map_info and co_y < 238:
-            if "TOP_OF_ANY_LADDER" in map_info and (_g.stage == 0 or _g.stage ==2):
+            if "TOP_OF_ANY_LADDER" in map_info and (_g.stage == 0 or _g.stage == 2):
                 co_dir *= -1  # Flip horizontal direction after taking a ladder on barrels
             elif "APPROACHING_END_OF_LADDER" in map_info and _g.stage == 1:
                 co_dir = choice([-1, 1])  # Random direction change after taking a ladder on rivets
@@ -1168,6 +1168,7 @@ def stage_check(warp=False):
     if warp:
         _g.jump = True
         _g.lastwarp = pygame.time.get_ticks()
+
     if (_g.ypos < 20 or warp) and (_g.stage == 0 or _g.stage == 2):
         _g.stage = 1
         if warp:
@@ -1177,6 +1178,21 @@ def stage_check(warp=False):
         _g.coins = []
         clear_screen()
         initialise_screen()
+
+    elif (_g.ypos < 12) and _g.stage == 1:
+        _g.stage = 2
+        _g.ypos = 238
+        _g.coins = []
+        clear_screen()
+        initialise_screen()
+
+    elif (_g.ypos > 239) and _g.stage == 2:
+        _g.stage = 1
+        _g.ypos = 20
+        _g.coins = []
+        clear_screen()
+        initialise_screen()
+
     elif (_g.ypos > 239 or warp) and _g.stage == 1:
         _g.stage = 0
         if warp:
@@ -1187,13 +1203,9 @@ def stage_check(warp=False):
         clear_screen()
         initialise_screen()
 
-    # Reset Donkey Kong's position
-    if _g.stage == 0 or _g.stage == 2:
-        _g.dkx, _g.dky = 0, 0
-        _g.psx, _g.psy = 0, 0
-    else:
-        _g.dkx, _g.dky = 80, 4
-        _g.psx, _g.psy = 16, -12
+    # # Reset Donkey Kong and Pauline position
+    _g.dkx, _g.dky = KONG_POSITIONS[_g.stage]
+    _g.psx, _g.psy = PAULINE_POSITIONS[_g.stage]
 
 
 def teleport_between_hammers():

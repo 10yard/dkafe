@@ -78,17 +78,17 @@ REFOCUS_WINDOW = 0             # Attempt to refocus DKAFE window after exiting L
 BASIC_MODE = 0                 # Equivalent to FREE_PLAY = 1, UNLOCK_MODE = 0 and all interface options disabled
 
 # Additional options
-AWARDS = [500, 1500, 2500]     # Coins awarded for reaching score target for 3rd, 2nd, 1st when competing
+AWARDS = 500, 1500, 2500       # Coins awarded for reaching score target for 3rd, 2nd, 1st when competing
 PLAY_COST = 100                # How much it costs to play an arcade machine
 LIFE_COST = 150                # How many coins Jumpman drops when time runs out
 SCORE_START = 500              # How many coins Jumpman starts with
 TIMER_START = 8000             # Timer starts countdown from this number
-COIN_VALUES = [0, 50, 100]     # How many points awarded for collecting a coin. Integer
+COIN_VALUES = 0, 50, 100       # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = [3, 2, 3]      # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
+LADDER_CHANCE = 3, 2, 3        # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
 INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
 
 # Root directory of frontend
@@ -155,10 +155,10 @@ DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 
 # Optional rom names
-OPTIONAL_NAMES = ["dkong", "dkongjr", "dkong3"]
+OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
 
 # Plugins add functionality to certain roms
-PLUGINS = [
+PLUGINS = (
     ("dkonglava", "dklavapanic"),
     ("dkongkonkey", "konkeydong"),
     ("dkong2600", "gingerbreadkong"),
@@ -171,36 +171,36 @@ PLUGINS = [
     ("dkongchorus", "dkchorus"),
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
-    ("ckongpt2_continue", "continue")]
+    ("ckongpt2_continue", "continue"))
 
 # Roms that are compatible with my plugins
-COACH_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"]
-COACH_L5_FRIENDLY = ["dkongspringy", "dkongbarrels"]
-CHORUS_FRIENDLY = ["dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
+COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong")
+COACH_L5_FRIENDLY = ("dkongspringy", "dkongbarrels")
+CHORUS_FRIENDLY = ("dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
-                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter"]
-CONTINUE_FRIENDLY = ["dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline", "ckong", "ckongpt2", "ckongpt2b",
+                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter")
+CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline", "ckong", "ckongpt2", "ckongpt2b",
                      "ckongpt2_117", "dkongspooky", "dkongxmas", "dkongrdemo", "dkongrev", "dkongcb", "dkong40",
                      "dkongitd", "dkong2600", "dkongtj", "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongkana",
                      "dkongnoluck", "dkongwbh", "dkongjapan", "dkongpac", "dkonghrd", "dkongrainbow", "dkongksfix",
                      "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs", "dkongwizardry",
                      "dkongoctomonkey", "dkongaccelerate", "dkonghalf", "dkongquarter", "dkongwho", "dkonglava",
-                     "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong"]
-SHOOT_FRIENDLY = ["dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets"]
-START5_FRIENDLY = ["dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
+                     "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong")
+SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets")
+START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
                    "dkongjrgala", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
                    "dkonghrthnt", "bigkong", "dkongd2k", "dkongrev", "dkongrdemo", "dkongcb", "dkongkana",
                    "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkongbarrels",
                    "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow", "dkongcontinue",
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
-                   "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b"]
-STAGE_FRIENDLY = ["dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
+                   "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b")
+STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
                   "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkonghrd",
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
-                  "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117"]
+                  "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117")
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
@@ -231,7 +231,7 @@ BONUS_COLORS = [(CYAN, MAGENTA), (YELLOW, MIDBLUE), (CYAN, MAGENTA)]
 FADE_LEVEL = 75
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
-SLOTS = [
+SLOTS = (
     (2, 226), (34, 226), (50, 226), (66, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
     (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
@@ -242,20 +242,19 @@ SLOTS = [
     (26, 186), (42, 186), (58, 186), (82, 186), (114, 186), (130, 186), (154, 186), (170, 186), (186, 186),
     (34, 146), (50, 146), (82, 146), (114, 146), (130, 146), (154, 146),
     (42, 106), (74, 106), (90, 106), (122, 106), (138, 106), (170, 106),
-    (42, 66), (74, 66), (90, 66), (170, 66)
-]
+    (50, 66), (74, 66), (90, 66), (170, 66))
 
 # Number of slots that appear on barrels stage (including slot 0)
 BARREL_SLOTS = 46
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
-CONTROL_ASSIGNMENTS = [
+CONTROL_ASSIGNMENTS = (
   ("left", CONTROL_LEFT),
   ("right", CONTROL_RIGHT),
   ("up", CONTROL_UP),
   ("down", CONTROL_DOWN),
   ("jump", CONTROL_JUMP),
-  ("start", CONTROL_P1)]
+  ("start", CONTROL_P1))
 
 # Text description of prize placing
 PRIZE_PLACINGS = {1: "1ST", 2: "2ND", 3: "3RD"}
@@ -272,17 +271,17 @@ SCENE_SOUNDS = {
 
 # Defines when icons should be displayed on the climb intro.  The entries relate to the various platforms.
 # data is: appear from scene, appear to scene, below y, above y, smash animation to scene
-SCENE_ICONS = [
+SCENE_ICONS = (
     (481, 856, 68, 40, 502),
     (544, 856, 101, 68, 565),
     (580, 856, 134, 101, 601),
     (613, 856, 167, 134, 634),
     (646, 856, 200, 167, 667),
     (679, 856, 999, 200, 700),
-    (700, 856, 999, 0, 0)]
+    (700, 856, 999, 0, 0))
 
 # Ladder zone detection. The R read from screen map determines were jumpman is relative to a ladder
-LADDER_ZONES = [
+LADDER_ZONES = (
     ("LADDER_DETECTED", (20, 30, 60, 90, 240)),
     ("END_OF_LADDER", (60, 90)),
     ("TOP_OF_LADDER", (60,)),
@@ -295,15 +294,17 @@ LADDER_ZONES = [
     ("VIRTUAL_LADDER", (180, 190)),
     ("APPROACHING_LADDER", (200,)),
     ("ANY_LADDER", (20, 30, 60, 90, 160, 170, 180, 190, 240)),
-    ("TOP_OF_ANY_LADDER", (60, 170, 180))]
+    ("TOP_OF_ANY_LADDER", (60, 170, 180)))
 
 # Jumpman's x position when centre of ladder
-LADDER_CENTRES = (4, 12, 20, 28, 60, 68, 76, 84, 92, 100, 108, 124, 140, 148, 164, 180, 188, 196, 204)
+LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 124, 140, 148, 164, 180, 188, 196, 204)
 
 # Positions by stage
-HAMMER_POSITIONS = [(16, 98), (167, 190)], [(7, 138), (104, 98)], [(16, 98), (167, 190)]
-OILCAN_POSITIONS = [(16, 232), (172, 152), (16, 232)]
-WARP_ARROW_POSITIONS = [(20, 246), (176, 166), (20, 246)]
+HAMMER_POSITIONS = ((16, 98), (167, 190)), ((7, 138), (104, 98)), ((16, 98), (167, 190))
+OILCAN_POSITIONS = (16, 232), (172, 152), (16, 232)
+WARP_ARROW_POSITIONS = (20, 246), (176, 166), (20, 246)
+PAULINE_POSITIONS = (0, 0), (16, -12), (0, 0)
+KONG_POSITIONS = (0, 0), (80, 4), (0, 0)
 
 # Sprite helpers
 SPRITE_FULL = 15
