@@ -142,6 +142,7 @@ if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
 if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
 if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
+if START_STAGE > 2: START_STAGE = 0
 
 # Frontend version
 VERSION = ''
@@ -224,9 +225,6 @@ DARKBLUE = (4, 2, 220)
 MIDBLUE = (4, 3, 255)
 YELLOW = (244, 186, 21)
 
-# Bonus Timer colors
-BONUS_COLORS = [(CYAN, MAGENTA), (YELLOW, MIDBLUE), (CYAN, MAGENTA)]
-
 # Alpha channel value for faded/locked arcade machines
 FADE_LEVEL = 75
 
@@ -238,14 +236,17 @@ SLOTS = (
     (194, 132), (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
     (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (210, 87),
     (194, 66), (162, 64), (146, 63), (114, 62), (90, 62), (2, 62), (90, 34),
+
     (18, 226), (34, 226), (50, 226), (90, 226), (114, 226), (130, 226), (146, 226), (162, 226), (178, 226), (194, 226),
     (26, 186), (42, 186), (58, 186), (82, 186), (114, 186), (130, 186), (154, 186), (170, 186), (186, 186),
     (34, 146), (50, 146), (82, 146), (114, 146), (130, 146), (154, 146),
     (42, 106), (74, 106), (90, 106), (122, 106), (138, 106), (170, 106),
-    (50, 66), (74, 66), (90, 66), (170, 66))
+    (50, 66), (74, 66), (90, 66), (170, 66),
 
-# Number of slots that appear on barrels stage (including slot 0)
-BARREL_SLOTS = 46
+    (2, 226), (34, 226))
+
+# Range of slots that appear on each stage
+SLOTS_PER_STAGE = (0, 47), (47, 82), (82, 84)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -299,12 +300,15 @@ LADDER_ZONES = (
 # Jumpman's x position when centre of ladder
 LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 124, 140, 148, 164, 180, 188, 196, 204)
 
-# Positions by stage
-HAMMER_POSITIONS = ((16, 98), (167, 190)), ((7, 138), (104, 98)), ((16, 98), (167, 190))
-OILCAN_POSITIONS = (16, 232), (172, 152), (16, 232)
-WARP_ARROW_POSITIONS = (20, 246), (176, 166), (20, 246)
-PAULINE_POSITIONS = (0, 0), (16, -12), (0, 0)
-KONG_POSITIONS = (0, 0), (80, 4), (0, 0)
+# Stage specific positions, colours etc
+HAMMER_POSXY = ((16, 98), (167, 190)), ((7, 138), (104, 98)), ((16, 98), (167, 190))
+OILCAN_POSXY = (16, 232), (172, 152), (16, 232)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246)
+PAULINE_POSXY = (0, 0), (16, -12), (9, 0)
+KONG_POSXY = (0, 0), (80, 4), (0, 0)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73)
+COIN_AWARD_POSX = 0, 36, 0
+BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, WHITE)
 
 # Sprite helpers
 SPRITE_FULL = 15

@@ -44,7 +44,7 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be configured to launch other emulators and roms.
 
-Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel and rivet stages.
+Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet (and the new crazy kong barrel) stages.
 
 
 ![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
@@ -327,7 +327,7 @@ Increase the frontend speed.  0 is normal.  If frontend is running slow then try
 How difficult are the target scores.  1 (Beginner) to 10 (Expert).
 
 `START_STAGE = 0`
-The stage to start the frontend on.  0 is barrels stage.  1 is rivets stage.
+The stage to start the frontend on.  0 is barrels stage, 1 is rivets stage, 2 is Crazy Kong barrels stage.
 
 `HIGH_SCORE_SAVE = 1`
 Save your high score tables for each game.

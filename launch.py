@@ -335,7 +335,7 @@ def display_slots(version_only=False, logo_scene=False):
     if _g.showslots or logo_scene:
         if not version_only:
             for i, slot in enumerate(SLOTS):
-                if (_g.stage == 0 and i <= BARREL_SLOTS) or (_g.stage == 1 and i > BARREL_SLOTS):
+                if i in range(*SLOTS_PER_STAGE[_g.stage]):
                     _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
                     write_text("  ", x=SLOTS[i][0] + 1, y=SLOTS[i][1] + 1, bg=BLACK)
                     write_text(str(i + 1).zfill(2), x=SLOTS[i][0] + 2, y=SLOTS[i][1] + 2, bg=BLACK)
@@ -353,7 +353,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     info_list = []
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
-        if (_g.stage == 0 and int(slot) - 1 <= BARREL_SLOTS) or (_g.stage == 1 and int(slot) - 1 > BARREL_SLOTS):
+        if int(slot) - 1 in range(*SLOTS_PER_STAGE[_g.stage]):
             p_des = alt if alt.strip() else des
             unlocked = True
             up_arrow = False
@@ -827,8 +827,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     _g.timer.reset()
                     _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
-                        movement = 1 if _g.stage == 0 or _g.stage == 2 else choice([-1, 1])
-                        drop_coin(x=_g.stage * 36, y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=movement)
+                        movement = choice([-1, 1]) if _g.stage == 1 else 1
+                        drop_coin(x=COIN_AWARD_POSX[_g.stage], y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=movement)
                     _g.timer.reset()
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
             elif "-record" in launch_command:
@@ -885,7 +885,7 @@ def playback_rom(info, inpfile):
 
 def show_hammers():
     if ENABLE_HAMMERS:
-        for position in HAMMER_POSITIONS[_g.stage]:
+        for position in HAMMER_POSXY[_g.stage]:
             _g.screen.blit(get_image(f"artwork/sprite/hammer.png"), position)
 
 
@@ -918,7 +918,7 @@ def show_timeup_animation(sprite_number, loss=0):
     # Display items that don't get updated in this loop
     show_score()
     write_text(" 000", font=dk_font, x=177, y=48, fg=MAGENTA)
-    _g.screen.blit(get_image("artwork/sprite/dk0.png"), (11 + _g.dkx, 52 + _g.dky))
+    _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
     if loss > 0:
         write_text(f"-{str(loss)}", x=_g.xpos, y=_g.ypos - 10, bg=RED, box=True)
@@ -982,22 +982,22 @@ def process_interrupts():
         place, place_text = get_prize_placing(_g.awarded)
         if _g.timer.duration > 1:
             if _g.timer.duration < 2:
-                _g.screen.blit(get_image(f"artwork/sprite/dkg1.png"), (11 + _g.dkx, 52 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}g1.png"), (11 + _g.dkx, 52 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5 + _g.dkx, 62 + _g.dky))
             elif _g.timer.duration < 3:
-                _g.screen.blit(get_image(f"artwork/sprite/dka1.png"), (11 + _g.dkx, 52 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a1.png"), (11 + _g.dkx, 52 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 60 + _g.dky))
             else:
-                _g.screen.blit(get_image(f"artwork/sprite/dka2.png"), (11 + _g.dkx, 45 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a2.png"), (11 + _g.dkx, 45 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 29 + _g.dky))
         else:
-            _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11 + _g.dkx, 52 + _g.dky))
+            _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
             _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5 + _g.dkx, 62 + _g.dky))
     elif _g.timer.duration - _g.lastaward < 2:
-        _g.screen.blit(get_image(f"artwork/sprite/dk0.png"), (11 + _g.dkx, 52 + _g.dky))
+        _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
     else:
         # Animate DK stomping,  sometimes DK will grab a coin
-        prefix = ("dk", "dkg")[_g.grab]
+        prefix = (dk_ck(), f"{dk_ck()}g")[_g.grab]
         if _g.grab and _g.cointype == 0:
             # Determine next coin to be grabbed by DK. Higher value coins are released less frequenly
             _g.cointype = int(randint(1, COIN_HIGH) == 1) + 1
@@ -1013,7 +1013,7 @@ def process_interrupts():
         if ticks % 5000 >= 1500:
             if ticks % 5000 < 2000:
                 if _g.grab:
-                    drop_coin(x=(67, 147, 67)[_g.stage], y=(73, 77, 73)[_g.stage], coin_type=_g.cointype)
+                    drop_coin(x=COIN_GRAB_POSXY[_g.stage][0], y=COIN_GRAB_POSXY[_g.stage][1], coin_type=_g.cointype)
                 _g.grab = False
                 _g.cointype = 0
             if ticks % 5000 > 4500:
@@ -1063,12 +1063,12 @@ def process_interrupts():
     if "FOOT_ABOVE_OILCAN" in get_map_info():
         _g.lastwarpready = ticks
         if pygame.time.get_ticks() % 550 < 275:
-            _g.screen.blit(get_image(f"artwork/sprite/down.png"), WARP_ARROW_POSITIONS[_g.stage])
+            _g.screen.blit(get_image(f"artwork/sprite/down.png"), WARP_ARROW_POSXY[_g.stage])
 
     # After warping, Jumpman appears from inside the oilcan
     if ticks - _g.lastwarp < 1000 and _g.lastwarp > 0:
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-        _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), OILCAN_POSITIONS[_g.stage])
+        _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), OILCAN_POSXY[_g.stage])
 
 
 def get_prize_placing(awarded):
@@ -1101,7 +1101,7 @@ def animate_rolling_coins(out_of_time=False):
         # Toggle ladders.  Virtual ladders are always active.
         if "APPROACHING_LADDER" in map_info or ("TOP_OF_LADDER" in map_info and _g.stage == 1):
             co_ladder = not randint(1, LADDER_CHANCE[_g.stage]) == 1
-        elif (_g.stage == 0 or _g.stage == 2) and "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
+        elif _g.stage != 1 and "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
             map_info = []
 
         # Move the coin along the platform and down ladders
@@ -1112,7 +1112,7 @@ def animate_rolling_coins(out_of_time=False):
             if _g.stage == 1 and int(co_y) in (232, 192, 152, 112):
                 co_dir *= -1  # Flip horizontal direction when falling off platform on rivets
         elif "ANY_LADDER" in map_info and co_y < 238:
-            if "TOP_OF_ANY_LADDER" in map_info and (_g.stage == 0 or _g.stage == 2):
+            if "TOP_OF_ANY_LADDER" in map_info and _g.stage != 1:
                 co_dir *= -1  # Flip horizontal direction after taking a ladder on barrels
             elif "APPROACHING_END_OF_LADDER" in map_info and _g.stage == 1:
                 co_dir = choice([-1, 1])  # Random direction change after taking a ladder on rivets
@@ -1204,14 +1204,14 @@ def stage_check(warp=False):
         initialise_screen()
 
     # # Reset Donkey Kong and Pauline position
-    _g.dkx, _g.dky = KONG_POSITIONS[_g.stage]
-    _g.psx, _g.psy = PAULINE_POSITIONS[_g.stage]
+    _g.dkx, _g.dky = KONG_POSXY[_g.stage]
+    _g.psx, _g.psy = PAULINE_POSXY[_g.stage]
 
 
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
-            h1, h2 = HAMMER_POSITIONS[_g.stage][0], HAMMER_POSITIONS[_g.stage][1]
+            h1, h2 = HAMMER_POSXY[_g.stage]
             if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
                 _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 3 + (_g.stage * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
@@ -1237,11 +1237,20 @@ def play_from_tracklist():
                 _g.trackhistory = _g.trackhistory[int(len(_g.tracklist) / 2) * -1:]
                 break
 
+
+def dk_ck():
+    # DK or CK graphics
+    if _g.stage == 2:
+        return "ck"
+    else:
+        return "dk"
+
+
 def main(initial=True):
     # Prepare front end
     assert (VERSION.startswith("v")), "The version number could not be determined"
     _g.active = False
-    _g.stage = START_STAGE if 0 <= START_STAGE <= 2 else 0
+    _g.stage = START_STAGE
     initialise_screen()
     load_frontend_state()
     detect_joysticks()
