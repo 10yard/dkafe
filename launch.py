@@ -886,7 +886,7 @@ def playback_rom(info, inpfile):
 def show_hammers():
     if ENABLE_HAMMERS:
         for position in HAMMER_POSXY[_g.stage]:
-            _g.screen.blit(get_image(f"artwork/sprite/hammer.png"), position)
+            _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}hammer.png"), position)
 
 
 def show_score():
@@ -1068,7 +1068,7 @@ def process_interrupts():
     # After warping, Jumpman appears from inside the oilcan
     if ticks - _g.lastwarp < 1000 and _g.lastwarp > 0:
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-        _g.screen.blit(get_image(f"artwork/sprite/oilcan.png"), OILCAN_POSXY[_g.stage])
+        _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}oilcan.png"), OILCAN_POSXY[_g.stage])
 
 
 def get_prize_placing(awarded):
@@ -1169,36 +1169,26 @@ def stage_check(warp=False):
         _g.jump = True
         _g.lastwarp = pygame.time.get_ticks()
 
-    if (_g.ypos < 20 or warp) and (_g.stage == 0 or _g.stage == 2):
-        _g.stage = 1
-        if warp:
-            _g.ypos, _g.xpos = 152, 173
-        else:
-            _g.ypos = 238
-        _g.coins = []
-        clear_screen()
-        initialise_screen()
-
-    elif (_g.ypos < 12) and _g.stage == 1:
-        _g.stage = 2
-        _g.ypos = 238
-        _g.coins = []
-        clear_screen()
-        initialise_screen()
-
-    elif (_g.ypos > 239) and _g.stage == 2:
-        _g.stage = 1
+    current_stage = _g.stage
+    if warp:
+        if _g.stage == 0:
+          _g.stage = 1
+          _g.ypos, _g.xpos = 152, 173
+        elif _g.stage == 1:
+          _g.stage = 2
+          _g.ypos, _g.xpos = 232, 17
+        elif _g.stage == 2:
+          _g.stage = 0
+          _g.ypos, _g.xpos = 232, 17
+    elif _g.ypos > 239:
+        _g.stage = (current_stage - 1) % 3
         _g.ypos = 20
-        _g.coins = []
-        clear_screen()
-        initialise_screen()
+    elif (_g.ypos < 20 and _g.stage != 1) or _g.ypos < 12:
+        _g.stage = (current_stage + 1) % 3
+        _g.ypos = 238
 
-    elif (_g.ypos > 239 or warp) and _g.stage == 1:
-        _g.stage = 0
-        if warp:
-            _g.ypos, _g.xpos = 232, 17
-        else:
-            _g.ypos = 20
+    if current_stage != _g.stage:
+        # Switch the stage
         _g.coins = []
         clear_screen()
         initialise_screen()
@@ -1213,11 +1203,11 @@ def teleport_between_hammers():
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
             h1, h2 = HAMMER_POSXY[_g.stage]
             if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
-                _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 3 + (_g.stage * 4)
+                _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 3 + ((_g.stage == 1) * 4)
                 _g.teleport_ticks = pygame.time.get_ticks()
                 play_sound_effect("teleport.wav")
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
-                _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + (_g.stage * 8)
+                _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + ((_g.stage == 1) * 8)
                 _g.teleport_ticks = pygame.time.get_ticks()
                 play_sound_effect("teleport.wav")
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
