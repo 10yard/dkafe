@@ -1201,14 +1201,14 @@ def stage_check(warp=False):
 def teleport_between_hammers():
     if ENABLE_HAMMERS:
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
+            o1, o2 = _g.xpos, _g.ypos
             h1, h2 = HAMMER_POSXY[_g.stage]
             t1, t2 = TELEPORT_TO_POSXY[_g.stage]
-            if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + ((_g.stage == 1) * 8):
+            if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2:
                 _g.xpos, _g.ypos = t1
-                _g.teleport_ticks = pygame.time.get_ticks()
-                play_sound_effect("teleport.wav")
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
                 _g.xpos, _g.ypos = t2
+            if (o1, o2) != (_g.xpos, _g.ypos):
                 _g.teleport_ticks = pygame.time.get_ticks()
                 play_sound_effect("teleport.wav")
 
