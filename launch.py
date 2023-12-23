@@ -1202,14 +1202,16 @@ def teleport_between_hammers():
     if ENABLE_HAMMERS:
         if pygame.time.get_ticks() - _g.teleport_ticks > 700:
             h1, h2 = HAMMER_POSXY[_g.stage]
-            if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + (_g.stage * 8):
-                _g.xpos, _g.ypos = h2[0] - 3, h2[1] + 3 + ((_g.stage == 1) * 4)
+            t1, t2 = TELEPORT_TO_POSXY[_g.stage]
+            if h1[0] - 6 <= _g.xpos <= h1[0] + 6 and h1[1] - 7 <= _g.ypos <= h1[1] + 2 + ((_g.stage == 1) * 8):
+                _g.xpos, _g.ypos = t1
                 _g.teleport_ticks = pygame.time.get_ticks()
                 play_sound_effect("teleport.wav")
             elif h2[0] - 6 <= _g.xpos <= h2[0] + 6 and h2[1] - 7 <= _g.ypos <= h2[1] + 2:
-                _g.xpos, _g.ypos = h1[0] + 4, h1[1] - 6 + ((_g.stage == 1) * 8)
+                _g.xpos, _g.ypos = t2
                 _g.teleport_ticks = pygame.time.get_ticks()
                 play_sound_effect("teleport.wav")
+
         if pygame.time.get_ticks() - _g.teleport_ticks < 1000:
             write_text("Teleport Jump!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
 

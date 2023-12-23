@@ -104,7 +104,7 @@ def read_romlist():
 
                     if name and des:
                         if slot in usedslots:
-                            slot = "99"
+                            slot = "0"
                             icx, icy = -1, -1
                         elif sub:
                             usedsubs.append(sub)
