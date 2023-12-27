@@ -484,7 +484,6 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             for c in LADDER_CENTRES:
                 if c - 4 <= _g.xpos <= c + 4:
                     _g.xpos = c
-
             if "END_OF_LADDER" in map_info:
                 sprite_file = sprite_file.replace("#", "0")
             elif "NEARING_END_OF_LADDER" in map_info:
@@ -917,7 +916,7 @@ def show_timeup_animation(sprite_number, loss=0):
 
     # Display items that don't get updated in this loop
     show_score()
-    write_text(" 000", font=dk_font, x=177, y=48, fg=MAGENTA)
+    write_text(" 000", font=dk_font, x=177, y=48, fg=BONUS_COLORS[_g.stage][1])
     _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
     if loss > 0:
@@ -1022,6 +1021,7 @@ def process_interrupts():
             _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
     animate_rolling_coins()
+    animate_moving_ladders()
 
     # Purge coins
     _g.coins = [i for i in _g.coins if -10 < i[0] < 234]
@@ -1076,6 +1076,20 @@ def get_prize_placing(awarded):
     place = 3 - AWARDS.index(awarded)
     return place, PRIZE_PLACINGS[place]
 
+
+def animate_moving_ladders():
+    if _g.stage == 2:
+        _index = MOVING_LADDER_OFFSETS[floor(_g.frames / 4) % len(MOVING_LADDER_OFFSETS)]
+        _x0, _x1 = MOVING_LADDER_POSXY[0][0], MOVING_LADDER_POSXY[1][0]
+        _y = MOVING_LADDER_POSXY[0][1]
+        _g.screen.blit(get_image("artwork/sprite/ladder.png"), (_x0, _y + _index))
+        _g.screen.blit(get_image("artwork/sprite/ladder.png"), (_x1, _y + _index))
+        if _index == 0:
+            _g.screen_map.blit(get_image("artwork/sprite/ladder_open.png"), (_x0, _y - 8))
+            _g.screen_map.blit(get_image("artwork/sprite/ladder_open.png"), (_x1, _y - 8))
+        else:
+            _g.screen_map.blit(get_image("artwork/sprite/ladder_block.png"), (_x0, _y - 8))
+            _g.screen_map.blit(get_image("artwork/sprite/ladder_block.png"), (_x1, _y - 8))
 
 def animate_rolling_coins(out_of_time=False):
     _g.awarded = 0
@@ -1171,15 +1185,8 @@ def stage_check(warp=False):
 
     current_stage = _g.stage
     if warp:
-        if _g.stage == 0:
-          _g.stage = 1
-          _g.ypos, _g.xpos = 152, 173
-        elif _g.stage == 1:
-          _g.stage = 2
-          _g.ypos, _g.xpos = 232, 17
-        elif _g.stage == 2:
-          _g.stage = 0
-          _g.ypos, _g.xpos = 232, 17
+        _g.stage = (_g.stage + 1) % 3
+        _g.xpos, _g.ypos = OILCAN_POSXY[_g.stage]
     elif _g.ypos > 239:
         _g.stage = (current_stage - 1) % 3
         _g.ypos = 20
@@ -1232,7 +1239,7 @@ def play_from_tracklist():
 
 def dk_ck():
     # DK or CK graphics
-    if _g.stage == 2:
+    if _g.stage == 3:
         return "ck"
     else:
         return "dk"

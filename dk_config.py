@@ -210,20 +210,21 @@ AUTOSTART_UNFRIENDLY = []
 SKIPINTRO_UNFRIENDLY = ["dkongchorus"]
 
 # Colours
-RED = (232, 7, 10)
-BLUE = (4, 3, 255)
 BLACK = (0, 0, 0)
-BROWN = (172, 5, 7)
-CYAN = (20, 243, 255)
-MAGENTA = (236, 49, 148)
 WHITE = (255, 255, 255)
+RED = (232, 7, 10)
 PINK = (255, 210, 190)
-GREY = (128, 128, 128)
-MIDGREY = (104, 104, 104)
-DARKGREY = (40, 40, 40)
+MAGENTA = (236, 49, 148)
+CYAN = (20, 243, 255)
+BLUE = (4, 3, 255)
 DARKBLUE = (4, 2, 220)
 MIDBLUE = (4, 3, 255)
 YELLOW = (244, 186, 21)
+BROWN = (172, 5, 7)
+LIGHTBROWN = (238, 117, 17)
+GREY = (128, 128, 128)
+MIDGREY = (104, 104, 104)
+DARKGREY = (40, 40, 40)
 
 # Alpha channel value for faded/locked arcade machines
 FADE_LEVEL = 75
@@ -298,18 +299,22 @@ LADDER_ZONES = (
     ("TOP_OF_ANY_LADDER", (60, 170, 180)))
 
 # Jumpman's x position when centre of ladder
-LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 124, 140, 148, 164, 180, 188, 196, 204)
+LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 124, 132, 140, 148, 164, 180, 188, 196, 204)
 
 # Stage specific positions, colours etc
-HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((22, 102), (167, 198))
-TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 140)), ((164, 201), (30, 102))
-OILCAN_POSXY = (16, 232), (172, 152), (16, 232)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246)
-PAULINE_POSXY = (0, 0), (16, -12), (9, 0)
-KONG_POSXY = (0, 0), (80, 4), (0, 0)
-COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73)
+HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178))
+TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140))
+OILCAN_POSXY = (16, 232), (172, 152), (104, 128)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142)
+PAULINE_POSXY = (0, 0), (16, -12), (0, 0)
+KONG_POSXY = (0, 0), (80, 4), (0, 4)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77)
 COIN_AWARD_POSX = 0, 36, 0
-BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, WHITE)
+BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN)
+
+# Pies specific.  Location of the 2 moving ladder sections
+MOVING_LADDER_POSXY = (15, 96), (199, 96)
+MOVING_LADDER_OFFSETS = list((0,)*48) + list(range(1,16)) + list((16,)*8) + list(range(15,0,-1))
 
 # Sprite helpers
 SPRITE_FULL = 15
