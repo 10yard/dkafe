@@ -24,7 +24,7 @@ The latest releases are available to download from below.  Refer to the **How to
 
 ## About DKAFE
 
-The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on the familiar girder and rivet stages and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
+The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on 3 familiar stages and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
 The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically by me for this frontend. 
 
@@ -44,7 +44,7 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be configured to launch other emulators and roms.
 
-Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet (and the new crazy kong barrel) stages.
+Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet and pies stages.
 
 
 ![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
@@ -275,7 +275,7 @@ The application requires settings.txt and romlist.csv to be present in the insta
 The settings.txt contains the emulator, rom path, controls and other configuration.  See **Frontend Settings** section below.
 
 The romlist.csv contains information about the roms, which game slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
-There are 82 configurable game slots in total. 
+There are 120 configurable game slots in total. 
 
 
 ### Display Resolution
@@ -327,7 +327,7 @@ Increase the frontend speed.  0 is normal.  If frontend is running slow then try
 How difficult are the target scores.  1 (Beginner) to 10 (Expert).
 
 `START_STAGE = 0`
-The stage to start the frontend on.  0 is barrels stage, 1 is rivets stage, 2 is Crazy Kong barrels stage.
+The stage to start the frontend on.  0 is barrels stage, 1 is rivets stage, 2 is pie factory stage.
 
 `HIGH_SCORE_SAVE = 1`
 Save your high score tables for each game.
@@ -515,7 +515,7 @@ The file can be configured to launch roms from the default rom directory (by lea
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
 If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See `ALLOW_ROM_OVERWRITE` option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. `/roms/original`) to prevent it from being overwritten.
 
-All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 82) and a basic descriptive name.  Set the slot position to 0 if you want the rom to only appear in the menu. 
+All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 120) and a basic descriptive name.  Set the slot position to 0 if you want the rom to only appear in the menu. 
 
 As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 

@@ -337,8 +337,9 @@ def display_slots(version_only=False, logo_scene=False):
             for i, slot in enumerate(SLOTS):
                 if i in range(*SLOTS_PER_STAGE[_g.stage]):
                     _g.screen.blit(get_image("artwork/icon/slot.png", fade=True), SLOTS[i])
-                    write_text("  ", x=SLOTS[i][0] + 1, y=SLOTS[i][1] + 1, bg=BLACK)
-                    write_text(str(i + 1).zfill(2), x=SLOTS[i][0] + 2, y=SLOTS[i][1] + 2, bg=BLACK)
+                    _id = str(i + 1).zfill(2)
+                    write_text(" " * len(_id), x=SLOTS[i][0] + 1, y=SLOTS[i][1] + 1, bg=BLACK)
+                    write_text(_id, x=SLOTS[i][0] + 1, y=SLOTS[i][1] + 2, bg=BLACK)
         write_text(text="VERSION", font=dk_font, x=224, fg=RED, bg=BLACK, rj_adjust=True)
         write_text(text=VERSION, font=dk_font, x=224, y=8, bg=BLACK, rj_adjust=True)
 
@@ -912,6 +913,7 @@ def show_timeup_animation(sprite_number, loss=0):
     # Show coins during the out of time animation
     display_icons(with_background=True)
     display_slots()
+    animate_moving_ladders()
     _g.screen.blit(get_image(f"artwork/sprite/out{sprite_number}.png"), (_g.xpos, int(_g.ypos)))
 
     # Display items that don't get updated in this loop
