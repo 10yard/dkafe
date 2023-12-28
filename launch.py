@@ -432,6 +432,7 @@ def adjust_jumpman():
         if "CLIMBING_LADDER" in get_map_info(platforms_only=True):
             animate_jumpman("u")
 
+
 def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     sprite_file = f"artwork/sprite/jm{direction}#.png"
     sound_file = None
@@ -1023,7 +1024,6 @@ def process_interrupts():
             _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
     animate_rolling_coins()
-    animate_moving_ladders()
 
     # Purge coins
     _g.coins = [i for i in _g.coins if -10 < i[0] < 234]
@@ -1285,6 +1285,7 @@ def main(initial=True):
         if _g.active:
             display_icons(with_background=True)
             display_slots()
+            animate_moving_ladders()
         if _g.jump_sequence:
             animate_jumpman(["l", "r"][_g.facing], midjump=True)
         else:
