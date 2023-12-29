@@ -172,7 +172,10 @@ PLUGINS = (
     ("dkongchorus", "dkchorus"),
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
-    ("ckongpt2_continue", "continue"))
+    ("ckongpt2_continue", "continue"),
+    ("dkongend1", "dkend"),
+    ("dkongend3", "dkend"),
+)
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong")
