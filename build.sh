@@ -24,7 +24,7 @@ sudo rm -r -f dist
 sudo rm -r -f build
 
 # build the application binary
-sudo pyinstaller launch.py --onefile --clean --noconsole
+sudo pyinstaller launch.py --onefile --clean --noconsole --exclude-module rotate-screen
 
 # copy program resources
 sudo cp -r artwork dist

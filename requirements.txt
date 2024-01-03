@@ -9,6 +9,7 @@ pyinstaller==5.13.1
 pyinstaller-hooks-contrib==2023.10
 pyperclip==1.8.1
 pywin32-ctypes==0.2.2
+rotate-screen==0.1.5
 stopwatch.py==1.0.1
 typing-extensions==4.7.1
 zipp==3.15.0

@@ -67,6 +67,7 @@ image_cache = {}
 
 # Screen buffers
 screen, screen_map, screen_copy, last_image = (None,) * 4
+initial_rotation = 0
 
 # Menu
 menu, exitmenu, setmenu, launchmenu = (None,) * 4

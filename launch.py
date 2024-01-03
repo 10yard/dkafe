@@ -35,12 +35,31 @@ def exit_program(confirm=False):
                 break
             except (EOFError, FileNotFoundError, IOError):
                 pygame.time.delay(250 * attempt)
+        rotate_display(exit=True)
         pygame.quit()
         sys.exit()
 
 
+def rotate_display(exit=False, initial=False):
+    # Windows only display rotation
+    if not _s.is_pi():
+        windows_version = sys.getwindowsversion()
+        if windows_version[0] > 5:
+            import rotatescreen
+            try:
+                primary = rotatescreen.get_primary_display()
+                if primary:
+                    if initial:
+                        # Remember the default orientation from startup
+                        _g.initial_rotation = primary.current_orientation
+                    _rotate = _g.initial_rotation if exit else ROTATION
+                    if _rotate in [0, 90, 180, 270]:
+                        primary.rotate_to(_rotate)
+            except:
+                pass
+
 def initialise_screen(reset=False):
-    _g.screen = pygame.display.set_mode(GRAPHICS, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
+    _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
     if not reset:
@@ -527,7 +546,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 def build_menus(initial=False):
     """Game selection menu"""
-    _g.menu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], QUESTION, mouse_visible=False, mouse_enabled=False,
+    _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False,
                           theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _s.read_romlist():
@@ -548,7 +567,7 @@ def build_menus(initial=False):
         _g.exitmenu.add_button('Shutdown', shutdown_system)
 
     # Setting menu
-    _g.setmenu = pymenu.Menu(GRAPHICS[1], GRAPHICS[0], "    FRONTEND SETTINGS", mouse_visible=False,
+    _g.setmenu = pymenu.Menu(DISPLAY[1], DISPLAY[0], "    FRONTEND SETTINGS", mouse_visible=False,
                              mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
     _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
     _g.setmenu.add_selector('      Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
@@ -1252,6 +1271,8 @@ def main(initial=True):
     assert (VERSION.startswith("v")), "The version number could not be determined"
     _g.active = False
     _g.stage = START_STAGE
+
+    rotate_display(initial=True)
     initialise_screen()
     load_frontend_state()
     detect_joysticks()
@@ -1273,7 +1294,7 @@ def main(initial=True):
     _g.active = True
 
     # Initialise playlist/background music
-    _g.tracklist = _s.glob("playlist/*.mp3") + _s.glob("playlist/*.ogg")
+    _g.tracklist = _s.glob("playlist/*.mp3") + _s.glob("playlist/*.ogg") + _s.glob("playlist/*.wav")
     if not ENABLE_PLAYLIST:
         background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
     playlist.set_volume(PLAYLIST_VOLUME / 10)

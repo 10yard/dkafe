@@ -56,7 +56,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - Several Donkey Kong hacks and plugins made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong, and it's clones and bootlegs.
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
- - A built in music playlist that features 8 fantastic Donkey Kong remix tracks by default.
+ - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
 
 ### The frontend does not include:
@@ -302,6 +302,9 @@ Default settings can be changed in the `settings.txt` file.  Some settings can b
 `FULLSCREEN = 1`  
 1 for fullscreen mode or 0 for windowed mode.
 
+`ROTATION = 0`  
+Rotates the screen for the duration of your DKAFE session.  Set to 0, 90, 180 or 270.  For Windows systems only.  Pi4 rotation is handled via install script.
+
 `FREE_PLAY = 0`    
 1 for free play.  If 0 then Jumpman must collect sufficient coins to play a game.
 
@@ -501,7 +504,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ### Music Playlist
 
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
-12 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3** or **.ogg** format. 
+12 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3**, **.ogg** or **.wav** format. 
 
 The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key) or it can be toggle on/off by pressing the CONTROL_PLAYLIST key (p).
 When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).

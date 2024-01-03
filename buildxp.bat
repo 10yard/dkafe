@@ -26,7 +26,7 @@ rmdir build /s /Q
 rmdir dist /s /Q
 
 echo **** build the exe ****
-pyinstaller launch.py --onedir --clean --console --icon artwork\dkafe.ico --name launchxp
+pyinstaller launch.py --onedir --clean --console --icon artwork\dkafe.ico --name launchxp --exclude-module rotate-screen
 
 echo **** copy python dependencies ****
 echo **** these are files from the base_library.zip ****
@@ -40,7 +40,7 @@ xcopy shell dist\launchxp\shell /S /i /Y
 xcopy sounds dist\launchxp\sounds /S /i /Y
 xcopy interface dist\launchxp\interface /S /i /Y
 xcopy patch dist\launchxp\patch /S /i /Y
-xcopy playlist dist\launchxp\playlist /S /i /Y
+xcopy xp\playlist dist\launchxp\playlist /S /i /Y
 copy romlist.csv dist\launchxp\ /Y
 copy settings.txt dist\launchxp\ /Y
 copy readme.md dist\launchxp\ /Y

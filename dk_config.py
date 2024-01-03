@@ -16,10 +16,11 @@ import pygame_menu as pymenu
 
 # Graphic Config
 TITLE = 'DKAFE'
-GRAPHICS = (224, 256)  # internal x, y resolution of game graphics
-TOPLEFT = (0, 0)       # position of top left corner
-CLOCK_RATE = 45        # Clock rate
-SPEED_ADJUST = 0       # Adjustment to the above clock rate (e.g. 0=45, 1=50, +2=55, +3=60, +4=65, +5=70, +6=75)
+DISPLAY = (224, 256)           # Internal x, y resolution of game graphics
+TOPLEFT = (0, 0)               # Position of top left corner
+ROTATION = 0                   # Frontend rotation (0, 90, 180, 270).   Rotates the primary display only.
+CLOCK_RATE = 45                # Clock rate
+SPEED_ADJUST = 0               # Adjustment to above clock rate (e.g. 0=45, 1=50, +2=55, +3=60, +4=65, +5=70, +6=75)
 
 # Default Keyboard Controls
 CONTROL_LEFT = pygame.K_LEFT
@@ -54,7 +55,7 @@ FULLSCREEN = 1
 FREE_PLAY = 1                  # Jumpman does not have to pay to play
 UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score increases
 SKILL_LEVEL = 1                # How difficult are the target scores. 1 (Beginner) to 10 (Expert).
-START_STAGE = 0                # Stage to start the frontend on. 0 (Barrels) or 1 (Rivets)
+START_STAGE = 0                # Stage to start the frontend on. 0 (Barrels), 1 (Rivets), 2 (Pies)
 ENABLE_MENU = 1                # Allow selection from the quick access game list
 INACTIVE_TIME = 20             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
