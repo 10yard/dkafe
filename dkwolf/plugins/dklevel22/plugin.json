@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "dklevel22",
+"description": "DK Level 22",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

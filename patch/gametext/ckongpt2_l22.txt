@@ -1,0 +1,19 @@
+Donkey Kong Killscreen L=22
+
+You get to play the infamous Crazy Kong Killscreen!
+Your game beings at Level 22.
+
+You will only get a few seconds before your timer
+runs out so you must try to score as many points as 
+possible.
+
+It is possible to perform a stage skip trick by 
+jumping off the right hand side of the second girder.
+There is a bug which allows Jumpman to fall through 
+the floor.  It will take some practice to regularly
+pull of this trick but when you do you will get more 
+points than would normally be possible.
+
+Good luck!
+
+Hack Developed by Jon Wilson (10yard)

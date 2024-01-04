@@ -174,9 +174,14 @@ PLUGINS = (
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
     ("ckongpt2_continue", "continue"),
-    ("dkongend1", "dkend"),
-    ("dkongend3", "dkend"),
+    ("dkongl22", "dklevel22"),
+    ("ckongpt2_l22", "dklevel22"),
+    ("dkongend1", "dkend:1"),
+    ("dkongend3", "dkend:3")
 )
+
+# Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
+PARAMETER_PLUGINS = "dkongend1", "dkongend3"
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong")

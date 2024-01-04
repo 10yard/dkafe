@@ -1,0 +1,7 @@
+Spanish Crazy Kong Bootleg
+
+This clone retains all of the gameplay elements of 
+Donkey Kong, but has the graphics redrawn and 
+re-colorised. 
+
+A Crazy Kong Bootleg (originally by Falcon)

@@ -9,22 +9,32 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 System related functions
 ------------------------
 """
+import os
+import sys
 from datetime import datetime
 from glob import glob
 from shutil import copy, move, copytree
 from time import sleep, time
-
 from dk_config import *
 from dk_interface import lua_interface
-
 
 def debounce():
     sleep(0.2)
 
 
+def get_system():
+    if "uname" in dir(os) and os.uname().machine.startswith("arm"):
+        return "pi"
+    else:
+        windows_version = sys.getwindowsversion()
+        if windows_version[0] > 5:
+            return "win"
+        else:
+            return "win (old)"
+
+
 def is_pi():
-    # Check for Raspberry Pi.  Are we running on Arm architecture?
-    return "uname" in dir(os) and os.uname().machine.startswith("arm")
+    return get_system() == "pi"
 
 
 def get_datetime():
@@ -144,6 +154,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     launch_directory = os.path.normpath(os.path.dirname(emu_param))
     launch_command = f'{emu_args} {name}'
     competing = False
+    parameter_plugin = None
 
     if "dkwolf" in emu_args.lower() and "dkwolf" not in emu_param.lower():
         # Assume dkwolf defaults when there is an issue with the target path
@@ -170,16 +181,22 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
         # Does the rom have a dedicated plugin?
         for plugin_folder, plugin in PLUGINS:
             if plugin_folder == subfolder:
-                launch_command += f" -plugin {plugin}"
-
-                if "dkwolf" not in launch_command.lower():
-                    # Not using standard emulator so check the plugin path exists and copy if necessary
-                    plugin_target = os.path.join(launch_directory, "plugins", plugin)
-                    if not os.path.exists(plugin_target):
-                        plugin_source = os.path.join(ROOT_DIR, "dkwolf", "plugins", plugin)
-                        if os.path.exists(plugin_source):
-                            copytree(plugin_source, plugin_target)
+                if ":" in plugin:
+                    # Plugin is launched with parameters and can compete (unlike a menu launch plugin).
+                    parameter_plugin = plugin
                     break
+                else:
+                    # Regular plugin
+                    launch_command += f" -plugin {plugin}"
+
+                    if "dkwolf" not in launch_command.lower():
+                        # Not using standard emulator so check the plugin path exists and copy if necessary
+                        plugin_target = os.path.join(launch_directory, "plugins", plugin)
+                        if not os.path.exists(plugin_target):
+                            plugin_source = os.path.join(ROOT_DIR, "dkwolf", "plugins", plugin)
+                            if os.path.exists(plugin_source):
+                                copytree(plugin_source, plugin_target)
+                        break
 
     else:
         launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(ROM_DIR))
@@ -187,7 +204,10 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     # Reset the optional start and level parameters
     os.environ["DKSTART5_PARAMETER"] = ""
 
-    # Are we using an optional launch plugin?
+    # Are we using an optional launch plugin or parameter plugin?
+    if parameter_plugin:
+        # Parameter plugins are not subject to competing and highscore restrictions
+        launch_plugin = parameter_plugin
     if launch_plugin:
         # Are there any parameters for the plugin?
         if ":" in launch_plugin:
@@ -199,6 +219,9 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             launch_command += f",{launch_plugin}"
         else:
             launch_command += f" -plugin {launch_plugin}"
+    if parameter_plugin:
+        # Clear launch plugin so the following restrictions are not applied
+        launch_plugin = None
 
     # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
     if high_score_save and not launch_plugin and subfolder not in HISCORE_UNFRIENDLY:

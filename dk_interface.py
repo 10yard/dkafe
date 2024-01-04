@@ -42,7 +42,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
 
         for i, award in enumerate([("SCORE3", score3), ("SCORE2", score2), ("SCORE1", score1)]):
             os.environ[f"DATA_{award[0]}"] = str(award[1])
-            os.environ[f"DATA_{award[0]}_K"] = format_K(str(award[1]))
+            os.environ[f"DATA_{award[0]}_K"] = format_K(str(award[1]), score3)
             os.environ[f"DATA_{award[0]}_AWARD"] = str(AWARDS[i])
 
         return script
@@ -69,13 +69,18 @@ def get_award(rom, score3, score2, score1):
     return 0
 
 
-def format_K(number):
-    num = float('{:.3g}'.format(float(number)))
-    magnitude = 0
-    while abs(num) >= 1000:
-        magnitude += 1
-        num /= 1000.0
-    return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
+def format_K(number, lowest_number=None):
+    # Format the provided number e.g. 15000 = 15K
+    # if lowest number is provided then format will only be done if the number is above 1000
+    if int(lowest_number) < 1000:
+        return number
+    else:
+        num = float('{:.3g}'.format(float(number)))
+        magnitude = 0
+        while abs(num) >= 1000:
+            magnitude += 1
+            num /= 1000.0
+        return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
 
 
 if __name__ == "__main__":

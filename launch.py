@@ -35,27 +35,28 @@ def exit_program(confirm=False):
                 break
             except (EOFError, FileNotFoundError, IOError):
                 pygame.time.delay(250 * attempt)
-        rotate_display(exit=True)
+        rotate_display(exiting=True)
         pygame.quit()
         sys.exit()
 
 
-def rotate_display(exit=False, initial=False):
+def rotate_display(exiting=False, initial=False, rotate=ROTATION):
     # Windows only display rotation
-    if not _s.is_pi():
+    if _s.get_system() == "win":
         windows_version = sys.getwindowsversion()
         if windows_version[0] > 5:
             import rotatescreen
+            # noinspection PyBroadException
             try:
                 primary = rotatescreen.get_primary_display()
                 if primary:
                     if initial:
                         # Remember the default orientation from startup
                         _g.initial_rotation = primary.current_orientation
-                    _rotate = _g.initial_rotation if exit else ROTATION
+                    _rotate = _g.initial_rotation if exiting else rotate
                     if _rotate in [0, 90, 180, 270]:
                         primary.rotate_to(_rotate)
-            except:
+            except Exception:
                 pass
 
 def initialise_screen(reset=False):
@@ -86,7 +87,7 @@ def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
             _g.score, _g.timer_adjust = pickle.load(f)
-    except (EOFError, FileNotFoundError, IOError):
+    except (EOFError, FileNotFoundError, IOError, ValueError):
         _g.score, _g.timer_adjust = SCORE_START, 0
 
 
@@ -96,7 +97,7 @@ def check_patches_available():
         if applied_patches:
             clear_screen()
             x_offset, y_offset = 0, 23
-            write_text(f"APPLYING {str(len(applied_patches))} PATCH FILES...", font=dk_font, x=0, y=8, fg=RED)
+            write_text(f"APPLYING {str(len(applied_patches))} PATCH FILES...", font=dk_font, y=8, fg=RED)
             for i, patch in enumerate(applied_patches):
                 write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
@@ -393,11 +394,11 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                         p_des = f"Unlock at {unlock}"
                     elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
                         if since_last_move() % 5 > 4:
-                            p_des = f'1st prize at {format_K(st1)}'
+                            p_des = f'1st prize at {format_K(st1, st3)}'
                         elif since_last_move() % 5 > 3:
-                            p_des = f'2nd prize at {format_K(st2)}'
+                            p_des = f'2nd prize at {format_K(st2, st3)}'
                         elif since_last_move() % 5 > 2:
-                            p_des = f'3rd prize at {format_K(st3)}'
+                            p_des = f'3rd prize at {format_K(st3, st3)}'
                     elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
                         # In case the default emu is for recordings
                         p_des = 'For recording!'
@@ -546,8 +547,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 def build_menus(initial=False):
     """Game selection menu"""
-    _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False,
-                          theme=dkafe_theme, onclose=close_menu)
+    _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _s.read_romlist():
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
@@ -559,31 +559,27 @@ def build_menus(initial=False):
     _g.menu.add_button('Close Menu', close_menu)
 
     # Exit menu
-    _g.exitmenu = pymenu.Menu(70, 200, "Really want to leave ?", mouse_visible=False, mouse_enabled=False,
-                              theme=dkafe_theme, onclose=close_menu)
+    _g.exitmenu = pymenu.Menu(70, 200, "Really want to leave ?", mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
     _g.exitmenu.add_button('Take me back', close_menu)
     _g.exitmenu.add_button('Exit', exit_program)
     if ENABLE_SHUTDOWN:
         _g.exitmenu.add_button('Shutdown', shutdown_system)
 
     # Setting menu
-    _g.setmenu = pymenu.Menu(DISPLAY[1], DISPLAY[0], "    FRONTEND SETTINGS", mouse_visible=False,
-                             mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
+    _g.setmenu = pymenu.Menu(DISPLAY[1], DISPLAY[0], "    FRONTEND SETTINGS", mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
     _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
     _g.setmenu.add_selector('      Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
     _g.setmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
+    if _s.get_system() == "win":
+        _g.setmenu.add_selector('     Rotation: ',[('0', 0), ('90', 90), ('180', 180), ('270', 270)], default=ROTATION//90, onchange=set_rotate)
     _g.setmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
     _g.setmenu.add_selector('Show Game Text: ', [('Off', 0), ('On', 1)], default=SHOW_GAMETEXT, onchange=set_gametext)
     _g.setmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN, onchange=set_splash)
-    _g.setmenu.add_selector(' Speed Adjust: ',
-                            [('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7),
-                                 ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
+    _g.setmenu.add_selector(' Speed Adjust: ',[('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7), ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
     _g.setmenu.add_vertical_margin(10)
     _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
     _g.setmenu.add_selector('Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
-    _g.setmenu.add_selector('   Music Volume: ',
-                            [('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6),
-                                 ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
+    _g.setmenu.add_selector('   Music Volume: ',[('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6), ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
     _g.setmenu.add_vertical_margin(10)
     _g.setmenu.add_button('Save Changes to File', save_menu_settings)
     _g.setmenu.add_button('Close Menu', close_menu)
@@ -671,6 +667,8 @@ def save_menu_settings():
                             f_out.write(f"FREE_PLAY = {FREE_PLAY}\n")
                         elif "FULLSCREEN=" in line_packed:
                             f_out.write(f"FULLSCREEN = {FULLSCREEN}\n")
+                        elif "ROTATION=" in line_packed:
+                            f_out.write(f"ROTATION = {ROTATION}\n")
                         elif "CONFIRM_EXIT=" in line_packed:
                             f_out.write(f"CONFIRM_EXIT = {CONFIRM_EXIT}\n")
                         elif "BASIC_MODE=" in line_packed:
@@ -749,6 +747,12 @@ def set_fullscreen(_, setting_value):
         pygame.display.set_icon(get_image("artwork/dkafe.ico"))
 
 
+def set_rotate(_, setting_value):
+    if ROTATION != setting_value:
+        globals()["ROTATION"] = setting_value
+        rotate_display(rotate=setting_value)
+
+
 # noinspection PyProtectedMember
 def update_menu_selection(title, index):
     # Hack to update pygamemenu selection outside the menu
@@ -825,7 +829,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             clear_screen()
 
             if EMU_ENTER:
-                Popen(EMU_ENTER, shell=False)
+                Popen(EMU_ENTER)
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
             time_start = _s.time()
@@ -893,7 +897,7 @@ def playback_rom(info, inpfile):
         intermission_channel.stop()
         award_channel.stop()
         if EMU_ENTER:
-            Popen(EMU_ENTER, shell=False)
+            Popen(EMU_ENTER)
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
         os.system(playback_command) if _s.is_pi() else call(playback_command)

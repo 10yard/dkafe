@@ -92,9 +92,11 @@ Credit is given to the original authors below.
  - Donkey Kong Pies Only
  - Donkey Kong Springs Only
  - Donkey Kong Rivets Only
+ - Donkey Kong Killscreen
  - Donkey Kong Coach
  - Donkey Kong Chorus
  - Donkey Kong/Crazy Kong Continue
+ - Donkey Kong Ends (L=01 and L=03)
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition
