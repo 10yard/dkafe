@@ -11,7 +11,7 @@
 
 local exports = {}
 exports.name = "dklavapanic"
-exports.version = "0.2"
+exports.version = "0.3"
 exports.description = "Donkey Kong Lava Panic!"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -31,7 +31,7 @@ function dklavapanic.startplugin()
 	dkblocks["C"] = "####..#..#..###"
 	dkblocks["!"] = " # # #   #"
 
-	function initialize()
+	function dklavapanic_initialize()
 		mame_version = tonumber(emu.app_version())
 		if mame_version >= 0.227 then
 			mac = manager.machine
@@ -44,11 +44,11 @@ function dklavapanic.startplugin()
 			scr = mac.screens[":screen"]
 			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
-			change_title()
+			dklavapanic_change_title()
 		end
 	end
 
-	function main()
+	function dklavapanic_main()
 		local math_floor = math.floor
 		local math_fmod = math.fmod
 		local math_random = math.random
@@ -191,7 +191,7 @@ function dklavapanic.startplugin()
 		end
 	end
 
-	function change_title()
+	function dklavapanic_change_title()
 		-- Change high score text in rom to LAVA PANIC
 		for k, i in pairs({0x1c,0x11,0x26,0x11,0x10,0x20,0x11,0x1e,0x19,0x13}) do
 			mem:write_direct_u8(0x36b4 + k - 1, i)
@@ -203,10 +203,10 @@ function dklavapanic.startplugin()
 	end
 
 	emu.register_start(function()
-		initialize()
+		dklavapanic_initialize()
 	end)
 
-	emu.register_frame_done(main, "frame")
+	emu.register_frame_done(dklavapanic_main, "frame")
 
 end
 return exports

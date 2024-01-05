@@ -162,26 +162,51 @@ OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
 # Plugins add functionality to certain roms
 PLUGINS = (
     ("dkonglava", "dklavapanic"),
+    ("dkonglava1", "dklavapanic"),
+    ("dkonglava1", "dkstart5:1"),
+    ("dkonglava2", "dklavapanic"),
+    ("dkonglava2", "dkstart5:2"),
+    ("dkonglava3", "dklavapanic"),
+    ("dkonglava3", "dkstart5:3"),
+    ("dkonglava4", "dklavapanic"),
+    ("dkonglava4", "dkstart5:4"),
+    ("dkonggalakong", "galakong"),
+    ("dkonggalakong1", "galakong"),
+    ("dkonggalakong1", "dkstart5:1"),
+    ("dkonggalakong2", "galakong"),
+    ("dkonggalakong2", "dkstart5:2"),
+    ("dkonggalakong3", "galakong"),
+    ("dkonggalakong3", "dkstart5:3"),
+    ("dkonggalakong4", "galakong"),
+    ("dkonggalakong4", "dkstart5:4"),
+    ("dkongxgalakong", "galakong"),
+    ("dkongjrgala", "galakong"),
+    ("dkongwho", "dkwho"),
+    ("dkongwho1", "dkwho"),
+    ("dkongwho1", "dkstart5:1"),
+    ("dkongwho2", "dkwho"),
+    ("dkongwho2", "dkstart5:2"),
+    ("dkongwho3", "dkwho"),
+    ("dkongwho3", "dkstart5:3"),
+    ("dkongwho4", "dkwho"),
+    ("dkongwho4", "dkstart5:4"),
+    ("dkongend1", "dkend:1"),
+    ("dkongend3", "dkend:3"),
+    ("dkongend5", "dkend:5"),
     ("dkongkonkey", "konkeydong"),
     ("dkong2600", "gingerbreadkong"),
-    ("dkongwho", "dkwho"),
     ("dkongvector", "vectorkong"),
-    ("dkonggalakong", "galakong"),
-    ("dkongxgalakong", "galakong"),
     ("dkongallen", "allenkong"),
-    ("dkongjrgala", "galakong"),
     ("dkongchorus", "dkchorus"),
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
     ("ckongpt2_continue", "continue"),
     ("dkongl22", "dklevel22"),
-    ("ckongpt2_l22", "dklevel22"),
-    ("dkongend1", "dkend:1"),
-    ("dkongend3", "dkend:3")
+    ("ckongpt2_l22", "dklevel22")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
-PARAMETER_PLUGINS = "dkongend1", "dkongend3"
+PARAMETER_PLUGINS = "dkongend1", "dkongend3", "dkonglava1", "dkonglava2", "dkonglava3", "dkonglava4"
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong")

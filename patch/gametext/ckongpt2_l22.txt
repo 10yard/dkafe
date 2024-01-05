@@ -1,4 +1,4 @@
-Donkey Kong Killscreen L=22
+Crazy Kong Killscreen L=22
 
 You get to play the infamous Crazy Kong Killscreen!
 Your game beings at Level 22.

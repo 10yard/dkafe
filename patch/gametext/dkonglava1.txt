@@ -1,0 +1,13 @@
+Donkey Kong Lava Barrels
+
+Jumpman must keep his cool and move quickly up the 
+platforms to avoid rising Lava.  Don't let the lava
+rise above Jumpman.
+
+This is a variation of DK LavaPanic were you play
+only the barrels stage starting from level 5. 
+
+The lava rises much more quickly from level 5.
+Try not to panic!
+
+Hack Developed by Jon Wilson (10yard)

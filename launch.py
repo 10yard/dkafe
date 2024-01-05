@@ -96,15 +96,15 @@ def check_patches_available():
         applied_patches = apply_patches()
         if applied_patches:
             clear_screen()
-            x_offset, y_offset = 0, 23
+            x_offset, y_offset = 0, 19
             write_text(f"APPLYING {str(len(applied_patches))} PATCH FILES...", font=dk_font, y=8, fg=RED)
             for i, patch in enumerate(applied_patches):
                 write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
-                y_offset += 8
-                if y_offset > 220:
+                y_offset += 7
+                if y_offset > 224:
                     x_offset += 75
-                    y_offset = 24
+                    y_offset = 19
             flash_message("ALL GOOD!", x=0, y=232, cycles=4, clear=False)
             jump_to_continue(0)
     else:
@@ -833,7 +833,10 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
             time_start = _s.time()
-            os.system(launch_command) if _s.is_pi() else call(launch_command)
+            if _s.is_pi() or sub == "shell":
+                os.system(launch_command)
+            else:
+                call(launch_command)
             time_end = _s.time()
             _s.debounce()
             _g.lastexit = _g.timer.duration

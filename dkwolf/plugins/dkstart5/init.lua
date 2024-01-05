@@ -7,7 +7,7 @@
 --A simple plugin to start the game at level 5 for practice purposes.
 --You can also play a specific stage by setting a parameter before launching MAME
 --e.g.
---SET DKSTART5_PARAMETER=4 
+--  SET DKSTART5_PARAMETER=4 
 --
 -- Minimum start up arguments:
 --   mame dkong -plugin dkstart5

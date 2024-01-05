@@ -69,6 +69,7 @@ def read_romlist():
     romlist = []
     usedslots = []
     usedsubs = []
+
     with open("romlist.csv") as rl:
         for row in rl.readlines():
             data = row.replace('"', '')
@@ -76,8 +77,9 @@ def read_romlist():
                 # read romlist data and tweak the descriptions
                 name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                 if not sub or sub not in usedsubs:
+                    shell = sub.lower() == "shell"
                     # Skip over roms when files are not found
-                    if not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
+                    if not shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
                         continue
 
                     # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
@@ -93,14 +95,14 @@ def read_romlist():
 
                     # Assume defaults when not provided
                     if not emu:
-                        emu = "1"
+                        emu = "1" if not shell else "0"
                     if not rec:
                         rec = "0"
                     if not unlock:
                         unlock = "0"
 
                     # Get the score targets
-                    if "-record" in get_emulator(int(emu)).lower():
+                    if shell or "-record" in get_emulator(int(emu)).lower():
                         # Score targets are not considered for recordings
                         st3, st2, st1 = ("",) * 3
                     st1 = apply_skill(st1)
@@ -168,95 +170,97 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
         if subfolder == "shell":
             # Launch a batch file or shell script from the shell subfolder
             launch_command = os.path.join(ROOT_DIR, "shell", name)
-        elif "<ROM_DIR>" in launch_command:
-            # Launch a rom and provide rom path
-            launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(os.path.join(ROM_DIR, subfolder)))
-        elif int(ALLOW_ROM_OVERWRITE):
-            # Copy rom to fixed rom path before launch. For emulators without a rompath argument e.g. Advmame.
-            rom_source = os.path.join(ROM_DIR, subfolder, name + ".zip")
-            rom_target = os.path.join(ROM_DIR, name + ".zip")
-            if os.path.exists(rom_source):
-                copy(rom_source, rom_target)
+        else:
+            if "<ROM_DIR>" in launch_command:
+                # Launch a rom and provide rom path
+                launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(os.path.join(ROM_DIR, subfolder)))
+            elif int(ALLOW_ROM_OVERWRITE):
+                # Copy rom to fixed rom path before launch. For emulators without a rompath argument e.g. Advmame.
+                rom_source = os.path.join(ROM_DIR, subfolder, name + ".zip")
+                rom_target = os.path.join(ROM_DIR, name + ".zip")
+                if os.path.exists(rom_source):
+                    copy(rom_source, rom_target)
 
-        # Does the rom have a dedicated plugin?
-        for plugin_folder, plugin in PLUGINS:
-            if plugin_folder == subfolder:
-                if ":" in plugin:
-                    # Plugin is launched with parameters and can compete (unlike a menu launch plugin).
-                    parameter_plugin = plugin
-                    break
-                else:
-                    # Regular plugin
-                    launch_command += f" -plugin {plugin}"
-
-                    if "dkwolf" not in launch_command.lower():
-                        # Not using standard emulator so check the plugin path exists and copy if necessary
-                        plugin_target = os.path.join(launch_directory, "plugins", plugin)
-                        if not os.path.exists(plugin_target):
-                            plugin_source = os.path.join(ROOT_DIR, "dkwolf", "plugins", plugin)
-                            if os.path.exists(plugin_source):
-                                copytree(plugin_source, plugin_target)
+            # Does the rom have a dedicated plugin?
+            for plugin_folder, plugin in PLUGINS:
+                if plugin_folder == subfolder:
+                    if ":" in plugin:
+                        # Plugin is launched with parameters and can compete (unlike a menu launch plugin).
+                        parameter_plugin = plugin
                         break
+                    else:
+                        # Regular plugin
+                        launch_command += f" -plugin {plugin}"
+
+                        if "dkwolf" not in launch_command.lower():
+                            # Not using standard emulator so check the plugin path exists and copy if necessary
+                            plugin_target = os.path.join(launch_directory, "plugins", plugin)
+                            if not os.path.exists(plugin_target):
+                                plugin_source = os.path.join(ROOT_DIR, "dkwolf", "plugins", plugin)
+                                if os.path.exists(plugin_source):
+                                    copytree(plugin_source, plugin_target)
+                            break
 
     else:
         launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(ROM_DIR))
 
-    # Reset the optional start and level parameters
-    os.environ["DKSTART5_PARAMETER"] = ""
+    if subfolder != "shell":
+        # Reset the optional start and level parameters
+        os.environ["DKSTART5_PARAMETER"] = ""
 
-    # Are we using an optional launch plugin or parameter plugin?
-    if parameter_plugin:
-        # Parameter plugins are not subject to competing and highscore restrictions
-        launch_plugin = parameter_plugin
-    if launch_plugin:
-        # Are there any parameters for the plugin?
-        if ":" in launch_plugin:
-            launch_plugin, parameter, *_ = launch_plugin.split(":")
-            os.environ[launch_plugin.upper() + "_PARAMETER"] = parameter
-        else:
-            os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
-        if "-plugin" in launch_command:
-            launch_command += f",{launch_plugin}"
-        else:
-            launch_command += f" -plugin {launch_plugin}"
-    if parameter_plugin:
-        # Clear launch plugin so the following restrictions are not applied
-        launch_plugin = None
+        # Are we using an optional launch plugin or parameter plugin?
+        if parameter_plugin:
+            # Parameter plugins are not subject to competing and highscore restrictions
+            launch_plugin = parameter_plugin
+        if launch_plugin:
+            # Are there any parameters for the plugin?
+            if ":" in launch_plugin:
+                launch_plugin, parameter, *_ = launch_plugin.split(":")
+                os.environ[launch_plugin.upper() + "_PARAMETER"] = parameter
+            else:
+                os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
+            if "-plugin" in launch_command:
+                launch_command += f",{launch_plugin}"
+            else:
+                launch_command += f" -plugin {launch_plugin}"
+        if parameter_plugin:
+            # Clear launch plugin so the following restrictions are not applied
+            launch_plugin = None
 
-    # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
-    if high_score_save and not launch_plugin and subfolder not in HISCORE_UNFRIENDLY:
-        os.environ["DKAFE_SUBFOLDER"] = subfolder + "_" if subfolder else ""
-        if "-plugin" in launch_command:
-            launch_command += ",hiscore"
-        else:
-            launch_command += " -plugin hiscore"
+        # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
+        if high_score_save and not launch_plugin and subfolder not in HISCORE_UNFRIENDLY:
+            os.environ["DKAFE_SUBFOLDER"] = subfolder + "_" if subfolder else ""
+            if "-plugin" in launch_command:
+                launch_command += ",hiscore"
+            else:
+                launch_command += " -plugin hiscore"
 
-    # Are we using the refocus plugin
-    if refocus:
-        if "-plugin" in launch_command:
-            launch_command += ",refocus"
-        else:
-            launch_command += " -plugin refocus"
+        # Are we using the refocus plugin
+        if refocus:
+            if "-plugin" in launch_command:
+                launch_command += ",refocus"
+            else:
+                launch_command += " -plugin refocus"
 
-    if not fullscreen:
-        launch_command += " -window"
+        if not fullscreen:
+            launch_command += " -window"
 
-    launch_command += " -skip_gameinfo -nonvram_save"
+        launch_command += " -skip_gameinfo -nonvram_save"
 
-    if not basic_mode and not launch_plugin and "-record" not in launch_command:
-        script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1, basic_mode)
-        if script:
-            # An interface script is available
-            competing = True
-            launch_command += f' -noconsole -autoboot_script "{os.path.join(ROOT_DIR, "interface", script)}"'
+        if not basic_mode and not launch_plugin and "-record" not in launch_command:
+            script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1, basic_mode)
+            if script:
+                # An interface script is available
+                competing = True
+                launch_command += f' -noconsole -autoboot_script "{os.path.join(ROOT_DIR, "interface", script)}"'
 
-    os.environ["DATA_AUTOSTART"] = "0"
-    if competing or launch_plugin:
-        # Update options
-        os.environ["DATA_CREDITS"] = str(CREDITS)
-        if competing:
-            os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
-        os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
+        os.environ["DATA_AUTOSTART"] = "0"
+        if competing or launch_plugin:
+            # Update options
+            os.environ["DATA_CREDITS"] = str(CREDITS)
+            if competing:
+                os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
+            os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
 
     # print(launch_command)  # debug launch arguments
     return launch_command, launch_directory, competing, inp_file

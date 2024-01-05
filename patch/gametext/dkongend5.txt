@@ -1,12 +1,8 @@
-Donkey Kong Ends at L=03
+Donkey Kong Ends at L=05
 
 Your game of Donkey Kong will end when you complete
-the rivet board on level 3.  It's a short game so you 
+the rivet board on level 5.  It's a short game so you 
 will have to press for points to get the best score.
-
-A good strategy is to sack your men on the barrels
-stages accumulating as many points as possible before
-the timer expires.  
 
 When you exit the ladder on the final rivet board then
 your game will end - regardless of how many lives 
