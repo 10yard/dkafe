@@ -1215,10 +1215,10 @@ def stage_check(warp=False):
     if warp:
         _g.stage = (_g.stage + 1) % 3
         _g.xpos, _g.ypos = OILCAN_POSXY[_g.stage]
-    elif _g.ypos > 239:
+    elif _g.ypos > 239 and not _g.jump:
         _g.stage = (current_stage - 1) % 3
         _g.ypos = 20
-    elif _g.ypos < 20:
+    elif _g.ypos < 20 and not _g.jump:
         _g.stage = (current_stage + 1) % 3
         _g.ypos = 238
 
