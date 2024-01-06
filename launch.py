@@ -1218,7 +1218,7 @@ def stage_check(warp=False):
     elif _g.ypos > 239:
         _g.stage = (current_stage - 1) % 3
         _g.ypos = 20
-    elif (_g.ypos < 20 and _g.stage != 1) or _g.ypos < 12:
+    elif _g.ypos < 20:
         _g.stage = (current_stage + 1) % 3
         _g.ypos = 238
 
