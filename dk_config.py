@@ -350,7 +350,7 @@ WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142)
 PAULINE_POSXY = (0, 0), (16, -12), (0, 0)
 KONG_POSXY = (0, 0), (80, 4), (0, 4)
 COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77)
-COIN_AWARD_POSX = 0, 36, 28
+COIN_AWARD_POSX = 0, 112, 28
 BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN)
 
 # Pies specific.  Location of the 2 moving ladder sections

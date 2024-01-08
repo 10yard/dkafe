@@ -77,8 +77,8 @@ dkong,dkongwho1,WhoBarrels,DK Who Barrels,107,1,2,132000,10000,20000,40000
 dkong,dkongwho2,WhoPies,DK Who Pies,110,1,2,134000,10000,20000,40000
 dkong,dkongwho3,WhoSprings,DK Who Springs,111,1,2,136000,10000,20000,40000
 dkong,dkongwho4,WhoRivets,DK Who Rivets,113,1,2,138000,10000,20000,40000
-dkong,dkongl22,DK Kills.,DK KillScreen 22,116,1,2,140000,500,1000,1500
-ckongpt2,ckongpt2_l22,CK Kills.,CK KillScreen 22,118,1,2,142000,1000,2000,3000
+dkong,dkongl22,DK Killscrn,DK KillScreen 22,116,1,2,140000,500,1000,1500
+ckongpt2,ckongpt2_l22,CK Killscrn,CK KillScreen 22,118,1,2,142000,1000,2000,3000
 dkong,dkongksfix,KSFix,DK Killscreen Fix,121,1,2,150000,10000,25000,40000
 ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,999,1,2,,10000,25000,40000
 ckongdks,ckongdks,CK Spanish,CK Spanish Bootleg,999,1,2,,10000,25000,40000
