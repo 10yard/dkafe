@@ -1147,7 +1147,7 @@ def animate_rolling_coins(out_of_time=False):
             map_info = []
 
         # Move the coin along the platform and down ladders
-        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage == 1:
+        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage != 0:
             co_y -= 1  # correct coin position by moving it up the girder
         elif "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
