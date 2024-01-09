@@ -1087,16 +1087,17 @@ def process_interrupts():
                                 text = " "*int((55 - len(text.strip())) / 2) + text
                             write_text(text[:55], x=4, y=text_y+(i*6))
                         break
-    # Flash a down arrow when Jumpman is stood on the oilcan to indicate he can warp to next/previous stage.
-    if "FOOT_ABOVE_OILCAN" in get_map_info():
-        _g.lastwarpready = ticks
-        if pygame.time.get_ticks() % 550 < 275:
-            _g.screen.blit(get_image(f"artwork/sprite/down.png"), WARP_ARROW_POSXY[_g.stage])
 
-    # After warping, Jumpman appears from inside the oilcan
-    if ticks - _g.lastwarp < 1000 and _g.lastwarp > 0:
+    if _g.lastwarp > 0 and ticks - _g.lastwarp < 1000:
+        # After warping, Jumpman appears from inside the oilcan
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}oilcan.png"), OILCAN_POSXY[_g.stage])
+    if not _g.lastwarp or ticks - _g.lastwarp > 600:
+        # Flash a down arrow when Jumpman is stood on the oilcan to indicate he can warp to next/previous stage.
+        if "FOOT_ABOVE_OILCAN" in get_map_info():
+            _g.lastwarpready = ticks
+            if pygame.time.get_ticks() % 550 < 275:
+                _g.screen.blit(get_image(f"artwork/sprite/down.png"), WARP_ARROW_POSXY[_g.stage])
 
 
 def get_prize_placing(awarded):

@@ -213,7 +213,7 @@ COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"
 COACH_L5_FRIENDLY = ("dkongspringy", "dkongbarrels")
 CHORUS_FRIENDLY = ("dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
-                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter")
+                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongksfix")
 CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline", "ckong", "ckongpt2", "ckongpt2b",
                      "ckongpt2_117", "dkongspooky", "dkongxmas", "dkongrdemo", "dkongrev", "dkongcb", "dkong40",
                      "dkongitd", "dkong2600", "dkongtj", "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongkana",
@@ -348,7 +348,7 @@ HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104,
 TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140))
 OILCAN_POSXY = (16, 232), (172, 152), (104, 128)
 WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142)
-PAULINE_POSXY = (0, 0), (16, -12), (0, 0)
+PAULINE_POSXY = (0, 0), (16, -8), (0, 0)
 KONG_POSXY = (0, 0), (80, 4), (0, 4)
 COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77)
 COIN_AWARD_POSX = 0, 112, 28
