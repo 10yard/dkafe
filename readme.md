@@ -651,12 +651,22 @@ It is licensed under GNU GPLv3.
 
 ## Troubleshooting
 
+#### The system is running slow on an older machine
+
+ - Reduce your screen resolution.  This will definitely improve performance in the frontend and emulation.  Step it right down to 640x480 to see the improvement.
+
+ - In the settings.txt file,  change emulator `OPTIONS` to use `-video gdi` instead of `-video opengl`
+
+ - Disable the music playlist in the fronted settings.  The .mp3 decoding might be slowing the frontend down.
+
+ - Increase the speed adjust value in the frontend settings.
+
+
 #### A game fails to launch in MAME, and you get a black screen (on Windows)
 
-In the settings.txt file,  change `OPTIONS` under the emulator settings to use `gdi` instead of `opengl` i.e.
-```OPTIONS = -rompath <ROM_DIR> -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video gdi```
+ - In the settings.txt file,  change emulator `OPTIONS` to use `-video gdi` instead of `-video opengl`
 
-Also, check that the DKAFE folder is granted full permissions.
+ - Ensure the DKAFE folder is granted full access permissions.
 
 
 ## Feedback
