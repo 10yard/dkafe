@@ -220,8 +220,8 @@ CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "dkongnoluck", "dkongwbh", "dkongjapan", "dkongpac", "dkonghrd", "dkongrainbow", "dkongksfix",
                      "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs", "dkongwizardry",
                      "dkongoctomonkey", "dkongaccelerate", "dkonghalf", "dkongquarter", "dkongwho", "dkonglava",
-                     "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong")
-SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets")
+                     "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong", "dkongpacmancross")
+SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross")
 START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
                    "dkongjrgala", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
@@ -229,13 +229,13 @@ START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkongbarrels",
                    "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow", "dkongcontinue",
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
-                   "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b")
+                   "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b", "dkongpacmancross")
 STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
                   "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkonghrd",
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
-                  "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117")
+                  "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross")
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
@@ -510,11 +510,12 @@ Feedback and feature ideas:
 
 Playlist music:
    LeviR.star's Music
+   Nintega Dario
    MyNameIsBanks
    SanHolo
-   Nintega Dario
    MotionRide Music
    Buckner & Garcia
+   Sascha Zeidler
    Mitchel Gatzke
 """
 

@@ -1068,7 +1068,7 @@ def process_interrupts():
             icons = display_icons(detect_only=True)
             if icons:
                 sub, name, *_ = icons
-                selected = sub if sub else name
+                selected = sub if sub and sub != "shell" else name
                 for rom, text_lines in _g.gametext:
                     if rom == selected and text_lines:
                         # Text appears above or below Jumpman based on his Y position

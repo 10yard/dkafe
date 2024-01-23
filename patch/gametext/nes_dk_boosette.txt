@@ -1,0 +1,8 @@
+NES Console - Boosette!
+
+Queen Boosette has trapped Mario in a painting, now 
+Luigi must brave his way through the ghost filled 
+mansion to rescue his brother and lock the ghost back 
+into a painting.
+
+Hack Developed by Kazufox

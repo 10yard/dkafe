@@ -5,7 +5,7 @@ dkong,dkongpies,DK Pies,DK Pies Only,3,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,GalaKong Shoot 'Em Up,4,1,2,,20000,40000,60000
 dkongx11,dkongspooky,Spooky,DK Spooky Remix,6,1,2,1000,10000,15000,30000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,1000,10000,20000,40000
-dkong,dkongoctomonkey,DK Octo,OctoMonkey,9,1,2,2000,80000,200000,320000
+dkong,dkongoctomonkey,DK Octo,OctoMonkey,9,1,2,2000,60000,100000,200000
 dkong,dkong40,DK 40!!,DK Anniversary Edition,10,1,2,4000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,11,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,13,1,2,8000,10000,20000,40000
@@ -20,8 +20,8 @@ dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,21,1,2,22000,10000,20000,40000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,23,1,2,24000,10000,25000,45000
 dkong,dkongfr,DK Free,DK Freerun Edition,24,1,2,26000,20000,40000,60000
 dkong,dkongrivets,DKRivet,DK Rivets Only,25,1,2,28000,10000,20000,40000
-dkong,dkongchorus,DK Chorus,,26,1,2,30000,10000,20000,40000
-dkong,dkongotr,DK OnTheRun,DK On The Run,28,1,2,32000,10000,15000,30000
+dkong,dkongotr,DK OnTheRun,DK On The Run,26,1,2,30000,10000,15000,30000
+dkong,dkongpacmancross,DKPacCross,DK Pac-Man Crossover,28,1,2,32000,8000,15000,30000
 dkong,dkonghrthnt,DK ~,DK Heart Hunt,29,1,2,34000,8000,15000,35000
 dkong,dkongxgalakong,X-Gala,Extreme Galakong,30,1,2,36000,5000,10000,15000
 bigkong,bigkong,BigKong,Big Kong,31,1,2,38000,5000,15000,25000
@@ -57,7 +57,7 @@ dkong,dkongrainbow,DK Rainbow,,71,1,2,92000,10000,25000,40000
 ckongpt2,ckongpt2_continue,CK Cont.,CK Continue,72,1,2,94000,10000,15000,30000
 dkong,dkongkonkey,KD,Konkey Dong,73,1,2,96000,10000,15000,25000
 dkong,dkongnoluck,NOLuck,NoLuck Kong,74,1,2,98000,15000,25000,50000
-dkongjr,dkongjrcontinue,JrCont.,DK Junior Continue,75,1,2,100000,10000,20000,40000
+dkong,dkongchorus,DK Chorus,,75,1,2,100000,10000,20000,40000
 ckongs,ckongs,CK Scramble,CK Scramble Hardware,77,1,2,102000,10000,25000,40000
 ckongg,ckongg,CK Galax.,CK Galaxian Hardware,78,1,2,104000,10000,25000,40000
 ckongpt2,ckongpt2_117,CK117,Crazy Kong 117,79,1,2,106000,10000,25000,40000
@@ -90,3 +90,4 @@ dkong,dkongbcc,DK Barrel Control,,999,1,2,,,,
 dkong,dkongduel,DK Duel,,999,1,2,,,,
 dkong,dkongbarrelboss,DK Barrel Boss,,999,1,2,,,,
 dkong,dkongsprfin,DK Springfinity,,999,1,2,,,,
+dkongjr,dkongjrcontinue,JrCont.,DK Junior Continue,999,1,2,,,,

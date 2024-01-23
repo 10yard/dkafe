@@ -117,6 +117,7 @@ Credit is given to the original authors below.
  - Donkey Kong Barrel Boss
  - Donkey Kong Heart Hunt
  - Donkey Kong Accelerate
+ - Donkey Kong Pac-Man Crossover
 
 ### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix

@@ -65,63 +65,66 @@ def load_game_texts():
 
 
 def read_romlist():
-    # read romlist and return info about available roms (and shell scripts)
+    # read romlists and return info about available roms (and shell scripts)
     romlist = []
     usedslots = []
     usedsubs = []
 
-    with open("romlist.csv") as rl:
-        for row in rl.readlines():
-            data = row.replace('"', '')
-            if data.strip() and not data.startswith("#") and data.count(",") >= 10:
-                # read romlist data and tweak the descriptions
-                name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
-                if not sub or sub not in usedsubs:
-                    shell = sub.lower() == "shell"
-                    # Skip over roms when files are not found
-                    if not shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
-                        continue
+    for csv in "romlist_addon.csv", "romlist.csv":
+        if os.path.exists(csv):
+            with open(csv) as rl:
+                for row in rl.readlines():
+                    data = row.replace('"', '')
+                    if data.strip() and not data.startswith("#") and not data.startswith(",,") and data.count(",") >= 10:
+                        # read romlist data and tweak the descriptions
+                        name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
+                        shell = sub.lower() == "shell"
+                        if shell or not sub or sub not in usedsubs:
+                            # Skip over roms when files are not found
+                            if not shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
+                                continue
 
-                    # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
-                    if name in OPTIONAL_NAMES and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
-                        continue
+                            # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
+                            if name in OPTIONAL_NAMES and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
+                                continue
 
-                    if not alt:
-                        alt = des
-                    des = des.replace("DK ", "$ ").replace("DK", "$ ")
-                    des = des.replace("CK ", "# ").replace("CK", "# ")
-                    des = des.replace("BK ", "^ ").replace("BK", "^ ")
-                    des = des.replace("1/2", "{ ").replace("1/4", "} ")
+                            if not alt:
+                                alt = des
+                            des = des.replace("DK ", "$ ").replace("DK", "$ ")
+                            des = des.replace("CK ", "# ").replace("CK", "# ")
+                            des = des.replace("BK ", "^ ").replace("BK", "^ ")
+                            des = des.replace("1/2", "{ ").replace("1/4", "} ")
 
-                    # Assume defaults when not provided
-                    if not emu:
-                        emu = "1" if not shell else "0"
-                    if not rec:
-                        rec = "0"
-                    if not unlock:
-                        unlock = "0"
+                            # Assume defaults when not provided
+                            if not emu:
+                                emu = "1" if not shell else "0"
+                            if not rec:
+                                rec = "0"
+                            if not unlock:
+                                unlock = "0"
 
-                    # Get the score targets
-                    if shell or "-record" in get_emulator(int(emu)).lower():
-                        # Score targets are not considered for recordings
-                        st3, st2, st1 = ("",) * 3
-                    st1 = apply_skill(st1)
-                    st2 = apply_skill(st2)
-                    st3 = apply_skill(st3)
+                            # Get the score targets
+                            if shell or "-record" in get_emulator(int(emu)).lower():
+                                # Score targets are not considered for recordings
+                                st3, st2, st1 = ("",) * 3
+                            st1 = apply_skill(st1)
+                            st2 = apply_skill(st2)
+                            st3 = apply_skill(st3)
 
-                    # Get slot location
-                    icx, icy = -1, -1
-                    if 0 < int(slot) <= len(SLOTS):
-                        icx, icy = SLOTS[int(slot) - 1]
-
-                    if name and des:
-                        if slot in usedslots:
-                            slot = "0"
+                            # Get slot location
                             icx, icy = -1, -1
-                        elif sub:
-                            usedsubs.append(sub)
-                        romlist.append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
-                        usedslots.append(slot)
+                            if 0 < int(slot) <= len(SLOTS):
+                                icx, icy = SLOTS[int(slot) - 1]
+
+                            if (name and des) or name == "empty":
+                                if slot in usedslots:
+                                    slot = "0"
+                                    icx, icy = -1, -1
+                                elif sub:
+                                    usedsubs.append(sub)
+                                if name != "empty":
+                                    romlist.append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
+                                usedslots.append(slot)
     return romlist
 
 
@@ -169,7 +172,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     if subfolder:
         if subfolder == "shell":
             # Launch a batch file or shell script from the shell subfolder
-            launch_command = os.path.join(ROOT_DIR, "shell", name)
+            launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", "")[is_pi()])
         else:
             if "<ROM_DIR>" in launch_command:
                 # Launch a rom and provide rom path

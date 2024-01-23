@@ -35,7 +35,10 @@ xcopy dkwolf\*.txt dist\dkwolf\ /Y
 xcopy dkwolf\*.md dist\dkwolf\ /Y
 xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
+xcopy dkwolf\cfg\nes.cfg dist\dkwolf\cfg\ /S /i /Y
 rmdir dist\dkwolf\inp /s /Q
+
+
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
