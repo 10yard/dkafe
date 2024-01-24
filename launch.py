@@ -18,7 +18,7 @@ import dk_global as _g
 import dk_system as _s
 from dk_config import *
 from dk_interface import get_award, format_K
-from dk_patch import apply_patches, validate_rom
+from dk_patch import apply_patches_and_addons, validate_rom
 
 
 def exit_program(confirm=False):
@@ -93,19 +93,25 @@ def load_frontend_state():
 
 def check_patches_available():
     if validate_rom():
-        applied_patches = apply_patches()
+        applied_patches, installed_addons = apply_patches_and_addons()
         if applied_patches:
             clear_screen()
-            x_offset, y_offset = 0, 19
-            write_text(f"APPLYING {str(len(applied_patches))} PATCH FILES...", font=dk_font, y=8, fg=RED)
+            x_offset, y_offset = 0, 11
+            write_text(f"APPLYING {str(len(applied_patches))} PATCH FILES...", font=dk_font, y=0, fg=RED)
             for i, patch in enumerate(applied_patches):
                 write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
                 y_offset += 7
-                if y_offset > 224:
+                if y_offset > 232:
                     x_offset += 75
-                    y_offset = 19
-            flash_message("ALL GOOD!", x=0, y=232, cycles=4, clear=False)
+                    y_offset = 11
+        if installed_addons:
+            if not applied_patches:
+                # Do we need a heading?
+                clear_screen()
+                write_text(f"INSTALLING ADD-ONS...", font=dk_font, y=0, fg=RED)
+            write_text(f"** THE CONSOLE ADD-ON PACK WAS INSTALLED **", font=pl_font, x=0, y=239, fg=PINK)
+        if applied_patches or installed_addons:
             jump_to_continue(0)
     else:
         for i, line in enumerate(INVALID_ROM_MESSAGE + ROM_CONTENTS):
@@ -118,14 +124,14 @@ def check_roms_available():
     if not _s.glob(os.path.join(ROM_DIR, "*.zip")):
         clear_screen()
         for i, line in enumerate(NO_ROMS_MESSAGE):
-            write_text(line, font=dk_font, x=4, y=8 + (i * 12), fg=[WHITE, RED][i == 0])
+            write_text(line, font=dk_font, x=4, y=0 + (i * 12), fg=[WHITE, RED][i == 0])
             update_screen(delay_ms=80)
         jump_to_continue()
 
 
 def jump_to_continue(xpos=8):
     """Show Jump to continue message at foot of screen and wait for button press."""
-    flash_message("PRESS JUMP TO CONTINUE", x=xpos, y=242, cycles=8, clear=False)
+    flash_message("PUSH JUMP TO CONTINUE", x=xpos, y=249, cycles=8, clear=False)
     while True:
         check_for_input(force_exit=True)
         if _g.jump or _g.start:

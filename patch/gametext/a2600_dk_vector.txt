@@ -1,0 +1,8 @@
+Atari 2600 Console - Donkey Kong Vector Green
+
+Sprites and Playfield have been changed to resemble 
+"vector style" graphics. 
+
+All colors are changed to green.
+
+Hack Developed by neotokeo2001

@@ -2,7 +2,7 @@ echo
 echo  DKAFE by Jon Wilson (10yard)
 echo
 echo ----------------------------------------------------------------------------------------------
-echo  Build and package the Windows x64 binary release
+echo  Build and package the Windows x64 binary release (and add-ons)
 echo ----------------------------------------------------------------------------------------------
 
 echo **** remove existing build folders ****
@@ -56,3 +56,13 @@ set /p version=<VERSION
 set zip_path="C:\Program Files\7-Zip\7z"
 del releases\dkafe_win64_binary_%version%.zip
 %zip_path% a releases\dkafe_win64_binary_%version%.zip .\dist\*
+
+echo ----------------------------------------------------------------------------------------------
+echo  Package the Console Add-On Pack
+echo ----------------------------------------------------------------------------------------------
+xcopy roms\a2600 dist\console_addon\roms\a2600 /S /i /Y
+xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
+copy romlist_addon.csv dist\console_addon\ /Y
+
+del releases\add-ons\dkafe_win64_console_addon_%version%.zip
+%zip_path% a releases\add-ons\dkafe_win64_console_addon_%version%.zip .\dist\console_addon\*

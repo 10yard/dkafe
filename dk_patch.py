@@ -55,7 +55,7 @@ def validate_rom():
         return True
 
 
-def apply_patches():
+def apply_patches_and_addons():
     applied_patches_list = []
 
     if is_pi():
@@ -94,9 +94,16 @@ def apply_patches():
                         with open(os.path.join(subfolder, f"{romfile}.zip"), 'w+b') as f_out:
                             f_out.write(patch.apply(dkong_binary))
                             applied_patches_list.append(name)
+    addons = install_addons()
+    return applied_patches_list, addons
 
-    return applied_patches_list
 
+def install_addons():
+    for addon in reversed(glob("dkafe_*_addon_*.zip")):
+        with zipfile.ZipFile(addon, 'r') as zip_ref:
+            zip_ref.extractall()
+        os.remove(addon)
+        return addon  # restrict to install of 1 add-on for now
 
 if __name__ == "__main__":
-    apply_patches()
+    apply_patches_and_addons()

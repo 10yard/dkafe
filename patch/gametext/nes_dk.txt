@@ -1,10 +1,10 @@
 NES Console - Donkey Kong
 
 This NES version of the arcade classic was a launch
-title for the console, and is one of the most 
-faithful adaptations of the original.
+title for the console, and is one of the most faithful
+adaptations of the original.
 
-Rescue the kidnapped Pauline from DK’s clutches, 
+Rescue the kidnapped Pauline from DK's clutches, 
 negotiating increasingly tricky obstacles, and knock 
 that pesky primate off his perch!
 

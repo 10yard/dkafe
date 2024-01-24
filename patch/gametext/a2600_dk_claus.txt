@@ -1,0 +1,20 @@
+Atari 2600 Console - Donkey Clause
+
+The bitter, evil, but perpetually smiling Ginger Bread
+Man has taken over Santa's workshop, enslaved the 
+elves, and stolen all the presents. Your job (as Santa)
+is to retrieve the presents one at a time.
+
+Screen 1 - Climb to the top to retrieve the present, 
+avoiding the mind-controlled hordes of elves. Use the 
+workshop hammer to bop them on the head if you so 
+desire.
+
+Screen 2 - This scene takes place in the distribution
+center for nozama.com, an Internet company(run by the 
+Ginger Bread Man) that is slowly putting Santa out of 
+business. Before takingthe present, shut down 
+nozama.com's conveyor belts by disconnecting them. 
+Also, smash a package if you get the chance.
+
+Hack Developed by Philip R. Frey

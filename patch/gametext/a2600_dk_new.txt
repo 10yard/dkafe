@@ -1,0 +1,12 @@
+Atari 2600 Console - Donkey Kong VCS (New)
+
+Donkey Kong VCS is a new conversion of the original 
+arcade game for the Atari 2600 video computer system. 
+Sporting 32K of ROM, this version for the first time 
+features all four arcade stages as well as all 
+cut-scenes. 
+
+Additionally, the game includes multi-colored 
+graphics plus arcade quality animations and sounds!
+
+Hack Developed by Joe Musashi
