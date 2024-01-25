@@ -1,2 +1,2 @@
 cd dkwolf
-dkwolf nes -cart "..\roms\nes\Donkey Kong Bowsette.nes" -skip_gameinfo -nofilter -video opengl
+dkwolf nes -cart "%DKAFE_SHELL_ROMS%\nes\Donkey Kong Bowsette.nes" -nofilter %DKAFE_SHELL_VIDEO%

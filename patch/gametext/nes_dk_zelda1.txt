@@ -1,0 +1,14 @@
+NES Console - Zelda Kong (Link Edition)
+
+This hack changes virtually all graphics and palettes
+in Donkey Kong to resemble The Legend Of Zelda. 
+Climb up from the bottom of the dungeon to stop the
+big bad and save your friend!
+
+Play as Link, defeat Ganon, and free Zelda!
+Grab a trusty Sword power-up to vanquish your foes!
+Collect Keys and Rafts for bonus points.
+Face off against Stalfos, Fire, Ghinis, Traps, 
+Tektites, Ropes... and the Old Man.
+
+Hack Developed by Zero Meaning

@@ -1,2 +1,2 @@
 cd dkwolf
-dkwolf nes -cart "..\roms\nes\Donkey Kong Arcade Accurate.nes" -skip_gameinfo -nofilter -video opengl -ror
+dkwolf nes -cart "%DKAFE_SHELL_ROMS%\nes\Donkey Kong Arcade Accurate.nes" -nofilter %DKAFE_SHELL_VIDEO% -ror

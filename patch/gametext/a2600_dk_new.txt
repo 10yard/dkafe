@@ -9,4 +9,4 @@ cut-scenes.
 Additionally, the game includes multi-colored 
 graphics plus arcade quality animations and sounds!
 
-Hack Developed by Joe Musashi
+Conversion Developed by Andreas Dietrich

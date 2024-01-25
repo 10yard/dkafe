@@ -22,15 +22,15 @@ def debounce():
     sleep(0.2)
 
 
-def get_system():
+def get_system(return_video=False):
     if "uname" in dir(os) and os.uname().machine.startswith("arm"):
-        return "pi"
+        return ("pi", "accel")[return_video]
     else:
         windows_version = sys.getwindowsversion()
         if windows_version[0] > 5:
-            return "win"
+            return ("win", "opengl")[return_video]
         else:
-            return "win (old)"
+            return ("win (old)", "gdi")[return_video]
 
 
 def is_pi():
@@ -172,6 +172,9 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     if subfolder:
         if subfolder == "shell":
             # Launch a batch file or shell script from the shell subfolder
+            # environmental variables can be used in the shell
+            os.environ["DKAFE_SHELL_VIDEO"] = f'-video {get_system(return_video=True)} {["-window", ""][fullscreen]}'
+            os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
             launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", "")[is_pi()])
         else:
             if "<ROM_DIR>" in launch_command:

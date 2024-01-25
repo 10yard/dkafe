@@ -1,0 +1,17 @@
+NES Console - Zelda Kong II (Zelda Edition)
+
+This hack changes virtually all graphics and palettes
+in Donkey Kong to resemble The Legend Of Zelda. 
+Climb up from the bottom of the dungeon to stop the
+big bad and save your friend!
+
+Play as Zelda, destroy an injured Ganon, and save 
+Link!
+As a user of the arcane arts, the princess prefers a 
+Magic Wand to defeat enemies.
+Collect Triforce Pieces and Light Arrows for bonus 
+points.
+Confront Gibdos, Bubbles, Wizzrobes, Ganon Dust, 
+Pols Voice, Wallmasters... and the Old Woman.
+
+Hack Developed by Zero Meaning

@@ -5,4 +5,4 @@ The ramp and rivet screens of the original have
 been converted into the elevator and conveyor 
 screens respectively
 
-Hack Developed by CDS Games
+Developed by CDS Games
