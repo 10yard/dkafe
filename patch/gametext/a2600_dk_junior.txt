@@ -1,0 +1,14 @@
+Atari 2600 Console - Donkey Kong Junior
+
+Mario (known as Jumpman in Donkey Kong) has captured
+Donkey Kong and placed him in a cage. Donkey Kong Jr. 
+must rescue his father from Mario by working his way 
+through a series of stages. Mario attempts to stop 
+DK Jr. by releasing animals and putting obstacles in 
+his way. 
+
+When DK Jr. succeeds at the final level, Donkey Kong
+is freed and kicks Mario into the distance, leaving 
+him to an unknown fate.
+
+Developed by Nintendo
