@@ -1,0 +1,10 @@
+Atari 7800 Console - Donkey Kong Junior
+
+Released in 1989 along with Donkey Kong, the Atari 
+7800 Donkey Kong Junior is essentially a copy of the 
+Nintendo NES version and plays just like it, except 
+that its sound is rather weak compared to the NES.
+
+It features three levels, omitting the ‘Spark’ level.
+
+Developed By Atari

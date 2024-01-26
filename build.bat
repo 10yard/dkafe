@@ -36,6 +36,7 @@ xcopy dkwolf\*.md dist\dkwolf\ /Y
 xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
 xcopy dkwolf\cfg\nes.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\coleco.cfg dist\dkwolf\cfg\ /S /i /Y
 rmdir dist\dkwolf\inp /s /Q
 
 
@@ -61,7 +62,9 @@ echo ---------------------------------------------------------------------------
 echo  Package the Console Add-On Pack
 echo ----------------------------------------------------------------------------------------------
 xcopy roms\a2600 dist\console_addon\roms\a2600 /S /i /Y
+xcopy roms\a7800 dist\console_addon\roms\a7800 /S /i /Y
 xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
+xcopy roms\coleco dist\console_addon\roms\coleco /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
 del releases\add-ons\dkafe_console_addon_windows_%version%.zip
