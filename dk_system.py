@@ -66,11 +66,12 @@ def load_game_texts():
 
 def read_romlist():
     # read romlists and return info about available roms (and shell scripts)
-    romlist = []
+    romlists = {}
     usedslots = []
     usedsubs = []
 
-    for csv in "romlist_addon.csv", "romlist.csv":
+    for i, csv in enumerate(reversed(ROMLIST_FILES)):
+        romlists[i] = []
         if os.path.exists(csv):
             with open(csv) as rl:
                 for row in rl.readlines():
@@ -78,10 +79,10 @@ def read_romlist():
                     if data.strip() and not data.startswith("#") and not data.startswith(",,") and data.count(",") >= 10:
                         # read romlist data and tweak the descriptions
                         name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
-                        shell = sub.lower() == "shell"
-                        if shell or not sub or sub not in usedsubs:
+                        _shell = sub == "shell"
+                        if _shell or not sub or sub not in usedsubs:
                             # Skip over roms when files are not found
-                            if not shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
+                            if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
                                 continue
 
                             # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
@@ -97,7 +98,7 @@ def read_romlist():
 
                             # Assume defaults when not provided
                             if not emu:
-                                emu = "1" if not shell else "0"
+                                emu = "1" if not _shell else "0"
                             if not rec:
                                 rec = "0"
                             if not unlock:
@@ -123,9 +124,9 @@ def read_romlist():
                                 elif sub:
                                     usedsubs.append(sub)
                                 if name != "empty":
-                                    romlist.append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
+                                    romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
                                 usedslots.append(slot)
-    return romlist
+    return romlists[1] + romlists[0]
 
 
 def get_emulator(emu_number):

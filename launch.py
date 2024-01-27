@@ -399,12 +399,13 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     if not unlocked and since_last_move() % 4 > 2:
                         p_des = f"Unlock at {unlock}"
                     elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
+                        _mins = " minutes" if sub == "shell" else ""
                         if since_last_move() % 5 > 4:
-                            p_des = f'1st prize at {format_K(st1, st3)}' + ["", " minutes"][int(sub=="shell")]
+                            p_des = f'1st prize at {format_K(st1, st3)}' + _mins
                         elif since_last_move() % 5 > 3:
-                            p_des = f'2nd prize at {format_K(st2, st3)}' + ["", " minutes"][int(sub=="shell")]
+                            p_des = f'2nd prize at {format_K(st2, st3)}' + _mins
                         elif since_last_move() % 5 > 2:
-                            p_des = f'3rd prize at {format_K(st3, st3)}' + ["", " minutes"][int(sub=="shell")]
+                            p_des = f'3rd prize at {format_K(st3, st3)}' + _mins
                     elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
                         # In case the default emu is for recordings
                         p_des = 'For recording!'

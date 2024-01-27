@@ -138,6 +138,8 @@ if os.path.exists("settings.txt"):
                     pygame.quit()
                     exit()
 
+ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv"]
+
 # Validate some settings
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
