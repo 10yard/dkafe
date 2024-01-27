@@ -400,11 +400,11 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                         p_des = f"Unlock at {unlock}"
                     elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
                         if since_last_move() % 5 > 4:
-                            p_des = f'1st prize at {format_K(st1, st3)}'
+                            p_des = f'1st prize at {format_K(st1, st3)}' + ["", " minutes"][int(sub=="shell")]
                         elif since_last_move() % 5 > 3:
-                            p_des = f'2nd prize at {format_K(st2, st3)}'
+                            p_des = f'2nd prize at {format_K(st2, st3)}' + ["", " minutes"][int(sub=="shell")]
                         elif since_last_move() % 5 > 2:
-                            p_des = f'3rd prize at {format_K(st3, st3)}'
+                            p_des = f'3rd prize at {format_K(st3, st3)}' + ["", " minutes"][int(sub=="shell")]
                     elif '-record' in _s.get_emulator(emu) and since_last_move() % 4 > 2:
                         # In case the default emu is for recordings
                         p_des = 'For recording!'
@@ -823,7 +823,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             _s.build_launch_command(info, BASIC_MODE, HIGH_SCORE_SAVE, REFOCUS_WINDOW, FULLSCREEN, launch_plugin)
 
         if FREE_PLAY or BASIC_MODE or _g.score >= PLAY_COST:
-            _g.score = _g.score - (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
+            _g.score -= (PLAY_COST, 0)[int(FREE_PLAY or BASIC_MODE)]  # Deduct coins if not freeplay
             play_sound_effect("coin.wav")
             if not competing and "-record" in launch_command:
                 flash_message("R E C O R D I N G", x=40, y=120)  # Gameplay recording (i.e. Wolfmame)
@@ -852,7 +852,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             clear_screen(and_reset_display=True)
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
-                scored = get_award(name, st3, st2, st1)
+                scored = get_award(sub, name, st3, st2, st1, time_start=time_start, time_end=time_end)
                 if scored > 0:
                     _g.awarded = scored
                     _g.ready = False

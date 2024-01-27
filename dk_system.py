@@ -24,13 +24,13 @@ def debounce():
 
 def get_system(return_video=False):
     if "uname" in dir(os) and os.uname().machine.startswith("arm"):
-        return ("pi", "accel")[return_video]
+        return ("pi", "accel")[int(return_video)]
     else:
         windows_version = sys.getwindowsversion()
         if windows_version[0] > 5:
-            return ("win", "opengl")[return_video]
+            return ("win", "opengl")[int(return_video)]
         else:
-            return ("win (old)", "gdi")[return_video]
+            return ("win (old)", "gdi")[int(return_video)]
 
 
 def is_pi():
@@ -104,7 +104,7 @@ def read_romlist():
                                 unlock = "0"
 
                             # Get the score targets
-                            if shell or "-record" in get_emulator(int(emu)).lower():
+                            if "-record" in get_emulator(int(emu)).lower():
                                 # Score targets are not considered for recordings
                                 st3, st2, st1 = ("",) * 3
                             st1 = apply_skill(st1)
@@ -210,7 +210,11 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     else:
         launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(ROM_DIR))
 
-    if subfolder != "shell":
+    if subfolder == "shell":
+        if not basic_mode:
+            script = lua_interface("shell", name, subfolder, score3, score2, score1, basic_mode)
+            competing = True
+    else:
         # Reset the optional start and level parameters
         os.environ["DKSTART5_PARAMETER"] = ""
 
