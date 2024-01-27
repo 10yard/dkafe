@@ -2,10 +2,10 @@
 dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
 dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
 dkong,dkongpies,DK Pies,DK Pies Only,3,1,2,,10000,15000,30000
-dkong,dkonggalakong,GalaKong,GalaKong Shoot 'Em Up,4,1,2,,20000,40000,60000
+dkong,dkonggalakong,GalaKong,,4,1,2,,20000,40000,60000
 dkongx11,dkongspooky,Spooky,DK Spooky Remix,6,1,2,1000,10000,15000,30000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,1000,10000,20000,40000
-dkong,dkongoctomonkey,DK Octo,OctoMonkey,9,1,2,2000,60000,100000,200000
+dkong,dkongoctomonkey,DK Octo,DK OctoMonkey,9,1,2,2000,60000,100000,200000
 dkong,dkong40,DK 40!!,DK Anniversary Edition,10,1,2,4000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,11,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,13,1,2,8000,10000,20000,40000
@@ -14,8 +14,8 @@ dkong,dkongaccelerate,DK Accel,DK Accelerate,16,1,2,12000,10000,25000,40000
 ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),17,1,2,14000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,18,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,19,1,2,18000,10000,15000,30000
-dkong,dkongvector,VectorKong,Vector Kong,20,1,2,20000,10000,20000,40000
-dkongjr,dkongjrgala,Gala Jr,GalaKong Junior,21,1,2,22000,10000,20000,30000
+dkong,dkongvector,VectorKong,DK Vector Kong,20,1,2,20000,10000,20000,40000
+dkongjr,dkongjrgala,Gala Jr,DK GalaKong Junior,21,1,2,22000,10000,20000,30000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,21,1,2,22000,10000,20000,40000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,23,1,2,24000,10000,25000,45000
 dkong,dkongfr,DK Free,DK Freerun Edition,24,1,2,26000,20000,40000,60000
@@ -23,16 +23,16 @@ dkong,dkongrivets,DKRivet,DK Rivets Only,25,1,2,28000,10000,20000,40000
 dkong,dkongotr,DK OnTheRun,DK On The Run,26,1,2,30000,10000,15000,30000
 dkong,dkongpacmancross,DKPacCross,DK Pac-Man Crossover,28,1,2,32000,8000,15000,30000
 dkong,dkonghrthnt,DK ~,DK Heart Hunt,29,1,2,34000,8000,15000,35000
-dkong,dkongxgalakong,X-Gala,Extreme Galakong,30,1,2,36000,5000,10000,15000
+dkong,dkongxgalakong,X-Gala,DK Extreme Galakong,30,1,2,36000,5000,10000,15000
 bigkong,bigkong,BigKong,Big Kong,31,1,2,38000,5000,15000,25000
 dkongx,dkongd2k,D2k,D2K Jumpman Returns,32,1,2,40000,5000,10000,25000
 dkong,dkongrev,DK Reverse,DK Reverse,33,1,2,42000,10000,25000,50000
 dkongf,dkongrdemo,DKRemix,DK Remix,34,1,2,44000,10000,20000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,36,1,2,46000,10000,20000,40000
-dkong,dkongkana,Kana,Kana Kong,38,1,2,48000,10000,20000,40000
+dkong,dkongkana,Kana,DK Kana Kong,38,1,2,48000,10000,20000,40000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,39,1,2,50000,10000,20000,40000
 dkong3,,DK 3,,40,1,2,52000,,,
-dkong,dkongnoluck,NoLuck,NoLuck Kong,40,1,2,52000,15000,25000,50000
+dkong,dkongnoluck,NoLuck,DK NoLuck Kong,40,1,2,52000,15000,25000,50000
 dkong,dkongbarpal,DK Palooza,DK Barrelpalooza,42,1,2,54000,10000,25000,50000
 dkong,dkongwbh,DK Wild,,43,1,2,56000,1000,2000,5000
 dkong,dkong2nut,2Nut,2Nut Kong,44,1,2,58000,10000,25000,50000

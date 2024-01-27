@@ -549,6 +549,7 @@ dkafe_theme.title_background_color = WHITE
 dkafe_theme.title_font_color = RED
 dkafe_theme.title_bar_style = pymenu.widgets.MENUBAR_STYLE_UNDERLINE
 dkafe_theme.title_offset = (12, 1)
+dkafe_theme.widget_alignment = pymenu.locals.ALIGN_CENTER
 
 dkafe_theme.scrollbar_color = BLACK
 dkafe_theme.scrollbar_slider_color = BLACK
@@ -558,6 +559,10 @@ dkafe_theme.widget_font_color = PINK
 dkafe_theme.widget_margin = (0, 4)
 dkafe_theme.widget_selection_effect = pymenu.widgets.LeftArrowSelection(arrow_right_margin=15, arrow_vertical_offset=-1)
 dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_width=3, margin_x=3, margin_y=1)
+
+dkafe_theme_left = dkafe_theme.copy()
+dkafe_theme_left.widget_alignment = pymenu.locals.ALIGN_LEFT
+
 
 # Override default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
