@@ -1,0 +1,7 @@
+Atari 7800 Console - Donkey Kong XM (Expansion Module)
+
+The XM is the 7800 eXpansion Module, it plugs into the
+catridge slot on the 7800 and gives it better sound, 
+more ram.
+
+Hack Developed by tep392

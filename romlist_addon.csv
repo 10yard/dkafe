@@ -20,12 +20,6 @@ nes_dk_zelda3,shell,Zelda 3,NES Zelda 3 (Moblin),103,,,126000,1,2,5
 nes_dk_zelda4,shell,Zelda 4,NES Zelda 4 (Zol),105,,,127000,1,2,5
 nes_dk_zelda5,shell,Zelda 5,NES Zelda 5 (Armos),106,,,128000,1,2,5
 nes_dk_zelda6,shell,Zelda 6,NES Zelda 6 (Link2),108,,,129000,1,2,5
-nes_dk_zelda7,shell,Zelda 7,NES Zelda 7 (Triforce),9999,,,129000,1,2,5
-nes_dk_zelda8,shell,Zelda 8,NES Zelda 8 (Child),9999,,,129000,1,2,5
-nes_dk_zelda9,shell,Zelda 9,NES Zelda 9 (GB Link),9999,,,129000,1,2,5
-nes_dk_zelda10,shell,Zelda 10,NES Zelda 10 (Marin),9999,,,129000,1,2,5
-nes_dk_zelda11,shell,Zelda 11,NES Zelda 11 (Grandma),9999,,,129000,1,2,5
-nes_dk_zelda12,shell,Zelda 12,NES Zelda 12 (Tarin),9999,,,129000,1,2,5
 coleco_dk,shell,COLECO DK,CVS DK Original,109,,,130000,1,2,5
 coleco_dk_junior,shell,DK Jr.,CVS DK Jr.,112,,,131000,1,2,5
 coleco_super_dk,shell,Super DK,CVS Super DK (Proto),113,,,132000,1,2,5
@@ -33,8 +27,15 @@ coleco_super_dk_jr,shell,Super DK Jr.,CVS Super DK Jr (Proto),115,,,133000,1,2,5
 a7800_dk_junior,shell,DK Jr.,A78 DK Junior,117,,,134000,1,2,5
 a7800_dk,shell,A7800 DK,A78 DK Original,118,,,135000,1,2,5
 a7800_dk_remix,shell,DK Remix,A78 DK Remix,120,,,136000,1,2,5
-a7800_dk_jr_gfx,shell,DK Jr. Gfx,A78 DK Jr. Gfx Hack,122,,,137000,1,2,5
+a7800_dk_xm,shell,DK XM Demo,A78 DK Expansion Module,122,,,137000,1,2,5
 empty,shell,,,123,,,,,,
+nes_dk_zelda7,shell,Zelda 7,NES Zelda 7 (Triforce),9999,,,129000,1,2,5
+nes_dk_zelda8,shell,Zelda 8,NES Zelda 8 (Child),9999,,,129000,1,2,5
+nes_dk_zelda9,shell,Zelda 9,NES Zelda 9 (GB Link),9999,,,129000,1,2,5
+nes_dk_zelda10,shell,Zelda 10,NES Zelda 10 (Marin),9999,,,129000,1,2,5
+nes_dk_zelda11,shell,Zelda 11,NES Zelda 11 (Grandma),9999,,,129000,1,2,5
+nes_dk_zelda12,shell,Zelda 12,NES Zelda 12 (Tarin),9999,,,129000,1,2,5
+a7800_dk_jr_gfx,shell,DK Jr. Gfx,A78 DK Jr. Gfx Hack,9999,,,111000,1,2,5
 nes_dk_3,shell,DK 3,NES DK 3,9999,,,111000,1,2,5
 a2600_dk_claus,shell,DK Claus,A26 DK Claus,9999,,,111000,1,2,5
 a2600_dk_remix,shell,DK Remix,A26 DK Remix,9999,,,111000,1,2,5
