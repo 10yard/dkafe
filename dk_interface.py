@@ -52,15 +52,18 @@ def get_award(sub, rom, score3, score2, score1, time_start=None, time_end=None):
     # Read data from the compete.dat file to detemine if coins should be awarded to Jumpman.
     if sub == "shell" and time_start and time_end:
         # Award based on the amount of time the game was played in seconds
-        seconds = (time_end - time_start) + 10  # generously add 10 seconds
-        if seconds >= int(score1) * 60:
-            return AWARDS[2]  # Got 1st prize award
-        elif seconds >= int(score2) * 60:
-            return AWARDS[1]  # Got 2nd prize award
-        elif seconds >= int(score3) * 60:
-            return AWARDS[0]  # Got 3rd prize award
-        else:
-            return 0  # Got nothing
+        try:
+            seconds = (time_end - time_start) + 10  # generously add 10 seconds
+            if seconds >= int(score1) * 60:
+                return AWARDS[2]  # Got 1st prize award
+            elif seconds >= int(score2) * 60:
+                return AWARDS[1]  # Got 2nd prize award
+            elif seconds >= int(score3) * 60:
+                return AWARDS[0]  # Got 3rd prize award
+            else:
+                return 0  # Got nothing
+        except ValueError:
+            return 0
     else:
         try:
             with open(COMPETE_FILE) as cf:
