@@ -1,0 +1,11 @@
+NES Console - Donkey Kong Redux
+
+A full-on graphics update for Donkey Kong on the NES.
+
+All in-game tiles have been replaced in this hack; 
+most existing sprites have since been redrawn 
+completely for the sake of this project, while a 
+smaller portion of the graphics have just been altered
+to bring a bit more flair to the hack.
+
+Hack Developed by JY Co.
