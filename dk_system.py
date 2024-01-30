@@ -95,6 +95,7 @@ def read_romlist():
                             des = des.replace("CK ", "# ").replace("CK", "# ")
                             des = des.replace("BK ", "^ ").replace("BK", "^ ")
                             des = des.replace("ZK ", "² ").replace("ZK", "² ")
+                            des = des.replace("JR ", "³ ").replace("JR", "³ ")
                             des = des.replace("1/2", "{ ").replace("1/4", "} ")
 
                             # Assume defaults when not provided

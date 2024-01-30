@@ -1,49 +1,49 @@
-#Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
-nes_dk,shell,DKNES,NES DK Original,82,,,110000,1,2,5
-nes_dk_boosette,shell,Boosette,NES DK Boosette,83,,,111000,1,2,5
-nes_dk_icecream,shell,Ice,NES DK Ice Cream!,85,,,112000,1,2,5
-nes_dk_pauline,shell,P!,NES DK Pauline Edition,86,,,113000,1,2,5
-nes_dk_redux,shell,Redux,NES DK Redux,87,,,114000,1,2,5
-nes_dk_junior,shell,Jr.,NES DK Junior,88,,,115000,1,2,5
-nes_dk_arcade,shell,Arcade,NES DK Arcade Accurate,89,,,116000,1,2,5
-nes_dk_bowsette_jr,shell,BowsJr.,NES DK Bowsette Jr.,91,,,117000,1,2,5
-a2600_dk,shell,DK2600,A26 DK Original,92,,,118000,1,2,5
-a2600_dk_crazytv,shell,TV!,A26 DK Crazy TV,93,,,119000,1,2,5
-a2600_dk_claus,shell,DK Claus,A26 DK Claus,94,,,120000,1,2,5
-a2600_dk_new,shell,DK New,A26 DK New,95,,,121000,1,2,5
-a2600_dk_vector,shell,Vector,A26 DK Vector,96,,,122000,1,2,5
-a2600_dk_2,shell,DK 2,A26 DK2 Lost Levels,97,,,123000,1,2,5
-a2600_dk_ghouls,shell,Ghouls!,A26 DK Ghouls n Ghosts,98,,,124000,1,2,5
-a2600_dk_junior,shell,DK Jr.,A26 DK Junior,99,,,125000,1,2,5
-nes_dk_zelda1,shell,NESZK,NES ZeldaKong (Link),100,,,126000,1,2,5
-nes_dk_zelda2,shell,ZK2,NES Zelda 2 (Zelda),101,,,127000,1,2,5
-nes_dk_zelda3,shell,ZK3,NES Zelda 3 (Moblin),102,,,128000,1,2,5
-nes_dk_zelda4,shell,ZK4,NES Zelda 4 (Zol),103,,,129000,1,2,5
-nes_dk_zelda5,shell,ZK5,NES Zelda 5 (Armos),104,,,130000,1,2,5
-nes_dk_zelda6,shell,ZK6,NES Zelda 6 (Link2),105,,,131000,1,2,5
-nes_dk_zelda7,shell,ZK7,NES Zelda 7 (Triforce),106,,,132000,1,2,5
-nes_dk_zelda8,shell,ZK8,NES Zelda 8 (Child),107,,,133000,1,2,5
-nes_dk_zelda9,shell,ZK9,NES Zelda 9 (GB Link),108,,,134000,1,2,5
-coleco_dk,shell,DKCVS,CVS DK Original,109,,,135000,1,2,5
-coleco_dk_junior,shell,Jr.,CVS DK Jr.,111,,,136000,1,2,5
-coleco_super_dk,shell,SuperDK!,CVS Super DK! (Proto),112,,,137000,1,2,5
-coleco_miner2049er,shell,Miner49,CVS Miner 2049er,113,,,138000,1,2,5
-coleco_super_dk_jr,shell,SuperDK!Jr.,CVS Super DK! Jr (Proto),114,,,139000,1,2,5
-empty,shell,,,115,,,,,,
-a5200_dk_encore,shell,DK5200,A52 DK Encore,117,,,145000,1,2,5
-a5200_ck_hack,shell,CK,A52 Crazy Kong,118,,,146000,1,2,5
-a7800_dk,shell,DK7800,A78 DK Original,119,,,141000,1,2,5
-a7800_dk_xm,shell,DKXM,A78 DK Expansion Module,120,,,142000,1,2,5
-a7800_dk_remix,shell,Remix,A78 DK Remix,122,,,144000,1,2,5
-empty,shell,,,123,,,,,,
-a7800_dk_junior,shell,DK Jr.,A78 DK Junior,124,,,143000,1,2,5
+nes_dk,shell,NESDK,NES DK Original,82,,,110000,1,2,5
+nes_dk_boosette,shell,Boo,NES DK Boosette,83,,,111000,1,2,5
+nes_dk_icecream,shell,IceCream,NES DK Ice Cream!,84,,,112000,1,2,5
+nes_dk_pauline,shell,P!,NES DK Pauline Edition,85,,,113000,1,2,5
+nes_dk_3,shell,DK3,NES DK 3,86,,,114000,1,2,5
+nes_dk_redux,shell,Redux,NES DK Redux,87,,,115000,1,2,5
+nes_dk_junior,shell,JR,NES DK Junior,88,,,116000,1,2,5
+nes_dk_arcade,shell,Arcade,NES DK Arcade Accurate,89,,,117000,1,2,5
+nes_dk_bowsette_jr,shell,Bows.JR,NES DK Bowsette Jr.,91,,,118000,1,2,5
+a2600_dk,shell,2600DK,A26 DK Original,92,,,119000,1,2,5
+a2600_dk_crazytv,shell,TV!,A26 DK Crazy TV,93,,,120000,1,2,5
+a2600_dk_new,shell,DK New,A26 DK New,94,,,121000,1,2,5
+a2600_dk_2,shell,DK 2,A26 DK2 Lost Levels,95,,,122000,1,2,5
+a2600_dk_vector,shell,Vector,A26 DK Vector,96,,,123000,1,2,5
+a2600_dk_3,shell,DK3,A26 DK3,97,,,124000,1,2,5
+a2600_dk_ghouls,shell,Ghouls!,A26 DK Ghouls n Ghosts,98,,,125000,1,2,5
+a2600_dk_junior,shell,DK JR,A26 DK Junior,99,,,126000,1,2,5
+nes_dk_zelda1,shell,NESZK,NES ZeldaKong (Link),100,,,127000,1,2,5
+nes_dk_zelda2,shell,ZK2,NES Zelda 2 (Zelda),101,,,128000,1,2,5
+nes_dk_zelda3,shell,ZK3,NES Zelda 3 (Moblin),102,,,129000,1,2,5
+nes_dk_zelda4,shell,ZK4,NES Zelda 4 (Zol),103,,,130000,1,2,5
+nes_dk_zelda5,shell,ZK5,NES Zelda 5 (Armos),104,,,131000,1,2,5
+nes_dk_zelda6,shell,ZK6,NES Zelda 6 (Link2),105,,,132000,1,2,5
+nes_dk_zelda7,shell,ZK7,NES Zelda 7 (Triforce),106,,,133000,1,2,5
+nes_dk_zelda8,shell,ZK8,NES Zelda 8 (Child),107,,,134000,1,2,5
+nes_dk_zelda9,shell,ZK9,NES Zelda 9 (GB Link),108,,,135000,1,2,5
+coleco_dk,shell,CVSDK,CVS DK Original,109,,,136000,1,2,5
+coleco_dk_junior,shell,DKJR,CVS DK Jr.,111,,,137000,1,2,5
+coleco_super_dk,shell,SuperDK,CVS Super DK! (Proto),112,,,138000,1,2,5
+coleco_super_dk_jr,shell,SuperDKJR,CVS Super DK! Jr (Proto),113,,,140000,1,2,5
+coleco_miner2049er,shell,Miner49er,CVS Miner 2049er,115,,,139000,1,2,5
+a5200_dk_encore,shell,5200DK,A52 DK Encore,117,,,141000,1,2,5
+a5200_ck_hack,shell,CK,A52 Crazy Kong,118,,,142000,1,2,5
+a7800_dk,shell,7800DK,A78 DK Original,119,,,143000,1,2,5
+a7800_dk_remix,shell,DKRemix,A78 DK Remix,120,,,144000,1,2,5
+a7800_dk_junior,shell,JR,A78 DK Junior,122,,,145000,1,2,5
+a7800_dk_xm,shell,DKXM,A78 DK Expansion Module,123,,,146000,1,2,5
 a2600_ck,shell,CK,A26 Crazy Kong,9999,,,110000,1,2,5
 a2600_ck_fast,shell,CK Fast,A26 CK Fast,9999,,,110000,1,2,5
+a2600_dk_claus,shell,DK Claus,A26 DK Claus,9999,,,110000,1,2,5
 a2600_dk_remix,shell,DK Remix,A26 DK Remix,9999,,,110000,1,2,5
-a7800_dk_jr_gfx,shell,DK Jr. Gfx,A78 DK Jr. Gfx Hack,9999,,,110000,1,2,5
+a7800_dk_jr_gfx,shell,DK JR Gfx,A78 DK Jr. Gfx Hack,9999,,,110000,1,2,5
 a7800_dk_pokey,shell,Pokey Kong,A78 Pokey Kong Hack,9999,,,110000,1,2,5
 nes_dk_3,shell,DK 3,NES DK 3,9999,,,110000,1,2,5
 nes_dk_bowsette,shell,Bowsette,NES DK Bowsette,9999,,,110000,1,2,5
 nes_dk_zelda10,shell,Zelda 10,NES Zelda 10 (Marin),9999,,,135000,1,2,5
 nes_dk_zelda11,shell,Zelda 11,NES Zelda 11 (Grandma),9999,,,135000,1,2,5
 nes_dk_zelda12,shell,Zelda 12,NES Zelda 12 (Tarin),9999,,,135000,1,2,5
+#Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
