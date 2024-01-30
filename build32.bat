@@ -69,15 +69,5 @@ echo **** package into a release ZIP getting the version from version.txt
 del releases\dkafe_win32_binary_%version%.zip
 %zip_path% a releases\dkafe_win32_binary_%version%.zip .\dist\*
 
-echo ----------------------------------------------------------------------------------------------
-echo  Package the Console Add-On Pack
-echo ----------------------------------------------------------------------------------------------
-xcopy roms\a2600 dist\console_addon\roms\a2600 /S /i /Y
-xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
-copy romlist_addon.csv dist\console_addon\ /Y
-
-del releases\add-ons\dkafe_console_addon_windows_%version%.zip
-%zip_path% a releases\add-ons\dkafe_console_addon_windows_%version%.zip .\dist\console_addon\*
-
 :abort
 echo End

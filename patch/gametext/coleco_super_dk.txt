@@ -1,0 +1,8 @@
+Colecovision Console - Super DK! (Prototype)
+
+Super DK! was a prototype game developed by Nintendo 
+for the ColecoVision system in 1983. 
+The game makes use of the super game expansion (SGM)
+module which increases the available memory.
+
+Prototype Developed By Nintendo

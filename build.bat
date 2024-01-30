@@ -63,6 +63,7 @@ echo ---------------------------------------------------------------------------
 echo  Package the Console Add-On Pack
 echo ----------------------------------------------------------------------------------------------
 xcopy roms\a2600 dist\console_addon\roms\a2600 /S /i /Y
+xcopy roms\a5200 dist\console_addon\roms\a5200 /S /i /Y
 xcopy roms\a7800 dist\console_addon\roms\a7800 /S /i /Y
 xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
 xcopy roms\coleco dist\console_addon\roms\coleco /S /i /Y
