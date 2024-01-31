@@ -347,6 +347,9 @@ Playlist music volume from 0 (minimum) to 10 (maximum).
 `ENABLE_MENU=1`    
 1 to enable the game list when P2 Start button is pressed to quickly launch an available game via the menu.
 
+`ENABLE_ADDONS=1`    
+1 to enable add-on packs.  0 to disable previously installed add-ons.
+
 `ENABLE_SHUTDOWN=0`    
 1 to enable system shutdown via the "confirm exit" menu.
 
@@ -589,9 +592,9 @@ I would love to get to the infamous killscreen on level 22.  My current PB is 51
 
 ## What's next?
 
+ - I'm curently adding support for console versions of DK and hacks (Atari 2600, Atari 5200, Atari 7800, Colecovision and NES).
  - Add a test screen for the player controls and a welcome screen to set the initial frontend preferences.
  - Create an alternative frontend for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
- - Add support for console versions of DK
  
  
 ## Thanks to

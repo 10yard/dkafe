@@ -57,6 +57,7 @@ UNLOCK_MODE = 1                # Arcade machines are unlocked as Jumpman's score
 SKILL_LEVEL = 1                # How difficult are the target scores. 1 (Beginner) to 10 (Expert).
 START_STAGE = 0                # Stage to start the frontend on. 0 (Barrels), 1 (Rivets), 2 (Pies)
 ENABLE_MENU = 1                # Allow selection from the quick access game list
+ENABLE_ADDONS = 1              # Enable add-on packs.  Set to 0 to disable previously installed add-ons.
 INACTIVE_TIME = 20             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
 SHOW_GAMETEXT = 1              # Show the game text description when Jumpman faces an arcade machine
@@ -138,7 +139,7 @@ if os.path.exists("settings.txt"):
                     pygame.quit()
                     exit()
 
-ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv"]
+ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 
 # Validate some settings
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
@@ -282,11 +283,11 @@ SLOTS = (
     (42, 66), (82, 66), (170, 66),
     (106, 26),
 
-    (6, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (202, 226),
-    (8, 186), (34, 186), (50, 186), (90, 186), (122, 186), (154, 186), (170, 186), (202, 186),
-    (6, 146), (34, 146), (50, 146), (90, 146), (106, 146), (122, 146), (154, 146), (170, 146), (202, 146),
-    (34, 106), (50, 106), (66, 106), (88, 106), (122,106), (154, 106), (170, 106), (211, 106),
-    (1, 66), (90, 66), (106, 66), (138, 66), (154, 66), (170, 66), (186, 66), (207, 66),
+    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (202, 226),
+    (10, 186), (34, 186), (50, 186), (90, 186), (122, 186), (154, 186), (174, 186), (202, 186),
+    (2, 146), (34, 146), (50, 146), (90, 146), (106, 146), (122, 146), (154, 146), (174, 146), (202, 146),
+    (34, 106), (50, 106), (66, 106), (88, 106), (122,106), (154, 106), (174, 106), (210, 106),
+    (2, 66), (90, 66), (106, 66), (138, 66), (154, 66), (170, 66), (186, 66), (207, 66),
     (90, 34)
 )
 

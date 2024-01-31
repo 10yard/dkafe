@@ -1,0 +1,7 @@
+Atari 5200 Console - Donkey Kong Encore Hack
+
+This version of Donkey Kong is a faithful port of the 
+Arcade version. The Atari 5200 version of Donkey Kong 
+even has the pie factory level.
+
+Hack Developed By darryl1970

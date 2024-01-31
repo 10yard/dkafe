@@ -1,0 +1,15 @@
+NES Console - Donkey Kong 3
+
+Donkey Kong 3 is a frantic action game starring 
+newcomer Stanley, whose greenhouse has been invaded 
+by the troublesome ape and swarms of angry insects.
+
+Armed with a spray can, you must push Donkey Kong up 
+the screen while fending off the swarms of bugs intent
+on stealing Stanley's precious flowers.
+
+Avoid the coconuts that DK throws at you, and try to 
+grab the power spray can for a few seconds of 
+super-charged spraying.
+
+Developed by Nintendo
