@@ -139,14 +139,18 @@ if os.path.exists("settings.txt"):
                     pygame.quit()
                     exit()
 
-ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
-
 # Validate some settings
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
 if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
 if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 if START_STAGE > 2: START_STAGE = 0
+
+# Addon Specific
+if not os.path.exists("romlist_addon.csv"):
+    globals()["ENABLE_ADDONS"] = 0
+ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
+RECOGNISED_CONSOLES = ["nes", "coleco", "a2600", "a5200", "a7800"]
 
 # Frontend version
 VERSION = ''
@@ -549,7 +553,7 @@ dkafe_theme.background_color = BLACK
 dkafe_theme.title_background_color = WHITE
 dkafe_theme.title_font_color = RED
 dkafe_theme.title_bar_style = pymenu.widgets.MENUBAR_STYLE_UNDERLINE
-dkafe_theme.title_offset = (12, 1)
+dkafe_theme.title_offset = (12, 0)
 dkafe_theme.widget_alignment = pymenu.locals.ALIGN_CENTER
 
 dkafe_theme.scrollbar_color = BLACK
@@ -557,9 +561,8 @@ dkafe_theme.scrollbar_slider_color = BLACK
 
 dkafe_theme.selection_color = RED
 dkafe_theme.widget_font_color = PINK
-dkafe_theme.widget_margin = (0, 4)
-dkafe_theme.widget_selection_effect = pymenu.widgets.LeftArrowSelection(arrow_right_margin=15, arrow_vertical_offset=-1)
-dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_width=3, margin_x=3, margin_y=1)
+dkafe_theme.widget_margin = (0, 3)
+dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_width=3, margin_x=2, margin_y=1)
 
 dkafe_theme_left = dkafe_theme.copy()
 dkafe_theme_left.widget_alignment = pymenu.locals.ALIGN_LEFT

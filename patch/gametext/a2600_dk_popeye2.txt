@@ -1,0 +1,8 @@
+Atari 2600 Console - Popeye: Seahag's Revenge
+
+A hack of Donkey Kong were you play as Popeye.
+
+You must avoid fireballs and vultures to save Swee'pea
+from the Seahag.
+
+Hack Developed by James Francis

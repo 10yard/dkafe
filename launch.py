@@ -556,9 +556,16 @@ def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
-    for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _s.read_romlist():
+
+    _romlist = _s.read_romlist()
+    if ENABLE_ADDONS and _g.stage == 2:
+        _romlist = sorted(_romlist)
+    for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
+        _alt = alt.replace("00", "№")
+        _add = sub == "shell" and name.split("_")[0] in RECOGNISED_CONSOLES
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
-            _g.menu.add_button(alt[:24], launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
+            if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
+               _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
     _g.menu.add_vertical_margin(10)

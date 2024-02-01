@@ -1,56 +1,71 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
-nes_dk,shell,NESDK,NES DK Original,82,,,110000,1,2,5
-nes_dk_icecream,shell,Ice,NES DK Ice Cream!,83,,,111000,1,2,5
-nes_dk_kanakong,shell,KanaKong,NES KanaKong,84,,,112000,1,2,5
-nes_dk_boosette,shell,Boo,NES DK Boosette,85,,,113000,1,2,5
-nes_dk_3,shell,DK3,NES DK 3,86,,,114000,1,2,5
-nes_dk_redux,shell,Redux,NES DK Redux,87,,,115000,1,2,5
-nes_dk_junior,shell,JR,NES DK Junior,88,,,116000,1,2,5
-nes_dk_arcade,shell,Arcade,NES DK Arcade Accurate,89,,,117000,1,2,5
-nes_dk_bowsette_jr,shell,BowsJR,NES DK Bowsette Jr.,91,,,118000,1,2,5
-a2600_dk,shell,VCSDK,2600 DK Original,92,,,119000,1,2,5
-a2600_dk_2,shell,DK 2,2600 DK2 Lost Levels,93,,,120000,1,2,5
-a2600_dk_ghouls,shell,Ghouls!,2600 DK Ghouls n Ghosts,94,,,121000,1,2,5
-a2600_dk_popeye,shell,PopKong,2600 PopKong,95,,,122000,1,2,5
-a2600_dk_vector,shell,Vector,2600 DK Vector,96,,,123000,1,2,5
-a2600_dk_new,shell,NEW,2600 DK New,97,,,124000,1,2,5
-a2600_dk_dragon,shell,Dragon,2600 Dragon Knight,98,,,125000,1,2,5
-a2600_dk_junior,shell,DK JR,2600 DK Junior,99,,,126000,1,2,5
-nes_dk_zelda1,shell,NESZK,NES ZeldaKong (Link),100,,,127000,1,2,5
-nes_dk_zelda2,shell,ZK2,NES Zelda 2 (Zelda),101,,,128000,1,2,5
-nes_dk_zelda3,shell,ZK3,NES Zelda 3 (Moblin),102,,,129000,1,2,5
-nes_dk_zelda4,shell,ZK4,NES Zelda 4 (Zol),103,,,130000,1,2,5
-nes_dk_zelda5,shell,ZK5,NES Zelda 5 (Armos),104,,,131000,1,2,5
-nes_dk_zelda6,shell,ZK6,NES Zelda 6 (Link2),105,,,132000,1,2,5
-nes_dk_zelda7,shell,ZK7,NES Zelda 7 (Triforce),106,,,133000,1,2,5
-nes_dk_zelda8,shell,ZK8,NES Zelda 8 (Child),107,,,134000,1,2,5
-nes_dk_zelda9,shell,ZK9,NES Zelda 9 (GB Link),108,,,135000,1,2,5
-coleco_dk,shell,CVSDK,CVS DK Original,109,,,136000,1,2,5
-coleco_dk_junior,shell,DKJR,CVS DK Jr.,111,,,137000,1,2,5
-coleco_super_dk,shell,SuperDK,CVS Super DK! (Proto),112,,,138000,1,2,5
-coleco_super_dk_jr,shell,SuperJR,CVS Super DK! Jr (Proto),113,,,139000,1,2,5
-nes_dk_zelda10,shell,ZK10,NES Zelda 10 (Marin),114,,,140000,1,2,5
-nes_dk_zelda11,shell,ZK11,NES Zelda 11 (Grandma),115,,,141000,1,2,5
-nes_dk_zelda12,shell,ZK12,NES Zelda 12 (Tarin),116,,,142000,1,2,5
-a5200_dk_encore,shell,5200DK,5200 DK Encore Hack,117,,,143000,1,2,5
-a5200_ck_hack,shell,CK,5200 Crazy Kong,118,,,144000,1,2,5
-a7800_dk,shell,7800DK,7800 DK Original,119,,,145000,1,2,5
-a7800_dk_remix,shell,DKRemix,7800 DK Remix,120,,,146000,1,2,5
-a7800_dk_junior,shell,JR,7800 DK Junior,122,,,147000,1,2,5
-a7800_dk_xm,shell,DKXM,7800 DK Expansion Module,123,,,148000,1,2,5
-nes_dk_pauline,shell,NESDKPauline,NES DK Pauline Edition,125,,,149000,1,2,5
-a2600_ck,shell,CK,2600 Crazy Kong,9999,,,110000,1,2,5
-a2600_ck_fast,shell,CK Fast,2600 CK Fast,9999,,,110000,1,2,5
-a2600_dk_3,shell,DK3,2600 DK3,9999,,,110000,1,2,5
-a2600_dk_claus,shell,DK Claus,2600 DK Claus,9999,,,110000,1,2,5
-a2600_dk_crazytv,shell,TV,2600 DK Crazy TV,9999,,,110000,1,2,5
-a2600_dk_remix,shell,DK Remix,2600 DK Remix,9999,,,110000,1,2,5
-a7800_dk_jr_gfx,shell,DK JR Gfx,7800 DK Jr. Gfx Hack,9999,,,110000,1,2,5
-a7800_dk_pokey,shell,Pokey Kong,7800 Pokey Kong Hack,9999,,,110000,1,2,5
-coleco_miner2049er,shell,Miner49er,CVS Miner 2049er,9999,,,110000,1,2,5
-nes_dk_arrietty,shell,DK Arietty,NES DK Arrietty World,9999,,,110000,1,2,5
-nes_dk_bowsette,shell,Bow,NES DK Bowsette,9999,,,110000,1,2,5
-nes_dk_japan,shell,DK Japan,NES DK Japan,9999,,,110000,1,2,5
-nes_dk_luigi,shell,DK Luigi Edition,NES DK Luigi Edition,9999,,,110000,1,2,5
-nes_dk_qbert,shell,Q-Bert Kong,NES Q-Bert Kong,9999,,,110000,1,2,5
-nes_dk_wario,shell,Wario vs DK,NES Wario vs DK,9999,,,110000,1,2,5
+nes_dk,shell,NESDK,NES: DK Original,82,,,0,1,2,5
+nes_dk_icecream,shell,Ice,NES: DK Ice Cream!,83,,,110000,1,2,5
+nes_dk_kanakong,shell,KanaKong,NES: KanaKong,84,,,111000,1,2,5
+nes_dk_boosette,shell,Boo,NES: DK Boosette,85,,,112000,1,2,5
+nes_dk_3,shell,DK3,NES: DK 3,86,,,113000,1,2,5
+nes_dk_redux,shell,Redux,NES: DK Redux,87,,,114000,1,2,5
+nes_dk_junior,shell,JR,NES: DK Junior,88,,,115000,1,2,5
+nes_dk_arcade,shell,Arcade,NES: DK Arcade Accurate,89,,,116000,1,2,5
+nes_dk_bowsette_jr,shell,BowsJR,NES: DK Bowsette Jr.,91,,,117000,1,2,5
+a2600_dk,shell,VCSDK,2600: DK Original,92,,,118000,1,2,5
+a2600_dk_2,shell,DK 2,2600: DK2 Lost Levels,93,,,119000,1,2,5
+a2600_dk_ghouls,shell,Ghouls!,2600: DK Ghouls n Ghosts,94,,,120000,1,2,5
+a2600_dk_popeye2,shell,Popeye,2600: Popeye 2 (Seahag),95,,,121000,1,2,5
+a2600_dk_vector_bw,shell,Vector,2600: DK Vector BW,96,,,122000,1,2,5
+a2600_dk_new,shell,NEW,2600: DK New,97,,,123000,1,2,5
+a2600_dk_dragon,shell,Dragon,2600: Dragon Knight,98,,,124000,1,2,5
+a2600_dk_xmas_dp,shell,Xmas,2600: DK Xmas (D.Press),99,,,125000,1,2,5
+nes_dk_zelda01,shell,NESZK,NES: ZeldaKong (Link),100,,,126000,1,2,5
+nes_dk_zelda02,shell,ZK2,NES: Zelda 2 (Zelda),101,,,127000,1,2,5
+nes_dk_zelda03,shell,ZK3,NES: Zelda 3 (Moblin),102,,,128000,1,2,5
+nes_dk_zelda04,shell,ZK4,NES: Zelda 4 (Zol),103,,,129000,1,2,5
+nes_dk_zelda05,shell,ZK5,NES: Zelda 5 (Armos),104,,,130000,1,2,5
+nes_dk_zelda06,shell,ZK6,NES: Zelda 6 (Link 2),105,,,131000,1,2,5
+nes_dk_zelda07,shell,ZK7,NES: Zelda 7 (Triforce),106,,,132000,1,2,5
+nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),107,,,133000,1,2,5
+nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),108,,,134000,1,2,5
+coleco_dk,shell,CVSDK,CVS: DK Original,109,,,135000,1,2,5
+coleco_dk_junior,shell,DKJR,CVS: DK Jr.,111,,,136000,1,2,5
+coleco_super_dk,shell,SuperDK,CVS: Super DK! (Proto),112,,,137000,1,2,5
+coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),113,,,138000,1,2,5
+nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),114,,,139000,1,2,5
+nes_dk_zelda11,shell,ZK11,NES: Zelda11 (Grandma),115,,,140000,1,2,5
+nes_dk_zelda12,shell,ZK12,NES: Zelda12 (Tarin),116,,,141000,1,2,5
+a5200_dk_encore,shell,5200DK,5200: DK Encore Hack,117,,,142000,1,2,5
+a5200_ck_hack,shell,CK,5200: Crazy Kong,118,,,143000,1,2,5
+a7800_dk,shell,7800DK,7800: DK Original,119,,,144000,1,2,5
+a7800_dk_remix,shell,DKRemix,7800: DK Remix,120,,,145000,1,2,5
+a7800_dk_junior,shell,JR,7800: DK Junior,122,,,146000,1,2,5
+a7800_dk_xm,shell,DKXM,7800: DK Expansion Module,123,,,147000,1,2,5
+nes_dk_pauline,shell,NESDKPauline,NES: DK Pauline Edition,125,,,148000,1,2,5
+a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,1,2,5
+a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,110000,1,2,5
+a2600_dk_3,shell,DK3,2600: DK3,9999,,,0,1,2,5
+a2600_dk_claus,shell,DK Claus,2600: DK Claus,9999,,,110000,1,2,5
+a2600_dk_crazytv,shell,TV,2600: DK Crazy TV,9999,,,110000,1,2,5
+a2600_dk_dpkong,shell,DP Kong,2600: DP Kong,9999,,,110000,1,2,5
+a2600_dk_frankenstein,shell,DK Frankenstein,2600: Frankenstein,9999,,,110000,1,2,5
+a2600_dk_ginger,shell,DK Gingerbread,2600: DK Gingerbread Man,9999,,,110000,1,2,5
+a2600_dk_gorillakong,shell,Gorilla Kong,2600: Gorilla Kong Hack,9999,,,110000,1,2,5
+a2600_dk_homestar,shell,DK Homestar,2600: DK Homestar Runner,9999,,,110000,1,2,5
+a2600_dk_invisible,shell,DK Invisible,2600: DK Invisible,9999,,,110000,1,2,5
+a2600_dk_junior,shell,DK JR,2600: DK Junior,9999,,,0,1,2,5
+a2600_dk_lowgravity,shell,DK Low Gravity,2600: DK Low Gravity,9999,,,110000,1,2,5
+a2600_dk_popeye,shell,PopKong,2600: PopKong,9999,,,110000,1,2,5
+a2600_dk_remix,shell,DK Remix,2600: DK Remix,9999,,,110000,1,2,5
+a2600_dk_reskenge,shell,DK Reskenge,2600: DK Reskenge,9999,,,110000,1,2,5
+a2600_dk_robotkong,shell,RobotKong,2600: RobotKong,9999,,,110000,1,2,5
+a2600_dk_savesally,shell,Save Sally,2600: DK Save Sally,9999,,,110000,1,2,5
+a2600_dk_si_hack,shell,SI Hack,2600: DK Space Invaders,9999,,,110000,1,2,5
+a2600_dk_vector,shell,Vector Colour,2600: DK Vector Colour,9999,,,110000,1,2,5
+a2600_dk_vector_grn,shell,Vector Green,2600: DK Vector Green,9999,,,110000,1,2,5
+a7800_dk_jr_gfx,shell,DK JR Gfx,7800: DK Jr. Gfx Hack,9999,,,110000,1,2,5
+a7800_dk_pokey,shell,Pokey Kong,7800: Pokey Kong Hack,9999,,,110000,1,2,5
+coleco_miner2049er,shell,Miner49er,CVS: Miner 2049er,9999,,,110000,1,2,5
+nes_dk_arrietty,shell,DK Arietty,NES: DK Arrietty World,9999,,,110000,1,2,5
+nes_dk_bowsette,shell,Bow,NES: DK Bowsette,9999,,,0,1,2,5
+nes_dk_japan,shell,DK Japan,NES: DK Japan,9999,,,0,1,2,5
+nes_dk_luigi,shell,DK Luigi,NES: DK Luigi Edition,9999,,,110000,1,2,5
+nes_dk_qbert,shell,Q-Bert Kong,NES: Q-Bert Kong,9999,,,110000,1,2,5
+nes_dk_wario,shell,Wario vs DK,NES: Wario vs DK,9999,,,110000,1,2,5
