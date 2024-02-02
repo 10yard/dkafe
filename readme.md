@@ -58,6 +58,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
+ - An optional add-on pack includes over 80 Donkey Kong ports and hacks classic console systems (A2600, A5200, A7800, NES and Colecovision). 
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.

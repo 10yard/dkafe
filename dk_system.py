@@ -174,11 +174,26 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
 
     if subfolder:
         if subfolder == "shell":
+            _system = name.split("_")[0]
             # Launch a batch file or shell script from the shell subfolder
             # environmental variables can be used in the shell
             os.environ["DKAFE_SHELL_VIDEO"] = f'-video {get_system(return_video=True)} {["-window", ""][fullscreen]}'
+            os.environ["DKAFE_SHELL_ROOT"] = ROOT_DIR
             os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
-            launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", "")[is_pi()])
+            os.environ["DKAFE_SHELL_SYSTEM"] = _system
+            os.environ["DKAFE_SHELL_NAME"] = name
+            # Target scores for addon plugin
+            os.environ["DKAFE_SHELL_SCORE1"] = str(score1)
+            os.environ["DKAFE_SHELL_SCORE2"] = str(score2)
+            os.environ["DKAFE_SHELL_SCORE3"] = str(score3)
+            os.environ["DKAFE_SHELL_HUD"] = str(int((SHOW_HUD and SHOW_AWARD_TARGETS and not BASIC_MODE)))
+            launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", ".sh")[is_pi()])
+            if not os.path.exists(launch_command):
+                if _system in RECOGNISED_CONSOLES:
+                    launch_command = os.path.join(ROOT_DIR, "shell", "default_console" + (".bat", ".sh")[is_pi()])
+                else:
+                    # use default shell when a specific file is not found
+                    launch_command = os.path.join(ROOT_DIR, "shell", "default" + (".bat", ".sh")[is_pi()])
         else:
             if "<ROM_DIR>" in launch_command:
                 # Launch a rom and provide rom path

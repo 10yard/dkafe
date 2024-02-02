@@ -558,10 +558,13 @@ def build_menus(initial=False):
     _g.menu.add_vertical_margin(5)
 
     _romlist = _s.read_romlist()
+
+    if not os.path.exists("romlist_addon.csv"):
+        globals()["ENABLE_ADDONS"] = 0
     if ENABLE_ADDONS and _g.stage == 2:
         _romlist = sorted(_romlist)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
-        _alt = alt.replace("00", "№")
+        _alt = alt.replace("00", "№")  # Single character 00
         _add = sub == "shell" and name.split("_")[0] in RECOGNISED_CONSOLES
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):

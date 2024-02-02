@@ -69,5 +69,10 @@ xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
 xcopy roms\coleco dist\console_addon\roms\coleco /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
+echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip
+copy roms\dkong.zip dist\console_addon\roms\ /Y
+copy roms\dkongjr.zip dist\console_addon\roms\ /Y
+copy roms\dkong3.zip dist\console_addon\roms\ /Y
+
 del releases\add-ons\dkafe_console_addon_windows_%version%.zip
 %zip_path% a releases\add-ons\dkafe_console_addon_windows_%version%.zip .\dist\console_addon\*

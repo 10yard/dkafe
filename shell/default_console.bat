@@ -1,0 +1,2 @@
+cd dkwolf
+dkwolf %DKAFE_SHELL_SYSTEM% -rompath "%DKAFE_SHELL_ROMS%" -cart "%DKAFE_SHELL_ROMS%\%DKAFE_SHELL_SYSTEM%\%DKAFE_SHELL_NAME%.zip" -nofilter %DKAFE_SHELL_VIDEO% -plugin addon -fontpath "%DKAFE_SHELL_ROOT%\fonts" -uifont "tom-thumb.bdf"

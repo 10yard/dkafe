@@ -147,8 +147,6 @@ if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 if START_STAGE > 2: START_STAGE = 0
 
 # Addon Specific
-if not os.path.exists("romlist_addon.csv"):
-    globals()["ENABLE_ADDONS"] = 0
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 RECOGNISED_CONSOLES = ["nes", "coleco", "a2600", "a5200", "a7800"]
 

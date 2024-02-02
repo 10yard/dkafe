@@ -57,6 +57,7 @@ def validate_rom():
 
 def apply_patches_and_addons():
     applied_patches_list = []
+    addons = install_addons()
 
     if is_pi():
         # Look for DK roms on the /boot partition of Pi when not found in the roms folder
@@ -94,7 +95,6 @@ def apply_patches_and_addons():
                         with open(os.path.join(subfolder, f"{romfile}.zip"), 'w+b') as f_out:
                             f_out.write(patch.apply(dkong_binary))
                             applied_patches_list.append(name)
-    addons = install_addons()
     return applied_patches_list, addons
 
 
