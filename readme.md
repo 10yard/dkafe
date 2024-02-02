@@ -644,6 +644,9 @@ https://www.c64.com/games/2464
 Hammer Time Remix by Mitchel Gatzke.  This track is included in the default playlist folder.
 https://www.youtube.com/watch?v=crhTHJGgFag
 
+Donkey Kong NES Medley by Chiptunema
+https://www.youtube.com/watch?v=TnNTVwKzs0o
+
 
 ![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
 

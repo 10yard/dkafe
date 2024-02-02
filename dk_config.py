@@ -425,27 +425,29 @@ play the arcades.
 Jumpman must play well to
 win prizes and unlock arcade
 machines as he works his way 
-to the top of the building 
-to rescue Pauline.  
+through 3 challenging stages
+and rescues Pauline from the
+top of the building.  
 
 Pauline will ♥ it when you
 beat all of the machines.
-
 """
 
 MORE_INSTRUCTION = """
-
 If you are not up for the 
-challenge then it is 
+challenge then it is
 possible to adjust things 
 and have all machines 
 unlocked and set to free 
 play. 
 
+Helpful hints:
 
-Helpful hints
-~~~~~~~~~~~~~
-       
+• Pauline shouts out game
+  information, score targets
+  and unlock requirements as 
+  you walk towards a machine.         
+
 • Navigate between stages by
   climbing an exit ladder or
   by warping down an oilcan.
@@ -453,14 +455,12 @@ Helpful hints
 • Use hammers to teleport
   over short distances. 
 
-• Use the practice modes to
-  get better at each stage.  
-  Maybe you can reach the 
-  infamous Donkey Kong 
+• Use practice modes to get 
+  better at each stage.  
+  Can you reach the infamous 
   killscreen at level 22-1.
 
 Good luck!
-
 """
 
 CONTROLS = """
@@ -494,7 +494,6 @@ Exit   - Exit DKAFE
 """
 
 THANKS_TO = """
-
 Thanks to all these folks!
 
 Donkey Kong rom hacks: 
@@ -522,6 +521,7 @@ Playlist music:
    Buckner & Garcia
    Sascha Zeidler
    Mitchel Gatzke
+   Chiptunema
 """
 
 # Sound setup

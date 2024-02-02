@@ -26,6 +26,7 @@ function addon.startplugin()
 				mac =  manager:machine()
 			end			
 			scr = mac.screens[':screen']
+			
 			show_hud = os.getenv("DKAFE_SHELL_HUD")
 			score1 = os.getenv("DKAFE_SHELL_SCORE1")
 			score2 = os.getenv("DKAFE_SHELL_SCORE2")
@@ -37,7 +38,8 @@ function addon.startplugin()
 	
 	function addon_main()
 		if mac ~= nil then
-			if show_hud ~= "0" and score1 and score2 and score3 and scr:frame_number() < 240 then
+						
+			if (show_hud ~= "0" and score1 and score2 and score3 and scr:frame_number() < 300) or mac.paused then
 				_len = string.len(score1)
 				_spaces = string.sub("          ", 1, _len)
 				_x = scr.width - ((14 + _len) * 5) - 5
@@ -48,17 +50,19 @@ function addon.startplugin()
 				scr:draw_text(_x, 21, "              ".._spaces, col0, col2)
 				scr:draw_text(_x, 28, "              ".._spaces, col0, col2)
 
+				scr:draw_text(_x + 5, 12, '       '.._spaces..'     ', col0, col1)
+				scr:draw_text(_x + 5, 19, '       '.._spaces..'     ', col0, col1)
+				scr:draw_text(_x + 5, 26, '       '.._spaces..'     ', col0, col1)
+
 				scr:draw_text(_x + 5, 12, '1ST AT '..score1..' MINS', col0, col1)
 				scr:draw_text(_x + 5, 19, '2ND AT '..score2..' MINS', col0, col1)
 				scr:draw_text(_x + 5, 26, '3RD AT '..score3..' MINS', col0, col1)
 
-				scr:draw_text(_x, 2,  " PRIZE TARGETS".._spaces, col0, col2)
+				scr:draw_text(_x, 2,  " DKAFE PRIZES:".._spaces, col0, col2)
 				scr:draw_text(_x, 32, "              ".._spaces, col0, col2)
 			end
 		end
 	end
-	
-
 		
 	emu.register_start(function()
 		addon_initialize()
