@@ -494,7 +494,7 @@ Exit   - Exit DKAFE
 """
 
 THANKS_TO = """
-Thanks to all these folks!
+Thanks to these folks!
 
 Donkey Kong rom hacks: 
    Paul Goes
