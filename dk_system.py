@@ -182,11 +182,6 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
             os.environ["DKAFE_SHELL_SYSTEM"] = _system
             os.environ["DKAFE_SHELL_NAME"] = name
-            # Target scores for addon plugin
-            os.environ["DKAFE_SHELL_SCORE1"] = str(score1)
-            os.environ["DKAFE_SHELL_SCORE2"] = str(score2)
-            os.environ["DKAFE_SHELL_SCORE3"] = str(score3)
-            os.environ["DKAFE_SHELL_HUD"] = str(int((SHOW_HUD and SHOW_AWARD_TARGETS and not BASIC_MODE)))
             launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", ".sh")[is_pi()])
             if not os.path.exists(launch_command):
                 if _system in RECOGNISED_CONSOLES:
