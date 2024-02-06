@@ -58,7 +58,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional add-on pack includes over 80 Donkey Kong ports and hacks classic console systems (A2600, A5200, A7800, NES and Colecovision). 
+ - An optional add-on pack featuring Donkey Kong ports and hacks for classic home consoles (Atari 2600|5200|7800, NES and Colecovision). 
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -128,6 +128,7 @@ Credit is given to the original authors below.
  - Donkey Kong Trainer
  - Donkey Kong Pace
  - Donkey Kong Rainbow
+ - Crazy Kong Part II 2023 Revision
 
 ### By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
  - Donkey Kong 2 Jumpman Returns
@@ -521,7 +522,7 @@ When music is playing you can skip to the next track by pressing the CONTROL_SKI
 
 A default `romlist.csv` is provided for use with the automatically generated roms (see above).
 
-The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.  
+The file can be configured to launch roms from the default rom directory (by leaving subfolder blank) or from a specified subfolder.
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
 If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See `ALLOW_ROM_OVERWRITE` option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. `/roms/original`) to prevent it from being overwritten.
 
@@ -534,6 +535,32 @@ If there are multiple entries for the same slot number then the first valid entr
 The special subfolder name `shell` can be used when you want to launch a batch file or shell script.  Create a .bat or .sh file inside the `/shell` subfolder.  The emulator number can be left blank.
 
 An accompanying icon in .png format should be placed into the `artwork/icons` folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.
+
+
+## Console Add-on Pack
+
+An optional add-on pack includes over 80 Donkey Kong ports and hacks for the following classic home consoles:
+
+ - Atari 2600
+ - Atari 5200
+ - Atari 7800
+ - CBS Colecovision
+ - Nintendo Entertainment System
+
+The add-on games are all made available of the pies stage.
+When playing the games in unlock mode,  you must play for an amount of time to win coins e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
+
+
+![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/console_addon.png)
+
+
+### Add-on Pack Installation
+
+Simple drop the ZIP file into your DKAFE folder and launch DKAFE.  The system will detect the ZIP and automatically install the console add-on pack for you.
+
+The latest ZIP file is **dkafe_console_addon_pack_v0.1.zip**
+
+Note: The add-on pack is not currently available for download from my github page.  You will need to obtain the latest the add-on pack from an external source.
 
 
 
@@ -593,7 +620,6 @@ I would love to get to the infamous killscreen on level 22.  My current PB is 51
 
 ## What's next?
 
- - I'm curently adding support for console versions of DK and hacks (Atari 2600, Atari 5200, Atari 7800, Colecovision and NES).
  - Add a test screen for the player controls and a welcome screen to set the initial frontend preferences.
  - Create an alternative frontend for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
  

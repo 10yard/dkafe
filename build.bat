@@ -75,4 +75,4 @@ copy roms\dkongjr.zip dist\console_addon\roms\ /Y
 copy roms\dkong3.zip dist\console_addon\roms\ /Y
 
 del releases\add-ons\dkafe_console_addon_windows_%version%.zip
-%zip_path% a releases\add-ons\dkafe_console_addon_windows_%version%.zip .\dist\console_addon\*
+%zip_path% a releases\add-ons\dkafe_console_addon_pack_v1.zip .\dist\console_addon\*

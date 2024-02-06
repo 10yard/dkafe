@@ -259,7 +259,7 @@ def check_for_input(force_exit=False):
                 open_menu(_g.menu)
             if event.key == CONTROL_COIN:
                 if _g.ready:
-                    globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
+                    # globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
                     set_gametext(None, SHOW_GAMETEXT, external=True)  # Fix pygamemenu issue
                 else:
                     _g.showinfo = not _g.showinfo
@@ -399,7 +399,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     if not unlocked and since_last_move() % 4 > 2:
                         p_des = f"Unlock at {unlock}"
                     elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
-                        _mins = " minutes" if sub == "shell" else ""
+                        _mins = " mins" if sub == "shell" else ""
                         if since_last_move() % 5 > 4:
                             p_des = f'1st prize at {format_K(st1, st3)}' + _mins
                         elif since_last_move() % 5 > 3:
@@ -1072,38 +1072,52 @@ def process_interrupts():
     _g.coins = [i for i in _g.coins if -10 < i[0] < 234]
 
     if _g.ready:
+        icons = display_icons(detect_only=True)
+        if icons:
+            sub, name, _, _, _, st3, st2, st1 = icons
+
         # Pauline announces the launch options
-        if since_last_move() % 4 <= 2:
-            write_text("Push JUMP to play or..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-            write_text("JUMP", x=128 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
+        if SHOW_GAMETEXT:
+            # Gametext already informs about JUMP and P1 Start buttons,  so announce the score targets instead.
+            p_des = ""
+            _mins = " mins" if sub == "shell" else ""
+            if since_last_move() % 4 > 3:
+                p_des = f'1st prize at {format_K(st1, st3)}' + _mins
+            elif since_last_move() % 4 > 2:
+                p_des = f'2nd prize at {format_K(st2, st3)}' + _mins
+            elif since_last_move() % 4 > 1:
+                p_des = f'3rd prize at {format_K(st3, st3)}' + _mins
+            if p_des:
+                write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         else:
-            write_text("P1 START for options", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-            write_text("P1 START", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
+            if since_last_move() % 4 <= 2:
+                write_text("Push JUMP to play or..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                write_text("JUMP", x=128 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
+            else:
+                write_text("P1 START for options", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                write_text("P1 START", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
 
         # Display game text
         if SHOW_GAMETEXT:
-            icons = display_icons(detect_only=True)
-            if icons:
-                sub, name, *_ = icons
-                selected = sub if sub and sub != "shell" else name
-                for rom, text_lines in _g.gametext:
-                    if rom == selected and text_lines:
-                        # Text appears above or below Jumpman based on his Y position
-                        text_y = _g.ypos - (len(text_lines)+5) * 6 if _g.ypos >= 138 else _g.ypos + 30
-                        # Clear a space for text and draw borders
-                        pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 224, len(text_lines)*6+8))
-                        pygame.draw.rect(_g.screen, MIDGREY, (0, text_y - 5, 224, 14))
-                        pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
-                        pygame.draw.rect(_g.screen, MIDGREY, (0, text_y+len(text_lines)*6+2, 224, 14))
-                        # Display the game text
-                        info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
-                        for i, line in enumerate(text_lines + TEXT_INFO[info_index]):
-                            text = line.strip()
-                            if i == 0:
-                                # Center align the title
-                                text = " "*int((55 - len(text.strip())) / 2) + text
-                            write_text(text[:55], x=4, y=text_y+(i*6))
-                        break
+            selected = sub if sub and sub != "shell" else name
+            for rom, text_lines in _g.gametext:
+                if rom == selected and text_lines:
+                    # Text appears above or below Jumpman based on his Y position
+                    text_y = _g.ypos - (len(text_lines)+5) * 6 if _g.ypos >= 138 else _g.ypos + 30
+                    # Clear a space for text and draw borders
+                    pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 224, len(text_lines)*6+8))
+                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y - 5, 224, 14))
+                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
+                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y+len(text_lines)*6+2, 224, 14))
+                    # Display the game text
+                    # info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
+                    for i, line in enumerate(text_lines + TEXT_INFO):
+                        text = line.strip()
+                        if i == 0:
+                            # Center align the title
+                            text = " "*int((55 - len(text.strip())) / 2) + text
+                        write_text(text[:55], x=4, y=text_y+(i*6))
+                    break
 
     if _g.lastwarp > 0 and ticks - _g.lastwarp < 1000:
         # After warping, Jumpman appears from inside the oilcan

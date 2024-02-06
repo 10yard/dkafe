@@ -1,0 +1,15 @@
+Crazy Kong Part II 2023 Revision
+
+This is an updated version of Crazy Kong Part II.  
+It plays exactly the same as before but this version
+fixes all kinds of graphical bugs and glitches from 
+the game, re-introduces many of the animations that
+Crazy Kong is missing from Donkey Kong and even adds
+hammer music.
+
+But the gameplay is the same, including all the tricks
+that you can do in Crazy Kong like the floor skip, 
+hammer drop and avoiding barrels when you're at the 
+top of the ladders.
+
+Crazy Kong hack by Sock Master
