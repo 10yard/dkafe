@@ -75,4 +75,4 @@ Pi4 build specifics:
 	NO_X11=1
 	ARCHOPTS = -mcpu=cortex-a72 -mtune=cortex-a72 -mfpu=neon-vfpv4 -mfloat-abi=hard -funsafe-math-optimizations -fexpensive-optimizations -fprefetch-loop-arrays
 	
-  make LDFLAGS="-Wl,--copy-dt-needed-entries"
+  make -j4 LDFLAGS="-Wl,--copy-dt-needed-entries"

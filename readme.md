@@ -544,11 +544,12 @@ An optional add-on pack includes over 80 Donkey Kong ports and hacks for the fol
  - Atari 2600
  - Atari 5200
  - Atari 7800
+ - Atari 800XL (Computer)
  - CBS Colecovision
  - Nintendo Entertainment System
 
-The add-on games are all made available of the pies stage.
-When playing the games in unlock mode,  you must play for an amount of time to win coins e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
+The add-on games are made available on the pies stage.
+When unlock mode is active,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/console_addon.png)
@@ -556,11 +557,11 @@ When playing the games in unlock mode,  you must play for an amount of time to w
 
 ### Add-on Pack Installation
 
-Simple drop the ZIP file into your DKAFE folder and launch DKAFE.  The system will detect the ZIP and automatically install the console add-on pack for you.
+The latest ZIP file is **dkafe_console_addon_pack_v1.zip**
 
-The latest ZIP file is **dkafe_console_addon_pack_v0.1.zip**
+Simply drop the ZIP file into your DKAFE folder and then launch DKAFE.  The system will detect the ZIP and automatically install the add-on pack for you.
 
-Note: The add-on pack is not currently available for download from my github page.  You will need to obtain the latest the add-on pack from an external source.
+Note: The console add-on pack is not currently available for download from my github page.  You will need to obtain the latest the add-on packs from an external source.
 
 
 

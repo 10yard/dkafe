@@ -9,6 +9,6 @@ Released in 1989 along with Donkey Kong, the Atari
 Nintendo NES version and plays just like it, except 
 that its sound is rather weak compared to the NES.
 
-It features three levels, omitting the ‘Spark’ level.
+It features three levels, omitting the 'Spark' level.
 
 Developed By KevinMos3
