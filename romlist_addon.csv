@@ -6,9 +6,9 @@ nes_dk_boosette,shell,Boo,NES: DK Boosette,85,,,113000,2,4,8
 nes_dk_3,shell,DK3,NES: DK 3,86,,,114000,2,4,8
 nes_dk_redux,shell,Redux,NES: DK Redux,87,,,115000,2,4,8
 nes_dk_junior,shell,JR,NES: DK Junior,88,,,116000,2,4,8
-nes_dk_arcade,shell,Arcade,NES: DK Arcade Accurate,89,,,117000,2,4,8
+nes_dk_arcade_ror,shell,Arcade,NES: DK Arcade Accurate,89,,,117000,2,4,8
 nes_dk_bowsette_jr,shell,BowsJR,NES: DK Bowsette Jr.,91,,,118000,2,4,8
-a2600_dk,shell,VCSDK,2600: DK Original,92,,,119000,1,2,5
+a2600_dk,shell,2600DK,2600: DK Original,92,,,119000,1,2,5
 a2600_dk_2,shell,DK 2,2600: DK2 Lost Levels,93,,,120000,2,4,8
 a2600_dk_ghouls,shell,Ghouls!,2600: DK Ghouls n Ghosts,94,,,121000,2,4,8
 a2600_dk_popeye2,shell,Popeye,2600: Popeye 2 (Seahag),95,,,122000,2,4,8
@@ -36,10 +36,10 @@ a5200_dk_encore,shell,5200DK,5200: DK Encore Hack,117,,,143000,1,2,5
 a5200_ck_hack,shell,CK,5200: Crazy Kong,118,,,144000,2,4,8
 a7800_dk,shell,7800DK,7800: DK Original,119,,,145000,1,2,5
 a7800_dk_remix,shell,DKRemix,7800: DK Remix,120,,,146000,2,4,8
-a7800_dk_xm,shell,XM,7800: DK Expansion Module,122,,,147000,2,4,8
-a7800_dk_killscreen,shell,22-1,7800: DK 22-1 Killscreen,123,,,148000,2,4,8
-a7800_dk_jr_gfx,shell,JR,7800: DK Jr. Gfx Hack,124,,,149000,2,4,8
-nes_dk_pauline,shell,NESDKPauline,NES: DK Pauline Edition,125,,,150000,2,4,8
+a7800_dk_killscreen,shell,L22,7800: DK L22-1 Killscreen,122,,,147000,2,4,8
+a7800_dk_xm,shell,XM,7800: DK Expansion Module,123,,,148000,2,4,8
+a800xl_dk,shell,800DK,A800: DK Original,124,,,149000,1,2,4
+gbcolor_dk_japan_us,shell,GBDK '94,GBC: DK '94,125,,,150000,1,2,4
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,110000,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,110000,2,4,8
 a2600_dk,shell,VCSDK,2600: DK Original,9999,,,0,1,2,4
@@ -64,19 +64,30 @@ a2600_dk_si_hack,shell,SI Hack,2600: DK Space Invaders,9999,,,110000,2,4,8
 a2600_dk_take2,shell,DK Take2,2600: DK Take 2,9999,,,110000,2,4,8
 a2600_dk_vector,shell,Vector Colour,2600: DK Vector Colour,9999,,,110000,2,4,8
 a2600_dk_vector_grn,shell,Vector Green,2600: DK Vector Green,9999,,,110000,2,4,8
+a5200_dk_encore,shell,5200DK,5200: DK Encore (Hack),9999,,,0,1,2,4
 a7800_dk,shell,7800DK,7800: DK Original,9999,,,0,1,2,4
+a7800_dk_jr_gfx,shell,JR,7800: DK Jr. Gfx Hack,9999,,,110000,2,4,8
 a7800_dk_junior,shell,JR,7800: DK Junior,9999,,,110000,2,4,8
 a7800_dk_pokey,shell,Pokey Kong,7800: Pokey Kong Hack,9999,,,110000,2,4,8
 a800xl_dk,shell,DK,A800: DK Original,9999,,,0,1,2,4
 a800xl_dk_junior,shell,DK Junior,A800: DK Junior,9999,,,110000,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
 coleco_miner2049er,shell,Miner49er,CVS: Miner 2049er,9999,,,110000,2,4,8
+fds_dk_japan,shell,DK,FDS: DK Original,9999,,,0,1,2,4
+fds_dk_jr_japan,shell,DK Junior,FDS: DK Junior,9999,,,110000,2,4,8
+gameboy_dk_4stage,shell,DK 4 Levels,GB : DK 4 Level Hack,9999,,,110000,2,4,8
+gameboy_dk_japan_us,shell,DK,GB : DK Original,9999,,,0,1,2,4
+gameboy_dk_summer,shell,DK Summer,GB : DK Summer Hack,9999,,,110000,2,4,8
+gbcolor_dk_4stage,shell,DK 4 Levels,GBC: DK 4 Level Hack,9999,,,110000,2,4,8
+gbcolor_dk_japan_us,shell,DK,GBC: DK Original,9999,,,0,1,2,4
+gbcolor_dk_summer,shell,DK Summer,GBC: DK Summer Hack,9999,,,110000,2,4,8
 nes_dk,shell,NESDK,NES: DK Original,9999,,,0,1,2,4
 nes_dk_arrietty,shell,DK Arietty,NES: DK Arrietty World,9999,,,110000,2,4,8
 nes_dk_bowsette,shell,Bow,NES: DK Bowsette,9999,,,110000,2,4,8
+nes_dk_godmode,shell,GodMode,NES: DK God Mode,9999,,,110000,2,4,8
 nes_dk_japan,shell,DK Japan,NES: DK Japan,9999,,,110000,2,4,8
 nes_dk_luigi,shell,DK Luigi,NES: DK Luigi Edition,9999,,,110000,2,4,8
+nes_dk_pauline,shell,NESDKPauline,NES: DK Pauline Edition,9999,,,110000,2,4,8
 nes_dk_qbert,shell,Q-Bert Kong,NES: Q-Bert Kong,9999,,,110000,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs DK,9999,,,110000,2,4,8
 nes_dk_wilford,shell,WilfordKong,NES: Wilford Kong,9999,,,110000,2,4,8
-a5200_dk_encore,shell,5200DK,5200: DK Encore (Hack),9999,,,0,1,2,4

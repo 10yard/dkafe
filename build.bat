@@ -42,6 +42,9 @@ xcopy dkwolf\cfg\nes.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\coleco.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\a7800.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\a800xl.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
@@ -66,8 +69,12 @@ echo ---------------------------------------------------------------------------
 xcopy roms\a2600 dist\console_addon\roms\a2600 /S /i /Y
 xcopy roms\a5200 dist\console_addon\roms\a5200 /S /i /Y
 xcopy roms\a7800 dist\console_addon\roms\a7800 /S /i /Y
-xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
+xcopy roms\a800xl dist\console_addon\roms\a800xl /S /i /Y
 xcopy roms\coleco dist\console_addon\roms\coleco /S /i /Y
+xcopy roms\fds dist\console_addon\roms\fds /S /i /Y
+xcopy roms\gameboy dist\console_addon\roms\gameboy /S /i /Y
+xcopy roms\gbcolor dist\console_addon\roms\gbcolor /S /i /Y
+xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip

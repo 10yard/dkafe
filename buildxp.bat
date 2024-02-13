@@ -58,6 +58,15 @@ xcopy dkwolf\plugins dist\launchxp\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
 rmdir dist\launchxp\dkwolf\inp /s /Q
 
+echo **** adjust controller defaults for some consoles
+xcopy dkwolf\cfg\nes.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\coleco.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\a7800.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\a800xl.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
+
 echo **** Use an alternative wav/mp3 player on XP
 copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
 copy dkwolf\plugins\allenkong\binxp\mp3play*.exe dist\launchxp\dkwolf\plugins\allenkong\bin /Y

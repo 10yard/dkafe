@@ -21,7 +21,7 @@ require "globals"
 local start_time = os.time()
 local time_played
 local col0 = 0xffffffff
-local col1 = 0xff000060
+local col1 = 0xff0000ff
 local col2 = 0xff0000a0
 local bronze = 0xffcd7f32
 local silver = 0xffc0c0c0
@@ -44,25 +44,17 @@ function shell_main()
 			-- Draw time targets at startup
 			if (data_score1 and data_score2 and data_score3 and time_played <= 6) or mac.paused then
 				_len = string.len(tostring(data_score1))
-				_spaces = string.sub("          ", 1, _len)
-				_x = screen.width - ((14 + _len) * 5) - 5
+				_wid = (14 + _len) * 5
+				_x = screen.width - _wid
 				
-				-- Draw a box
-				for i=0, 5 do
-					screen:draw_text(_x, i * 7,  "              ".._spaces, col0, col2)
-				end
-				screen:draw_text(_x + 5, 12, '       '.._spaces..'     ', col0, col1)
-				screen:draw_text(_x + 5, 19, '       '.._spaces..'     ', col0, col1)
-				screen:draw_text(_x + 5, 26, '       '.._spaces..'     ', col0, col1)
+				-- Draw surrounding box
+				screen:draw_box(_x, 0, _x + _wid, 39, col1, col2)
 
 				-- Draw score targets
-				screen:draw_text(_x + 5, 12, '1ST AT '..tostring(data_score1)..' MINS', gold, col1)
-				screen:draw_text(_x + 5, 19, '2ND AT '..tostring(data_score2)..' MINS', silver, col1)
-				screen:draw_text(_x + 5, 26, '3RD AT '..tostring(data_score3)..' MINS', bronze, col1)
-
-				-- draw heading
-				screen:draw_text(_x, 2,  " DKAFE PRIZES:".._spaces, col0, col2)
-				screen:draw_text(_x, 32, "              ".._spaces, col0, col2)
+				screen:draw_text(_x + 5, 6,  "DKAFE PRIZES:", col0)
+				screen:draw_text(_x + 5, 13, '1ST AT '..tostring(data_score1)..' MINS', gold)
+				screen:draw_text(_x + 5, 20, '2ND AT '..tostring(data_score2)..' MINS', silver)
+				screen:draw_text(_x + 5, 27, '3RD AT '..tostring(data_score3)..' MINS', bronze)
 			end
 		end
 	end

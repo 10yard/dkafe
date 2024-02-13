@@ -182,6 +182,8 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
             os.environ["DKAFE_SHELL_SYSTEM"] = _system
             os.environ["DKAFE_SHELL_NAME"] = name
+            os.environ["DKAFE_SHELL_MEDIA"] = "-flop1" if _system == "fds" else "-cart"
+            os.environ["DKAFE_SHELL_ROR"] = "-ror" if "_ror" in name else ""
             launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", ".sh")[is_pi()])
             if not os.path.exists(launch_command):
                 if _system in RECOGNISED_CONSOLES:

@@ -24,7 +24,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
             script = "dkong.lua"
         elif rom in ("ckong", "ckongpt2", "ckongpt2b", "bigkong", "bigkonggx", "ckongs", "ckongg", "ckongmc", "ckongdks"):
             script = "ckong.lua"
-        elif subfolder == "shell":
+        elif subfolder == "shell" and not "_ror" in rom:
             script = "shell.lua"
 
     if script and score3:
