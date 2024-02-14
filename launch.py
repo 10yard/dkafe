@@ -558,6 +558,7 @@ def build_menus(initial=False):
     _g.menu.add_vertical_margin(5)
 
     _romlist = _s.read_romlist()
+    _lastname = ""
 
     if not os.path.exists("romlist_addon.csv"):
         globals()["ENABLE_ADDONS"] = 0
@@ -568,9 +569,12 @@ def build_menus(initial=False):
         _add = sub == "shell" and name.split("_")[0] in RECOGNISED_CONSOLES
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
-               _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
+                if not(sub == "shell" and name == _lastname):
+                    # Don't show duplicates in the gamelist
+                    _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
+        _lastname = name
     _g.menu.add_vertical_margin(10)
     _g.menu.add_button('Settings', open_settings_menu)
     _g.menu.add_button('Close Menu', close_menu)

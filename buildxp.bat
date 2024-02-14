@@ -66,6 +66,7 @@ xcopy dkwolf\cfg\a800xl.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
 
 echo **** Use an alternative wav/mp3 player on XP
 copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y

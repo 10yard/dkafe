@@ -148,7 +148,7 @@ if START_STAGE > 2: START_STAGE = 0
 
 # Addon Specific
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
-RECOGNISED_CONSOLES = ["nes", "coleco", "fds", "gameboy", "gbcolor", "a2600", "a5200", "a7800", "a800xl"]
+RECOGNISED_CONSOLES = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl"]
 
 # Frontend version
 VERSION = ''

@@ -27,9 +27,18 @@ local bronze = 0xffcd7f32
 local silver = 0xffc0c0c0
 local gold = 0xffd4af37
 
+-- scale adjustment for system
+local scale = 0
+if emu.romname() == "gbcolor" then
+	scale = -1.5
+elseif emu.romname() == "nes" then
+	scale = 0.5
+end
+
 function shell_main()
 	if mac ~= nil then
 		time_played = os.time() - start_time
+							
 					
 		if data_show_hud ~= 0 then
 			-- Show prize award top-right when time target achieved
@@ -44,17 +53,17 @@ function shell_main()
 			-- Draw time targets at startup
 			if (data_score1 and data_score2 and data_score3 and time_played <= 6) or mac.paused then
 				_len = string.len(tostring(data_score1))
-				_wid = (14 + _len) * 5
+				_wid = (14 + _len) * (5 + scale)
 				_x = screen.width - _wid
 				
 				-- Draw surrounding box
-				screen:draw_box(_x, 0, _x + _wid, 39, col1, col2)
+				screen:draw_box(_x, 0, _x + _wid, 39 + (scale * 3), col1, col2)
 
 				-- Draw score targets
-				screen:draw_text(_x + 5, 6,  "DKAFE PRIZES:", col0)
-				screen:draw_text(_x + 5, 13, '1ST AT '..tostring(data_score1)..' MINS', gold)
-				screen:draw_text(_x + 5, 20, '2ND AT '..tostring(data_score2)..' MINS', silver)
-				screen:draw_text(_x + 5, 27, '3RD AT '..tostring(data_score3)..' MINS', bronze)
+				screen:draw_text(_x + 5, 6 + scale,  "DKAFE PRIZES:", col0)
+				screen:draw_text(_x + 5, 13 + scale, '1ST AT '..tostring(data_score1)..' MINS', gold)
+				screen:draw_text(_x + 5, 20 + scale, '2ND AT '..tostring(data_score2)..' MINS', silver)
+				screen:draw_text(_x + 5, 27 + scale, '3RD AT '..tostring(data_score3)..' MINS', bronze)
 			end
 		end
 	end

@@ -1,0 +1,16 @@
+Intellivision - Donkey Kong
+
+The Intellivision version of Donkey Kong is probably
+the worst conversion ever.
+
+When the programmers at Mattel Electronics saw the 
+Intellivision version of DK, they were shocked at how
+bad it was. They actually suspected a conspiracy: that 
+Coleco released an awful version for Intellivision so 
+that the ColecoVision version would look that much 
+better.
+
+More likely it was the result of a rushed schedule and
+having no experienced Intellivision programmers on staff.
+
+Developed By CBS Coleco

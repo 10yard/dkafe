@@ -58,7 +58,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional add-on pack featuring Donkey Kong ports and hacks for classic home consoles (Atari 2600, Colecovision, NES, Gameboy and more). 
+ - An optional add-on pack featuring Donkey Kong ports and hacks for classic home consoles (Atari VCS, Colecovision, NES, Intellivision, Gameboy and more). 
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -539,17 +539,15 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 
 ## Console Add-on Pack
 
-An optional add-on pack includes over 100 Donkey Kong ports and hacks for the following classic home consoles and computers:
+An optional add-on pack includes over 90 Donkey Kong ports and hacks for the following classic home consoles and computers:
 
- - Atari 2600
- - Atari 5200
- - Atari 7800
+ - Atari 2600|5200|7800
  - Atari 800XL Computer
  - Nintendo Entertainment System
- - Nintendo Gameboy
- - Nintendo Gameboy Color
+ - Nintendo Gameboy|Gameboy Color
  - Famicom Disk System
- - CBS Colecovision
+ - Colecovision
+ - Intellivision
 
 The console games will appear on the pies stage.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.

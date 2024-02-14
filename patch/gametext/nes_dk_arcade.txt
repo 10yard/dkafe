@@ -1,6 +1,0 @@
-NES Console - Arcade Accurate Donkey Kong
-
-An arcade accurate port of Donkey Kong to the NES.
-The game is played on the NES with a rotated monitor.
-
-Hack Developed by Sumez

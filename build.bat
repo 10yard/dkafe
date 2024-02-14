@@ -45,6 +45,7 @@ xcopy dkwolf\cfg\a800xl.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
@@ -75,6 +76,7 @@ xcopy roms\fds dist\console_addon\roms\fds /S /i /Y
 xcopy roms\gameboy dist\console_addon\roms\gameboy /S /i /Y
 xcopy roms\gbcolor dist\console_addon\roms\gbcolor /S /i /Y
 xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
+xcopy roms\intv dist\console_addon\roms\intv /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip

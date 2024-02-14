@@ -57,6 +57,7 @@ xcopy dkwolf\cfg\a800xl.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe

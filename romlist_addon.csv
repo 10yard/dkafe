@@ -28,7 +28,7 @@ nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),108,,,135000,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,109,,,136000,1,2,5
 coleco_dk_junior,shell,DKJR,CVS: DK Jr.,111,,,137000,2,4,8
 coleco_super_dk,shell,SuperDK,CVS: Super DK! (Proto),112,,,138000,2,4,8
-coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),113,,,139000,2,4,8
+intv_dk,shell,INTVDK,INT: DK Original,113,,,139000,1,2,4
 nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),114,,,140000,2,4,8
 nes_dk_zelda11,shell,ZK11,NES: Zelda11 (Grandma),115,,,141000,2,4,8
 nes_dk_zelda12,shell,ZK12,NES: Zelda12 (Tarin),116,,,142000,2,4,8
@@ -53,6 +53,7 @@ a2600_dk_ginger,shell,DK Gingerbread,2600: DK Gingerbread Man,9999,,,110000,2,4,
 a2600_dk_gorillakong,shell,Gorilla Kong,2600: Gorilla Kong Hack,9999,,,110000,2,4,8
 a2600_dk_homestar,shell,DK Homestar,2600: DK Homestar Runner,9999,,,110000,2,4,8
 a2600_dk_invisible,shell,DK Invisible,2600: DK Invisible,9999,,,110000,2,4,8
+a2600_dk_jr_less_ugly,shell,JR Less Ugly,2600: DK Junior Less Ugly,9999,,,110000,2,4,8
 a2600_dk_junior,shell,DK JR,2600: DK Junior,9999,,,110000,2,4,8
 a2600_dk_lowgravity,shell,DK Low Gravity,2600: DK Low Gravity,9999,,,110000,2,4,8
 a2600_dk_popeye,shell,PopKong,2600: PopKong,9999,,,110000,2,4,8
@@ -64,6 +65,7 @@ a2600_dk_si_hack,shell,SI Hack,2600: DK Space Invaders,9999,,,110000,2,4,8
 a2600_dk_take2,shell,DK Take2,2600: DK Take 2,9999,,,110000,2,4,8
 a2600_dk_vector,shell,Vector Colour,2600: DK Vector Colour,9999,,,110000,2,4,8
 a2600_dk_vector_grn,shell,Vector Green,2600: DK Vector Green,9999,,,110000,2,4,8
+a2600_dk_zartog,shell,DK Zartog,2600: DK Zartog,9999,,,110000,2,4,8
 a5200_dk_encore,shell,5200DK,5200: DK Encore (Hack),9999,,,0,1,2,4
 a7800_dk,shell,7800DK,7800: DK Original,9999,,,0,1,2,4
 a7800_dk_jr_gfx,shell,JR,7800: DK Jr. Gfx Hack,9999,,,110000,2,4,8
@@ -73,6 +75,7 @@ a800xl_dk,shell,DK,A800: DK Original,9999,,,0,1,2,4
 a800xl_dk_junior,shell,DK Junior,A800: DK Junior,9999,,,110000,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
 coleco_miner2049er,shell,Miner49er,CVS: Miner 2049er,9999,,,110000,2,4,8
+coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),9999,,,110000,2,4,8
 fds_dk_japan,shell,DK,FDS: DK Original,9999,,,0,1,2,4
 fds_dk_jr_japan,shell,DK Junior,FDS: DK Junior,9999,,,110000,2,4,8
 gameboy_dk_4stage,shell,DK 4 Levels,GB : DK 4 Level Hack,9999,,,110000,2,4,8
@@ -81,6 +84,8 @@ gameboy_dk_summer,shell,DK Summer,GB : DK Summer Hack,9999,,,110000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: DK 4 Level Hack,9999,,,110000,2,4,8
 gbcolor_dk_japan_us,shell,DK,GBC: DK Original,9999,,,0,1,2,4
 gbcolor_dk_summer,shell,DK Summer,GBC: DK Summer Hack,9999,,,110000,2,4,8
+intv_dk,shell,DK,INT: DK Original,9999,,,0,1,2,4
+intv_dk_junior,shell,DK Junior,INT: DK Junior,9999,,,110000,2,4,8
 nes_dk,shell,NESDK,NES: DK Original,9999,,,0,1,2,4
 nes_dk_arrietty,shell,DK Arietty,NES: DK Arrietty World,9999,,,110000,2,4,8
 nes_dk_bowsette,shell,Bow,NES: DK Bowsette,9999,,,110000,2,4,8
