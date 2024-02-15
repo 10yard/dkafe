@@ -29,41 +29,66 @@ local gold = 0xffd4af37
 
 -- scale adjustment for system
 local scale = 0
-if emu.romname() == "gbcolor" then
+local quick_start = 0
+local hide_targets = 0
+local y_offset = 0
+if emu.romname() == "gbcolor" or emu.romname() == "gameboy" then
 	scale = -1.5
+	quick_start = 5
+	y_offset = 10
 elseif emu.romname() == "nes" then
 	scale = 0.5
+elseif emu.romname() == "hbf900a" then
+	scale = 5
+	hide_targets = 1
+	quick_start = 14
+elseif emu.romname() == "coleco" then
+	quick_start = 5
 end
 
 function shell_main()
 	if mac ~= nil then
 		time_played = os.time() - start_time
 							
-					
-		if data_show_hud ~= 0 then
-			-- Show prize award top-right when time target achieved
-			if data_score1 > 0 and time_played > (data_score1 * 60) then
-				screen:draw_text(_x, 0,  " 1ST WON "..tostring(data_scpre1_award.." "), gold, col2)
-			elseif data_score2 > 0 and time_played > (data_score2) * 60 then
-				screen:draw_text(_x, 0,  " 2ND WON "..tostring(data_score2_award.." "), silver, col2)
-			elseif data_score3 > 0 and time_played > (data_score3) * 60 then
-				screen:draw_text(_x, 0,  " 3RD WON "..tostring(data_score3_award.." "), bronze, col2)
+		if quick_start > 0 then
+			-- Speed up the inital loading of MSX and Colecovision
+			if time_played < quick_start then
+				max_frameskip(true)
+			else	
+				max_frameskip(false)
+				quick_start = 0
 			end
-			
+		end	
+		
+		
+		if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then			
 			-- Draw time targets at startup
-			if (data_score1 and data_score2 and data_score3 and time_played <= 6) or mac.paused then
+			if time_played <= 6 or mac.paused then
 				_len = string.len(tostring(data_score1))
 				_wid = (14 + _len) * (5 + scale)
 				_x = screen.width - _wid
 				
-				-- Draw surrounding box
-				screen:draw_box(_x, 0, _x + _wid, 39 + (scale * 3), col1, col2)
+				if hide_targets == 0 then
+					-- Draw surrounding box
+					screen:draw_box(_x, y_offset, _x + _wid, 39 + (scale * 3) + y_offset, col1, col2)
 
-				-- Draw score targets
-				screen:draw_text(_x + 5, 6 + scale,  "DKAFE PRIZES:", col0)
-				screen:draw_text(_x + 5, 13 + scale, '1ST AT '..tostring(data_score1)..' MINS', gold)
-				screen:draw_text(_x + 5, 20 + scale, '2ND AT '..tostring(data_score2)..' MINS', silver)
-				screen:draw_text(_x + 5, 27 + scale, '3RD AT '..tostring(data_score3)..' MINS', bronze)
+					-- Draw score targets
+					screen:draw_text(_x + 5, 6 + scale + y_offset,  "DKAFE PRIZES:", col0)
+					screen:draw_text(_x + 5, 13 + scale + y_offset, '1ST AT '..tostring(data_score1)..' MINS', gold)
+					screen:draw_text(_x + 5, 20 + scale + y_offset, '2ND AT '..tostring(data_score2)..' MINS', silver)
+					screen:draw_text(_x + 5, 27 + scale + y_offset, '3RD AT '..tostring(data_score3)..' MINS', bronze)
+				end
+			end
+
+			if not mac.paused then
+				-- Show prize award top-right when time target achieved
+				if data_score1 > 0 and time_played > (data_score1 * 60) then
+					screen:draw_text(_x, y_offset,  " 1ST WON "..tostring(data_score1_award.." "), gold, col2)
+				elseif data_score2 > 0 and time_played > (data_score2) * 60 then
+					screen:draw_text(_x, y_offset,  " 2ND WON "..tostring(data_score2_award.." "), silver, col2)
+				elseif data_score3 > 0 and time_played > (data_score3) * 60 then
+					screen:draw_text(_x, y_offset,  " 3RD WON "..tostring(data_score3_award.." "), bronze, col2)
+				end
 			end
 		end
 	end

@@ -174,7 +174,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
 
     if subfolder:
         if subfolder == "shell":
-            _system = name.split("_")[0]
+            _system = name.split("_")[0].replace("-", "_")
             # Launch a batch file or shell script from the shell subfolder
             # environmental variables can be used in the shell
             os.environ["DKAFE_SHELL_VIDEO"] = f'-video {get_system(return_video=True)} {["-window", ""][fullscreen]}'
@@ -182,8 +182,13 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
             os.environ["DKAFE_SHELL_SYSTEM"] = _system
             os.environ["DKAFE_SHELL_NAME"] = name
-            os.environ["DKAFE_SHELL_MEDIA"] = "-flop1" if _system == "fds" else "-cart"
-            os.environ["DKAFE_SHELL_ROR"] = "-ror" if "_ror" in name else ""
+            os.environ["DKAFE_SHELL_MEDIA"] = "-flop1" if _system in FLOPPY_MEDIA else "-cart"
+            os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
+            os.environ["DKAFE_SHELL_ROR"] = ""
+            if "_ror" in name:
+                os.environ["DKAFE_SHELL_ROR"] = "-ror"
+                os.environ["DKAFE_SHELL_BOOT"] = ""
+
             launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", ".sh")[is_pi()])
             if not os.path.exists(launch_command):
                 if _system in RECOGNISED_CONSOLES:

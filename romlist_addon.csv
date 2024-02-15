@@ -84,6 +84,7 @@ gameboy_dk_summer,shell,DK Summer,GB : DK Summer Hack,9999,,,110000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: DK 4 Level Hack,9999,,,110000,2,4,8
 gbcolor_dk_japan_us,shell,DK,GBC: DK Original,9999,,,0,1,2,4
 gbcolor_dk_summer,shell,DK Summer,GBC: DK Summer Hack,9999,,,110000,2,4,8
+hbf900a_dk,shell,DK,MSX: DK Original,9999,,,0,1,2,4
 intv_dk,shell,DK,INT: DK Original,9999,,,0,1,2,4
 intv_dk_junior,shell,DK Junior,INT: DK Junior,9999,,,110000,2,4,8
 nes_dk,shell,NESDK,NES: DK Original,9999,,,0,1,2,4
@@ -96,3 +97,4 @@ nes_dk_pauline,shell,NESDKPauline,NES: DK Pauline Edition,9999,,,110000,2,4,8
 nes_dk_qbert,shell,Q-Bert Kong,NES: Q-Bert Kong,9999,,,110000,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs DK,9999,,,110000,2,4,8
 nes_dk_wilford,shell,WilfordKong,NES: Wilford Kong,9999,,,110000,2,4,8
+ti99-4a_dk,shell,DK,TI : DK Original,9999,,,0,1,2,4
