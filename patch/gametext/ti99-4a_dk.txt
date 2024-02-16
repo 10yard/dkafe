@@ -1,0 +1,8 @@
+Texas Instruments TI99-4A - Donkey Kong
+
+This version contains all four of the games stages and
+represents the arcade graphics very well.
+There are no bouncing springs present on the elevator 
+stage.
+
+Developed By Atarisoft

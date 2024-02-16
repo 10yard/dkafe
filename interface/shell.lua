@@ -33,13 +33,18 @@ local start_time = os.time()
 local target_time = 6
 local scale, quick_start, hide_targets, y_offset, y_padding = 0, 0, 0, 0, 0
 if emu.romname() == "coco3" then
-	quick_start = 5200
+	if shell_name == "coco3_dk_emu" then
+		quick_start = 6500
+	else
+		quick_start = 5200
+	end	
 	scale = 5
 	y_padding = 4
+	target_time = 15
 elseif emu.romname() == "coleco" then
 	quick_start = 720
 elseif emu.romname() == "fds" then
-	quick_start = 540
+	quick_start = 600
 elseif emu.romname() == "gameboy" then
 	scale = -1.5
 	quick_start = 300
@@ -50,16 +55,14 @@ elseif emu.romname() == "gbcolor" then
 	y_offset = 10
 elseif emu.romname() == "hbf900a" then
 	scale = 5
-	quick_start = 2200
+	quick_start = 2300
 	target_time = 10
 	y_padding = 12
 elseif emu.romname() == "intv" then
-	quick_start = 60
+	quick_start = 540
 elseif emu.romname() == "nes" then
 	scale = 0.5
 end
-
-
 
 function shell_main()
 	if mac ~= nil then
@@ -69,6 +72,8 @@ function shell_main()
 		if quick_start > 0 then
 			if screen:frame_number() < quick_start then
 				max_frameskip(true)
+				local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
+				screen:draw_text(0, 6 + scale,  "DKAFE: FAST LOADING...".._remain, col0)
 			else	
 				max_frameskip(false)
 				quick_start = 0
@@ -85,11 +90,9 @@ function shell_main()
 			elseif emu.romname() == "coco3" then
 				if screen:frame_number() == 60 then
 					if shell_name == "coco3_dk_emu" then
-					--	keyb:post(keyb:post('LOADM"DK":EXEC\n'))
+						keyb:post(keyb:post('LOADM"EMULATOR":EXEC\n'))
 					elseif shell_name == "coco3_dk_remixed" then
 						keyb:post(keyb:post('LOADM"DKREMIX":EXEC\n'))
-					elseif shell_name == "coco3_donkeyking" then
-						keyb:post(keyb:post('LOADM"DONKEY":EXEC\n'))
 					end
 				end
 			end

@@ -539,7 +539,7 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 
 ## Console Add-on Pack
 
-An optional add-on pack includes over 100 Donkey Kong ports and hacks for the following classic home consoles and computers:
+An optional add-on pack includes over 100 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Atari 2600|5200|7800
  - Atari 800XL Computer
@@ -548,7 +548,7 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Famicom Disk System
  - Colecovision
  - Intellivision
- - Color Computer 3 (CoCo3) 
+ - Tandy Color Computer 3 (CoCo3) 
  - MSX
  - Texas Instruments TI99/4
 

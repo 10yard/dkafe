@@ -1,0 +1,9 @@
+MSX - Donkey Kong
+
+MSX users had to wait until 1986 to receive their port
+by Ocean of this popular game. The MSX port was, once 
+again, a slightly tuned-down version of the game where 
+some elements such as difficulty settings were not 
+included. 
+
+Developed By Ocean
