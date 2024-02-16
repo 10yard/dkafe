@@ -1079,9 +1079,11 @@ def process_interrupts():
         icons = display_icons(detect_only=True)
         if icons:
             sub, name, _, _, _, st3, st2, st1 = icons
+        else:
+            sub = ""
 
         # Pauline announces the launch options
-        if SHOW_GAMETEXT:
+        if SHOW_GAMETEXT and sub:
             # Gametext already informs about JUMP and P1 Start buttons,  so announce the score targets instead.
             p_des = ""
             _mins = " mins" if sub == "shell" else ""

@@ -1,2 +1,0 @@
-cd dkwolf
-./dkwolf %DKAFE_SHELL_SYSTEM% -rompath "%DKAFE_SHELL_ROMS%" "%DKAFE_SHELL_MEDIA%" "%DKAFE_SHELL_ROMS%\%DKAFE_SHELL_SYSTEM%\%DKAFE_SHELL_NAME%.zip" -nofilter %DKAFE_SHELL_VIDEO% -fontpath "%DKAFE_SHELL_ROOT%\fonts" -uifont "tom-thumb.bdf" %DKAFE_SHELL_ROR% -ui_active -autoboot_delay 1 -autoboot_command "1,2"

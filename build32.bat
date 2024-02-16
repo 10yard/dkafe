@@ -60,6 +60,7 @@ xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\hbf900a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe

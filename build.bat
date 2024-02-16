@@ -48,6 +48,7 @@ xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\hbf900a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
@@ -81,6 +82,7 @@ xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
 xcopy roms\intv dist\console_addon\roms\intv /S /i /Y
 xcopy roms\hbf900a dist\console_addon\roms\hbf900a /S /i /Y
 xcopy roms\ti99_4a dist\console_addon\roms\ti99_4a /S /i /Y
+xcopy roms\coco3 dist\console_addon\roms\coco3 /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip
