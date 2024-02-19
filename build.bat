@@ -83,6 +83,7 @@ xcopy roms\intv dist\console_addon\roms\intv /S /i /Y
 xcopy roms\hbf900a dist\console_addon\roms\hbf900a /S /i /Y
 xcopy roms\ti99_4a dist\console_addon\roms\ti99_4a /S /i /Y
 xcopy roms\coco3 dist\console_addon\roms\coco3 /S /i /Y
+xcopy roms\cpc6128 dist\console_addon\roms\cpc6128 /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip

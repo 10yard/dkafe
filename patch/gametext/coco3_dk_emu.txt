@@ -1,0 +1,11 @@
+Tandy Color Computer 3 - Donkey Kong Emulator
+
+You have got to see this to believe it! Undoubtedly
+the finest port of Donkey Kong ever to grace an 
+8-bitter. The CoCo3 has the absolute best port of 
+Donkey Kong done on any 8-bit system.
+
+Press the jump button once to insert a coin then
+press it again to start your game.
+
+Developed By John Kowalski (Sock Master)

@@ -71,7 +71,7 @@ function max_frameskip(switch)
 	if switch == true then
 		video.throttled = false
 		video.throttle_rate = 1000
-		video.frameskip = 8
+		video.frameskip = 11
 	else
 		video.throttled = true
 		video.throttle_rate = 1

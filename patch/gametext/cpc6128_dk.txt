@@ -1,0 +1,12 @@
+Amstrad CPC - Donkey Kong
+
+Ocean Software‘s 8-bit conversion of Donkey Kong, is 
+considered to be close to perfect on the Amstrad CPC. 
+All the screens; all the sound effects, and all the 
+challenging gameplay elements are present and correct
+in this port.
+
+The controls are a little sluggish but you can soon
+get used to them.
+
+Developed By Ocean Software

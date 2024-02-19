@@ -549,6 +549,7 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Colecovision
  - Intellivision
  - Tandy Color Computer 3 (CoCo3) 
+ - Amstrad CPC
  - MSX
  - Texas Instruments TI99/4
 

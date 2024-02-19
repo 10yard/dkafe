@@ -8,8 +8,9 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 
 DKAFE Interface routine for shell scripts.
 Simple interface is based on the time a game is played.
-1) Show targets for time when the game starts up.
-2) Show prize award when targets reached for 3rd, 2nd and 1st
+- Speed up the loading time of some disk based games
+- Show targets for time when the game starts up.
+- Show prize award when targets reached for 3rd, 2nd and 1st
 --------------------------------------------------------------
 ]]
 
@@ -24,7 +25,7 @@ if mame_version >= 0.241 then
 	keyb = mac.natkeyboard
 end
 
-local col0, col1, col2 = 0xffffffff, 0xff0000ff, 0xff0000a0
+local col0, col1, col2 = 0xffffffff, 0xffa0a0ff, 0xff0000a0
 local bronze, silver, gold = 0xffcd7f32, 0xffc0c0c0, 0xffd4af37
 local time_played
 local start_time = os.time()
@@ -38,11 +39,15 @@ if emu.romname() == "coco3" then
 	else
 		quick_start = 5200
 	end	
-	scale = 5
+	scale = 4.25
 	y_padding = 4
 	target_time = 15
 elseif emu.romname() == "coleco" then
 	quick_start = 720
+elseif emu.romname() == "cpc6128" then
+	quick_start = 1550
+	scale = 6
+	y_padding = 4
 elseif emu.romname() == "fds" then
 	quick_start = 600
 elseif emu.romname() == "gameboy" then
@@ -82,13 +87,13 @@ function shell_main()
 						
 		-- specific keys to press on boot
 		if keyb then
-			if emu.romname() == "ti99_4a" then
-				if screen:frame_number() == 60 then
+			if screen:frame_number() == 60 then
+				if emu.romname() == "ti99_4a" then
 					keyb:post_coded("{SPACE}")
 					keyb:post("2")
-				end
-			elseif emu.romname() == "coco3" then
-				if screen:frame_number() == 60 then
+				elseif emu.romname() == "cpc6128" then
+					keyb:post(keyb:post('RUN"DONKEY\n'))
+				elseif emu.romname() == "coco3" then
 					if shell_name == "coco3_dk_emu" then
 						keyb:post(keyb:post('LOADM"EMULATOR":EXEC\n'))
 					elseif shell_name == "coco3_dk_remixed" then
@@ -108,8 +113,7 @@ function shell_main()
 				
 				if hide_targets == 0 then
 					-- Draw surrounding box
-					screen:draw_box(_x, y_offset, _x + _wid, 39 + (scale * 3) + y_offset + (y_padding * 3), col1, col2)
-
+					screen:draw_box(_x, y_offset + 1, _x + _wid, 39 + (scale * 3) + y_offset + (y_padding * 3), col1, col2)
 					-- Draw score targets
 					screen:draw_text(_x + 5, 6 + scale + y_offset,  "DKAFE PRIZES:", col0)
 					screen:draw_text(_x + 5, 13 + scale + y_offset + (y_padding * 1), '1ST AT '..tostring(data_score1)..' MINS', gold)

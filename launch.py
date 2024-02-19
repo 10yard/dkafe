@@ -438,7 +438,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         # Show game info above icons.  Done as last step so that icons do not overwrite the text.
         for des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
             write_text(des, x=x, y=y - 6, fg=[BLACK, MAGENTA][unlocked], bg=[GREY, WHITE][unlocked], box=True,
-                       rj_adjust=(not (len(des) * 4) + x <= 224) * w)
+                       rj_adjust=(not (len(des) * 4) + x <= 224) * (w - 1))
     return nearby
 
 
