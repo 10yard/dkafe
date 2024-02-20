@@ -1,0 +1,17 @@
+Apple II - Donkey Kong
+
+Donkey Kong for the Apple II doesn't look like much, 
+and some quirks keep it from being a truly great port.
+However, this version is commendable for including 
+features not usually found in home Donkey Kong ports, 
+including the seldomly seen "pie factory" screen, and 
+even the in-between "How high can you get?" screens. 
+
+The graphics are decent as far as Apple II games go, 
+and the sound is typical of Apple efforts of the early
+1980's: sparse and often badly out of tune. 
+
+Still, it's unmistakeably Donkey Kong, and certainly 
+playable.
+
+Developed By Atarisoft

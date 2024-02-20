@@ -32,8 +32,16 @@ local start_time = os.time()
 
 -- Adjustments for systems
 local target_time = 6
-local scale, quick_start, hide_targets, y_offset, y_padding = 0, 0, 0, 0, 0
-if emu.romname() == "coco3" then
+local input_frame = 60
+local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
+
+if emu.romname() == "apple2e" then
+	quick_start = 600
+	scale = 3
+	y_padding = 1
+	input_frame = 500
+	x_offset = -110
+elseif emu.romname() == "coco3" then
 	if shell_name == "coco3_dk_emu" then
 		quick_start = 6500
 	else
@@ -87,8 +95,10 @@ function shell_main()
 						
 		-- specific keys to press on boot
 		if keyb then
-			if screen:frame_number() == 60 then
-				if emu.romname() == "ti99_4a" then
+			if screen:frame_number() == input_frame then
+				if emu.romname() == "apple2e" then
+					keyb:post_coded("{SPACE}")
+				elseif emu.romname() == "ti99_4a" then
 					keyb:post_coded("{SPACE}")
 					keyb:post("2")
 				elseif emu.romname() == "cpc6128" then
@@ -125,11 +135,11 @@ function shell_main()
 			if not mac.paused then
 				-- Show prize award top-right when time target achieved
 				if data_score1 > 0 and time_played > data_score1 * 60 then
-					screen:draw_text(_x, y_offset,  " 1ST WON "..tostring(data_score1_award.." "), gold, col2)
+					screen:draw_text(_x + x_offset, y_offset,  " 1ST WON "..tostring(data_score1_award.." "), gold, col2)
 				elseif data_score2 > 0 and time_played > data_score2 * 60 then
-					screen:draw_text(_x, y_offset,  " 2ND WON "..tostring(data_score2_award.." "), silver, col2)
+					screen:draw_text(_x + x_offset, y_offset,  " 2ND WON "..tostring(data_score2_award.." "), silver, col2)
 				elseif data_score3 > 0 and time_played > data_score3 * 60 then
-					screen:draw_text(_x, y_offset,  " 3RD WON "..tostring(data_score3_award.." "), bronze, col2)
+					screen:draw_text(_x + x_offset, y_offset,  " 3RD WON "..tostring(data_score3_award.." "), bronze, col2)
 				end
 			end
 		end

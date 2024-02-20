@@ -70,6 +70,7 @@ xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\hbf900a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
 
 echo **** Use an alternative wav/mp3 player on XP
 copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
