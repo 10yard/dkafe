@@ -73,11 +73,13 @@ a7800_dk_junior,shell,JR,7800: DK Junior,9999,,,110000,2,4,8
 a7800_dk_pokey,shell,Pokey Kong,7800: Pokey Kong Hack,9999,,,110000,2,4,8
 a800xl_dk,shell,DK,A800: DK Original,9999,,,0,1,2,5
 a800xl_dk_junior,shell,DK Junior,A800: DK Junior,9999,,,110000,2,4,8
-apple2e_dk,shell,DK,AII: DK Original,9999,,,0,1,2,5
+apple2e_dk,shell,DK,AII: DK Original,9999,,,0,2,4,8
+bbcb_dk_junior,shell,DK Junior,BBC: DK Junior,9999,,,110000,1,2,4
+bbcb_zanykong,shell,ZanyKong,BBC: ZK ZanyKong,9999,,,0,1,2,4
+bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,1,2,5
 coco3_dk_remixed,shell,DK Remixed,CO3: DK Remixed,9999,,,110000,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
-coleco_miner2049er,shell,Miner49er,CVS: Miner 2049er,9999,,,110000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),9999,,,110000,2,4,8
 cpc6128_dk,shell,DK,CPC: DK Original,9999,,,0,1,2,5
 fds_dk_japan,shell,DK,FDS: DK Original,9999,,,0,1,2,5

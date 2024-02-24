@@ -551,8 +551,9 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Tandy Color Computer 3 (CoCo3) 
  - Texas Instruments TI99/4
  - Amstrad CPC
- - Apple ][
+ - BBC Micro
  - MSX
+ - Apple ][
 
 The console games will appear on the pies stage.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.

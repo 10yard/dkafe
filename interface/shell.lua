@@ -41,6 +41,10 @@ if emu.romname() == "apple2e" then
 	y_padding = 1
 	input_frame = 500
 	x_offset = -110
+elseif emu.romname() == "bbcb" then
+	quick_start = 300
+	y_padding = 15
+	scale = 6
 elseif emu.romname() == "coco3" then
 	if shell_name == "coco3_dk_emu" then
 		quick_start = 6500
@@ -98,6 +102,8 @@ function shell_main()
 			if screen:frame_number() == input_frame then
 				if emu.romname() == "apple2e" then
 					keyb:post_coded("{SPACE}")
+				elseif emu.romname() == "bbcb" then
+					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "ti99_4a" then
 					keyb:post_coded("{SPACE}")
 					keyb:post("2")
@@ -119,7 +125,7 @@ function shell_main()
 			if time_played <= target_time or mac.paused then
 				_len = string.len(tostring(data_score1))
 				_wid = (14 + _len) * (5 + scale)
-				_x = screen.width - _wid
+				_x = screen.width - _wid - 1
 				
 				if hide_targets == 0 then
 					-- Draw surrounding box
