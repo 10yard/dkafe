@@ -28,7 +28,6 @@ end
 local col0, col1, col2 = 0xffffffff, 0xffa0a0ff, 0xff0000a0
 local bronze, silver, gold = 0xffcd7f32, 0xffc0c0c0, 0xffd4af37
 local time_played
-local start_time = os.time()
 
 -- Adjustments for systems
 local target_time = 6
@@ -45,6 +44,15 @@ elseif emu.romname() == "bbcb" then
 	quick_start = 300
 	y_padding = 15
 	scale = 6
+elseif emu.romname() == "c64" then
+	input_frame = 120
+	scale = 1.33
+	y_padding = 2
+	if shell_name == "c64_dk" then
+		quick_start = 4400
+	else
+		quick_start = 7500
+	end
 elseif emu.romname() == "coco3" then
 	if shell_name == "coco3_dk_emu" then
 		quick_start = 6500
@@ -79,7 +87,11 @@ elseif emu.romname() == "intv" then
 	quick_start = 540
 elseif emu.romname() == "nes" then
 	scale = 0.5
+elseif emu.romname() == "pet4032" then
+	quick_start = 240
+	input_frame = 180
 end
+local start_time = os.time() + (quick_start / 60)
 
 function shell_main()
 	if mac ~= nil then
@@ -104,6 +116,8 @@ function shell_main()
 					keyb:post_coded("{SPACE}")
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
+				elseif emu.romname() == "c64" then
+					keyb:post('LOAD"*",8,1\n')
 				elseif emu.romname() == "ti99_4a" then
 					keyb:post_coded("{SPACE}")
 					keyb:post("2")
@@ -115,6 +129,14 @@ function shell_main()
 					elseif shell_name == "coco3_dk_remixed" then
 						keyb:post(keyb:post('LOADM"DKREMIX":EXEC\n'))
 					end
+				elseif emu.romname() == "pet4032" then
+					keyb:post('RUN\n')
+				end
+			end
+			-- specific keys to press at end of a quick start
+			if screen:frame_number() == quick_start - 60 then
+				if emu.romname() == "c64" then
+					keyb:post('RUN\n')
 				end
 			end
 		end

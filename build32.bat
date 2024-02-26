@@ -35,6 +35,10 @@ copy readme.md dist\ /Y
 copy VERSION dist\ /Y
 copy COPYING dist\ /Y
 
+echo **** export the system architecture to file
+echo win32 > dist\ARCH
+
+
 echo **** clear the snaps folder
 del dist\artwork\snap\*.png /Q
 
@@ -63,6 +67,9 @@ xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
+
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe

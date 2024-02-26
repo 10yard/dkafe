@@ -148,14 +148,20 @@ if START_STAGE > 2: START_STAGE = 0
 
 # Console Addon Specific
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
-RECOGNISED_CONSOLES = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl", "hbf900a", "ti99_4a", "coco3", "cpc6128", "apple2e", "bbcb"]
-CONSOLE_MEDIA = {"apple2e":"-gameio joy -flop1", "bbcb":"-flop1", "fds":"-flop1", "hbf900a":"-flop1", "coco3":"-flop1", "cpc6128":"-flop1"}
+RECOGNISED_CONSOLES = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl", "hbf900a", "ti99_4a", "coco3", "cpc6128", "apple2e", "bbcb", "c64", "pet4032"]
+CONSOLE_MEDIA = {"apple2e":"-gameio joy -flop1", "bbcb":"-flop1", "fds":"-flop1", "hbf900a":"-flop1", "coco3":"-flop1", "cpc6128":"-flop1", "c64":"-flop1", "pet4032":"-quik"}
 
 # Frontend version
 VERSION = ''
 if os.path.exists("VERSION"):
     with open("VERSION") as vf:
         VERSION = vf.readline().strip()
+
+# Target system architecture
+ARCH = 'win64'  # default
+if os.path.exists("ARCH"):
+    with open("ARCH") as af:
+        ARCH = af.readline().strip()
 
 # Expected location of original DK zips (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
@@ -289,7 +295,7 @@ SLOTS = (
     (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (202, 226),
     (8, 186), (34, 186), (50, 186), (90, 186), (122, 186), (154, 186), (174, 186), (202, 186),
     (2, 146), (34, 146), (50, 146), (90, 146), (106, 146), (122, 146), (154, 146), (174, 146), (202, 146),
-    (34, 106), (50, 106), (66, 106), (88, 106), (122,106), (154, 106), (174, 106), (210, 106),
+    (33, 106), (50, 106), (67, 106), (90, 106), (122,106), (154, 106), (174, 106), (210, 106),
     (2, 66), (90, 66), (106, 66), (138, 66), (154, 66), (170, 66), (186, 66), (208, 66),
     (90, 34)
 )

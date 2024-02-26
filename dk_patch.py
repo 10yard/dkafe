@@ -100,7 +100,7 @@ def apply_patches_and_addons():
 
 def install_addons():
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
-        with zipfile.ZipFile(addon, 'r') as zip_ref:
+        with zipfile.ZipFile(addon) as zip_ref:
             zip_ref.extractall()
         os.remove(addon)
         return addon  # restrict to install of 1 add-on for now

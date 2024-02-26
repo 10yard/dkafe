@@ -47,6 +47,9 @@ copy readme.md dist\launchxp\ /Y
 copy VERSION dist\launchxp\ /Y
 copy COPYING dist\launchxp\ /Y
 
+echo **** export the system architecture to file
+echo winxp > dist\ARCH
+
 echo **** create empty roms folder
 xcopy roms\---* dist\launchxp\roms /S /i /Y
 
@@ -72,6 +75,9 @@ xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
+
 
 echo **** Use an alternative wav/mp3 player on XP
 copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
