@@ -1,9 +1,12 @@
 Commodore PET - PETSCII Kong
 
-Move your character around four different playing 
-screens. Jump all the obstacles that Kong throws 
-your way. Reach your princess. 
+Move your character around four different play screens.
+Jump all the obstacles that Kong throws your way. 
+Reach your princess. 
 
 Uses the monochrome screen and PETSCII graphics.
+
+After launching, press "Jump" to start a game from the
+games main menu.
 
 Developed By Jimbo

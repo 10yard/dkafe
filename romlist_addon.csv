@@ -29,7 +29,7 @@ coleco_dk,shell,CVDK,CVS: DK Original,109,,,136000,1,2,5
 coleco_dk_junior,shell,JR,CVS: DK Jr.,110,,,137000,2,4,8
 c64_dk,shell,C64DK,C64: DK Original,111,,,138000,2,4,8
 coco3_dk_emu,shell,COCODK,CO3: DK Emulator,112,,,139000,1,2,5
-spectrum_dk,shell,SPECDK,ZXS: DK Original,113,,,140000,0,2,4
+spectrum_dk,shell,SPECDK,ZXS: DK Original,113,,,140000,1,2,4
 ti99-4a_dk,shell,TIDK,TI : DK Original,114,,,141000,1,2,5
 bbcb_zanykong,shell,BBCZK,BBC: ZanyKong,115,,,142000,1,2,5
 pet4032_petscii_kong,shell,PETDK,PET: Petscii Kong,116,,,143000,1,2,5

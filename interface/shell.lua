@@ -80,7 +80,7 @@ elseif emu.romname() == "hbf900a" then
 	quick_start = 2300
 	y_padding = 12
 elseif emu.romname() == "intv" then
-	quick_start = 540
+	quick_start = 600
 elseif emu.romname() == "nes" then
 	scale = 0.5
 elseif emu.romname() == "pet4032" then
@@ -90,6 +90,8 @@ elseif emu.romname() == "spectrum" then
 	scale = 2
 	y_padding = 4
 	input_frame = 15
+elseif emu.romname() == "ti99_4a" then
+	quick_start = 180
 end
 local start_time = os.time()
 
@@ -128,9 +130,6 @@ function shell_main()
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" then
 					keyb:post('RUN\n')
-				elseif emu.romname() == "ti99_4a" then
-					keyb:post_coded("{SPACE}")
-					keyb:post("2")
 				elseif emu.romname() == "cpc6128" then
 					keyb:post('RUN"DONKEY\n')
 				elseif emu.romname() == "coco3" then
@@ -145,6 +144,9 @@ function shell_main()
 					if shell_name == "spectrum_krazykong" then
 						keyb:post('y')
 					end
+				elseif emu.romname() == "ti99_4a" then
+					keyb:post_coded("{SPACE}")
+					keyb:post("2")
 				end
 			end
 		end

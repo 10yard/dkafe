@@ -1,0 +1,9 @@
+BBC Micro - Zany Kong
+
+A clone version of Donkey Kong were Morris attempts
+to rescue a maiden by defeating Kong.
+
+After launching,  press "Jump" several times to start
+a game from the games menu.
+
+Developed By Solar Soft
