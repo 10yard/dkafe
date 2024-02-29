@@ -30,11 +30,13 @@ local bronze, silver, gold = 0xffcd7f32, 0xffc0c0c0, 0xffd4af37
 local time_played
 
 -- Adjustments for systems
-local target_time = 6
+local target_time = 5
 local input_frame = 60
 local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
 
-if emu.romname() == "apple2e" then
+if emu.romname() == "a800xl" then
+	quick_start = 90
+elseif emu.romname() == "apple2e" then
 	quick_start = 600
 	scale = 3
 	y_padding = 1
@@ -45,14 +47,10 @@ elseif emu.romname() == "bbcb" then
 	y_padding = 15
 	scale = 6
 elseif emu.romname() == "c64" then
-	input_frame = 120
+	input_frame = 150
 	scale = 1.33
 	y_padding = 2
-	if shell_name == "c64_dk" then
-		quick_start = 4400
-	else
-		quick_start = 7500
-	end
+	quick_start = 550
 elseif emu.romname() == "coco3" then
 	if shell_name == "coco3_dk_emu" then
 		quick_start = 6500
@@ -61,7 +59,6 @@ elseif emu.romname() == "coco3" then
 	end	
 	scale = 4.25
 	y_padding = 4
-	target_time = 15
 elseif emu.romname() == "coleco" then
 	quick_start = 720
 elseif emu.romname() == "cpc6128" then
@@ -81,7 +78,6 @@ elseif emu.romname() == "gbcolor" then
 elseif emu.romname() == "hbf900a" then
 	scale = 5
 	quick_start = 2300
-	target_time = 10
 	y_padding = 12
 elseif emu.romname() == "intv" then
 	quick_start = 540
@@ -90,19 +86,33 @@ elseif emu.romname() == "nes" then
 elseif emu.romname() == "pet4032" then
 	quick_start = 240
 	input_frame = 180
+elseif emu.romname() == "spectrum" then
+	scale = 2
+	y_padding = 4
+	input_frame = 15
 end
-local start_time = os.time() + (quick_start / 60)
+local start_time = os.time()
 
 function shell_main()
 	if mac ~= nil then
-		time_played = os.time() - start_time
-						
+		if screen:frame_number() < quick_start then
+			time_played = 0
+		else
+			time_played = os.time() - start_time
+		end
+			
 		-- Speed up the inital loading screens
 		if quick_start > 0 then
+			screen:draw_box(0, 0 , screen.width, screen.height, 0xff000000, 0xff000000)
+			
 			if screen:frame_number() < quick_start then
 				max_frameskip(true)
-				local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
-				screen:draw_text(0, 6 + scale,  "DKAFE: FAST LOADING...".._remain, col0)
+				if quick_start > 500 then
+					local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
+					screen:draw_text(0, 6 + scale,  "FAST LOADING...".._remain, col0, 0xff000000)
+				else	
+					screen:draw_text(0, 6 + scale,  "PLEASE WAIT...", col0, 0xff000000)
+				end
 			else	
 				max_frameskip(false)
 				quick_start = 0
@@ -117,26 +127,24 @@ function shell_main()
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" then
-					keyb:post('LOAD"*",8,1\n')
+					keyb:post('RUN\n')
 				elseif emu.romname() == "ti99_4a" then
 					keyb:post_coded("{SPACE}")
 					keyb:post("2")
 				elseif emu.romname() == "cpc6128" then
-					keyb:post(keyb:post('RUN"DONKEY\n'))
+					keyb:post('RUN"DONKEY\n')
 				elseif emu.romname() == "coco3" then
 					if shell_name == "coco3_dk_emu" then
-						keyb:post(keyb:post('LOADM"EMULATOR":EXEC\n'))
+						keyb:post('LOADM"EMULATOR":EXEC\n')
 					elseif shell_name == "coco3_dk_remixed" then
-						keyb:post(keyb:post('LOADM"DKREMIX":EXEC\n'))
+						keyb:post('LOADM"DKREMIX":EXEC\n')
 					end
 				elseif emu.romname() == "pet4032" then
 					keyb:post('RUN\n')
-				end
-			end
-			-- specific keys to press at end of a quick start
-			if screen:frame_number() == quick_start - 60 then
-				if emu.romname() == "c64" then
-					keyb:post('RUN\n')
+				elseif emu.romname() == "spectrum" then
+					if shell_name == "spectrum_krazykong" then
+						keyb:post('y')
+					end
 				end
 			end
 		end

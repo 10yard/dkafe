@@ -56,6 +56,7 @@ xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
@@ -95,6 +96,7 @@ xcopy roms\apple2e dist\console_addon\roms\apple2e /S /i /Y
 xcopy roms\bbcb dist\console_addon\roms\bbcb /S /i /Y
 xcopy roms\c64 dist\console_addon\roms\c64 /S /i /Y
 xcopy roms\pet4032 dist\console_addon\roms\pet4032 /S /i /Y
+xcopy roms\spectrum dist\console_addon\roms\spectrum /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip

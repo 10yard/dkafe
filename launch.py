@@ -552,6 +552,14 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     play_sound_effect(sound_file)
 
 
+def sort_key(x):
+    name = x[0]
+    slot = str(x[4])
+    if slot == "9999":
+        slot = "0"
+    return name[:20] + slot.zfill(4)
+
+
 def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
@@ -563,13 +571,13 @@ def build_menus(initial=False):
     if not os.path.exists("romlist_addon.csv"):
         globals()["ENABLE_ADDONS"] = 0
     if ENABLE_ADDONS and _g.stage == 2:
-        _romlist = sorted(_romlist)
+        _romlist = sorted(_romlist, key=sort_key)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
         _alt = alt.replace("00", "№")  # Single character 00
         _add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_CONSOLES
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
-                if not(sub == "shell" and name == _lastname):
+                if sub != "shell" or name != _lastname:
                     # Don't show duplicates in the gamelist
                     _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:

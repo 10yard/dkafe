@@ -80,7 +80,7 @@ def read_romlist():
                         # read romlist data and tweak the descriptions
                         name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                         _shell = sub == "shell"
-                        if _shell or not sub or sub not in usedsubs:
+                        if _shell or sub not in usedsubs:
                             # Skip over roms when files are not found
                             if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
                                 continue
@@ -121,7 +121,7 @@ def read_romlist():
 
                             if (name and des) or name == "empty":
                                 if slot in usedslots:
-                                    slot = "0"
+                                    slot = "9999"
                                     icx, icy = -1, -1
                                 elif sub:
                                     usedsubs.append(sub)
@@ -182,13 +182,19 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
             os.environ["DKAFE_SHELL_SYSTEM"] = _system
             os.environ["DKAFE_SHELL_NAME"] = name
-            test = CONSOLE_MEDIA.get(_system) or "-cart"
             os.environ["DKAFE_SHELL_MEDIA"] = CONSOLE_MEDIA.get(_system) or "-cart"
             os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
             os.environ["DKAFE_SHELL_ROR"] = ""
             if "_ror" in name:
                 os.environ["DKAFE_SHELL_ROR"] = "-ror"
                 os.environ["DKAFE_SHELL_BOOT"] = ""
+
+            # If there is a specific config file then copy it over system default prior to running
+            # NOTE: Need to ensure that all roms for these system have a .cfg file
+            cfg_file = os.path.join(ROOT_DIR, "dkwolf", "cfg", name + ".cfg")
+            if os.path.exists(cfg_file):
+                cfg_system = os.path.join(ROOT_DIR, "dkwolf", "cfg", _system + ".cfg")
+                copy(cfg_file, cfg_system)
 
             launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", ".sh")[is_pi()])
             if not os.path.exists(launch_command):

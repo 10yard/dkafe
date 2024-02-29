@@ -551,6 +551,7 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Tandy Color Computer 3 (CoCo3) 
  - Texas Instruments TI99/4
  - Amstrad CPC
+ - Sinclair Spectrum 
  - Commodore 64
  - Commodore Pet
  - BBC Micro

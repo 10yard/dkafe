@@ -1,0 +1,10 @@
+ZX Spectrum - Donkey Kong
+
+This is a below average conversion of a classic game,
+the controls are unresponsive and the graphics are
+average.
+
+After launching,  press "Jump" to start a game from 
+the Spectrum's main menu.
+
+Developed By Ocean

@@ -1,0 +1,16 @@
+Commodore 64 - Donkey Kong
+
+Jumpman looks like his sprites were ripped out of the 
+arcade screen and plastered onto a C64, and are 
+startlingly accurate. 
+Pauline still cries "Help!" at the top of each level. 
+The only one that kind of looks off is Donkey Kong 
+himself. He never pounds his chest angrily like he 
+does in the arcade, and he looks rather drab. 
+Jumpman is slow to move and you have to be almost 
+perfectly aligned to ladders, or you aren't going up. 
+
+After launching,  press "Jump" to start a game from 
+the games main menu.
+
+Developed By Atarisoft
