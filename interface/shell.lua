@@ -9,9 +9,10 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 DKAFE Interface routine for shell scripts.
 Simple interface is based on the time a game is played.
 - Speed up the loading time of some disk based games
-- Show targets for time when the game starts up.
-- Show prize award when targets reached for 3rd, 2nd and 1st
---------------------------------------------------------------
+- Send keyboard inputs for some games to initiate loading.
+- Show targets for play time when the game starts up or when game is paused.
+- Show prize award when targets reached for 3rd, 2nd and 1st.
+---------------------------------------------------------------------------------
 ]]
 
 package.path = package.path .. ";" .. os.getenv("DATA_INCLUDES") .. "/?.lua;"
