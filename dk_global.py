@@ -72,6 +72,7 @@ initial_rotation = 0
 # Menu
 menu, exitmenu, setmenu, launchmenu = (None,) * 4
 selected = None
+last_selected, last_launched = (None,) * 2
 
 # Active Window
 window = None

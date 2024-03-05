@@ -31,7 +31,7 @@ def exit_program(confirm=False):
         for attempt in 1, 2, 3:
             try:
                 with open('save.p', 'wb') as f:
-                    pickle.dump([_g.score, _g.timer_adjust], f)
+                    pickle.dump([_g.score, _g.timer_adjust, _g.last_selected or _g.last_launched], f)
                 break
             except (EOFError, FileNotFoundError, IOError):
                 pygame.time.delay(250 * attempt)
@@ -86,7 +86,7 @@ def update_screen(delay_ms=0):
 def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
-            _g.score, _g.timer_adjust = pickle.load(f)
+            _g.score, _g.timer_adjust, _g.last_selected = pickle.load(f)
     except (EOFError, FileNotFoundError, IOError, ValueError):
         _g.score, _g.timer_adjust = SCORE_START, 0
 
@@ -256,7 +256,7 @@ def check_for_input(force_exit=False):
                 open_settings_menu()
             if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus()
-                open_menu(_g.menu)
+                open_menu(_g.menu, remember_selection=True)
             if event.key == CONTROL_COIN:
                 if _g.ready:
                     # globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
@@ -559,7 +559,6 @@ def sort_key(x):
         slot = "0"
     return name[:20] + slot.zfill(4)
 
-
 def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
@@ -579,7 +578,10 @@ def build_menus(initial=False):
             if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
                 if sub != "shell" or name != _lastname:
                     # Don't show duplicates in the gamelist
-                    _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
+                    try:
+                        _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                    except IndexError:
+                        _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
         _lastname = name
@@ -791,12 +793,19 @@ def update_menu_selection(title, index):
             break
 
 
-def open_menu(menu):
+def open_menu(menu, remember_selection=None):
     _g.timer.stop()
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     if not ENABLE_PLAYLIST:
         intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
+    if remember_selection:
+        _widget = _g.last_selected or _g.last_launched
+        try:
+            menu.select_widget(widget=_widget)
+        except AssertionError:
+            # Item was not found in the active list
+            pass
     menu.enable()
     menu.mainloop(_g.screen)
     reset_all_inputs()
@@ -805,6 +814,12 @@ def open_menu(menu):
 def close_menu():
     pygame.mouse.set_visible(False)
     intermission_channel.stop()
+    # Remember the last selected item from the game menu
+    try:
+        widget = _g.menu.get_selected_widget()
+        _g.last_selected = widget._args[0][0] + widget._args[0][1]
+    except:
+        _g.last_selected = None
     _g.menu.disable()
     _g.exitmenu.disable()
     _g.setmenu.disable()
@@ -902,7 +917,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
         _g.timer.start()  # Restart the timer
         if ENABLE_PLAYLIST:
             playlist.unpause()
-
+        _g.last_selected = sub + name
+        _g.last_launched = sub + name
 
 def playback_rom(info, inpfile):
     """playback the specified inp file"""

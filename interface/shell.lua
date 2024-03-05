@@ -29,6 +29,7 @@ end
 local col0, col1, col2 = 0xffffffff, 0xffa0a0ff, 0xff0000a0
 local bronze, silver, gold = 0xffcd7f32, 0xffc0c0c0, 0xffd4af37
 local time_played
+local i_attenuation = sound.attenuation
 
 -- Adjustments for systems
 local target_time = 5
@@ -109,6 +110,7 @@ function shell_main()
 			screen:draw_box(0, 0 , screen.width, screen.height, 0xff000000, 0xff000000)
 			
 			if screen:frame_number() < quick_start then
+				sound.attenuation = -32 -- mute sounds
 				max_frameskip(true)
 				if quick_start > 500 then
 					local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
@@ -116,7 +118,8 @@ function shell_main()
 				else	
 					screen:draw_text(0, 6 + scale,  "PLEASE WAIT...", col0, 0xff000000)
 				end
-			else	
+			else
+				sound.attenuation = i_attenuation	
 				max_frameskip(false)
 				quick_start = 0
 			end
@@ -138,6 +141,15 @@ function shell_main()
 						keyb:post('LOADM"EMULATOR":EXEC\n')
 					elseif shell_name == "coco3_dk_remixed" then
 						keyb:post('LOADM"DKREMIX":EXEC\n')
+					elseif shell_name == "coco3_dunkeymonkey" then
+						keyb:post('LOADM"DUNKEYM":EXEC\n')
+					elseif shell_name == "coco3_donkeyking" then
+						if input_frame ~= quick_start then
+							keyb:post('LOADM"DONKEY":EXEC\n')
+							input_frame = quick_start
+						else
+							keyb:post_coded("{SPACE}")
+						end
 					end
 				elseif emu.romname() == "pet4032" then
 					keyb:post('RUN\n')

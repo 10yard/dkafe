@@ -33,7 +33,7 @@ end
 if mac ~= nil then
 	screen = mac.screens[":screen"]
 	cpu = mac.devices[":maincpu"]
-	if cup ~= nil then
+	if cpu ~= nil then
 		mem = cpu.spaces["program"]
 	end
 	--store the default sound level	

@@ -84,8 +84,10 @@ c64_dk,shell,DK,C64: DK Original,9999,,,0,1,2,5
 c64_dk_junior,shell,DK Junior,C64: DK Junior,9999,,,110000,2,4,8
 c64_krazykong64,shell,KrazyKong,C64: KrazyKong64,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,1,2,5
-coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,140000,2,4,8
 coco3_dk_remixed,shell,DK Remixed,CO3: DK Remixed,9999,,,110000,2,4,8
+coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,110000,2,4,8
+coco3_dunkeymonkey,shell,DunkeyMonkey,CVS: Dunkey Monkey,9999,,,110000,2,4,8
+coco3_donkeyking,shell,DonkeyKing,CVS: Donkey King,9999,,,110000,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
 coleco_super_dk,shell,Super,CVS: Super DK! (Proto),9999,,,110000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),9999,,,110000,2,4,8

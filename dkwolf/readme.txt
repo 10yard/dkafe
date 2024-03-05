@@ -23,7 +23,7 @@ The code changes for WolfMAME 0.196, 0.236 and 0.241 are included in the "change
     removed ROM loading messages
 
   emu/validity.cpp
-    increase check to 1000 roms before clones are validated.  This suppresses the warnings.
+    Increase check to 1000 roms before clones are validated.  This suppresses the warnings.
 
   emu/video.h
     Increase the max frameskip so we can more quickly skip the dk intro scene when user presses jump button.
