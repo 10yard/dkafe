@@ -577,7 +577,7 @@ def build_menus(initial=False):
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
                 if sub != "shell" or name != _lastname:
-                    # Don't show duplicates in the gamelist
+                    # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
                     try:
                         _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                     except IndexError:

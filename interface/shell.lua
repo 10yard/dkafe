@@ -143,10 +143,14 @@ function shell_main()
 						keyb:post('LOADM"DKREMIX":EXEC\n')
 					elseif shell_name == "coco3_dunkeymonkey" then
 						keyb:post('LOADM"DUNKEYM":EXEC\n')
+					elseif shell_name == "coco3_kingcuthbert" then
+						keyb:post('LOADM"KINGCUTH":EXEC\n')
+					elseif shell_name == "coco3_monkeykong" then
+						keyb:post('LOADM"MONKEYK":EXEC\n')
 					elseif shell_name == "coco3_donkeyking" then
 						if input_frame ~= quick_start then
 							keyb:post('LOADM"DONKEY":EXEC\n')
-							input_frame = quick_start
+							input_frame = quick_start + 60
 						else
 							keyb:post_coded("{SPACE}")
 						end
