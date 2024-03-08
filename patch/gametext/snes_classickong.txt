@@ -1,0 +1,15 @@
+SNES Console - Classic Kong
+
+Classic Kong is a 2012 homebrew remake of the classic
+Donkey Kong with updated graphics and sound.
+
+The graphics are brilliant. Charming, characterful and
+making great use of the SNES' palette, the game looks 
+like a top-drawer commercial release with the Nintendo 
+Seal of Quality.
+
+The soundtrack is well executed and perfectly fitting 
+accompaniment to the graphics and the gameplay, 
+bouncing along in a time honoured Nintendo fashion 
+
+Homebrew Developed by Bubble Zap Games and Shiru

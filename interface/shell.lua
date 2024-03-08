@@ -33,7 +33,7 @@ local i_attenuation = sound.attenuation
 
 -- Adjustments for systems
 local target_time = 5
-local input_frame = 60
+local input_frame, input_frame2 = 60, 0
 local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
 
 if emu.romname() == "a800xl" then
@@ -85,9 +85,25 @@ elseif emu.romname() == "intv" then
 	quick_start = 600
 elseif emu.romname() == "nes" then
 	scale = 0.5
+elseif emu.romname() == "oric1" then
+	input_frame = 180
+	y_offset = 16
+	if shell_name == "oric1_honeykong" then
+		quick_start = 10000
+		input_frame2 = 10050
+	elseif shell_name == "oric1_orickong" then
+		quick_start = 4500
+		input_frame2 = 4500
+	elseif shell_name == "oric1_dinkykong" then
+		quick_start = 5000
+		input_frame2 = 5000
+	end
 elseif emu.romname() == "pet4032" then
 	quick_start = 240
 	input_frame = 180
+elseif emu.romname() == "snes" then
+	scale = 2.5
+	quick_start = 360
 elseif emu.romname() == "spectrum" then
 	scale = 2
 	y_padding = 4
@@ -114,9 +130,9 @@ function shell_main()
 				max_frameskip(true)
 				if quick_start > 500 then
 					local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
-					screen:draw_text(0, 6 + scale,  "FAST LOADING...".._remain, col0, 0xff000000)
+					screen:draw_text(0, 6 + scale + y_offset,  "FAST LOADING...".._remain, col0, 0xff000000)
 				else	
-					screen:draw_text(0, 6 + scale,  "PLEASE WAIT...", col0, 0xff000000)
+					screen:draw_text(0, 6 + scale + y_offset,  "PLEASE WAIT...", col0, 0xff000000)
 				end
 			else
 				sound.attenuation = i_attenuation	
@@ -127,6 +143,20 @@ function shell_main()
 						
 		-- specific keys to press on boot
 		if keyb then
+			if screen:frame_number() == input_frame2 then
+				if shell_name == "oric1_dinkykong" then
+					keyb:post('CLOAD ""\n')
+					quick_start = 6400
+				elseif shell_name == "coco3_donkeyking" then
+					keyb:post_coded("{SPACE}")
+					quick_start = 6400
+				elseif shell_name == "oric1_orickong" then
+					keyb:post('RUN\n')
+					quick_start = 4700
+				elseif shell_name == "oric1_honeykong" then
+					keyb:post_coded('{SPACE}')
+				end
+			end
 			if screen:frame_number() == input_frame then
 				if emu.romname() == "apple2e" then
 					keyb:post_coded("{SPACE}")
@@ -148,18 +178,19 @@ function shell_main()
 					elseif shell_name == "coco3_monkeykong" then
 						keyb:post('LOADM"MONKEYK":EXEC\n')
 					elseif shell_name == "coco3_donkeyking" then
-						if input_frame ~= quick_start then
-							keyb:post('LOADM"DONKEY":EXEC\n')
-							input_frame = quick_start + 60
-						else
-							keyb:post_coded("{SPACE}")
-						end
+						keyb:post('LOADM"DONKEY":EXEC\n')
 					end
+				elseif emu.romname() == "oric1" then
+					keyb:post('CLOAD ""\n')
 				elseif emu.romname() == "pet4032" then
 					keyb:post('RUN\n')
 				elseif emu.romname() == "spectrum" then
 					if shell_name == "spectrum_krazykong" then
 						keyb:post('y')
+					elseif shell_name == "spectrum_wallykong" then
+						-- have to press keys a few times, this game is not very responsive
+						keyb:post('ssssssssss')
+						keyb:post('   0   0   1')
 					end
 				elseif emu.romname() == "ti99_4a" then
 					keyb:post_coded("{SPACE}")

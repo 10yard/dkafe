@@ -545,6 +545,7 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Atari 800XL Computer
  - Nintendo Entertainment System
  - Nintendo Gameboy|Gameboy Color
+ - Super Nintendo
  - Famicom Disk System
  - Colecovision
  - Intellivision
@@ -552,6 +553,7 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Texas Instruments TI99/4
  - Amstrad CPC
  - Sinclair Spectrum 
+ - Tangerine Oric 1
  - Commodore 64
  - Commodore Pet
  - BBC Micro

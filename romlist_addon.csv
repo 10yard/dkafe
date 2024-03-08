@@ -7,7 +7,7 @@ nes_dk_3,shell,DK3,NES: DK 3,86,,,114000,2,4,8
 nes_dk_redux,shell,Redux,NES: DK Redux,87,,,115000,2,4,8
 nes_dk_junior,shell,JR,NES: DK Junior,88,,,116000,2,4,8
 nes_dk_arcade_ror,shell,Arcade,NES: DK Arcade Accurate,89,,,117000,2,4,8
-nes_dk_bowsette_jr,shell,Bow.JR,NES: Bowsette Jr.,91,,,118000,2,4,8
+snes_classickong,shell,SNESDK,SNES: Classic Kong,91,,,118000,2,4,8
 a2600_dk,shell,2600DK,2600: DK Original,92,,,119000,2,4,8
 a2600_dk_2,shell,DK 2,2600: DK2 Lost Levels,93,,,120000,2,4,8
 a2600_dk_ghouls,shell,Ghouls!,2600: Ghouls n Ghosts,94,,,121000,2,4,8
@@ -88,8 +88,8 @@ c64_krazykong64,shell,KrazyKong,C64: KrazyKong64,9999,,,110000,2,4,8
 c64_mariosbrewery,shell,MariosBrewery,C64: Marios Brewery,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,110000,2,4,8
-coco3_donkeyking,shell,DonkeyKing,CVS: Donkey King,9999,,,110000,2,4,8
-coco3_dunkeymonkey,shell,DunkeyMonkey,CVS: Dunkey Monkey,9999,,,110000,2,4,8
+coco3_donkeyking,shell,DonkeyKing,CO3: Donkey King,9999,,,110000,2,4,8
+coco3_dunkeymonkey,shell,DunkeyMonkey,CO3: Dunkey Monkey,9999,,,110000,2,4,8
 coco3_monkeykong,shell,MonkeyKong,CO3: Monkey Kong,9999,,,110000,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
 coleco_super_dk,shell,Super,CVS: Super DK! (Proto),9999,,,110000,2,4,8
@@ -134,8 +134,12 @@ nes_dk2_nuts_n_milk,shell,DK Nuts & Milk,NES: DK 2 Nuts & Milk,9999,,,110000,2,4
 nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,110000,2,4,8
 nes_jumpman_vs_dk,shell,Jumpman vs DK,NES: Jumpman vs DK,9999,,,110000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs DK,9999,,,110000,2,4,8
+oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,110000,2,4,8
+#oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
+oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
 pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
+snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
 spectrum_dk,shell,DK,ZXS: DK Original,9999,,,0,2,4,8
 spectrum_dk_junior,shell,JR,ZXS: DK Junior,9999,,,110000,2,4,8
 spectrum_killerkong,shell,KillerKong,ZXS: Killer Kong,9999,,,110000,2,4,8
