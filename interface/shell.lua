@@ -67,6 +67,11 @@ elseif emu.romname() == "cpc6128" then
 	quick_start = 1550
 	scale = 6
 	y_padding = 4
+elseif emu.romname() == "dragon32" then
+	input_frame = 120
+	input_frame2 = 2900
+	quick_start = 3250
+	y_offset = 16
 elseif emu.romname() == "fds" then
 	quick_start = 600
 elseif emu.romname() == "gameboy" then
@@ -144,11 +149,13 @@ function shell_main()
 		-- specific keys to press on boot
 		if keyb then
 			if screen:frame_number() == input_frame2 then
-				if shell_name == "oric1_dinkykong" then
-					keyb:post('CLOAD ""\n')
-					quick_start = 6400
-				elseif shell_name == "coco3_donkeyking" then
+				if shell_name == "coco3_donkeyking" then
 					keyb:post_coded("{SPACE}")
+					quick_start = 6400
+				elseif shell_name == "dragon32_kingcuthbert" then
+					keyb:post('EXEC\n')
+				elseif shell_name == "oric1_dinkykong" then
+					keyb:post('CLOAD ""\n')
 					quick_start = 6400
 				elseif shell_name == "oric1_orickong" then
 					keyb:post('RUN\n')
@@ -180,6 +187,8 @@ function shell_main()
 					elseif shell_name == "coco3_donkeyking" then
 						keyb:post('LOADM"DONKEY":EXEC\n')
 					end
+				elseif emu.romname() == "dragon32" then
+					keyb:post('CLOADM\n')
 				elseif emu.romname() == "oric1" then
 					keyb:post('CLOAD ""\n')
 				elseif emu.romname() == "pet4032" then

@@ -77,7 +77,11 @@ xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
+
 
 echo **** Use an alternative wav/mp3 player on XP
 copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y

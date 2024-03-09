@@ -69,7 +69,10 @@ xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe

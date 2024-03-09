@@ -148,8 +148,8 @@ if START_STAGE > 2: START_STAGE = 0
 
 # Console Addon Specific
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
-RECOGNISED_CONSOLES = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl", "hbf900a", "ti99_4a", "coco3", "cpc6128", "apple2e", "bbcb", "c64", "pet4032", "spectrum", "oric1", "snes"]
-CONSOLE_MEDIA = {"apple2e":"-gameio joy -flop1", "bbcb":"-flop1", "fds":"-flop1", "hbf900a":"-flop1", "coco3":"-flop1", "cpc6128":"-flop1", "c64":"-joy1 joy -quik", "pet4032":"-quik", "spectrum":"-dump", "oric1":"-cass"}
+RECOGNISED_CONSOLES = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl", "hbf900a", "ti99_4a", "coco3", "cpc6128", "apple2e", "bbcb", "c64", "pet4032", "spectrum", "oric1", "snes", "dragon32"]
+CONSOLE_MEDIA = {"apple2e":"-gameio joy -flop1", "bbcb":"-flop1", "fds":"-flop1", "hbf900a":"-flop1", "coco3":"-flop1", "cpc6128":"-flop1", "c64":"-joy1 joy -quik", "pet4032":"-quik", "spectrum":"-dump", "oric1":"-cass", "dragon32":"-cass"}
 
 # Frontend version
 VERSION = ''
