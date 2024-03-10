@@ -58,6 +58,7 @@ xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
 
@@ -103,6 +104,7 @@ xcopy roms\spectrum dist\console_addon\roms\spectrum /S /i /Y
 xcopy roms\snes dist\console_addon\roms\snes /S /i /Y
 xcopy roms\oric1 dist\console_addon\roms\oric1 /S /i /Y
 xcopy roms\dragon32 dist\console_addon\roms\dragon32 /S /i /Y
+xcopy roms\adam dist\console_addon\roms\adam /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip

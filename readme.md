@@ -548,6 +548,7 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Super Nintendo
  - Famicom Disk System
  - Colecovision
+ - Coleco Adam
  - Intellivision
  - Tandy Color Computer 3 (CoCo3) 
  - Texas Instruments TI99/4

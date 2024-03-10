@@ -69,9 +69,14 @@ elseif emu.romname() == "cpc6128" then
 	y_padding = 4
 elseif emu.romname() == "dragon32" then
 	input_frame = 120
-	input_frame2 = 2900
-	quick_start = 3250
-	y_offset = 16
+	 y_offset = 16
+	if shell_name == "dragon32_kingcuthbert" then
+		input_frame2 = 2900
+		quick_start = 3250
+	elseif shell_name == "dragon32_dunkeymonkey" then
+		input_frame2 = 4000
+		quick_start = 4200
+	end
 elseif emu.romname() == "fds" then
 	quick_start = 600
 elseif emu.romname() == "gameboy" then
@@ -152,7 +157,7 @@ function shell_main()
 				if shell_name == "coco3_donkeyking" then
 					keyb:post_coded("{SPACE}")
 					quick_start = 6400
-				elseif shell_name == "dragon32_kingcuthbert" then
+				elseif shell_name == "dragon32_kingcuthbert" or shell_name == "dragon32_dunkeymonkey" then
 					keyb:post('EXEC\n')
 				elseif shell_name == "oric1_dinkykong" then
 					keyb:post('CLOAD ""\n')

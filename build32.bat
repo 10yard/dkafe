@@ -71,6 +71,7 @@ xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
 
