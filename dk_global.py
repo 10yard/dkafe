@@ -73,6 +73,8 @@ initial_rotation = 0
 menu, exitmenu, setmenu, launchmenu = (None,) * 4
 selected = None
 last_selected, last_launched = (None,) * 2
+romlist = []
+last_press = 0
 
 # Active Window
 window = None

@@ -256,7 +256,7 @@ def check_for_input(force_exit=False):
                 open_settings_menu()
             if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus()
-                open_menu(_g.menu, remember_selection=True)
+                open_menu(_g.menu, large=True)
             if event.key == CONTROL_COIN:
                 if _g.ready:
                     # globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
@@ -298,7 +298,7 @@ def check_for_input(force_exit=False):
                     exit_program(confirm=CONFIRM_EXIT and not force_exit)
                 if button == BUTTON_P2 and ENABLE_MENU:
                     build_menus()
-                    open_menu(_g.menu)
+                    open_menu(_g.menu, large=True)
                 if button == BUTTON_COIN:
                     if _g.ready:
                         globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
@@ -553,23 +553,22 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 
 def sort_key(x):
-    name = x[0]
+    name = x[3] or x[0]
     slot = str(x[4])
     if slot == "9999":
         slot = "0"
-    return name[:20] + slot.zfill(4)
+    return name[:30] + slot.zfill(4)
 
 def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
 
-    _romlist = _s.read_romlist()
+    _romlist = _g.romlist
     _lastname = ""
 
-    if not os.path.exists("romlist_addon.csv"):
-        globals()["ENABLE_ADDONS"] = 0
     if ENABLE_ADDONS and _g.stage == 2:
+        # Sort the rom list by descriptive name for better navigation in the game selection menu
         _romlist = sorted(_romlist, key=sort_key)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
         _alt = alt.replace("00", "№")  # Single character 00
@@ -793,13 +792,14 @@ def update_menu_selection(title, index):
             break
 
 
-def open_menu(menu, remember_selection=None):
+def open_menu(menu, large=False):
     _g.timer.stop()
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     if not ENABLE_PLAYLIST:
         intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
-    if remember_selection:
+    if large:
+        # remember previous selection on large lists
         _widget = _g.last_selected or _g.last_launched
         try:
             menu.select_widget(widget=_widget)
@@ -807,8 +807,27 @@ def open_menu(menu, remember_selection=None):
             # Item was not found in the active list
             pass
     menu.enable()
-    menu.mainloop(_g.screen)
+    menu.mainloop(_g.screen, bgfun=menu_callback if large else None)
     reset_all_inputs()
+
+
+def menu_callback():
+    # Allow menu scroll using left/right cursor or page up/page down keys
+    keys=pygame.key.get_pressed()
+    if keys and _s.time() - _g.last_press > 0.1:
+        k = None
+        if keys[CONTROL_LEFT] or keys[CONTROL_PAGEUP]:
+            k = CONTROL_UP
+        elif keys[CONTROL_RIGHT] or keys[CONTROL_PAGEDOWN]:
+            k = CONTROL_DOWN
+        if k:
+            # Simulate up or down keypress 10 times for quicker scrolling
+            for i in range(0, 10):
+                event = pygame.event.Event(pygame.KEYDOWN, {'key': k})
+                pygame.event.post(event)
+                event = pygame.event.Event(pygame.KEYUP, {'key': k})
+                pygame.event.post(event)
+            _g.last_press = _s.time()
 
 
 def close_menu():
@@ -1346,6 +1365,8 @@ def main(initial=True):
     load_frontend_state()
     detect_joysticks()
     check_patches_available()
+
+    _g.romlist = _s.read_romlist()
     build_menus(initial=True)
     _g.gametext = _s.load_game_texts()
 

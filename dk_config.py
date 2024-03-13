@@ -11,6 +11,7 @@ Configuration options
 """
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+import sys
 import pygame
 import pygame_menu as pymenu
 
@@ -37,6 +38,8 @@ CONTROL_TAB = pygame.K_TAB
 CONTROL_SNAP = pygame.K_F12
 CONTROL_PLAYLIST = pygame.K_p
 CONTROL_SKIP = pygame.K_s
+CONTROL_PAGEUP = pygame.K_PAGEUP
+CONTROL_PAGEDOWN = pygame.K_PAGEDOWN
 
 # Joystick Options and Button Assignments
 USE_JOYSTICK = 0
@@ -139,6 +142,12 @@ if os.path.exists("settings.txt"):
                     pygame.quit()
                     exit()
 
+
+# Override settings when debugging
+if sys.gettrace():
+    globals()["FULLSCREEN"] = 0
+    globals()["TITLE"] = "DKAFE (Debugging Mode)"
+
 # Validate some settings
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
@@ -147,6 +156,8 @@ if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 if START_STAGE > 2: START_STAGE = 0
 
 # Console Addon Specific
+if not os.path.exists("romlist_addon.csv"):
+    globals()["ENABLE_ADDONS"] = 0
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 RECOGNISED_CONSOLES = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl", "hbf900a", "ti99_4a", "coco3", "cpc6128", "apple2e", "bbcb", "c64", "pet4032", "spectrum", "oric1", "snes", "dragon32", "adam"]
 CONSOLE_MEDIA = {"apple2e":"-gameio joy -flop1", "bbcb":"-flop1", "fds":"-flop1", "hbf900a":"-flop1", "coco3":"-flop1", "cpc6128":"-flop1", "c64":"-joy1 joy -quik", "pet4032":"-quik", "spectrum":"-dump", "oric1":"-cass", "dragon32":"-cass", "adam":"-cart1"}
@@ -563,7 +574,6 @@ dkafe_theme.widget_alignment = pymenu.locals.ALIGN_CENTER
 
 dkafe_theme.scrollbar_color = BLACK
 dkafe_theme.scrollbar_slider_color = BLACK
-
 dkafe_theme.selection_color = RED
 dkafe_theme.widget_font_color = PINK
 dkafe_theme.widget_margin = (0, 3)

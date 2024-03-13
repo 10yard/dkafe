@@ -29,6 +29,9 @@ The code changes for WolfMAME 0.196, 0.236 and 0.241 are included in the "change
     Increase the max frameskip so we can more quickly skip the dk intro scene when user presses jump button.
 	We can also start some console roms quicker that load from disk. 
 
+  emu/machine.cpp
+	Disable save state messages.  States are used by DKAFE only for quick loading of shell/console roms.
+
   frontend/mame/mame.cpp
     removed "Initializing..." message
 

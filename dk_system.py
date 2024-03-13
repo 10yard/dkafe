@@ -19,7 +19,7 @@ from dk_config import *
 from dk_interface import lua_interface
 
 def debounce():
-    sleep(0.2)
+    sleep(0.25)
 
 
 def get_system(return_video=False):
@@ -131,6 +131,12 @@ def read_romlist():
     return romlists[1] + romlists[0]
 
 
+def get_romkeys(romlist):
+    keys = []
+    for rom in romlist:
+        keys.append(rom[1] + rom[0])
+
+
 def get_emulator(emu_number):
     return f'{(EMU_1, EMU_2, EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8)[emu_number - 1]}'
 
@@ -185,6 +191,8 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_MEDIA"] = CONSOLE_MEDIA.get(_system) or "-cart"
             os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
             os.environ["DKAFE_SHELL_ROR"] = ""
+            os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".state"))
+
             if "_ror" in name:
                 os.environ["DKAFE_SHELL_ROR"] = "-ror"
                 os.environ["DKAFE_SHELL_BOOT"] = ""
