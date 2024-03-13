@@ -1,0 +1,2 @@
+cd dkwolf
+dkwolf %DKAFE_SHELL_NAME% -rompath "%DKAFE_SHELL_ROMS%\gnw" -nofilter %DKAFE_SHELL_VIDEO% %DKAFE_SHELL_BOOT% -fontpath "%DKAFE_SHELL_ROOT%\fonts" -uifont "tom-thumb.bdf" %DKAFE_SHELL_ROR% -ui_active -nonvram_save

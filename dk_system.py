@@ -188,7 +188,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
             os.environ["DKAFE_SHELL_SYSTEM"] = _system
             os.environ["DKAFE_SHELL_NAME"] = name
-            os.environ["DKAFE_SHELL_MEDIA"] = CONSOLE_MEDIA.get(_system) or "-cart"
+            os.environ["DKAFE_SHELL_MEDIA"] = SYSTEM_MEDIA.get(_system) or "-cart"
             os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
             os.environ["DKAFE_SHELL_ROR"] = ""
             os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".state"))
@@ -206,8 +206,13 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
 
             launch_command = os.path.join(ROOT_DIR, "shell", name + (".bat", ".sh")[is_pi()])
             if not os.path.exists(launch_command):
-                if _system in RECOGNISED_CONSOLES:
-                    launch_command = os.path.join(ROOT_DIR, "shell", "default_console" + (".bat", ".sh")[is_pi()])
+                if _system in RECOGNISED_SYSTEMS:
+                    _system_shellfile = os.path.join(ROOT_DIR, "shell", _system + (".bat", ".sh")[is_pi()])
+                    if os.path.exists(_system_shellfile):
+                        # There is a system specific shell file
+                        launch_command = _system_shellfile
+                    else:
+                        launch_command = os.path.join(ROOT_DIR, "shell", "default_console" + (".bat", ".sh")[is_pi()])
                 else:
                     # use default shell when a specific file is not found
                     launch_command = os.path.join(ROOT_DIR, "shell", "default" + (".bat", ".sh")[is_pi()])

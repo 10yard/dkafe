@@ -572,7 +572,7 @@ def build_menus(initial=False):
         _romlist = sorted(_romlist, key=sort_key)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
         _alt = alt.replace("00", "№")  # Single character 00
-        _add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_CONSOLES
+        _add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
                 if sub != "shell" or name != _lastname:

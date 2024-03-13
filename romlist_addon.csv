@@ -143,7 +143,7 @@ nes_dk_zelda12,shell,ZK12,NES: Zelda12 (Tarin),9999,,,110000,2,4,8
 oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,110000,2,4,8
 #oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
 oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
-pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
+#pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
 ti99-4a_dk,shell,DK,TI : DK Original,9999,,,0,2,4,8
@@ -154,3 +154,6 @@ spectrum_kong,shell,Kong,ZXS: Kong,9999,,,110000,2,4,8
 spectrum_krazykong,shell,KrazyKong,ZXS: Krazy Kong,9999,,,110000,2,4,8
 spectrum_monkeybiz,shell,MonkeyBiz,ZXS: Monkey Bizness,9999,,,110000,2,4,8
 #spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8
+gnw_dkong,shell,DK,G&W: DK Original,9999,,,0,2,4,8
+gnw_dkong2,shell,DK2,G&W: DK 2,9999,,,0,2,4,8
+gnw_dkjr,shell,DK JR,G&W: DK Junior,9999,,,0,2,4,8

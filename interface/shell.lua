@@ -30,7 +30,6 @@ end
 
 local col0, col1, col2 = 0xffffffff, 0xffa0a0ff, 0xff0000a0
 local bronze, silver, gold = 0xffcd7f32, 0xffc0c0c0, 0xffd4af37
-local time_played
 local i_attenuation = sound.attenuation
 
 -- Adjustments for systems
@@ -38,6 +37,7 @@ local target_time = 5
 local input_frame, input_frame2 = 60, 0
 local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
 local state = False
+local time_played = 0
 
 if emu.romname() == "a5200" then
 	state = true
@@ -168,7 +168,7 @@ end
 
 function shell_main()
 	if mac ~= nil then
-		if screen:frame_number() < quick_start then
+		if screen and screen:frame_number() < quick_start then
 			time_played = 0
 		else
 			time_played = os.time() - start_time
@@ -184,33 +184,35 @@ function shell_main()
 				input_frame, input_frame2 = "", ""
 				mac:load(shell_state)
 			end
-			if state and screen:frame_number() == quick_start and not file_exists(shell_state) then
+			if state and screen and screen:frame_number() == quick_start and not file_exists(shell_state) then
 				-- Save a state (rather than using quick start again in the future)
 				mac:save(shell_state)
 			end
 
 			-- blank the screen
-			screen:draw_box(0, 0 , screen.width, screen.height, 0xff000000, 0xff000000)
+			if screen then
+				screen:draw_box(0, 0 , screen.width, screen.height, 0xff000000, 0xff000000)
 
-			if screen:frame_number() < quick_start then
-				sound.attenuation = -32 -- mute sounds
-				max_frameskip(true)
-				if quick_start > 500 then
-					--local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
-					local _remain = tostring(math.floor((screen:frame_number() / quick_start) * 100)).."%"
-					screen:draw_text(0, 6 + scale + y_offset,  "LOADING...".._remain, col0, 0xff000000)
+				if screen:frame_number() < quick_start then
+					sound.attenuation = -32 -- mute sounds
+					max_frameskip(true)
+					if quick_start > 500 then
+						--local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
+						local _remain = tostring(math.floor((screen:frame_number() / quick_start) * 100)).."%"
+						screen:draw_text(0, 6 + scale + y_offset,  "LOADING...".._remain, col0, 0xff000000)
+					end
+				else
+					sound.attenuation = i_attenuation
+					max_frameskip(false)
+					quick_start = 0
 				end
-			else
-				sound.attenuation = i_attenuation
-				max_frameskip(false)
-				quick_start = 0
 			end
 		end	
 						
 		-- specific keys to press on boot
 		if keyb then
 			-- Inputs 1
-			if screen:frame_number() == input_frame then
+			if screen and screen:frame_number() == input_frame then
 				if emu.romname() == "apple2e" then
 					keyb:post_coded("{SPACE}")
 				elseif emu.romname() == "bbcb" then
@@ -254,7 +256,7 @@ function shell_main()
 			end
 
 			-- Inputs 2
-			if screen:frame_number() == input_frame2 then
+			if screen and screen:frame_number() == input_frame2 then
 				if shell_name == "coco3_donkeyking" then
 					keyb:post_coded("{SPACE}")
 				elseif shell_name == "dragon32_kingcuthbert" or shell_name == "dragon32_dunkeymonkey" then
@@ -270,32 +272,34 @@ function shell_main()
 		end
 
 		-- HUD
-		if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then			
-			-- Draw time targets at startup
-			if time_played <= target_time or mac.paused then
-				_len = string.len(tostring(data_score1))
-				_wid = (14 + _len) * (5 + scale)
-				_x = screen.width - _wid - 1
-				
-				if hide_targets == 0 then
-					-- Draw surrounding box
-					screen:draw_box(_x, y_offset + 1, _x + _wid, 39 + (scale * 3) + y_offset + (y_padding * 3), col1, col2)
-					-- Draw score targets
-					screen:draw_text(_x + 5, 6 + scale + y_offset,  "DKAFE PRIZES:", col0)
-					screen:draw_text(_x + 5, 13 + scale + y_offset + (y_padding * 1), '1ST AT '..tostring(data_score1)..' MINS', gold)
-					screen:draw_text(_x + 5, 20 + scale + y_offset + (y_padding * 2), '2ND AT '..tostring(data_score2)..' MINS', silver)
-					screen:draw_text(_x + 5, 27 + scale + y_offset + (y_padding * 3), '3RD AT '..tostring(data_score3)..' MINS', bronze)
-				end
-			end
+		if screen then
+			if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then
+				-- Draw time targets at startup
+				if time_played <= target_time or mac.paused then
+					_len = string.len(tostring(data_score1))
+					_wid = (14 + _len) * (5 + scale)
+					_x = screen.width - _wid - 1
 
-			if not mac.paused then
-				-- Show prize award top-right when time target achieved
-				if data_score1 > 0 and time_played > data_score1 * 60 then
-					screen:draw_text(_x + x_offset, y_offset,  " 1ST WON "..tostring(data_score1_award.." "), gold, col2)
-				elseif data_score2 > 0 and time_played > data_score2 * 60 then
-					screen:draw_text(_x + x_offset, y_offset,  " 2ND WON "..tostring(data_score2_award.." "), silver, col2)
-				elseif data_score3 > 0 and time_played > data_score3 * 60 then
-					screen:draw_text(_x + x_offset, y_offset,  " 3RD WON "..tostring(data_score3_award.." "), bronze, col2)
+					if hide_targets == 0 then
+						-- Draw surrounding box
+						screen:draw_box(_x, y_offset + 1, _x + _wid, 39 + (scale * 3) + y_offset + (y_padding * 3), col1, col2)
+						-- Draw score targets
+						screen:draw_text(_x + 5, 6 + scale + y_offset,  "DKAFE PRIZES:", col0)
+						screen:draw_text(_x + 5, 13 + scale + y_offset + (y_padding * 1), '1ST AT '..tostring(data_score1)..' MINS', gold)
+						screen:draw_text(_x + 5, 20 + scale + y_offset + (y_padding * 2), '2ND AT '..tostring(data_score2)..' MINS', silver)
+						screen:draw_text(_x + 5, 27 + scale + y_offset + (y_padding * 3), '3RD AT '..tostring(data_score3)..' MINS', bronze)
+					end
+				end
+
+				if not mac.paused then
+					-- Show prize award top-right when time target achieved
+					if data_score1 > 0 and time_played > data_score1 * 60 then
+						screen:draw_text(_x + x_offset, y_offset,  " 1ST WON "..tostring(data_score1_award.." "), gold, col2)
+					elseif data_score2 > 0 and time_played > data_score2 * 60 then
+						screen:draw_text(_x + x_offset, y_offset,  " 2ND WON "..tostring(data_score2_award.." "), silver, col2)
+					elseif data_score3 > 0 and time_played > data_score3 * 60 then
+						screen:draw_text(_x + x_offset, y_offset,  " 3RD WON "..tostring(data_score3_award.." "), bronze, col2)
+					end
 				end
 			end
 		end
