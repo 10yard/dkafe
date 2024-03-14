@@ -104,9 +104,13 @@ elseif emu.romname() == "dragon32" then
 	if shell_name == "dragon32_kingcuthbert" then
 		input_frame2 = 2900
 		quick_start = 3250
+	elseif shell_name == "dragon32_donkeyking" then
+		input_frame2 = 7000
+		quick_start = 7300
 	elseif shell_name == "dragon32_dunkeymonkey" then
-		input_frame2 = 4000
-		quick_start = 4200
+		input_frame = 180
+		input_frame2 = 6000
+		quick_start = 6200
 	end
 elseif emu.romname() == "fds" then
 	quick_start = 600

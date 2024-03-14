@@ -61,6 +61,7 @@ xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\gnw_*.cfg dist\dkwolf\cfg\ /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe

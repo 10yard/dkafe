@@ -31,7 +31,7 @@ def exit_program(confirm=False):
         for attempt in 1, 2, 3:
             try:
                 with open('save.p', 'wb') as f:
-                    pickle.dump([_g.score, _g.timer_adjust, _g.last_selected or _g.last_launched], f)
+                    pickle.dump([_g.score, _g.timer_adjust, _g.last_selected], f)
                 break
             except (EOFError, FileNotFoundError, IOError):
                 pygame.time.delay(250 * attempt)
@@ -584,7 +584,7 @@ def build_menus(initial=False):
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
         _lastname = name
-    _g.menu.add_vertical_margin(10)
+    _g.menu.add_vertical_margin(6)
     _g.menu.add_button('Settings', open_settings_menu)
     _g.menu.add_button('Close Menu', close_menu)
 
@@ -606,11 +606,11 @@ def build_menus(initial=False):
     _g.setmenu.add_selector('Show Game Text: ', [('Off', 0), ('On', 1)], default=SHOW_GAMETEXT, onchange=set_gametext)
     _g.setmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN, onchange=set_splash)
     _g.setmenu.add_selector(' Speed Adjust: ',[('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7), ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
-    _g.setmenu.add_vertical_margin(10)
+    _g.setmenu.add_vertical_margin(6)
     _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
     _g.setmenu.add_selector('Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
     _g.setmenu.add_selector('   Music Volume: ',[('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6), ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
-    _g.setmenu.add_vertical_margin(10)
+    _g.setmenu.add_vertical_margin(6)
     _g.setmenu.add_button('Save Changes to File', save_menu_settings)
     _g.setmenu.add_button('Close Menu', close_menu)
 

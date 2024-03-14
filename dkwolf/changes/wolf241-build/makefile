@@ -104,7 +104,7 @@ STRIP_SYMBOLS = 1
 
 # QT_HOME = /usr/lib64/qt48/
 
-SOURCES = src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp,src/mame/drivers/galaxian.cpp,src/mame/drivers/a2600.cpp,src/mame/drivers/a7800.cpp,src/mame/drivers/atari400.cpp,src/mame/drivers/nes.cpp,src/mame/drivers/coleco.cpp,src/mame/drivers/nes.cpp,src/mame/drivers/gb.cpp,src/mame/drivers/nes.cpp,src/mame/drivers/intv.cpp,src/mame/drivers/msx.cpp,src/mame/drivers/ti99_4x.cpp,src/mame/drivers/coco3.cpp,src/mame/drivers/amstrad.cpp,src/mame/drivers/apple2e.cpp,src/mame/drivers/bbc.cpp,src/mame/drivers/c64.cpp,src/mame/drivers/pet.cpp,src/mame/drivers/spectrum.cpp,src/mame/drivers/oric.cpp,src/mame/drivers/snes.cpp,src/mame/drivers/dragon.cpp,src/mame/drivers/adam.cpp
+SOURCES = src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp,src/mame/drivers/galaxian.cpp,src/mame/drivers/a2600.cpp,src/mame/drivers/a7800.cpp,src/mame/drivers/atari400.cpp,src/mame/drivers/nes.cpp,src/mame/drivers/coleco.cpp,src/mame/drivers/nes.cpp,src/mame/drivers/gb.cpp,src/mame/drivers/nes.cpp,src/mame/drivers/intv.cpp,src/mame/drivers/msx.cpp,src/mame/drivers/ti99_4x.cpp,src/mame/drivers/coco3.cpp,src/mame/drivers/amstrad.cpp,src/mame/drivers/apple2e.cpp,src/mame/drivers/bbc.cpp,src/mame/drivers/c64.cpp,src/mame/drivers/pet.cpp,src/mame/drivers/spectrum.cpp,src/mame/drivers/oric.cpp,src/mame/drivers/snes.cpp,src/mame/drivers/dragon.cpp,src/mame/drivers/adam.cpp,src/mame/drivers/hh_sm510.cpp
 #SOURCES = src/mame/drivers/dkong.cpp,src/mame/drivers/cclimber.cpp,src/mame/drivers/galaxian.cpp
 
 # FORCE_VERSION_COMPILE = 1

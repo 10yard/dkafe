@@ -156,8 +156,6 @@ if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 if START_STAGE > 2: START_STAGE = 0
 
 # Console Addon Specific
-if not os.path.exists("romlist_addon.csv"):
-    globals()["ENABLE_ADDONS"] = 0
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 RECOGNISED_SYSTEMS = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl",
                       "hbf900a", "ti99_4a", "coco3", "cpc6128", "apple2e", "bbcb", "c64", "pet4032", "spectrum",
@@ -583,19 +581,20 @@ dkafe_theme.background_color = BLACK
 dkafe_theme.title_background_color = WHITE
 dkafe_theme.title_font_color = RED
 dkafe_theme.title_bar_style = pymenu.widgets.MENUBAR_STYLE_UNDERLINE
-dkafe_theme.title_offset = (12, 0)
+dkafe_theme.title_offset = (12, 2)
 dkafe_theme.widget_alignment = pymenu.locals.ALIGN_CENTER
 
 dkafe_theme.scrollbar_color = BLACK
 dkafe_theme.scrollbar_slider_color = BLACK
+dkafe_theme.scrollbar_slider_pad = 0
+dkafe_theme.scrollbar_thick = 2
 dkafe_theme.selection_color = RED
 dkafe_theme.widget_font_color = PINK
-dkafe_theme.widget_margin = (0, 3)
-dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(border_width=3, margin_x=2, margin_y=1)
+dkafe_theme.widget_margin = (0, 2)
+dkafe_theme.widget_selection_effect = pymenu.widgets.HighlightSelection(margin_x=10, margin_y=1)
 
 dkafe_theme_left = dkafe_theme.copy()
 dkafe_theme_left.widget_alignment = pymenu.locals.ALIGN_LEFT
-
 
 # Override default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP

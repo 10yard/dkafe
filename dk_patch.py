@@ -104,6 +104,9 @@ def install_addons():
             zip_ref.extractall()
         os.remove(addon)
         return addon  # restrict to install of 1 add-on for now
+    if not os.path.exists("romlist_addon.csv"):
+        globals()["ENABLE_ADDONS"] = 0
+
 
 if __name__ == "__main__":
     apply_patches_and_addons()
