@@ -1,5 +1,5 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
-genesis_felix,shell,Fix It Felix Jr.,Fix It Felix Jr.,81,,,110000,2,4,8
+genesis_felix,shell,Fix It Felix Jr.,GEN: Fix It Felix Jr.,81,,,110000,2,4,8
 nes_dk,shell,NESDK,NES: DK Original,82,,,110000,2,4,8
 nes_dk_icecream,shell,Ice,NES: Ice Cream!,83,,,111000,2,4,8
 nes_dk_kanakong,shell,KanaKong,NES: KanaKong,84,,,112000,2,4,8
@@ -88,7 +88,6 @@ c64_ck,shell,CK,C64: Crazy Kong,9999,,,110000,2,4,8
 c64_ck64,shell,CK64,C64: Crazy Kong 64,9999,,,110000,2,4,8
 ##c64_dk_junior,shell,DK Junior,C64: DK Junior,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK Original,9999,,,0,2,4,8
-#c64_dk_ocean,shell,DK Ocean,C64: DK Ocean,9999,,,110000,2,4,8
 c64_felix,shell,Fix It Felix Jr.,C64: Fix It Felix Jr.,9999,,,110000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
 c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,9999,,,110000,2,4,8

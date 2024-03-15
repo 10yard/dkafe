@@ -79,9 +79,6 @@ elseif emu.romname() == "c64" then
 	elseif shell_name == "c64_felix" then
 		input_frame2 = 12000
 		quick_start = 12400
-	elseif shell_name == "c64_dk_ocean" then
-		--input_frame2 = 12000
-		quick_start = 8000
 	else
 		quick_start = 550
 	end
@@ -228,7 +225,7 @@ function shell_main()
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" then
-					if shell_name == "c64_felix" or shell_name == "c64_dk_ocean" then
+					if shell_name == "c64_felix" then
 						keyb:post('LOAD"*",8,1\n')
 					else
 						keyb:post('RUN\n')

@@ -14,6 +14,7 @@ import sys
 from math import floor
 from random import randint, choice, sample
 from subprocess import Popen, call
+import pygame.cursors
 import dk_global as _g
 import dk_system as _s
 from dk_config import *
@@ -63,6 +64,12 @@ def initialise_screen(reset=False):
     _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
+
+    # Hack to force hide of the mouse cursor in the menus by making cursor transparent
+    cursor_img = pygame.image.load('artwork/transparent.png').convert_alpha()
+    cursor = pygame.cursors.Cursor((9, 0), cursor_img)
+    pygame.mouse.set_cursor(cursor)
+
     if not reset:
         _g.screen_map = _g.screen.copy()
         _g.screen_map.blit(get_image(f"artwork/map{_g.stage}.png"), TOPLEFT)

@@ -174,7 +174,7 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "dragon32": "-cass",
                 "adam": "-cart1"}
 # Game specific media to override the system media
-GAME_MEDIA = {"c64_felix":"-flop", "c64_dk_ocean":"-flop1"}
+GAME_MEDIA = {"c64_felix":"-flop"}
 
 # Frontend version
 VERSION = ''
