@@ -76,6 +76,12 @@ elseif emu.romname() == "c64" then
 		quick_start = 900
 	elseif shell_name == "c64_kongokong" then
 		quick_start = 700
+	elseif shell_name == "c64_felix" then
+		input_frame2 = 12000
+		quick_start = 12400
+	elseif shell_name == "c64_dk_ocean" then
+		--input_frame2 = 12000
+		quick_start = 8000
 	else
 		quick_start = 550
 	end
@@ -222,7 +228,11 @@ function shell_main()
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" then
-					keyb:post('RUN\n')
+					if shell_name == "c64_felix" or shell_name == "c64_dk_ocean" then
+						keyb:post('LOAD"*",8,1\n')
+					else
+						keyb:post('RUN\n')
+					end
 				elseif emu.romname() == "cpc6128" then
 					keyb:post('RUN"DONKEY\n')
 				elseif emu.romname() == "coco3" then
@@ -261,7 +271,9 @@ function shell_main()
 
 			-- Inputs 2
 			if screen and screen:frame_number() == input_frame2 then
-				if shell_name == "coco3_donkeyking" then
+				if shell_name == "c64_felix" then
+					keyb:post('RUN\n')
+				elseif shell_name == "coco3_donkeyking" then
 					keyb:post_coded("{SPACE}")
 				elseif shell_name == "dragon32_kingcuthbert" or shell_name == "dragon32_dunkeymonkey" then
 					keyb:post('EXEC\n')

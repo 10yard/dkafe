@@ -1,4 +1,5 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
+genesis_felix,shell,Fix It Felix Jr.,Fix It Felix Jr.,81,,,110000,2,4,8
 nes_dk,shell,NESDK,NES: DK Original,82,,,110000,2,4,8
 nes_dk_icecream,shell,Ice,NES: Ice Cream!,83,,,111000,2,4,8
 nes_dk_kanakong,shell,KanaKong,NES: KanaKong,84,,,112000,2,4,8
@@ -79,14 +80,16 @@ a800xl_dk,shell,DK,A800: DK Original,9999,,,0,2,4,8
 adam_dk,shell,DK,ADM: DK Original,9999,,,0,2,4,8
 apple2e_dk,shell,DK,AII: DK Original,9999,,,0,2,4,8
 bbcb_dk_junior,shell,DK Junior,BBC: DK Junior,9999,,,110000,2,4,8
-bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
-bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
 bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,0,2,4,8
 bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,0,2,4,8
+bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
+bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
 c64_ck,shell,CK,C64: Crazy Kong,9999,,,110000,2,4,8
 c64_ck64,shell,CK64,C64: Crazy Kong 64,9999,,,110000,2,4,8
 ##c64_dk_junior,shell,DK Junior,C64: DK Junior,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK Original,9999,,,0,2,4,8
+#c64_dk_ocean,shell,DK Ocean,C64: DK Ocean,9999,,,110000,2,4,8
+c64_felix,shell,Fix It Felix Jr.,C64: Fix It Felix Jr.,9999,,,110000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
 c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,9999,,,110000,2,4,8
 c64_mariosbrewery,shell,MariosBrewery,C64: Marios Brewery,9999,,,110000,2,4,8
@@ -104,17 +107,18 @@ coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),9999,,,110000,2,4,8
 dragon32_kingcuthbert,shell,KingCuthbert,D32: King Cuthbert,9999,,,0,2,4,8
 fds_dk_jr_japan,shell,DK Junior,FDS: DK Junior,9999,,,110000,2,4,8
 fds_dk_japan,shell,DK,FDS: DK Original,9999,,,0,2,4,8
-gnw_dkong,shell,DK,G&W: DK Original,9999,,,0,2,4,8
 gnw_dkong2,shell,DK2,G&W: DK 2,9999,,,110000,2,4,8
+gnw_dkcirc,shell,DK Circus,G&W: DK Circus,9999,,,110000,2,4,8
 gnw_dkjrp,shell,DK JR (P),G&W: DK JR. (Panoroma),9999,,,110000,2,4,8
 gnw_dkjr,shell,DK JR,G&W: DK Junior,9999,,,110000,2,4,8
-gnw_dkcirc,shell,DK Circus,G&W: DK Circus,9999,,,110000,2,4,8
-gameboy_dk_4stage,shell,DK 4 Levels,GBY: DK 4 Level Hack,9999,,,110000,2,4,8
-gameboy_dk_japan_us,shell,DK,GBY: DK Original,9999,,,0,2,4,8
-gameboy_dk_summer,shell,DK Summer,GBY: DK Summer Hack,9999,,,110000,2,4,8
+gnw_dkong,shell,DK,G&W: DK Original,9999,,,0,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: DK 4 Level Hack,9999,,,110000,2,4,8
 gbcolor_dk_japan_us,shell,DK,GBC: DK Original,9999,,,0,2,4,8
 gbcolor_dk_summer,shell,DK Summer,GBC: DK Summer Hack,9999,,,110000,2,4,8
+gameboy_dk_4stage,shell,DK 4 Levels,GBY: DK 4 Level Hack,9999,,,110000,2,4,8
+gameboy_dk_japan_us,shell,DK,GBY: DK Original,9999,,,0,2,4,8
+gameboy_dk_summer,shell,DK Summer,GBY: DK Summer Hack,9999,,,110000,2,4,8
+genesis_felix,shell,Fix It Felix Jr.,GEN: Fix It Felix Jr,9999,,,110000,2,4,8
 intv_dk_junior,shell,DK Junior,INT: DK Junior,9999,,,110000,2,4,8
 intv_dk,shell,DK,INT: DK Original,9999,,,0,2,4,8
 hbf900a_dk,shell,DK,MSX: DK Original,9999,,,0,2,4,8

@@ -547,6 +547,7 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Nintendo Gameboy|Gameboy Color
  - Super Nintendo
  - Famicom Disk System
+ - Sega Genesis/Megadrive
  - Colecovision
  - Coleco Adam
  - Intellivision

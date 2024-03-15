@@ -256,7 +256,7 @@ def check_for_input(force_exit=False):
                 open_settings_menu()
             if event.key == CONTROL_P2 and ENABLE_MENU:
                 build_menus()
-                open_menu(_g.menu, large=True)
+                open_menu(_g.menu, remember_selection=True)
             if event.key == CONTROL_COIN:
                 if _g.ready:
                     # globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
@@ -298,7 +298,7 @@ def check_for_input(force_exit=False):
                     exit_program(confirm=CONFIRM_EXIT and not force_exit)
                 if button == BUTTON_P2 and ENABLE_MENU:
                     build_menus()
-                    open_menu(_g.menu, large=True)
+                    open_menu(_g.menu, remember_selection=True)
                 if button == BUTTON_COIN:
                     if _g.ready:
                         globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
@@ -527,10 +527,13 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             if int(_g.sprite_index % 15) == 8:
                 sound_file = f"walk{('1', '0')[direction == 'u']}.wav"
             _g.sprite_index += 1
-        elif direction == "u" and display_icons(detect_only=True):
-            # Jumpman is in position to play a game
-            sprite_file = sprite_file.replace("#", "0")
-            _g.ready = True
+        elif direction == "u":
+            if display_icons(detect_only=True):
+                # Jumpman is in position to play a game
+                sprite_file = sprite_file.replace("#", "0")
+                _g.ready = True
+            #else:
+            #    play_sound_effect("bump.wav")
         elif direction == "d" and _g.ready:
             # Step away from the machine
             sprite_file = f'artwork/sprite/jmr0.png'
@@ -792,13 +795,13 @@ def update_menu_selection(title, index):
             break
 
 
-def open_menu(menu, large=False):
+def open_menu(menu, remember_selection=False):
     _g.timer.stop()
     pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     if not ENABLE_PLAYLIST:
         intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
-    if large:
+    if remember_selection:
         # remember previous selection on large lists
         _widget = _g.last_selected or _g.last_launched
         try:
@@ -806,23 +809,30 @@ def open_menu(menu, large=False):
         except AssertionError:
             # Item was not found in the active list
             pass
+    _g.current_menu_title = menu.get_title()
     menu.enable()
-    menu.mainloop(_g.screen, bgfun=menu_callback if large else None)
+    menu.mainloop(_g.screen, bgfun=menu_callback)
     reset_all_inputs()
 
 
 def menu_callback():
     # Allow menu scroll using left/right cursor or page up/page down keys
     keys=pygame.key.get_pressed()
-    if keys and _s.time() - _g.last_press > 0.1:
+    # Long press of up/down also scrolls
+    _g.last_up = _g.last_up + 1 if keys[CONTROL_UP] else 0
+    _g.last_down = _g.last_down + 1 if keys[CONTROL_DOWN] else 0
+    game_menu = _g.current_menu_title == QUESTION
+
+    if keys and (_s.time() - _g.last_press > 0.1 or _g.last_up > 8 or _g.last_down > 8):
         k = None
-        if keys[CONTROL_LEFT] or keys[CONTROL_PAGEUP]:
+        if (keys[CONTROL_LEFT] and game_menu) or keys[CONTROL_PAGEUP] or _g.last_up > 10:
             k = CONTROL_UP
-        elif keys[CONTROL_RIGHT] or keys[CONTROL_PAGEDOWN]:
+        elif (keys[CONTROL_RIGHT] and game_menu) or keys[CONTROL_PAGEDOWN] or _g.last_down > 10:
             k = CONTROL_DOWN
         if k:
             # Simulate up or down keypress 10 times for quicker scrolling
-            for i in range(0, 10):
+            step = 1 if _g.last_up > 8 or _g.last_down > 8 else 5
+            for i in range(0, step):
                 event = pygame.event.Event(pygame.KEYDOWN, {'key': k})
                 pygame.event.post(event)
                 event = pygame.event.Event(pygame.KEYUP, {'key': k})
@@ -1123,7 +1133,7 @@ def process_interrupts():
         if icons:
             sub, name, _, _, _, st3, st2, st1 = icons
         else:
-            sub = ""
+            sub, name = "", ""
 
         # Pauline announces the launch options
         if SHOW_GAMETEXT and sub:
