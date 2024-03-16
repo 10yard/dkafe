@@ -12,10 +12,11 @@ Generate roms from .ips patch files
 import os
 from ips_util import Patch
 from glob import glob
+from pathlib import Path
 import shutil
 import hashlib
 import zipfile
-from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5
+from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH
 from dk_system import is_pi, copy
 
 
@@ -99,9 +100,16 @@ def apply_patches_and_addons():
 
 
 def install_addons():
+    # Install addon files when found
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
         with zipfile.ZipFile(addon) as zip_ref:
             zip_ref.extractall()
+        if ARCH != "win64":
+            # load states are pregenerated for Windows 64 only.
+            # For other platforms,  they will be generated on first load of a game so it's instant on next launch
+            pathlist = Path(ROM_DIR).glob('**/*.state')
+            for path in pathlist:
+                os.remove(str(path))
         os.remove(addon)
         return addon  # restrict to install of 1 add-on for now
     if not os.path.exists("romlist_addon.csv"):

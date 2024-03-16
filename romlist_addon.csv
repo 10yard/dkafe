@@ -80,8 +80,8 @@ a800xl_dk,shell,DK,A800: DK Original,9999,,,0,2,4,8
 adam_dk,shell,DK,ADM: DK Original,9999,,,0,2,4,8
 apple2e_dk,shell,DK,AII: DK Original,9999,,,0,2,4,8
 bbcb_dk_junior,shell,DK Junior,BBC: DK Junior,9999,,,110000,2,4,8
-bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,0,2,4,8
-bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,0,2,4,8
+bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,110000,2,4,8
+bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,110000,2,4,8
 bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
 c64_ck,shell,CK,C64: Crazy Kong,9999,,,110000,2,4,8

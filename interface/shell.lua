@@ -204,9 +204,11 @@ function shell_main()
 					sound.attenuation = -32 -- mute sounds
 					max_frameskip(true)
 					if quick_start > 500 then
-						--local _remain = tostring(math.floor((quick_start - screen:frame_number()) / 60))
 						local _remain = tostring(math.floor((screen:frame_number() / quick_start) * 100)).."%"
 						screen:draw_text(0, 6 + scale + y_offset,  "LOADING...".._remain, col0, 0xff000000)
+						if state and not file_exists(shell_state) then
+							screen:draw_text(0, 15 + scale + y_offset,  "(SUBSEQUENT LOADS WILL BE INSTANT)", col0, 0xff000000)
+						end
 					end
 				else
 					sound.attenuation = i_attenuation

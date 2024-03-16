@@ -578,6 +578,8 @@ The latest ZIP file is **dkafe_console_addon_pack_v1.zip**
 
 Simply drop the ZIP into your DKAFE folder and then launch DKAFE.  The system will detect the ZIP and automatically unpack and install the add-on pack for you.
 
+Add-on games have been optimised to launch instantly on Windows 64 bit machines.  For other platforms,  the first load will be slower while DKAFE performs an initial optimisation.  Subsequent loads will be instant.
+
 Note: The console add-on pack is not currently available for download from my github page.  You will need to obtain the latest the add-on packs from an external source.
 
 
