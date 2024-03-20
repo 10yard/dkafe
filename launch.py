@@ -10,7 +10,9 @@ Main program
 ------------
 """
 import pickle
+import subprocess
 import sys
+import time
 from math import floor
 from random import randint, choice, sample
 from subprocess import Popen, call
@@ -838,7 +840,7 @@ def menu_callback():
             k = CONTROL_DOWN
         if k:
             # Simulate up or down keypress 10 times for quicker scrolling
-            step = 1 if _g.last_up > 8 or _g.last_down > 8 else 5
+            step = 1 if _g.last_up > 8 or _g.last_down > 8 else 6
             for i in range(0, step):
                 event = pygame.event.Event(pygame.KEYDOWN, {'key': k})
                 pygame.event.post(event)
@@ -914,7 +916,16 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 launch_command += f"; {EMU_EXIT}"
             time_start = _s.time()
             if _s.is_pi() or sub == "shell":
-                os.system(launch_command)
+                if name.startswith("pc_"):
+                    # Give focus to external PC game (by temporaty windowing DKAFE before launching)
+                    _sizes = pygame.display.get_desktop_sizes()
+                    if _sizes:
+                        w, h = _sizes[0]
+                        _g.screen = pygame.display.set_mode((w-1, h))
+                    os.system(launch_command)
+                    _g.screen = pygame.display.set_mode(DISPLAY, pygame.SCALED)
+                else:
+                    os.system(launch_command)
             else:
                 call(launch_command)
             time_end = _s.time()

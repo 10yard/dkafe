@@ -106,7 +106,9 @@ xcopy roms\snes dist\console_addon\roms\snes /S /i /Y
 xcopy roms\oric1 dist\console_addon\roms\oric1 /S /i /Y
 xcopy roms\dragon32 dist\console_addon\roms\dragon32 /S /i /Y
 xcopy roms\adam dist\console_addon\roms\adam /S /i /Y
+xcopy roms\pc dist\console_addon\roms\pc /S /i /Y
 xcopy roms\gnw dist\console_addon\roms\gnw /S /i /Y
+xcopy roms\lcd dist\console_addon\roms\lcd /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 xcopy dkwolf\artwork dist\console_addon\dkwolf\artwork /S /i /Y
 

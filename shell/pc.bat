@@ -1,0 +1,2 @@
+cd roms/pc/%DKAFE_SHELL_NAME%
+%DKAFE_SHELL_NAME%

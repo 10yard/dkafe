@@ -134,6 +134,10 @@ elseif emu.romname() == "hbf900a" then
 	else
 		quick_start = 2300
 	end
+elseif emu.romname() == "cdkong" or emu.romname() == "gckong" then
+	-- LCD games
+	scale = 18
+	y_padding = 32
 elseif emu.romname() == "intv" then
 	state = true
 	quick_start = 900
@@ -299,10 +303,10 @@ function shell_main()
 						-- Draw surrounding box
 						screen:draw_box(_x, y_offset + 1, _x + _wid, 39 + (scale * 3) + y_offset + (y_padding * 3), col1, col2)
 						-- Draw score targets
-						screen:draw_text(_x + 5, 6 + scale + y_offset,  "DKAFE PRIZES:", col0)
-						screen:draw_text(_x + 5, 13 + scale + y_offset + (y_padding * 1), '1ST AT '..tostring(data_score1)..' MINS', gold)
-						screen:draw_text(_x + 5, 20 + scale + y_offset + (y_padding * 2), '2ND AT '..tostring(data_score2)..' MINS', silver)
-						screen:draw_text(_x + 5, 27 + scale + y_offset + (y_padding * 3), '3RD AT '..tostring(data_score3)..' MINS', bronze)
+						screen:draw_text(_x + 5 + (scale / 2), 6 + scale + y_offset,  "DKAFE PRIZES:", col0)
+						screen:draw_text(_x + 5 + (scale / 2), 13 + scale + y_offset + (y_padding * 1), '1ST AT '..tostring(data_score1)..' MINS', gold)
+						screen:draw_text(_x + 5 + (scale / 2), 20 + scale + y_offset + (y_padding * 2), '2ND AT '..tostring(data_score2)..' MINS', silver)
+						screen:draw_text(_x + 5 + (scale / 2), 27 + scale + y_offset + (y_padding * 3), '3RD AT '..tostring(data_score3)..' MINS', bronze)
 					end
 				end
 

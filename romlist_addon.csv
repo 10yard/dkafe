@@ -153,6 +153,8 @@ nes_dk_zelda12,shell,ZK12,NES: Zelda12 (Tarin),9999,,,110000,2,4,8
 oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,0,2,4,8
 ##oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
 oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
+pc_dk_redux,shell,DK Redux,PC : DK Redux,9999,,,110000,2,4,8
+pc_fixitfelix,shell,Fix It Felix Classic,PC : Fix It Felix Jr.,9999,,,110000,2,4,8
 #pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
@@ -164,3 +166,6 @@ spectrum_kong,shell,Kong,ZXS: Kong,9999,,,110000,2,4,8
 spectrum_krazykong,shell,KrazyKong,ZXS: Krazy Kong,9999,,,110000,2,4,8
 spectrum_monkeybiz,shell,MonkeyBiz,ZXS: Monkey Bizness,9999,,,110000,2,4,8
 ##spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8
+pc_dk_amiga_pd,shell,DK Amiga,A500: Amiga DK PD,9999,,,110000,2,4,8
+lcd_cdkong,shell,Coleco DK,LCD: Coleco DK,9999,,,0,2,4,8
+lcd_gckong,shell,Gakken CK,LCD: Gakken Crazy Kong,9999,,,110000,2,4,8

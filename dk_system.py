@@ -188,6 +188,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_ROMS"] = ROM_DIR
             os.environ["DKAFE_SHELL_SYSTEM"] = _system
             os.environ["DKAFE_SHELL_NAME"] = name
+            os.environ["DKAFE_SHELL_NAME_2"] = name.split("_")[1] if "_" in name else name
             os.environ["DKAFE_SHELL_MEDIA"] = GAME_MEDIA.get(name) or SYSTEM_MEDIA.get(_system) or "-cart"
             os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
             os.environ["DKAFE_SHELL_ROR"] = ""
