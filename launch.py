@@ -916,7 +916,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 launch_command += f"; {EMU_EXIT}"
             time_start = _s.time()
             if _s.is_pi() or sub == "shell":
-                if name.startswith("pc_"):
+                if name.startswith("pc_") or name.startswith("dos_"):
                     # Give focus to external PC game (by temporaty windowing DKAFE before launching)
                     _sizes = pygame.display.get_desktop_sizes()
                     if _sizes:

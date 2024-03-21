@@ -107,6 +107,7 @@ xcopy roms\oric1 dist\console_addon\roms\oric1 /S /i /Y
 xcopy roms\dragon32 dist\console_addon\roms\dragon32 /S /i /Y
 xcopy roms\adam dist\console_addon\roms\adam /S /i /Y
 xcopy roms\pc dist\console_addon\roms\pc /S /i /Y
+xcopy roms\dos dist\console_addon\roms\dos /S /i /Y
 xcopy roms\gnw dist\console_addon\roms\gnw /S /i /Y
 xcopy roms\lcd dist\console_addon\roms\lcd /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
@@ -116,6 +117,10 @@ echo **** Include arcade in the addon pack to allow complete frontend setup from
 copy roms\dkong.zip dist\console_addon\roms\ /Y
 copy roms\dkongjr.zip dist\console_addon\roms\ /Y
 copy roms\dkong3.zip dist\console_addon\roms\ /Y
+
+echo **** Bonus roms includes with the addon pack
+copy roms\logger.zip dist\console_addon\roms\ /Y
+copy roms\congo.zip dist\console_addon\roms\ /Y
 
 del releases\add-ons\dkafe_console_addon_windows_%version%.zip
 %zip_path% a releases\add-ons\dkafe_console_addon_pack_v1.zip .\dist\console_addon\*

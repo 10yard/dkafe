@@ -79,6 +79,9 @@ elseif emu.romname() == "c64" then
 	elseif shell_name == "c64_felix" then
 		input_frame2 = 12000
 		quick_start = 12400
+	elseif shell_name == "c64_jumpmanjr" then
+		input_frame2 = 8200
+		quick_start = 9000
 	else
 		quick_start = 550
 	end
@@ -231,7 +234,7 @@ function shell_main()
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" then
-					if shell_name == "c64_felix" then
+					if shell_name == "c64_felix" or shell_name == "c64_jumpmanjr" then
 						keyb:post('LOAD"*",8,1\n')
 					else
 						keyb:post('RUN\n')
@@ -274,7 +277,7 @@ function shell_main()
 
 			-- Inputs 2
 			if screen and screen:frame_number() == input_frame2 then
-				if shell_name == "c64_felix" then
+				if shell_name == "c64_felix" or shell_name == "c64_jumpmanjr" then
 					keyb:post('RUN\n')
 				elseif shell_name == "coco3_donkeyking" then
 					keyb:post_coded("{SPACE}")

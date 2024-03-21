@@ -539,7 +539,7 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 
 ## Console Add-on Pack
 
-An optional add-on pack includes over 100 Donkey Kong ports and hacks for the following classic home consoles and computers.
+An optional add-on pack includes over 150 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Atari 2600|5200|7800
  - Atari 800XL Computer
@@ -563,6 +563,8 @@ An optional add-on pack includes over 100 Donkey Kong ports and hacks for the fo
  - Dragon 32
  - MSX
  - Apple ][
+ - Game and Watch
+ - LCD/Handheld
  - PC/DOS
 
 The console games will appear on the pies stage.

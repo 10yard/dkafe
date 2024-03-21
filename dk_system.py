@@ -81,8 +81,11 @@ def read_romlist():
                         name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
                         _shell = sub == "shell"
                         if _shell or sub not in usedsubs:
-                            # Skip over roms when files are not found
                             if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
+                                # Skip over roms when files are not found
+                                continue
+                            if ARCH != "win64" and name in WIN64_ONLY:
+                                # Skip over incompatible roms
                                 continue
 
                             # Skip over specific hacks when an optional rom is not found e.g. Galakong JR

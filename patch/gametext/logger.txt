@@ -1,0 +1,11 @@
+Logger
+
+A rip-off of Nintendo "Donkey Kong".
+
+Help the unfortunate lumberjack to retrieve his axe
+and all tools stolen by a giant blue parrot for this
+you will have to climb the differents levels of the 
+mountain and jump to dodge all the logs to reach the 
+top and go to next level.
+
+Developed by Century Electronics
