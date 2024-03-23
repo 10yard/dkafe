@@ -10,9 +10,6 @@ Main program
 ------------
 """
 import pickle
-import subprocess
-import sys
-import time
 from math import floor
 from random import randint, choice, sample
 from subprocess import Popen, call
@@ -22,6 +19,7 @@ import dk_system as _s
 from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches_and_addons, validate_rom
+from multiprocessing import Process
 
 
 def exit_program(confirm=False):
@@ -41,6 +39,24 @@ def exit_program(confirm=False):
         rotate_display(exiting=True)
         pygame.quit()
         sys.exit()
+
+
+def remap(name, mappings):
+    """asynchronous: temporary keyboard remapping and force quit option"""
+    import keyboard
+    for m in mappings.split(","):
+        src, dst = m.split(">")
+        if dst.startswith("forcequit"):
+            # Force quit necessary for some PC games.  "forcequit:PROGRAMNAME" or "forcequit" to kill the default.
+            if ":" in dst:
+                _program = dst.split(":")[1]
+            else:
+                _program = f"{name}.*"
+            keyboard.add_hotkey(src, lambda: call(f'taskkill /IM {_program} /F'))
+        else:
+            keyboard.remap_key(src, dst)
+    while True:
+        keyboard.wait()
 
 
 def rotate_display(exiting=False, initial=False, rotate=ROTATION):
@@ -915,6 +931,13 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             if EMU_EXIT:
                 launch_command += f"; {EMU_EXIT}"
             time_start = _s.time()
+
+            # Temporary keyboard remapping
+            remap_process = None
+            if name in KEYBOARD_REMAP:
+                remap_process = Process(target=remap, args=(name, KEYBOARD_REMAP[name],))
+                remap_process.start()
+
             if _s.is_pi() or sub == "shell":
                 if name.startswith("pc_") or name.startswith("dos_"):
                     # Give focus to external PC game (by temporaty windowing DKAFE before launching)
@@ -928,6 +951,11 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     os.system(launch_command)
             else:
                 call(launch_command)
+
+            # Terminate any temporary keyboard mappings
+            if remap_process and remap_process.is_alive():
+                remap_process.terminate()
+
             time_end = _s.time()
             _s.debounce()
             _g.lastexit = _g.timer.duration

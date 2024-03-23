@@ -10,3 +10,4 @@ pyperclip==1.8.1
 pywin32-ctypes==0.2.0
 rotate-screen==0.1.5
 stopwatch.py==1.0.1
+keyboard==0.13.5

@@ -174,8 +174,18 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "dragon32": "-cass",
                 "adam": "-cart1"}
 # Game specific media to override the system media
-GAME_MEDIA = {"c64_felix":"-flop", "c64_jumpmanjr":"-flop"}
+GAME_MEDIA = {"c64_felix":"-flop", "c64_jumpman":"-flop"}
 WIN64_ONLY = "pc_dk_redux",
+# use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
+KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
+                  "pc_fixitfelix":"ctrl>num 1",
+                  "pc_jumpman_rtx":"num 1>enter,ctrl>space,esc>forcequit",
+                  "pc_dk_remake":"num 1>enter,ctrl>space,esc>forcequit",
+                  "pc_dk_jr_remake": "num 1>enter,ctrl>space,esc>forcequit",
+                  "pc_dk_craze": "esc>forcequit:stdrt.exe",
+                  "dos_aldo3": "ctrl>space",
+                  "dos_aldo": "ctrl>space",
+                  "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe"}
 
 # Frontend version
 VERSION = ''

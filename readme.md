@@ -541,7 +541,9 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 
 An optional add-on pack includes over 150 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
- - Atari 2600|5200|7800
+ - Atari 2600
+ - Atari 5200
+ - Atari 7800
  - Atari 800XL Computer
  - Nintendo Entertainment System
  - Nintendo Gameboy|Gameboy Color
@@ -565,7 +567,8 @@ An optional add-on pack includes over 150 Donkey Kong ports and hacks for the fo
  - Apple ][
  - Game and Watch
  - LCD/Handheld
- - PC/DOS
+ - MS-DOS
+ - PC
 
 The console games will appear on the pies stage.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.

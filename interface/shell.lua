@@ -79,9 +79,9 @@ elseif emu.romname() == "c64" then
 	elseif shell_name == "c64_felix" then
 		input_frame2 = 12000
 		quick_start = 12400
-	elseif shell_name == "c64_jumpmanjr" then
-		input_frame2 = 8200
-		quick_start = 9000
+	elseif shell_name == "c64_jumpman" then
+		input_frame2 = 6000
+		quick_start = 6200
 	else
 		quick_start = 550
 	end
@@ -117,6 +117,8 @@ elseif emu.romname() == "dragon32" then
 		input_frame = 180
 		input_frame2 = 6000
 		quick_start = 6200
+	elseif shell_name == "dragon32_juniorsrevenge" then
+		quick_start = 20000
 	end
 elseif emu.romname() == "fds" then
 	quick_start = 600
@@ -234,7 +236,7 @@ function shell_main()
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" then
-					if shell_name == "c64_felix" or shell_name == "c64_jumpmanjr" then
+					if shell_name == "c64_felix" or shell_name == "c64_jumpman" then
 						keyb:post('LOAD"*",8,1\n')
 					else
 						keyb:post('RUN\n')
@@ -277,7 +279,7 @@ function shell_main()
 
 			-- Inputs 2
 			if screen and screen:frame_number() == input_frame2 then
-				if shell_name == "c64_felix" or shell_name == "c64_jumpmanjr" then
+				if shell_name == "c64_felix" or shell_name == "c64_jumpman" then
 					keyb:post('RUN\n')
 				elseif shell_name == "coco3_donkeyking" then
 					keyb:post_coded("{SPACE}")
@@ -297,10 +299,14 @@ function shell_main()
 		if screen then
 			if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then
 				-- Draw time targets at startup
-				if time_played <= target_time or mac.paused then
+				if time_played > 0 and time_played <= target_time or mac.paused then
 					_len = string.len(tostring(data_score1))
 					_wid = (14 + _len) * (5 + scale)
 					_x = screen.width - _wid - 1
+
+					if not mac.paused then
+						screen:draw_text(2, 2 + scale + y_offset,  "USE P1 OR JUMP TO START", col0, 0xff000000)
+					end
 
 					if hide_targets == 0 then
 						-- Draw surrounding box

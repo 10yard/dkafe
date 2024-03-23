@@ -91,10 +91,10 @@ c64_ck64,shell,CK64,C64: Crazy Kong 64,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK Original,9999,,,0,2,4,8
 ##c64_dk_x,shell,DK X,C64: DK X,9999,,,110000,2,4,8
 c64_felix,shell,Fix It Felix Jr.,C64: Fix It Felix Jr.,9999,,,110000,2,4,8
+##c64_jumpman,shell,Jumpman,C64: Jumpman,9999,,,110000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
 c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,9999,,,110000,2,4,8
 c64_mariosbrewery,shell,MariosBrewery,C64: Marios Brewery,9999,,,110000,2,4,8
-##c64_jumpmanjr,shell,JumpmanJR,C64: Jumpman Jr,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,110000,2,4,8
 ##coco3_donkeyking,shell,DonkeyKing,CO3: Donkey King,9999,,,110000,2,4,8
@@ -102,16 +102,18 @@ coco3_dunkeymonkey,shell,DunkeyMonkey,CO3: Dunkey Monkey,9999,,,110000,2,4,8
 coco3_monkeykong,shell,MonkeyKong,CO3: Monkey Kong,9999,,,110000,2,4,8
 cpc6128_dk,shell,DK,CPC: DK Original,9999,,,0,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
+coleco_jumpmanjr,shell,JumpanJR,CVS: Jumpman Jr,9999,,,110000,2,4,8
 coleco_super_dk,shell,Super,CVS: Super DK! (Proto),9999,,,110000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),9999,,,110000,2,4,8
-coleco_jumpmanjr,shell,JumpanJR,CVS: Jumpman Jr,9999,,,110000,2,4,8
 ##dragon32_donkeyking,shell,DonkeyKing,D32: Donkey King,9999,,,110000,2,4,8
 ##dragon32_dunkeymonkey,shell,DunkeyMonkey,D32: Dunkey Monkey,9999,,,110000,2,4,8
+dragon32_juniorsrevenge,shell,Junior's Revenge,D32: Junior's Revenge,9999,,,110000,2,4,8
 dragon32_kingcuthbert,shell,KingCuthbert,D32: King Cuthbert,9999,,,0,2,4,8
+##dos_aldo2,shell,Aldo Again,DOS: Aldo Again,9999,,,110000,2,4,8
 dos_aldo,shell,Aldo's Adventure,DOS: Aldo's Adventure,9999,,,110000,2,4,8
+dos_aldo3,shell,Aldo's Assault,DOS: Aldo's Assault,9999,,,110000,2,4,8
 dos_kong,shell,ChampKong,DOS: Champ Kong,9999,,,110000,2,4,8
 dos_dk,shell,DK,DOS: DK Original,9999,,,0,2,4,8
-##dos_jumpman,shell,Jumpman,DOS: Jumpman,9999,,,110000,2,4,8
 fds_dk_jr_japan,shell,DK Junior,FDS: DK Junior,9999,,,110000,2,4,8
 fds_dk_japan,shell,DK,FDS: DK Original,9999,,,0,2,4,8
 gnw_dkong2,shell,DK2,G&W: DK 2,9999,,,110000,2,4,8
@@ -123,7 +125,7 @@ gbcolor_dk_4stage,shell,DK 4 Levels,GBC: DK 4 Level Hack,9999,,,110000,2,4,8
 gbcolor_dk_japan_us,shell,DK,GBC: DK Original,9999,,,0,2,4,8
 gbcolor_dk_summer,shell,DK Summer,GBC: DK Summer Hack,9999,,,110000,2,4,8
 gameboy_dk_4stage,shell,DK 4 Levels,GBY: DK 4 Level Hack,9999,,,110000,2,4,8
-gameboy_dk_japan_us,shell,DK,GBY: DK Original,9999,,,0,2,4,8
+gameboy_dk_japan_us,shell,DK,GBY: DK Original,9999,,,110000,2,4,8
 gameboy_dk_summer,shell,DK Summer,GBY: DK Summer Hack,9999,,,110000,2,4,8
 genesis_felix,shell,Fix It Felix Jr.,GEN: Fix It Felix Jr,9999,,,110000,2,4,8
 intv_dk_junior,shell,DK Junior,INT: DK Junior,9999,,,110000,2,4,8
@@ -163,8 +165,13 @@ nes_dk_zelda12,shell,ZK12,NES: Zelda12 (Tarin),9999,,,110000,2,4,8
 oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,0,2,4,8
 ##oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
 oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
-pc_dk_redux,shell,DK Redux,PC : DK Redux,9999,,,110000,2,4,8
+pc_dk_jr_remake,shell,DK Junior Remake,PC : DK Junior Remake,9999,,,110000,2,4,8
+pc_raiders,shell,DK Raiders,PC : DK Raiders,9999,,,110000,2,4,8
+pc_dk_redux,shell,DK Redux,PC : DK Redux,9999,,,0,2,4,8
+pc_dk_remake,shell,DK Remake,PC : DK Remake,9999,,,110000,2,4,8
 pc_fixitfelix,shell,Fix It Felix Classic,PC : Fix It Felix Jr.,9999,,,110000,2,4,8
+pc_jumpman_rtx,shell,Jumpman RTX,PC : Jumpman RTX,9999,,,110000,2,4,8
+pc_dk_craze,shell,DK Craze,PC : DK Craze,9999,,,110000,2,4,8
 #pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
