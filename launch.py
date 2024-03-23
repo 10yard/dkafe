@@ -134,7 +134,7 @@ def check_patches_available():
             if not applied_patches:
                 # Do we need a heading?
                 clear_screen()
-                write_text(f"INSTALLING ADD-ONS...", font=dk_font, y=0, fg=RED)
+                write_text(f"INSTALLING ADD-ONS...       ", font=dk_font, y=0, fg=RED)
             write_text(f"** THE CONSOLE ADD-ON PACK WAS INSTALLED **", font=pl_font, x=0, y=239, fg=PINK)
         if applied_patches or installed_addons:
             jump_to_continue(0)

@@ -33,7 +33,7 @@ local bronze, silver, gold = 0xffcd7f32, 0xffc0c0c0, 0xffd4af37
 local i_attenuation = sound.attenuation
 
 -- Adjustments for systems
-local target_time = 5
+local target_time = 6
 local input_frame, input_frame2 = 60, 0
 local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
 local state = False

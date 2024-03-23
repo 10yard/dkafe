@@ -102,6 +102,12 @@ def apply_patches_and_addons():
 def install_addons():
     # Install addon files when found
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
+        # Installing message...
+        from launch import write_text, update_screen, dk_font, RED
+        write_text(f"PREPARING, PLEASE WAIT...   ", font=dk_font, y=0, fg=RED)
+        update_screen()
+
+        # Do Install
         with zipfile.ZipFile(addon) as zip_ref:
             zip_ref.extractall()
         if ARCH != "win64":
