@@ -10,6 +10,7 @@ Generate roms from .ips patch files
 -----------------------------------
 """
 import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from ips_util import Patch
 from glob import glob
 from pathlib import Path

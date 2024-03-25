@@ -175,7 +175,7 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "adam": "-cart1"}
 # Game specific media to override the system media
 GAME_MEDIA = {"c64_felix":"-flop", "c64_jumpman":"-flop"}
-WIN64_ONLY = "pc_dk_redux",
+WIN64_ONLY_SYSTEMS = "pc", "dos"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
                   "pc_fixitfelix":"ctrl>num 1",

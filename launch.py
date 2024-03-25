@@ -935,8 +935,9 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             # Temporary keyboard remapping
             remap_process = None
             if name in KEYBOARD_REMAP:
-                remap_process = Process(target=remap, args=(name, KEYBOARD_REMAP[name],))
-                remap_process.start()
+                if ARCH == "win64":
+                    remap_process = Process(target=remap, args=(name, KEYBOARD_REMAP[name],))
+                    remap_process.start()
 
             if _s.is_pi() or sub == "shell":
                 if name.startswith("pc_") or name.startswith("dos_"):

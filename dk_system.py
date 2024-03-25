@@ -84,7 +84,7 @@ def read_romlist():
                             if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
                                 # Skip over roms when files are not found
                                 continue
-                            if ARCH != "win64" and name in WIN64_ONLY:
+                            if ARCH != "win64" and name.split("_")[0] in WIN64_ONLY_SYSTEMS:
                                 # Skip over incompatible roms
                                 continue
 
