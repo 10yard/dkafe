@@ -10,7 +10,6 @@ Generate roms from .ips patch files
 -----------------------------------
 """
 import os
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from ips_util import Patch
 from glob import glob
 from pathlib import Path
@@ -119,8 +118,6 @@ def install_addons():
                 os.remove(str(path))
         os.remove(addon)
         return addon  # restrict to install of 1 add-on for now
-    if not os.path.exists("romlist_addon.csv"):
-        globals()["ENABLE_ADDONS"] = 0
 
 
 if __name__ == "__main__":

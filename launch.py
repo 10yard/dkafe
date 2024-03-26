@@ -9,11 +9,13 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 Main program
 ------------
 """
+import os
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+import pygame.cursors
 import pickle
 from math import floor
 from random import randint, choice, sample
 from subprocess import Popen, call
-import pygame.cursors
 import dk_global as _g
 import dk_system as _s
 from dk_config import *
@@ -589,6 +591,9 @@ def sort_key(x):
 
 def build_menus(initial=False):
     """Game selection menu"""
+    if not os.path.exists("romlist_addon.csv"):
+        globals()["ENABLE_ADDONS"] = 0
+
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
 
