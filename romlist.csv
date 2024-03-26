@@ -1,11 +1,11 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
 dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
-dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
 dkong,dkongpies,DK Pies,DK Pies Only,3,1,2,,10000,15000,30000
+dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,,4,1,2,,20000,40000,60000
 dkongx11,dkongspooky,Spooky,DK Spooky Remix,6,1,2,1000,10000,15000,30000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,1000,10000,20000,40000
-dkong,dkongoctomonkey,DK Octo,DK OctoMonkey,9,1,2,2000,60000,100000,200000
+dkong,dkongpacmancross,Pac-X,DK Pac-Man Crossover,9,1,2,2000,8000,15000,30000
 dkong,dkong40,DK 40!!,DK Anniversary Edition,10,1,2,4000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,11,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,13,1,2,8000,10000,20000,40000
@@ -15,13 +15,13 @@ ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),17,1,2,14000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,18,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,19,1,2,18000,10000,15000,30000
 dkong,dkongvector,VectorKong,DK Vector Kong,20,1,2,20000,10000,20000,40000
-dkongjr,dkongjrgala,GalaJR,DK GalaKong Junior,21,1,2,22000,10000,20000,30000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,21,1,2,22000,10000,20000,40000
+dkongjr,dkongjrgala,GalaJR,DK GalaKong Junior,21,1,2,22000,10000,20000,30000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,23,1,2,24000,10000,25000,45000
 dkong,dkongfr,DK Free,DK Freerun Edition,24,1,2,26000,20000,40000,60000
 dkong,dkongrivets,DKRivet,DK Rivets Only,25,1,2,28000,10000,20000,40000
 dkong,dkongotr,DK OnTheRun,DK On The Run,26,1,2,30000,10000,15000,30000
-dkong,dkongpacmancross,DKPacCross,DK Pac-Man Crossover,28,1,2,32000,8000,15000,30000
+dkong,dkongoctomonkey,OctoMonkey,DK OctoMonkey,28,1,2,32000,60000,100000,200000
 dkong,dkonghrthnt,DK ~,DK Heart Hunt,29,1,2,34000,8000,15000,35000
 dkong,dkongxgalakong,X-Gala,DK Extreme Galakong,30,1,2,36000,5000,10000,15000
 bigkong,bigkong,BigKong,Big Kong,31,1,2,38000,5000,15000,25000
@@ -31,8 +31,8 @@ dkongf,dkongrdemo,DKRemix,DK Remix,34,1,2,44000,10000,20000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,36,1,2,46000,10000,20000,40000
 dkong,dkongkana,Kana,DK Kana Kong,38,1,2,48000,10000,20000,40000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,39,1,2,50000,10000,20000,40000
-dkong3,,DK 3,,40,1,2,52000,,,
 dkong,dkongnoluck,NoLuck,DK NoLuck Kong,40,1,2,52000,15000,25000,50000
+dkong3,,DK 3,,40,1,2,52000,,,
 dkong,dkongbarpal,DK Palooza,DK Barrelpalooza,42,1,2,54000,10000,25000,50000
 dkong,dkongwbh,DK Wild,,43,1,2,56000,1000,2000,5000
 dkong,dkong2nut,2Nut,2Nut Kong,44,1,2,58000,10000,25000,50000
@@ -83,13 +83,13 @@ dkong,dkongksfix,KSFix,DK Killscreen Fix,123,1,2,150000,10000,25000,40000
 ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,9999,1,2,,10000,25000,40000
 ckongdks,ckongdks,CK Spanish,CK Spanish Bootleg,9999,1,2,,10000,25000,40000
 kong,kong,DK Galax.,DK Galaxian Hardware,9999,1,2,,,,
+dkongjr,dkongjrcontinue,JRCont.,DK Junior Continue,9999,1,2,,,,
 dkong,dkongtrn,DK Trainer,,9999,1,2,,,,
-dkongf,dkongst2,DK Springs Trainer,,9999,1,2,,,,
 dkong,dkongpace,DK Pace,,9999,1,2,,,,
 dkong,dkongbcc,DK Barrel Control,,9999,1,2,,,,
 dkong,dkongduel,DK Duel,,9999,1,2,,,,
 dkong,dkongbarrelboss,DK Barrel Boss,,9999,1,2,,,,
 dkong,dkongsprfin,DK Springfinity,,9999,1,2,,,,
-dkongjr,dkongjrcontinue,JRCont.,DK Junior Continue,9999,1,2,,,,
-logger,,Logger,Bonus: Logger,9999,1,2,,,,
+dkongf,dkongst2,DK Springs Trainer,,9999,1,2,,,,
 congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,,,,
+logger,,Logger,Bonus: Logger,9999,1,2,,,,

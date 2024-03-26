@@ -1982,49 +1982,52 @@ void validity_checker::validate_driver(device_t &root)
 	// if we have at least 100 drivers, validate the clone
 	// (100 is arbitrary, but tries to avoid tiny.mak dependencies)
 	//---------------------------------------------------------------
-	// 10yard - increase to 1000 to suppress warning messages
-	if (driver_list::total() > 1000 && clone_of == -1 && is_clone)
-		osd_printf_error("Driver is a clone of nonexistent driver %s\n", m_current_driver->parent);
+	
+	// 10yard - suppress warning messages
+	//if (driver_list::total() > 1000 && clone_of == -1 && is_clone)
+	//	osd_printf_error("Driver is a clone of nonexistent driver %s\n", m_current_driver->parent);
 
 	// look for recursive cloning
-	if (clone_of != -1 && &driver_list::driver(clone_of) == m_current_driver)
-		osd_printf_error("Driver is a clone of itself\n");
+	//if (clone_of != -1 && &driver_list::driver(clone_of) == m_current_driver)
+	//	osd_printf_error("Driver is a clone of itself\n");
 
 	// look for clones that are too deep
-	if (clone_of != -1 && (clone_of = driver_list::non_bios_clone(clone_of)) != -1)
-		osd_printf_error("Driver is a clone of a clone\n");
+	//if (clone_of != -1 && (clone_of = driver_list::non_bios_clone(clone_of)) != -1)
+	//	osd_printf_error("Driver is a clone of a clone\n");
 
 	// look for drivers specifying a parent ROM device type
-	if (root.type().parent_rom_device_type())
-		osd_printf_error("Driver has parent ROM device type '%s'\n", root.type().parent_rom_device_type()->shortname());
+	//if (root.type().parent_rom_device_type())
+	//	osd_printf_error("Driver has parent ROM device type '%s'\n", root.type().parent_rom_device_type()->shortname());
 
 	// make sure the driver name is not too long
-	if (!is_clone && strlen(m_current_driver->name) > 16)
-		osd_printf_error("Parent driver name must be 16 characters or less\n");
-	if (is_clone && strlen(m_current_driver->name) > 16)
-		osd_printf_error("Clone driver name must be 16 characters or less\n");
+	//if (!is_clone && strlen(m_current_driver->name) > 16)
+	//	osd_printf_error("Parent driver name must be 16 characters or less\n");
+	//if (is_clone && strlen(m_current_driver->name) > 16)
+	//	osd_printf_error("Clone driver name must be 16 characters or less\n");
 
 	// make sure the driver name doesn't contain invalid characters
-	for (const char *s = m_current_driver->name; *s != 0; s++)
-		if (((*s < '0') || (*s > '9')) && ((*s < 'a') || (*s > 'z')) && (*s != '_'))
-		{
-			osd_printf_error("Driver name contains invalid characters\n");
-			break;
-		}
+	//for (const char *s = m_current_driver->name; *s != 0; s++)
+	//	if (((*s < '0') || (*s > '9')) && ((*s < 'a') || (*s > 'z')) && (*s != '_'))
+	//	{
+	//		osd_printf_error("Driver name contains invalid characters\n");
+	//		break;
+	//	}
 
 	// make sure the year is only digits, '?' or '+'
-	for (const char *s = m_current_driver->year; *s != 0; s++)
-		if (!isdigit(u8(*s)) && *s != '?' && *s != '+')
-		{
-			osd_printf_error("Driver has an invalid year '%s'\n", m_current_driver->year);
-			break;
-		}
+	//for (const char *s = m_current_driver->year; *s != 0; s++)
+	//	if (!isdigit(u8(*s)) && *s != '?' && *s != '+')
+	//	{
+	//		osd_printf_error("Driver has an invalid year '%s'\n", m_current_driver->year);
+	//		break;
+	//	}
 
 	// normalize driver->compatible_with
 	const char *compatible_with = m_current_driver->compatible_with;
 	if (compatible_with != nullptr && strcmp(compatible_with, "0") == 0)
 		compatible_with = nullptr;
 
+	//10yard - ignore the compatibility warnings
+	/*
 	// check for this driver being compatible with a nonexistent driver
 	if (compatible_with != nullptr && driver_list::find(m_current_driver->compatible_with) == -1)
 		osd_printf_error("Driver is listed as compatible with nonexistent driver %s\n", m_current_driver->compatible_with);
@@ -2040,7 +2043,8 @@ void validity_checker::validate_driver(device_t &root)
 			osd_printf_error("Driver is recursively compatible with itself\n");
 			break;
 		}
-
+	*/
+	
 	// make sure sound-less drivers are flagged
 	device_t::feature_type const unemulated(m_current_driver->type.unemulated_features());
 	device_t::feature_type const imperfect(m_current_driver->type.imperfect_features());

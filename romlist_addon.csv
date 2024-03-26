@@ -107,7 +107,7 @@ coleco_super_dk,shell,Super,CVS: Super DK! (Proto),9999,,,110000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super DK! Jr (Proto),9999,,,110000,2,4,8
 ##dragon32_donkeyking,shell,DonkeyKing,D32: Donkey King,9999,,,110000,2,4,8
 ##dragon32_dunkeymonkey,shell,DunkeyMonkey,D32: Dunkey Monkey,9999,,,110000,2,4,8
-dragon32_juniorsrevenge,shell,Junior's Revenge,D32: Junior's Revenge,9999,,,110000,2,4,8
+##dragon32_juniorsrevenge,shell,Junior's Revenge,D32: Junior's Revenge,9999,,,110000,2,4,8
 dragon32_kingcuthbert,shell,KingCuthbert,D32: King Cuthbert,9999,,,0,2,4,8
 ##dos_aldo2,shell,Aldo Again,DOS: Aldo Again,9999,,,110000,2,4,8
 dos_aldo,shell,Aldo's Adventure,DOS: Aldo's Adventure,9999,,,110000,2,4,8

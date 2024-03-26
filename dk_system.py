@@ -201,7 +201,6 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 os.environ["DKAFE_SHELL_BOOT"] = ""
 
             # If there is a specific config file then copy it over system default prior to running
-            # NOTE: Need to ensure that all roms for these system have a .cfg file
             cfg_file = os.path.join(ROOT_DIR, "dkwolf", "cfg", name + ".cfg")
             if os.path.exists(cfg_file):
                 cfg_system = os.path.join(ROOT_DIR, "dkwolf", "cfg", _system + ".cfg")
