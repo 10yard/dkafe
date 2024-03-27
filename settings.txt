@@ -6,8 +6,8 @@
 #                                          by Jon Wilson (10yard)
 #
 # Front End Features
-FREE_PLAY = 1
-UNLOCK_MODE = 0
+FREE_PLAY = 0
+UNLOCK_MODE = 1
 BASIC_MODE = 0
 
 # Front End Settings
@@ -22,7 +22,7 @@ INACTIVE_TIME = 20
 SPEED_ADJUST = 0
 SKILL_LEVEL = 1
 START_STAGE = 0
-HIGH_SCORE_SAVE = 0
+HIGH_SCORE_SAVE = 1
 ENABLE_PLAYLIST = 1
 PLAYLIST_VOLUME = 5
 ENABLE_ADDONS = 1

@@ -1365,13 +1365,13 @@ def stage_check(warp=False):
 
     current_stage = _g.stage
     if warp:
-        _g.stage = (_g.stage + 1) % 3
+        _g.stage = (_g.stage + 1) % 4
         _g.xpos, _g.ypos = OILCAN_POSXY[_g.stage]
     elif _g.ypos > 239 and not _g.jump:
-        _g.stage = (current_stage - 1) % 3
+        _g.stage = (current_stage - 1) % 4
         _g.ypos = 20
     elif _g.ypos < 20 and not _g.jump:
-        _g.stage = (current_stage + 1) % 3
+        _g.stage = (current_stage + 1) % 4
         _g.ypos = 238
 
     if current_stage != _g.stage:
@@ -1419,10 +1419,11 @@ def play_from_tracklist():
 
 def dk_ck():
     # DK or CK graphics
-    if _g.stage == 3:
-        return "ck"
-    else:
-        return "dk"
+    return "dk"
+    #if _g.stage == 3:
+    #    return "ck"
+    #else:
+    #    return "dk"
 
 
 def main(initial=True):

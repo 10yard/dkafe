@@ -93,7 +93,7 @@ COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always,
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = 3, 2, 3        # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
+LADDER_CHANCE = 3, 2, 3, 3     # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
 INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
 
 # Root directory of frontend
@@ -153,7 +153,7 @@ if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
 if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
 if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
-if START_STAGE > 2: START_STAGE = 0
+if START_STAGE > 3: START_STAGE = 0
 
 # Console Addon Specific
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
@@ -333,11 +333,13 @@ SLOTS = (
     (2, 146), (34, 146), (50, 146), (90, 146), (106, 146), (122, 146), (154, 146), (174, 146), (202, 146),
     (33, 106), (52, 106), (67, 106), (90, 106), (122,106), (154, 106), (174, 106), (210, 106),
     (2, 66), (90, 66), (106, 66), (138, 66), (154, 66), (170, 66), (186, 66), (208, 66),
-    (90, 34)
+    (90, 34),
+
+    (18, 226), (34, 226)
 )
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 126)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -392,15 +394,15 @@ LADDER_ZONES = (
 LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 124, 132, 140, 148, 164, 180, 188, 196, 204)
 
 # Stage specific positions, colours etc
-HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178))
-TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140))
-OILCAN_POSXY = (16, 232), (172, 152), (104, 128)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142)
-PAULINE_POSXY = (0, 0), (16, -8), (0, 0)
-KONG_POSXY = (0, 0), (80, 4), (0, 4)
-COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77)
-COIN_AWARD_POSX = 0, 112, 28
-BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN)
+HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178)), ((3, 159), (206, 70))
+TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140)), ((206, 72), (3, 161))
+OILCAN_POSXY = (16, 232), (172, 152), (104, 128), (68, 112)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142), (72, 126)
+PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0)
+KONG_POSXY = (0, 0), (80, 4), (0, 4), (0, 4)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77), (67, 73)
+COIN_AWARD_POSX = 0, 112, 28, 0
+BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA)
 
 # Pies specific.  Location of the 2 moving ladder sections
 MOVING_LADDER_POSXY = (15, 96), (199, 96)
@@ -468,7 +470,7 @@ play the arcades.
 Jumpman must play well to
 win prizes and unlock arcade
 machines as he works his way 
-through 3 challenging stages
+through 4 challenging stages
 and rescues Pauline from the
 top of the building.  
 
