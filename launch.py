@@ -963,11 +963,13 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 remap_process.terminate()
 
             # If there was a specific config file then copy it back to account for any changes
-            _system = name.split("_")[0].replace("-", "_")
-            cfg_file = os.path.join(ROOT_DIR, "dkwolf", "cfg", name + ".cfg")
-            if os.path.exists(cfg_file):
-                cfg_system = os.path.join(ROOT_DIR, "dkwolf", "cfg", _system + ".cfg")
-                _s.copy(cfg_system, cfg_file)
+            if sub == "shell":
+                cfg_file = os.path.join(ROOT_DIR, "dkwolf", "cfg", name + ".cfg")
+                if os.path.exists(cfg_file):
+                    _system = name.split("_")[0].replace("-", "_")
+                    cfg_system = os.path.join(ROOT_DIR, "dkwolf", "cfg", _system + ".cfg")
+                    if os.path.exists(cfg_system):
+                        _s.copy(cfg_system, cfg_file)
 
             time_end = _s.time()
             _s.debounce()
