@@ -17,20 +17,13 @@ a2600_dk_vector_bw,shell,Vector,2600: DK Vector BW,96,,,123000,2,4,8
 a2600_dk_xmas_dp,shell,Xmas,2600: Xmas (D.Press),97,,,124000,2,4,8
 a2600_dk_dragon,shell,Dragon,2600: Dragon Knight,98,,,125000,2,4,8
 a2600_dk_new,shell,DKNEW,2600: DK New,99,,,126000,2,4,8
-nes_dk_zelda01,shell,NESZK,NES: ZeldaKong (Link),100,,,127000,2,4,8
-nes_dk_zelda02,shell,ZK2,NES: Zelda 2 (Zelda),101,,,128000,2,4,8
-nes_dk_zelda03,shell,ZK3,NES: Zelda 3 (Moblin),102,,,129000,2,4,8
-nes_dk_zelda04,shell,ZK4,NES: Zelda 4 (Zol),103,,,130000,2,4,8
-nes_dk_zelda05,shell,ZK5,NES: Zelda 5 (Armos),104,,,131000,2,4,8
 hbf900a_dk,shell,MSXDK,MSX: DK Original,105,,,132000,2,4,8
 apple2e_dk,shell,A2DK,AII: DK Original,106,,,133000,2,4,8
 cpc6128_dk,shell,CPCDK,CPC: DK Original,107,,,134000,2,4,8
 a800xl_dk,shell,800DK,A800: DK Original,108,,,135000,2,4,8
 coleco_dk,shell,CVDK,CVS: DK Original,109,,,136000,2,4,8
 coleco_dk_junior,shell,JR,CVS: DK Jr.,110,,,137000,2,4,8
-c64_dk,shell,C64DK,C64: DK Original,111,,,138000,2,4,8
 coco3_dk_emu,shell,COCODK,CO3: DK Emulator,112,,,139000,2,4,8
-spectrum_dk,shell,SPECDK,ZXS: DK Original,113,,,140000,2,4,8
 ti99-4a_dk,shell,TIDK,TI : DK Original,114,,,141000,2,4,8
 bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,115,,,142000,2,4,8
 pet4032_petscii_kong,shell,PETDK,PET: Petscii Kong,116,,,143000,2,4,8
@@ -42,6 +35,30 @@ a7800_dk_killscreen,shell,L22,7800: L22-1 Killscreen,122,,,148000,2,4,8
 a7800_dk_xm,shell,XM,7800: DK Expansion Module,123,,,149000,2,4,8
 intv_dk,shell,INTDK,INT: DK Original,124,,,150000,2,4,8
 gbcolor_dk_japan_us,shell,GBDK '94,GBC: DK '94,125,,,151000,2,4,8
+spectrum_dk,shell,SPECDK,ZXS: DK Original,134,,,140000,2,4,8
+spectrum_dk_junior,shell,JR,ZXS: DK Junior,136,,,110000,2,4,8
+spectrum_monkeybiz,shell,MonkBiz,ZXS: Monkey Bizness,137,,,110000,2,4,8
+spectrum_killerkong,shell,KLR,ZXS: Killer Kong,138,,,110000,2,4,8
+spectrum_krazykong,shell,KK,ZXS: Krazy Kong,139,,,110000,2,4,8
+spectrum_kong,shell,Kong,ZXS: Kong,140,,,110000,2,4,8
+nes_dk_zelda01,shell,ZK1,NES: ZeldaKong (Link),144,,,127000,2,4,8
+nes_dk_zelda02,shell,ZK2,NES: Zelda 2 (Zelda),145,,,128000,2,4,8
+nes_dk_zelda03,shell,ZK3,NES: Zelda 3 (Moblin),146,,,129000,2,4,8
+nes_dk_zelda04,shell,ZK4,NES: Zelda 4 (Zol),147,,,130000,2,4,8
+nes_dk_zelda05,shell,ZK5,NES: Zelda 5 (Armos),148,,,131000,2,4,8
+nes_dk_zelda06,shell,ZK6,NES: Zelda 6 (Link 2),149,,,110000,2,4,8
+nes_dk_zelda07,shell,ZK7,NES: Zelda 7 (Triforce),150,,,110000,2,4,8
+nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),151,,,110000,2,4,8
+nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),152,,,110000,2,4,8
+nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),153,,,110000,2,4,8
+nes_dk_zelda11,shell,Z11,NES: Zelda11 (Grandma),154,,,110000,2,4,8
+nes_dk_zelda12,shell,Z12,NES: Zelda12 (Tarin),155,,,110000,2,4,8
+c64_dk,shell,C64,C64: DK Original,156,,,138000,2,4,8
+c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,157,,,110000,2,4,8
+c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,110000,2,4,8
+c64_felix,shell,FelixJR,C64: Fix It Felix Jr.,159,,,110000,2,4,8
+c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,110000,2,4,8
+c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,110000,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,110000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,110000,2,4,8
 a2600_dk_boring,shell,DK Boring,2600: DK Boring,9999,,,110000,2,4,8
@@ -85,16 +102,11 @@ bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,110000,2,4,8
 bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,110000,2,4,8
 bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
-c64_ck,shell,CK,C64: Crazy Kong,9999,,,110000,2,4,8
-c64_ck64,shell,CK64,C64: Crazy Kong 64,9999,,,110000,2,4,8
 ##c64_dk_junior,shell,DK Junior,C64: DK Junior,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK Original,9999,,,0,2,4,8
 ##c64_dk_x,shell,DK X,C64: DK X,9999,,,110000,2,4,8
-c64_felix,shell,Fix It Felix Jr.,C64: Fix It Felix Jr.,9999,,,110000,2,4,8
 ##c64_jumpman,shell,Jumpman,C64: Jumpman,9999,,,110000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
-c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,9999,,,110000,2,4,8
-c64_mariosbrewery,shell,MariosBrewery,C64: Marios Brewery,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,110000,2,4,8
 ##coco3_donkeyking,shell,DonkeyKing,CO3: Donkey King,9999,,,110000,2,4,8
@@ -154,32 +166,20 @@ nes_dk_qbert,shell,Q-Bert Kong,NES: Q-Bert Kong,9999,,,110000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs DK,9999,,,110000,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs DK,9999,,,110000,2,4,8
 nes_dk_wilford,shell,WilfordKong,NES: Wilford Kong,9999,,,110000,2,4,8
-nes_dk_zelda06,shell,ZK6,NES: Zelda 6 (Link 2),9999,,,110000,2,4,8
-nes_dk_zelda07,shell,ZK7,NES: Zelda 7 (Triforce),9999,,,110000,2,4,8
-nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),9999,,,110000,2,4,8
-nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),9999,,,110000,2,4,8
-nes_dk_zelda10,shell,ZKX,NES: Zelda10 (Marin),9999,,,110000,2,4,8
-nes_dk_zelda11,shell,ZK11,NES: Zelda11 (Grandma),9999,,,110000,2,4,8
-nes_dk_zelda12,shell,ZK12,NES: Zelda12 (Tarin),9999,,,110000,2,4,8
 ##oric1_4k_kong,shell,4K Kong,OR1: 4K Kong,9999,,,110000,2,4,8
 oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,0,2,4,8
 ##oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
 oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
+pc_dk_craze,shell,DK Craze,PC : DK Craze,9999,,,110000,2,4,8
 pc_dk_jr_remake,shell,DK Junior Remake,PC : DK Junior Remake,9999,,,110000,2,4,8
 pc_raiders,shell,DK Raiders,PC : DK Raiders,9999,,,110000,2,4,8
 pc_dk_redux,shell,DK Redux,PC : DK Redux,9999,,,0,2,4,8
 pc_dk_remake,shell,DK Remake,PC : DK Remake,9999,,,110000,2,4,8
 pc_fixitfelix,shell,Fix It Felix Classic,PC : Fix It Felix Jr.,9999,,,110000,2,4,8
 pc_jumpman_rtx,shell,Jumpman RTX,PC : Jumpman RTX,9999,,,110000,2,4,8
-pc_dk_craze,shell,DK Craze,PC : DK Craze,9999,,,110000,2,4,8
 #pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
 ti99-4a_dk,shell,DK,TI : DK Original,9999,,,0,2,4,8
-spectrum_dk_junior,shell,JR,ZXS: DK Junior,9999,,,110000,2,4,8
 spectrum_dk,shell,DK,ZXS: DK Original,9999,,,0,2,4,8
-spectrum_killerkong,shell,KillerKong,ZXS: Killer Kong,9999,,,110000,2,4,8
-spectrum_kong,shell,Kong,ZXS: Kong,9999,,,110000,2,4,8
-spectrum_krazykong,shell,KrazyKong,ZXS: Krazy Kong,9999,,,110000,2,4,8
-spectrum_monkeybiz,shell,MonkeyBiz,ZXS: Monkey Bizness,9999,,,110000,2,4,8
 ##spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8

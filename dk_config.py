@@ -93,7 +93,6 @@ COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always,
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
-LADDER_CHANCE = 3, 2, 3, 3     # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
 INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
 
 # Root directory of frontend
@@ -335,11 +334,26 @@ SLOTS = (
     (2, 66), (90, 66), (106, 66), (138, 66), (154, 66), (170, 66), (186, 66), (208, 66),
     (90, 34),
 
-    (18, 226), (34, 226)
+    (2, 226), (18, 226), (50, 226), (116, 226), (134, 226), (152, 226), (178, 226), (194, 226),
+    (18, 195), (34, 191), (50, 195), (66, 195), (98, 191), (116, 195), (134, 195), (152, 195), (178, 195), (194, 195),
+    (34, 162), (50, 166), (98, 162), (134, 166), (152, 166), (178, 166), (194, 166),
+    (132, 136), (148, 136), (164, 136), (194, 136), (210, 136),
+    (34, 102), (50, 106), (98, 102), (116, 106), (132, 106), (148, 106), (194, 106),
+    (194, 76),
+    (154, 66), (138, 66), (114, 66), (90, 66), (2, 66),
+    (90, 34),
+
+    (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (194, 220), (210, 219),
+    (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (18, 187), (2, 186),
+    (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (194, 154), (210, 153),
+    (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
+    (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (194, 88), (210, 87),
+    (162, 64), (146, 63), (114, 62), (90, 62), (2, 62),
+    (98, 34)
 )
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 126)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 215)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -391,18 +405,19 @@ LADDER_ZONES = (
     ("TOP_OF_ANY_LADDER", (60, 170, 180)))
 
 # Jumpman's x position when centre of ladder
-LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 124, 132, 140, 148, 164, 180, 188, 196, 204)
+LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204)
 
 # Stage specific positions, colours etc
-HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178)), ((3, 159), (206, 70))
-TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140)), ((206, 72), (3, 161))
-OILCAN_POSXY = (16, 232), (172, 152), (104, 128), (68, 112)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142), (72, 126)
-PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0)
-KONG_POSXY = (0, 0), (80, 4), (0, 4), (0, 4)
-COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77), (67, 73)
-COIN_AWARD_POSX = 0, 112, 28, 0
-BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA)
+BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE)
+HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178)), ((3, 159), (206, 70)), ((32, 96), (167, 190))
+TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140)), ((206, 72), (3, 161)), ((164, 193), (32, 92))
+OILCAN_POSXY = (16, 232), (172, 152), (104, 128), (68, 112), (16, 232)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142), (72, 126), (20, 246)
+PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (0, 0)
+KONG_POSXY = (0, 0), (80, 4), (0, 4), (0, 4), (0, 0)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77), (67, 77), (67, 73)
+COIN_AWARD_POSX = 0, 112, 28, 0, 0
+LADDER_CHANCE = 3, 2, 3, 3,3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
 
 # Pies specific.  Location of the 2 moving ladder sections
 MOVING_LADDER_POSXY = (15, 96), (199, 96)

@@ -24,7 +24,7 @@ The latest releases are available to download from below.  Refer to the **How to
 
 ## About DKAFE
 
-The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on 3 familiar stages and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
+The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on 4 familiar stages and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
 The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically by me for this frontend. 
 
@@ -570,7 +570,7 @@ An optional add-on pack includes over 150 Donkey Kong ports and hacks for the fo
  - MS-DOS (x64 platform only)
  - PC (x64 platform only
 
-The console games will appear on the pies stage.
+The console games will appear on the pies and elevator stages.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 The default controls have been configured to work with arcade controls.  Typically press "Jump" or "P1 Start" to start - ignoring specific keys displayed in the game menu.  

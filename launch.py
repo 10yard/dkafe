@@ -600,14 +600,14 @@ def build_menus(initial=False):
     _romlist = _g.romlist
     _lastname = ""
 
-    if ENABLE_ADDONS and _g.stage == 2:
+    if ENABLE_ADDONS and (_g.stage == 2 or _g.stage == 3):
         # Sort the rom list by descriptive name for better navigation in the game selection menu
         _romlist = sorted(_romlist, key=sort_key)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
         _alt = alt.replace("00", "№")  # Single character 00
         _add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
-            if (_g.stage < 2 and not _add) or (_g.stage == 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
+            if (_g.stage < 2 and not _add) or (_g.stage >= 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
                 if sub != "shell" or name != _lastname:
                     # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
                     try:
@@ -1299,11 +1299,11 @@ def animate_rolling_coins(out_of_time=False):
             map_info = []
 
         # Move the coin along the platform and down ladders
-        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage != 0:
+        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage != 0 and _g.stage != 4:
             co_y -= 1  # correct coin position by moving it up the girder
         elif "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
-            if _g.stage == 1 and int(co_y) in (232, 192, 152, 112):
+            if (_g.stage == 1 or _g.stage == 3) and int(co_y) in (232, 192, 152, 112):
                 co_dir *= -1  # Flip horizontal direction when falling off platform on rivets
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info and _g.stage != 1:
@@ -1365,13 +1365,13 @@ def stage_check(warp=False):
 
     current_stage = _g.stage
     if warp:
-        _g.stage = (_g.stage + 1) % 4
+        _g.stage = (_g.stage + 1) % 5
         _g.xpos, _g.ypos = OILCAN_POSXY[_g.stage]
     elif _g.ypos > 239 and not _g.jump:
-        _g.stage = (current_stage - 1) % 4
+        _g.stage = (current_stage - 1) % 5
         _g.ypos = 20
     elif _g.ypos < 20 and not _g.jump:
-        _g.stage = (current_stage + 1) % 4
+        _g.stage = (current_stage + 1) % 5
         _g.ypos = 238
 
     if current_stage != _g.stage:
@@ -1419,11 +1419,7 @@ def play_from_tracklist():
 
 def dk_ck():
     # DK or CK graphics
-    return "dk"
-    #if _g.stage == 3:
-    #    return "ck"
-    #else:
-    #    return "dk"
+    return "ck" if _g.stage == 4 else "dk"
 
 
 def main(initial=True):
