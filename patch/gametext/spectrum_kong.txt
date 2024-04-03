@@ -1,0 +1,20 @@
+ZX Spectrum - Kong
+
+The aim of the game is to achieve a high score by 
+rescuing Fay Ray from the clutches of King Kong. 
+There are four levels in this game. In the first 
+screen Kong rolls barrels towards the player who can
+smash them with a hammer to gain bonus points.
+
+The second screen is set in a pie factory and the 
+player must hurdle oncoming pies on a conveyor belt. 
+Level three has the player pursuing Kong up the sky 
+scraper in lifts while avoiding falling girders and 
+the last level is set in Kong's lair.
+
+Each level starts with a set number of bonus points 
+which count down over time so the faster the screen is
+completed the more points are gained. Umbrellas and 
+handbags can also be collected for bonus points.
+
+Clone Developed By Anirog Software

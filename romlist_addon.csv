@@ -24,6 +24,7 @@ a800xl_dk,shell,800DK,A800: DK Original,108,,,135000,2,4,8
 coleco_dk,shell,CVDK,CVS: DK Original,109,,,136000,2,4,8
 coleco_dk_junior,shell,JR,CVS: DK Jr.,110,,,137000,2,4,8
 coco3_dk_emu,shell,COCODK,CO3: DK Emulator,112,,,139000,2,4,8
+coco3_dunkeymonkey,shell,Dunkey,CO3: Dunkey Monkey,113,,,140000,2,4,8
 ti99-4a_dk,shell,TIDK,TI : DK Original,114,,,141000,2,4,8
 bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,115,,,142000,2,4,8
 pet4032_petscii_kong,shell,PETDK,PET: Petscii Kong,116,,,143000,2,4,8
@@ -41,13 +42,13 @@ nes_dk2_nuts_n_milk,shell,DK2,NES: DK2 Nuts & Milk,129,,,110000,2,4,8
 nes_dk_pacquest,shell,Pac,NES: Pac-Quest,130,,,110000,2,4,8
 nes_jumpman_vs_dk,shell,JMvDK,NES: Jumpman vs DK,131,,,110000,2,4,8
 nes_dk_wilford,shell,WK,NES: Wilford Kong,132,,,110000,2,4,8
-nes_dk_bowsette_jr,shell,Bows.JR,NES: Bowsette Junior,133,,,110000,,,
+nes_dk_bowsette_jr,shell,Bows.JR,NES: Bowsette Junior,133,,,110000,2,4,8
 spectrum_dk,shell,SPECDK,ZXS: DK Original,134,,,140000,2,4,8
 spectrum_killerkong,shell,KillerKong,ZXS: Killer Kong,136,,,110000,2,4,8
-spectrum_krazykong,shell,Krazy,ZXS: Krazy Kong,138,,,110000,2,4,8
-spectrum_monkeybiz,shell,Biz.,ZXS: Monkey Bizness,140,,,110000,2,4,8
-spectrum_kong,shell,Kong,ZXS: Kong,141,,,110000,2,4,8
-spectrum_dk_junior,shell,JR,ZXS: DK Junior,142,,,110000,2,4,8
+spectrum_kong,shell,Kong,ZXS: Kong,138,,,110000,2,4,8
+spectrum_dk_junior,shell,DonkyJR,ZXS: Donky Junior,139,,,110000,2,4,8
+spectrum_monkeybiz,shell,Monkey,ZXS: Monkey Bizness,141,,,110000,2,4,8
+spectrum_krazykong,shell,KrazyKong,ZXS: Krazy Kong,142,,,110000,2,4,8
 nes_dk_zelda01,shell,ZK1,NES: ZeldaKong (Link),144,,,127000,2,4,8
 nes_dk_zelda02,shell,ZK2,NES: Zelda 2 (Zelda),145,,,128000,2,4,8
 nes_dk_zelda03,shell,ZK3,NES: Zelda 3 (Moblin),146,,,129000,2,4,8
@@ -117,7 +118,6 @@ c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,110000,2,4,8
 ##coco3_donkeyking,shell,DonkeyKing,CO3: Donkey King,9999,,,110000,2,4,8
-coco3_dunkeymonkey,shell,DunkeyMonkey,CO3: Dunkey Monkey,9999,,,110000,2,4,8
 coco3_monkeykong,shell,MonkeyKong,CO3: Monkey Kong,9999,,,110000,2,4,8
 cpc6128_dk,shell,DK,CPC: DK Original,9999,,,0,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
@@ -182,5 +182,11 @@ pc_jumpman_rtx,shell,Jumpman RTX,PC : Jumpman RTX,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
 ti99-4a_dk,shell,DK,TI : DK Original,9999,,,0,2,4,8
+vic20_crazykong,shell,CrazyKong,V20: Crazy Kong,9999,,,110000,2,4,8
+vic20_kongokong,shell,KongoKong,V20: Kongo Kong,9999,,,110000,2,4,8
+vic20_krazykong_cascade,shell,KrazyKong,V20: Krazy Kong (Cascade),9999,,,110000,2,4,8
+vic20_krazykong_nufecop,shell,KrazyKong,V20: Krazy Kong (Nufecop),9999,,,110000,2,4,8
+vic20_littlekong,shell,LittleKong,V20: Little Kong,9999,,,110000,2,4,8
+vic20_vic_kong,shell,Vic Kong,V20: Vic Kong,9999,,,110000,2,4,8
 spectrum_dk,shell,DK,ZXS: DK Original,9999,,,0,2,4,8
 ##spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8

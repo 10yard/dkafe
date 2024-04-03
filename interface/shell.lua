@@ -174,6 +174,12 @@ elseif emu.romname() == "spectrum" then
 	input_frame = 15
 elseif emu.romname() == "ti99_4a" then
 	quick_start = 180
+elseif emu.romname() == "vic20" then
+	state = true
+	input_frame = 360
+	scale = 1.33
+	y_padding = 2
+	quick_start = 400
 end
 local start_time = os.time()
 
@@ -274,11 +280,16 @@ function shell_main()
 				elseif emu.romname() == "ti99_4a" then
 					keyb:post_coded("{SPACE}")
 					keyb:post("2")
+				elseif emu.romname() == "vic20" then
+					--keyb:post('LOAD"*",8,1\n')
+					keyb:post('RUN\n')
 				end
 			end
 
 			-- Inputs 2
 			if screen and screen:frame_number() == input_frame2 then
+				--if emu.romname() == "vic20" then
+				--	keyb:post('RUN\n')
 				if shell_name == "c64_felix" or shell_name == "c64_jumpman" then
 					keyb:post('RUN\n')
 				elseif shell_name == "coco3_donkeyking" then
@@ -299,10 +310,10 @@ function shell_main()
 		if screen then
 			if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then
 				-- Draw time targets at startup
+				_len = string.len(tostring(data_score1))
+				_wid = (14 + _len) * (5 + scale)
+				_x = screen.width - _wid - 1
 				if time_played > 0 and time_played <= target_time or mac.paused then
-					_len = string.len(tostring(data_score1))
-					_wid = (14 + _len) * (5 + scale)
-					_x = screen.width - _wid - 1
 
 					if not mac.paused then
 						screen:draw_text(2, 2 + scale + y_offset,  "USE P1 OR JUMP TO START", col0, 0xff000000)

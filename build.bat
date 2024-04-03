@@ -62,6 +62,7 @@ xcopy dkwolf\cfg\c64_*.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\gnw_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\vic20_*.cfg dist\dkwolf\cfg\ /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
@@ -110,6 +111,7 @@ xcopy roms\pc dist\console_addon\roms\pc /S /i /Y
 xcopy roms\dos dist\console_addon\roms\dos /S /i /Y
 xcopy roms\gnw dist\console_addon\roms\gnw /S /i /Y
 xcopy roms\lcd dist\console_addon\roms\lcd /S /i /Y
+xcopy roms\vic20 dist\console_addon\roms\vic20 /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 xcopy dkwolf\artwork dist\console_addon\dkwolf\artwork /S /i /Y
 

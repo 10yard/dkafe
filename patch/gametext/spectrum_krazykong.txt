@@ -1,0 +1,19 @@
+ZX Spectrum - Krazy Kong
+
+Can you rescue jane from the clutches of the evil
+kong?
+
+There are four different screens in this version of 
+Krazy Kong and each has various combinations of 
+barrels, fireballs, pies, conveyor belts, lifts and
+flans.
+Bonus points are available for picking up the water
+buckets.
+
+The game gets harder as it goes on, with all the 
+obstacles speeding up and the bonus score decreasing 
+faster. If the bonus is allowed to reach zero, you 
+lose a life.
+
+Developed by Chris P Cullen 
+Published by PSS

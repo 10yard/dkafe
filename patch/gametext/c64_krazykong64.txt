@@ -1,0 +1,11 @@
+Commodore 64 - Krazy Kong 64
+
+A refreshing take on Donkey Kong with big colourful
+sprites.  Obviously,  Jumpman and Pauline have been 
+replaced by giant aardvarks!  DK himself is much less
+intimidating with a big smile across his bright face.
+
+Progress up the platforms to rescue an aardvark while 
+collecting bonus items on the way.
+
+Developed By BubbleBus

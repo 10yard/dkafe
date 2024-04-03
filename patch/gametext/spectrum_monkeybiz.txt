@@ -1,0 +1,15 @@
+ZX Spectrum - Monkey Bizness
+
+The barrels will roll for a while before Jumpman
+appears and you are able to move him.
+
+There are eight levels in all: levels 1 and 2 are 
+straight forward. Level 3 has stairs to be jumped;
+level 4 has a long jump; level 5 has springs which 
+throw the barrels upwards; in level 6 you must contend
+with a whole shower of barrels; in level 7 the barrels 
+may disappear and re-appear further up and in level 8
+you must knock out the 7 weak points in the 
+scaffolding.
+
+Clone Developed By Nigel P. Johnstone

@@ -1,0 +1,14 @@
+NES Console - DK 2 (Nuts and Milk Hack)
+
+A hack of the Nuts and Milk NES game.
+Help Mario rescue Pauline from Donkey Kong while being
+chased down by enemies.  
+
+The game dynamics are a little different to regular 
+Donkey Kong.  You can run through and climb up into 
+the hatched areas.
+
+It's a mixed bag, fun levels, easy levels and 
+challenging levels.
+
+Hack Developed by elbobelo and Googie

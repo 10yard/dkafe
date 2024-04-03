@@ -1,0 +1,15 @@
+NES Console - DK Pac-Quest
+
+It's Pac-Man In Donkey Kong
+Avoid The Ghost's Eyeballs And Try To Save Ms Pac-Man
+
+Featuring:
+- Pacman as Jumpman
+- Ms Pacman as Pauline 
+- Blinky as a fireball
+- Ghost Witch as Donkey Kong
+- Eyes as the barrels
+- Power pellets as the hammers
+- Fruit as Pauline's Items
+
+Hack Developed by Unknown

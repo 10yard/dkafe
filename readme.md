@@ -560,6 +560,7 @@ An optional add-on pack includes over 150 Donkey Kong ports and hacks for the fo
  - Tangerine Oric 1
  - Commodore 64
  - Commodore Pet
+ - Commodore VIC-20
  - Commodore Amiga
  - BBC Micro
  - Dragon 32

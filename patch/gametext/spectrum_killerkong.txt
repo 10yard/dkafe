@@ -1,0 +1,18 @@
+ZX Spectrum - Killer Kong
+
+Killer Kong puts players in the role of a brave hero
+trying to rescue a lady from the clutches of a crazy
+ape. Players must jump over barrels thrown by the ape,
+climb ladders, and navigate girders to progress 
+through the game. Along the way, they can also collect
+hamburgers for extra points. 
+
+The game features five screens, with the second screen 
+introducing lifts for added challenge. Players earn 
+points for each barrel jumped and each burger 
+collected. The longer it takes to rescue the lady, 
+the less love she has for the hero, which affects the 
+final score. 
+
+Clone Developed By Gary Capewell 
+Published by Blaby Computer Games

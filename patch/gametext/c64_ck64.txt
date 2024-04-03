@@ -1,0 +1,15 @@
+Commodore 64 - Crazy Kong 64
+
+A mixture of Donkey Kong and (sort of) Pac Man.
+
+You have to progress up the platforms and reach the 
+top while collecting little diamonds on the way.
+
+The levels themselves are pretty original. The first
+one is reminiscent of the first level of Donkey Kong, 
+although the barrels run at high speed along 
+horizontal! platforms (No incline whatever). 
+The following ones are originals that have the feel of 
+Donkey Kong, but add new features.
+
+Developed By Interceptor Software

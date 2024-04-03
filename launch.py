@@ -10,6 +10,8 @@ Main program
 ------------
 """
 import os
+import subprocess
+
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame.cursors
 import pickle
@@ -54,11 +56,15 @@ def remap(name, mappings):
                 _program = dst.split(":")[1]
             else:
                 _program = f"{name}.*"
-            keyboard.add_hotkey(src, lambda: call(f'taskkill /IM {_program} /F'))
+            keyboard.add_hotkey(src, lambda: kill_external(_program))
         else:
             keyboard.remap_key(src, dst)
     while True:
         keyboard.wait()
+
+
+def kill_external(program):
+    call(f'taskkill /IM {program} /F')
 
 
 def rotate_display(exiting=False, initial=False, rotate=ROTATION):
@@ -81,7 +87,7 @@ def rotate_display(exiting=False, initial=False, rotate=ROTATION):
                 pass
 
 def initialise_screen(reset=False):
-    _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
+    _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
     pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
 
@@ -949,10 +955,9 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     # Give focus to external PC game (by temporaty windowing DKAFE before launching)
                     _sizes = pygame.display.get_desktop_sizes()
                     if _sizes:
-                        w, h = _sizes[0]
-                        _g.screen = pygame.display.set_mode((w-1, h))
+                        _g.screen = pygame.display.set_mode(_sizes[0])
                     os.system(launch_command)
-                    _g.screen = pygame.display.set_mode(DISPLAY, pygame.SCALED)
+                    _g.screen = pygame.display.set_mode(DISPLAY, pygame.SCALED|pygame.WINDOWFOCUSGAINED)
                 else:
                     os.system(launch_command)
             else:

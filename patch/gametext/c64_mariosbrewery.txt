@@ -1,0 +1,15 @@
+Commodore 64 - Mario's Brewery
+
+Instead of trying to defeat Donkey Kong and rescue 
+their girlfriend, the player instead must evade a 
+rampaging drink machine. 
+
+The player controls Mario, who can move laterally, 
+climb ladders, and jump over dangers. The player has 
+3 lives, and loses a life when colliding with any 
+danger.
+
+On reaching the top the player must switch off the
+drinks machine to progress to the next level.
+
+Developed By Jeremy Thorne
