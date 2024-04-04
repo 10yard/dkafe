@@ -1,0 +1,16 @@
+Tandy Color Computer 3 - Dunkey Monkey
+
+The first level is the "rivets" screen. Mario must run
+across all rivets in order to loosen the structure so 
+that it falls down. The structure is filled with 
+flames which must be avoided. 
+
+A fire extinguisher can be used to put out flames, 
+but it will only work for a short while.
+The second screen is a combination of the "barrel" 
+and "springs" screens,  where Dunkey throws barrels 
+down the platforms and Mario must take the lift to 
+reach the girl.  This screen is reached only after 
+clearing the first screen twice.
+
+Developed By J White {Whiteware}

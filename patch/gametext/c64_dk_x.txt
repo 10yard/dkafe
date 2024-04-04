@@ -1,4 +1,15 @@
 Commodore 64 - Donkey Kong+ (X2016)
 
+Oxyron decided to remake Donkey Kong from scratch, and
+they've ironed out the bugs and ultimately delivered a 
+near perfect arcade conversion on the Commodore 64.  
 
-Developed By Oxyron
+All the levels and cut-scenes are in place.  The score
+is no longer squashed up the top to try to copy the 
+arcade game, instead the space created to the side by 
+the narrow gameplay area has been used, so you can see
+your current score as well as the high score.
+
+Enjoy!
+
+Remake Developed By Oxyron
