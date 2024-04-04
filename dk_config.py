@@ -174,7 +174,7 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "adam": "-cart1",
                 "vic20": "-quik"}
 # Game specific media to override the system media
-GAME_MEDIA = {"c64_felix":"-flop", "c64_jumpman":"-flop"}
+GAME_MEDIA = {"c64_felix":"-flop", "c64_jumpman":"-flop", "c64_dk_junior":"-quik", "c64_dk_x":"-quik", "c64_bonkeykong":"-flop"}
 WIN64_ONLY_SYSTEMS = "pc", "dos"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
@@ -287,9 +287,9 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross")
 
 # Roms that are not fully compatible
-HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate"]
+HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate", "dkongduel"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
-AUTOSTART_UNFRIENDLY = []
+AUTOSTART_UNFRIENDLY = ["dkongduel"]
 SKIPINTRO_UNFRIENDLY = ["dkongchorus"]
 
 # Colours
@@ -329,7 +329,7 @@ SLOTS = (
     (42, 66), (82, 66), (170, 66),
     (106, 26),
 
-    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (202, 226),
+    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (208, 226),
     (8, 186), (34, 186), (50, 186), (90, 186), (122, 186), (154, 186), (174, 186), (202, 186),
     (2, 146), (34, 146), (50, 146), (90, 146), (106, 146), (122, 146), (154, 146), (174, 146), (202, 146),
     (33, 106), (52, 106), (67, 106), (90, 106), (122,106), (154, 106), (174, 106), (210, 106),

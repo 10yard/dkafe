@@ -74,8 +74,13 @@ elseif emu.romname() == "c64" then
 	y_padding = 2
 	if shell_name == "c64_ck64" then
 		quick_start = 900
+	elseif shell_name == "c64_dk_x" then
+		quick_start = 400
 	elseif shell_name == "c64_kongokong" then
 		quick_start = 700
+	elseif shell_name == "c64_bonkeykong" then
+		input_frame2 = 13000
+		quick_start = 14000
 	elseif shell_name == "c64_felix" then
 		input_frame2 = 12000
 		quick_start = 12400
@@ -179,7 +184,13 @@ elseif emu.romname() == "vic20" then
 	input_frame = 360
 	scale = 1.33
 	y_padding = 2
-	quick_start = 400
+	if shell_name == "vic20_littlekong" then
+		quick_start = 1100
+	elseif shell_name == "vic20_krazykong_nufecop" then
+		quick_start = 550
+	else
+		quick_start = 400
+	end
 end
 local start_time = os.time()
 
@@ -242,7 +253,7 @@ function shell_main()
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" then
-					if shell_name == "c64_felix" or shell_name == "c64_jumpman" then
+					if shell_name == "c64_felix" or shell_name == "c64_jumpman" or shell_name == "c64_bonkeykong" then
 						keyb:post('LOAD"*",8,1\n')
 					else
 						keyb:post('RUN\n')
@@ -288,9 +299,7 @@ function shell_main()
 
 			-- Inputs 2
 			if screen and screen:frame_number() == input_frame2 then
-				--if emu.romname() == "vic20" then
-				--	keyb:post('RUN\n')
-				if shell_name == "c64_felix" or shell_name == "c64_jumpman" then
+				if shell_name == "c64_felix" or shell_name == "c64_jumpman" or shell_name == "c64_dk_x" or shell_name == "c64_bonkeykong" then
 					keyb:post('RUN\n')
 				elseif shell_name == "coco3_donkeyking" then
 					keyb:post_coded("{SPACE}")
@@ -301,6 +310,11 @@ function shell_main()
 				elseif shell_name == "oric1_orickong" then
 					keyb:post('RUN\n')
 				elseif shell_name == "oric1_honeykong" then
+					keyb:post_coded('{SPACE}')
+					keyb:post('Q')
+					keyb:post('A')
+					keyb:post('O')
+					keyb:post('P')
 					keyb:post_coded('{SPACE}')
 				end
 			end
@@ -316,7 +330,7 @@ function shell_main()
 				if time_played > 0 and time_played <= target_time or mac.paused then
 
 					if not mac.paused then
-						screen:draw_text(2, 2 + scale + y_offset,  "USE P1 OR JUMP TO START", col0, 0xff000000)
+						screen:draw_text(0, 2 + scale + y_offset,  "P1 OR JUMP TO START", col0, 0xff000000)
 					end
 
 					if hide_targets == 0 then

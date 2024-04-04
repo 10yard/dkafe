@@ -57,29 +57,32 @@ dkong,dkongrainbow,DK Rainbow,,71,1,2,92000,10000,25000,40000
 ckongpt2,ckongpt2_continue,CK Cont.,CK Continue,72,1,2,94000,10000,15000,30000
 dkong,dkongkonkey,KD,Konkey Dong,73,1,2,96000,10000,15000,25000
 dkong,dkongnoluck,NOLuck,NoLuck Kong,74,1,2,98000,15000,25000,50000
-dkong,dkongchorus,DK Chorus,,75,1,2,100000,10000,20000,40000
+dkong,dkongduel,DK Duel,,75,1,2,100000,15000,25000,50000
 ckongs,ckongs,CK Scramble,CK Scramble Hardware,77,1,2,102000,10000,25000,40000
 ckongg,ckongg,CK Galax.,CK Galaxian Hardware,78,1,2,104000,10000,25000,40000
 ckongpt2a,ckongpt2a_2023,CK2023,Crazy Kong 2023,79,1,2,106000,10000,25000,40000
 bigkonggx,bigkonggx,BK Galax.,BK Galaxian Hardware,80,1,2,108000,10000,20000,40000
-dkong,dkongend1,DK End L1,DK Ends at L=01,83,1,2,110000,10000,12000,15000
-dkong,dkongend3,DK End L3,DK Ends at L=03,85,1,2,112000,10000,15000,30000
-dkong,dkongend5,DK End L5,DK Ends at L=05,88,1,2,114000,10000,20000,40000
-dkong,dkonggalakong1,GalaBarrels,DK Gala-Barrels,93,1,2,116000,10000,20000,40000
-dkong,dkonggalakong2,GalaPie,DK Gala-Pies,95,1,2,118000,10000,20000,40000
-dkong,dkonggalakong3,GalaSprings,DK Gala-Springs,96,1,2,120000,10000,20000,40000
-dkong,dkonggalakong4,GalaRivets,DK Gala-Rivets,98,1,2,122000,10000,20000,40000
-dkong,dkonglava1,LavaBarrels,DK Lava Barrels,101,1,2,124000,8000,12000,15000
-dkong,dkonglava2,LavaPie,DK Lava Pies,103,1,2,126000,8000,12000,15000
-dkong,dkonglava3,LavaSprings,DK Lava Springs,105,1,2,128000,8000,12000,15000
-dkong,dkonglava4,LavaRivets,DK Lava Rivets,108,1,2,130000,8000,12000,15000
-dkong,dkongwho1,WhoBarrels,DK Who Barrels,109,1,2,132000,10000,20000,40000
-dkong,dkongwho2,WhoPies,DK Who Pies,112,1,2,134000,10000,20000,40000
-dkong,dkongwho3,WhoSprings,DK Who Springs,113,1,2,136000,10000,20000,40000
-dkong,dkongwho4,WhoRivets,DK Who Rivets,115,1,2,138000,10000,20000,40000
-dkong,dkongl22,DK Killscrn,DK KillScreen 22,118,1,2,140000,500,1000,1500
-ckongpt2,ckongpt2_l22,CK Killscrn,CK KillScreen 22,120,1,2,142000,1000,2000,3000
+dkong,dkongchorus,DK Chorus,,81,1,2,110000,10000,20000,40000
+dkong,dkongend1,DK End L1,DK Ends at L=01,83,1,2,112000,10000,12000,15000
+dkong,dkongend3,DK End L3,DK Ends at L=03,85,1,2,114000,10000,15000,30000
+dkong,dkongend5,DK End L5,DK Ends at L=05,88,1,2,116000,10000,20000,40000
+dkong,dkonggalakong1,GalaBarrels,DK Gala-Barrels,93,1,2,118000,10000,20000,40000
+dkong,dkonggalakong2,GalaPie,DK Gala-Pies,95,1,2,120000,10000,20000,40000
+dkong,dkonggalakong3,GalaSprings,DK Gala-Springs,96,1,2,122000,10000,20000,40000
+dkong,dkonggalakong4,GalaRivets,DK Gala-Rivets,98,1,2,124000,10000,20000,40000
+dkong,dkonglava1,LavaBarrels,DK Lava Barrels,101,1,2,126000,8000,12000,15000
+dkong,dkonglava2,LavaPie,DK Lava Pies,103,1,2,128000,8000,12000,15000
+dkong,dkonglava3,LavaSprings,DK Lava Springs,105,1,2,130000,8000,12000,15000
+dkong,dkonglava4,LavaRivets,DK Lava Rivets,108,1,2,132000,8000,12000,15000
+dkong,dkongwho1,WhoBarrels,DK Who Barrels,109,1,2,134000,10000,20000,40000
+dkong,dkongwho2,WhoPies,DK Who Pies,112,1,2,136000,10000,20000,40000
+dkong,dkongwho3,WhoSprings,DK Who Springs,113,1,2,138000,10000,20000,40000
+dkong,dkongwho4,WhoRivets,DK Who Rivets,115,1,2,140000,10000,20000,40000
+dkong,dkongl22,DK Killscrn,DK KillScreen 22,118,1,2,142000,500,1000,1500
+ckongpt2,ckongpt2_l22,CK Killscrn,CK KillScreen 22,120,1,2,144000,1000,2000,3000
 dkong,dkongksfix,KSFix,DK Killscreen Fix,123,1,2,150000,10000,25000,40000
+congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,,,,
+logger,,Logger,Bonus: Logger,9999,1,2,,,,
 ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,9999,1,2,,10000,25000,40000
 ckongdks,ckongdks,CK Spanish,CK Spanish Bootleg,9999,1,2,,10000,25000,40000
 kong,kong,DK Galax.,DK Galaxian Hardware,9999,1,2,,,,
@@ -87,9 +90,6 @@ dkongjr,dkongjrcontinue,JRCont.,DK Junior Continue,9999,1,2,,,,
 dkong,dkongtrn,DK Trainer,,9999,1,2,,,,
 dkong,dkongpace,DK Pace,,9999,1,2,,,,
 dkong,dkongbcc,DK Barrel Control,,9999,1,2,,,,
-dkong,dkongduel,DK Duel,,9999,1,2,,,,
 dkong,dkongbarrelboss,DK Barrel Boss,,9999,1,2,,,,
 dkong,dkongsprfin,DK Springfinity,,9999,1,2,,,,
 dkongf,dkongst2,DK Springs Trainer,,9999,1,2,,,,
-congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,,,,
-logger,,Logger,Bonus: Logger,9999,1,2,,,,

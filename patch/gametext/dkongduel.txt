@@ -1,0 +1,16 @@
+Donkey Kong Duel
+
+In this romhack you play a two-player duel with a 
+friend to find out who is the best at jumping barrels,
+avoiding fireballs, riding elevators and conveyors and
+unplugging rivets. A duel consists of a selected 
+number of rounds (1-9). 
+
+In each round you play a number of boards in a 
+selected board order (US or Japan). Players both play 
+the same board. The winner is determined based on a 
+selected scoring method.
+
+Enjoy and have some two-player fun
+
+Hack Developed by Paul Goes
