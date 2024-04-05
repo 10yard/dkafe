@@ -17,7 +17,7 @@
 
 local exports = {}
 exports.name = "dkchorus"
-exports.version = "0.14"
+exports.version = "0.15"
 exports.description = "Donkey Kong Chorus"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -40,7 +40,8 @@ function dkchorus.startplugin()
 		if mac ~= nil then
 			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
-			s_cpu = mac.devices[":soundcpu"]			
+			sound = mac.sound
+			s_cpu = mac.devices[":soundcpu"]
 			s_mem = s_cpu.spaces["data"]
 		
 			is_pi = is_pi()  -- are we running on Pi hardware?
@@ -58,9 +59,15 @@ function dkchorus.startplugin()
 			mode1 = mem:read_u8(0x6005)  -- 1-attract mode, 2-credits entered waiting to start, 3-when playing game
 			mode2 = mem:read_u8(0x600a)  -- Status of note: 7-climb scene, 10-how high, 15-dead, 16-game over
 			stage = mem:read_u8(0x6227)  -- 1-girders, 2-pie, 3-elevator, 4-rivets, 5-extra/bonus
-			clock = os.clock()			
-			
-			clear_sounds()	
+			clock = os.clock()
+
+			-- Mute sounds
+			if sound then
+				sound.attenuation = -32
+			else
+				-- Older MAME versions
+				clear_sounds()
+			end
 
 			if mode1 == 2 then
 				climbing, howhigh = false, false
@@ -163,7 +170,7 @@ function dkchorus.startplugin()
 		for key=0, 32 do
 			s_mem:write_u8(0x0 + key, 0x00)
 		end
-				
+
 		-- clear soundfx buffer (retain the walking 0x6080 sound)
 		for key=0, 11 do
 			mem:write_u8(0x6081 + key, 0x00)

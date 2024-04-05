@@ -137,7 +137,8 @@ function display_awards(rom_offset)
 		-- Show progress against targets at top of screen replacing high score
 		if best_score >= data_score3 then
 			write_message(0xc76e0, "              ")
-			if data_subfolder == "dkongwizardry" or data_subfolder == "dkongaccelerate" then -- see https://github.com/10yard/dkafe/issues/7
+			if data_subfolder == "dkongwizardry" or data_subfolder == "dkongaccelerate" or data_subfolder == "dkongduel" then
+				-- Shorter message to workaround colour issue, see https://github.com/10yard/dkafe/issues/7
 				if best_score >= data_score1 then
 					write_message(0xc7660 + _rom_offset, "WON 1ST!")
 				elseif best_score >= data_score2 then

@@ -287,10 +287,11 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross")
 
 # Roms that are not fully compatible
-HUD_UNFRIENDLY = ["dkongwizardry", "dkongduet", "dkongkonkey", "dkongaccelerate", "dkongduel"]
+HUD_UNFRIENDLY = ["dkongwizardry", "dkongduel", "dkongkonkey", "dkongaccelerate"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
-AUTOSTART_UNFRIENDLY = ["dkongduel"]
+AUTOSTART_UNFRIENDLY = ["dkongduel", "dkongchorus"]
 SKIPINTRO_UNFRIENDLY = ["dkongchorus"]
+ADDITIONAL_CREDIT = ["dkongduel"]
 
 # Colours
 BLACK = (0, 0, 0)

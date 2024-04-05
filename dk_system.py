@@ -309,7 +309,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
         os.environ["DATA_AUTOSTART"] = "0"
         if competing or launch_plugin:
             # Update options
-            os.environ["DATA_CREDITS"] = str(CREDITS)
+            os.environ["DATA_CREDITS"] = str(CREDITS + int(CREDITS and subfolder in ADDITIONAL_CREDIT))
             if competing:
                 os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
             os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
