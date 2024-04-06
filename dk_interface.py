@@ -22,7 +22,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
     if not basic:
         if rom in ("dkong", "dkongjr", "dkongpe", "dkongf", "dkongx", "dkongx11", "dkonghrd", "dkongj"):
             script = "dkong.lua"
-        elif rom in ("ckong", "ckongpt2", "ckongpt2b", "bigkong", "bigkonggx", "ckongs", "ckongg", "ckongmc", "ckongdks"):
+        elif rom in ("ckong", "ckongpt2", "ckongpt2b", "ckongpt2a", "bigkong", "bigkonggx", "ckongs", "ckongg", "ckongmc", "ckongdks"):
             script = "ckong.lua"
         elif subfolder == "shell":
             script = "shell.lua"

@@ -13,7 +13,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "continue"
-exports.version = "0.20"
+exports.version = "0.21"
 exports.description = "Continue plugin"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -43,6 +43,7 @@ function continue.startplugin()
 	rom_table["defender"]   = {"dfend_func", {000,001}, {188,080}, YEL, true,  true,  1}
 	rom_table["ckong"]      = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["ckongpt2"]   = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
+	rom_table["ckongpt2a"]  = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["ckongpt2b"]  = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["bigkong"]    = {"ckong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["ckongs"]     = {"ckgal_func", {052,216}, {328,032}, WHT, true,  false, 3}
