@@ -68,7 +68,10 @@ c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,177000,2,4,8
 c64_felix,shell,FelixJR,C64: Fix It Felix Jr.,159,,,178000,2,4,8
 c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,179000,2,4,8
 c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,180000,2,4,8
-vic20_kongokong,shell,V20CK,V20: Kongo Kong,163,,,181000,2,4,8
+c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,181000,2,4,8
+vic20_kongokong,shell,V20CK,V20: Kongo Kong,164,,,182000,2,4,8
+gnw_dkjr,shell,DK JR,G&W: DK Junior,166,,,183000,2,4,8
+gnw_dkong,shell,G&WDK,G&W: DK Original,167,,,184000,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,110000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,110000,2,4,8
 a2600_dk_boring,shell,DK Boring,2600: DK Boring,9999,,,110000,2,4,8
@@ -111,6 +114,7 @@ bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,110000,2,4,8
 bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,110000,2,4,8
 bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
+c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,9999,,,110000,2,4,8
 ##c64_dk_junior,shell,DK Junior,C64: DK Junior,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK Original (Nintendo),9999,,,0,2,4,8
 ##c64_dk_ocean,shell,DK Ocean,C64: DK Original (Ocean),9999,,,0,2,4,8
@@ -136,8 +140,6 @@ fds_dk_japan,shell,DK,FDS: DK Original,9999,,,0,2,4,8
 gnw_dkong2,shell,DK2,G&W: DK 2,9999,,,110000,2,4,8
 gnw_dkcirc,shell,DK Circus,G&W: DK Circus,9999,,,110000,2,4,8
 gnw_dkjrp,shell,DK JR (P),G&W: DK JR. (Panoroma),9999,,,110000,2,4,8
-gnw_dkjr,shell,DK JR,G&W: DK Junior,9999,,,110000,2,4,8
-gnw_dkong,shell,DK,G&W: DK Original,9999,,,0,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: DK 4 Level Hack,9999,,,110000,2,4,8
 gbcolor_dk_japan_us,shell,DK,GBC: DK Original,9999,,,0,2,4,8
 gbcolor_dk_summer,shell,DK Summer,GBC: DK Summer Hack,9999,,,110000,2,4,8
@@ -187,4 +189,3 @@ vic20_littlekong,shell,LittleKong,V20: Little Kong,9999,,,110000,2,4,8
 ##vic20_vic_kong,shell,Vic Kong,V20: Vic Kong,9999,,,110000,2,4,8
 spectrum_dk,shell,DK,ZXS: DK Original,9999,,,0,2,4,8
 ##spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8
-c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,9999,,,110000,2,4,8
