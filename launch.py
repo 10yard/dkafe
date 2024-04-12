@@ -590,6 +590,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 def sort_key(x):
     name = x[3] or x[0]
+    name = name.replace("Bonus:", "ZBonus:")
     slot = str(x[4])
     if slot == "9999":
         slot = "0"
@@ -603,9 +604,7 @@ def build_menus(initial=False):
     _romlist = _g.romlist
     _lastname = ""
 
-    if ENABLE_ADDONS and _g.stage >= 2:
-        # Sort the rom list by descriptive name for better navigation in the game selection menu
-        _romlist = sorted(_romlist, key=sort_key)
+    # Sort the rom list by descriptive name for better navigation in the game selection menu
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
         _alt = alt.replace("00", "№")  # Single character 00
         _add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
@@ -1436,7 +1435,8 @@ def main(initial=True):
     detect_joysticks()
     check_patches_available()
 
-    _g.romlist = _s.read_romlist()
+    _g.romlist = sorted(_s.read_romlist(), key=sort_key)
+
     build_menus(initial=True)
     _g.gametext = _s.load_game_texts()
 
