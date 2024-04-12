@@ -1,7 +1,7 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
 dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
-dkong,dkongpies,DK Pies,DK Pies Only,3,1,2,,10000,15000,30000
-dkongjr,,DK Junior,,3,1,2,,10000,15000,30000
+dkongjr,,DK Junior,,3.1,1,2,,10000,15000,30000
+dkong,dkongpies,DK Pies,DK Pies Only,3.2,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,,4,1,2,,20000,40000,60000
 dkongx11,dkongspooky,Spooky,DK Spooky Remix,6,1,2,1000,10000,15000,30000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,1000,10000,20000,40000
@@ -15,8 +15,8 @@ ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),17,1,2,14000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,18,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,19,1,2,18000,10000,15000,30000
 dkong,dkongvector,VectorKong,DK Vector Kong,20,1,2,20000,10000,20000,40000
-dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,21,1,2,22000,10000,20000,40000
-dkongjr,dkongjrgala,GalaJR,DK GalaKong Junior,21,1,2,22000,10000,20000,30000
+dkongjr,dkongjrgala,GalaJR,DK GalaKong Junior,21.1,1,2,22000,10000,20000,30000
+dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,21.2,1,2,22000,10000,20000,40000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,23,1,2,24000,10000,25000,45000
 dkong,dkongfr,DK Free,DK Freerun Edition,24,1,2,26000,20000,40000,60000
 dkong,dkongrivets,DKRivet,DK Rivets Only,25,1,2,28000,10000,20000,40000
@@ -31,8 +31,8 @@ dkongf,dkongrdemo,DKRemix,DK Remix,34,1,2,44000,10000,20000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,36,1,2,46000,10000,20000,40000
 dkong,dkongkana,Kana,DK Kana Kong,38,1,2,48000,10000,20000,40000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,39,1,2,50000,10000,20000,40000
-dkong,dkongnoluck,NoLuck,DK NoLuck Kong,40,1,2,52000,15000,25000,50000
-dkong3,,DK 3,,40,1,2,52000,,,
+dkong3,,DK 3,,40.1,1,2,52000,,,
+dkong,dkongnoluck,NoLuck,DK NoLuck Kong,40.2,1,2,52000,15000,25000,50000
 dkong,dkongbarpal,DK Palooza,DK Barrelpalooza,42,1,2,54000,10000,25000,50000
 dkong,dkongwbh,DK Wild,,43,1,2,56000,1000,2000,5000
 dkong,dkong2nut,2Nut,2Nut Kong,44,1,2,58000,10000,25000,50000
@@ -48,7 +48,7 @@ dkong,dkongl05,DK Skip,DK Skip Start,57,1,2,74000,20000,35000,50000
 dkong,dkongpies,DK Pie,DK Pies Only,59,1,2,76000,10000,15000,30000
 dkong,dkongcontinue,DK Cont.,DK Continue,60,1,2,78000,10000,20000,40000
 ckongpt2b,ckongpt2b,CK Alt.,CK Alternative Levels,61,1,2,80000,4000,8000,12000
-dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,63,1,2,82000,10000,20000,40000
+dkong,dkongend1,DK EndL1,DK Ends at L=01,63,1,2,112000,10000,12000,15000
 dkongf,dkongfoundry,DK Foundry,,65,1,2,84000,10000,25000,50000
 dkong,dkongrnd,DK Random,DK Randomized,66,1,2,86000,10000,20000,40000
 dkong,dkonghalf,1/2 Kong,Half Kong,68,1,2,88000,20000,50000,80000
@@ -63,9 +63,9 @@ ckongg,ckongg,CK Galax.,CK Galaxian Hardware,78,1,2,104000,10000,25000,40000
 ckongpt2a,ckongpt2a_2023,CK2023,Crazy Kong 2023,79,1,2,106000,10000,25000,40000
 bigkonggx,bigkonggx,BK Galax.,BK Galaxian Hardware,80,1,2,108000,10000,20000,40000
 dkong,dkongchorus,DK Chorus,,81,1,2,110000,10000,20000,40000
-dkong,dkongend1,DK End L1,DK Ends at L=01,83,1,2,112000,10000,12000,15000
-dkong,dkongend3,DK End L3,DK Ends at L=03,85,1,2,114000,10000,15000,30000
-dkong,dkongend5,DK End L5,DK Ends at L=05,88,1,2,116000,10000,20000,40000
+dkong,dkongend2,DK End L2,DK Ends at L=02,83,1,2,112000,10000,15000,20000
+dkong,dkongend3,DK End L3,DK Ends at L=03,85,1,2,114000,10000,20000,30000
+dkong,dkongend4,DK End L4,DK Ends at L=04,88,1,2,116000,10000,25000,40000
 dkong,dkonggalakong1,GalaBarrels,DK Gala-Barrels,93,1,2,118000,10000,20000,40000
 dkong,dkonggalakong2,GalaPie,DK Gala-Pies,95,1,2,120000,10000,20000,40000
 dkong,dkonggalakong3,GalaSprings,DK Gala-Springs,96,1,2,122000,10000,20000,40000

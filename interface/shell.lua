@@ -38,14 +38,21 @@ local input_frame, input_frame2 = 60, 0
 local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
 local state = False
 local time_played = 0
+local start_msg = "PUSH P1 TO START"
 
-if emu.romname() == "a5200" then
+if emu.romname() == "a2600" then
+	start_msg = "PUSH JUMP TO START"
+elseif emu.romname() == "a5200" then
 	state = true
 	quick_start = 600
 elseif emu.romname() == "a7800" then
 	if shell_name == "a7800_dk_remix" then
+		start_msg = "PUSH P1 THEN P1 AGAIN TO START"
 		state = true
 		quick_start = 750
+	elseif shell_name == "a7800_dk_xm" then
+		start_msg = "PUSH P1 THEN P1 AGAIN TO START"
+		quick_start = 200
 	else
 		quick_start = 200
 	end
@@ -75,24 +82,35 @@ elseif emu.romname() == "c64" then
 	if shell_name == "c64_ck64" then
 		quick_start = 900
 	elseif shell_name == "c64_dk_x" then
+		start_msg = "PUSH JUMP THEN P1 TO START"
 		quick_start = 400
 	elseif shell_name == "c64_kongokong" then
 		quick_start = 700
 	elseif shell_name == "c64_bonkeykong" then
+		start_msg = "PUSH JUMP TO START"
 		input_frame2 = 13000
 		quick_start = 14000
 	elseif shell_name == "c64_felix" then
+		start_msg = "PUSH JUMP...THEN JUMP TO START FROM MENU"
 		input_frame2 = 12000
 		quick_start = 12400
 	elseif shell_name == "c64_jumpman" then
 		input_frame2 = 6000
 		quick_start = 6200
+	elseif shell_name == "c64_krazykong64" then
+		start_msg = "PUSH JUMP TO START"
+		quick_start = 550
+	elseif shell_name == "c64_mariosbrewery" then
+		start_msg = "PUSH JUMP TO START"
+		quick_start = 550
 	else
 		quick_start = 550
 	end
 elseif emu.romname() == "coco3" then
+	start_msg = "PUSH JUMP TO START"
 	state = true
 	if shell_name == "coco3_dk_emu" or shell_name == "coco3_dk_remixed" then
+		start_msg = "PUSH JUMP THEN JUMP AGAIN TO START"
 		quick_start = 6700
 	elseif shell_name == "coco3_donkeyking" then
 		quick_start = 6400
@@ -146,6 +164,7 @@ elseif emu.romname() == "hbf900a" then
 	end
 elseif emu.romname() == "cdkong" or emu.romname() == "gckong" then
 	-- LCD games
+	start_msg = "P1 TO START"
 	scale = 18
 	y_padding = 32
 elseif emu.romname() == "intv" then
@@ -174,10 +193,16 @@ elseif emu.romname() == "snes" then
 	scale = 2.5
 	quick_start = 360
 elseif emu.romname() == "spectrum" then
+	if shell_name == "spectrum_kong" then
+		start_msg = "PUSH P1 THEN JUMP TO START"
+	elseif shell_name == "spectrum_krazykong" then
+		start_msg = "PUSH JUMP TO START"
+	end
 	scale = 2
 	y_padding = 4
 	input_frame = 15
 elseif emu.romname() == "ti99_4a" then
+	start_msg = "PUSH JUMP THEN P1 TO START"
 	quick_start = 180
 elseif emu.romname() == "vic20" then
 	state = true
@@ -330,7 +355,7 @@ function shell_main()
 				if time_played > 0 and time_played <= target_time or mac.paused then
 
 					if not mac.paused then
-						screen:draw_text(0, 2 + scale + y_offset,  "P1 OR JUMP TO START", col0, 0xff000000)
+						screen:draw_text(0, 0 + y_offset,  start_msg, col0, 0xff000000)
 					end
 
 					if hide_targets == 0 then

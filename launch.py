@@ -597,16 +597,13 @@ def sort_key(x):
 
 def build_menus(initial=False):
     """Game selection menu"""
-    if not os.path.exists("romlist_addon.csv"):
-        globals()["ENABLE_ADDONS"] = 0
-
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
 
     _romlist = _g.romlist
     _lastname = ""
 
-    if ENABLE_ADDONS and (_g.stage == 2 or _g.stage == 3):
+    if ENABLE_ADDONS and _g.stage >= 2:
         # Sort the rom list by descriptive name for better navigation in the game selection menu
         _romlist = sorted(_romlist, key=sort_key)
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
@@ -1370,13 +1367,13 @@ def stage_check(warp=False):
 
     current_stage = _g.stage
     if warp:
-        _g.stage = (_g.stage + 1) % 5
+        _g.stage = (_g.stage + 1) % STAGES
         _g.xpos, _g.ypos = OILCAN_POSXY[_g.stage]
     elif _g.ypos > 239 and not _g.jump:
-        _g.stage = (current_stage - 1) % 5
+        _g.stage = (current_stage - 1) % STAGES
         _g.ypos = 20
     elif _g.ypos < 20 and not _g.jump:
-        _g.stage = (current_stage + 1) % 5
+        _g.stage = (current_stage + 1) % STAGES
         _g.ypos = 238
 
     if current_stage != _g.stage:

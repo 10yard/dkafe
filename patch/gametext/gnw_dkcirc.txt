@@ -1,0 +1,17 @@
+Game & Watch - Donkey Kong Circus
+
+In this game, Donkey Kong balances on a barrel while
+juggling pineapples and avoiding the fireballs falling
+from the drums. Mario watches his performance. 
+
+Donkey Kong receives a point every time he catches a 
+pineapple. If Donkey Kong loses a pineapple, Mario 
+will laugh at him, resulting in a miss. If Donkey Kong
+manages to grasp a fireball, he will flail, which also
+counts as a miss. If Donkey Kong reaches 300 points 
+without any misses, the points will be worth double 
+until he does get a miss. If he has any misses at said
+ score, every miss will be cleared instead. When he 
+ gets three misses, the player gets a Game Over.
+
+Developed By Nintendo

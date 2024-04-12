@@ -1,0 +1,10 @@
+NES Console - Donkey Kong God Mode
+
+Regular Donkey Kong but with god like power to jump.
+
+Double-Jump your way quickly through all of the stages.
+Be careful because you can still be hit by barrels and
+all enemies when you are in flight.  You can still die
+after falling from a great height.
+
+Hack Developed by Unknown

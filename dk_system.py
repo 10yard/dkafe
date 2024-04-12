@@ -79,6 +79,7 @@ def read_romlist():
                     if data.strip() and not data.startswith("#") and not data.startswith(",,") and data.count(",") >= 10:
                         # read romlist data and tweak the descriptions
                         name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
+                        slot = slot.split(".")[0] # decimal places are used only for sorting
                         _shell = sub == "shell"
                         if _shell or sub not in usedsubs:
                             if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):

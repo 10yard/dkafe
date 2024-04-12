@@ -148,11 +148,14 @@ if sys.gettrace():
     globals()["TITLE"] = "DKAFE (Debugging Mode)"
 
 # Validate some settings
+if not os.path.exists("romlist_addon.csv"):
+    globals()["ENABLE_ADDONS"] = 0
+STAGES = 4 if ENABLE_ADDONS else 3
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
 if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
 if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
-if START_STAGE > 3: START_STAGE = 0
+if START_STAGE > STAGES: START_STAGE = 0
 
 # Console Addon Specific
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
@@ -183,6 +186,7 @@ KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
                   "pc_dk_remake":"num 1>enter,ctrl>space,esc>forcequit",
                   "pc_dk_jr_remake": "num 1>enter,ctrl>space,esc>forcequit",
                   "pc_dk_craze": "esc>forcequit:stdrt.exe",
+                  "pc_dk_plus": "left>a,right>d,up>w,down>s,1>enter,ctrl>space",
                   "dos_aldo3": "ctrl>space",
                   "dos_aldo": "ctrl>space",
                   "dos_dk": "ctrl>space,esc>forcequit:dosbox-x.exe",
@@ -240,8 +244,9 @@ PLUGINS = (
     ("dkongwho4", "dkwho"),
     ("dkongwho4", "dkstart5:4"),
     ("dkongend1", "dkend:1"),
+    ("dkongend2", "dkend:2"),
     ("dkongend3", "dkend:3"),
-    ("dkongend5", "dkend:5"),
+    ("dkongend4", "dkend:4"),
     ("dkongkonkey", "konkeydong"),
     ("dkong2600", "gingerbreadkong"),
     ("dkongvector", "vectorkong"),

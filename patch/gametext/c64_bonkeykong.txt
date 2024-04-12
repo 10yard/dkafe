@@ -1,0 +1,15 @@
+Commodore 64 - Bonkey Kong
+
+You are Bonkey Kong!  Fulfill your destiny by taking 
+your place on top of an unfinished building with the 
+love of your life!  (Whom you have plucked randomly 
+from the street below)
+
+Throw barrels at the workers who will climb the 
+building and try to stop you.
+
+Due to a series of accidents in the 80's, the Kong 
+Workers Union have imposed new restrictions:  
+Only one barrel can be thrown at a time.
+
+Homebrew Developed By Graham Axten

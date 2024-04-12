@@ -32,6 +32,14 @@ else
 end
 if mac ~= nil then
 	screen = mac.screens[":screen"]
+	-- Cater for systems that have a different screen ID i.e. SEGA Genesis
+	if not screen then
+		for k, v in ipairs(mac.screens) do
+			screen = v
+			break
+		end
+	end
+
 	cpu = mac.devices[":maincpu"]
 	if cpu ~= nil then
 		mem = cpu.spaces["program"]
