@@ -1,0 +1,17 @@
+Commodore 64 - Donkey Kong (Ocean)
+
+This port hits all of the major points of the arcade. 
+All four levels are represented and accurately 
+reproduced, as are both cutscenes.  Unlike the Atari 
+version, this one includes the "How high can you get?"
+screen.  Level progression follows the Japanese 
+version of the game.  
+
+Graphically, this Ocean version restricts the game to
+the center part of the screen, allowing it to emulate
+the arcade's vertical orientation more accurately.  
+The tradeoff to this approach is that game utilizes 
+even fewer pixels of the C64's already limited
+resolution. 
+
+Developed By Ocean Software

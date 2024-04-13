@@ -94,13 +94,7 @@ elseif emu.romname() == "c64" or emu.romname() == "c64p" then
 		start_msg = "PUSH JUMP...THEN JUMP TO START FROM MENU"
 		input_frame2 = 12000
 		quick_start = 12400
-	elseif shell_name == "c64_jumpman" then
-		input_frame2 = 6000
-		quick_start = 6200
-	elseif shell_name == "c64_krazykong64" then
-		start_msg = "PUSH JUMP TO START"
-		quick_start = 550
-	elseif shell_name == "c64_mariosbrewery" then
+	elseif shell_name == "c64_krazykong64" or shell_name == "c64_mariosbrewery" or shell_name == "c64p_dk_junior" then
 		start_msg = "PUSH JUMP TO START"
 		quick_start = 550
 	else
@@ -278,7 +272,7 @@ function shell_main()
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
 				elseif emu.romname() == "c64" or emu.romname() == "c64p" then
-					if shell_name == "c64_felix" or shell_name == "c64_jumpman" or shell_name == "c64_bonkeykong" then
+					if shell_name == "c64_felix" or shell_name == "c64_bonkeykong" then
 						keyb:post('LOAD"*",8,1\n')
 					else
 						keyb:post('RUN\n')
