@@ -20,8 +20,9 @@ hbf900a_dk,shell,MSXDK,MSX: DK Original,100,,,129000,2,4,8
 apple2e_dk,shell,ADK,AII: DK Original,101,,,130000,2,4,8
 cpc6128_dk,shell,CPCDK,CPC: DK Original,102,,,131000,2,4,8
 snes_classickong,shell,SNESDK,SNES: Classic Kong,103,,,132000,2,4,8
-c64_dk_x,shell,C64DK+,C64: DK+ (X2016),105,,,133000,2,4,8
-genesis_felix,shell,GENFelixJR,GEN: Fix It Felix Jr.,106,,,134000,2,4,8
+c64p_dk_ocean,shell,C64DK,C64: DK Original (Ocean),105,,,0,2,4,8
+c64_dk_x,shell,DK+,C64: DK+ (X2016),106,,,133000,2,4,8
+genesis_felix,shell,GENFJR,GEN: Fix It Felix Jr.,107,,,134000,2,4,8
 a800xl_dk,shell,800DK,A800: DK Original,108,,,135000,2,4,8
 coleco_dk,shell,CVDK,CVS: DK Original,109,,,136000,2,4,8
 coleco_dk_junior,shell,JR,CVS: DK Jr.,110,,,137000,2,4,8
@@ -121,8 +122,8 @@ bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
 c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,9999,,,110000,2,4,8
 ##c64_dk_junior,shell,DK Junior,C64: DK Junior,9999,,,110000,2,4,8
+c64p_dk_ocean,shell,DK Ocean,C64: DK Original (Ocean),9999,,,0,2,4,8
 c64_dk,shell,DK,C64: DK Original (Nintendo),9999,,,0,2,4,8
-##c64_dk_ocean,shell,DK Ocean,C64: DK Original (Ocean),9999,,,0,2,4,8
 ##c64_jumpman,shell,Jumpman,C64: Jumpman,9999,,,110000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,2,4,8
@@ -176,15 +177,15 @@ oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,0,2,4,8
 oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
 pc_dk_craze,shell,DK Craze,PC : DK Craze,9999,,,110000,2,4,8
 pc_dk_jr_remake,shell,DK Junior Remake,PC : DK Junior Remake,9999,,,110000,2,4,8
+pc_dk_plus,shell,DKPlus,PC : DK Plus,9999,,,110000,2,4,8
 pc_raiders,shell,DK Raiders,PC : DK Raiders,9999,,,110000,2,4,8
 pc_dk_redux,shell,DK Redux,PC : DK Redux,9999,,,0,2,4,8
 pc_dk_remake,shell,DK Remake,PC : DK Remake,9999,,,110000,2,4,8
+pc_dkongse,shell,DK SE,PC : DK Special Ed. (G&W),9999,,,110000,2,4,8
 pc_fixitfelix,shell,Fix It Felix Classic,PC : Fix It Felix Jr.,9999,,,110000,2,4,8
 pc_jumpman_rtx,shell,Jumpman RTX,PC : Jumpman RTX,9999,,,110000,2,4,8
-pc_dkongse,shell,DK SE,PC : DK Special Ed. (G&W),9999,,,110000,2,4,8
 pc_monkeyjump,shell,MonkeyJump,PC : MonkeyJump (G&W),9999,,,110000,2,4,8
 pc_wildmanjump,shell,WildmanJump,PC : WildmanJump (G&W),9999,,,110000,2,4,8
-pc_dk_plus,shell,DKPlus,PC : DK Plus,9999,,,110000,2,4,8
 #pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8

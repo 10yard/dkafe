@@ -74,7 +74,7 @@ elseif emu.romname() == "bbcb" then
 	quick_start = 300
 	y_padding = 15
 	scale = 6
-elseif emu.romname() == "c64" then
+elseif emu.romname() == "c64" or emu.romname() == "c64p" then
 	state = true
 	input_frame = 150
 	scale = 1.33
@@ -277,7 +277,7 @@ function shell_main()
 					keyb:post_coded("{SPACE}")
 				elseif emu.romname() == "bbcb" then
 					keyb:post("*EXEC !BOOT\n")
-				elseif emu.romname() == "c64" then
+				elseif emu.romname() == "c64" or emu.romname() == "c64p" then
 					if shell_name == "c64_felix" or shell_name == "c64_jumpman" or shell_name == "c64_bonkeykong" then
 						keyb:post('LOAD"*",8,1\n')
 					else

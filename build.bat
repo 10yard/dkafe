@@ -59,6 +59,7 @@ xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\c64_*.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\c64p_*.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\gnw_*.cfg dist\dkwolf\cfg\ /Y
@@ -101,6 +102,7 @@ xcopy roms\cpc6128 dist\console_addon\roms\cpc6128 /S /i /Y
 xcopy roms\apple2e dist\console_addon\roms\apple2e /S /i /Y
 xcopy roms\bbcb dist\console_addon\roms\bbcb /S /i /Y
 xcopy roms\c64 dist\console_addon\roms\c64 /S /i /Y
+xcopy roms\c64p dist\console_addon\roms\c64p /S /i /Y
 xcopy roms\pet4032 dist\console_addon\roms\pet4032 /S /i /Y
 xcopy roms\spectrum dist\console_addon\roms\spectrum /S /i /Y
 xcopy roms\snes dist\console_addon\roms\snes /S /i /Y
