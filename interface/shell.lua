@@ -97,6 +97,9 @@ elseif emu.romname() == "c64" or emu.romname() == "c64p" then
 	elseif shell_name == "c64_krazykong64" or shell_name == "c64_mariosbrewery" or shell_name == "c64p_dk_junior" then
 		start_msg = "PUSH JUMP TO START"
 		quick_start = 550
+	elseif shell_name == "c64_jumpman" then
+		start_msg = "PUSH P1...THEN P1 AGAIN TO START"
+		quick_start = 550
 	else
 		quick_start = 550
 	end
