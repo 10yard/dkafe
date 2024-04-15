@@ -22,8 +22,8 @@ cpc6128_dk,shell,CPCDK,CPC: DK Original,102,,,131000,2,4,8
 snes_classickong,shell,SNESDK,SNES: Classic Kong,103,,,132000,2,4,8
 c64p_dk_ocean,shell,C64DK,C64: DK (Ocean),105,,,133000,2,4,8
 c64_dk_x,shell,DK+,C64: DK+ (X2016),106,,,134000,2,4,8
-genesis_felix,shell,GENFIFJR,GEN: Fix It Felix Jr.,108,,,135000,2,4,8
 c64p_dk_junior,shell,JR,C64: DK Junior (2014),107,,,136000,2,4,8
+genesis_felix,shell,GENFIFJR,GEN: Fix It Felix Jr.,108,,,135000,2,4,8
 coleco_dk,shell,CVDK,CVS: DK Original,109,,,137000,2,4,8
 coleco_dk_junior,shell,JR,CVS: DK Jr.,110,,,138000,2,4,8
 a800xl_dk,shell,800DK,A800: DK Original,111,,,139000,2,4,8
@@ -125,6 +125,7 @@ c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK (Nintendo),9999,,,0,2,4,8
 c64p_dk_ocean,shell,DK Ocean,C64: DK (Ocean),9999,,,0,2,4,8
 c64_jumpman,shell,Jumpman,C64: Jumpman Junior,9999,,,110000,2,4,8
+c64_kong_sputnik,shell,Kong,C64: Kong,9999,,,110000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,110000,2,4,8

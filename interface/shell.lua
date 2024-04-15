@@ -8,7 +8,7 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 
 DKAFE Interface routine for shell scripts.
 Simple interface is based on the time a game is played.
-- Speed up the loading time of some disk based games
+- Speed up the loading time of some disk and tape based games
 - Send keyboard inputs for some games to initiate loading.
 - Show targets for play time when the game starts up or when game is paused.
 - Show prize award when targets reached for 3rd, 2nd and 1st.
@@ -36,184 +36,89 @@ local i_attenuation = sound.attenuation
 local target_time = 6
 local input_frame, input_frame2 = 60, 0
 local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
+local post1, postc1, post2, postc2 = "", "", "", ""
 local state = False
 local time_played = 0
-local start_msg = "PUSH P1 TO START"
+local start_msg = "P1"
 
-if emu.romname() == "a2600" then
-	start_msg = "PUSH JUMP TO START"
-elseif emu.romname() == "a5200" then
-	state = true
-	quick_start = 600
-elseif emu.romname() == "a7800" then
-	if shell_name == "a7800_dk_remix" then
-		start_msg = "PUSH P1 THEN P1 AGAIN TO START"
-		state = true
-		quick_start = 750
-	elseif shell_name == "a7800_dk_xm" then
-		start_msg = "PUSH P1 THEN P1 AGAIN TO START"
-		quick_start = 200
-	else
-		quick_start = 200
-	end
-elseif emu.romname() == "a800xl" then
-	state = true
-	quick_start = 90
-elseif emu.romname() == "adam" then
-	state = true
-	quick_start = 600
-elseif emu.romname() == "apple2e" then
-	state = true
-	quick_start = 600
-	scale = 3
-	y_padding = 1
-	input_frame = 500
-	x_offset = -110
-elseif emu.romname() == "bbcb" then
-	state = false
-	quick_start = 300
-	y_padding = 15
-	scale = 6
-elseif emu.romname() == "c64" or emu.romname() == "c64p" then
-	state = true
-	input_frame = 150
-	scale = 1.33
-	y_padding = 2
-	if shell_name == "c64_ck64" then
-		quick_start = 900
-	elseif shell_name == "c64_dk_x" then
-		start_msg = "PUSH JUMP THEN P1 TO START"
-		quick_start = 400
-	elseif shell_name == "c64_kongokong" then
-		quick_start = 700
-	elseif shell_name == "c64_bonkeykong" then
-		start_msg = "PUSH JUMP TO START"
-		input_frame2 = 13000
-		quick_start = 14000
-	elseif shell_name == "c64_felix" then
-		start_msg = "PUSH JUMP...THEN JUMP TO START FROM MENU"
-		input_frame2 = 12000
-		quick_start = 12400
-	elseif shell_name == "c64_krazykong64" or shell_name == "c64_mariosbrewery" or shell_name == "c64p_dk_junior" then
-		start_msg = "PUSH JUMP TO START"
-		quick_start = 550
-	elseif shell_name == "c64_jumpman" then
-		start_msg = "PUSH P1...THEN P1 AGAIN TO START"
-		quick_start = 550
-	else
-		quick_start = 550
-	end
-elseif emu.romname() == "coco3" then
-	start_msg = "PUSH JUMP TO START"
-	state = true
-	if shell_name == "coco3_dk_emu" or shell_name == "coco3_dk_remixed" then
-		start_msg = "PUSH JUMP THEN JUMP AGAIN TO START"
-		quick_start = 6700
-	elseif shell_name == "coco3_donkeyking" then
-		quick_start = 6400
-	else
-		quick_start = 5200
-	end
-	scale = 4.25
-	y_padding = 4
-elseif emu.romname() == "coleco" then
-	state = true
-	quick_start = 720
-elseif emu.romname() == "cpc6128" then
-	quick_start = 1450
-	scale = 6
-	y_padding = 4
-elseif emu.romname() == "dragon32" then
-	state = true
-	input_frame = 120
-	 y_offset = 16
-	if shell_name == "dragon32_kingcuthbert" then
-		input_frame2 = 2900
-		quick_start = 3250
-	elseif shell_name == "dragon32_donkeyking" then
-		input_frame2 = 7000
-		quick_start = 7300
-	elseif shell_name == "dragon32_dunkeymonkey" then
-		input_frame = 180
-		input_frame2 = 6000
-		quick_start = 6200
-	elseif shell_name == "dragon32_juniorsrevenge" then
-		quick_start = 20000
-	end
-elseif emu.romname() == "fds" then
-	quick_start = 600
-elseif emu.romname() == "gameboy" then
-	scale = -1.5
-	quick_start = 300
-	y_offset = 10
-elseif emu.romname() == "gbcolor" then
-	scale = -1.5
-	quick_start = 180
-	y_offset = 10
-elseif emu.romname() == "hbf900a" then
-	state = true
-	scale = 5
-	y_padding = 12
-	if shell_name == "hbf900a_tokekong" then
-		quick_start = 3700
-	else
-		quick_start = 2300
-	end
-elseif emu.romname() == "cdkong" or emu.romname() == "gckong" then
-	-- LCD games
-	start_msg = "P1 TO START"
-	scale = 18
-	y_padding = 32
-elseif emu.romname() == "intv" then
-	state = true
-	quick_start = 900
-elseif emu.romname() == "nes" then
-	scale = 0.5
-elseif emu.romname() == "oric1" then
-	state = true
-	input_frame = 180
-	y_offset = 16
-	if shell_name == "oric1_honeykong" then
-		quick_start = 10000
-		input_frame2 = 10050
-	elseif shell_name == "oric1_orickong" then
-		quick_start = 4700
-		input_frame2 = 4500
-	elseif shell_name == "oric1_dinkykong" then
-		quick_start = 6400
-		input_frame2 = 5000
-	end
-elseif emu.romname() == "pet4032" then
-	quick_start = 240
-	input_frame = 180
-elseif emu.romname() == "snes" then
-	scale = 2.5
-	quick_start = 360
-elseif emu.romname() == "spectrum" then
-	if shell_name == "spectrum_kong" then
-		start_msg = "PUSH P1 THEN JUMP TO START"
-	elseif shell_name == "spectrum_krazykong" then
-		start_msg = "PUSH JUMP TO START"
-	end
-	scale = 2
-	y_padding = 4
-	input_frame = 15
-elseif emu.romname() == "ti99_4a" then
-	start_msg = "PUSH JUMP THEN P1 TO START"
-	quick_start = 180
-elseif emu.romname() == "vic20" then
-	state = true
-	input_frame = 360
-	scale = 1.33
-	y_padding = 2
-	if shell_name == "vic20_littlekong" then
-		quick_start = 1100
-	elseif shell_name == "vic20_krazykong_nufecop" then
-		quick_start = 550
-	else
-		quick_start = 400
-	end
+-- compatible roms with associated data
+local rom_data, rom_table = {}, {}
+--                                                           quick  input                                          input                            Y      X    Y
+-- system or rom name                  message        state  start  frame1  post1                       postc1     frame2  post2         postc2     Scale  Pad  Off  Off
+rom_table["a2600"]                   = {"JJ",         false, 0,     60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["a5200"]                   = {"P1",         true,  600,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["a7800"]                   = {"P1",         false, 200,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["a7800_dk_remix"]          = {"P1TT P1 AA", true,  750,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["a7800_dk_xm"]             = {"P1TT P1 AA", false, 200,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["a800xl"]                  = {"P1",         true,  90,    60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["adam"]                    = {"P1",         true,  600,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["apple2e"]                 = {"P1",         true,  600,   500,    "",                         "{SPACE}", 0,      "",           "",        3,     1,   -110,0}
+rom_table["bbcb"]                    = {"P1",         false, 300,   60,     "*EXEC !BOOT\n",            "",        0,      "",           "",        6,     15,  0,   0}
+rom_table["c64"]                     = {"P1",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["c64_ck64"]                = {"P1",         true,  900,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["c64_dk_x"]                = {"JJTT P1",    true,  400,   150,    "RUN\n",                    "",        0,      "RUN\n",      "",        1.33,  2,   0,   0}
+rom_table["c64_kongokong"]           = {"P1",         true,  700,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["c64_bonkeykong"]          = {"JJ",         true,  14000, 13000,  "LOAD\"*\",8,1\n",          "",        0,      "RUN\n",      "",        1.33,  2,   0,   0}
+rom_table["c64_felix"]               = {"JJTT JJ AA", true,  12400, 12000,  "LOAD\"*\",8,1\n",          "",        0,      "RUN\n",      "",        1.33,  2,   0,   0}
+rom_table["c64_krazykong64"]         = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["c64_mariosbrewery"]       = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["c64p_dk_junior"]          = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["c64_jumpman"]             = {"P1",         true,  550,   500,    "RUN\n",                    "",        0,      "1",          "",        1.33,  2,   0,   0}
+rom_table["c64_kong_sputnik"]        = {"JJ",         true,  850,   800,    "RUN\n",                    "",        0,      "",           "{TAB}",   1.33,  2,   0,   0}
+rom_table["coco3"]                   = {"JJ",         true,  5200,  60,     "",                         "",        0,      "",           "",        4.25,  4,   0,   0}
+rom_table["coco3_dk_emu"]            = {"JJTT JJ AA", true,  6700,  60,     "LOADM\"EMULATOR\":EXEC\n", "",        0,      "",           "",        4.25,  4,   0,   0}
+rom_table["coco3_dk_remixed"]        = {"JJTT JJ AA", true,  6700,  60,     "LOADM\"DKREMIX\":EXEC\n",  "",        0,      "",           "",        4.25,  4,   0,   0}
+rom_table["coco3_donkeyking"]        = {"JJ",         true,  6400,  60,     "LOADM\"DONKEY\":EXEC\n",   "",        0,      "",           "{SPACE}", 4.25,  4,   0,   0}
+rom_table["coleco"]                  = {"P1",         true,  720,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["cpc6128"]                 = {"P1",         true,  1450,  60,     "RUN\"DONKEY\n",            "",        0,      "",           "",        6,     4,   0,   0}
+rom_table["dragon32"]                = {"JUMP",       true,  0,     120,    "CLOADM\n",                 "",        0,      "",           "",        0,     0,   0,   16}
+rom_table["dragon32_kingcuthbert"]   = {"JUMP",       true,  3250,  120,    "CLOADM\n",                 "",     2900,      "EXEC\n",     "",        0,     0,   0,   16}
+rom_table["dragon32_donkeyking"]     = {"JUMP",       true,  7300,  120,    "CLOADM\n",                 "",     7000,      "",           "",        0,     0,   0,   16}
+rom_table["dragon32_dunkeymonkey"]   = {"JUMP",       true,  6200,  180,    "CLOADM\n",                 "",     6000,      "EXEC\n",     "",        0,     0,   0,   16}
+rom_table["dragon32_juniorsrevenge"] = {"JUMP",       true,  20000, 120,    "CLOADM\n",                 "",        0,      "",           "",        0,     0,   0,   16}
+rom_table["fds"]                     = {"P1",         false, 600,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["gameboy"]                 = {"P1",         false, 300,   60,     "",                         "",        0,      "",           "",        1.5,   0,   0,   10}
+rom_table["gbcolor"]                 = {"P1",         false, 180,   60,     "",                         "",        0,      "",           "",        1.5,   0,   0,   10}
+rom_table["hbf900a"]                 = {"P1",         true , 2300,  60,     "",                         "",        0,      "",           "",        5,     12,  0,   0}
+rom_table["hbf900a_tokekong"]        = {"P1",         true , 3700,  60,     "",                         "",        0,      "",           "",        5,     12,  0,   0}
+rom_table["cdkong"]                  = {"P1",         false, 0,     60,     "",                         "",        0,      "",           "",        18,    32,  0,   0}
+rom_table["gckong"]                  = {"P1",         false, 0,     60,     "",                         "",        0,      "",           "",        18,    32,  0,   0}
+rom_table["intv"]                    = {"P1",         true,  900,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["nes"]                     = {"P1",         true,  0,     60,     "",                         "",        0,      "",           "",        0.5,   0,   0,   0}
+rom_table["oric1"]                   = {"P1",         true,  0,     180,    'CLOAD ""\n',               "",        0,      "",           "",        0,     0,   0,   16}
+rom_table["oric1_honeykong"]         = {"P1",         true,  10000, 10050,  'CLOAD ""\n',               "",        0,      "QAOP",       "{SPACE}", 0,     0,   0,   16}
+rom_table["oric1_orickong"]          = {"P1",         true,  4700,  4500,   'CLOAD ""\n',               "",        0,      "RUN\n",      "",        0,     0,   0,   16}
+rom_table["oric1_dinkykong"]         = {"P1",         true,  6400,  5000,   'CLOAD ""\n',               "",        0,      'CLOAD ""\n', "",        0,     0,   0,   16}
+rom_table["pet4032"]                 = {"P1",         true,  240,   180,    "RUN\n",                    "",        0,      "",           "",        0,     0,   0,   0}
+rom_table["snes"]                    = {"P1",         true,  360,   60,     "",                         "",        0,      "",           "",        2.5,   0,   0,   0}
+rom_table["spectrum"]                = {"P1",         true,  0,     15,     "",                         "",        0,      "",           "",        2,     4,   0,   0}
+rom_table["spectrum_kong"]           = {"P1TT JJ",    true,  0,     15,     "",                         "",        0,      "",           "",        2,     4,   0,   0}
+rom_table["spectrum_krazykong"]      = {"JJ",         true,  0,     15,     "y",                        "",        0,      "",           "",        2,     4,   0,   0}
+rom_table["ti99_4a"]                 = {"JJTT P1",    false,  180,  60,     "2",                        "{SPACE}", 0,      "",           "",        0,     0,   0,   0}
+rom_table["vic20"]                   = {"P1",         true,  400,   360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["vic20_littlekong"]        = {"P1",         true,  1100,  360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["vic20_krazykong_nufecop"] = {"P1",         true,  550,   360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+
+rom_data = rom_table[shell_name] or rom_table[emu:romname()]
+if rom_data then
+	start_msg = "PUSH "..rom_data[1].." TO START"
+	start_msg = string.gsub(start_msg, "JJ", "JUMP")
+	start_msg = string.gsub(start_msg, "TT", "...THEN")
+	start_msg = string.gsub(start_msg, "AA", "AGAIN")
+	state = rom_data[2]
+	quick_start = rom_data[3]
+	input_frame = rom_data[4]
+	post1 = rom_data[5]
+	postc1 = rom_data[6]
+	input_frame2 = rom_data[7]
+	post2 = rom_data[8]
+	postc2 = rom_data[9]
+	scale = rom_data[10]
+	y_padding = rom_data[11]
+	x_offset = rom_data[12]
+	y_offset = rom_data[13]
 end
+
 local start_time = os.time()
 
 function file_exists(name)
@@ -270,75 +175,14 @@ function shell_main()
 		if keyb then
 			-- Inputs 1
 			if screen and screen:frame_number() == input_frame then
-				if emu.romname() == "apple2e" then
-					keyb:post_coded("{SPACE}")
-				elseif emu.romname() == "bbcb" then
-					keyb:post("*EXEC !BOOT\n")
-				elseif emu.romname() == "c64" or emu.romname() == "c64p" then
-					if shell_name == "c64_felix" or shell_name == "c64_bonkeykong" then
-						keyb:post('LOAD"*",8,1\n')
-					else
-						keyb:post('RUN\n')
-					end
-				elseif emu.romname() == "cpc6128" then
-					keyb:post('RUN"DONKEY\n')
-				elseif emu.romname() == "coco3" then
-					if shell_name == "coco3_dk_emu" then
-						keyb:post('LOADM"EMULATOR":EXEC\n')
-					elseif shell_name == "coco3_dk_remixed" then
-						keyb:post('LOADM"DKREMIX":EXEC\n')
-					elseif shell_name == "coco3_dunkeymonkey" then
-						keyb:post('LOADM"DUNKEYM":EXEC\n')
-					elseif shell_name == "coco3_kingcuthbert" then
-						keyb:post('LOADM"KINGCUTH":EXEC\n')
-					elseif shell_name == "coco3_monkeykong" then
-						keyb:post('LOADM"MONKEYK":EXEC\n')
-					elseif shell_name == "coco3_donkeyking" then
-						keyb:post('LOADM"DONKEY":EXEC\n')
-					end
-				elseif emu.romname() == "dragon32" then
-					keyb:post('CLOADM\n')
-				elseif emu.romname() == "oric1" then
-					keyb:post('CLOAD ""\n')
-				elseif emu.romname() == "pet4032" then
-					keyb:post('RUN\n')
-				elseif emu.romname() == "spectrum" then
-					if shell_name == "spectrum_krazykong" then
-						keyb:post('y')
-					elseif shell_name == "spectrum_wallykong" then
-						-- have to press keys a few times, this game is not very responsive
-						keyb:post('ssssssssss')
-						keyb:post('   0   0   1')
-					end
-				elseif emu.romname() == "ti99_4a" then
-					keyb:post_coded("{SPACE}")
-					keyb:post("2")
-				elseif emu.romname() == "vic20" then
-					--keyb:post('LOAD"*",8,1\n')
-					keyb:post('RUN\n')
-				end
+				if postc1 then keyb:post_coded(postc1) end
+				if post1 then keyb:post(post1) end
 			end
 
 			-- Inputs 2
 			if screen and screen:frame_number() == input_frame2 then
-				if shell_name == "c64_felix" or shell_name == "c64_jumpman" or shell_name == "c64_dk_x" or shell_name == "c64_bonkeykong" then
-					keyb:post('RUN\n')
-				elseif shell_name == "coco3_donkeyking" then
-					keyb:post_coded("{SPACE}")
-				elseif shell_name == "dragon32_kingcuthbert" or shell_name == "dragon32_dunkeymonkey" then
-					keyb:post('EXEC\n')
-				elseif shell_name == "oric1_dinkykong" then
-					keyb:post('CLOAD ""\n')
-				elseif shell_name == "oric1_orickong" then
-					keyb:post('RUN\n')
-				elseif shell_name == "oric1_honeykong" then
-					keyb:post_coded('{SPACE}')
-					keyb:post('Q')
-					keyb:post('A')
-					keyb:post('O')
-					keyb:post('P')
-					keyb:post_coded('{SPACE}')
-				end
+				if postc2 then keyb:post_coded(postc2) end
+				if post2 then keyb:post(post2) end
 			end
 		end
 
