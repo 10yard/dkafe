@@ -34,70 +34,74 @@ local i_attenuation = sound.attenuation
 
 -- Adjustments for systems
 local target_time = 6
-local input_frame, input_frame2 = 60, 0
+local input_frame, input_frame2 = 0, 0
 local scale, quick_start, hide_targets, y_offset, x_offset, y_padding = 0, 0, 0, 0, 0, 0
 local post1, postc1, post2, postc2 = "", "", "", ""
 local state = False
 local time_played = 0
-local start_msg = "P1"
+local start_msg = "PUSH P1 TO START"
 
 -- compatible roms with associated data
 local rom_data, rom_table = {}, {}
---                                                           quick  input                                          input                            Y      X    Y
--- system or rom name                  message        state  start  frame1  post1                       postc1     frame2  post2         postc2     Scale  Pad  Off  Off
-rom_table["a2600"]                   = {"JJ",         false, 0,     60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["a5200"]                   = {"P1",         true,  600,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["a7800"]                   = {"P1",         false, 200,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["a7800_dk_remix"]          = {"P1TT P1 AA", true,  750,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["a7800_dk_xm"]             = {"P1TT P1 AA", false, 200,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["a800xl"]                  = {"P1",         true,  90,    60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["adam"]                    = {"P1",         true,  600,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["apple2e"]                 = {"P1",         true,  600,   500,    "",                         "{SPACE}", 0,      "",           "",        3,     1,   -110,0}
-rom_table["bbcb"]                    = {"P1",         false, 300,   60,     "*EXEC !BOOT\n",            "",        0,      "",           "",        6,     15,  0,   0}
-rom_table["c64"]                     = {"P1",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["c64_ck64"]                = {"P1",         true,  900,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["c64_dk_x"]                = {"JJTT P1",    true,  400,   150,    "RUN\n",                    "",        0,      "RUN\n",      "",        1.33,  2,   0,   0}
-rom_table["c64_kongokong"]           = {"P1",         true,  700,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["c64_bonkeykong"]          = {"JJ",         true,  14000, 13000,  "LOAD\"*\",8,1\n",          "",        0,      "RUN\n",      "",        1.33,  2,   0,   0}
-rom_table["c64_felix"]               = {"JJTT JJ AA", true,  12400, 12000,  "LOAD\"*\",8,1\n",          "",        0,      "RUN\n",      "",        1.33,  2,   0,   0}
-rom_table["c64_krazykong64"]         = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["c64_mariosbrewery"]       = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["c64p_dk_junior"]          = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["c64_jumpman"]             = {"P1",         true,  550,   500,    "RUN\n",                    "",        0,      "1",          "",        1.33,  2,   0,   0}
-rom_table["c64_kong_sputnik"]        = {"JJ",         true,  850,   800,    "RUN\n",                    "",        0,      "",           "{TAB}",   1.33,  2,   0,   0}
-rom_table["coco3"]                   = {"JJ",         true,  5200,  60,     "",                         "",        0,      "",           "",        4.25,  4,   0,   0}
-rom_table["coco3_dk_emu"]            = {"JJTT JJ AA", true,  6700,  60,     "LOADM\"EMULATOR\":EXEC\n", "",        0,      "",           "",        4.25,  4,   0,   0}
-rom_table["coco3_dk_remixed"]        = {"JJTT JJ AA", true,  6700,  60,     "LOADM\"DKREMIX\":EXEC\n",  "",        0,      "",           "",        4.25,  4,   0,   0}
-rom_table["coco3_donkeyking"]        = {"JJ",         true,  6400,  60,     "LOADM\"DONKEY\":EXEC\n",   "",        0,      "",           "{SPACE}", 4.25,  4,   0,   0}
-rom_table["coleco"]                  = {"P1",         true,  720,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["cpc6128"]                 = {"P1",         true,  1450,  60,     "RUN\"DONKEY\n",            "",        0,      "",           "",        6,     4,   0,   0}
+--                                                           Quick  Input                               Post       Input                 Post              Y    X    Y
+-- System or rom name                  Message        State  Start  Fr. 1   Post 1                      Coded 1    Fr. 2   Post 2        Coded 2    Scale  Pad  Off  Off
+rom_table["a2600"]                   = {"JJ",         false, 0,     0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["a5200"]                   = {"P1",         true,  600,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["a7800"]                   = {"P1",         false, 200,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["a7800_dk_remix"]          = {"P1TT P1 AA", true,  750,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["a7800_dk_xm"]             = {"P1TT P1 AA", false, 200,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["a800xl"]                  = {"P1",         false,  90,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["adam"]                    = {"P1",         true,  600,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["apple2e"]                 = {"P1",         true,  600,   500,    "",                         "{SPACE}", 0,      "",           "",        3,     1,   -110,0 }
+rom_table["bbcb"]                    = {"JJ",         false, 300,   60,     '*EXEC !BOOT\n',            "",        0,      "",           "",        6,     15,  0,   0 }
+rom_table["bbcb_killergorilla"]      = {"JJTT P1",    false, 300,   60,     '*EXEC !BOOT\n',            "",        0,      "",           "",        6,     15,  0,   0 }
+rom_table["bbcb_killergorilla2"]     = {"JJTT P1",    false, 300,   60,     '*EXEC !BOOT\n',            "",        0,      "",           "",        6,     15,  0,   0 }
+rom_table["c64"]                     = {"P1",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["c64p"]                    = {"P1",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["c64_ck64"]                = {"P1",         true,  900,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["c64_dk_x"]                = {"JJTT P1",    true,  400,   150,    "RUN\n",                    "",        0,      "RUN\n",      "",        1.33,  2,   0,   0 }
+rom_table["c64_kongokong"]           = {"P1",         true,  700,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["c64_bonkeykong"]          = {"JJ",         true,  14000, 13000,  'LOAD\"*\",8,1\n',          "",        0,      "RUN\n",      "",        1.33,  2,   0,   0 }
+rom_table["c64_felix"]               = {"JJTT JJ AA", true,  12400, 12000,  'LOAD\"*\",8,1\n',          "",        0,      "RUN\n",      "",        1.33,  2,   0,   0 }
+rom_table["c64_krazykong64"]         = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["c64_mariosbrewery"]       = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["c64p_dk_junior"]          = {"JJ",         true,  550,   150,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["c64_jumpman"]             = {"P1",         true,  550,   500,    "RUN\n",                    "",        0,      "1",          "",        1.33,  2,   0,   0 }
+rom_table["c64_kong_sputnik"]        = {"JJ",         true,  850,   800,    "RUN\n",                    "",        0,      "",           "{TAB}",   1.33,  2,   0,   0 }
+rom_table["coco3"]                   = {"JJ",         true,  5200,  0,      "",                         "",        0,      "",           "",        4.25,  4,   0,   0 }
+rom_table["coco3_dk_emu"]            = {"JJTT JJ AA", true,  6700,  60,     'LOADM\"EMULATOR\":EXEC\n', "",        0,      "",           "",        4.25,  4,   0,   0 }
+rom_table["coco3_dk_remixed"]        = {"JJTT JJ AA", true,  6700,  60,     'LOADM\"DKREMIX\":EXEC\n',  "",        0,      "",           "",        4.25,  4,   0,   0 }
+rom_table["coco3_donkeyking"]        = {"JJ",         true,  6400,  60,     'LOADM\"DONKEY\":EXEC\n',   "",        0,      "",           "{SPACE}", 4.25,  4,   0,   0 }
+rom_table["coco3_dunkeymonkey"]      = {"JJ",         true,  6400,  60,     'LOADM\"DUNKEYM\":EXEC\n',  "",        0,      "",           "{SPACE}", 4.25,  4,   0,   0 }
+rom_table["coleco"]                  = {"P1",         true,  720,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["cpc6128"]                 = {"P1",         false, 1450,  60,     'RUN\"DONKEY\n',            "",        0,      "",           "",        6,     4,   0,   0 }
 rom_table["dragon32"]                = {"JUMP",       true,  0,     120,    "CLOADM\n",                 "",        0,      "",           "",        0,     0,   0,   16}
 rom_table["dragon32_kingcuthbert"]   = {"JUMP",       true,  3250,  120,    "CLOADM\n",                 "",     2900,      "EXEC\n",     "",        0,     0,   0,   16}
 rom_table["dragon32_donkeyking"]     = {"JUMP",       true,  7300,  120,    "CLOADM\n",                 "",     7000,      "",           "",        0,     0,   0,   16}
 rom_table["dragon32_dunkeymonkey"]   = {"JUMP",       true,  6200,  180,    "CLOADM\n",                 "",     6000,      "EXEC\n",     "",        0,     0,   0,   16}
 rom_table["dragon32_juniorsrevenge"] = {"JUMP",       true,  20000, 120,    "CLOADM\n",                 "",        0,      "",           "",        0,     0,   0,   16}
-rom_table["fds"]                     = {"P1",         false, 600,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["gameboy"]                 = {"P1",         false, 300,   60,     "",                         "",        0,      "",           "",        1.5,   0,   0,   10}
-rom_table["gbcolor"]                 = {"P1",         false, 180,   60,     "",                         "",        0,      "",           "",        1.5,   0,   0,   10}
-rom_table["hbf900a"]                 = {"P1",         true , 2300,  60,     "",                         "",        0,      "",           "",        5,     12,  0,   0}
-rom_table["hbf900a_tokekong"]        = {"P1",         true , 3700,  60,     "",                         "",        0,      "",           "",        5,     12,  0,   0}
-rom_table["cdkong"]                  = {"P1",         false, 0,     60,     "",                         "",        0,      "",           "",        18,    32,  0,   0}
-rom_table["gckong"]                  = {"P1",         false, 0,     60,     "",                         "",        0,      "",           "",        18,    32,  0,   0}
-rom_table["intv"]                    = {"P1",         true,  900,   60,     "",                         "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["nes"]                     = {"P1",         true,  0,     60,     "",                         "",        0,      "",           "",        0.5,   0,   0,   0}
+rom_table["fds"]                     = {"P1",         false, 600,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["gameboy"]                 = {"P1",         false, 300,   0,      "",                         "",        0,      "",           "",        1.5,   0,   0,   10}
+rom_table["gbcolor"]                 = {"P1",         false, 180,   0,      "",                         "",        0,      "",           "",        1.5,   0,   0,   10}
+rom_table["hbf900a"]                 = {"P1",         true , 2300,  0,      "",                         "",        0,      "",           "",        5,     12,  0,   0 }
+rom_table["hbf900a_tokekong"]        = {"P1",         true , 3700,  0,      "",                         "",        0,      "",           "",        5,     12,  0,   0 }
+rom_table["cdkong"]                  = {"P1",         false, 0,     0,      "",                         "",        0,      "",           "",        18,    32,  0,   0 }
+rom_table["gckong"]                  = {"P1",         false, 0,     0,      "",                         "",        0,      "",           "",        18,    32,  0,   0 }
+rom_table["intv"]                    = {"P1",         true,  900,   0,      "",                         "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["nes"]                     = {"P1",         false, 0,     0,      "",                         "",        0,      "",           "",        0.5,   0,   0,   0 }
 rom_table["oric1"]                   = {"P1",         true,  0,     180,    'CLOAD ""\n',               "",        0,      "",           "",        0,     0,   0,   16}
 rom_table["oric1_honeykong"]         = {"P1",         true,  10000, 10050,  'CLOAD ""\n',               "",        0,      "QAOP",       "{SPACE}", 0,     0,   0,   16}
 rom_table["oric1_orickong"]          = {"P1",         true,  4700,  4500,   'CLOAD ""\n',               "",        0,      "RUN\n",      "",        0,     0,   0,   16}
 rom_table["oric1_dinkykong"]         = {"P1",         true,  6400,  5000,   'CLOAD ""\n',               "",        0,      'CLOAD ""\n', "",        0,     0,   0,   16}
-rom_table["pet4032"]                 = {"P1",         true,  240,   180,    "RUN\n",                    "",        0,      "",           "",        0,     0,   0,   0}
-rom_table["snes"]                    = {"P1",         true,  360,   60,     "",                         "",        0,      "",           "",        2.5,   0,   0,   0}
-rom_table["spectrum"]                = {"P1",         true,  0,     15,     "",                         "",        0,      "",           "",        2,     4,   0,   0}
-rom_table["spectrum_kong"]           = {"P1TT JJ",    true,  0,     15,     "",                         "",        0,      "",           "",        2,     4,   0,   0}
-rom_table["spectrum_krazykong"]      = {"JJ",         true,  0,     15,     "y",                        "",        0,      "",           "",        2,     4,   0,   0}
-rom_table["ti99_4a"]                 = {"JJTT P1",    false,  180,  60,     "2",                        "{SPACE}", 0,      "",           "",        0,     0,   0,   0}
-rom_table["vic20"]                   = {"P1",         true,  400,   360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["vic20_littlekong"]        = {"P1",         true,  1100,  360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
-rom_table["vic20_krazykong_nufecop"] = {"P1",         true,  550,   360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0}
+rom_table["pet4032"]                 = {"P1",         false, 240,   180,    "RUN\n",                    "",        0,      "",           "",        0,     0,   0,   0 }
+rom_table["snes"]                    = {"P1",         false, 360,   0,      "",                         "",        0,      "",           "",        2.5,   0,   0,   0 }
+rom_table["spectrum"]                = {"P1",         false, 0,     0,      "",                         "",        0,      "",           "",        2,     4,   0,   0 }
+rom_table["spectrum_kong"]           = {"P1TT JJ",    false, 0,     0,      "",                         "",        0,      "",           "",        2,     4,   0,   0 }
+rom_table["spectrum_krazykong"]      = {"JJ",         false, 0,     15,     "y",                        "",        0,      "",           "",        2,     4,   0,   0 }
+rom_table["ti99_4a"]                 = {"JJTT P1",    false, 180,   60,     "2",                        "{SPACE}", 0,      "",           "",        0,     0,   0,   0 }
+rom_table["vic20"]                   = {"P1",         true,  400,   360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["vic20_littlekong"]        = {"P1",         true,  1100,  360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
+rom_table["vic20_krazykong_nufecop"] = {"P1",         true,  550,   360,    "RUN\n",                    "",        0,      "",           "",        1.33,  2,   0,   0 }
 
 rom_data = rom_table[shell_name] or rom_table[emu:romname()]
 if rom_data then
@@ -141,7 +145,7 @@ function shell_main()
 			if state and file_exists(shell_state) then
 				-- state is found so use it and ignore quick_start and any inputs
 				quick_start = 0
-				input_frame, input_frame2 = "", ""
+				input_frame, input_frame2 = 0, 0
 				mac:load(shell_state)
 			end
 			if state and screen and screen:frame_number() == quick_start and not file_exists(shell_state) then
@@ -160,7 +164,7 @@ function shell_main()
 						local _remain = tostring(math.floor((screen:frame_number() / quick_start) * 100)).."%"
 						screen:draw_text(0, 6 + scale + y_offset,  "LOADING...".._remain, col0, 0xff000000)
 						if state and not file_exists(shell_state) then
-							screen:draw_text(0, 15 + scale + y_offset,  "(SUBSEQUENT LOADS WILL BE INSTANT)", col0, 0xff000000)
+							screen:draw_text(0, 22 + scale + y_offset,  "(SUBSEQUENT LOADS WILL BE INSTANT)", col0, 0xff000000)
 						end
 					end
 				else
