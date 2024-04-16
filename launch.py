@@ -648,6 +648,20 @@ def build_menus(initial=False):
     _g.setmenu.add_vertical_margin(6)
     _g.setmenu.add_button('Save Changes to File', save_menu_settings)
     _g.setmenu.add_button('Close Menu', close_menu)
+    if ENABLE_ADDONS and sys.gettrace():
+        # reset add-ons option available in debug mode
+        _g.setmenu.add_vertical_margin(6)
+        _g.setmenu.add_button('Reset Add-Ons (Advanced)', reset_addon_state_files)
+
+
+def reset_addon_state_files():
+    count = 0
+    for (dirname, dirs, files) in os.walk(os.path.join(ROM_DIR)):
+        for file in files:
+            if file.endswith('.state'):
+                os.remove(os.path.join(dirname, file))
+                count += 1
+    flash_message(f"{str(count)} STATE FILES REMOVED", x=16, y=120, cycles=10)  # Gameplay recording (i.e. Wolfmame)
 
 
 def build_launch_menu():
