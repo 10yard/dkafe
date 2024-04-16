@@ -14,6 +14,7 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import sys
 import pygame
 import pygame_menu as pymenu
+from glob import glob
 
 # Graphic Config
 TITLE = 'DKAFE'
@@ -148,7 +149,7 @@ if sys.gettrace():
     globals()["TITLE"] = "DKAFE (Debugging Mode)"
 
 # Validate some settings
-if not os.path.exists("romlist_addon.csv"):
+if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
     globals()["ENABLE_ADDONS"] = 0
 STAGES = 4 if ENABLE_ADDONS else 3
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
