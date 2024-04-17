@@ -38,7 +38,6 @@ copy COPYING dist\ /Y
 echo **** export the system architecture to file
 echo win32 > dist\ARCH
 
-
 echo **** clear the snaps folder
 del dist\artwork\snap\*.png /Q
 
