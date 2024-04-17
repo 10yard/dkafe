@@ -129,7 +129,7 @@ c64_kong_sputnik,shell,Kong,C64: Kong,9999,,,110000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,110000,2,4,8
 coco3_dk_emu,shell,DK Emu,CO3: DK Emulator,9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,CO3: DK Remixed,9999,,,110000,2,4,8
-##coco3_donkeyking,shell,DonkeyKing,CO3: Donkey King,9999,,,110000,2,4,8
+coco3_donkeyking,shell,DonkeyKing,CO3: Donkey King,9999,,,110000,2,4,8
 coco3_monkeykong,shell,MonkeyKong,CO3: Monkey Kong,9999,,,110000,2,4,8
 cpc6128_dk,shell,DK,CPC: DK Original,9999,,,0,2,4,8
 coleco_dk,shell,CVSDK,CVS: DK Original,9999,,,0,2,4,8
@@ -174,7 +174,7 @@ nes_dk_qbert,shell,Q-Bert Kong,NES: Q-Bert Kong,9999,,,110000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs DK,9999,,,110000,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs DK,9999,,,110000,2,4,8
 oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,0,2,4,8
-##oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
+oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
 oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
 pc_dk_craze,shell,DK Craze,PC : DK Craze,9999,,,110000,2,4,8
 pc_dk_jr_remake,shell,DK Junior Remake,PC : DK Junior Remake,9999,,,110000,2,4,8
@@ -187,7 +187,7 @@ pc_fixitfelix,shell,Fix It Felix Classic,PC : Fix It Felix Jr.,9999,,,110000,2,4
 pc_jumpman_rtx,shell,Jumpman RTX,PC : Jumpman RTX,9999,,,110000,2,4,8
 pc_monkeyjump,shell,MonkeyJump,PC : MonkeyJump (G&W),9999,,,110000,2,4,8
 pc_wildmanjump,shell,WildmanJump,PC : WildmanJump (G&W),9999,,,110000,2,4,8
-#pet4032_dk_junior,shell,DK Junior,PET: DK Junior,9999,,,110000,2,4,8
+pet4032_dk_junior,shell,DK Junior,PET: DK Junior (G&W),9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
 ti99-4a_dk,shell,DK,TI : DK Original,9999,,,0,2,4,8
@@ -198,4 +198,4 @@ vic20_krazykong_nufecop,shell,KrazyKong,V20: Krazy Kong (Nufecop),9999,,,110000,
 vic20_littlekong,shell,LittleKong,V20: Little Kong,9999,,,110000,2,4,8
 ##vic20_vic_kong,shell,Vic Kong,V20: Vic Kong,9999,,,110000,2,4,8
 spectrum_dk,shell,DK,ZXS: DK Original,9999,,,0,2,4,8
-##spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8
+spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8
