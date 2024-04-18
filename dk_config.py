@@ -179,7 +179,7 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "adam": "-cart1",
                 "vic20": "-quik"}
 # Game specific media to override the system media
-GAME_MEDIA = {"c64_bonkeykong":"-flop"}
+GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1"}
 WIN64_ONLY_SYSTEMS = "pc", "dos"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
@@ -192,8 +192,8 @@ KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
                   "dos_aldo3": "ctrl>space",
                   "dos_aldo": "ctrl>space",
                   "dos_dk": "ctrl>space,esc>forcequit:dosbox-x.exe",
-                  "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe"}
-
+                  "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe",
+                  "dos_willy": "num 1>enter,ctrl>space"}
 # Frontend version
 VERSION = ''
 if os.path.exists("VERSION"):
