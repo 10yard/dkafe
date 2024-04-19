@@ -16,22 +16,22 @@ a2600_dk_vector_bw,shell,Vector,2600: DK Vector BW,96,,,125000,2,4,8
 a2600_dk_xmas_dp,shell,Xmas,2600: Xmas (D.Press),97,,,126000,2,4,8
 a2600_dk_dragon,shell,Dragon,2600: Dragon Knight,98,,,127000,2,4,8
 a2600_dk_new,shell,DKNEW,2600: DK New,99,,,128000,2,4,8
-hbf900a_dk,shell,MSXDK,MSX: DK Original,100,,,129000,2,4,8
+bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,100,,,129000,2,4,8
 apple2e_dk,shell,ADK,AII: DK Original,101,,,130000,2,4,8
 cpc6128_dk,shell,CPCDK,CPC: DK Original,102,,,131000,2,4,8
 snes_classickong,shell,SNESDK,SNES: Classic Kong,103,,,132000,2,4,8
 c64p_dk_ocean,shell,C64DK,C64: DK (Ocean),105,,,133000,2,4,8
 c64_dk_x,shell,DK+,C64: DK+ (X2016),106,,,134000,2,4,8
-c64p_dk_junior,shell,JR,C64: DK Junior (2014),107,,,136000,2,4,8
-genesis_felix,shell,GENFIFJR,GEN: Fix It Felix Jr.,108,,,135000,2,4,8
+c64p_dk_junior,shell,JR,C64: DK Junior (2014),107,,,135000,2,4,8
+genesis_felix,shell,GENFIFJR,GEN: Fix It Felix Jr.,108,,,136000,2,4,8
 coleco_dk,shell,CVDK,CVS: DK Original,109,,,137000,2,4,8
 coleco_dk_junior,shell,JR,CVS: DK Jr.,110,,,138000,2,4,8
 a800xl_dk,shell,800DK,A800: DK Original,111,,,139000,2,4,8
 coco3_dk_emu,shell,COCODK,CO3: DK Emulator,112,,,140000,2,4,8
 coco3_dunkeymonkey,shell,Dunkey,CO3: Dunkey Monkey,113,,,141000,2,4,8
 ti99-4a_dk,shell,TIDK,TI : DK Original,114,,,142000,2,4,8
-bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,115,,,143000,2,4,8
-pet4032_petscii_kong,shell,PETDK,PET: Petscii Kong,116,,,144000,2,4,8
+hbf900a_dk,shell,MSXDK,MSX: DK Original,115,,,143000,2,4,8
+hbf900a_apeman,shell,ApeMan,MSX: Apeman Strikes Again,116,,,144000,2,4,8
 a5200_dk_encore,shell,5200DK,5200: DK Encore Hack,117,,,145000,2,4,8
 a5200_ck_hack,shell,CK,5200: Crazy Kong,118,,,146000,2,4,8
 a7800_dk,shell,7800DK,7800: DK Original,119,,,147000,2,4,8
@@ -63,20 +63,19 @@ nes_dk_zelda07,shell,ZK7,NES: Zelda 7 (Triforce),150,,,172000,2,4,8
 nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),151,,,173000,2,4,8
 nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),152,,,174000,2,4,8
 nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),153,,,175000,2,4,8
-nes_dk_zelda11,shell,Z11,NES: Zelda11 (Grandma),154,,,176000,2,4,8
-nes_dk_zelda12,shell,Z12,NES: Zelda12 (Tarin),155,,,177000,2,4,8
-c64_dk,shell,C64,C64: DK (Nintendo),156,,,178000,2,4,8
-c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,157,,,179000,2,4,8
-c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,180000,2,4,8
-c64_felix,shell,FelixJR,C64: Fix It Felix Jr.,159,,,181000,2,4,8
-c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,182000,2,4,8
-c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,183000,2,4,8
-c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,184000,2,4,8
-lcd_cdkong,shell,LCDDK,LCD: DK Coleco,165,,,185000,2,4,8
-gnw_dkjr,shell,DK JR,G&W: DK Junior,166,,,186000,2,4,8
-gnw_dkong,shell,G&WDK,G&W: DK Original,167,,,187000,2,4,8
-vic20_kongokong,shell,V20CK,V20: Kongo Kong,168,,,188000,2,4,8
-gnw_dkcirc,shell,G&W Circus,G&W: DK Circus,169,,,189000,2,4,8
+apple2e_cannonball,shell,A2 Blitz,A][: Cannonball Blitz,155,,,176000,2,4,8
+c64_dk,shell,C64,C64: DK (Nintendo),156,,,177000,2,4,8
+c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,157,,,178000,2,4,8
+c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,179000,2,4,8
+c64_felix,shell,FelixJR,C64: Fix It Felix Jr.,159,,,180000,2,4,8
+c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,181000,2,4,8
+c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,182000,2,4,8
+c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,183000,2,4,8
+lcd_cdkong,shell,LCDDK,LCD: DK Coleco,165,,,184000,2,4,8
+gnw_dkjr,shell,DK JR,G&W: DK Junior,166,,,185000,2,4,8
+gnw_dkong,shell,G&WDK,G&W: DK Original,167,,,186000,2,4,8
+vic20_kongokong,shell,V20CK,V20: Kongo Kong,168,,,187000,2,4,8
+gnw_dkcirc,shell,G&W Circus,G&W: DK Circus,169,,,188000,2,4,8
 ##a2600_dk_demo_easy,shell,Arcade Demo Easy,2600: Arcade Demo (Easy),9999,,,110000,2,4,8
 ##a2600_dk_demo_hard,shell,Arcade Demo Hard,2600: Arcade Demo (Hard),9999,,,110000,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,110000,2,4,8
@@ -114,8 +113,8 @@ a7800_dk_pokey,shell,Pokey Kong,7800: Pokey Kong Hack,9999,,,110000,2,4,8
 pc_dk_amiga_pd,shell,DK Amiga,A500: Amiga DK PD,9999,,,110000,2,4,8
 a800xl_dk_junior,shell,DK Junior,A800: DK Junior,9999,,,110000,2,4,8
 a800xl_dk,shell,DK,A800: DK Original,9999,,,0,2,4,8
-adam_dk,shell,DK,ADM: DK Original,9999,,,0,2,4,8
 ##adam_dk_junior,shell,DK,ADM: DK Junior,9999,,,110000,2,4,8
+adam_dk,shell,DK,ADM: DK Original,9999,,,0,2,4,8
 apple2e_dk,shell,DK,AII: DK Original,9999,,,0,2,4,8
 bbcb_dk_junior,shell,DK Junior,BBC: DK Junior,9999,,,110000,2,4,8
 bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,110000,2,4,8
@@ -168,7 +167,6 @@ lcd_gckong,shell,Gakken CK,LCD: Gakken Crazy Kong,9999,,,110000,2,4,8
 ##hbf900a_congo,shell,Congo,MSX: Congo,9999,,,110000,2,4,8
 hbf900a_dk,shell,DK,MSX: DK Original,9999,,,0,2,4,8
 hbf900a_tokekong,shell,TokeKong,MSX: Toke Kong,9999,,,110000,2,4,8
-hbf900a_apeman,shell,Apeman,MSX: Apeman Strikes Again,9999,,,110000,2,4,8
 nes_dk_arrietty,shell,DK Arietty,NES: Arrietty World,9999,,,110000,2,4,8
 nes_dk_cure,shell,DK Cure,NES: DK Cure,9999,,,110000,2,4,8
 nes_dk_japan,shell,DK Japan,NES: DK Japan,9999,,,110000,2,4,8
@@ -182,6 +180,9 @@ nes_dk_kingkoopa,shell,KingKoopa,NES: King Koopa,9999,,,110000,2,4,8
 nes_dk_qbert,shell,Q-Bert Kong,NES: Q-Bert Kong,9999,,,110000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs DK,9999,,,110000,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs DK,9999,,,110000,2,4,8
+nes_dk_zelda11,shell,Z11,NES: Zelda11 (Grandma),9999,,,110000,2,4,8
+nes_dk_zelda12,shell,Z12,NES: Zelda12 (Tarin),9999,,,110000,2,4,8
+##oric1_4k_kong,shell,4K Kong,OR1: 4K Kong,9999,,,110000,2,4,8
 oric1_dinkykong,shell,DinkyKong,OR1: Dinky Kong,9999,,,0,2,4,8
 oric1_honeykong,shell,HoneyKong,OR1: Honey Kong,9999,,,110000,2,4,8
 oric1_orickong,shell,OricKong,OR1: Oric Kong,9999,,,110000,2,4,8
@@ -197,9 +198,11 @@ pc_jumpman_rtx,shell,Jumpman RTX,PC : Jumpman RTX,9999,,,110000,2,4,8
 pc_monkeyjump,shell,MonkeyJump,PC : MonkeyJump (G&W),9999,,,110000,2,4,8
 pc_wildmanjump,shell,WildmanJump,PC : WildmanJump (G&W),9999,,,110000,2,4,8
 pet4032_dk_junior,shell,DK Junior,PET: DK Junior (G&W),9999,,,110000,2,4,8
+pet4032_petscii_kong,shell,PETDK,PET: Petscii Kong,9999,,,110000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,PET: Petscii Kong,9999,,,0,2,4,8
 snes_classickong,shell,ClassicKong,SNES Classic Kong,9999,,,0,2,4,8
 ti99-4a_dk,shell,DK,TI : DK Original,9999,,,0,2,4,8
+##vic20_cannonball,shell,Cannonball Blitz,V20: Cannonball Blitz,9999,,,110000,2,4,8
 vic20_crazykong,shell,CrazyKong,V20: Crazy Kong,9999,,,110000,2,4,8
 vic20_kongokong,shell,KongoKong,V20: Kongo Kong,9999,,,0,2,4,8
 vic20_krazykong_cascade,shell,KrazyKong,V20: Krazy Kong (Cascade),9999,,,110000,2,4,8

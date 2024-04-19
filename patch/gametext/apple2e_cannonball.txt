@@ -1,0 +1,15 @@
+Apple II - Cannonball Blitz
+
+The player has to reach the flag on the top. 
+
+The guard sends the cannonballs down, so you must jump
+over them. Cannonballs roll on the floors which have 
+hatches, that open randomly. 
+
+Also cannonballs fall on the swings which can propel
+you upwards, so you have to use them for climbing to 
+the upper floor. 
+Finally you must catch the balloon to make your way up
+to the flag and to the next level.
+
+Developed By Sierra On-Line, Inc.
