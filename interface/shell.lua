@@ -39,7 +39,8 @@ local time_played = 0
 --defaults
 local start_msg = "PUSH P1 TO START"
 local state = false
-local quick_start, inputs, scale, y_pad, x_off, y_off = 0, 0, 0, 0, 0, 0
+local quick_start, scale, y_pad, x_off, y_off = 0, 0, 0, 0, 0
+local inputs = {}
 
 -- compatible roms with associated data
 local rom_data, rom_table = {}, {}
@@ -60,6 +61,7 @@ rom_table["bbcb"]                    = {"JJ",          false, 300,   {60,'*EXEC 
 rom_table["bbcb_dk_junior"]          = {"P1",          true,  1300,  {60,'*EXEC !BOOT\n',300,"{SPACE}S5S5"},     0,     2,   0,   0 }
 rom_table["bbcb_killergorilla"]      = {"P1",          false, 360,   {60,'*EXEC !BOOT\n',300,"{SPACE}"},         6,     15,  0,   0 }
 rom_table["bbcb_killergorilla2"]     = {"P1",          true,  800,   {60,'*EXEC !BOOT\n',300,"{ENTER}"},         6,     15,  0,   10}
+rom_table["plus4"]                   = {"P1",          false, 360,   {150,"RUN\n"},                              1.33,  2,   0,   0 }
 rom_table["c64"]                     = {"P1",          true,  550,   {150,"RUN\n"},                              1.33,  2,   0,   0 }
 rom_table["c64p"]                    = {"P1",          true,  550,   {150,"RUN\n"},                              1.33,  2,   0,   0 }
 rom_table["c64_ck64"]                = {"P1",          true,  900,   {150,"RUN\n"},                              1.33,  2,   0,   0 }

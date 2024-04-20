@@ -121,6 +121,12 @@ bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,110000,2,4,8
 bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,110000,2,4,8
 bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
+plus4_climbit,shell,Climb-It,C16: Climb-It,9999,,,110000,2,4,8
+plus4_crazyjump,shell,CrazyJumpman,C16: Crazy Jump,9999,,,110000,2,4,8
+plus4_dkplus,shell,DK+,C16: Donkey Kong +,9999,,,110000,2,4,8
+##plus4_larrymonkey,shell,Larry Monkey,C16: Larry Monkey,9999,,,110000,2,4,8
+plus4_monkeykong,shell,MonkeyKong,C16: Monkey Kong,9999,,,110000,2,4,8
+plus4_rollerkong,shell,RollerKong,C16: RollerKong,9999,,,110000,2,4,8
 c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK (Nintendo),9999,,,0,2,4,8
 c64p_dk_ocean,shell,DK Ocean,C64: DK (Ocean),9999,,,0,2,4,8

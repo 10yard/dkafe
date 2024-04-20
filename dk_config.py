@@ -162,7 +162,7 @@ if START_STAGE > STAGES: START_STAGE = 0
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 RECOGNISED_SYSTEMS = ["nes", "coleco", "fds", "gameboy", "gbcolor", "intv", "a2600", "a5200", "a7800", "a800xl",
                       "hbf900a", "ti99_4a", "coco3", "cpc6128", "apple2e", "bbcb", "c64", "c64p", "pet4032", "spectrum",
-                      "oric1", "snes", "dragon32", "adam", "gnw", "genesis", "lcd", "pc", "dos", "vic20"]
+                      "oric1", "snes", "dragon32", "adam", "gnw", "genesis", "lcd", "pc", "dos", "vic20", "plus4"]
 # System specific media switches when not simply "-cart"
 SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "bbcb": "-flop1",
@@ -170,6 +170,7 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "hbf900a": "-flop1",
                 "coco3": "-flop1",
                 "cpc6128": "-flop1",
+                "plus4": "-quik",
                 "c64": "-joy1 joy -quik",
                 "c64p": "-joy1 joy -quik",
                 "pet4032": "-quik",
@@ -179,7 +180,7 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "adam": "-cart1",
                 "vic20": "-quik"}
 # Game specific media to override the system media
-GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1"}
+GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1", "plus4_crazyjump":"-joy1 joy -quik", "plus4_dkplus":"-joy1 joy -quik"}
 WIN64_ONLY_SYSTEMS = "pc", "dos"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",

@@ -52,14 +52,15 @@ xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\c64_*.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\c64p_*.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\bbcb_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\c64_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\c64p_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\hbf900a_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\plus4_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\gnw_*.cfg dist\dkwolf\cfg\ /Y
@@ -101,6 +102,7 @@ xcopy roms\coco3 dist\console_addon\roms\coco3 /S /i /Y
 xcopy roms\cpc6128 dist\console_addon\roms\cpc6128 /S /i /Y
 xcopy roms\apple2e dist\console_addon\roms\apple2e /S /i /Y
 xcopy roms\bbcb dist\console_addon\roms\bbcb /S /i /Y
+xcopy roms\plus4 dist\console_addon\roms\plus4 /S /i /Y
 xcopy roms\c64 dist\console_addon\roms\c64 /S /i /Y
 xcopy roms\c64p dist\console_addon\roms\c64p /S /i /Y
 xcopy roms\pet4032 dist\console_addon\roms\pet4032 /S /i /Y

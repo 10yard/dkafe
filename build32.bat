@@ -61,17 +61,18 @@ xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\hbf900a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\c64p.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
 xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
+xcopy dkwolf\cfg\bbcb_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\c64_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\c64p_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\hbf900a_*.cfg dist\dkwolf\cfg\ /Y
+xcopy dkwolf\cfg\plus4_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
 xcopy dkwolf\cfg\gnw_*.cfg dist\dkwolf\cfg\ /Y
