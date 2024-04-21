@@ -40,31 +40,11 @@ xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
 rmdir dist\dkwolf\inp /s /Q
 
+echo **** define systems to be included in the add-on pack
+set systems=a2600,a5200,a7800,a800xl,adam,apple2e,bbcb,c64,c64p,coco3,coleco,cpc6128,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,lcd,nes,oric1,pc,pet4032,plus4,snes,spectrum,ti99_4a,vic20
+
 echo **** adjust controller defaults for some consoles
-xcopy dkwolf\cfg\nes.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\coleco.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\a7800.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\a800xl.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\bbcb_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\c64_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\c64p_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\hbf900a_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\plus4_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\gnw_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\vic20_*.cfg dist\dkwolf\cfg\ /Y
+for %%s in (%systems%) do xcopy dkwolf\cfg\%%s*.cfg dist\dkwolf\cfg\ /Y
 
 echo **** remove unwanted plugin files for this system
 del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
@@ -86,36 +66,8 @@ del releases\dkafe_win64_binary_%version%.zip
 echo ----------------------------------------------------------------------------------------------
 echo  Package the Console Add-On Pack
 echo ----------------------------------------------------------------------------------------------
-xcopy roms\a2600 dist\console_addon\roms\a2600 /S /i /Y
-xcopy roms\a5200 dist\console_addon\roms\a5200 /S /i /Y
-xcopy roms\a7800 dist\console_addon\roms\a7800 /S /i /Y
-xcopy roms\a800xl dist\console_addon\roms\a800xl /S /i /Y
-xcopy roms\coleco dist\console_addon\roms\coleco /S /i /Y
-xcopy roms\fds dist\console_addon\roms\fds /S /i /Y
-xcopy roms\gameboy dist\console_addon\roms\gameboy /S /i /Y
-xcopy roms\gbcolor dist\console_addon\roms\gbcolor /S /i /Y
-xcopy roms\nes dist\console_addon\roms\nes /S /i /Y
-xcopy roms\intv dist\console_addon\roms\intv /S /i /Y
-xcopy roms\hbf900a dist\console_addon\roms\hbf900a /S /i /Y
-xcopy roms\ti99_4a dist\console_addon\roms\ti99_4a /S /i /Y
-xcopy roms\coco3 dist\console_addon\roms\coco3 /S /i /Y
-xcopy roms\cpc6128 dist\console_addon\roms\cpc6128 /S /i /Y
-xcopy roms\apple2e dist\console_addon\roms\apple2e /S /i /Y
-xcopy roms\bbcb dist\console_addon\roms\bbcb /S /i /Y
-xcopy roms\plus4 dist\console_addon\roms\plus4 /S /i /Y
-xcopy roms\c64 dist\console_addon\roms\c64 /S /i /Y
-xcopy roms\c64p dist\console_addon\roms\c64p /S /i /Y
-xcopy roms\pet4032 dist\console_addon\roms\pet4032 /S /i /Y
-xcopy roms\spectrum dist\console_addon\roms\spectrum /S /i /Y
-xcopy roms\snes dist\console_addon\roms\snes /S /i /Y
-xcopy roms\oric1 dist\console_addon\roms\oric1 /S /i /Y
-xcopy roms\dragon32 dist\console_addon\roms\dragon32 /S /i /Y
-xcopy roms\adam dist\console_addon\roms\adam /S /i /Y
-xcopy roms\pc dist\console_addon\roms\pc /S /i /Y
-xcopy roms\dos dist\console_addon\roms\dos /S /i /Y
-xcopy roms\gnw dist\console_addon\roms\gnw /S /i /Y
-xcopy roms\lcd dist\console_addon\roms\lcd /S /i /Y
-xcopy roms\vic20 dist\console_addon\roms\vic20 /S /i /Y
+for %%s in (%systems%) do xcopy roms\%%s dist\console_addon\roms\%%s /S /i /Y
+
 copy romlist_addon.csv dist\console_addon\ /Y
 xcopy dkwolf\artwork dist\console_addon\dkwolf\artwork /S /i /Y
 

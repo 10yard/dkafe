@@ -61,28 +61,11 @@ xcopy dkwolf\plugins dist\launchxp\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
 rmdir dist\launchxp\dkwolf\inp /s /Q
 
+echo **** define systems to be included in the add-on pack
+set systems=a2600,a5200,a7800,a800xl,adam,apple2e,bbcb,c64,c64p,coco3,coleco,cpc6128,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,lcd,nes,oric1,pc,pet4032,plus4,snes,spectrum,ti99_4a,vic20
+
 echo **** adjust controller defaults for some consoles
-xcopy dkwolf\cfg\nes.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\coleco.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\a7800.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\a800xl.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\fds.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\gameboy.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\gbcolor.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\intv.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\hbf900a.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\ti99_4a.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\coco3.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\apple2e.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\bbcb.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\c64.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\c64p.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\pet4032.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\dragon32.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\snes.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\adam.cfg dist\dkwolf\cfg\ /S /i /Y
-xcopy dkwolf\cfg\spectrum_*.cfg dist\dkwolf\cfg\ /Y
-xcopy dkwolf\cfg\oric1_*.cfg dist\dkwolf\cfg\ /Y
+for %%s in (%systems%) do xcopy dkwolf\cfg\%%s*.cfg dist\dkwolf\cfg\ /Y
 
 echo **** Use an alternative wav/mp3 player on XP
 copy dkwolf\plugins\galakong\bin\wavplayxp.exe dist\launchxp\dkwolf\plugins\galakong\bin\wavplay.exe /Y
