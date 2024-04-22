@@ -623,35 +623,36 @@ def build_menus(initial=False):
     _g.menu.add_button('Settings', open_settings_menu)
     _g.menu.add_button('Close Menu', close_menu)
 
-    # Exit menu
-    _g.exitmenu = pymenu.Menu(70, 200, "Really want to leave ?", mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
-    _g.exitmenu.add_button('Take me back', close_menu)
-    _g.exitmenu.add_button('Exit', exit_program)
-    if ENABLE_SHUTDOWN:
-        _g.exitmenu.add_button('Shutdown', shutdown_system)
+    if initial:
+        # Exit menu
+        _g.exitmenu = pymenu.Menu(70, 200, "Really want to leave ?", mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
+        _g.exitmenu.add_button('Take me back', close_menu)
+        _g.exitmenu.add_button('Exit', exit_program)
+        if ENABLE_SHUTDOWN:
+            _g.exitmenu.add_button('Shutdown', shutdown_system)
 
-    # Setting menu
-    _g.setmenu = pymenu.Menu(DISPLAY[1], DISPLAY[0], "    FRONTEND SETTINGS", mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
-    _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
-    _g.setmenu.add_selector('      Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
-    _g.setmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
-    if _s.get_system() == "win":
-        _g.setmenu.add_selector('     Rotation: ',[('0', 0), ('90', 90), ('180', 180), ('270', 270)], default=ROTATION//90, onchange=set_rotate)
-    _g.setmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
-    _g.setmenu.add_selector('Show Game Text: ', [('Off', 0), ('On', 1)], default=SHOW_GAMETEXT, onchange=set_gametext)
-    _g.setmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN, onchange=set_splash)
-    _g.setmenu.add_selector(' Speed Adjust: ',[('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7), ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
-    _g.setmenu.add_vertical_margin(6)
-    _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
-    _g.setmenu.add_selector('Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
-    _g.setmenu.add_selector('   Music Volume: ',[('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6), ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
-    _g.setmenu.add_vertical_margin(6)
-    _g.setmenu.add_button('Save Changes to File', save_menu_settings)
-    _g.setmenu.add_button('Close Menu', close_menu)
-    if ENABLE_ADDONS and sys.gettrace():
-        # reset add-ons option available in debug mode
+        # Setting menu
+        _g.setmenu = pymenu.Menu(DISPLAY[1], DISPLAY[0], "    FRONTEND SETTINGS", mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
+        _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
+        _g.setmenu.add_selector('      Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
+        _g.setmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
+        if _s.get_system() == "win":
+            _g.setmenu.add_selector('     Rotation: ',[('0', 0), ('90', 90), ('180', 180), ('270', 270)], default=ROTATION//90, onchange=set_rotate)
+        _g.setmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
+        _g.setmenu.add_selector('Show Game Text: ', [('Off', 0), ('On', 1)], default=SHOW_GAMETEXT, onchange=set_gametext)
+        _g.setmenu.add_selector('   Show Splash: ', [('Off', 0), ('On', 1)], default=SHOW_SPLASHSCREEN, onchange=set_splash)
+        _g.setmenu.add_selector(' Speed Adjust: ',[('0', 0), ('+1', 1), ('+2', 2), ('+3', 3), ('+4', 4), ('+5', 5), ('+6', 6), ('+7', 7), ('+8', 8)], default=SPEED_ADJUST, onchange=set_speed)
         _g.setmenu.add_vertical_margin(6)
-        _g.setmenu.add_button('Reset Add-Ons (Advanced)', reset_addon_state_files)
+        _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
+        _g.setmenu.add_selector('Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
+        _g.setmenu.add_selector('   Music Volume: ',[('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6), ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
+        _g.setmenu.add_vertical_margin(6)
+        _g.setmenu.add_button('Save Changes to File', save_menu_settings)
+        _g.setmenu.add_button('Close Menu', close_menu)
+        if ENABLE_ADDONS and sys.gettrace():
+            # reset add-ons option available in debug mode
+            _g.setmenu.add_vertical_margin(6)
+            _g.setmenu.add_button('Reset Add-Ons (Advanced)', reset_addon_state_files)
 
 
 def reset_addon_state_files():

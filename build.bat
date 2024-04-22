@@ -57,6 +57,9 @@ echo **** clean up
 rmdir build /s /Q
 del *.spec
 
+echo **** Code sign program executables with Open Source Developer Certificate
+"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /tr http://timestamp.digicert.com /n "Open Source Developer" dist\launch.exe dist\dkwolf\dkwolf.exe
+
 echo **** package into a release ZIP getting the version from version.txt
 set /p version=<VERSION
 set zip_path="C:\Program Files\7-Zip\7z"
