@@ -624,7 +624,7 @@ Pyinstaller can be used to build the application binary.
 pyinstaller launch.py --onefile --clean --console --icon artwork/dkafe.ico
 ```
 
-See build.bat for a Windows build script making use of a Python virtual environment (venv).
+See build64.bat (and build32.bat) for Windows build script making use of a Python virtual environment (venv).
 
 See build.sh and [Raspberry Pi Notes](rpi4/rpi4_notes.md) for building a Raspberry Pi binary.
 

@@ -10,7 +10,6 @@ Main program
 ------------
 """
 import os
-import subprocess
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame.cursors
@@ -601,21 +600,17 @@ def build_menus(initial=False):
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
     _g.menu.add_vertical_margin(5)
 
-    _romlist = _g.romlist
     _lastname = ""
-
     # Sort the rom list by descriptive name for better navigation in the game selection menu
-    for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1 in _romlist:
-        _alt = alt.replace("00", "№")  # Single character 00
-        _add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
+    for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
-            if (_g.stage < 2 and not _add) or (_g.stage >= 2 and (_add and ENABLE_ADDONS or not _add and not ENABLE_ADDONS)):
-                if sub != "shell" or name != _lastname:
+            if sub != "shell" or name != _lastname:
+                if (_g.stage < 2 and not add) or (_g.stage >= 2 and (add and ENABLE_ADDONS or not add and not ENABLE_ADDONS)):
                     # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
                     try:
-                        _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                        _g.menu.add_button(alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                     except IndexError:
-                        _g.menu.add_button(_alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
+                        _g.menu.add_button(alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
         _lastname = name
@@ -844,7 +839,7 @@ def update_menu_selection(title, index):
 
 def open_menu(menu, remember_selection=False):
     _g.timer.stop()
-    pygame.mouse.set_visible(False)
+    #pygame.mouse.set_visible(False)
     pygame.mixer.pause()
     if not ENABLE_PLAYLIST:
         intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
@@ -966,7 +961,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     # Give focus to external PC game (by temporaty windowing DKAFE before launching)
                     _sizes = pygame.display.get_desktop_sizes()
                     if _sizes:
-                        _g.screen = pygame.display.set_mode(_sizes[0])
+                        _g.screen = pygame.display.set_mode((_sizes[0][0], _sizes[0][1] - 1))
                     os.system(launch_command)
                     _g.screen = pygame.display.set_mode(DISPLAY, pygame.SCALED|pygame.WINDOWFOCUSGAINED)
                 else:
@@ -975,8 +970,12 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 call(launch_command)
 
             # Terminate any temporary keyboard mappings
-            if remap_process and remap_process.is_alive():
+            if remap_process:
                 remap_process.terminate()
+                _s.time.sleep(0.1)
+                if remap_process and remap_process.pid:
+                    # Force kill the remap process by PID
+                    os.system(f"taskkill /f /PID {remap_process.pid}")
 
             # If there was a specific config file then copy it back to account for any changes
             if sub == "shell":
@@ -1393,8 +1392,11 @@ def stage_check(warp=False):
     if current_stage != _g.stage:
         # Switch the stage
         _g.coins = []
-        clear_screen()
-        initialise_screen()
+        #clear_screen()
+        #initialise_screen()
+        # 23/04/2024 Optimise transition by simply blitting the background - instead of a complete initialisation
+        _g.screen_map.blit(get_image(f"artwork/map{_g.stage}.png"), TOPLEFT)
+
 
     # # Reset Donkey Kong and Pauline position
     _g.dkx, _g.dky = KONG_POSXY[_g.stage]
@@ -1451,7 +1453,6 @@ def main(initial=True):
     check_patches_available()
 
     _g.romlist = sorted(_s.read_romlist(), key=sort_key)
-
     build_menus(initial=True)
     _g.gametext = _s.load_game_texts()
 

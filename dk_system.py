@@ -102,6 +102,8 @@ def read_romlist():
                             des = des.replace("JR ", "³ ").replace("JR", "³ ")
                             des = des.replace("1/2", "{ ").replace("1/4", "} ")
 
+                            alt = alt.replace("00", "№")  # Single character 00
+
                             # Assume defaults when not provided
                             if not emu:
                                 emu = "1" if not _shell else "0"
@@ -130,7 +132,10 @@ def read_romlist():
                                 elif sub:
                                     usedsubs.append(sub)
                                 if name != "empty":
-                                    romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1))
+                                    # is this an add-on rom
+                                    add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
+
+                                    romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
                                 usedslots.append(slot)
     return romlists[1] + romlists[0]
 

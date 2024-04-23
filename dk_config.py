@@ -16,6 +16,8 @@ import pygame
 import pygame_menu as pymenu
 from glob import glob
 
+pygame.init()
+
 # Graphic Config
 TITLE = 'DKAFE'
 DISPLAY = (224, 256)           # Internal x, y resolution of game graphics
@@ -606,7 +608,6 @@ award_channel = pygame.mixer.Channel(3)
 playlist = pygame.mixer.music
 
 # Initialisation
-pygame.init()
 clock = pygame.time.Clock()
 
 # Font setup (pygame)
