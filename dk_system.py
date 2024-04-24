@@ -167,7 +167,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
     # otherwise the file will be copied over the main rom to avoid a CRC check fail.  See ALLOW_ROM_OVERWRITE option.
-    subfolder, name, emu, rec, unlock, score3, score2, score1 = info
+    subfolder, name, alt, emu, rec, unlock, score3, score2, score1 = info
     if playback:  # playback using the original emulator/settings
         emu = rec
     emu_args = get_emulator(emu)

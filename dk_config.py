@@ -316,7 +316,7 @@ SLOTS = (
     (2, 226), (18, 226), (50, 226), (116, 226), (134, 226), (152, 226), (178, 226), (194, 226),
     (18, 195), (34, 191), (50, 195), (66, 195), (98, 191), (116, 195), (134, 195), (152, 195), (178, 195), (194, 195),
     (34, 162), (50, 166), (98, 162), (134, 166), (152, 166), (178, 166), (194, 166),
-    (132, 136), (148, 136), (164, 136), (194, 136), (210, 136),
+    (130, 136), (149, 136), (164, 136), (194, 136), (210, 136),
     (34, 102), (50, 106), (98, 102), (116, 106), (132, 106), (148, 106), (194, 106),
     (194, 76),
     (154, 66), (138, 66), (114, 66), (90, 66), (2, 66),
@@ -564,6 +564,8 @@ Playlist music:
 """
 
 # Console Addon Specific
+if ENABLE_ADDONS:
+    VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 RECOGNISED_SYSTEMS = ["a2600", "a5200", "a7800", "a800xl", "adam", "apple2e", "bbcb", "c64", "c64p", "coco3", "coleco",
     "cpc6128", "dos", "dragon32", "fds", "gameboy", "gbcolor", "genesis", "gnw", "hbf900a", "intv", "lcd", "nes",
@@ -597,7 +599,7 @@ KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
                   "pc_dk_plus": "left>a,right>d,up>w,down>s,1>enter,ctrl>space",
                   "dos_aldo3": "ctrl>space",
                   "dos_aldo": "ctrl>space",
-                  "dos_dk": "ctrl>space,esc>forcequit:dosbox-x.exe",
+                  "dos_dk": "y>n,ctrl>space,esc>forcequit:dosbox-x.exe",
                   "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe",
                   "dos_willy": "num 1>enter,ctrl>space"}
 

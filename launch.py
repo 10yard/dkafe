@@ -55,15 +55,19 @@ def remap(name, mappings):
                 _program = dst.split(":")[1]
             else:
                 _program = f"{name}.*"
-            keyboard.add_hotkey(src, lambda: kill_external(_program))
+            keyboard.add_hotkey(src, lambda: kill_pc_external(program=_program))
         else:
             keyboard.remap_key(src, dst)
     while True:
         keyboard.wait()
 
 
-def kill_external(program):
-    call(f'taskkill /IM {program} /F')
+def kill_pc_external(pid=None, program=None):
+    from subprocess import call, DEVNULL, STDOUT
+    if pid:
+        call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT)
+    elif program:
+        call(f"taskkill /f /IM {program}", stdout=DEVNULL, stderr=STDOUT)
 
 
 def rotate_display(exiting=False, initial=False, rotate=ROTATION):
@@ -413,7 +417,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
         if int(slot) - 1 in range(*SLOTS_PER_STAGE[_g.stage]):
-            p_des = alt if alt.strip() else des
+            p_des = alt.replace(" :", ":") if alt.strip() else des
             unlocked = True
             up_arrow = False
             if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
@@ -958,10 +962,10 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
             if _s.is_pi() or sub == "shell":
                 if name.startswith("pc_") or name.startswith("dos_"):
-                    # Give focus to external PC game (by temporaty windowing DKAFE before launching)
-                    _sizes = pygame.display.get_desktop_sizes()
-                    if _sizes:
-                        _g.screen = pygame.display.set_mode((_sizes[0][0], _sizes[0][1] - 1))
+                    # Give focus to external PC game (by temporary windowing DKAFE before launching)
+                    _modes = pygame.display.list_modes()
+                    if _modes:
+                        _g.screen = pygame.display.set_mode(_modes[0], pygame.SCALED)
                     os.system(launch_command)
                     _g.screen = pygame.display.set_mode(DISPLAY, pygame.SCALED|pygame.WINDOWFOCUSGAINED)
                 else:
@@ -972,10 +976,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             # Terminate any temporary keyboard mappings
             if remap_process:
                 remap_process.terminate()
-                _s.time.sleep(0.1)
                 if remap_process and remap_process.pid:
-                    # Force kill remap process by PID
-                    os.system(f"taskkill /f /PID {remap_process.pid}")
+                    kill_pc_external(pid=remap_process.pid)
 
             # If there was a specific config file then copy it back to account for any changes
             if sub == "shell":
@@ -995,7 +997,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             clear_screen(and_reset_display=True)
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
-                scored = get_award(sub, name, alt, st3, st2, st1, time_start=time_start, time_end=time_end)
+                scored = get_award(sub, name, st3, st2, st1, time_start=time_start, time_end=time_end)
                 if scored > 0:
                     _g.awarded = scored
                     _g.ready = False
@@ -1024,6 +1026,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             playlist.unpause()
         _g.last_selected = sub + name
         _g.last_launched = sub + name
+
 
 def playback_rom(info, inpfile):
     """playback the specified inp file"""
@@ -1214,7 +1217,6 @@ def process_interrupts():
         # Pauline announces the launch options
         if SHOW_GAMETEXT and alt:
             # Gametext already informs about JUMP and P1 Start buttons,  so announce the score targets instead.
-            p_des = ""
             _mins = " mins" if sub == "shell" else ""
             if since_last_move() % 4 > 3:
                 p_des = f'1st prize at {format_K(st1, st3)}' + _mins
@@ -1223,7 +1225,7 @@ def process_interrupts():
             elif since_last_move() % 4 > 1:
                 p_des = f'3rd prize at {format_K(st3, st3)}' + _mins
             else:
-                p_des = alt
+                p_des = alt.replace(" :", ":")
             if p_des:
                 write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         else:
@@ -1261,7 +1263,7 @@ def process_interrupts():
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}oilcan.png"), OILCAN_POSXY[_g.stage])
     if not _g.lastwarp or ticks - _g.lastwarp > 600:
-        # Flash a down arrow when Jumpman is stood on the oilcan to indicate he can warp to next/previous stage.
+        # Flash a down arrow when Jumpman is stood on an oilcan to indicate he can warp to next/previous stage.
         if "FOOT_ABOVE_OILCAN" in get_map_info():
             _g.lastwarpready = ticks
             if pygame.time.get_ticks() % 550 < 275:

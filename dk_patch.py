@@ -16,7 +16,7 @@ from pathlib import Path
 import shutil
 import hashlib
 import zipfile
-from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH
+from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH, DISPLAY
 from dk_system import is_pi, copy
 
 
@@ -103,13 +103,25 @@ def install_addons():
     # Install addon files when found
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
         # Installing message...
-        from launch import write_text, update_screen, dk_font, RED
-        write_text(f"PREPARING, PLEASE WAIT...   ", font=dk_font, y=0, fg=RED)
+        from launch import write_text, update_screen, dk_font, RED, GREY
+        write_text("PREPARING ADD-ON PACK", font=dk_font, y=0, fg=RED)
+        write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
+        for i in range(0, 7):
+            write_text(f"—" * 28, font=dk_font, y=244+i, fg=GREY)
         update_screen()
 
         # Do Install
-        with zipfile.ZipFile(addon) as zip_ref:
-            zip_ref.extractall()
+        with zipfile.ZipFile(addon) as zf:
+            file_list = zf.namelist()
+            for idx, file in enumerate(file_list):
+                percent = round((idx / len(file_list)) * 100)
+                if idx % 10 == 0:
+                    for i in range(0, 7):
+                        write_text("—", font=dk_font, x=(DISPLAY[0] / 100) * (percent - 1), y=244+i, fg=RED)
+                update_screen()
+                zf.extract(file)
+            zf.close()
+
         if ARCH != "win64":
             # load states are pregenerated for Windows 64 only.
             # For other platforms,  they will be generated on first load of a game, so it's instant on next launch

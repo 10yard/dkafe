@@ -1,0 +1,15 @@
+MS-DOS - Champ Kong
+
+CHAMP Kong is a DOS shareware remake of the classic 
+Donkey Kong arcade machine. It closely emulates the 
+original with two different game modes, the original
+"Classic" mode and an enhanced "Champ" mode.
+
+The "Classic" mode plays and feels much like the 
+arcade machine, with very similar graphics, sound and
+gameplay.
+
+The "Champ" mode is an upgraded version of the classic
+game, featuring different levels and more bonuses.
+
+Developed by CHAMProgramming

@@ -1,0 +1,14 @@
+MS-DOS - Donkey Kong
+
+You are Mario, and that big old gorilla, Donkey Kong, 
+has run off with your girlfriend. It's up to you to 
+struggle up those ladders and balance on those beams 
+to rescue your lady fair. She's held captive at the 
+very top. But Donkey Kong is not ready to give her up
+so easily. He's tossing barrels and fireballs at you
+at every turn. It's up to you to outmaneuver that 
+wily ape. Good luck, your lady awaits!
+
+The controls in this version are not great.
+
+Developed by Atari

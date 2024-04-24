@@ -60,9 +60,12 @@ nes_dk_zelda04,shell,ZK4,NES: Zelda 4 (Zol),147,,,169000,2,4,8
 nes_dk_zelda05,shell,ZK5,NES: Zelda 5 (Armos),148,,,170000,2,4,8
 nes_dk_zelda06,shell,ZK6,NES: Zelda 6 (Link 2),149,,,171000,2,4,8
 nes_dk_zelda07,shell,ZK7,NES: Zelda 7 (Triforce),150,,,172000,2,4,8
-nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),151,,,173000,2,4,8
-nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),152,,,174000,2,4,8
-nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),153,,,175000,2,4,8
+pc_dk_craze,shell,PCDK,PC : DK Craze,151.1,,,175000,2,4,8
+nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),151.2,,,173000,2,4,8
+dos_dk,shell,DOS,DOS: DK Original,152.1,,,173000,2,4,8
+nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),152.2,,,174000,2,4,8
+dos_kong,shell,Champ,DOS: Champ Kong,153.1,,,174000,2,4,8
+nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),153.2,,,175000,2,4,8
 plus4_climbit,shell,C16,C16: Climb-It,154,,,176000,2,4,8
 plus4_rollerkong,shell,Rk,C16: RollerKong,155,,,177000,2,4,8
 c64_dk,shell,C64,C64: DK (Nintendo),156,,,178000,2,4,8
