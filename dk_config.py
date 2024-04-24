@@ -160,43 +160,6 @@ if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
 if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 if START_STAGE > STAGES: START_STAGE = 0
 
-# Console Addon Specific
-ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
-RECOGNISED_SYSTEMS = ["a2600", "a5200", "a7800", "a800xl", "adam", "apple2e", "bbcb", "c64", "c64p", "coco3", "coleco",
-    "cpc6128", "dos", "dragon32", "fds", "gameboy", "gbcolor", "genesis", "gnw", "hbf900a", "intv", "lcd", "nes",
-    "oric1", "pc", "pet4032", "plus4", "snes", "spectrum", "ti99_4a", "vic20"]
-# System specific media switches when not simply "-cart"
-SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
-                "bbcb": "-flop1",
-                "fds": "-flop1",
-                "hbf900a": "-flop1",
-                "coco3": "-flop1",
-                "cpc6128": "-flop1",
-                "plus4": "-quik",
-                "c64": "-joy1 joy -quik",
-                "c64p": "-joy1 joy -quik",
-                "pet4032": "-quik",
-                "spectrum": "-dump",
-                "oric1": "-cass",
-                "dragon32": "-cass",
-                "adam": "-cart1",
-                "vic20": "-quik"}
-# Game specific media to override the system media
-GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1", "plus4_crazyjump":"-joy1 joy -quik", "plus4_dkplus":"-joy1 joy -quik"}
-WIN64_ONLY_SYSTEMS = "pc", "dos"
-# use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
-KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
-                  "pc_fixitfelix":"ctrl>num 1",
-                  "pc_jumpman_rtx":"num 1>enter,ctrl>space,esc>forcequit",
-                  "pc_dk_remake":"num 1>enter,ctrl>space,esc>forcequit",
-                  "pc_dk_jr_remake": "num 1>enter,ctrl>space,esc>forcequit",
-                  "pc_dk_craze": "esc>forcequit:stdrt.exe",
-                  "pc_dk_plus": "left>a,right>d,up>w,down>s,1>enter,ctrl>space",
-                  "dos_aldo3": "ctrl>space",
-                  "dos_aldo": "ctrl>space",
-                  "dos_dk": "ctrl>space,esc>forcequit:dosbox-x.exe",
-                  "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe",
-                  "dos_willy": "num 1>enter,ctrl>space"}
 # Frontend version
 VERSION = ''
 if os.path.exists("VERSION"):
@@ -599,6 +562,44 @@ Playlist music:
    Mitchel Gatzke
    Chiptunema
 """
+
+# Console Addon Specific
+ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
+RECOGNISED_SYSTEMS = ["a2600", "a5200", "a7800", "a800xl", "adam", "apple2e", "bbcb", "c64", "c64p", "coco3", "coleco",
+    "cpc6128", "dos", "dragon32", "fds", "gameboy", "gbcolor", "genesis", "gnw", "hbf900a", "intv", "lcd", "nes",
+    "oric1", "pc", "pet4032", "plus4", "snes", "spectrum", "ti99_4a", "vic20"]
+# System specific media switches when not simply "-cart"
+SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
+                "bbcb": "-flop1",
+                "fds": "-flop1",
+                "hbf900a": "-flop1",
+                "coco3": "-flop1",
+                "cpc6128": "-flop1",
+                "plus4": "-quik",
+                "c64": "-joy1 joy -quik",
+                "c64p": "-joy1 joy -quik",
+                "pet4032": "-quik",
+                "spectrum": "-dump",
+                "oric1": "-cass",
+                "dragon32": "-cass",
+                "adam": "-cart1",
+                "vic20": "-quik"}
+# Game specific media to override the system media
+GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1", "plus4_crazyjump":"-joy1 joy -quik", "plus4_dkplus":"-joy1 joy -quik"}
+WIN64_ONLY_SYSTEMS = "pc", "dos"
+# use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
+KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
+                  "pc_fixitfelix":"ctrl>num 1",
+                  "pc_jumpman_rtx":"num 1>enter,ctrl>space,esc>forcequit",
+                  "pc_dk_remake":"num 1>enter,ctrl>space,esc>forcequit",
+                  "pc_dk_jr_remake": "num 1>enter,ctrl>space,esc>forcequit",
+                  "pc_dk_craze": "esc>forcequit:stdrt.exe",
+                  "pc_dk_plus": "left>a,right>d,up>w,down>s,1>enter,ctrl>space",
+                  "dos_aldo3": "ctrl>space",
+                  "dos_aldo": "ctrl>space",
+                  "dos_dk": "ctrl>space,esc>forcequit:dosbox-x.exe",
+                  "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe",
+                  "dos_willy": "num 1>enter,ctrl>space"}
 
 # Sound setup
 pygame.mixer.init(frequency=48000)

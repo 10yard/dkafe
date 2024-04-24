@@ -63,19 +63,20 @@ nes_dk_zelda07,shell,ZK7,NES: Zelda 7 (Triforce),150,,,172000,2,4,8
 nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),151,,,173000,2,4,8
 nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),152,,,174000,2,4,8
 nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),153,,,175000,2,4,8
-apple2e_cannonball,shell,A2 Blitz,A][: Cannonball Blitz,155,,,176000,2,4,8
-c64_dk,shell,C64,C64: DK (Nintendo),156,,,177000,2,4,8
-c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,157,,,178000,2,4,8
-c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,179000,2,4,8
-c64_felix,shell,FelixJR,C64: Fix It Felix Jr.,159,,,180000,2,4,8
-c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,181000,2,4,8
-c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,182000,2,4,8
-c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,183000,2,4,8
-lcd_cdkong,shell,LCDDK,LCD: DK Coleco,165,,,184000,2,4,8
-gnw_dkjr,shell,DK JR,G&W: DK Junior,166,,,185000,2,4,8
-gnw_dkong,shell,G&WDK,G&W: DK Original,167,,,186000,2,4,8
-vic20_kongokong,shell,V20CK,V20: Kongo Kong,168,,,187000,2,4,8
-gnw_dkcirc,shell,G&W Circus,G&W: DK Circus,169,,,188000,2,4,8
+plus4_climbit,shell,C16,C16: Climb-It,154,,,176000,2,4,8
+plus4_rollerkong,shell,Rk,C16: RollerKong,155,,,177000,2,4,8
+c64_dk,shell,C64,C64: DK (Nintendo),156,,,178000,2,4,8
+c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,157,,,179000,2,4,8
+c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,180000,2,4,8
+c64_felix,shell,FelixJR,C64: Fix It Felix Jr.,159,,,181000,2,4,8
+c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,182000,2,4,8
+c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,183000,2,4,8
+c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,184000,2,4,8
+lcd_cdkong,shell,LCDDK,LCD: DK Coleco,165,,,185000,2,4,8
+gnw_dkjr,shell,DK JR,G&W: DK Junior,166,,,186000,2,4,8
+gnw_dkong,shell,G&WDK,G&W: DK Original,167,,,187000,2,4,8
+vic20_kongokong,shell,V20CK,V20: Kongo Kong,168,,,188000,2,4,8
+gnw_dkcirc,shell,G&W Circus,G&W: DK Circus,169,,,189000,2,4,8
 ##a2600_dk_demo_easy,shell,Arcade Demo Easy,2600: Arcade Demo (Easy),9999,,,110000,2,4,8
 ##a2600_dk_demo_hard,shell,Arcade Demo Hard,2600: Arcade Demo (Hard),9999,,,110000,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,110000,2,4,8
@@ -110,6 +111,7 @@ a7800_dk_jr_gfx,shell,JR,7800: DK Jr. Gfx Hack,9999,,,110000,2,4,8
 a7800_dk_junior,shell,JR,7800: DK Junior,9999,,,110000,2,4,8
 a7800_dk,shell,7800DK,7800: DK Original,9999,,,0,2,4,8
 a7800_dk_pokey,shell,Pokey Kong,7800: Pokey Kong Hack,9999,,,110000,2,4,8
+apple2e_cannonball,shell,A2 Blitz,A][: Cannonball Blitz,9999,,,110000,2,4,8
 pc_dk_amiga_pd,shell,DK Amiga,A500: Amiga DK PD,9999,,,110000,2,4,8
 a800xl_dk_junior,shell,DK Junior,A800: DK Junior,9999,,,110000,2,4,8
 a800xl_dk,shell,DK,A800: DK Original,9999,,,0,2,4,8
@@ -121,12 +123,11 @@ bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,110000,2,4,8
 bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,110000,2,4,8
 bbcb_zanykong,shell,ZanyKong,BBC: Zany Kong,9999,,,0,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,110000,2,4,8
-plus4_climbit,shell,Climb-It,C16: Climb-It,9999,,,110000,2,4,8
+plus4_climbit,shell,Climb-It,C16: Climb-It,9999,,,0,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,C16: Crazy Jump,9999,,,110000,2,4,8
 ##plus4_dkplus,shell,DK+,C16: Donkey Kong +,9999,,,110000,2,4,8
 ##plus4_larrymonkey,shell,Larry Monkey,C16: Larry Monkey,9999,,,110000,2,4,8
 plus4_monkeykong,shell,MonkeyKong,C16: Monkey Kong,9999,,,110000,2,4,8
-plus4_rollerkong,shell,RollerKong,C16: RollerKong,9999,,,110000,2,4,8
 c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,9999,,,110000,2,4,8
 c64_dk,shell,DK,C64: DK (Nintendo),9999,,,0,2,4,8
 c64p_dk_ocean,shell,DK Ocean,C64: DK (Ocean),9999,,,0,2,4,8

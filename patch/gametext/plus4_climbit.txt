@@ -1,0 +1,12 @@
+Commodore C16/Plus4 - Climb-It
+
+Climb-It is a 3 screen game.  You are a heroic young
+man who has to rescue his girlfriend who has fallen
+into the clutches of a giant monkey.
+
+This monkey stays hidden from view but keeps both his
+eyes on his captive.  Your mission is to rescue her,
+avoiding moving barrels, fires, climb the ladders and
+jump onto moving elevators.
+
+Developed by Tynesoft

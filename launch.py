@@ -449,7 +449,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                         # don't announce if Pauline already informing of an award
                         write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
                     if unlocked:
-                        nearby = (sub, name, emu, rec, unlock, st3, st2, st1)
+                        nearby = (sub, name, alt, emu, rec, unlock, st3, st2, st1)
                         _g.selected = p_des
                         up_arrow = True
 
@@ -608,9 +608,9 @@ def build_menus(initial=False):
                 if (_g.stage < 2 and not add) or (_g.stage >= 2 and (add and ENABLE_ADDONS or not add and not ENABLE_ADDONS)):
                     # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
                     try:
-                        _g.menu.add_button(alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                        _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                     except IndexError:
-                        _g.menu.add_button(alt, launch_rom, (sub, name, emu, rec, unlock, st3, st2, st1))
+                        _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
         _lastname = name
@@ -664,7 +664,7 @@ def build_launch_menu():
     """Special launch menu"""
     nearby = display_icons(detect_only=True)
     if nearby:
-        sub, name, emu, rec, unlock, st3, st2, st1 = nearby
+        sub, name, alt, emu, rec, unlock, st3, st2, st1 = nearby
         show_chorus = sub in CHORUS_FRIENDLY or (not sub and name in CHORUS_FRIENDLY)
         show_continue = sub in CONTINUE_FRIENDLY or (not sub and name in CONTINUE_FRIENDLY)
         show_start5 = sub in START5_FRIENDLY or (not sub and name in START5_FRIENDLY)
@@ -913,10 +913,10 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
     """Launch the rom using provided info.
        Override is used to change emu number in case of recordings (to rec number)."""
     if _g.active and info:
-        sub, name, emu, rec, unlock, st3, st2, st1 = info
+        sub, name, alt, emu, rec, unlock, st3, st2, st1 = info
         if override_emu:
             emu = override_emu
-            info = sub, name, emu, rec, unlock, st3, st2, st1
+            info = sub, name, alt, emu, rec, unlock, st3, st2, st1
         _g.timer.stop()  # Stop timer while playing arcade
         _g.menu.disable()
         if _g.launchmenu:
@@ -974,7 +974,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 remap_process.terminate()
                 _s.time.sleep(0.1)
                 if remap_process and remap_process.pid:
-                    # Force kill the remap process by PID
+                    # Force kill remap process by PID
                     os.system(f"taskkill /f /PID {remap_process.pid}")
 
             # If there was a specific config file then copy it back to account for any changes
@@ -995,7 +995,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             clear_screen(and_reset_display=True)
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
-                scored = get_award(sub, name, st3, st2, st1, time_start=time_start, time_end=time_end)
+                scored = get_award(sub, name, alt, st3, st2, st1, time_start=time_start, time_end=time_end)
                 if scored > 0:
                     _g.awarded = scored
                     _g.ready = False
@@ -1207,12 +1207,12 @@ def process_interrupts():
     if _g.ready:
         icons = display_icons(detect_only=True)
         if icons:
-            sub, name, _, _, _, st3, st2, st1 = icons
+            sub, name, alt, _, _, _, st3, st2, st1 = icons
         else:
-            sub, name = "", ""
+            sub, name, alt = "", "", ""
 
         # Pauline announces the launch options
-        if SHOW_GAMETEXT and sub:
+        if SHOW_GAMETEXT and alt:
             # Gametext already informs about JUMP and P1 Start buttons,  so announce the score targets instead.
             p_des = ""
             _mins = " mins" if sub == "shell" else ""
@@ -1222,6 +1222,8 @@ def process_interrupts():
                 p_des = f'2nd prize at {format_K(st2, st3)}' + _mins
             elif since_last_move() % 4 > 1:
                 p_des = f'3rd prize at {format_K(st3, st3)}' + _mins
+            else:
+                p_des = alt
             if p_des:
                 write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         else:

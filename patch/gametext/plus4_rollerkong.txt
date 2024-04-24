@@ -1,0 +1,17 @@
+Commodore C16/Plus4 - Roller Kong
+
+Your aim is to save the maiden in distress, avoiding
+the barrels, fire-bombs and little monsters (spinks)
+which are thrown by Kong.  You can gain additional
+points by collecting flowers for the maiden on the way
+to rescuing her.
+
+On the way, you will find ladders to climb, and the
+occasional axe.  Getting the axe will enable you to
+destroy barrels and spinks for extra points,  but you
+cannot climb the ladders while carrying the axe.
+
+The maiden must be rescued before the deadly spider
+reaches her.
+
+Developed by Andrew Lacey/Melbourne House
