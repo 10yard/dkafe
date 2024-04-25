@@ -51,7 +51,7 @@ del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
 rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** build the exe in virtual environment ****
-venv\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+venv64\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
 
 echo **** clean up
 rmdir build /s /Q

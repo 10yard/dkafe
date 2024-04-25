@@ -3,7 +3,7 @@ future==0.18.3
 importlib-metadata==6.7.0
 ips-util==1.0
 pefile==2023.2.7
-pygame==2.1.0
+pygame==2.2.0
 pygame-menu==3.5.8
 pyinstaller==5.13.1
 pyinstaller-hooks-contrib==2023.10

@@ -1,0 +1,10 @@
+Commodore Amiga - Donkey Kong PD
+
+A PC remake of the Amiga Donkey Kong game.
+
+A great 1991 PD/FREEWARE game for the Amiga. You must
+collect all bonus items to reach a bonus fifth level. 
+
+Keep an eye on Pauline as the bonus counts down.
+
+Developed by Crozza Games 

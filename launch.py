@@ -417,7 +417,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
         if int(slot) - 1 in range(*SLOTS_PER_STAGE[_g.stage]):
-            p_des = alt.replace(" :", ":") if alt.strip() else des
+            p_des = alt.replace(" :", ":").replace("№","00") if alt.strip() else des
             unlocked = True
             up_arrow = False
             if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
@@ -862,6 +862,10 @@ def open_menu(menu, remember_selection=False):
 
 
 def menu_callback():
+    # Keep playlist playing while in menu
+    if ENABLE_PLAYLIST and not playlist.get_busy():
+        play_from_tracklist()
+
     # Allow menu scroll using left/right cursor or page up/page down keys
     keys=pygame.key.get_pressed()
     # Long press of up/down also scrolls
@@ -1225,7 +1229,7 @@ def process_interrupts():
             elif since_last_move() % 4 > 1:
                 p_des = f'3rd prize at {format_K(st3, st3)}' + _mins
             else:
-                p_des = alt.replace(" :", ":")
+                p_des = alt.replace(" :", ":").replace("№","00")
             if p_des:
                 write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         else:

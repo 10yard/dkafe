@@ -60,12 +60,6 @@ nes_dk_zelda04,shell,ZK4,NES: Zelda 4 (Zol),147,,,169000,2,4,8
 nes_dk_zelda05,shell,ZK5,NES: Zelda 5 (Armos),148,,,170000,2,4,8
 nes_dk_zelda06,shell,ZK6,NES: Zelda 6 (Link 2),149,,,171000,2,4,8
 nes_dk_zelda07,shell,ZK7,NES: Zelda 7 (Triforce),150,,,172000,2,4,8
-pc_dk_craze,shell,PCDK,PC : DK Craze,151.1,,,175000,2,4,8
-nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),151.2,,,173000,2,4,8
-dos_dk,shell,DOS,DOS: DK Original,152.1,,,173000,2,4,8
-nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),152.2,,,174000,2,4,8
-dos_kong,shell,Champ,DOS: Champ Kong,153.1,,,174000,2,4,8
-nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),153.2,,,175000,2,4,8
 plus4_climbit,shell,C16,C16: Climb-It,154,,,176000,2,4,8
 plus4_rollerkong,shell,Rk,C16: RollerKong,155,,,177000,2,4,8
 c64_dk,shell,C64,C64: DK (Nintendo),156,,,178000,2,4,8
@@ -79,7 +73,8 @@ lcd_cdkong,shell,LCDDK,LCD: DK Coleco,165,,,185000,2,4,8
 gnw_dkjr,shell,DK JR,G&W: DK Junior,166,,,186000,2,4,8
 gnw_dkong,shell,G&WDK,G&W: DK Original,167,,,187000,2,4,8
 vic20_kongokong,shell,V20CK,V20: Kongo Kong,168,,,188000,2,4,8
-gnw_dkcirc,shell,G&W Circus,G&W: DK Circus,169,,,189000,2,4,8
+pc_dk_amiga_pd,shell,AmigaDK,A500: Amiga DK PD,169.1,,,189000,2,4,8
+gnw_dkcirc,shell,G&W Circus,G&W: DK Circus,169.2,,,189000,2,4,8
 ##a2600_dk_demo_easy,shell,Arcade Demo Easy,2600: Arcade Demo (Easy),9999,,,110000,2,4,8
 ##a2600_dk_demo_hard,shell,Arcade Demo Hard,2600: Arcade Demo (Hard),9999,,,110000,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,110000,2,4,8
@@ -221,3 +216,9 @@ vic20_littlekong,shell,LittleKong,V20: Little Kong,9999,,,110000,2,4,8
 ##vic20_vic_kong,shell,Vic Kong,V20: Vic Kong,9999,,,110000,2,4,8
 spectrum_dk,shell,DK,ZXS: DK Original,9999,,,0,2,4,8
 spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,110000,2,4,8
+pc_dk_craze,shell,PCDK,PC : DK Craze,151.1,,,175000,2,4,8
+nes_dk_zelda08,shell,ZK8,NES: Zelda 8 (Child),151.2,,,173000,2,4,8
+dos_dk,shell,DOS,DOS: DK Original,152.1,,,173000,2,4,8
+nes_dk_zelda09,shell,ZK9,NES: Zelda 9 (GB Link),152.2,,,174000,2,4,8
+dos_kong,shell,Champ,DOS: Champ Kong,153.1,,,174000,2,4,8
+nes_dk_zelda10,shell,ZK10,NES: Zelda10 (Marin),153.2,,,175000,2,4,8
