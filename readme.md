@@ -58,7 +58,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional add-on pack featuring ports and hacks for classic systems (NES, Atari VCS, Colecovision, Intellivision, CoCo3, Commodore 64, BBC Micro, MSX, Gameboy and many more). 
+ - An optional add-on pack featuring around 200 ports, clones and hacks for classic systems (NES, Atari VCS, Colecovision, Intellivision, CoCo3, Commodore 64, BBC Micro, MSX, Gameboy and many more). 
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -539,12 +539,13 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 
 ## Console Add-on Pack
 
-An optional add-on pack includes over 150 Donkey Kong ports and hacks for the following classic home consoles and computers.
+An optional add-on pack includes around 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Atari 2600
  - Atari 5200
  - Atari 7800
- - Atari 800XL Computer
+ - Atari 800XL
+ - Atari ST
  - Nintendo Entertainment System
  - Nintendo Gameboy|Gameboy Color
  - Super Nintendo
