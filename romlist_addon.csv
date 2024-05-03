@@ -235,3 +235,5 @@ zx81_crazykong,shell,CK,ZX81 Crazy Kong,9999,,,112000,2,4,8
 zx81_krazykong_pss,shell,CK,ZX81 Krazy Kong,9999,,,112000,2,4,8
 spectrum_dk,shell,DK,ZXS: DK Original,9999,,,0,2,4,8
 spectrum_wallykong,shell,WallyKong,ZXS: Wally Kong,9999,,,112000,2,4,8
+##zx81_kongsrevenge,shell,**Very buggy,ZX81 Kongs Revenge,9999,,,112000,2,4,8
+##vic20_dkjr_gnw,shell,**Doesnt start,V20: DK Junior (G&W),9999,,,112000,2,4,8

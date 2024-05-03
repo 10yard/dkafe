@@ -120,9 +120,11 @@ rom_table["vic20_fast_eddie"]        = {"NONE",        false, 0,     {},        
 rom_table["vic20_cannonball"]        = {"NONE",        false, 0,     {},                                                1.33,  2,   0,   0 }
 rom_table["vic20_logrun"]            = {"JJ",          true,  700,   {360,"RUN\n",500,"{SPACE}"},                       1.33,  2,   0,   0 }
 rom_table["vic20_littlekong"]        = {"NONE",        true,  1100,  {360,"RUN\n"},                                     1.33,  2,   0,   0 }
+rom_table["vic20_dkjr_gnw"]          = {"NONE",        false, 400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_kongokong"]         = {"P1",          true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["zx81_crazykong"]          = {"NONE",        true,  10750, {360,'J""\n',420,"{PLAY}",10400,"\n",10500,"1\n"}, 2,     4,   0,   0 }
+rom_table["zx81_kongsrevenge"]       = {"NONE",        false, 20000, {360,'J""\n',420,"{PLAY}"},                        2,     4,   0,   0 }
 rom_table["zx81_krazykong_pss"]      = {"JJ",          true,  11660, {360,'J""\n',420,"{PLAY}",11500," ",11600," "},    2,     4,   0,   0 }
 
 -- Read rom data

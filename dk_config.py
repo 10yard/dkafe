@@ -565,7 +565,7 @@ Playlist music:
 """
 
 # Console Addon Specific
-ADDON_URL = "https://drive.google.com/file/d/1I07FejowKavsjLnQvmj17Hxivqv-YJbH/view?usp=sharing"
+ADDON_URL = "https://www.dropbox.com/s/ssbsh0blj0h1t2e/dkafe_console_addon_pack_v1.zip?dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]

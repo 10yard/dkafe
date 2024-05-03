@@ -106,8 +106,9 @@ def install_addons():
         return
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
         # Installing message...
-        from launch import write_text, update_screen, dk_font, RED, GREY
+        from launch import write_text, update_screen, dk_font, pl_font, RED, GREY
         write_text("EXTRACTING ADD-ON PACK", font=dk_font, y=0, fg=RED)
+        write_text("The console add-on pack is being extracted and installed.", font=pl_font, y=14, fg=RED)
         write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
         for i in range(0, 7):
             write_text(f"—" * 28, font=dk_font, y=244+i, fg=GREY)
