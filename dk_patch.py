@@ -107,23 +107,26 @@ def install_addons():
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
         # Installing message...
         from launch import write_text, update_screen, dk_font, RED, GREY
-        write_text("INSTALLING ADD-ON PACK", font=dk_font, y=0, fg=RED)
+        write_text("EXTRACTING ADD-ON PACK", font=dk_font, y=0, fg=RED)
         write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
         for i in range(0, 7):
             write_text(f"—" * 28, font=dk_font, y=244+i, fg=GREY)
         update_screen()
 
         # Do Install
-        with zipfile.ZipFile(addon) as zf:
-            file_list = zf.namelist()
-            for idx, file in enumerate(file_list):
-                percent = round((idx / len(file_list)) * 100)
-                if idx % 10 == 0:
-                    for i in range(0, 7):
-                        write_text("—", font=dk_font, x=(DISPLAY[0] / 100) * (percent - 1), y=244+i, fg=RED)
-                update_screen()
-                zf.extract(file)
-            zf.close()
+        try:
+            with zipfile.ZipFile(addon) as zf:
+                file_list = zf.namelist()
+                for idx, file in enumerate(file_list):
+                    percent = round((idx / len(file_list)) * 100)
+                    if idx % 10 == 0:
+                        for i in range(0, 7):
+                            write_text("—", font=dk_font, x=(DISPLAY[0] / 100) * (percent - 1), y=244+i, fg=RED)
+                    update_screen()
+                    zf.extract(file)
+                zf.close()
+        except:
+            pass
 
         if ARCH != "win64":
             # load states are pregenerated for Windows 64 only.

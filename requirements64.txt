@@ -14,3 +14,4 @@ stopwatch.py==1.0.1
 typing-extensions==4.7.1
 zipp==3.15.0
 keyboard==0.13.5
+gdown==5.1.0

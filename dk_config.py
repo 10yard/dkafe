@@ -151,6 +151,7 @@ if sys.gettrace():
     globals()["TITLE"] = "DKAFE (Debugging Mode)"
 
 # Validate some settings
+ADDONS_CONSIDERED = ENABLE_ADDONS
 if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
     globals()["ENABLE_ADDONS"] = 0
 STAGES = 4 if ENABLE_ADDONS else 3
@@ -306,7 +307,7 @@ SLOTS = (
     (42, 66), (82, 66), (170, 66),
     (106, 26),
 
-    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (208, 226),
+    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (209, 226),
     (8, 186), (34, 186), (50, 186), (90, 186), (122, 186), (154, 186), (174, 186), (202, 186),
     (2, 146), (34, 146), (50, 146), (90, 146), (106, 146), (122, 146), (154, 146), (174, 146), (202, 146),
     (33, 106), (52, 106), (67, 106), (90, 106), (122,106), (154, 106), (174, 106), (210, 106),
@@ -564,12 +565,13 @@ Playlist music:
 """
 
 # Console Addon Specific
+ADDON_URL = "https://drive.google.com/file/d/1I07FejowKavsjLnQvmj17Hxivqv-YJbH/view?usp=sharing"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 RECOGNISED_SYSTEMS = ["a2600", "a5200", "a7800", "a800xl", "adam", "apple2e", "bbcb", "c64", "c64p", "coco3", "coleco",
     "cpc6128", "dos", "dragon32", "fds", "gameboy", "gbcolor", "genesis", "gnw", "hbf900a", "intv", "lcd", "nes",
-    "oric1", "pc", "pet4032", "plus4", "snes", "spectrum", "ti99_4a", "vic20"]
+    "oric1", "pc", "pet4032", "plus4", "snes", "spectrum", "ti99_4a", "vic20", "zx81"]
 # System specific media switches when not simply "-cart"
 SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "bbcb": "-flop1",
@@ -585,9 +587,11 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "oric1": "-cass",
                 "dragon32": "-cass",
                 "adam": "-cart1",
+                "zx81": "-cass",
                 "vic20": "-quik"}
 # Game specific media to override the system media
-GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1", "plus4_crazyjump":"-joy1 joy -quik", "plus4_dkplus":"-joy1 joy -quik"}
+GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1", "plus4_crazyjump":"-joy1 joy -quik",
+              "plus4_dkplus":"-joy1 joy -quik", "vic20_fast_eddie":"-cart"}
 WIN64_ONLY_SYSTEMS = "pc", "dos"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
@@ -599,6 +603,7 @@ KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
                   "pc_dk_plus": "left>a,right>d,up>w,down>s,1>enter,ctrl>space",
                   "pc_atarist_mb":"ctrl>space",
                   "pc_atarist_junior":"num 1>a,num 2>b",
+                  "pc_zx80_kong":"ctrl>num 0,esc>forcequit:zesarux.exe",
                   "dos_aldo3": "ctrl>space",
                   "dos_aldo": "ctrl>space",
                   "dos_dk": "y>n,ctrl>space,esc>forcequit:dosbox-x.exe",

@@ -21,6 +21,7 @@ The latest releases are available to download from below.  Refer to the **How to
 | [dkafe_winxp_binary_v0.60.zip](https://github.com/10yard/dkafe/releases/download/v0.60/dkafe_winxp_binary_v0.60.zip) | 0.60    | Windows XP only                           |
 | [dkafe_rpi4_image_v0.55.gz](https://github.com/10yard/dkafe/releases/download/v0.55/dkafe_rpi4_image_v0.55.gz)       | 0.55    | Raspberry Pi 4 and 400 only               |
 
+* Windows binaries are digitally signed to ensure the origin of the files and their integrity.
 
 ## About DKAFE
 
@@ -545,19 +546,21 @@ An optional add-on pack includes around 200 Donkey Kong ports and hacks for the 
  - Atari 5200
  - Atari 7800
  - Atari 800XL
- - Atari ST
  - Nintendo Entertainment System
  - Nintendo Gameboy|Gameboy Color
  - Super Nintendo
  - Famicom Disk System
- - Sega Genesis/Megadrive
  - Colecovision
  - Coleco Adam
  - Intellivision
+ - Sega Genesis/Megadrive
+ - Atari ST
  - Tandy Color Computer 3 (CoCo3) 
  - Texas Instruments TI99/4
  - Amstrad CPC
  - Sinclair Spectrum 
+ - Sinclair ZX80
+ - Sinclair ZX81
  - Tangerine Oric 1
  - Commodore 16/Plus4
  - Commodore 64

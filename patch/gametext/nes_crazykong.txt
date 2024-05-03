@@ -1,0 +1,12 @@
+NES Console - Crazy Kong
+
+Have you ever wanted to play Falcon’s classic
+semi-official Donkey Kong game on your Nintendo
+Entertainment System? If yes, then this ROM hack is 
+for you.
+
+This hack makes Donkey Kong Original Edition (with the
+Cement Factory stage) look like Crazy Kong by changing
+the colors, while also making a new title screen.
+
+Hack Developed by VEGANLIES2ME

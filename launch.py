@@ -198,7 +198,7 @@ def write_text(text=None, font=pl_font, x=0, y=0, fg=WHITE, bg=None, bubble=Fals
                 pygame.draw.lines(_g.screen, fg, False, [(_x - 2, y + 1), (_x - 6, y + 2), (_x - 2, y + 3)])
 
 
-def flash_message(message, x, y, cycles=6, delay_ms=50, clear=True):
+def flash_message(message, x=0, y=0, cycles=6, delay_ms=50, clear=True):
     if clear:
         clear_screen()
     for i in (0, 1, 2) * cycles:
@@ -645,6 +645,9 @@ def build_menus(initial=False):
         _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
         _g.setmenu.add_selector('Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
         _g.setmenu.add_selector('   Music Volume: ',[('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6), ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
+        if ARCH == "win64" and ADDONS_CONSIDERED and not ENABLE_ADDONS:
+            _g.setmenu.add_vertical_margin(6)
+            _g.setmenu.add_button('♥ Get Console Add-On Pack', get_addon)
         _g.setmenu.add_vertical_margin(6)
         _g.setmenu.add_button('Save Changes to File', save_menu_settings)
         _g.setmenu.add_button('Close Menu', close_menu)
@@ -653,6 +656,39 @@ def build_menus(initial=False):
             _g.setmenu.add_vertical_margin(6)
             _g.setmenu.add_button('Reset Add-Ons (Advanced)', reset_addon_state_files)
 
+
+def get_addon():
+    # Option to download add-on pack from the menu on x64 Windows
+    if ARCH == "win64":
+        import gdown
+        latest_addon_path = "dkafe_console_addon_pack_latest.zip"
+        clear_screen()
+        write_text("DOWNLOADING...", font=dk_font, y=0, fg=RED)
+        write_text("Please wait while the add-on pack downloads.", font=pl_font, y=14, fg=RED)
+        write_text("It may take several minutes.", font=pl_font, y=22, fg=RED)
+        update_screen()
+        try:
+            gdown.download(ADDON_URL, latest_addon_path, fuzzy=True)
+            #Allow up to 10 seconds for file to save fully.
+            for i in range(0, 10):
+                if os.path.exists(latest_addon_path):
+                    break
+                _s.sleep(1)
+        except:
+            pass
+        clear_screen()
+        if os.path.exists(latest_addon_path):
+            write_text("♥ DOWNLOAD FINISHED", font=dk_font, y=0, fg=WHITE)
+            write_text("DKAFE will now exit and you must relaunch it to", font=pl_font, y=14, fg=WHITE)
+            write_text("complete the add-on pack installation.", font=pl_font, y=22, fg=WHITE)
+            jump_to_continue()
+            pygame.quit()
+            sys.exit()
+        else:
+            write_text("PROBLEM WITH DOWNLOAD", font=dk_font, y=0, fg=WHITE)
+            write_text("Sorry!  A problem was encountered while attempting", font=pl_font, y=14, fg=WHITE)
+            write_text("to download the add-on pack.", font=pl_font, y=22, fg=WHITE)
+            jump_to_continue()
 
 def reset_addon_state_files():
     count = 0
