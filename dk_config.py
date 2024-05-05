@@ -570,8 +570,8 @@ if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 RECOGNISED_SYSTEMS = ["a2600", "a5200", "a7800", "a800xl", "adam", "apple2e", "bbcb", "c64", "c64p", "coco3", "coleco",
-    "cpc6128", "dos", "dragon32", "fds", "gameboy", "gbcolor", "genesis", "gnw", "hbf900a", "intv", "lcd", "nes",
-    "oric1", "pc", "pet4032", "plus4", "snes", "spectrum", "ti99_4a", "vic20", "zx81"]
+    "cpc6128", "crvision", "dos", "dragon32", "fds", "gameboy", "gbcolor", "genesis", "gnw", "hbf900a", "intv", "lcd",
+    "mz700", "nes", "oric1", "pc", "pet4032", "plus4", "snes", "spectrum", "ti99_4a", "vic20", "vic20p", "zx81"]
 # System specific media switches when not simply "-cart"
 SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "bbcb": "-flop1",
@@ -588,10 +588,13 @@ SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
                 "dragon32": "-cass",
                 "adam": "-cart1",
                 "zx81": "-cass",
-                "vic20": "-quik"}
+                "vic20": "-quik",
+                "vic20p": "-quik",
+                "mz700": "-cass"}
 # Game specific media to override the system media
 GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1", "plus4_crazyjump":"-joy1 joy -quik",
-              "plus4_dkplus":"-joy1 joy -quik", "vic20_fast_eddie":"-cart"}
+              "plus4_dkplus":"-joy1 joy -quik", "vic20_fast_eddie":"-cart", "vic20_dk_ackenhausen":"-exp 16k -quik",
+              "vic20_minikong": "-flop"}
 WIN64_ONLY_SYSTEMS = "pc", "dos"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
@@ -608,7 +611,8 @@ KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
                   "dos_aldo": "ctrl>space",
                   "dos_dk": "y>n,ctrl>space,esc>forcequit:dosbox-x.exe",
                   "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe",
-                  "dos_willy": "num 1>enter,ctrl>space"}
+                  "dos_willy": "num 1>enter,ctrl>space",
+                  "dos_mamedk": "num 5>num 3,num 2>enter"}
 
 # Sound setup
 pygame.mixer.init(frequency=48000)

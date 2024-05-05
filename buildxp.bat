@@ -62,7 +62,7 @@ xcopy dkwolf\changes dist\launchxp\dkwolf\changes /S /i /Y
 rmdir dist\launchxp\dkwolf\inp /s /Q
 
 echo **** define systems to be included in the add-on pack
-set systems=a2600,a5200,a7800,a800xl,adam,apple2e,bbcb,c64,c64p,coco3,coleco,cpc6128,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,lcd,nes,oric1,pc,pet4032,plus4,snes,spectrum,ti99_4a,vic20,zx81
+set systems=a2600,a5200,a7800,a800xl,adam,apple2e,bbcb,c64,c64p,coco3,coleco,cpc6128,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,lcd,mz700,nes,oric1,pc,pet4032,plus4,snes,spectrum,ti99_4a,vic20,zx81
 
 echo **** adjust controller defaults for some consoles
 for %%s in (%systems%) do xcopy dkwolf\cfg\%%s*.cfg dist\dkwolf\cfg\ /Y

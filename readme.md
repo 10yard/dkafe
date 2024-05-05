@@ -543,38 +543,41 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 An optional add-on pack includes around 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Atari 2600
+ - Amstrad CPC
+ - Apple ][
  - Atari 5200
  - Atari 7800
  - Atari 800XL
+ - Atari ST
+ - BBC Micro
+ - Coleco Adam
+ - Colecovision
+ - Commodore 16/Plus4
+ - Commodore 64
+ - Commodore Amiga
+ - Commodore Pet
+ - Commodore VIC-20
+ - Dragon 32
+ - Famicom Disk System
+ - Game and Watch
+ - Intellivision
+ - LCD/Handheld
+ - MS-DOS
+ - MSX
  - Nintendo Entertainment System
  - Nintendo Gameboy|Gameboy Color
- - Super Nintendo
- - Famicom Disk System
- - Colecovision
- - Coleco Adam
- - Intellivision
+ - PC
  - Sega Genesis/Megadrive
- - Atari ST
- - Tandy Color Computer 3 (CoCo3) 
- - Texas Instruments TI99/4
- - Amstrad CPC
+ - Sharp MZ700
  - Sinclair Spectrum 
  - Sinclair ZX80
  - Sinclair ZX81
+ - Super Nintendo
+ - Tandy Color Computer 3 (CoCo3) 
  - Tangerine Oric 1
- - Commodore 16/Plus4
- - Commodore 64
- - Commodore Pet
- - Commodore VIC-20
- - Commodore Amiga
- - BBC Micro
- - Dragon 32
- - MSX
- - Apple ][
- - Game and Watch
- - LCD/Handheld
- - MS-DOS (x64 platform only)
- - PC (x64 platform only
+ - Texas Instruments TI99/4
+ - Vtech Creativision
+
 
 The console games will appear on the pies and elevator stages.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
