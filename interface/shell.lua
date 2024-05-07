@@ -103,6 +103,8 @@ rom_table["cdkong"]                  = {"P1",          false, 0,     {},        
 rom_table["gckong"]                  = {"P1",          false, 0,     {},                                                18,    32,  0,   40}
 rom_table["intv"]                    = {"P1",          true,  900,   {},                                                0,     0,   0,   0 }
 rom_table["mz700_jumpman"]           = {"JJ",          false, 10000, {180,"LOAD\n",300,"{PLAY}"},                       0.5,   0,   0,   0 }
+rom_table["mz700_crazykong"]         = {"",            true,  20650, {180,"LOAD\n",300,"{PLAY}",18000," ",18500," ",
+								  19000," ", 19500," ",20300,"L",20330,"R",20360,"U",20390,"D",20420,"Z",20450,"2"}, 	0.5,   0,   0,   0 }
 rom_table["mz700_donkeygorilla"]     = {"JJ",          true,  17500, {180,"LOAD\n",300,"{PLAY}"},                       0.5,   0,   0,   0 }
 rom_table["nes"]                     = {"P1",          false, 0,     {},                                                0.5,   0,   0,   0 }
 rom_table["oric1"]                   = {"P1",          true,  0,     {180,'CLOAD ""\n'},                                0,     0,   0,   16}
@@ -112,6 +114,8 @@ rom_table["oric1_dinkykong"]         = {"P1",          true,  6400,  {180,'CLOAD
 rom_table["pet4032"]                 = {"P1",          false, 240,   {180,"RUN\n"},                                     0,     0,   0,   0 }
 rom_table["snes"]                    = {"P1",          false, 360,   {},                                                2.5,   0,   0,   0 }
 rom_table["spectrum"]                = {"P1",          false, 0,     {},                                                2,     4,   0,   0 }
+rom_table["spectrum_ape_escape"]     = {"P1",          true,  16000, {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
+rom_table["spectrum_kongs_revenge"]  = {"P1",          true,  15000, {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
 rom_table["spectrum_killerkong"]     = {"",            false, 500,   {},                                                2,     4,   0,   0 }
 rom_table["spectrum_kong"]           = {"JJ",          false, 200,   {60,"{SPACE}"},                                    2,     4,   0,   0 }
 rom_table["spectrum_krazykong"]      = {"JJ",          false, 0,     {15,"y"},                                          2,     4,   0,   0 }
@@ -119,9 +123,11 @@ rom_table["spectrum_wallykong"]      = {"P1",          false, 200,   {60,"SS",10
 rom_table["spectrum_monkeybiz"]      = {"P1",          true,  360,   {200,"{SPACE}",300,"{SPACE}"},                     2,     4,   0,   0 }
 rom_table["ti99_4a"]                 = {"JJ",          true,  600,   {60,"  2"},                                        0,     0,   0,   0 }
 rom_table["vic20"]                   = {"",            true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
-rom_table["vic20_minikong"]          = {"BUG",         true,  3000,  {360,'LOAD"*",8,1\n',1200,"RUN\n",2000,"N\n"},     1.33,  2,   0,   0 }
+rom_table["vic20_minikong"]          = {"BUG",         false, 3000,  {360,'LOAD"*",8,1\n',1200, "POKE 36865,0\n",
+																	  1300,"RUN\n",2100,"N\n"},   					    1.33,  2,   0,   0 }
 rom_table["vic20_dk_ackenhausen"]    = {"P1",          false, 580,   {360,"RUN\n", 450, "1\n"},                         1.33,  2,   0,   0 }
 rom_table["vic20_fast_eddie"]        = {"",            false, 0,     {},                                                1.33,  2,   0,   0 }
+rom_table["vic20_hardhatclimber"]    = {"",            false, 600,   {360, "4 CH=99\n", 460,"RUN\n"},                   1.33,  2,   0,   0 }
 rom_table["vic20_cannonball"]        = {"",            false, 0,     {},                                                1.33,  2,   0,   0 }
 rom_table["vic20_logrun"]            = {"JJ",          true,  700,   {360,"RUN\n",500,"{SPACE}"},                       1.33,  2,   0,   0 }
 rom_table["vic20_littlekong"]        = {"",            true,  1100,  {360,"RUN\n"},                                     1.33,  2,   0,   0 }
@@ -129,8 +135,10 @@ rom_table["vic20_dkjr_gnw"]          = {"JJ",          false, 500,   {360,"RUN\n
 rom_table["vic20_kongokong"]         = {"P1",          true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["zx81_crazykong"]          = {"",            true,  10750, {360,'J""\n',420,"{PLAY}",10400,"\n",10500,"1\n"}, 2,     4,   0,   0 }
-rom_table["zx81_kongsrevenge"]       = {"",            false, 20000, {360,'J""\n',420,"{PLAY}"},                        2,     4,   0,   0 }
+rom_table["zx81_kongsrevenge"]       = {"",            false, 20200, {360,'J""\n',420,"{PLAY}", "20100", "n\n"},        2,     4,   0,   0 }
 rom_table["zx81_krazykong_pss"]      = {"JJ",          true,  11660, {360,'J""\n',420,"{PLAY}",11500," ",11600," "},    2,     4,   0,   0 }
+rom_table["zx81_zonkeykong"]         = {"",            true,  16150, {360,'J""\n',420,"{PLAY}",
+														  16000,"L", 16030,"R", 16060, "U", 16090, "D", 16120, "Y"},    2,     4,   0,   0 }
 
 -- Read rom data
 rom_data = rom_table[shell_name] or rom_table[emu:romname()]

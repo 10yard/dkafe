@@ -569,50 +569,99 @@ ADDON_URL = "https://www.dropbox.com/s/ssbsh0blj0h1t2e/dkafe_console_addon_pack_
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
-RECOGNISED_SYSTEMS = ["a2600", "a5200", "a7800", "a800xl", "adam", "apple2e", "bbcb", "c64", "c64p", "coco3", "coleco",
-    "cpc6128", "crvision", "dos", "dragon32", "fds", "gameboy", "gbcolor", "genesis", "gnw", "hbf900a", "intv", "lcd",
-    "mz700", "nes", "oric1", "pc", "pet4032", "plus4", "snes", "spectrum", "ti99_4a", "vic20", "vic20p", "zx81"]
+
+RECOGNISED_SYSTEMS = {
+    "a2600": "Atari 2600",
+    "a5200": "Atari 5200",
+    "a7800": "Atari 7800",
+    "a800xl": "Atari 8 Bit Computer (A800)",
+    "atarist": "Atari ST",
+    "adam": "Coleco Adam",
+    "amiga": "Commodore Amiga",
+    "apple2e": "Apple ][",
+    "bbcb": "BBC Model B",
+    "c64": "Commodore 64",
+    "c64p": "Commodore 64",
+    "coco3": "Tandy Colour Computer 3",
+    "coleco": "Colecovision",
+    "cpc6128":"Amstrad CPC",
+    "crvision":"Vtech Creativision",
+    "dos":"MS-DOS",
+    "dragon32":"Dragon 32",
+    "fds":"Famicom Disk System",
+    "gameboy":"Nintendo Gameboy",
+    "gbcolor":"Nintendo Gameboy Color",
+    "genesis":"SEGA Genesis/Megadrive",
+    "gnw":"Game and Watch",
+    "hbf900a":"MSX",
+    "intv":"Intellivision",
+    "lcd":"LCD and Handheld Games",
+    "mz700":"Sharp MZ-700",
+    "nes":"Nintendo Entertainment System",
+    "oric1":"Tangerine ORIC",
+    "pc":"PC",
+    "pet4032":"Commodore PET",
+    "plus4":"Commodore C16/Plus4",
+    "snes":"Super Nintendo Entertainment System",
+    "spectrum":"Sinclair ZX Spectrum",
+    "ti99_4a":"Texas Instruments TI-99",
+    "vic20":"Commodore VIC-20",
+    "vic20p":"Commodore VIC-20",
+    "zx80":"Sinclair ZX80",
+    "zx81":"Sinclair ZX81"}
+
 # System specific media switches when not simply "-cart"
-SYSTEM_MEDIA = {"apple2e": "-gameio joy -flop1",
-                "bbcb": "-flop1",
-                "fds": "-flop1",
-                "hbf900a": "-flop1",
-                "coco3": "-flop1",
-                "cpc6128": "-flop1",
-                "plus4": "-quik",
-                "c64": "-joy1 joy -quik",
-                "c64p": "-joy1 joy -quik",
-                "pet4032": "-quik",
-                "spectrum": "-dump",
-                "oric1": "-cass",
-                "dragon32": "-cass",
-                "adam": "-cart1",
-                "zx81": "-cass",
-                "vic20": "-quik",
-                "vic20p": "-quik",
-                "mz700": "-cass"}
+SYSTEM_MEDIA = {
+    "adam": "-cart1",
+    "apple2e": "-gameio joy -flop1",
+    "bbcb": "-flop1",
+    "c64": "-joy1 joy -quik",
+    "c64p": "-joy1 joy -quik",
+    "coco3": "-flop1",
+    "cpc6128": "-flop1",
+    "dragon32": "-cass",
+    "fds": "-flop1",
+    "hbf900a": "-flop1",
+    "mz700": "-cass",
+    "oric1": "-cass",
+    "pet4032": "-quik",
+    "plus4": "-quik",
+    "spectrum": "-dump",
+    "vic20": "-quik",
+    "vic20p": "-quik",
+    "zx81": "-cass"}
+
 # Game specific media to override the system media
-GAME_MEDIA = {"c64_bonkeykong":"-flop", "hbf900a_apeman":"-cart1", "plus4_crazyjump":"-joy1 joy -quik",
-              "plus4_dkplus":"-joy1 joy -quik", "vic20_fast_eddie":"-cart", "vic20_dk_ackenhausen":"-exp 16k -quik",
-              "vic20_minikong": "-flop"}
+GAME_MEDIA = {
+    "c64_bonkeykong":"-flop",
+    "hbf900a_apeman":"-cart1",
+    "plus4_crazyjump":"-joy1 joy -quik",
+    "plus4_dkplus":"-joy1 joy -quik",
+    "spectrum_ape_escape":"-cass",
+    "spectrum_kongs_revenge":"-cass",
+    "vic20_fast_eddie":"-cart",
+    "vic20_dk_ackenhausen":"-exp 16k -quik",
+    "vic20_minikong": "-flop"}
+
 WIN64_ONLY_SYSTEMS = "pc", "dos"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
-KEYBOARD_REMAP = {"pc_raiders":"ctrl>space",
-                  "pc_fixitfelix":"ctrl>num 1",
-                  "pc_jumpman_rtx":"num 1>enter,ctrl>space,esc>forcequit",
-                  "pc_dk_remake":"num 1>enter,ctrl>space,esc>forcequit",
-                  "pc_dk_jr_remake": "num 1>enter,ctrl>space,esc>forcequit",
-                  "pc_dk_craze": "esc>forcequit:stdrt.exe",
-                  "pc_dk_plus": "left>a,right>d,up>w,down>s,1>enter,ctrl>space",
-                  "pc_atarist_mb":"ctrl>space",
-                  "pc_atarist_junior":"num 1>a,num 2>b",
-                  "pc_zx80_kong":"ctrl>num 0,esc>forcequit:zesarux.exe",
-                  "dos_aldo3": "ctrl>space",
-                  "dos_aldo": "ctrl>space",
-                  "dos_dk": "y>n,ctrl>space,esc>forcequit:dosbox-x.exe",
-                  "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe",
-                  "dos_willy": "num 1>enter,ctrl>space",
-                  "dos_mamedk": "num 5>num 3,num 2>enter"}
+KEYBOARD_REMAP = {
+    "dos_aldo3": "ctrl>space",
+    "dos_aldo": "ctrl>space",
+    "dos_dk": "y>n,ctrl>space,esc>forcequit:dosbox-x.exe",
+    "dos_kong": "num 1>enter,esc>forcequit:dosbox-x.exe",
+    "dos_mamedk": "num 5>num 3,num 2>enter",
+    "dos_willy": "num 1>enter,ctrl>space",
+    "pc_atarist_mb":"ctrl>space",
+    "pc_atarist_junior":"num 1>a,num 2>b",
+    "pc_dk_craze": "esc>forcequit:stdrt.exe",
+    "pc_dk_jr_remake": "num 1>enter,ctrl>space,esc>forcequit",
+    "pc_dk_plus": "left>a,right>d,up>w,down>s,1>enter,ctrl>space",
+    "pc_dk_remake":"num 1>enter,ctrl>space,esc>forcequit",
+    "pc_fixitfelix":"ctrl>num 1",
+    "pc_jumpman_rtx":"num 1>enter,ctrl>space,esc>forcequit",
+    "pc_raiders":"ctrl>space",
+    "pc_zx80_kong":"ctrl>num 0,esc>forcequit:zesarux.exe"}
 
 # Sound setup
 pygame.mixer.init(frequency=48000)
@@ -637,10 +686,10 @@ dkafe_theme.title_font_size = 8
 dkafe_theme.widget_font_size = 8
 
 dkafe_theme.background_color = BLACK
-dkafe_theme.title_background_color = WHITE
+dkafe_theme.title_background_color = BLACK
 dkafe_theme.title_font_color = RED
-dkafe_theme.title_bar_style = pymenu.widgets.MENUBAR_STYLE_UNDERLINE
-dkafe_theme.title_offset = (12, 2)
+dkafe_theme.title_bar_style = pymenu.widgets.MENUBAR_STYLE_SIMPLE
+dkafe_theme.title_offset = (12, 0)
 dkafe_theme.widget_alignment = pymenu.locals.ALIGN_CENTER
 
 dkafe_theme.scrollbar_color = BLACK

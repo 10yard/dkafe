@@ -75,8 +75,8 @@ current_menu_title = None
 selected = None
 last_selected, last_launched = (None,) * 2
 romlist = []
+romcount = 0
 last_press, last_up, last_down = 0, 0, 0
-
 
 # Active Window
 window = None

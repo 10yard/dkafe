@@ -376,6 +376,9 @@ def play_intro_animation():
                 if current in SCENE_SOUNDS:
                     play_sound_effect(SCENE_SOUNDS[current])
 
+                if 480 < current < 840:
+                    write_text(f"{str(_g.romcount)} versions of DK detected!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+
                 # display nearby icons as girders are broken
                 for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
                     if from_scene < current < to_scene:
@@ -592,32 +595,59 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
 
 
 def sort_key(x):
-    name = x[3] or x[0]
-    name = name.replace("Bonus:", "ZBonus:")
+    key0 = ""
+    system = x[0].split("_")[0].replace("-", "_")
+    if system == "pc":
+        # Some PC are emulated and can be categorised as other systems
+        for s in RECOGNISED_SYSTEMS:
+            if s in x[0] and s != "pc":
+                system = s
+                break
+    if system in RECOGNISED_SYSTEMS:
+        key0 = (RECOGNISED_SYSTEMS[system])
+    key1 = (x[3] or x[0]).replace("Bonus:", "ZZBonus:")
     slot = str(x[4])
     if slot == "9999":
         slot = "0"
-    return name[:30] + slot.zfill(4)
+    return key0.ljust(30) + key1.ljust(30) + slot.zfill(4)
 
 def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
-    _g.menu.add_vertical_margin(5)
+    _g.menu.add_vertical_margin(4)
 
-    _lastname = ""
+    _lastname, lastsystem = "", ""
     # Sort the rom list by descriptive name for better navigation in the game selection menu
+    _lastsystem = ""
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
+        _id = name.split("_")[0].replace("-", "_")
+        if _id == "pc":
+            #Some PC are emulated and can be categorised as other systems
+            for s in RECOGNISED_SYSTEMS:
+                if s in name and s != "pc":
+                    _id = s
+                    break
+        _system = RECOGNISED_SYSTEMS[_id] if _id in RECOGNISED_SYSTEMS else ""
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             if sub != "shell" or name != _lastname:
                 if (_g.stage < 2 and not add) or (_g.stage >= 2 and (add and ENABLE_ADDONS or not add and not ENABLE_ADDONS)):
+                    if _system and _system != _lastsystem:
+                        _g.menu.add_label(f'{_system} {"_"*70}', font_color=GREY, font_name="fonts/tom-thumb.bdf")
+                        _lastsystem = _system
+                        _unlock_msg = True
                     # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
+                    _alt = " " + alt if _system else alt
                     try:
-                        _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                        _g.menu.add_button(_alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                     except IndexError:
-                        _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
+                        _g.menu.add_button(_alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
+
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
         _lastname = name
+    if UNLOCK_MODE:
+        _g.menu.add_vertical_margin(4)
+        _g.menu.add_label("* Earn coins to add more games to this list.", font_color=GREY, font_name="fonts/tom-thumb.bdf")
     _g.menu.add_vertical_margin(6)
     _g.menu.add_button('Settings', open_settings_menu)
     _g.menu.add_button('Close Menu', close_menu)
@@ -1518,7 +1548,8 @@ def main(initial=True):
     detect_joysticks()
     check_patches_available()
 
-    _g.romlist = sorted(_s.read_romlist(), key=sort_key)
+    _g.romlist, _g.romcount = _s.read_romlist()
+    _g.romlist = sorted(_g.romlist, key=sort_key)
     build_menus(initial=True)
     _g.gametext = _s.load_game_texts()
 

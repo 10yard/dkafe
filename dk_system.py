@@ -69,7 +69,7 @@ def read_romlist():
     romlists = {}
     usedslots = []
     usedsubs = []
-
+    romcount = 0
     for i, csv in enumerate(reversed(ROMLIST_FILES)):
         romlists[i] = []
         if os.path.exists(csv):
@@ -136,8 +136,9 @@ def read_romlist():
                                     add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
 
                                     romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
+                                    romcount += 1
                                 usedslots.append(slot)
-    return romlists[1] + romlists[0]
+    return romlists[1] + romlists[0], romcount
 
 
 def get_romkeys(romlist):
