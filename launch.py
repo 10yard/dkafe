@@ -16,7 +16,7 @@ import pygame.cursors
 import pickle
 from math import floor
 from random import randint, choice, sample
-from subprocess import call, run, Popen
+from subprocess import call, run, Popen, CREATE_NO_WINDOW
 import dk_global as _g
 import dk_system as _s
 from dk_config import *
@@ -45,9 +45,9 @@ def exit_program(confirm=False):
 def kill_pc_external(pid=None, program=None):
     from subprocess import call, DEVNULL, STDOUT
     if pid:
-        call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT)
+        call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
     elif program:
-        call(f"taskkill /f /IM {program}", stdout=DEVNULL, stderr=STDOUT)
+        call(f"taskkill /f /IM {program}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
 
 
 def rotate_display(exiting=False, initial=False, rotate=ROTATION):
@@ -1028,15 +1028,15 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 if ARCH == "win64":
                     for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROOT_DIR, "dist", "remap_pc.exe"):
                         if os.path.exists(remap_program):
-                            Popen(f'"{remap_program}" "{name}" "{KEYBOARD_REMAP[name]}')
+                            Popen(f'"{remap_program}" "{name}" "{KEYBOARD_REMAP[name]}', creationflags=CREATE_NO_WINDOW)
                             break
 
             if name.startswith("pc_"):
                 os.chdir(os.path.join(ROM_DIR, "pc", name))
-                run(name, capture_output=True, text=True)
+                run(name, capture_output=True, text=True, shell=True, creationflags=CREATE_NO_WINDOW)
                 os.chdir(ROOT_DIR)
             else:
-                run(launch_command, capture_output=True, text=True)
+                run(launch_command, capture_output=True, text=True, creationflags=CREATE_NO_WINDOW)
 
             # Terminate any temporary keyboard mappings
             if remap_program:
@@ -1120,7 +1120,7 @@ def playback_rom(info, inpfile):
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
 
-        run(playback_command, capture_output=True, text=True)
+        run(playback_command, capture_output=True, text=True, creationflags=CREATE_NO_WINDOW)
 
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)

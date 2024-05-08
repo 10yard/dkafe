@@ -26,7 +26,7 @@ rmdir build /s /Q
 rmdir dist /s /Q
 
 echo **** build the exe ****
-pyinstaller launch.py --onedir --clean --console --icon artwork\dkafe.ico --name launchxp --exclude-module rotate-screen
+pyinstaller launch.py --onedir --clean --noconsole --icon artwork\dkafe.ico --name launchxp --exclude-module rotate-screen
 
 echo **** copy python dependencies ****
 echo **** these are files from the base_library.zip ****

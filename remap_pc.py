@@ -1,13 +1,25 @@
+"""
+ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
+ 888    88o  888  o88        888       888          888
+ 888    888  888888         8  88      888ooo8      888ooo8
+ 888    888  888  88o      8oooo88     888          888
+o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
+                                        by Jon Wilson (10yard)
+
+Remap Controls for PC and DOS systems
+which can't be otherwise configured
+-----------------------------------
+"""
+from subprocess import call, DEVNULL, STDOUT, CREATE_NO_WINDOW
 import keyboard
 import sys
 
 def kill_pc_external(pid=None, program=None):
     """force kill an external program"""
-    from subprocess import call, DEVNULL, STDOUT
     if pid:
-        call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT)
+        call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
     elif program:
-        call(f"taskkill /f /IM {program}", stdout=DEVNULL, stderr=STDOUT)
+        call(f"taskkill /f /IM {program}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
 
 def remap(name, mappings):
     """asynchronous: temporary keyboard remapping and force quit option"""

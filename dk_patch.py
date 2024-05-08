@@ -123,8 +123,8 @@ def install_addons():
                     if idx % 10 == 0:
                         for i in range(0, 7):
                             write_text("—", font=dk_font, x=(DISPLAY[0] / 100) * (percent - 1), y=244+i, fg=RED)
-                    update_screen()
                     zf.extract(file)
+                    update_screen()
                 zf.close()
         except:
             pass
