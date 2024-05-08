@@ -51,14 +51,15 @@ del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
 rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** build the exe in virtual environment ****
-venv64\Scripts\pyinstaller launch.py --onefile --clean --console --icon artwork\dkafe.ico
+venv64\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
+venv64\Scripts\pyinstaller remap_pc.py --onefile --clean --noconsole
 
 echo **** clean up
 rmdir build /s /Q
 del *.spec
 
 echo **** Code sign program executables with Open Source Developer Certificate
-"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /tr http://timestamp.digicert.com /n "Open Source Developer" dist\launch.exe dist\dkwolf\dkwolf.exe
+"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /tr http://timestamp.digicert.com /n "Open Source Developer" dist\launch.exe dist\remap_pc.exe dist\dkwolf\dkwolf.exe
 
 echo **** package into a release ZIP getting the version from version.txt
 set /p version=<VERSION

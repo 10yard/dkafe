@@ -91,3 +91,6 @@ psy = 0
 
 # Playlist
 tracklist, trackhistory = [], []
+
+# Process lock
+lock = None

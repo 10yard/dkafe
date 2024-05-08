@@ -16,14 +16,12 @@ import pygame.cursors
 import pickle
 from math import floor
 from random import randint, choice, sample
-from subprocess import Popen, call
+from subprocess import call, run, Popen
 import dk_global as _g
 import dk_system as _s
 from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches_and_addons, validate_rom
-from multiprocessing import Process
-
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
@@ -42,24 +40,6 @@ def exit_program(confirm=False):
         rotate_display(exiting=True)
         pygame.quit()
         sys.exit()
-
-
-def remap(name, mappings):
-    """asynchronous: temporary keyboard remapping and force quit option"""
-    import keyboard
-    for m in mappings.split(","):
-        src, dst = m.split(">")
-        if dst.startswith("forcequit"):
-            # Force quit necessary for some PC games.  "forcequit:PROGRAMNAME" or "forcequit" to kill the default.
-            if ":" in dst:
-                _program = dst.split(":")[1]
-            else:
-                _program = f"{name}.*"
-            keyboard.add_hotkey(src, lambda: kill_pc_external(program=_program))
-        else:
-            keyboard.remap_key(src, dst)
-    while True:
-        keyboard.wait()
 
 
 def kill_pc_external(pid=None, program=None):
@@ -594,17 +574,21 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     play_sound_effect(sound_file)
 
 
-def sort_key(x):
-    key0 = ""
-    system = x[0].split("_")[0].replace("-", "_")
-    if system == "pc":
+def get_system_description(name):
+    _system = name.split("_")[0].replace("-", "_")
+    if _system == "pc":
         # Some PC are emulated and can be categorised as other systems
         for s in RECOGNISED_SYSTEMS:
-            if s in x[0] and s != "pc":
-                system = s
+            if s in name and s != "pc":
+                _system = s
                 break
-    if system in RECOGNISED_SYSTEMS:
-        key0 = (RECOGNISED_SYSTEMS[system])
+    if _system in RECOGNISED_SYSTEMS:
+        return RECOGNISED_SYSTEMS[_system]
+    else:
+        return ""
+
+def sort_key(x):
+    key0 = get_system_description(x[0])
     key1 = (x[3] or x[0]).replace("Bonus:", "ZZBonus:")
     slot = str(x[4])
     if slot == "9999":
@@ -616,18 +600,10 @@ def build_menus(initial=False):
     _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
     _g.menu.add_vertical_margin(4)
 
-    _lastname, lastsystem = "", ""
+    _lastname, _lastsystem = "", ""
     # Sort the rom list by descriptive name for better navigation in the game selection menu
-    _lastsystem = ""
     for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
-        _id = name.split("_")[0].replace("-", "_")
-        if _id == "pc":
-            #Some PC are emulated and can be categorised as other systems
-            for s in RECOGNISED_SYSTEMS:
-                if s in name and s != "pc":
-                    _id = s
-                    break
-        _system = RECOGNISED_SYSTEMS[_id] if _id in RECOGNISED_SYSTEMS else ""
+        _system = get_system_description(name)
         if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
             if sub != "shell" or name != _lastname:
                 if (_g.stage < 2 and not add) or (_g.stage >= 2 and (add and ENABLE_ADDONS or not add and not ENABLE_ADDONS)):
@@ -935,18 +911,19 @@ def open_menu(menu, remember_selection=False):
     pygame.mixer.pause()
     if not ENABLE_PLAYLIST:
         intermission_channel.play(pygame.mixer.Sound('sounds/menu.wav'), -1)
-    if remember_selection:
-        # remember previous selection on large lists
-        _widget = _g.last_selected or _g.last_launched
-        try:
-            menu.select_widget(widget=_widget)
-        except AssertionError:
-            # Item was not found in the active list
-            pass
-    _g.current_menu_title = menu.get_title()
-    menu.enable()
-    menu.mainloop(_g.screen, bgfun=menu_callback)
-    reset_all_inputs()
+    if menu:
+        if remember_selection:
+            # remember previous selection on large lists
+            _widget = _g.last_selected or _g.last_launched
+            try:
+                menu.select_widget(widget=_widget)
+            except AssertionError:
+                # Item was not found in the active list
+                pass
+        _g.current_menu_title = menu.get_title()
+        menu.enable()
+        menu.mainloop(_g.screen, bgfun=menu_callback)
+        reset_all_inputs()
 
 
 def menu_callback():
@@ -1046,30 +1023,24 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             time_start = _s.time()
 
             # Temporary keyboard remapping
-            remap_process = None
+            remap_program = None
             if name in KEYBOARD_REMAP:
                 if ARCH == "win64":
-                    remap_process = Process(target=remap, args=(name, KEYBOARD_REMAP[name],))
-                    remap_process.start()
+                    for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROOT_DIR, "dist", "remap_pc.exe"):
+                        if os.path.exists(remap_program):
+                            Popen(f'"{remap_program}" "{name}" "{KEYBOARD_REMAP[name]}')
+                            break
 
-            if _s.is_pi() or sub == "shell":
-                if name.startswith("pc_") or name.startswith("dos_"):
-                    # Give focus to external PC game (by temporary windowing DKAFE before launching)
-                    _modes = pygame.display.list_modes()
-                    if _modes:
-                        _g.screen = pygame.display.set_mode(_modes[0], pygame.SCALED)
-                    os.system(launch_command)
-                    _g.screen = pygame.display.set_mode(DISPLAY, pygame.SCALED|pygame.WINDOWFOCUSGAINED)
-                else:
-                    os.system(launch_command)
+            if name.startswith("pc_"):
+                os.chdir(os.path.join(ROM_DIR, "pc", name))
+                run(name, capture_output=True, text=True)
+                os.chdir(ROOT_DIR)
             else:
-                call(launch_command)
+                run(launch_command, capture_output=True, text=True)
 
             # Terminate any temporary keyboard mappings
-            if remap_process:
-                remap_process.terminate()
-                if remap_process and remap_process.pid:
-                    kill_pc_external(pid=remap_process.pid)
+            if remap_program:
+                kill_pc_external(program=os.path.basename(remap_program))
 
             # If there was a specific config file then copy it back to account for any changes
             if sub == "shell":
@@ -1148,7 +1119,9 @@ def playback_rom(info, inpfile):
             Popen(EMU_ENTER)
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
-        os.system(playback_command) if _s.is_pi() else call(playback_command)
+
+        run(playback_command, capture_output=True, text=True)
+
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
         if ENABLE_PLAYLIST:
