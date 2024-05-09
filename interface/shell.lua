@@ -49,6 +49,7 @@ local rom_data, rom_table = {}, {}
 -- System or rom name                  Message         State  Start  Inputs                                             Scale  Pad  Off  Off
 rom_table["a2600"]                   = {"JJ",          false, 0,     {},                                                0,     0,   0,   0 }
 rom_table["a2600_dk_kingkong"]       = {"P1",          false, 0,     {},                                                0,     0,   0,   0 }
+rom_table["a2600_dk_junior"]         = {"P1 TT JJ",    false, 0,     {},                                                0,     0,   0,   10 }
 rom_table["a5200"]                   = {"P1",          true,  600,   {},                                                0,     0,   0,   0 }
 rom_table["a7800"]                   = {"P1",          false, 200,   {},                                                0,     0,   0,   0 }
 rom_table["a7800_dk_remix"]          = {"P1",          true,  750,   {},                                                0,     0,   0,   0 }
@@ -123,8 +124,7 @@ rom_table["spectrum_wallykong"]      = {"P1",          false, 200,   {60,"SS",10
 rom_table["spectrum_monkeybiz"]      = {"P1",          true,  360,   {200,"{SPACE}",300,"{SPACE}"},                     2,     4,   0,   0 }
 rom_table["ti99_4a"]                 = {"JJ",          true,  600,   {60,"  2"},                                        0,     0,   0,   0 }
 rom_table["vic20"]                   = {"",            true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
-rom_table["vic20_minikong"]          = {"BUG",         false, 3000,  {360,'LOAD"*",8,1\n',1200, "POKE 36865,0\n",
-																	  1300,"RUN\n",2100,"N\n"},   					    1.33,  2,   0,   0 }
+rom_table["vic20_minikong"]          = {"BUG",         true,  3200,  {360,'LOAD"*",8,1\n',1400,"RUN\n",2200,"N\n"},	    1.33,  2,   0,   0 }
 rom_table["vic20_dk_ackenhausen"]    = {"P1",          false, 580,   {360,"RUN\n", 450, "1\n"},                         1.33,  2,   0,   0 }
 rom_table["vic20_fast_eddie"]        = {"",            false, 0,     {},                                                1.33,  2,   0,   0 }
 rom_table["vic20_hardhatclimber"]    = {"",            false, 600,   {360, "4 CH=99\n", 460,"RUN\n"},                   1.33,  2,   0,   0 }

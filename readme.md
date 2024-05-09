@@ -16,8 +16,8 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
-| [dkafe_win64_binary_v0.60.zip](https://github.com/10yard/dkafe/releases/download/v0.60/dkafe_win64_binary_v0.60.zip) | 0.60    | Windows 64 bit (x64) systems: 10, 11      |
-| [dkafe_win32_binary_v0.60.zip](https://github.com/10yard/dkafe/releases/download/v0.60/dkafe_win32_binary_v0.60.zip) | 0.60    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_win64_binary_v0.61.zip](https://github.com/10yard/dkafe/releases/download/v0.61/dkafe_win64_binary_v0.61.zip) | 0.61    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_win32_binary_v0.61.zip](https://github.com/10yard/dkafe/releases/download/v0.61/dkafe_win32_binary_v0.61.zip) | 0.61    | Windows 32 bit (x86) systems: Vista, 7, 8 |
 | [dkafe_winxp_binary_v0.60.zip](https://github.com/10yard/dkafe/releases/download/v0.60/dkafe_winxp_binary_v0.60.zip) | 0.60    | Windows XP only                           |
 | [dkafe_rpi4_image_v0.55.gz](https://github.com/10yard/dkafe/releases/download/v0.55/dkafe_rpi4_image_v0.55.gz)       | 0.55    | Raspberry Pi 4 and 400 only               |
 
@@ -59,7 +59,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional add-on pack featuring around 200 ports, clones and hacks for classic systems (NES, Atari VCS, Colecovision, Intellivision, CoCo3, Commodore 64, BBC Micro, MSX, Gameboy and many more). 
+ - An optional add-on pack featuring over 200 ports, clones and hacks for classic systems (NES, Atari VCS, Colecovision, Intellivision, CoCo3, Commodore 64, BBC Micro, MSX and many more). 
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -582,21 +582,22 @@ An optional add-on pack includes around 200 Donkey Kong ports and hacks for the 
 The console games will appear on the pies and elevator stages.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
-The default controls have been configured to work with arcade controls.  Typically press "Jump" or "P1 Start" to start - ignoring specific keys displayed in the game menu.  
+The default controls have been configured to work with arcade controls.  Typically press "Jump" or "P1 Start" to start.
 
+![DKAFE addon](https://github.com/10yard/dkafe/blob/master/artwork/about/console_addon.png)
 
-![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/console_addon.png)
+![DKAFE game menu](https://github.com/10yard/dkafe/blob/master/artwork/about/gamemenu.png)
 
 
 ### Add-on Pack Installation
 
-The latest ZIP file is **dkafe_console_addon_pack_v1.zip**
+The add-on pack can be downloaded automatically from within the DKAFE settings menu.
 
-Simply drop the ZIP into your DKAFE folder and then launch DKAFE.  The system will detect the ZIP and automatically unpack and install the add-on pack for you.
+![DKAFE get addon](https://github.com/10yard/dkafe/blob/master/artwork/about/get_addon.png)
+
+The system will detect the downloaded ZIP and automatically unpack and install the add-on pack for you.
 
 Add-on games have been optimised to launch instantly on Windows 64 bit machines.  For other platforms,  the first load will be slower while DKAFE performs an initial optimisation.  Subsequent loads will be instant.
-
-Note: The console add-on pack is not currently available for download from my github page.  You will need to obtain the latest the add-on packs from an external source.
 
 
 
@@ -642,7 +643,7 @@ Refer to [dkwolf/readme.txt](dkwolf/readme.txt).
 
 
 
-![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/arcade.jpg)
+![DKAFE arcade](https://github.com/10yard/dkafe/blob/master/artwork/about/arcade.jpg)
 
 
 ## Motivations?
@@ -746,4 +747,4 @@ Please send feedback to jon123wilson@hotmail.com
 
 Jon
 
-![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy.png)
+![DKAFE trophy](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy.png)

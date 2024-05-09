@@ -612,12 +612,12 @@ def build_menus(initial=False):
                         _lastsystem = _system
                         _unlock_msg = True
                     # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
-                    _alt = " " + alt if _system else alt
                     try:
-                        _g.menu.add_button(_alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                        widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                     except IndexError:
-                        _g.menu.add_button(_alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
-
+                        widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
+                    if _system:
+                        widget.set_margin(8,2)
         if initial and int(icx) >= 0 and int(icy) >= 0:
             _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
         _lastname = name
@@ -1026,17 +1026,17 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             remap_program = None
             if name in KEYBOARD_REMAP:
                 if ARCH == "win64":
-                    for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROOT_DIR, "dist", "remap_pc.exe"):
+                    for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROM_DIR, "pc", "remap_pc.exe"):
                         if os.path.exists(remap_program):
                             Popen(f'"{remap_program}" "{name}" "{KEYBOARD_REMAP[name]}', creationflags=CREATE_NO_WINDOW)
                             break
 
             if name.startswith("pc_"):
                 os.chdir(os.path.join(ROM_DIR, "pc", name))
-                run(name, capture_output=True, text=True, shell=True, creationflags=CREATE_NO_WINDOW)
+                run(name, shell=True, creationflags=CREATE_NO_WINDOW)
                 os.chdir(ROOT_DIR)
             else:
-                run(launch_command, capture_output=True, text=True, creationflags=CREATE_NO_WINDOW)
+                run(launch_command, creationflags=CREATE_NO_WINDOW)
 
             # Terminate any temporary keyboard mappings
             if remap_program:
@@ -1120,7 +1120,7 @@ def playback_rom(info, inpfile):
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
 
-        run(playback_command, capture_output=True, text=True, creationflags=CREATE_NO_WINDOW)
+        run(playback_command, creationflags=CREATE_NO_WINDOW)
 
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)
