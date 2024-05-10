@@ -67,9 +67,7 @@ def load_game_texts():
 def read_romlist():
     # read romlists and return info about available roms (and shell scripts)
     romlists = {}
-    usedslots = []
-    usedsubs = []
-    romcount = 0
+    usedslots, usedsubs, usedunique = [], [], []
     for i, csv in enumerate(reversed(ROMLIST_FILES)):
         romlists[i] = []
         if os.path.exists(csv):
@@ -136,9 +134,10 @@ def read_romlist():
                                     add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
 
                                     romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
-                                    romcount += 1
+                                    if name + sub not in usedunique:
+                                        usedunique.append(name + sub)
                                 usedslots.append(slot)
-    return romlists[1] + romlists[0], romcount
+    return romlists[1] + romlists[0], len(usedunique)
 
 
 def get_romkeys(romlist):

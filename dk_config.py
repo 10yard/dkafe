@@ -605,6 +605,7 @@ RECOGNISED_SYSTEMS = {
     "snes":"Super Nintendo Entertainment System",
     "spectrum":"Sinclair ZX Spectrum",
     "ti99_4a":"Texas Instruments TI-99",
+    "tic80":"TIC-80 Fantasy Console",
     "vic20":"Commodore VIC-20",
     "vic20p":"Commodore VIC-20",
     "zx80":"Sinclair ZX80",
@@ -661,6 +662,8 @@ KEYBOARD_REMAP = {
     "pc_fixitfelix":"ctrl>num 1",
     "pc_jumpman_rtx":"num 1>enter,ctrl>space,esc>forcequit",
     "pc_raiders":"ctrl>space",
+    "pc_tic80_denis_kogne":"ctrl>z,alt>x,esc>forcequit:tic80.exe",
+    "pc_tic80_kongremake":"alt>x,ctrl>enter,esc>forcequit:tic80.exe",
     "pc_zx80_kong":"ctrl>num 0,esc>forcequit:zesarux.exe"}
 
 # Sound setup

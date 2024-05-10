@@ -576,6 +576,7 @@ An optional add-on pack includes around 200 Donkey Kong ports and hacks for the 
  - Tandy Color Computer 3 (CoCo3) 
  - Tangerine Oric 1
  - Texas Instruments TI99/4
+ - TIC-80 Fantasy Console
  - Vtech Creativision
 
 

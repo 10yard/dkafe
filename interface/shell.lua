@@ -58,9 +58,14 @@ rom_table["a800xl"]                  = {"P1",          false, 400,   {},        
 rom_table["adam"]                    = {"P1",          true,  700,   {},                                                0,     0,   0,   0 }
 rom_table["apple2e"]                 = {"P1",          true,  600,   {},                                                3,     1,   -110,0 }
 rom_table["apple2e_dk"]              = {"P1",          true,  600,   {500,"S"},                                         3,     1,   -110,0 }
+rom_table["apple2e_applekong"]       = {"WAIT TO START",true, 1420,  {440,"R",540,"A"},                                 3,     1,   -110,0 }
 rom_table["apple2e_cannonball"]      = {"P1",          true,  700,   {},                                                3,     1,   -110,0 }
 rom_table["bbcb"]                    = {"JJ",          false, 300,   {60,'*EXEC !BOOT\n'},                              5.5,   15,  0,   0 }
-rom_table["bbcb_dk_junior"]          = {"P1",          true,  1300,  {60,'*EXEC !BOOT\n',300,"{SPACE}S5S5"},            0,     2,   0,   0 }
+rom_table["bbcb_dk_junior"]          = {"P1",          true,  1300,  {60,'*EXEC !BOOT\n',300,"{S5}{S5}"},               0,     2,   0,   0 }
+rom_table["bbcb_krazyjohn"]          = {"",            false, 500,   {60,'*EXEC !BOOT\n',400,"N"},                      0,     2,   0,   0 }
+rom_table["bbcb_krazyape2"]          = {"",            false, 1400,  {60,'*EXEC !BOOT\n',540,"{SPACE}",600,"{SPACE}",
+																	  660,"{SPACE}",720,"{SPACE}",780,"{SPACE}"},       0,     2,   0,   0 }
+rom_table["bbcb_builder"]            = {"JJ",          false, 360,   {60,'*EXEC !BOOT\n',180,"{SPACE}"},                5.5,   15,  0,   0 }
 rom_table["bbcb_killergorilla"]      = {"P1",          false, 360,   {60,'*EXEC !BOOT\n',300,"{SPACE}"},                5.5,   15,  0,   0 }
 rom_table["bbcb_killergorilla2"]     = {"P1",          true,  800,   {60,'*EXEC !BOOT\n',300,"{ENTER}"},                5.5,   15,  0,   10}
 rom_table["plus4"]                   = {"P1",          false, 360,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
@@ -88,6 +93,9 @@ rom_table["coleco"]                  = {"P1",          true,  720,   {},        
 rom_table["cpc6128"]                 = {"P1",          false, 1450,  {60,'RUN"DONKEY\n'},                               6,     4,   0,   0 }
 rom_table["cpc6128_dk"]              = {"P1",          false, 1450,  {60,'RUN"DONKEY\n'},                               6,     4,   0,   0 }
 rom_table["cpc6128_climbit"]         = {"P1",          false, 1450,  {60,'RUN"CLIMBIT\n'},                              6,     4,   0,   0 }
+rom_table["cpc6128_killergorilla"]   = {"JJ",          false, 1450,  {60,'RUN"KGORILA\n'},                              6,     4,   0,   0 }
+rom_table["cpc6128_kongsrevenge"]    = {"",            false, 1260,  {60,'RUN"KONG\n',360,"1\n",420,"n\n",
+																		960,"{SPACE}",1080,"{ENTER}",1200,"{ENTER}"},   6,     4,   0,   0 }
 rom_table["crvision"]                = {"P2 TT P1",    false, 0,     {},                                                0,     0,   0,   0 }
 rom_table["dragon32"]                = {"JJ",          true,  0,     {120,"CLOADM\n"},                                  0,     0,   0,   16}
 rom_table["dragon32_kingcuthbert"]   = {"P1 TT P1 AA", true,  3250,  {120,"CLOADM\n",2900,"EXEC\n"},                    0,     0,   0,   16}
@@ -144,7 +152,7 @@ rom_table["zx81_zonkeykong"]         = {"",            true,  16150, {360,'J""\n
 rom_data = rom_table[shell_name] or rom_table[emu:romname()]
 if rom_data then
 	start_msg = rom_data[1]
-	if start_msg ~= "" and start_msg ~= "BUG" then
+	if start_msg ~= "" and start_msg ~= "BUG" and start_msg ~= "WAIT TO START" then
 		start_msg = "PUSH "..rom_data[1].." TO START"
 	end
 	state = rom_data[2]
@@ -198,7 +206,7 @@ function shell_main()
 				if screen:frame_number() < quick_start then
 					sound.attenuation = -32 -- mute sounds
 					max_frameskip(true)
-					if quick_start > 500 then
+					if quick_start > 240 then
 						local _remain = tostring(math.floor((screen:frame_number() / quick_start) * 100)).."%"
 						screen:draw_text(0, 6 + scale + y_off,  "LOADING...".._remain, white, 0xff000000)
 						if state and not file_exists(shell_state) then
@@ -221,7 +229,7 @@ function shell_main()
 						if inputs[i] == "{PLAY}" then
 							cass:play()
 						elseif string.match(inputs[i], "{") then
-							coded = string.gsub(inputs[i], "S5", "{SPACE}{SPACE}{SPACE}{SPACE}{SPACE}")
+							coded = string.gsub(inputs[i], "{S5}", "{SPACE}{SPACE}{SPACE}{SPACE}{SPACE}")
 							keyb:post_coded(coded)
 						else
 							keyb:post(inputs[i])
