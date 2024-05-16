@@ -561,12 +561,14 @@ An optional add-on pack includes around 200 Donkey Kong ports and hacks for the 
  - Famicom Disk System
  - Game and Watch
  - Intellivision
- - LCD/Handheld
+ - LCD and Handheld
  - MS-DOS
  - MSX
  - Nintendo Entertainment System
- - Nintendo Gameboy|Gameboy Color
+ - Nintendo Gameboy
+ - Nintendo Gameboy Color
  - PC
+ - Pico-8 Fantasy Console
  - Sega Genesis/Megadrive
  - Sharp MZ700
  - Sinclair Spectrum 
@@ -574,8 +576,10 @@ An optional add-on pack includes around 200 Donkey Kong ports and hacks for the 
  - Sinclair ZX81
  - Super Nintendo
  - Tandy Color Computer 3 (CoCo3) 
- - Tangerine Oric 1
+ - Tandy TRS-80
+ - Tangerine Oric
  - Texas Instruments TI99/4
+ - Thomson MO5
  - TIC-80 Fantasy Console
  - Vtech Creativision
 

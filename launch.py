@@ -10,6 +10,7 @@ Main program
 ------------
 """
 import os
+import sys
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame.cursors
@@ -373,7 +374,7 @@ def play_intro_animation():
                 write_text(" FRONT END ", font=dk_font, x=69, y=8, bg=BLACK)
 
             show_score()
-            update_screen(delay_ms=CLOCK_RATE)
+            update_screen(delay_ms=int(CLOCK_RATE * 0.895))
 
 
 def display_slots(version_only=False, logo_scene=False):
@@ -959,11 +960,12 @@ def close_menu():
     pygame.mouse.set_visible(False)
     intermission_channel.stop()
     # Remember the last selected item from the game menu
-    try:
-        widget = _g.menu.get_selected_widget()
-        _g.last_selected = widget._args[0][0] + widget._args[0][1]
-    except:
-        _g.last_selected = None
+    if _g.current_menu_title == QUESTION:
+        try:
+            widget = _g.menu.get_selected_widget()
+            _g.last_selected = widget._args[0][0] + widget._args[0][1]
+        except:
+            _g.last_selected = None
     _g.menu.disable()
     _g.exitmenu.disable()
     _g.setmenu.disable()
@@ -1026,8 +1028,9 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             remap_program = None
             if name in KEYBOARD_REMAP:
                 if ARCH == "win64":
-                    for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROM_DIR, "pc", "remap_pc.exe"):
+                    for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROOT_DIR, "dist", "remap_pc.exe"), os.path.join(ROM_DIR, "pc", "remap_pc.exe"):
                         if os.path.exists(remap_program):
+                            print(remap_program)
                             Popen(f'"{remap_program}" "{name}" "{KEYBOARD_REMAP[name]}', creationflags=CREATE_NO_WINDOW)
                             break
 
@@ -1036,7 +1039,11 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 run(name, shell=True, creationflags=CREATE_NO_WINDOW)
                 os.chdir(ROOT_DIR)
             else:
-                run(launch_command, creationflags=CREATE_NO_WINDOW)
+                if len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE":
+                    # Don't hide the console output
+                    run(launch_command)
+                else:
+                    run(launch_command, creationflags=CREATE_NO_WINDOW)
 
             # Terminate any temporary keyboard mappings
             if remap_program:

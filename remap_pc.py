@@ -23,8 +23,11 @@ def kill_pc_external(pid=None, program=None):
 
 def remap(name, mappings):
     """asynchronous: temporary keyboard remapping and force quit option"""
-    for m in mappings.split(","):
-        src, dst = m.split(">")
+    for m in mappings.split("|"):
+        try:
+            src, dst = m.split(">")
+        except ValueError:
+            continue
         if dst.startswith("forcequit"):
             # Force quit necessary for some PC games.  "forcequit:PROGRAMNAME" or "forcequit" to kill the default.
             if ":" in dst:

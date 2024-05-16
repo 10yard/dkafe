@@ -27,6 +27,13 @@ mame_version = tonumber(emu.app_version())
 if mame_version >= 0.241 then
 	keyb = mac.natkeyboard
 	cass = mac.cassettes[":cassette"]
+	if not cass then
+		-- find first cassette instance
+		for k, v in ipairs(mac.cassettes) do
+			cass = v
+			break
+		end
+	end
 end
 
 local bronze, silver, gold = 0xffcd7f32, 0xffc0c0c0, 0xffd4af37
@@ -59,6 +66,7 @@ rom_table["adam"]                    = {"P1",          true,  700,   {},        
 rom_table["apple2e"]                 = {"P1",          true,  600,   {},                                                3,     1,   -110,0 }
 rom_table["apple2e_dk"]              = {"P1",          true,  600,   {500,"S"},                                         3,     1,   -110,0 }
 rom_table["apple2e_applekong"]       = {"WAIT TO START",true, 1420,  {440,"R",540,"A"},                                 3,     1,   -110,0 }
+rom_table["apple2e_budgiekong"]      = {"WAIT TO START",false,2100,  {},                                                3,     1,   -110,0 }
 rom_table["apple2e_cannonball"]      = {"P1",          true,  700,   {},                                                3,     1,   -110,0 }
 rom_table["bbcb"]                    = {"JJ",          false, 300,   {60,'*EXEC !BOOT\n'},                              5.5,   15,  0,   0 }
 rom_table["bbcb_dk_junior"]          = {"P1",          true,  1300,  {60,'*EXEC !BOOT\n',300,"{S5}{S5}"},               0,     2,   0,   0 }
@@ -77,6 +85,8 @@ rom_table["c64_dk_x"]                = {"JJ TT P1",    false, 750,   {150,"RUN\n
 rom_table["c64_kong"]                = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["c64_kongokong"]           = {"P1",          true,  1430,  {150,"RUN\n",1250,"{F7}",1400,"{F1}"},             1.33,  2,   0,   0 }
 rom_table["c64_bonkeykong"]          = {"JJ",          true,  14000, {150,'LOAD"*",8,1\n',13000,"RUN\n"},               1.33,  2,   0,   0 }
+rom_table["c64_monkeykong"]          = {"WAIT TO START",true, 5900,  {150,'LOAD"*",8,1\n',2100,"RUN\n",2900,"{F1}",
+																	3000,"{F1}",3100,"{F1}",3400,"{F3}{F3}{F3}{F3}"},	1.33,  2,   0,   0 }
 rom_table["c64_felix"]               = {"JJ TT JJ AA", true,  550,   {150,'RUN\n'},                                     1.33,  2,   0,   0 }
 rom_table["c64_krazykong64"]         = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["c64_mariosbrewery"]       = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
@@ -108,9 +118,11 @@ rom_table["gbcolor"]                 = {"P1",          false, 180,   {},        
 rom_table["hbf900a"]                 = {"P1",          true , 2300,  {},                                                5,     12,  0,   0 }
 rom_table["hbf900a_tokekong"]        = {"JJ",          true , 3700,  {},                                                5,     12,  0,   0 }
 rom_table["hbf900a_apeman"]          = {"JJ",          true,  5300,  {},                                                5,     12,  0,   0 }
+rom_table["hbf900a_congo"]           = {"JJ",          false, 13000, {660,'RUN"CAS:"\n'},               5,     12,  0,   0 }
 rom_table["cdkong"]                  = {"P1",          false, 0,     {},                                                18,    32,  0,   40}
 rom_table["gckong"]                  = {"P1",          false, 0,     {},                                                18,    32,  0,   40}
 rom_table["intv"]                    = {"P1",          true,  900,   {},                                                0,     0,   0,   0 }
+rom_table["mo5"]                     = {"P1",          false, 5000,  {90,'RUN""\n'},                                    0,     0,   0,   0 }
 rom_table["mz700_jumpman"]           = {"JJ",          false, 10000, {180,"LOAD\n",300,"{PLAY}"},                       0.5,   0,   0,   0 }
 rom_table["mz700_crazykong"]         = {"",            true,  20650, {180,"LOAD\n",300,"{PLAY}",18000," ",18500," ",
 								  19000," ", 19500," ",20300,"L",20330,"R",20360,"U",20390,"D",20420,"Z",20450,"2"}, 	0.5,   0,   0,   0 }
@@ -125,7 +137,8 @@ rom_table["snes"]                    = {"P1",          false, 360,   {},        
 rom_table["spectrum"]                = {"P1",          false, 0,     {},                                                2,     4,   0,   0 }
 rom_table["spectrum_ape_escape"]     = {"P1",          true,  16000, {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
 rom_table["spectrum_kongs_revenge"]  = {"P1",          true,  15000, {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
-rom_table["spectrum_killerkong"]     = {"",            false, 500,   {},                                                2,     4,   0,   0 }
+rom_table["spectrum_killerkong"]     = {"P1",          false, 500,   {},                                                2,     4,   0,   0 }
+rom_table["spectrum_killerknight"]   = {"POOR", 	   false, 0,   {},                                                2,     4,   0,   0 }
 rom_table["spectrum_kong"]           = {"JJ",          false, 200,   {60,"{SPACE}"},                                    2,     4,   0,   0 }
 rom_table["spectrum_krazykong"]      = {"JJ",          false, 0,     {15,"y"},                                          2,     4,   0,   0 }
 rom_table["spectrum_wallykong"]      = {"P1",          false, 200,   {60,"SS",100,"0",140,"0"},                         2,     4,   0,   0 }
@@ -133,6 +146,7 @@ rom_table["spectrum_monkeybiz"]      = {"P1",          true,  360,   {200,"{SPAC
 rom_table["ti99_4a"]                 = {"JJ",          true,  600,   {60,"  2"},                                        0,     0,   0,   0 }
 rom_table["vic20"]                   = {"",            true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_minikong"]          = {"BUG",         true,  3200,  {360,'LOAD"*",8,1\n',1400,"RUN\n",2200,"N\n"},	    1.33,  2,   0,   0 }
+rom_table["vic20_mickybricky"]       = {"P1",          false, 18000, {280,'LOAD\n',400,"{PLAY}"},					    1.33,  2,   0,   0 }
 rom_table["vic20_dk_ackenhausen"]    = {"P1",          false, 580,   {360,"RUN\n", 450, "1\n"},                         1.33,  2,   0,   0 }
 rom_table["vic20_fast_eddie"]        = {"",            false, 0,     {},                                                1.33,  2,   0,   0 }
 rom_table["vic20_hardhatclimber"]    = {"",            false, 600,   {360, "4 CH=99\n", 460,"RUN\n"},                   1.33,  2,   0,   0 }
@@ -142,6 +156,8 @@ rom_table["vic20_littlekong"]        = {"",            true,  1100,  {360,"RUN\n
 rom_table["vic20_dkjr_gnw"]          = {"JJ",          false, 500,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_kongokong"]         = {"P1",          true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
+rom_table["vic20_logger"]            = {"P1",          false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",
+						  	  				       4400,"{SPACE}",4800,"{RESET}",5000,"LOAD\n"},      1.33,  2,   0,   0 }
 rom_table["zx81_crazykong"]          = {"",            true,  10750, {360,'J""\n',420,"{PLAY}",10400,"\n",10500,"1\n"}, 2,     4,   0,   0 }
 rom_table["zx81_kongsrevenge"]       = {"",            false, 20200, {360,'J""\n',420,"{PLAY}", "20100", "n\n"},        2,     4,   0,   0 }
 rom_table["zx81_krazykong_pss"]      = {"JJ",          true,  11660, {360,'J""\n',420,"{PLAY}",11500," ",11600," "},    2,     4,   0,   0 }
@@ -152,7 +168,7 @@ rom_table["zx81_zonkeykong"]         = {"",            true,  16150, {360,'J""\n
 rom_data = rom_table[shell_name] or rom_table[emu:romname()]
 if rom_data then
 	start_msg = rom_data[1]
-	if start_msg ~= "" and start_msg ~= "BUG" and start_msg ~= "WAIT TO START" then
+	if start_msg ~= "" and start_msg ~= "BUG" and start_msg ~= "POOR" and start_msg ~= "WAIT TO START" then
 		start_msg = "PUSH "..rom_data[1].." TO START"
 	end
 	state = rom_data[2]
@@ -169,6 +185,7 @@ if rom_data then
 	start_msg = string.gsub(start_msg, "AA", "AGAIN")
 	start_msg = string.gsub(start_msg, "LR", "LEFT,RIGHT,UP,DOWN")
 	start_msg = string.gsub(start_msg, "BUG", "KNOWN SCREEN ISSUE :(")
+	start_msg = string.gsub(start_msg, "POOR", "POOR CONTROLS :(")
 end
 
 local start_time = os.time()
@@ -228,6 +245,8 @@ function shell_main()
 					if screen:frame_number() == inputs[i-1] then
 						if inputs[i] == "{PLAY}" then
 							cass:play()
+						elseif inputs[i] == "{RESET}" then
+							mac:soft_reset()
 						elseif string.match(inputs[i], "{") then
 							coded = string.gsub(inputs[i], "{S5}", "{SPACE}{SPACE}{SPACE}{SPACE}{SPACE}")
 							keyb:post_coded(coded)
