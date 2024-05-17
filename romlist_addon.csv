@@ -61,6 +61,9 @@ nes_dk_zelda04,shell,ZK4,ZeldaKong 4 (Zol),147,,,169000,2,4,8
 nes_dk_zelda05,shell,ZK5,ZeldaKong 5 (Armos),148,,,170000,2,4,8
 nes_dk_zelda06,shell,ZK6,ZeldaKong 6 (Link 2),149,,,171000,2,4,8
 nes_dk_zelda07,shell,ZK7,ZeldaKong 7 (Triforce),150,,,172000,2,4,8
+nes_dk_zelda08,shell,ZK8,ZeldaKong 8 (Child),151,,,173000,2,4,8
+nes_dk_zelda09,shell,ZK9,ZeldaKong 9 (GB Link),152,,,174000,2,4,8
+nes_dk_zelda10,shell,ZK10,ZeldaKong10 (Marin),153,,,175000,2,4,8
 plus4_climbit,shell,C16,Climb-It,154,,,176000,2,4,8
 plus4_rollerkong,shell,Rk,RollerKong,155,,,177000,2,4,8
 c64_dk,shell,C64,Donkey Kong (Nintendo),156,,,178000,2,4,8
@@ -70,28 +73,29 @@ c64_felix,shell,FelixJR,Fix It Felix Jr.,159,,,181000,2,4,8
 c64_ck,shell,CrazyKong,Crazy Kong,161,,,182000,2,4,8
 c64_mariosbrewery,shell,Brewery,Marios Brewery,162,,,183000,2,4,8
 c64_bonkeykong,shell,BonkeyKong,Bonkey Kong,163,,,184000,2,4,8
+mo5_yeti,shell,MO5 Yeti,Yeti,164,,,185000,2,4,8
+mz700_donkeygorilla,shell,D/Gorilla,Donkey Gorilla,166,,,186000,2,4,8
+mz700_crazykong,shell,MZCK,Crazy Kong,167,,,187000,2,4,8
 vic20_kongokong,shell,V20CK,Kongo Kong,168,,,188000,2,4,8
-##adam_dk_junior,shell,DK,Donkey Kong Junior,9999,,,0,2,4,8
-##dos_aldo2,shell,Aldo Again,Aldo Again,9999,,,0,2,4,8
-##dos_jman2,shell,Jumpman Lives,Jumpman Lives,9999,,,0,2,4,8
-##dos_jumpman,shell,Jumpman,Jumpman,9999,,,0,2,4,8
-##dos_kongsrev,shell,KongsRevenge,Kong's Revenge,9999,,,173000,2,4,8
-##hbf900a_congo,shell,**Controls not working,Congo,9999,,,0,2,4,8
-##intv_beautybeast,shell,BeautyBeast,Beauty and the Beast,9999,,,0,2,4,8
-##mz700_building_hopper,shell,**Not DK enough,Building Hopper,9999,,,0,2,4,8
-##mz700_jumpman,shell,**Crashes,Jumpman,9999,,,0,2,4,8
-##oric1_4k_kong,shell,4K Kong,4K Kong,9999,,,0,2,4,8
-##pc_trs80_skyscraper,shell,**difficult to map,Skyscraper,9999,,,189000,2,4,8
-##plus4_dkplus,shell,**Terrible controls,Donkey Kong +,9999,,,0,2,4,8
-##plus4_larrymonkey,shell,**Screen issues,Larry Monkey,9999,,,0,2,4,8
-##spectrum_dk_arcade,shell,DKArcade,Donkey Kong Arcade,9999,,,0,2,4,8
-##vic20_cannonball,shell,**Doesnt start,Cannonball Blitz,9999,,,0,2,4,8
-##vic20_dkjr_gnw,shell,**Hangs,Donkey Kong Junior (G&W),9999,,,0,2,4,8
-##vic20_logger,shell,**start up issue,Logger,9999,,,188000,2,4,8
-##vic20_mickybricky,shell,**start up issue,Micky The Bricky,9999,,,188000,2,4,8
-##vic20_minikong,shell,**Screen issues,MiniKong,9999,,,0,2,4,8
-##vic20_vic_kong,shell,**Similar to nufecop,Vic Kong,9999,,,0,2,4,8
-##zx81_kongsrevenge,shell,**slow and buggy,Kongs Revenge,9999,,,0,2,4,8
+zx81_krazykong_pss,shell,ZX81CK,Krazy Kong,169,,,189000,2,4,8
+pc_dk_amiga_pd,shell,AmigaDK,Amiga Donkey Kong PD,170,,,190000,2,4,8
+dos_dk,shell,DOSDK,Donkey Kong (Original),171,,,191000,2,4,8
+dos_mamedk,shell,OldMAME,Earliest MAME DK (1997),173,,,192000,2,4,8
+dos_kong,shell,Champ,Champ Kong,175,,,193000,2,4,8
+dos_aldo,shell,Aldo,Aldo's Adventure,177,,,194000,2,4,8
+dos_aldo3,shell,Aldo3,Aldo's Assault,178,,,195000,2,4,8
+pc_jumpman_rtx,shell,JumpmanRTX,Jumpman RTX,180,,,196000,2,4,8
+pc_dk_craze,shell,DKCraze,Donkey Kong Craze,182,,,197000,2,4,8
+pc_dk_redux,shell,Redux,Donkey Kong Redux,183,,,198000,2,4,8
+pc_raiders,shell,Raiders,Donkey Kong Raiders,185,,,199000,2,4,8
+pc_dk_remake,shell,PC Remake,Donkey Kong Remake,187,,,200000,2,4,8
+lcd_cdkong,shell,LCDDK,Donkey Kong Coleco,201,,,185000,2,4,8
+pc_atarist_mb,shell,MonkeyBus,Monkey Business,202,,,186000,2,4,8
+gnw_dkjr,shell,DK JR,Donkey Kong Junior,203,,,186000,2,4,8
+pc_atarist_kidkong,shell,STDK,Kid Kong,204,,,187000,2,4,8
+gnw_dkong,shell,G&WDK,Donkey Kong (Original),205,,,187000,2,4,8
+pc_dk_craze,shell,PCDK,Donkey Kong Craze,206,,,175000,2,4,8
+gnw_dkcirc,shell,G&W Circus,Donkey Kong Circus,209,,,189000,2,4,8
 a2600_ck,shell,CK,Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,CK Fast,9999,,,121000,2,4,8
 a2600_dk,shell,VCSDK,Donkey Kong (Original),9999,,,0,2,4,8
@@ -163,12 +167,9 @@ cpc6128_dk,shell,DK,Donkey Kong (Original),9999,,,131000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,Killer Gorilla,9999,,,131000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,Kong's Revenge,9999,,,131000,2,4,8
 crvision_policejump,shell,PoliceJump,Police Jump,9999,,,130000,2,4,8
-dos_aldo,shell,Aldo's Adventure,Aldo's Adventure,9999,,,173000,2,4,8
-dos_aldo3,shell,Aldo's Assault,Aldo's Assault,9999,,,173000,2,4,8
 dos_davikong,shell,David's Kong,David's Kong,9999,,,173000,2,4,8
 dos_dk,shell,DOS,Donkey Kong (Original),9999,,,0,2,4,8
 dos_kong,shell,ChampKong,Champ Kong,9999,,,0,2,4,8
-dos_mamedk,shell,DK,Earliest MAME DK (1997),9999,,,0,2,4,8
 dos_willy,shell,WillyWorm,Willy the Worm,9999,,,173000,2,4,8
 dragon32_kingcuthbert,shell,KingCuthbert,King Cuthbert,9999,,,130000,2,4,8
 fds_dk_japan,shell,DK,Donkey Kong (Original),9999,,,121000,2,4,8
@@ -190,8 +191,6 @@ intv_dk_junior,shell,DK Junior,Donkey Kong Junior,9999,,,151000,2,4,8
 lcd_cdkong,shell,Coleco DK,Donkey Kong Coleco,9999,,,186000,2,4,8
 lcd_gckong,shell,Gakken CK,Gakken Crazy Kong,9999,,,186000,2,4,8
 mo5_yeti,shell,Yeti,Yeti,9999,,,130000,2,4,8
-mz700_crazykong,shell,**Doesnt load,Crazy Kong,9999,,,130000,2,4,8
-mz700_donkeygorilla,shell,DonkeyGorilla,Donkey Gorilla,9999,,,130000,2,4,8
 nes_crazykong,shell,CK,Crazy Kong,9999,,,0,2,4,8
 nes_dk,shell,NESDK,Donkey Kong (Original),9999,,,0,2,4,8
 nes_dk_3,shell,DK3,Donkey Kong 3,9999,,,0,2,4,8
@@ -219,19 +218,14 @@ pc_a2600_arcade_hard,shell,Arcade Demo Hard,Arcade Demo (Hard),9999,,,121000,2,4
 pc_atarist_junior,shell,JR,Donkey JR (G&W),9999,,,186000,2,4,8
 pc_atarist_mb,shell,MonkeyBusiness,Monkey Business,9999,,,186000,2,4,8
 pc_dk_amiga_pd,shell,DK Amiga,Amiga Donkey Kong PD,9999,,,185000,2,4,8
-pc_dk_craze,shell,DK Craze,Donkey Kong Craze,9999,,,175000,2,4,8
 pc_dk_jr_remake,shell,DK Junior Remake,Donkey Kong Junior Remake,9999,,,175000,2,4,8
 pc_dk_plus,shell,DKPlus,Donkey Kong Plus,9999,,,175000,2,4,8
-pc_dk_redux,shell,DK Redux,Donkey Kong Redux,9999,,,175000,2,4,8
-pc_dk_remake,shell,DK Remake,Donkey Kong Remake,9999,,,175000,2,4,8
 pc_dkongse_gnw,shell,DK SE,Donkey Kong Special Ed.,9999,,,175000,2,4,8
 pc_fixitfelix,shell,Fix It Felix Classic,Fix It Felix Jr.,9999,,,175000,2,4,8
-pc_jumpman_rtx,shell,JumpmanRTX,Jumpman RTX,9999,,,175000,2,4,8
 pc_monkeyjump_gnw,shell,MonkeyJump,MonkeyJump,9999,,,186000,2,4,8
 pc_pico8_ape,shell,ApeApproacher,Ape Approacher,9999,,,130000,2,4,8
 pc_pico8_denis_kogne,shell,DenisKogne,Denis Kogne,9999,,,130000,2,4,8
 pc_pico8_dinkyking,shell,DinkyKing,Dinky King,9999,,,130000,2,4,8
-pc_raiders,shell,DK Raiders,Donkey Kong Raiders,9999,,,175000,2,4,8
 pc_tic80_denis_kogne,shell,DenisKogne,Denis Kogne,9999,,,189000,2,4,8
 pc_tic80_kongremake,shell,KongRemake,Kong Remake,9999,,,189000,2,4,8
 pc_trs80_ape,shell,ApeEscape,Ape,9999,,,189000,2,4,8
@@ -255,28 +249,35 @@ spectrum_kongs_revenge,shell,KongsRevenge,Kongs Revenge,9999,,,160000,2,4,8
 spectrum_wallykong,shell,WallyKong,Wally Kong,9999,,,160000,2,4,8
 ti99-4a_dk,shell,DK,Donkey Kong (Original),9999,,,142000,2,4,8
 vic20_crazykong,shell,CrazyKong,Crazy Kong,9999,,,188000,2,4,8
-vic20_dk_ackenhausen,shell,DK,Donkey Kong (Ackenhausen),9999,,,188000,2,4,8
 vic20_fast_eddie,shell,FastEddie,Fast Eddie,9999,,,188000,2,4,8
 vic20_hardhatclimber,shell,HardhatClimber,Hardhat Climber,9999,,,188000,2,4,8
 vic20_kongokong,shell,KongoKong,Kongo Kong,9999,,,188000,2,4,8
 vic20_krazykong_cascade,shell,KrazyKong,Krazy Kong (Cascade),9999,,,188000,2,4,8
 vic20_krazykong_nufecop,shell,KrazyKong,Krazy Kong (Nufecop),9999,,,188000,2,4,8
 vic20_littlekong,shell,LittleKong,Little Kong,9999,,,188000,2,4,8
-vic20_logrun,shell,LogRun,Log Run,9999,,,188000,2,4,8
 zx81_crazykong,shell,CK,Crazy Kong,9999,,,160000,2,4,8
 zx81_krazykong_pss,shell,CK,Krazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,Zonkey Kong,9999,,,160000,2,4,8
-pc_dk_craze,shell,PCDK,Donkey Kong Craze,151.1,,,175000,2,4,8
-nes_dk_zelda08,shell,ZK8,ZeldaKong 8 (Child),151.2,,,173000,2,4,8
-dos_dk,shell,DOS,Donkey Kong (Original),152.1,,,173000,2,4,8
-nes_dk_zelda09,shell,ZK9,ZeldaKong 9 (GB Link),152.2,,,174000,2,4,8
-dos_kong,shell,Champ,Champ Kong,153.1,,,174000,2,4,8
-nes_dk_zelda10,shell,ZK10,ZeldaKong10 (Marin),153.2,,,175000,2,4,8
-pc_dk_amiga_pd,shell,AmigaDK,Amiga Donkey Kong PD,164.1,,,185000,2,4,8
-lcd_cdkong,shell,LCDDK,Donkey Kong Coleco,164.2,,,185000,2,4,8
-pc_atarist_mb,shell,MonkeyBus,Monkey Business,166.1,,,186000,2,4,8
-gnw_dkjr,shell,DK JR,Donkey Kong Junior,166.2,,,186000,2,4,8
-pc_atarist_kidkong,shell,STDK,Kid Kong,167.1,,,187000,2,4,8
-gnw_dkong,shell,G&WDK,Donkey Kong (Original),167.2,,,187000,2,4,8
-zx81_krazykong_pss,shell,ZX81CK,Krazy Kong,169.1,,,189000,2,4,8
-gnw_dkcirc,shell,G&W Circus,Donkey Kong Circus,169.2,,,189000,2,4,8
+##adam_dk_junior,shell,DK,Donkey Kong Junior,####,,,0,2,4,8
+##dos_aldo2,shell,Aldo Again,Aldo Again,####,,,0,2,4,8
+##dos_jman2,shell,Jumpman Lives,Jumpman Lives,####,,,0,2,4,8
+##dos_jumpman,shell,Jumpman,Jumpman,####,,,0,2,4,8
+##dos_kongsrev,shell,KongsRevenge,Kong's Revenge,####,,,0,2,4,8
+##hbf900a_congo,shell,**Controls not working,Congo,####,,,0,2,4,8
+##intv_beautybeast,shell,BeautyBeast,Beauty and the Beast,####,,,0,2,4,8
+##mz700_building_hopper,shell,**Not DK enough,Building Hopper,####,,,0,2,4,8
+##mz700_jumpman,shell,**Crashes,Jumpman,####,,,0,2,4,8
+##oric1_4k_kong,shell,4K Kong,4K Kong,####,,,0,2,4,8
+##pc_trs80_skyscraper,shell,**difficult to map,Skyscraper,####,,,0,2,4,8
+##plus4_dkplus,shell,**Terrible controls,Donkey Kong +,####,,,0,2,4,8
+##plus4_larrymonkey,shell,**Screen issues,Larry Monkey,####,,,0,2,4,8
+##spectrum_dk_arcade,shell,DKArcade,Donkey Kong Arcade,####,,,0,2,4,8
+##vic20_cannonball,shell,**Doesnt start,Cannonball Blitz,####,,,0,2,4,8
+##vic20_dk_ackenhausen,shell,DK,Donkey Kong (Ackenhausen),####,,,0,2,4,8
+##vic20_dkjr_gnw,shell,**Hangs,Donkey Kong Junior (G&W),####,,,0,2,4,8
+##vic20_logger,shell,**start up issue,Logger,####,,,0,2,4,8
+##vic20_logrun,shell,LogRun,Log Run,####,,,0,2,4,8
+##vic20_mickybricky,shell,**start up issue,Micky The Bricky,####,,,0,2,4,8
+##vic20_minikong,shell,**Screen issues,MiniKong,####,,,0,2,4,8
+##vic20_vic_kong,shell,**Similar to nufecop,Vic Kong,####,,,0,2,4,8
+##zx81_kongsrevenge,shell,**slow and buggy,Kongs Revenge,####,,,0,2,4,8

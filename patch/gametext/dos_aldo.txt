@@ -1,0 +1,13 @@
+MS-DOS - Aldo's Adventure
+
+Aldo bears a striking resemblence to Mario in this 
+ladder-climbing and jumping game that looks 
+suspiciously similar to the original Donkey Kong game.
+Obvious similarities aside, this game does feature 
+excellent play control, and the game holds up very 
+well.
+Like Donkey Kong each level fills one screen and does
+not scroll. There are several different levels to 
+explore.
+
+Developed by David and Benjamin Ibach

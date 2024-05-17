@@ -1,0 +1,9 @@
+Sharp MZ700 - Donkey Gorilla
+
+A texty looking Donkey Kong clone.
+
+Like in Donkey Kong it is your goal to rescue the 
+damsel in distress and defeat the giant ape.
+The levels vary in layout.
+
+Developed By Tecno Soft

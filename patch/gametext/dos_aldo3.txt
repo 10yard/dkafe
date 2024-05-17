@@ -1,0 +1,13 @@
+MS-DOS - Aldo's Assault
+
+Part 3 of the Aldo series of games. All of the Aldo
+games play similarly to the classic Donkey Kong games. 
+Aldo even looks strikingly similar to everyone's 
+favorite video game plumber. 
+There seems to be a slight problem with collision-
+detection on the first level, where Aldo sometimes 
+will jump through a certain platform ... but other 
+than that, this game seems to play just as well as the
+others in the series.
+
+Developed by David and Benjamin Ibach

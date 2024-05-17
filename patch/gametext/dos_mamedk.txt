@@ -1,0 +1,8 @@
+MS-DOS - Early MAME Donkey Kong (1997)
+
+The first release of MAME to include Donkey Kong from
+February 1997.  MAME version 0.3.  The colours are 
+wrong and there is no sound output.  It's a glimpse
+of what was to come. 
+
+Developed by Nicola Salmoria

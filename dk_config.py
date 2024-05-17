@@ -150,17 +150,6 @@ if sys.gettrace():
     globals()["FULLSCREEN"] = 0
     globals()["TITLE"] = "DKAFE (Debugging Mode)"
 
-# Validate some settings
-ADDONS_CONSIDERED = ENABLE_ADDONS
-if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
-    globals()["ENABLE_ADDONS"] = 0
-STAGES = 4 if ENABLE_ADDONS else 3
-if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
-if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
-if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
-if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
-if START_STAGE > STAGES: START_STAGE = 0
-
 # Frontend version
 VERSION = ''
 if os.path.exists("VERSION"):
@@ -172,6 +161,21 @@ ARCH = 'win64'  # default
 if os.path.exists("ARCH"):
     with open("ARCH") as af:
         ARCH = af.readline().strip()
+
+# Validate some settings
+ADDONS_CONSIDERED = ENABLE_ADDONS
+if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
+    globals()["ENABLE_ADDONS"] = 0
+if ENABLE_ADDONS:
+    STAGES = 5 if ARCH == "win64" else 4
+else:
+    STAGES = 3
+
+if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
+if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
+if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
+if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
+if START_STAGE > STAGES: START_STAGE = 0
 
 # Expected location of original DK zips (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
@@ -320,7 +324,7 @@ SLOTS = (
     (130, 136), (149, 136), (164, 136), (194, 136), (210, 136),
     (34, 102), (50, 106), (98, 102), (116, 106), (132, 106), (148, 106), (194, 106),
     (194, 76),
-    (154, 66), (138, 66), (114, 66), (90, 66), (2, 66),
+    (154, 66), (138, 66), (110, 66), (90, 66), (2, 66),
     (90, 34),
 
     (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (194, 220), (210, 219),
@@ -465,9 +469,9 @@ play the arcades.
 Jumpman must play well to
 win prizes and unlock arcade
 machines as he works his way 
-through 4 challenging stages
-and rescues Pauline from the
-top of the building.  
+through all the challenging 
+stages and rescues Pauline 
+from the top of the building.  
 
 Pauline will ♥ it when you
 beat all of the machines.
