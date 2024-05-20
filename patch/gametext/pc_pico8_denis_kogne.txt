@@ -1,0 +1,9 @@
+Pico-8 Fantasy Console - Denis Kogne
+
+You play Denis,  who must make a table from IKEA.
+You can't jump, but you can throw hammers to kill shop
+guys enemys.
+You get bonus +50 pts when you collect minimum of 4 
+table legs, 4 screws and 1 table top.
+
+Developed by BGelais (Lostcadesoft)

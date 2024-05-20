@@ -1,0 +1,17 @@
+PC - Donkey Kong Junior Remake
+
+A Windows remake of the Nintendo classic from 1982.
+
+Donkey Kong, has been imprisoned in a cage. Donkey 
+Kong's cage is guarded by Mario, Donkey Kong Jr. must 
+save his father from Mario by putting the key or keys 
+in the stage into all of the locks. Mario attempts to 
+stop DK Jr. by releasing the many animals he controls 
+to knock DK Jr. off the vines and platforms. DK Jr.
+defeats Mario if the player completes the fourth 
+stage by putting all six keys in their locks, making 
+the floor disappear. 
+ 
+DK Jr can destroy an enemy by dropping fruit on them.
+
+Developed by P J Crossley

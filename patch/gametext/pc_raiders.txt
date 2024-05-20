@@ -1,0 +1,14 @@
+PC - Donkey-Me: Raiders of the Lost Ark
+
+A Donkey Kong and Indiana Jones fusion.
+A classc remake with a twist - Indiana Jones is the 
+hero.
+
+The game is divided into various phases that represent 
+scenes from the movie. The first, for example, is set 
+in the beginning of the movie, with the classic scene 
+with the giant rolling rock and the golden idol. 
+In others, you'll have to reach the lost ark, or the 
+truck where Marian was kidnapped.
+
+Developed by Bruneras

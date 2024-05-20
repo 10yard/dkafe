@@ -1,0 +1,10 @@
+PC - Donkey Kong Redux
+
+The author spent multiple hours watching videos of the
+original Donkey Kong game with the aim of replicating
+the behaviour, game logic and timing. 
+
+The game includes the option of 4 new levels added to
+the original 4 levels.
+
+Developed by Raouls

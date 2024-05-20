@@ -1,0 +1,9 @@
+Pico-8 Fantasy Console - Ape Approacher
+
+An interesting twist on Donkey Kong.
+
+You must disobey the rules by approaching and
+photographing the ape.  Collect batteries along the 
+way and find a good vantage point.
+
+Developed by mrjorts

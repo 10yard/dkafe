@@ -1,7 +1,5 @@
 Game & Watch - Donkey Kong DK-52
 
-The game takes place over two screens. 
-
 Mario starts at the bottom left of the bottom screen.
 Move right and dodge Donkey Kong's barrels by pressing
 the jump button. When Mario reaches the ladder, press
@@ -15,7 +13,6 @@ right dodging more barrels. When the crane swings all
 the way to the left, Mario can Jump to grab it and cut 
 one of the wires holding Donkey Kong's girder. 
 Mario will then return to the beginning of the level. 
-Cut all four wires to clear the level and receive a 
-score bonus.
+Cut all 4 wires to clear the level and receive a bonus.
 
 Developed By Nintendo

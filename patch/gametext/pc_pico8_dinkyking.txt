@@ -1,0 +1,12 @@
+Pico-8 Fantasy Console - Dinky King
+
+You are the Dinky King! You must save the Queen from
+the Jealous Jester. 
+The Queen dropped her stuff! Make sure to grab it for 
+her on the way. Arrest that Jester! And if you can...
+topple him to his doom in the last level. 
+
+Difficulty increases slightly each time you complete 
+all four levels.
+
+Developed by gradualgames

@@ -1,0 +1,13 @@
+Game & Watch - Donkey Kong Special Edition
+
+Donkey Kong captured a beautiful girl and carried her
+into a building under construction.
+Donkey Kong throws barrels at Mario to stop him from 
+saving the girl.
+- Knock the girder out from under Donkey Kong.
+- Do not jump when iron bar is moving over Mario.
+- Move the lever on the upper girder to lift the crane.
+- Jump to get the hook and cut the wire holding the 
+  girder on which Donkey Kong is standing.
+
+Developed By Luca "MADrigal" Antignano

@@ -1,0 +1,6 @@
+Tandy TRS80 - Kong
+
+Another blocky Donkey Kong clone.
+
+Developed by Karlheinz Nogai
+

@@ -1,0 +1,13 @@
+Tandy TRS80 - Donkey Kong
+
+A remarkable job of matching the look and feel of the 
+original. All the arcade screens are present, although
+the graphics are simplified to work with 128x48 screen.
+The gameplay even feels the same as the arcade version.
+Westmoreland and Gilman wrote Donkey Kong in 1982 but 
+never released it due to licensing problems.
+
+Despite its status as unreleased, Donkey Kong is a 
+finished game.
+
+Port Developed by Wayne Westmoreland and Terry Gilman

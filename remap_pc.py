@@ -20,6 +20,10 @@ def kill_pc_external(pid=None, program=None):
         call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
     elif program:
         call(f"taskkill /f /IM {program}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
+    # Ensure remappings are ended
+    keyboard.unhook_all()
+    call(f"taskkill /f /IM remap_pc.exe")
+    sys.exit()
 
 def remap(name, mappings):
     """asynchronous: temporary keyboard remapping and force quit option"""

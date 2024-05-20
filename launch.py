@@ -39,6 +39,7 @@ def exit_program(confirm=False):
             except (EOFError, FileNotFoundError, IOError):
                 pygame.time.delay(250 * attempt)
         rotate_display(exiting=True)
+        kill_pc_external(program="remap_pc.exe")  # ensure keyboard remaps are ended
         pygame.quit()
         sys.exit()
 
@@ -48,7 +49,7 @@ def kill_pc_external(pid=None, program=None):
     if pid:
         call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
     elif program:
-        call(f"taskkill /f /IM {program}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
+        call(f"taskkill /f /IM {os.path.basename(program)}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
 
 
 def rotate_display(exiting=False, initial=False, rotate=ROTATION):
@@ -1030,7 +1031,6 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 if ARCH == "win64":
                     for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROOT_DIR, "dist", "remap_pc.exe"), os.path.join(ROM_DIR, "pc", "remap_pc.exe"):
                         if os.path.exists(remap_program):
-                            print(remap_program)
                             Popen(f'"{remap_program}" "{name}" "{KEYBOARD_REMAP[name]}', creationflags=CREATE_NO_WINDOW)
                             break
 
@@ -1047,7 +1047,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
             # Terminate any temporary keyboard mappings
             if remap_program:
-                kill_pc_external(program=os.path.basename(remap_program))
+                kill_pc_external(program=remap_program)
 
             # If there was a specific config file then copy it back to account for any changes
             if sub == "shell":

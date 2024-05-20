@@ -1,0 +1,12 @@
+TIC-80 Fantasy Console - Kong Remake
+
+There's been a terrible accident...
+The shipping container was unlocked and a shipment of
+barrels has got loose.
+You must destroy the shipping container.
+Watch out for the acid tank.  It makes the barrels
+jumpy!
+
+Use the hammer if you must.
+
+Developed by derrick, george

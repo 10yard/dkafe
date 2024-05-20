@@ -87,15 +87,27 @@ dos_aldo3,shell,Aldo3,Aldo's Assault,178,,,195000,2,4,8
 pc_jumpman_rtx,shell,JumpmanRTX,Jumpman RTX,180,,,196000,2,4,8
 pc_dk_craze,shell,DKCraze,Donkey Kong Craze,182,,,197000,2,4,8
 pc_dk_redux,shell,Redux,Donkey Kong Redux,183,,,198000,2,4,8
-pc_raiders,shell,Raiders,Donkey Kong Raiders,185,,,199000,2,4,8
-pc_dk_remake,shell,PC Remake,Donkey Kong Remake,187,,,200000,2,4,8
-lcd_cdkong,shell,LCDDK,Donkey Kong Coleco,201,,,185000,2,4,8
-pc_atarist_mb,shell,MonkeyBus,Monkey Business,202,,,186000,2,4,8
-gnw_dkjr,shell,DK JR,Donkey Kong Junior,203,,,186000,2,4,8
-pc_atarist_kidkong,shell,STDK,Kid Kong,204,,,187000,2,4,8
-gnw_dkong,shell,G&WDK,Donkey Kong (Original),205,,,187000,2,4,8
-pc_dk_craze,shell,PCDK,Donkey Kong Craze,206,,,175000,2,4,8
-gnw_dkcirc,shell,G&W Circus,Donkey Kong Circus,209,,,189000,2,4,8
+pc_dk_jr_remake,shell,JR,Donkey Kong JR Remake,185,,,199000,2,4,8
+pc_raiders,shell,Raiders,Donkey Kong Raiders,186,,,200000,2,4,8
+pc_dk_remake,shell,PCDK,Donkey Kong Remake,187,,,201000,2,4,8
+pc_pico8_denis_kogne,shell,PICODK,Denis Kogne,188,,,202000,2,4,8
+pc_pico8_dinkyking,shell,DinkyKing,Dinky King,189,,,203000,2,4,8
+pc_pico8_ape,shell,Ape,Ape Approacher,190,,,204000,2,4,8
+pc_tic80_kongremake,shell,TIC80DK,Kong Remake,191,,,205000,2,4,8
+pc_tic80_denis_kogne,shell,DenisKogne,Denis Kogne,194,,,206000,2,4,8
+pc_trs80_killergorilla,shell,KillerGorilla,Killer Gorilla,195,,,207000,2,4,8
+pc_trs80_ape,shell,Ape,Ape Escape,196,,,208000,2,4,8
+pc_trs80_kong,shell,Kong,Kong,197,,,209000,2,4,8
+pc_trs80_dk,shell,TRS,Donkey Kong,198,,,210000,2,4,8
+pc_atarist_mb,shell,Monkey,Monkey Business,199,,,211000,2,4,8
+pc_atarist_kidkong,shell,STDK,Kid Kong,200,,,212000,2,4,8
+pc_zx80_kong,shell,ZX80,Kong,201,,,213000,2,4,8
+gnw_dkong,shell,G&WDK,Donkey Kong (Original),202,,,214000,2,4,8
+lcd_cdkong,shell,LCDDK,Donkey Kong Coleco,203,,,215000,2,4,8
+gnw_dkjr,shell,JR,Donkey Kong Junior,205,,,216000,2,4,8
+pc_dkongse_gnw,shell,SE,Donkey Kong Special Ed.,206,,,217000,2,4,8
+pc_wildmanjump_gnw,shell,WildMan,Wild Man Jump,207,,,218000,2,4,8
+pc_monkeyjump_gnw,shell,Monkey,Monkey Jump,208,,,219000,2,4,8
 a2600_ck,shell,CK,Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,CK Fast,9999,,,121000,2,4,8
 a2600_dk,shell,VCSDK,Donkey Kong (Original),9999,,,0,2,4,8
@@ -181,6 +193,7 @@ gbcolor_dk_4stage,shell,DK 4 Levels,Donkey Kong 4 Level Hack,9999,,,152000,2,4,8
 gbcolor_dk_japan_us,shell,DK,Donkey Kong (Original),9999,,,152000,2,4,8
 gbcolor_dk_summer,shell,DK Summer,Donkey Kong Summer Hack,9999,,,152000,2,4,8
 genesis_felix,shell,Fix It Felix Jr.,Fix It Felix Jr,9999,,,136000,2,4,8
+gnw_dkcirc,shell,G&W Circus,Donkey Kong Circus,9999,,,213000,2,4,8
 gnw_dkjrp,shell,DK JR (P),Donkey Kong JR (Panoroma),9999,,,186000,2,4,8
 gnw_dkong,shell,G&WDK,Donkey Kong (Original),9999,,,186000,2,4,8
 gnw_dkong2,shell,DK2,Donkey Kong 2,9999,,,186000,2,4,8
@@ -217,23 +230,9 @@ pc_a2600_arcade_easy,shell,Arcade Demo Easy,Arcade Demo (Easy),9999,,,121000,2,4
 pc_a2600_arcade_hard,shell,Arcade Demo Hard,Arcade Demo (Hard),9999,,,121000,2,4,8
 pc_atarist_junior,shell,JR,Donkey JR (G&W),9999,,,186000,2,4,8
 pc_atarist_mb,shell,MonkeyBusiness,Monkey Business,9999,,,186000,2,4,8
-pc_dk_amiga_pd,shell,DK Amiga,Amiga Donkey Kong PD,9999,,,185000,2,4,8
 pc_dk_jr_remake,shell,DK Junior Remake,Donkey Kong Junior Remake,9999,,,175000,2,4,8
 pc_dk_plus,shell,DKPlus,Donkey Kong Plus,9999,,,175000,2,4,8
-pc_dkongse_gnw,shell,DK SE,Donkey Kong Special Ed.,9999,,,175000,2,4,8
 pc_fixitfelix,shell,Fix It Felix Classic,Fix It Felix Jr.,9999,,,175000,2,4,8
-pc_monkeyjump_gnw,shell,MonkeyJump,MonkeyJump,9999,,,186000,2,4,8
-pc_pico8_ape,shell,ApeApproacher,Ape Approacher,9999,,,130000,2,4,8
-pc_pico8_denis_kogne,shell,DenisKogne,Denis Kogne,9999,,,130000,2,4,8
-pc_pico8_dinkyking,shell,DinkyKing,Dinky King,9999,,,130000,2,4,8
-pc_tic80_denis_kogne,shell,DenisKogne,Denis Kogne,9999,,,189000,2,4,8
-pc_tic80_kongremake,shell,KongRemake,Kong Remake,9999,,,189000,2,4,8
-pc_trs80_ape,shell,ApeEscape,Ape,9999,,,189000,2,4,8
-pc_trs80_dk,shell,DK,Donkey Kong,9999,,,189000,2,4,8
-pc_trs80_killergorilla,shell,KillerGorilla,Killer Gorilla,9999,,,189000,2,4,8
-pc_trs80_kong,shell,Kong,Kong,9999,,,189000,2,4,8
-pc_wildmanjump_gnw,shell,WildmanJump,WildmanJump,9999,,,186000,2,4,8
-pc_zx80_kong,shell,Kong,Kong,9999,,,160000,2,4,8
 pet4032_dk_junior,shell,DK Junior,Donkey Kong Junior (G&W),9999,,,133000,2,4,8
 pet4032_petscii_kong,shell,Petscii Kong,Petscii Kong,9999,,,133000,2,4,8
 pet4032_petscii_kong,shell,PETDK,Petscii Kong,9999,,,133000,2,4,8

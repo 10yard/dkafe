@@ -89,16 +89,18 @@ def get_award(sub, rom, score3, score2, score1, time_start=None, time_end=None):
 def format_K(number, lowest_number=None):
     # Format the provided number e.g. 15000 = 15K
     # if lowest number is provided then format will only be done if the number is above 1000
-    if int(lowest_number) < 1000:
-        return number
+    if lowest_number:
+        if int(lowest_number) < 1000:
+            return number
+        else:
+            num = float('{:.3g}'.format(float(number)))
+            magnitude = 0
+            while abs(num) >= 1000:
+                magnitude += 1
+                num /= 1000.0
+            return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
     else:
-        num = float('{:.3g}'.format(float(number)))
-        magnitude = 0
-        while abs(num) >= 1000:
-            magnitude += 1
-            num /= 1000.0
-        return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
-
+        return 0
 
 if __name__ == "__main__":
     pass
