@@ -16,9 +16,9 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                          |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | ------------------------------------------|
-| [dkafe_win64_binary_v0.61.zip](https://github.com/10yard/dkafe/releases/download/v0.61/dkafe_win64_binary_v0.61.zip) | 0.61    | Windows 64 bit (x64) systems: 10, 11      |
-| [dkafe_win32_binary_v0.61.zip](https://github.com/10yard/dkafe/releases/download/v0.61/dkafe_win32_binary_v0.61.zip) | 0.61    | Windows 32 bit (x86) systems: Vista, 7, 8 |
-| [dkafe_winxp_binary_v0.60.zip](https://github.com/10yard/dkafe/releases/download/v0.60/dkafe_winxp_binary_v0.60.zip) | 0.60    | Windows XP only                           |
+| [dkafe_win64_binary_v0.62.zip](https://github.com/10yard/dkafe/releases/download/v0.62/dkafe_win64_binary_v0.62.zip) | 0.62    | Windows 64 bit (x64) systems: 10, 11      |
+| [dkafe_win32_binary_v0.62.zip](https://github.com/10yard/dkafe/releases/download/v0.62/dkafe_win32_binary_v0.62.zip) | 0.62    | Windows 32 bit (x86) systems: Vista, 7, 8 |
+| [dkafe_winxp_binary_v0.62.zip](https://github.com/10yard/dkafe/releases/download/v0.62/dkafe_winxp_binary_v0.62.zip) | 0.62    | Windows XP only                           |
 | [dkafe_rpi4_image_v0.55.gz](https://github.com/10yard/dkafe/releases/download/v0.55/dkafe_rpi4_image_v0.55.gz)       | 0.55    | Raspberry Pi 4 and 400 only               |
 
 * Windows binaries are digitally signed to ensure the origin of the files and their integrity.
@@ -47,6 +47,8 @@ The frontend can be configured to launch other emulators and roms.
 
 Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet and pies stages.
 
+There is now a console add-on pack which adds up to 3 extra stages packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.
+
 
 ![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
 
@@ -59,7 +61,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional add-on pack featuring over 200 ports, clones and hacks for classic systems (NES, Atari VCS, Colecovision, Intellivision, CoCo3, Commodore 64, BBC Micro, MSX and many more). 
+ - An optional console add-on pack featuring over 200 ports, clones and hacks for classic gaming systems.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -540,7 +542,7 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 
 ## Console Add-on Pack
 
-An optional add-on pack includes around 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
+An optional add-on pack includes over 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Atari 2600
  - Amstrad CPC
@@ -581,10 +583,10 @@ An optional add-on pack includes around 200 Donkey Kong ports and hacks for the 
  - Texas Instruments TI99/4
  - Thomson MO5
  - TIC-80 Fantasy Console
- - Vtech Creativision
+ - VTech Creativision
 
 
-The console games will appear on the pies and elevator stages.
+The Donkey Kong console games will appear on the pies and elevator stages.  There is also a crazy kong stage specific for PC and DOS.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 The default controls have been configured to work with arcade controls.  Typically press "Jump" or "P1 Start" to start.
