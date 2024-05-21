@@ -1,0 +1,19 @@
+PC - Fix It Felix Classic
+
+It's not Donkey Kong but The Fix-It Felix Jr. Cabinet 
+from Wreck-It Ralph is based on a Donkey Kong cabinet.
+
+This game is the result of looking at the depiction of
+the Fix-It Felix Jr. game in the film, as well as the 
+various playable versions, and thinking "What would 
+this be like if it was actually released in the early 
+80s?". Its goal is not so much to recreate the game 
+shown in the movie as accurately as possible, but 
+rather to try to be the game that the makers of the 
+movie had in mind when designing it, while staying 
+close to authentic hardware constraints.
+
+The game provides a stronger challenge than any 
+official version, though not an unfair one.
+
+Developed by 125scratch

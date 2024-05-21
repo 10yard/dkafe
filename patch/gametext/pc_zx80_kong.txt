@@ -1,0 +1,8 @@
+ZX80 - Kong
+
+The game implements a fully featured version of Donkey
+Kong, and incorporates all four levels of the original
+Japanese version. The game supports a screen display 
+of 24 rows by 31 columns and is flicker free!
+
+Developed by Lightning Software

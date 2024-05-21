@@ -11,6 +11,7 @@ Main program
 """
 import os
 import sys
+sys.path.append("c:\\dkafe")
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame.cursors
@@ -39,13 +40,14 @@ def exit_program(confirm=False):
             except (EOFError, FileNotFoundError, IOError):
                 pygame.time.delay(250 * attempt)
         rotate_display(exiting=True)
-        kill_pc_external(program="remap_pc.exe")  # ensure keyboard remaps are ended
+        if ARCH == "win64":
+            kill_pc_external(program="remap_pc.exe")  # ensure keyboard remaps are ended
         pygame.quit()
         sys.exit()
 
 
 def kill_pc_external(pid=None, program=None):
-    from subprocess import call, DEVNULL, STDOUT
+    from subprocess import call, DEVNULL, STDOUT, CREATE_NO_WINDOW
     if pid:
         call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
     elif program:
@@ -72,14 +74,22 @@ def rotate_display(exiting=False, initial=False, rotate=ROTATION):
                 pass
 
 def initialise_screen(reset=False):
-    _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
+    try:
+        _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
+    except AttributeError:
+        # Target doesn't support WINDOWFOCUSGAINED
+        _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
 
     # Hack to force hide of the mouse cursor in the menus by making cursor transparent
-    cursor_img = pygame.image.load('artwork/transparent.png').convert_alpha()
-    cursor = pygame.cursors.Cursor((9, 0), cursor_img)
-    pygame.mouse.set_cursor(cursor)
+    try:
+        cursor_img = pygame.image.load('artwork/transparent.png').convert_alpha()
+        cursor = pygame.cursors.Cursor((9, 0), cursor_img)
+        pygame.mouse.set_cursor(cursor)
+    except AttributeError:
+        # Target doesn't support a custom Cursor
+        pass
 
     if not reset:
         _g.screen_map = _g.screen.copy()
@@ -365,9 +375,9 @@ def play_intro_animation():
                 for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
                     if from_scene < current < to_scene:
                         display_icons(below_y=below_y, above_y=above_y, intro=True, smash=current < smash_scene)
-                        display_slots()
-                    else:
-                        display_slots(version_only=True)
+                    #    display_slots()
+                    #else:
+                    #    display_slots(version_only=True)
 
                 # Title and messages
                 write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, bg=BLACK)
@@ -717,7 +727,8 @@ def get_addon():
         else:
             clear_screen()
             write_text("PROBLEM WITH DOWNLOAD", font=dk_font, y=0, fg=WHITE)
-            write_text("Sorry!  Download is not currently available", font=pl_font, y=14, fg=WHITE)
+            write_text("The download target is not currently reachable.", font=pl_font, y=14, fg=WHITE)
+            write_text("Please check your internet connectivity.", font=pl_font, y=22, fg=WHITE)
             jump_to_continue()
 
 def reset_addon_state_files():
@@ -919,7 +930,7 @@ def open_menu(menu, remember_selection=False):
             _widget = _g.last_selected or _g.last_launched
             try:
                 menu.select_widget(widget=_widget)
-            except AssertionError:
+            except (AssertionError, AttributeError):
                 # Item was not found in the active list
                 pass
         _g.current_menu_title = menu.get_title()

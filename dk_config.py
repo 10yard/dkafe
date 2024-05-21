@@ -183,7 +183,9 @@ DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 
 # Optional rom names
-OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3", "logger", "congo"
+OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
+if ARCH != "winxp":
+    OPTIONAL_NAMES += "logger", "congo"
 
 # Plugins add functionality to certain roms
 PLUGINS = (
@@ -663,11 +665,12 @@ KEYBOARD_REMAP = {
     "dos_aldo": "ctrl>space",
     "dos_davikong": "ctrl>f1|num 2>n,enter|num 1>1,enter|esc>forcequit:dosbox-x.exe",
     "dos_dk": "y>n|ctrl>space|esc>forcequit:dosbox-x.exe",
-    "dos_kong": "num 1>enter|esc>forcequit:dosbox-x.exe",
+    "dos_kong": "num 1>enter|tab>esc|esc>forcequit:dosbox-x.exe",  # TAB to access and save in-game settings
     "dos_mamedk": "num 5>num 3|num 2>enter",
     "dos_willy": "num 1>enter|ctrl>space",
     "pc_atarist_mb":"ctrl>space",
     "pc_atarist_junior":"num 1>a|num 2>b",
+    "pc_dk_aa": "1>enter|2>enter|ctrl>x",
     "pc_dk_craze": "esc>forcequit:stdrt.exe",
     "pc_dk_jr_remake": "num 1>enter|ctrl>space|esc>forcequit",
     "pc_dk_plus": "left>a|right>d|up>w|down>s|1>enter|ctrl>space",
@@ -679,7 +682,7 @@ KEYBOARD_REMAP = {
     "pc_pico8_dinkyking": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_raiders":"ctrl>space",
     "pc_tic80_denis_kogne":"ctrl>z|alt>x|esc>forcequit:tic80.exe",
-    "pc_tic80_kongremake":"ctrl>up|esc>forcequit:tic80.exe",
+    "pc_tic80_kongremake":"ctrl>z|up>z|esc>forcequit:tic80.exe",
     "pc_trs80_ape":"ctrl>space|p>enter,1|num 2>home|num 1>enter,1",
     "pc_trs80_kong":"ctrl>space|num 1>home",
     "pc_trs80_dk":"ctrl>space|num 1>enter,1",

@@ -26,7 +26,7 @@ rmdir build /s /Q
 rmdir dist /s /Q
 
 echo **** build the exe ****
-pyinstaller launch.py --onedir --clean --noconsole --icon artwork\dkafe.ico --name launchxp --exclude-module rotate-screen
+pyinstaller launch.py --onedir --clean --console --icon artwork\dkafe.ico --name launchxp --exclude-module rotate-screen
 
 echo **** copy python dependencies ****
 echo **** these are files from the base_library.zip ****
@@ -48,7 +48,7 @@ copy VERSION dist\launchxp\ /Y
 copy COPYING dist\launchxp\ /Y
 
 echo **** export the system architecture to file
-echo winxp > dist\ARCH
+echo winxp > dist\launchxp\ARCH
 
 echo **** create empty roms folder
 xcopy roms\---* dist\launchxp\roms /S /i /Y
