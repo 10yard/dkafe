@@ -675,7 +675,6 @@ KEYBOARD_REMAP = {
     "pc_dk_jr_remake": "num 1>enter|ctrl>space|esc>forcequit",
     "pc_dk_plus": "left>a|right>d|up>w|down>s|1>enter|ctrl>space",
     "pc_dk_remake":"num 1>enter|ctrl>space|esc>forcequit",
-    "pc_fixitfelix":"ctrl>num 1",
     "pc_jumpman_rtx":"num 1>enter|ctrl>space|esc>forcequit",
     "pc_pico8_ape":"ctrl>z|esc>forcequit:zepto8.exe",
     "pc_pico8_denis_kogne": "ctrl>x|esc>forcequit:zepto8.exe",
