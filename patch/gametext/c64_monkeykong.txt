@@ -1,0 +1,12 @@
+Commodore 64 - Monkey Kong
+
+Inspired by a TRS-80 game of the same name, it's a 
+Donkey Kong clone with a Mario-looking character.
+
+Instead of walking he's hopping his way through the 
+levels and controls are slightly laggy, making it 
+more difficult than it should be to avoid the random 
+attacks of the enemies.  
+Bubbles provide temporary protection from the enemies.
+
+Developed By Emerich Fernandes

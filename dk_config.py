@@ -591,7 +591,7 @@ RECOGNISED_SYSTEMS = {
     "coco3": "Tandy Colour Computer 3",
     "coleco": "Colecovision",
     "cpc6128":"Amstrad CPC",
-    "crvision":"Vtech Creativision",
+    "crvision":"VTech Creativision",
     "dos":"MS-DOS",
     "dragon32":"Dragon 32",
     "fds":"Famicom Disk System",

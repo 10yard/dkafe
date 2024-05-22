@@ -589,7 +589,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
 The Donkey Kong console games will appear on the pies and elevator stages.  There is also a crazy kong stage specific for PC and DOS.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
-The default controls have been configured to work with arcade controls.  Typically press "Jump" or "P1 Start" to start.
+The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
 
 ![DKAFE addon](https://github.com/10yard/dkafe/blob/master/artwork/about/console_addon.png)
 

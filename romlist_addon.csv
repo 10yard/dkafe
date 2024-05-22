@@ -24,7 +24,7 @@ snes_classickong,shell,SNESDK,Classic Kong,103,,,133000,2,4,8
 c64p_dk_ocean,shell,C64DK,Donkey Kong (Ocean),105,,,134000,2,4,8
 c64_dk_x,shell,DK+,Donkey Kong+ (X2016),106,,,135000,2,4,8
 c64p_dk_junior,shell,JR,Donkey Kong Junior (2014),107,,,136000,2,4,8
-genesis_felix,shell,GENFIFJR,Fix It Felix Jr.,108,,,137000,2,4,8
+crvision_policejump,shell,VTPolice,Police Jump,108,,,137000,2,4,8
 coleco_dk,shell,CVDK,Donkey Kong (Original),109,,,138000,2,4,8
 coleco_dk_junior,shell,JR,Donkey Kong Jr.,110,,,139000,2,4,8
 a800xl_dk,shell,800DK,Donkey Kong (Original),111,,,140000,2,4,8
@@ -69,7 +69,7 @@ plus4_rollerkong,shell,Rk,RollerKong,155,,,178000,2,4,8
 c64_dk,shell,C64,Donkey Kong (Nintendo),156,,,179000,2,4,8
 c64_krazykong64,shell,KrazyKong,Krazy Kong 64,157,,,180000,2,4,8
 c64_ck64,shell,CK64,Crazy Kong 64,158,,,181000,2,4,8
-c64_felix,shell,FelixJR,Fix It Felix Jr.,159,,,182000,2,4,8
+c64_monkeykong,shell,Monkey,Monkey Kong,159,,,182000,2,4,8
 c64_ck,shell,CrazyKong,Crazy Kong,161,,,183000,2,4,8
 c64_mariosbrewery,shell,Brewery,Marios Brewery,162,,,184000,2,4,8
 c64_bonkeykong,shell,BonkeyKong,Bonkey Kong,163,,,185000,2,4,8
@@ -161,10 +161,10 @@ bbcb_krazyjohn,shell,KrazyJohn,Krazy John,9999,,,129000,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,Zany Kong JR,9999,,,129000,2,4,8
 c64_dk,shell,DK,Donkey Kong (Nintendo),9999,,,0,2,4,8
 c64_fast_eddie,shell,FastEddie,Fast Eddie,9999,,,133000,2,4,8
+c64_felix,shell,FelixJR,Fix It Felix Jr.,9999,,,133000,2,4,8
 c64_jumpman,shell,Jumpman,Jumpman Junior,9999,,,133000,2,4,8
 c64_kong_sputnik,shell,Kong,Kong,9999,,,133000,2,4,8
 c64_kongokong,shell,KongoKong,Kongo Kong,9999,,,133000,2,4,8
-c64_monkeykong,shell,MonkeyKong,Monkey Kong,9999,,,133000,2,4,8
 c64p_dk_ocean,shell,C64DK,Donkey Kong (Ocean),9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,Donkey Kong Remixed,9999,,,140000,2,4,8
 coco3_donkeyking,shell,DonkeyKing,Donkey King,9999,,,140000,2,4,8
@@ -175,7 +175,6 @@ coleco_super_dk_jr,shell,SuperJR,Super Donkey Kong! Junior,9999,,,137000,2,4,8
 cpc6128_climbit,shell,Climb-It,Climb-It,9999,,,131000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,Killer Gorilla,9999,,,131000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,Kong's Revenge,9999,,,131000,2,4,8
-crvision_policejump,shell,PoliceJump,Police Jump,9999,,,130000,2,4,8
 dos_davikong,shell,David's Kong,David's Kong,9999,,,173000,2,4,8
 dos_dk,shell,DOS,Donkey Kong (Original),9999,,,0,2,4,8
 dos_kong,shell,ChampKong,Champ Kong,9999,,,0,2,4,8
@@ -188,6 +187,7 @@ gameboy_dk_japan_us,shell,DK,Donkey Kong (Original),9999,,,152000,2,4,8
 gameboy_dk_summer,shell,DK Summer,Donkey Kong Summer Hack,9999,,,152000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,Donkey Kong 4 Level Hack,9999,,,152000,2,4,8
 gbcolor_dk_summer,shell,DK Summer,Donkey Kong Summer Hack,9999,,,152000,2,4,8
+genesis_felix,shell,GENFIFJR,Fix It Felix Jr.,9999,,,130000,2,4,8
 gnw_dkcirc,shell,G&W Circus,Donkey Kong Circus,9999,,,213000,2,4,8
 gnw_dkjrp,shell,DK JR (P),Donkey Kong JR (Panoroma),9999,,,186000,2,4,8
 gnw_dkong2,shell,DK2,Donkey Kong 2,9999,,,186000,2,4,8

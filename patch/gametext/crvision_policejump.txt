@@ -1,0 +1,10 @@
+VTech Creativision - Police Jump
+
+A Donkey Kong clone in which you have to rescue a rich
+and beautiful female hostage from a huge criminal 
+called Dangerous Dan. 
+You have to jump over barrels, then avoid whirlwinds 
+and finally avoid whirlwinds again while unscrewing 
+the screws.
+
+Developed by VTech
