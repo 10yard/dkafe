@@ -70,6 +70,8 @@ del releases\dkafe_win64_binary_%version%.zip
 echo ----------------------------------------------------------------------------------------------
 echo  Package the Console Add-On Pack
 echo ----------------------------------------------------------------------------------------------
+copy dist\remap_pc.exe roms\pc\ /Y
+
 for %%s in (%systems%) do xcopy roms\%%s dist\console_addon\roms\%%s /S /i /Y
 
 copy romlist_addon.csv dist\console_addon\ /Y

@@ -42,6 +42,10 @@ def exit_program(confirm=False):
         rotate_display(exiting=True)
         if ARCH == "win64":
             kill_pc_external(program="remap_pc.exe")  # ensure keyboard remaps are ended
+        if EMU_EXIT:
+            # system command to issue prior to exit
+            os.system(EMU_EXIT)
+
         pygame.quit()
         sys.exit()
 
@@ -278,8 +282,8 @@ def check_for_input(force_exit=False):
                     setattr(_g, attr, event.type == pygame.KEYDOWN)
         if event.type == pygame.KEYDOWN:
             if event.key == CONTROL_EXIT:
-                # if _g.lastexit <= 0 or since_last_exit() > 0.2:
-                exit_program(confirm=CONFIRM_EXIT and not force_exit)
+                if not(_g.lastexit) or since_last_exit() > 0.5:
+                    exit_program(confirm=CONFIRM_EXIT and not force_exit)
             if event.key == CONTROL_TAB:
                 open_settings_menu()
             if event.key == CONTROL_P2 and ENABLE_MENU:
@@ -1042,7 +1046,8 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 if ARCH == "win64":
                     for remap_program in os.path.join(ROOT_DIR, "remap_pc.exe"), os.path.join(ROOT_DIR, "dist", "remap_pc.exe"), os.path.join(ROM_DIR, "pc", "remap_pc.exe"):
                         if os.path.exists(remap_program):
-                            Popen(f'"{remap_program}" "{name}" "{KEYBOARD_REMAP[name]}', creationflags=CREATE_NO_WINDOW)
+                            _keys = KEYBOARD_REMAP[name]
+                            Popen(f'"{remap_program}" "{name}" "{_keys}', creationflags=CREATE_NO_WINDOW)
                             break
 
             if name.startswith("pc_"):
@@ -1453,10 +1458,6 @@ def activity_check():
             award_channel.stop()
             pygame.mixer.unpause()
         process_interrupts()
-
-        if _g.lastexit > 0 and since_last_exit() < 0.2:
-            if EMU_EXIT:
-                os.system(EMU_EXIT)
 
 
 def stage_check(warp=False):

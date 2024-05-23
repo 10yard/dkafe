@@ -47,7 +47,8 @@ The frontend can be configured to launch other emulators and roms.
 
 Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet and pies stages.
 
-There is now a console add-on pack which adds up to 3 extra stages packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.
+![NEW Feature](https://github.com/10yard/dkafe/blob/master/artwork/about/new.png) 
+There is now a console add-on pack which adds extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  [See **Console Add-On Pack** section below.](## Console Add-on Pack)
 
 
 ![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
@@ -676,7 +677,7 @@ https://github.com/furrykef/dkdasm
 Paul Goes excellent set of Donkey Kong hacking reference material
 https://donkeykonghacks.net/
 
-Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, ChrisP, Tim Appleton, Vic20 George, Kirai Shouen/125scratch.
+Fantastic Donkey Kong hacks from Sockmaster (John Kowalski), Paul Goes, Jeff Kulczycki, Mike Mika/Clay Cowgill, Don Hodges, ChrisP, Tim Appleton, Vic20 George, Kirai Shouen/125scratch
 
 Feedback and feature ideas from Superjustinbros (Justin De Lucia)
 https://superjustintheblog.blogspot.com/
@@ -693,25 +694,25 @@ https://github.com/mahlemiut/wolfmame
 The VRC6 Project by LeviR.star's Music.  4 tracks are included in the default playlist folder
 https://www.youtube.com/watch?v=Ufd9UC2wUpA
 
-Donkey Kong Arcade Theme Remixes by Nintega Dario. 2 tracks are included in the default playlist folder.
+Donkey Kong Arcade Theme Remixes by Nintega Dario. 2 tracks are included in the default playlist folder
 https://www.youtube.com/watch?v=VPT42lfFNMY
 
-DonkeyKong Classic Remix Music by MyNameIsBanks.  This track is included in the default playlist folder.
+DonkeyKong Classic Remix Music by MyNameIsBanks
 https://www.youtube.com/watch?v=MDw2goJSi4k
 
-Donkey Kong Remix Music by SanHolo. This track is included in the default playlist folder.
+Donkey Kong Remix Music by SanHolo
 https://www.youtube.com/watch?v=_kdgB5SRqHw
 
-Donkey Kong Arcade by MotionRide Music.  This track is included in the default playlist folder.
+Donkey Kong Arcade by MotionRide Music
 https://www.youtube.com/watch?v=gy0C2a5QEu8
 
-Do the Donkey Kong (Instrumental) by Buckner & Garcia.  This track is included in the default playlist folder.
+Do the Donkey Kong (Instrumental) by Buckner & Garcia
 https://www.youtube.com/watch?v=oK0yLlZ4zsk
 
-Donkey Kong Arcade C64 Remix by Sascha Zeidler.  This track is included in the default playlist folder.
+Donkey Kong Arcade C64 Remix by Sascha Zeidler
 https://www.c64.com/games/2464
 
-Hammer Time Remix by Mitchel Gatzke.  This track is included in the default playlist folder.
+Hammer Time Remix by Mitchel Gatzke
 https://www.youtube.com/watch?v=crhTHJGgFag
 
 Donkey Kong NES Medley by Chiptunema
