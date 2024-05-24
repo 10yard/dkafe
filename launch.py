@@ -27,7 +27,7 @@ from dk_patch import apply_patches_and_addons, validate_rom
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
-    if since_last_exit() > 0.5:
+    if since_last_exit() <= 0 or since_last_exit() > 0.5:
         if confirm:
             open_menu(_g.exitmenu)
         else:
@@ -1091,11 +1091,13 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     _g.ready = False
                     _g.facing = 1
                     _g.timer.reset()
+                    _g.lastexit = _g.timer.duration
                     _g.timer_adjust = 0
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
                         movement = choice([-1, 1]) if _g.stage == 1 else 1
                         drop_coin(x=COIN_AWARD_POSX[_g.stage], y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=movement)
                     _g.timer.reset()
+                    _g.lastexit = _g.timer.duration
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
             elif "-record" in launch_command:
                 # Update .inp with gameplay time in minutes
@@ -1243,6 +1245,7 @@ def process_interrupts():
             # Reset timer and music
             _g.timer.reset()
             _g.timer_adjust = 0
+            _g.lastexit = _g.timer.duration
             if not ENABLE_PLAYLIST:
                 background_channel.play(pygame.mixer.Sound('sounds/background.wav'), -1)
 
@@ -1558,6 +1561,7 @@ def main(initial=True):
     animate_jumpman("r", horizontal_movement=0)
     _g.lastmove, _g.lastwarp = 0, 0
     _g.timer.reset()
+    _g.lastexit = _g.timer.duration
     _g.active = True
 
     # Initialise playlist/background music
