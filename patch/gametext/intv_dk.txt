@@ -11,6 +11,7 @@ that the ColecoVision version would look that much
 better.
 
 More likely it was the result of a rushed schedule and
-having no experienced Intellivision programmers on staff.
+having no experienced Intellivision programmers on 
+staff.
 
 Developed By CBS Coleco

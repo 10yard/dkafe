@@ -1,14 +1,12 @@
 NES Console - Donkey Kong Pauline Edition
 
-When Mike Mika’s daughter was sad to learn she 
-couldn’t play as a girl character in classic 
-Donkey Kong, her father decided a little hacking 
-was in order. 
+When Mike Mika’s daughter was sad she couldn’t play as
+a girl character in classic Donkey Kong, her father 
+decided a little hacking was in order. 
 
-Mike Mika modified the NES version of the game so 
-that the damsel/white-knight roles in the game were 
-switched.  Now Pauline runs, jumps, and dodges 
-rolling barrels to save Mario at the top of the 
-screen.
+Mike Mika modified the NES version of the game so that
+the damsel/white-knight roles in the game were swapped.
+Now Pauline runs, jumps, and dodges rolling barrels to 
+save Mario at the top of the screen.
 
 Hack Developed by Mike Mika

@@ -1,17 +1,15 @@
 NES Console - Ice Cream!
 
-Is this a dream? No, it is not, sadly. Go forth 
-unto the evil Ice Cream Factory and save your 
-friend Irene. Stopping the evil Giant Ice Cream 
-Cone from terrorizing the world is your number one 
-duty.
+Is this a dream? No, it is not, sadly. Go forth unto
+the evil Ice Cream Factory and save your friend Irene.
+Stopping the evil Giant Ice Cream Cone from 
+terrorizing the world is your number one duty.
 
-The factory spans three levels, each with their 
-own tricks and traps.
+The factory spans three levels, each with their own 
+tricks and traps.
 
 Others have come before you, but have failed. 
 Irene is waiting for you to save her. Someone must 
-answer the call; Terror must not reign over the 
-land.
+answer the call; Terror must not reign over the land.
 
 Hack Developed by Sumez

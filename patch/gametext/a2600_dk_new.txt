@@ -6,7 +6,7 @@ Sporting 32K of ROM, this version for the first time
 features all four arcade stages as well as all 
 cut-scenes. 
 
-Additionally, the game includes multi-colored 
-graphics plus arcade quality animations and sounds!
+Additionally, the game includes multi-colored graphics
+plus arcade quality animations and sounds!
 
 Conversion Developed by Andreas Dietrich

@@ -3,8 +3,7 @@ Atari ST - Kid Kong
 Kid Kong is the definitive Donkey Kong on the Atari ST.
  
 His task is to rescue the fair maiden from the evil 
-Kong - he's the one at the top throwing barrels at 
-you.
+Kong - he's the one at the top throwing barrels at you.
  
 Avoid barrels and the fire monsters and get to the top
 of the screen to progress to the next level.

@@ -1,8 +1,8 @@
 Atari 7800 Console - Donkey Kong
 
 Based on the 1981 Nintendo coin-op, this game was
-released for the 7800 in 1988. It’s a very good 
-translation, except it only has three screens, 
-missing the Pie Factory.
+released for the 7800 in 1988. 
+It's a very good translation, except it only has three
+screens, it's missing the Pie Factory.
 
 Developed By Atari

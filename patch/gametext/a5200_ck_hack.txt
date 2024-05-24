@@ -1,7 +1,7 @@
 Atari 5200 Console - Crazy Kong Hack
 
 A hack of the Atari 5200 Donkey Kong made green to
-appear like the Crazy Kong Bootleg.  The hack is
-also referred to as DK52 Green.
+appear like the Crazy Kong Bootleg.  The hack is also 
+referred to as DK52 Green.
 
 Hack Developed By Slampham

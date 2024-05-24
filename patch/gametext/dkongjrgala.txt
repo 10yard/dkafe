@@ -8,7 +8,7 @@ take out enemies. Bonus points are awarded for hitting
 multiple targets.  The jump button also shoots.
 
 Your ship follows DK JR's position automatically. 
-The ship can be controlled independently when you are
-on a vine. 
+Sitting on a vine and shooting enemies is a good 
+points scoring strategy!
 
 Hack Developed by Jon Wilson (10yard)

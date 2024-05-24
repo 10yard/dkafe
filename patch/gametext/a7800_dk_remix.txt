@@ -2,8 +2,7 @@ Atari 7800 Console - Donkey Kong Remix Demo
 
 A partial port of John Kowalski's Donkey Kong Remix
 hack working on the Atari 7800.  In this demo, you 
-only get to play one stage that repeats over and 
-over.
+only get to play one stage that repeats over and over.
 
 This is an active project and hopefully the developer
 will make further progress with this excellent port. 

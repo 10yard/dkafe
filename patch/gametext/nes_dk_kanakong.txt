@@ -2,7 +2,8 @@ NES Console - Kana Kong
 
 Donkey Kong with Touhou Project themed graphics.
 
-The player character is based on Touhou character, Reimu Hakurei.
+The player character is based on Touhou character, 
+Reimu Hakurei.
 The enemy character is based on Kanako Yasaka.
 
 Hack Developed by Dastard

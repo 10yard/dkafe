@@ -1,10 +1,10 @@
 Tandy TRS80 - Killer Gorilla
 
-The killer gorilla has captured the player's 
-girlfriend, and is holding her hostage atop a 
-structure consisting of platforms, conveyor belts, and
-ladders. The player must move through 4 separate 
-stages, trying to reach the top of each. 
+The killer gorilla has captured your girlfriend, and 
+is holding her hostage atop a structure consisting of
+platforms, conveyor belts, and ladders. You must move
+through 4 separate stages, trying to reach the top of 
+each. 
 
 Yet more blocky Donkey Kong delights on the TRS80!
 

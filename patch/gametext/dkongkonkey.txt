@@ -6,7 +6,7 @@ The rom hack flips the barrels stage so that Jumpman
 must run right to left at the start.
 The pies stage is changed slighly too.
 
-The board sequence is: pies, barrels, 
-elevators, barrels, rivets for all levels.
+The board sequence is: pies, barrels, elevators, 
+barrels, rivets for all levels.
 
 Hack Developed by Jon Wilson (10yard)
