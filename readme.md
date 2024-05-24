@@ -287,6 +287,9 @@ The romlist.csv contains information about the roms, which game slot they should
 There are 125 configurable game slots in total. 
 
 
+![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)
+
+
 ### Display Resolution
 
 The frontend is rendered at 224x256 pixels (as per the original Donkey Kong arcade machine) and then scaled to fit the monitors actual resolution.
@@ -608,8 +611,7 @@ The system will detect the downloaded ZIP and automatically unpack and install t
 Add-on games have been optimised to launch instantly on Windows 64 bit machines.  For other platforms,  the first load will be slower while DKAFE performs an initial optimisation.  Subsequent loads will be instant.
 
 
-
-![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)
+![Console Wheel](https://github.com/10yard/dkafe/blob/master/artwork/about/console_wheel.jpg)
 
 
 ## Emulator recommendation
