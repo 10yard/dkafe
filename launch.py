@@ -27,27 +27,28 @@ from dk_patch import apply_patches_and_addons, validate_rom
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
-    if confirm:
-        open_menu(_g.exitmenu)
-    else:
-        # Save frontend state and exit
-        _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 2
-        for attempt in 1, 2, 3:
-            try:
-                with open('save.p', 'wb') as f:
-                    pickle.dump([_g.score, _g.timer_adjust, _g.last_selected], f)
-                break
-            except (EOFError, FileNotFoundError, IOError):
-                pygame.time.delay(250 * attempt)
-        rotate_display(exiting=True)
-        if ARCH == "win64":
-            kill_pc_external(program="remap_pc.exe")  # ensure keyboard remaps are ended
-        if EMU_EXIT:
-            # system command to issue prior to exit
-            os.system(EMU_EXIT)
+    if since_last_exit() > 0.5:
+        if confirm:
+            open_menu(_g.exitmenu)
+        else:
+            # Save frontend state and exit
+            _g.timer_adjust = _g.timer.duration + _g.timer_adjust - 2
+            for attempt in 1, 2, 3:
+                try:
+                    with open('save.p', 'wb') as f:
+                        pickle.dump([_g.score, _g.timer_adjust, _g.last_selected], f)
+                    break
+                except (EOFError, FileNotFoundError, IOError):
+                    pygame.time.delay(250 * attempt)
+            rotate_display(exiting=True)
+            if ARCH == "win64":
+                kill_pc_external(program="remap_pc.exe")  # ensure keyboard remaps are ended
+            if EMU_EXIT:
+                # system command to issue prior to exit
+                os.system(EMU_EXIT)
 
-        pygame.quit()
-        sys.exit()
+            pygame.quit()
+            sys.exit()
 
 
 def kill_pc_external(pid=None, program=None):
@@ -284,8 +285,7 @@ def check_for_input(force_exit=False, continue_only=False):
                     setattr(_g, attr, event.type == pygame.KEYDOWN)
         if event.type == pygame.KEYDOWN:
             if event.key == CONTROL_EXIT:
-                if not(_g.lastexit) or since_last_exit() > 0.5:
-                    exit_program(confirm=CONFIRM_EXIT and not force_exit)
+                exit_program(confirm=CONFIRM_EXIT and not force_exit)
             if event.key == CONTROL_TAB and not continue_only:
                 open_settings_menu()
             if event.key == CONTROL_P2 and ENABLE_MENU and not continue_only:
