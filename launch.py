@@ -165,8 +165,10 @@ def jump_to_continue(xpos=8):
     """Show Jump to continue message at foot of screen and wait for button press."""
     flash_message("PUSH JUMP TO CONTINUE", x=xpos, y=249, cycles=8, clear=False)
     while True:
-        check_for_input(force_exit=True)
+        check_for_input(force_exit=True, continue_only=True)
         if _g.jump or _g.start:
+            # Reset inputs
+            _g.jump, _g.start = False, False
             break
 
 
@@ -271,7 +273,7 @@ def detect_joysticks():
         _g.joysticks[-1].init()
 
 
-def check_for_input(force_exit=False):
+def check_for_input(force_exit=False, continue_only=False):
     for event in pygame.event.get():
         # Keyboard controls
         if event.type in (pygame.KEYDOWN, pygame.KEYUP) and event.key != CONTROL_SNAP:
@@ -284,18 +286,18 @@ def check_for_input(force_exit=False):
             if event.key == CONTROL_EXIT:
                 if not(_g.lastexit) or since_last_exit() > 0.5:
                     exit_program(confirm=CONFIRM_EXIT and not force_exit)
-            if event.key == CONTROL_TAB:
+            if event.key == CONTROL_TAB and not continue_only:
                 open_settings_menu()
-            if event.key == CONTROL_P2 and ENABLE_MENU:
+            if event.key == CONTROL_P2 and ENABLE_MENU and not continue_only:
                 build_menus()
                 open_menu(_g.menu, remember_selection=True)
-            if event.key == CONTROL_COIN:
+            if event.key == CONTROL_COIN and not continue_only:
                 if _g.ready:
                     # globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
                     set_gametext(None, SHOW_GAMETEXT, external=True)  # Fix pygamemenu issue
                 else:
                     _g.showinfo = not _g.showinfo
-            if event.key == CONTROL_ACTION:
+            if event.key == CONTROL_ACTION and not continue_only:
                 _g.showslots = not _g.showslots
             if event.key == CONTROL_SNAP:
                 take_screenshot()
