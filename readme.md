@@ -284,7 +284,7 @@ The application requires settings.txt and romlist.csv to be present in the insta
 The settings.txt contains the emulator, rom path, controls and other configuration.  See **Frontend Settings** section below.
 
 The romlist.csv contains information about the roms, which game slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
-There are 125 configurable game slots in total. 
+There are 215 configurable game slots in total. 
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)
@@ -533,7 +533,7 @@ The file can be configured to launch roms from the default rom directory (by lea
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
 If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See `ALLOW_ROM_OVERWRITE` option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. `/roms/original`) to prevent it from being overwritten.
 
-All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 125) and a basic descriptive name.  Set the slot position to 0 or 999 if you want the rom to only appear in the menu. 
+All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 215) and a basic descriptive name.  Set the slot position to 0 or 999 if you want the rom to only appear in the menu. 
 
 As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 
