@@ -52,7 +52,7 @@ spectrum_dk,shell,SPECDK,Donkey Kong (Original),134,,,161000,2,4,8
 spectrum_killerkong,shell,KillerKong,Killer Kong,136,,,162000,2,4,8
 spectrum_kong,shell,Kong,Kong,138,,,163000,2,4,8
 spectrum_dk_junior,shell,DonkyJR,Donky Junior,139,,,164000,2,4,8
-spectrum_monkeybiz,shell,Monkey,Monkey Bizness,141,,,165000,2,4,8
+spectrum_wallykong,shell,Wally,Wally Kong,141,,,165000,2,4,8
 spectrum_krazykong,shell,KrazyKong,Krazy Kong,142,,,166000,2,4,8
 nes_dk_zelda01,shell,ZK1,ZeldaKong 1 (Link),144,,,167000,2,4,8
 nes_dk_zelda02,shell,ZK2,ZeldaKong 2 (Zelda),145,,,168000,2,4,8
@@ -225,7 +225,7 @@ spectrum_ape_escape,shell,ApeEscape,Ape Escape,9999,,,160000,2,4,8
 spectrum_killerknight,shell,KillerKnight,Killer Knight,9999,,,160000,2,4,8
 spectrum_kong_ocean,shell,Kong,Kong (Ocean),9999,,,160000,2,4,8
 spectrum_kongs_revenge,shell,KongsRevenge,Kongs Revenge,9999,,,160000,2,4,8
-spectrum_wallykong,shell,WallyKong,Wally Kong,9999,,,160000,2,4,8
+spectrum_monkeybiz,shell,Monkey,Monkey Bizness,9999,,,160000,2,4,8
 vic20_crazykong,shell,CrazyKong,Crazy Kong,9999,,,188000,2,4,8
 vic20_fast_eddie,shell,FastEddie,Fast Eddie,9999,,,188000,2,4,8
 vic20_hardhatclimber,shell,HardhatClimber,Hardhat Climber,9999,,,188000,2,4,8

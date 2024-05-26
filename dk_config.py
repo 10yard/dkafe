@@ -26,7 +26,7 @@ ROTATION = 0                   # Frontend rotation (0, 90, 180, 270).   Rotates 
 CLOCK_RATE = 45                # Clock rate
 SPEED_ADJUST = 0               # Adjustment to above clock rate (e.g. 0=45, 1=50, +2=55, +3=60, +4=65, +5=70, +6=75)
 
-# Default Keyboard Controls
+# Default Keyboard Controls - they match MAME
 CONTROL_LEFT = pygame.K_LEFT
 CONTROL_RIGHT = pygame.K_RIGHT
 CONTROL_UP = pygame.K_UP
