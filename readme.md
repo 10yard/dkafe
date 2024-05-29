@@ -548,6 +548,7 @@ An accompanying icon in .png format should be placed into the `artwork/icons` fo
 
 An optional add-on pack includes over 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
+ - Acorn Atom
  - Atari 2600
  - Amstrad CPC
  - Apple ][
@@ -568,6 +569,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - Game and Watch
  - Intellivision
  - LCD and Handheld
+ - LowRes NX Fantasy Console
  - MS-DOS
  - MSX
  - Nintendo Entertainment System
@@ -582,6 +584,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - Sinclair ZX81
  - Super Nintendo
  - Tandy Color Computer 3 (CoCo3) 
+ - Tandy MC10
  - Tandy TRS-80
  - Tangerine Oric
  - Texas Instruments TI99/4

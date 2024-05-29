@@ -6,7 +6,7 @@ Reach your princess.
 
 Uses the monochrome screen and PETSCII graphics.
 
-After launching, press "Jump" to start a game from the
-games main menu.
+Excellent controls make this into a surprisingly 
+playable Donkey Kong clone.
 
 Developed By Jimbo

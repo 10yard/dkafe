@@ -63,7 +63,7 @@ nes_dk_zelda06,shell,ZK6,ZeldaKong 6 (Link 2),149,,,172000,2,4,8
 nes_dk_zelda07,shell,ZK7,ZeldaKong 7 (Triforce),150,,,173000,2,4,8
 nes_dk_zelda08,shell,ZK8,ZeldaKong 8 (Child),151,,,174000,2,4,8
 nes_dk_zelda09,shell,ZK9,ZeldaKong 9 (GB Link),152,,,175000,2,4,8
-nes_dk_zelda10,shell,ZK10,ZeldaKong10 (Marin),153,,,176000,2,4,8
+pet4032_petscii_kong,shell,PETDK,Petscii Kong,153,,,176000,2,4,8
 plus4_climbit,shell,C16,Climb-It,154,,,177000,2,4,8
 plus4_rollerkong,shell,Rk,RollerKong,155,,,178000,2,4,8
 c64_dk,shell,C64,Donkey Kong (Nintendo),156,,,179000,2,4,8
@@ -209,6 +209,7 @@ nes_dk_luigi,shell,DK Luigi,Donkey Kong Luigi Edition,9999,,,121000,2,4,8
 nes_dk_qbert,shell,Q-Bert Kong,Q-Bert Kong,9999,,,121000,2,4,8
 nes_dk_redux,shell,Redux,Donkey Kong Redux,9999,,,0,2,4,8
 nes_dk_wario,shell,Wario vs DK,Wario vs Donkey Kong,9999,,,121000,2,4,8
+nes_dk_zelda10,shell,ZK10,ZeldaKong10 (Marin),9999,,,121000,2,4,8
 nes_dk_zelda11,shell,Z11,ZeldaKong11 (Grandma),9999,,,121000,2,4,8
 nes_dk_zelda12,shell,Z12,ZeldaKong12 (Tarin),9999,,,121000,2,4,8
 nes_elfkong,shell,Elf Kong,Elf Kong,9999,,,121000,2,4,8
@@ -217,8 +218,9 @@ oric1_dinkykong,shell,DinkyKong,Dinky Kong,9999,,,130000,2,4,8
 oric1_honeykong,shell,HoneyKong,Honey Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,Oric Kong,9999,,,130000,2,4,8
 pc_atarist_junior,shell,JR,Donkey JR (G&W),9999,,,186000,2,4,8
+pc_lowresnx_denis_kogne,shell,DenisKogne,Denis Kogne,9999,,,203000,2,4,8
+pc_mc10_kong,shell,Kong,Kong,9999,,,208000,2,4,8
 pet4032_dk_junior,shell,DK Junior,Donkey Kong Junior (G&W),9999,,,133000,2,4,8
-pet4032_petscii_kong,shell,Petscii Kong,Petscii Kong,9999,,,133000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,Crazy Jump,9999,,,176000,2,4,8
 plus4_monkeykong,shell,MonkeyKong,Monkey Kong,9999,,,176000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,Ape Escape,9999,,,160000,2,4,8
@@ -244,6 +246,7 @@ zx81_zonkeykong,shell,ZonkeyKong,Zonkey Kong,9999,,,160000,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,Jumpman,####,,,0,2,4,8
 ##oric1_4k_kong,shell,4K Kong,4K Kong,####,,,0,2,4,8
+##pc_atom_kong,shell,**Windowed,Acorn Kong,####,,,208000,2,4,8
 ##pc_trs80_skyscraper,shell,**difficult to map,Skyscraper,####,,,0,2,4,8
 ##plus4_dkplus,shell,**Terrible controls,Donkey Kong +,####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Screen issues,Larry Monkey,####,,,0,2,4,8

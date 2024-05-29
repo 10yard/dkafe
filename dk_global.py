@@ -78,6 +78,9 @@ romlist = []
 romcount = 0
 last_press, last_up, last_down = 0, 0, 0
 
+# Menu cache for performance
+menu_cache_addon = None
+
 # Active Window
 window = None
 

@@ -615,36 +615,55 @@ def sort_key(x):
 
 def build_menus(initial=False):
     """Game selection menu"""
-    _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
-    _g.menu.add_vertical_margin(4)
+    _g.menu = None
+    if not UNLOCK_MODE:
+        # Restore full addon menu from cache when exists for improved performance
+        if ENABLE_ADDONS and _g.stage >= 2:
+            if _g.menu_cache_addon:
+                _g.menu = _g.menu_cache_addon
+            else:
+                write_text("Building the game list...", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                process_interrupts()
+                animate_jumpman()
+                pygame.display.flip()
 
-    _lastname, _lastsystem = "", ""
-    # Sort the rom list by descriptive name for better navigation in the game selection menu
-    for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
-        _system = get_system_description(name)
-        if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
-            if sub != "shell" or name != _lastname:
-                if (_g.stage < 2 and not add) or (_g.stage >= 2 and (add and ENABLE_ADDONS or not add and not ENABLE_ADDONS)):
-                    if _system and _system != _lastsystem:
-                        _g.menu.add_label(f'{_system} {"_"*70}', font_color=GREY, font_name="fonts/tom-thumb.bdf")
-                        _lastsystem = _system
-                        _unlock_msg = True
-                    # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
-                    try:
-                        widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
-                    except IndexError:
-                        widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
-                    if _system:
-                        widget.set_margin(8,2)
-        if initial and int(icx) >= 0 and int(icy) >= 0:
-            _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
-        _lastname = name
-    if UNLOCK_MODE:
+    if not _g.menu:
+        _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
         _g.menu.add_vertical_margin(4)
-        _g.menu.add_label("* Earn coins to add more games to this list.", font_color=GREY, font_name="fonts/tom-thumb.bdf")
-    _g.menu.add_vertical_margin(6)
-    _g.menu.add_button('Settings', open_settings_menu)
-    _g.menu.add_button('Close Menu', close_menu)
+
+        _lastname, _lastsystem = "", ""
+        for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
+            _system = get_system_description(name)
+            if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
+                if sub != "shell" or name != _lastname:
+                    if (_g.stage < 2 and not add) or (_g.stage >= 2 and (add and ENABLE_ADDONS or not add and not ENABLE_ADDONS)):
+                        if _system and _system != _lastsystem:
+                            _g.menu.add_label(f'{_system} {"_"*70}', font_color=GREY, font_name="fonts/tom-thumb.bdf")
+                            _lastsystem = _system
+                            _unlock_msg = True
+                        # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
+                        try:
+                            widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                        except IndexError:
+                            widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
+                        if _system:
+                            widget.set_margin(8,2)
+            if initial and int(icx) >= 0 and int(icy) >= 0:
+                _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
+            _lastname = name
+        if UNLOCK_MODE:
+            _g.menu.add_vertical_margin(4)
+            _g.menu.add_label("* Earn coins to add more games to this list.", font_color=GREY, font_name="fonts/tom-thumb.bdf")
+        _g.menu.add_vertical_margin(6)
+        _g.menu.add_button('Settings', open_settings_menu)
+        _g.menu.add_button('Close Menu', close_menu)
+
+        if not UNLOCK_MODE:
+            # Cache the full unlocked menu build
+            if ENABLE_ADDONS and _g.stage >= 2 and not _g.menu_cache_addon:
+                _g.menu_cache_addon = _g.menu
+            elif not ENABLE_ADDONS and not _g.menu_cache_arcade:
+                _g.menu_cache_arcade = _g.menu
 
     if initial:
         # Exit menu
