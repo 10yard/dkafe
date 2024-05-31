@@ -617,15 +617,18 @@ def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = None
     if not UNLOCK_MODE:
-        # Restore full addon menu from cache when exists for improved performance
+        # Restore full addon menu from cache for improved performance
         if ENABLE_ADDONS and _g.stage >= 2:
             if _g.menu_cache_addon:
                 _g.menu = _g.menu_cache_addon
-            else:
-                write_text("Building the game list...", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                process_interrupts()
-                animate_jumpman()
-                pygame.display.flip()
+        else:
+            if _g.menu_cache_arcade:
+                _g.menu = _g.menu_cache_arcade
+        if not _g.menu:
+            write_text("Building the game list...", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+            process_interrupts()
+            animate_jumpman()
+            update_screen()
 
     if not _g.menu:
         _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
@@ -660,10 +663,12 @@ def build_menus(initial=False):
 
         if not UNLOCK_MODE:
             # Cache the full unlocked menu build
-            if ENABLE_ADDONS and _g.stage >= 2 and not _g.menu_cache_addon:
-                _g.menu_cache_addon = _g.menu
-            elif not ENABLE_ADDONS and not _g.menu_cache_arcade:
-                _g.menu_cache_arcade = _g.menu
+            if ENABLE_ADDONS and _g.stage >= 2:
+                if not _g.menu_cache_addon:
+                    _g.menu_cache_addon = _g.menu
+            else:
+                if not _g.menu_cache_arcade:
+                    _g.menu_cache_arcade = _g.menu
 
     if initial:
         # Exit menu
@@ -708,8 +713,7 @@ def get_addon():
         write_text("DOWNLOADING ADD-ON PACK", font=dk_font, y=0, fg=RED)
         write_text("The console add-on pack is being downloaded.", font=pl_font, y=14, fg=RED)
         write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
-        for i in range(0, 7):
-            write_text(f"—" * 28, font=dk_font, y=244+i, fg=GREY)
+        pygame.draw.rect(_g.screen, GREY, [0, 245, 224, 8], 0)
         update_screen()
 
         try:
@@ -724,10 +728,9 @@ def get_addon():
                     if chunk:
                         f.write(chunk)
                         download_size += chunk_size
-                        percent = round((download_size / total_size) * 100)
-                        if pygame.time.get_ticks() % 100 == 0:
-                            for i in range(0, 7):
-                                write_text("—", font=dk_font, x=(DISPLAY[0] / 100) * (percent - 1), y=244 + i, fg=RED)
+                        if pygame.time.get_ticks() % 50 == 0:
+                            percent = round((download_size / total_size) * 100)
+                            pygame.draw.rect(_g.screen, RED, [0, 245, (DISPLAY[0] / 100) * percent, 8], 0)
                             update_screen()
 
             # Allow up to 10 seconds for file to save fully.
@@ -1501,19 +1504,15 @@ def stage_check(warp=False):
         _g.stage = (current_stage + 1) % STAGES
         _g.ypos = 238
 
-    if current_stage != _g.stage:
-        # Switch the stage
-        _g.coins = []
-        #clear_screen()
-        #initialise_screen()
-        # 23/04/2024 Optimise transition by simply blitting the background - instead of a complete initialisation
-        _g.screen_map.blit(get_image(f"artwork/map{_g.stage}.png"), TOPLEFT)
-
-
-    # # Reset Donkey Kong and Pauline position
+    # Set Donkey Kong and Pauline position
     _g.dkx, _g.dky = KONG_POSXY[_g.stage]
     _g.psx, _g.psy = PAULINE_POSXY[_g.stage]
 
+    if current_stage != _g.stage:
+        # Update when switching stage
+        _g.coins = []
+        _g.screen_map.blit(get_image(f"artwork/map{_g.stage}.png"), TOPLEFT)
+        update_screen()
 
 def teleport_between_hammers():
     if ENABLE_HAMMERS:

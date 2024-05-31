@@ -78,12 +78,12 @@ mz700_donkeygorilla,shell,D/Gorilla,Donkey Gorilla,166,,,187000,2,4,8
 mz700_crazykong,shell,MZCK,Crazy Kong,167,,,188000,2,4,8
 vic20_kongokong,shell,V20CK,Kongo Kong,168,,,189000,2,4,8
 zx81_krazykong_pss,shell,ZX81CK,Krazy Kong,169,,,190000,2,4,8
-pc_dk_amiga_pd,shell,AmigaDK,Amiga Donkey Kong PD,170,,,191000,2,4,8
+pc_nes_dk_hdpack,shell,NESDK HD,Donkey Kong HD Pack,170,,,191000,2,4,8
 dos_dk,shell,DOSDK,Donkey Kong (Original),171,,,192000,2,4,8
 dos_mamedk,shell,OldMAME,Earliest MAME DK (1997),173,,,193000,2,4,8
 dos_kong,shell,Champ,Champ Kong,175,,,194000,2,4,8
 dos_aldo,shell,Aldo,Aldo's Adventure,177,,,195000,2,4,8
-dos_aldo3,shell,Aldo3,Aldo's Assault,178,,,196000,2,4,8
+pc_dk_amiga_pd,shell,AmigaDK,Amiga Donkey Kong PD,178,,,196000,2,4,8
 pc_jumpman_rtx,shell,JumpmanRTX,Jumpman RTX,180,,,197000,2,4,8
 pc_dk_craze,shell,DKCraze,Donkey Kong Craze,182,,,198000,2,4,8
 pc_dk_redux,shell,Redux,Donkey Kong Redux,183,,,199000,2,4,8
@@ -107,10 +107,10 @@ lcd_cdkong,shell,LCDDK,Donkey Kong Coleco,203,,,216000,2,4,8
 gnw_dkjr,shell,JR,Donkey Kong Junior,205,,,217000,2,4,8
 pc_dkongse_gnw,shell,SE,Donkey Kong Special Ed.,206,,,218000,2,4,8
 pc_wildmanjump_gnw,shell,WildMan,Wild Man Jump,207,,,219000,2,4,8
-pc_monkeyjump_gnw,shell,Monkey,Monkey Jump,208,,,220000,2,4,8
+pc_kong_jr_gnw,shell,Kong!,Kong Jr Tribute,208,,,213000,2,4,8
 pc_a2600_arcade_easy,shell,VCS(Easy),Arcade Demo (Easy),210,,,221000,2,4,8
 pc_a2600_arcade_hard,shell,VCS(Hard),Arcade Demo (Hard),212,,,222000,2,4,8
-pc_fixitfelix,shell,FIFJR,Fix It Felix Jr. Classic,213,,,223000,2,4,8
+pc_fixitfelix,shell,FIFJR,Fix-It Felix Jr. Classic,213,,,223000,2,4,8
 pc_dk_plus,shell,DK+,Donkey Kong Plus,214,,,224000,2,4,8
 pc_dk_aa,shell,DKAttacksAgain,Donkey Kong Attacks Again,215,,,225000,2,4,8
 a2600_ck,shell,CK,Crazy Kong,9999,,,0,2,4,8
@@ -161,7 +161,7 @@ bbcb_krazyjohn,shell,KrazyJohn,Krazy John,9999,,,129000,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,Zany Kong JR,9999,,,129000,2,4,8
 c64_dk,shell,DK,Donkey Kong (Nintendo),9999,,,0,2,4,8
 c64_fast_eddie,shell,FastEddie,Fast Eddie,9999,,,133000,2,4,8
-c64_felix,shell,FelixJR,Fix It Felix Jr.,9999,,,133000,2,4,8
+c64_felix,shell,FelixJR,Fix-It Felix Jr.,9999,,,133000,2,4,8
 c64_jumpman,shell,Jumpman,Jumpman Junior,9999,,,133000,2,4,8
 c64_kong_sputnik,shell,Kong,Kong,9999,,,133000,2,4,8
 c64_kongokong,shell,KongoKong,Kongo Kong,9999,,,133000,2,4,8
@@ -175,6 +175,7 @@ coleco_super_dk_jr,shell,SuperJR,Super Donkey Kong! Junior,9999,,,137000,2,4,8
 cpc6128_climbit,shell,Climb-It,Climb-It,9999,,,131000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,Killer Gorilla,9999,,,131000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,Kong's Revenge,9999,,,131000,2,4,8
+dos_aldo3,shell,Aldo3,Aldo's Assault,9999,,,173000,2,4,8
 dos_davikong,shell,David's Kong,David's Kong,9999,,,173000,2,4,8
 dos_dk,shell,DOS,Donkey Kong (Original),9999,,,0,2,4,8
 dos_kong,shell,ChampKong,Champ Kong,9999,,,0,2,4,8
@@ -187,7 +188,7 @@ gameboy_dk_japan_us,shell,DK,Donkey Kong (Original),9999,,,152000,2,4,8
 gameboy_dk_summer,shell,DK Summer,Donkey Kong Summer Hack,9999,,,152000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,Donkey Kong 4 Level Hack,9999,,,152000,2,4,8
 gbcolor_dk_summer,shell,DK Summer,Donkey Kong Summer Hack,9999,,,152000,2,4,8
-genesis_felix,shell,GENFIFJR,Fix It Felix Jr.,9999,,,130000,2,4,8
+genesis_felix,shell,GENFIFJR,Fix-It Felix Jr.,9999,,,130000,2,4,8
 gnw_dkcirc,shell,G&W Circus,Donkey Kong Circus,9999,,,213000,2,4,8
 gnw_dkjrp,shell,DK JR (P),Donkey Kong JR (Panoroma),9999,,,186000,2,4,8
 gnw_dkong2,shell,DK2,Donkey Kong 2,9999,,,186000,2,4,8
@@ -218,8 +219,12 @@ oric1_dinkykong,shell,DinkyKong,Dinky Kong,9999,,,130000,2,4,8
 oric1_honeykong,shell,HoneyKong,Honey Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,Oric Kong,9999,,,130000,2,4,8
 pc_atarist_junior,shell,JR,Donkey JR (G&W),9999,,,186000,2,4,8
+pc_atom_kong,shell,AcornKong,Acorn Kong,9999,,,208000,2,4,8
+pc_fixitfelix3,shell,FixItFelix3,Fix-It Felix 3,9999,,,197000,2,4,8
 pc_lowresnx_denis_kogne,shell,DenisKogne,Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,Kong,9999,,,208000,2,4,8
+pc_monkeyjump_gnw,shell,Monkey,Monkey Jump,9999,,,220000,2,4,8
+pc_nes_dkjr_hdpack,shell,NESJR HD,Donkey Kong JR HD Pack,9999,,,112000,2,4,8
 pet4032_dk_junior,shell,DK Junior,Donkey Kong Junior (G&W),9999,,,133000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,Crazy Jump,9999,,,176000,2,4,8
 plus4_monkeykong,shell,MonkeyKong,Monkey Kong,9999,,,176000,2,4,8
@@ -246,7 +251,6 @@ zx81_zonkeykong,shell,ZonkeyKong,Zonkey Kong,9999,,,160000,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,Jumpman,####,,,0,2,4,8
 ##oric1_4k_kong,shell,4K Kong,4K Kong,####,,,0,2,4,8
-##pc_atom_kong,shell,**Windowed,Acorn Kong,####,,,208000,2,4,8
 ##pc_trs80_skyscraper,shell,**difficult to map,Skyscraper,####,,,0,2,4,8
 ##plus4_dkplus,shell,**Terrible controls,Donkey Kong +,####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Screen issues,Larry Monkey,####,,,0,2,4,8

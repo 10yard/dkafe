@@ -100,6 +100,8 @@ def apply_patches_and_addons():
 
 
 def install_addons():
+    import dk_global as _g
+    import pygame
     # Install addon files when found
     if ARCH == "winxp":
         # Add-on not supported on XP
@@ -110,8 +112,7 @@ def install_addons():
         write_text("EXTRACTING ADD-ON PACK", font=dk_font, y=0, fg=RED)
         write_text("The console add-on pack is being extracted and installed.", font=pl_font, y=14, fg=RED)
         write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
-        for i in range(0, 7):
-            write_text(f"—" * 28, font=dk_font, y=244+i, fg=GREY)
+        pygame.draw.rect(_g.screen, GREY, [0, 245, 224, 8], 0)
         update_screen()
 
         # Do Install
@@ -119,10 +120,10 @@ def install_addons():
             with zipfile.ZipFile(addon) as zf:
                 file_list = zf.namelist()
                 for idx, file in enumerate(file_list):
-                    percent = round((idx / len(file_list)) * 100)
-                    if idx % 10 == 0:
-                        for i in range(0, 7):
-                            write_text("—", font=dk_font, x=(DISPLAY[0] / 100) * (percent - 1), y=244+i, fg=RED)
+                    if idx % 5 == 0:
+                        percent = round((idx / len(file_list)) * 100)
+                        pygame.draw.rect(_g.screen, RED, [0, 245, (DISPLAY[0] / 100) * percent, 8], 0)
+                        update_screen()
                     zf.extract(file)
                     update_screen()
                 zf.close()

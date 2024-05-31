@@ -571,7 +571,7 @@ Playlist music:
 """
 
 # Console Addon Specific
-ADDON_URL = "https://www.dropbox.com/s/ssbsh0blj0h1t2e/dkafe_console_addon_pack_v1.zip?dl=0"
+ADDON_URL = "https://www.dropbox.com/scl/fi/g6m7a61k00e0xv5htheit/dkafe_console_addon_pack_v2.zip?rlkey=tdghuqb49pksxfvpz0yk9v23g&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
@@ -682,11 +682,14 @@ KEYBOARD_REMAP = {
     "pc_jumpman_rtx":"num 1>enter|num 5>enter|ctrl>space|esc>forcequit",
     "pc_lowresnx_denis_kogne":"ctrl>z",
     "pc_mc10_kong":"ctrl>space|left>a|right>s|up>w|down>z",
+    "pc_nes_dk_hdpack":"alt>ctrl",
+    "pc_nes_dkjr_hdpack":"alt>ctrl",
     "pc_pico8_ape":"ctrl>z|esc>forcequit:zepto8.exe",
     "pc_pico8_denis_kogne": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_pico8_dinkyking": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_raiders":"ctrl>space",
     "pc_tic80_denis_kogne":"tab>esc|ctrl>z|alt>x|esc>forcequit:tic80.exe",
+    "pc_kong_jr_gnw":"ctrl>x|esc>forcequit",
     "pc_tic80_kongremake":"tab>esc|ctrl>z|esc>forcequit:tic80.exe",
     "pc_trs80_ape":"ctrl>space|p>enter,1|num 2>home|num 1>enter,1",
     "pc_trs80_kong":"ctrl>space|num 1>home",

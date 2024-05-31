@@ -80,6 +80,7 @@ last_press, last_up, last_down = 0, 0, 0
 
 # Menu cache for performance
 menu_cache_addon = None
+menu_cache_arcade = None
 
 # Active Window
 window = None
