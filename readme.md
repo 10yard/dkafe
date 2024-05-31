@@ -7,8 +7,8 @@ An arcade game launcher based on Donkey Kong with incentives to play and unlock 
 
 ![DKAFE frontend](https://github.com/10yard/dkafe/blob/master/artwork/about/frontend.png)
 
-A very short video review - https://www.youtube.com/shorts/_RtjCKfJuoo
-
+A very short video review by GenXGrownUp - https://www.youtube.com/shorts/_RtjCKfJuoo
+An article on the Set Side B gaming blog - https://setsideb.com/romhack-thursday-dkafe/
 
 ## Get DKAFE for your system
 
@@ -187,6 +187,13 @@ Credit is given to the original authors below.
 
 
 
+## DKWolf Emulator
+
+DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior, DK3, Crazy Kong and Big Kong).
+
+It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
+
+
 ## Feature Plugins
 
 These plugins add extra features to some roms.
@@ -231,12 +238,64 @@ A tally of the total number of continues made will appear at the top of the scre
 ![DK Continue](https://github.com/10yard/dkafe/blob/master/artwork/about/continue.png)
 
 
+## Console Add-on Pack
 
-## DKWolf Emulator
+An optional add-on pack includes over 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
-DKAFE comes with my custom lightweight build of WolfMAME named DKWolf,  it supports only Donkey Kong drivers (including DK Junior, DK3, Crazy Kong and Big Kong).
+ - Acorn Atom
+ - Atari 2600
+ - Amstrad CPC
+ - Apple ][
+ - Atari 5200
+ - Atari 7800
+ - Atari 800XL
+ - Atari ST
+ - BBC Micro
+ - Coleco Adam
+ - Colecovision
+ - Commodore 16/Plus4
+ - Commodore 64
+ - Commodore Amiga
+ - Commodore Pet
+ - Commodore VIC-20
+ - Dragon 32
+ - Famicom Disk System
+ - Game and Watch
+ - Intellivision
+ - LCD and Handheld
+ - LowRes NX Fantasy Console
+ - MS-DOS
+ - MSX
+ - Nintendo Entertainment System
+ - Nintendo Gameboy
+ - Nintendo Gameboy Color
+ - PC
+ - Pico-8 Fantasy Console
+ - Sega Genesis/Megadrive
+ - Sharp MZ700
+ - Sinclair Spectrum 
+ - Sinclair ZX80
+ - Sinclair ZX81
+ - Super Nintendo
+ - Tandy Color Computer 3 (CoCo3) 
+ - Tandy MC10
+ - Tandy TRS-80
+ - Tangerine Oric
+ - Texas Instruments TI99/4
+ - Thomson MO5
+ - TIC-80 Fantasy Console
+ - VTech Creativision
 
-It is possible to set up other emulators and roms if you do not wish to use the default Donkey Kong focussed frontend.
+
+The Donkey Kong console games will appear on the pies and elevator stages.  There is also a crazy kong stage specific for PC and DOS.
+In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
+
+The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
+
+![DKAFE addon](https://github.com/10yard/dkafe/blob/master/artwork/about/console_addon.png)
+
+![DKAFE game menu](https://github.com/10yard/dkafe/blob/master/artwork/about/gamemenu.png)
+
 
 
 ## How to install
@@ -288,6 +347,20 @@ There are 215 configurable game slots in total.
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)
+
+
+### Add-on Pack Installation
+
+The optional console add-on pack can be downloaded automatically from within the DKAFE settings menu.
+
+![DKAFE get addon](https://github.com/10yard/dkafe/blob/master/artwork/about/get_addon.png)
+
+The system will detect the downloaded ZIP and automatically unpack and install the add-on pack for you.
+
+Add-on games have been optimised to launch instantly on Windows 64 bit machines.  For other platforms,  the first load will be slower while DKAFE performs an initial optimisation.  Subsequent loads will be instant.
+
+
+![Console Wheel](https://github.com/10yard/dkafe/blob/master/artwork/about/console_wheel.jpg)
 
 
 ### Display Resolution
@@ -543,78 +616,6 @@ The special subfolder name `shell` can be used when you want to launch a batch f
 
 An accompanying icon in .png format should be placed into the `artwork/icons` folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.
 
-
-## Console Add-on Pack
-
-An optional add-on pack includes over 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
-
- - Acorn Atom
- - Atari 2600
- - Amstrad CPC
- - Apple ][
- - Atari 5200
- - Atari 7800
- - Atari 800XL
- - Atari ST
- - BBC Micro
- - Coleco Adam
- - Colecovision
- - Commodore 16/Plus4
- - Commodore 64
- - Commodore Amiga
- - Commodore Pet
- - Commodore VIC-20
- - Dragon 32
- - Famicom Disk System
- - Game and Watch
- - Intellivision
- - LCD and Handheld
- - LowRes NX Fantasy Console
- - MS-DOS
- - MSX
- - Nintendo Entertainment System
- - Nintendo Gameboy
- - Nintendo Gameboy Color
- - PC
- - Pico-8 Fantasy Console
- - Sega Genesis/Megadrive
- - Sharp MZ700
- - Sinclair Spectrum 
- - Sinclair ZX80
- - Sinclair ZX81
- - Super Nintendo
- - Tandy Color Computer 3 (CoCo3) 
- - Tandy MC10
- - Tandy TRS-80
- - Tangerine Oric
- - Texas Instruments TI99/4
- - Thomson MO5
- - TIC-80 Fantasy Console
- - VTech Creativision
-
-
-The Donkey Kong console games will appear on the pies and elevator stages.  There is also a crazy kong stage specific for PC and DOS.
-In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
-
-The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
-
-![DKAFE addon](https://github.com/10yard/dkafe/blob/master/artwork/about/console_addon.png)
-
-![DKAFE game menu](https://github.com/10yard/dkafe/blob/master/artwork/about/gamemenu.png)
-
-
-### Add-on Pack Installation
-
-The add-on pack can be downloaded automatically from within the DKAFE settings menu.
-
-![DKAFE get addon](https://github.com/10yard/dkafe/blob/master/artwork/about/get_addon.png)
-
-The system will detect the downloaded ZIP and automatically unpack and install the add-on pack for you.
-
-Add-on games have been optimised to launch instantly on Windows 64 bit machines.  For other platforms,  the first load will be slower while DKAFE performs an initial optimisation.  Subsequent loads will be instant.
-
-
-![Console Wheel](https://github.com/10yard/dkafe/blob/master/artwork/about/console_wheel.jpg)
 
 
 ## Emulator recommendation
