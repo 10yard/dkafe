@@ -460,7 +460,8 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
                 if not detect_only:
                     if not(_x == 90 and _y == 34):
-                        _g.screen.blit(img, (_x, _y))
+                        if img:
+                            _g.screen.blit(img, (_x, _y))
                         if up_arrow and not _g.ready:
                             if pygame.time.get_ticks() % 550 < 275:
                                 _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
@@ -527,14 +528,16 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
         _g.ready = False
         ladder_info = get_map_info("u") + get_map_info("d")
         if "LADDER_DETECTED" in ladder_info and "END_OF_LADDER" not in ladder_info:
-            _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
+            if _g.last_image:
+                _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
         if direction == "l" and "BLOCKED_LEFT" not in map_info:
             _g.facing = 0
         elif direction == "r" and "BLOCKED_RIGHT" not in map_info:
             _g.facing = 1
         else:
-            _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
+            if _g.last_image:
+                _g.screen.blit(_g.last_image, (_g.xpos, int(_g.ypos)))
             return 0
         _g.xpos += horizontal_movement * [-1, 1][_g.facing]
         _g.sprite_index += 0.5
@@ -587,7 +590,8 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             adjust_jumpman()
 
     img = _g.last_image if "#" in sprite_file else get_image(sprite_file)
-    _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
+    if img:
+        _g.screen.blit(img, (_g.xpos, int(_g.ypos)))
     _g.last_image = img
     play_sound_effect(sound_file)
 
@@ -605,6 +609,7 @@ def get_system_description(name):
     else:
         return ""
 
+
 def sort_key(x):
     key0 = get_system_description(x[0])
     key1 = (x[3] or x[0]).replace("Bonus:", "ZZBonus:")
@@ -612,6 +617,7 @@ def sort_key(x):
     if slot == "9999":
         slot = "0"
     return key0.ljust(30) + key1.ljust(30) + slot.zfill(4)
+
 
 def build_menus(initial=False):
     """Game selection menu"""
@@ -758,6 +764,7 @@ def get_addon():
             write_text("The download target is not currently reachable.", font=pl_font, y=14, fg=WHITE)
             write_text("Please check your internet connectivity.", font=pl_font, y=22, fg=WHITE)
             jump_to_continue()
+
 
 def reset_addon_state_files():
     count = 0
