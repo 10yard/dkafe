@@ -45,14 +45,17 @@ def validate_rom():
                     return True
             return False
         else:
-            # Last resort. Check the ZIP contains all the required files
-            z = zipfile.ZipFile(DKONG_ZIP)
-            for filename in ROM_CONTENTS:
-                if filename not in z.namelist():
-                    return False
-            return True
+            # ZIP not recognised - a patch file was not found.
+            return False
+            # 09/06/2024 Removed last resort code.  Trying to patch an unrecognisd ZIP is most likely to fail
+            ## Last resort. Check the ZIP contains all the required files
+            #z = zipfile.ZipFile(DKONG_ZIP)
+            #for filename in ROM_CONTENTS:
+            #    if filename not in z.namelist():
+            #        return False
+            #return True
     else:
-        # No rom file so a verification error not is returned
+        # No rom file so a verification error is not returned
         return True
 
 

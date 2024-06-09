@@ -446,8 +446,8 @@ INVALID_ROM_MESSAGE = [
     "ERROR WITH DONKEY KONG ROM", "",
     "Your DKONG.ZIP file is not",
     "valid. Please replace it.", "",
-    "The zip should contain the",
-    "following files:", ""]
+    "The zip should contain only",
+    "the following files:", ""]
 
 INSTRUCTION = """
 
