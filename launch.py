@@ -418,7 +418,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
         if int(slot) - 1 in range(*SLOTS_PER_STAGE[_g.stage]):
-            p_des = alt.replace(" :", ":").replace("№","00") if alt.strip() else des
+            p_des = alt.replace("№","00") if alt.strip() else des
             unlocked = True
             up_arrow = False
             if _g.score < unlock and UNLOCK_MODE and not BASIC_MODE and not intro:
@@ -631,7 +631,8 @@ def build_menus(initial=False):
             if _g.menu_cache_arcade:
                 _g.menu = _g.menu_cache_arcade
         if not _g.menu:
-            write_text("Building the game list...", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("                           ", x=108 + _g.psx, y=38 + _g.psy, bg=BLACK, fg=BLACK, bubble=True)
+            write_text("Generating the game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
             process_interrupts()
             animate_jumpman()
             update_screen()
@@ -651,6 +652,8 @@ def build_menus(initial=False):
                             _lastsystem = _system
                             _unlock_msg = True
                         # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
+                        if ":" in alt:
+                            alt = alt.split(":")[1].strip()
                         try:
                             widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                         except IndexError:

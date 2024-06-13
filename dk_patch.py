@@ -16,7 +16,7 @@ from pathlib import Path
 import shutil
 import hashlib
 import zipfile
-from dk_config import ROM_DIR, PATCH_DIR, ROM_CONTENTS, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH, DISPLAY
+from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH, DISPLAY
 from dk_system import is_pi, copy
 
 
@@ -47,7 +47,7 @@ def validate_rom():
         else:
             # ZIP not recognised - a patch file was not found.
             return False
-            # 09/06/2024 Removed last resort code.  Trying to patch an unrecognisd ZIP is most likely to fail
+            # 09/06/2024 Removed last resort code.  Trying to patch an unrecognisd ZIP is most likely going to fail
             ## Last resort. Check the ZIP contains all the required files
             #z = zipfile.ZipFile(DKONG_ZIP)
             #for filename in ROM_CONTENTS:
