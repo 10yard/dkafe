@@ -122,6 +122,7 @@ rom_table["hbf900a_congo"]           = {"JJ",          false, 13000, {660,'RUN"C
 rom_table["cdkong"]                  = {"P1",          false, 0,     {},                                                18,    32,  0,   40}
 rom_table["gckong"]                  = {"P1",          false, 0,     {},                                                18,    32,  0,   40}
 rom_table["intv"]                    = {"P1",          true,  900,   {},                                                0,     0,   0,   0 }
+rom_table["intv_beautybeast"]        = {"JJ",          false, 0,     {},                                                0,     0,   0,   0 }
 rom_table["mo5"]                     = {"P1",          false, 5000,  {90,'RUN""\n'},                                    0,     0,   0,   0 }
 rom_table["mz700_jumpman"]           = {"JJ",          false, 10000, {180,"LOAD\n",300,"{PLAY}"},                       0.5,   0,   0,   0 }
 rom_table["mz700_crazykong"]         = {"",            true,  20650, {180,"LOAD\n",300,"{PLAY}",18000," ",18500," ",

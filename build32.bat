@@ -50,6 +50,7 @@ xcopy dkwolf\*.txt dist\dkwolf\ /Y
 xcopy dkwolf\*.md dist\dkwolf\ /Y
 xcopy dkwolf\plugins dist\dkwolf\plugins /S /i /Y
 xcopy dkwolf\changes dist\dkwolf\changes /S /i /Y
+xcopy dkwolf\hash dist\dkwolf\hash /S /i /Y
 rmdir dist\dkwolf\inp /s /Q
 
 echo **** define systems to be included in the add-on pack

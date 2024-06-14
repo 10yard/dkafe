@@ -622,7 +622,7 @@ def sort_key(x):
 def build_menus(initial=False):
     """Game selection menu"""
     _g.menu = None
-    if not UNLOCK_MODE:
+    if not UNLOCK_MODE and not initial:
         # Restore full addon menu from cache for improved performance
         if ENABLE_ADDONS and _g.stage >= 2:
             if _g.menu_cache_addon:
@@ -631,6 +631,7 @@ def build_menus(initial=False):
             if _g.menu_cache_arcade:
                 _g.menu = _g.menu_cache_arcade
         if not _g.menu:
+            # Pauline announces that the game list is being generated
             write_text("                           ", x=108 + _g.psx, y=38 + _g.psy, bg=BLACK, fg=BLACK, bubble=True)
             write_text("Generating the game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
             process_interrupts()

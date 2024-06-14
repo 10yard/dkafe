@@ -108,10 +108,10 @@ gnw_dkjr,shell,JR,G&W: Donkey Kong Junior,205,,,217000,2,4,8
 pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,206,,,218000,2,4,8
 pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,207,,,219000,2,4,8
 pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,208,,,213000,2,4,8
-pc_a2600_arcade_easy,shell,VCS(Easy),2600: Arcade Demo (Easy),210,,,221000,2,4,8
-pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),212,,,222000,2,4,8
+apple2e_budgiekong,shell,A][ BudgieKong,A][: Budgie Kong,210,,,221000,2,4,8
+pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,222000,2,4,8
 pc_fixitfelix,shell,FIFJR,PC: Fix-It Felix Classic,213,,,223000,2,4,8
-pc_dk_plus,shell,DK+,PC: Donkey Kong Plus,214,,,224000,2,4,8
+pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,214,,,224000,2,4,8
 pc_dk_aa,shell,DKAttacksAgain,PC: Donkey Kong Attacks,215,,,225000,2,4,8
 a2600_ck,shell,CK,Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,CK Fast,9999,,,121000,2,4,8
@@ -149,7 +149,6 @@ a800xl_dk_junior,shell,DK Junior,Donkey Kong Junior,9999,,,139000,2,4,8
 a800xl_fast_eddie,shell,FastEddie,Fast Eddie,9999,,,139000,2,4,8
 adam_dk,shell,DK,Donkey Kong (Original),9999,,,137000,2,4,8
 apple2e_applekong,shell,AppleKong,Apple Kong,9999,,,130000,2,4,8
-apple2e_budgiekong,shell,BudgieKong,Budgie Kong,9999,,,130000,2,4,8
 apple2e_cannonball,shell,A2 Blitz,Cannonball Blitz,9999,,,130000,2,4,8
 bbcb_barrel_battle,shell,BarrelBattle,Barrel Battle,9999,,,129000,2,4,8
 bbcb_builder,shell,Builder,Builder,9999,,,129000,2,4,8
@@ -193,6 +192,7 @@ gnw_dkcirc,shell,G&W Circus,Donkey Kong Circus,9999,,,213000,2,4,8
 gnw_dkjrp,shell,DK JR (P),Donkey Kong JR (Panoroma),9999,,,186000,2,4,8
 gnw_dkong2,shell,DK2,Donkey Kong 2,9999,,,186000,2,4,8
 hbf900a_tokekong,shell,TokeKong,Toke Kong,9999,,,143000,2,4,8
+intv_beautybeast,shell,BeautyBeast,Beauty and the Beast,9999,,,151000,2,4,8
 intv_dk_junior,shell,DK Junior,Donkey Kong Junior,9999,,,151000,2,4,8
 lcd_gckong,shell,Gakken CK,Gakken Crazy Kong,9999,,,186000,2,4,8
 nes_crazykong,shell,CK,Crazy Kong,9999,,,0,2,4,8
@@ -218,6 +218,7 @@ nes_udx_vs_dk,shell,UDX vs DK,UDX vs Donkey Kong,9999,,,121000,2,4,8
 oric1_dinkykong,shell,DinkyKong,Dinky Kong,9999,,,130000,2,4,8
 oric1_honeykong,shell,HoneyKong,Honey Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,Oric Kong,9999,,,130000,2,4,8
+pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,221000,2,4,8
 pc_atarist_junior,shell,JR,Donkey JR (G&W),9999,,,186000,2,4,8
 pc_atom_kong,shell,AcornKong,Acorn Kong,9999,,,208000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,Fix-It Felix 3,9999,,,197000,2,4,8
@@ -247,7 +248,6 @@ zx81_zonkeykong,shell,ZonkeyKong,Zonkey Kong,9999,,,160000,2,4,8
 ##dos_jumpman,shell,Jumpman,Jumpman,####,,,0,2,4,8
 ##dos_kongsrev,shell,KongsRevenge,Kong's Revenge,####,,,0,2,4,8
 ##hbf900a_congo,shell,**Controls not working,Congo,####,,,0,2,4,8
-##intv_beautybeast,shell,BeautyBeast,Beauty and the Beast,####,,,0,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,Jumpman,####,,,0,2,4,8
 ##oric1_4k_kong,shell,4K Kong,4K Kong,####,,,0,2,4,8

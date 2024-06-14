@@ -56,6 +56,7 @@ sudo cp dkwolf/dkwolfrpi dist/dkwolf
 sudo cp -r dkwolf/*.txt dist/dkwolf
 sudo cp -r dkwolf/plugins dist/dkwolf
 sudo cp -r dkwolf/changes dist/dkwolf
+sudo cp -r dkwolf/hash dist/dkwolf
 
 # remove unwanted plugin files for this system
 sudo rm -r dist/dkwolf/plugins/galakong/bin
