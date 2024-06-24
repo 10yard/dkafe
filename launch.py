@@ -725,11 +725,11 @@ def get_addon():
         write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
         pygame.draw.rect(_g.screen, GREY, [0, 245, 224, 8], 0)
         update_screen()
-
         try:
             r = requests.get(ADDON_URL, stream=True, headers={'user-agent': 'Wget/1.16 (linux-gnu)'})
             total_size = int(r.headers.get("Content-length"))
         except:
+            r = None
             total_size = 0
         if total_size > 0:
             chunk_size, download_size = 1024, 0
@@ -1338,7 +1338,7 @@ def process_interrupts():
         if icons:
             sub, name, alt, _, _, _, st3, st2, st1 = icons
         else:
-            sub, name, alt = "", "", ""
+            sub, name, alt, st3, st2, st1 = ("",) * 6
 
         # Pauline announces the launch options
         if SHOW_GAMETEXT and alt:

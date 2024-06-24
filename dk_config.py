@@ -655,6 +655,7 @@ GAME_MEDIA = {
     "plus4_dkplus":"-joy1 joy -quik",
     "spectrum_ape_escape":"-cass",
     "spectrum_kongs_revenge":"-cass",
+    "spectrum_crazykongcity":"-cass",
     "vic20_logger": "-cass",
     "vic20_mickybricky": "-cass",
     "vic20_fast_eddie":"-cart",
