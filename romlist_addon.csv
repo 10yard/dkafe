@@ -107,8 +107,8 @@ gnw_dkong,shell,G&WDK,G&W: Donkey Kong (Orig),202,,,216000,2,4,8
 lcd_cdkong,shell,LCDDK,LCD: Donkey Kong Coleco,203,,,217000,2,4,8
 gnw_dkjr,shell,JR,G&W: Donkey Kong Junior,205,,,218000,2,4,8
 pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,206,,,219000,2,4,8
-pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,207,,,213000,2,4,8
-pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,208,,,221000,2,4,8
+pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,207,,,220000,2,4,8
+intv_intykong,shell,IntyKong,Inty Kong,209,,,221000,2,4,8
 apple2e_budgiekong,shell,A][ BudgieKong,A][: Budgie Kong,210,,,222000,2,4,8
 pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,223000,2,4,8
 pc_fixitfelix,shell,FIFJR,PC: Fix-It Felix Classic,213,,,224000,2,4,8
@@ -195,7 +195,6 @@ hbf900a_tokekong,shell,TokeKong,MSX: Toke Kong,9999,,,143000,2,4,8
 intv_beautybeast,shell,BeautyBeast,INTV: Beauty and the Beast,9999,,,151000,2,4,8
 intv_dk_junior,shell,DK Junior,INTV: Donkey Kong Junior,9999,,,151000,2,4,8
 intv_monkey,shell,Monkey,Monkey Moon,9999,,,151000,2,4,8
-intv_intykong,shell,IntyKong,IntyKong,9999,,,151000,2,4,8
 lcd_gckong,shell,Gakken CK,LCD: Gakken Crazy Kong,9999,,,186000,2,4,8
 nes_crazykong,shell,CK,NES: Crazy Kong,9999,,,0,2,4,8
 nes_dk,shell,NESDK,NES: Donkey Kong (Original),9999,,,0,2,4,8
@@ -232,6 +231,7 @@ pc_lowresnx_denis_kogne,shell,DenisKogne,NX: Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,220000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
+pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,220000,2,4,8
 pet4032_dk_junior,shell,DK Junior,G&W: Donkey Kong Junior (G&W),9999,,,133000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,C16/+4: Crazy Jump,9999,,,176000,2,4,8
 plus4_monkeykong,shell,MonkeyKong,C16/+4: Monkey Kong,9999,,,176000,2,4,8
