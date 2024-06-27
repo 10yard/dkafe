@@ -1,0 +1,8 @@
+Colour Genie EG2000 - Colour Kong 32
+
+An unofficial Donkey Kong port to this obscure system.
+It's an excellent clone and all of the levels have 
+been implemented well.
+The barrels stage is quite tricky.
+
+Developed By Harold Bogeholtz

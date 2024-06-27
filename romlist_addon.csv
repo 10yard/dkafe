@@ -111,9 +111,9 @@ pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,207,,,220000,2,4,8
 intv_intykong,shell,IntyKong,Inty Kong,209,,,221000,2,4,8
 apple2e_budgiekong,shell,A][ BudgieKong,A][: Budgie Kong,210,,,222000,2,4,8
 pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,223000,2,4,8
-pc_fixitfelix,shell,FIFJR,PC: Fix-It Felix Classic,213,,,224000,2,4,8
-pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,214,,,225000,2,4,8
-pc_dk_aa,shell,DKAttacksAgain,PC: Donkey Kong Attacks,215,,,226000,2,4,8
+cgenie_colourkong32,shell,EGCK,EG2000: Colour Kong 32,213,,,224000,2,4,8
+pc_fixitfelix,shell,PC FIFJR,PC: Fix-It Felix Classic,214,,,225000,2,4,8
+pc_dk_aa,shell,PC DKAttacks,PC: Donkey Kong Attacks,215,,,226000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,121000,2,4,8
 a2600_dk,shell,VCSDK,2600: Donkey Kong (Original),9999,,,0,2,4,8
@@ -226,6 +226,7 @@ oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,130000,2,4,8
 pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,221000,2,4,8
 pc_atarist_junior,shell,JR,ST: Donkey JR (G&W),9999,,,186000,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,208000,2,4,8
+pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,197000,2,4,8
 pc_lowresnx_denis_kogne,shell,DenisKogne,NX: Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
@@ -250,6 +251,7 @@ vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##adam_dk_junior,shell,DK,ADAM: Donkey Kong Junior,####,,,0,2,4,8
+##cgenie_colourkong,shell,Same as colourkong,EG2000: Colour Kong,####,,,130000,2,4,8
 ##dos_aldo2,shell,Aldo Again,DOS: Aldo Again,####,,,0,2,4,8
 ##dos_jman2,shell,Jumpman Lives,DOS: Jumpman Lives,####,,,0,2,4,8
 ##dos_jumpman,shell,Jumpman,DOS: Jumpman,####,,,0,2,4,8

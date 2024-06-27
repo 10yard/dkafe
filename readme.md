@@ -261,6 +261,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - Commodore Pet
  - Commodore VIC-20
  - Dragon 32
+ - EACA Colour Genie EG2000
  - Famicom Disk System
  - Game and Watch
  - Intellivision

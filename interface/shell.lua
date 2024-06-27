@@ -93,6 +93,10 @@ rom_table["c64_mariosbrewery"]       = {"JJ",          true,  550,   {150,"RUN\n
 rom_table["c64p_dk_junior"]          = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["c64_jumpman"]             = {"P1",          true,  550,   {150,"RUN\n",500,"1"},                             1.33,  2,   0,   0 }
 rom_table["c64_kong_sputnik"]        = {"JJ",          true,  850,   {150,"RUN\n",800,"{TAB}"},                         1.33,  2,   0,   0 }
+rom_table["cgenie_colourkong"]       = {"P1",          true,  3800,  {60,"\n",200,"SYSTEM\n",320,"KONG\n",
+																	   400,"{PLAY}",3500,"/\n"},                        4.1,   3,   0,   0 }
+rom_table["cgenie_colourkong32"]     = {"P1",          true,  5000,  {60,"\n",200,"SYSTEM\n",320,"KONG32\n",
+																	   400,"{PLAY}",4800,"/\n"},                        4.1,   3,   0,   0 }
 rom_table["coco3"]                   = {"JJ",          true,  5200,  {},                                                4.25,  4,   0,   0 }
 rom_table["coco3_dk_emu"]            = {"JJ TT JJ AA", true,  6700,  {60,'LOADM"EMULATOR":EXEC\n'},                     4.25,  4,   0,   0 }
 rom_table["coco3_dk_remixed"]        = {"JJ TT JJ AA", true,  6700,  {60,'LOADM"DKREMIX":EXEC\n'},                      4.25,  4,   0,   0 }
@@ -118,7 +122,7 @@ rom_table["gbcolor"]                 = {"P1",          false, 180,   {},        
 rom_table["hbf900a"]                 = {"P1",          true , 2300,  {},                                                5,     12,  0,   0 }
 rom_table["hbf900a_tokekong"]        = {"JJ",          true , 3700,  {},                                                5,     12,  0,   0 }
 rom_table["hbf900a_apeman"]          = {"JJ",          true,  5300,  {},                                                5,     12,  0,   0 }
-rom_table["hbf900a_congo"]           = {"JJ",          false, 13000, {660,'RUN"CAS:"\n'},               5,     12,  0,   0 }
+rom_table["hbf900a_congo"]           = {"JJ",          true,  14500, {660,'RUN"CAS:"\n'},                               5,     12,  0,   0 }
 rom_table["cdkong"]                  = {"P1",          false, 0,     {},                                                18,    32,  0,   40}
 rom_table["gckong"]                  = {"P1",          false, 0,     {},                                                18,    32,  0,   40}
 rom_table["intv"]                    = {"P1",          true,  900,   {},                                                0,     0,   0,   0 }
