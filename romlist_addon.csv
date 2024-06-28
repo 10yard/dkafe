@@ -165,6 +165,7 @@ c64_felix,shell,FelixJR,C64: Fix-It Felix Jr.,9999,,,133000,2,4,8
 c64_jumpman,shell,Jumpman,C64: Jumpman Junior,9999,,,133000,2,4,8
 c64_kong_sputnik,shell,Kong,C64: Kong,9999,,,133000,2,4,8
 c64_kongokong,shell,KongoKong,C64: Kongo Kong,9999,,,133000,2,4,8
+c64_logger,shell,Logger,C64: Logger,9999,,,133000,2,4,8
 c64p_dk_ocean,shell,C64DK,C64: Donkey Kong (Ocean),9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,COCO3: Donkey Kong Remixed,9999,,,140000,2,4,8
 coco3_donkeyking,shell,DonkeyKing,COCO3: Donkey King,9999,,,140000,2,4,8
@@ -177,6 +178,7 @@ cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,131000,2,4,
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,131000,2,4,8
 dos_davikong,shell,David's Kong,DOS: David's Kong,9999,,,173000,2,4,8
 dos_dk,shell,DOS,DOS: Donkey Kong (Original),9999,,,0,2,4,8
+dos_dkpc,shell,DKPC,DOS: Donkey Kong PC,9999,,,173000,2,4,8
 dos_kong,shell,ChampKong,DOS: Champ Kong,9999,,,0,2,4,8
 dos_willy,shell,WillyWorm,DOS: Willy the Worm,9999,,,173000,2,4,8
 dragon32_kingcuthbert,shell,KingCuthbert,DOS: King Cuthbert,9999,,,130000,2,4,8
@@ -195,6 +197,7 @@ hbf900a_tokekong,shell,TokeKong,MSX: Toke Kong,9999,,,143000,2,4,8
 intv_beautybeast,shell,BeautyBeast,INTV: Beauty and the Beast,9999,,,151000,2,4,8
 intv_dk_junior,shell,DK Junior,INTV: Donkey Kong Junior,9999,,,151000,2,4,8
 intv_monkey,shell,Monkey,Monkey Moon,9999,,,151000,2,4,8
+jupace_krazykong,shell,KrazyKong,JUP: Kong,9999,,,130000,2,4,8
 lcd_gckong,shell,Gakken CK,LCD: Gakken Crazy Kong,9999,,,186000,2,4,8
 nes_crazykong,shell,CK,NES: Crazy Kong,9999,,,0,2,4,8
 nes_dk,shell,NESDK,NES: Donkey Kong (Original),9999,,,0,2,4,8
@@ -253,6 +256,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##adam_dk_junior,shell,DK,ADAM: Donkey Kong Junior,####,,,0,2,4,8
 ##cgenie_colourkong,shell,Same as colourkong,EG2000: Colour Kong,####,,,130000,2,4,8
 ##dos_aldo2,shell,Aldo Again,DOS: Aldo Again,####,,,0,2,4,8
+##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
 ##dos_jman2,shell,Jumpman Lives,DOS: Jumpman Lives,####,,,0,2,4,8
 ##dos_jumpman,shell,Jumpman,DOS: Jumpman,####,,,0,2,4,8
 ##dos_kongsrev,shell,KongsRevenge,DOS: Kong's Revenge,####,,,0,2,4,8
@@ -267,7 +271,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
 ##vic20_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),####,,,0,2,4,8
 ##vic20_dkjr_gnw,shell,**Hangs,VIC20: Donkey Kong Junior (G&W),####,,,0,2,4,8
-##vic20_logger,shell,**start up issue,VIC20: Logger,####,,,0,2,4,8
+##vic20_logger,shell,**Start up trouble,VIC20: Logger,####,,,0,2,4,8
 ##vic20_logrun,shell,LogRun,VIC20: Log Run,####,,,0,2,4,8
 ##vic20_mickybricky,shell,**start up issue,VIC20: Micky The Bricky,####,,,0,2,4,8
 ##vic20_minikong,shell,**Screen issues,VIC20: MiniKong,####,,,0,2,4,8

@@ -89,6 +89,7 @@ rom_table["c64_monkeykong"]          = {"WAIT TO START",true, 5900,  {150,'LOAD"
 																	3000,"{F1}",3100,"{F1}",3400,"{F3}{F3}{F3}{F3}"},	1.33,  2,   0,   0 }
 rom_table["c64_felix"]               = {"JJ TT JJ AA", true,  550,   {150,'RUN\n'},                                     1.33,  2,   0,   0 }
 rom_table["c64_krazykong64"]         = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
+rom_table["c64_logger"]              = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["c64_mariosbrewery"]       = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["c64p_dk_junior"]          = {"JJ",          true,  550,   {150,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["c64_jumpman"]             = {"P1",          true,  550,   {150,"RUN\n",500,"1"},                             1.33,  2,   0,   0 }
@@ -129,6 +130,7 @@ rom_table["intv"]                    = {"P1",          true,  900,   {},        
 rom_table["intv_beautybeast"]        = {"JJ",          false, 0,     {},                                                0,     0,   0,   0 }
 rom_table["intv_monkey"]             = {"JJ",          false, 0,     {},                                                0,     0,   0,   0 }
 rom_table["intv_intykong"]           = {"",            false, 0,     {},                                                0,     0,   0,   0 }
+rom_table["jupace"]                  = {"JJ",          false, 180,   {},                                                2.25,  3,   0,   0 }
 rom_table["mo5"]                     = {"P1",          false, 5000,  {90,'RUN""\n'},                                    0,     0,   0,   0 }
 rom_table["mz700_jumpman"]           = {"JJ",          false, 10000, {180,"LOAD\n",300,"{PLAY}"},                       0.5,   0,   0,   0 }
 rom_table["mz700_crazykong"]         = {"",            true,  20650, {180,"LOAD\n",300,"{PLAY}",18000," ",18500," ",
@@ -166,9 +168,9 @@ rom_table["vic20_dkjr_gnw"]          = {"JJ",          false, 500,   {360,"RUN\n
 rom_table["vic20_kongokong"]         = {"P1",          true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_logger"]            = {"P1",          false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",
-						  	  				       4400,"{SPACE}",4800,"{RESET}",5000,"LOAD\n"},      1.33,  2,   0,   0 }
+													 5000,"{SHIFT}",5000,"{HOME}"},   1.33,  2,   0,   0 }
 rom_table["zx81_crazykong"]          = {"",            true,  10750, {360,'J""\n',420,"{PLAY}",10400,"\n",10500,"1\n"}, 2,     4,   0,   0 }
-rom_table["zx81_kongsrevenge"]       = {"",            false, 20200, {360,'J""\n',420,"{PLAY}", "20100", "n\n"},        2,     4,   0,   0 }
+rom_table["zx81_kongsrevenge"]       = {"",            false, 20200, {360,'J""\n',420,"{PLAY}",20100, "n\n"},           2,     4,   0,   0 }
 rom_table["zx81_krazykong_pss"]      = {"JJ",          true,  11660, {360,'J""\n',420,"{PLAY}",11500," ",11600," "},    2,     4,   0,   0 }
 rom_table["zx81_zonkeykong"]         = {"",            true,  16150, {360,'J""\n',420,"{PLAY}",
 														  16000,"L", 16030,"R", 16060, "U", 16090, "D", 16120, "Y"},    2,     4,   0,   0 }

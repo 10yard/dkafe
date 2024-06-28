@@ -1,17 +1,14 @@
 Intellivision - Inty Kong
 
-The sample program "Monkey Moon" was created by
-Nanochess as a Donkey Kong clone in the "Programming 
-Games for Intellivision Guide".
-
-This program was adapted to include wider platforms,
-broken ladders - which Jumpman can partially climb up,
-the Oil Can, the Girl shouting "Help" at the top.
-Also, barrels can now randonly roll down any ladder as 
+An adapted version of Monkey Moon to include wider
+platforms, broken ladders - which can be partially
+climbed, the Oil Can and a girl shouting for help at 
+the top.
+Also, barrels can now randomly roll down any ladder as 
 well as off the end of a platform.  This means barrels
-can group and be more difficult to jump.
+will group and be more difficult to jump over.
 The player sprite was changed and uses a colour 
 overlay.
 
 Adapted by 10yard 
-(Adapted from Monkey Moon by Nanochess/Oscar Toledo G)
+(from Monkey Moon by Nanochess/Oscar Toledo G)

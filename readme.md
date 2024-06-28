@@ -265,6 +265,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - Famicom Disk System
  - Game and Watch
  - Intellivision
+ - Jupiter Ace
  - LCD and Handheld
  - LowRes NX Fantasy Console
  - MS-DOS

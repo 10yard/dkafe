@@ -571,7 +571,7 @@ Playlist music:
 """
 
 # Console Addon Specific
-ADDON_URL = "https://www.dropbox.com/scl/fi/g6m7a61k00e0xv5htheit/dkafe_console_addon_pack_v2.zip?rlkey=tdghuqb49pksxfvpz0yk9v23g&dl=0"
+ADDON_URL = "https://www.dropbox.com/scl/fi/h6i1i9w5bpfad47uogijm/dkafe_console_addon_pack_v3.zip?rlkey=hpbwog3m52qpq76idg07019v5&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
@@ -603,6 +603,7 @@ RECOGNISED_SYSTEMS = {
     "gnw":"Game and Watch",
     "hbf900a":"MSX",
     "intv":"Intellivision",
+    "jupace":"Jupiter ACE",
     "lcd":"LCD and Handheld Games",
     "lowresnx":"LowRes NX Fantasy Console",
     "mc10":"Tandy MC10",
@@ -637,6 +638,7 @@ SYSTEM_MEDIA = {
     "dragon32": "-cass",
     "fds": "-flop1",
     "hbf900a": "-flop1",
+    "jupace": "-ram 32k -dump",
     "mo5": "-cass",
     "mz700": "-cass",
     "oric1": "-cass",
@@ -651,6 +653,7 @@ SYSTEM_MEDIA = {
 GAME_MEDIA = {
     "c64_bonkeykong":"-flop",
     "c64_monkeykong":"-flop",
+    "c64_logger":"-speed 1.5 -quik",
     "hbf900a_apeman":"-cart1",
     "hbf900a_congo":"-cass",
     "plus4_crazyjump":"-joy1 joy -quik",
@@ -658,7 +661,7 @@ GAME_MEDIA = {
     "spectrum_ape_escape":"-cass",
     "spectrum_kongs_revenge":"-cass",
     "spectrum_crazykongcity":"-cass",
-    "vic20_logger": "-cass",
+    "vic20_logger": "-ram 3k -cass",
     "vic20_mickybricky": "-cass",
     "vic20_fast_eddie":"-cart",
     "vic20_dk_ackenhausen":"-exp 16k -quik",
@@ -670,7 +673,9 @@ KEYBOARD_REMAP = {
     "dos_aldo3": "ctrl>space",
     "dos_aldo": "ctrl>space",
     "dos_davikong": "ctrl>f1|num 2>n,enter|num 1>1,enter|esc>forcequit:dosbox-x.exe",
-    "dos_dk": "y>n|ctrl>space|esc>forcequit:dosbox-x.exe",
+    "dos_heroman": "ctrl>enter|alt>space|esc>forcequit:dosbox-x.exe",
+    "dos_dk": "y>n|ctrl>space|esc>forcequit:dosbox-x.exe|esc>forcequit:dosbox-x.exe",
+    "dos_dkpc": "ctrl>space,f1|1>f1|2>f2|3>f3|esc>forcequit:dosbox-x.exe",
     "dos_kong": "num 1>enter|tab>esc|esc>forcequit:dosbox-x.exe",  # TAB to access and save in-game settings
     "dos_mamedk": "num 5>num 3|num 2>enter",
     "dos_willy": "num 1>enter|ctrl>space",
