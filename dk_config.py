@@ -16,6 +16,7 @@ import pygame
 import pygame_menu as pymenu
 from glob import glob
 
+
 pygame.init()
 
 # Graphic Config
@@ -749,3 +750,33 @@ dkafe_theme_left.widget_alignment = pymenu.locals.ALIGN_LEFT
 # Override default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
+
+if ARCH != "winxp":
+    # Optimise the append of menu items by monkey patching the pymenu function
+    def _new_append_widget(self, widget):
+        if self._columns > 1:
+            max_elements = self._columns * self._rows
+            assert len(self._widgets) + 1 <= max_elements, \
+                'total widgets cannot be greater than columns*rows ({0} elements)'.format(max_elements)
+        try:
+            # 10yard - Use additional temporary list to optimise append --------------------------------------------------
+            if len(self._widgets) == 0:
+                self._widgets_tmp = []
+            if len(self._widgets) <= 80:
+                self._widgets.append(widget)
+            else:
+                self._widgets_tmp.append(widget)
+            if widget._title == "Close Menu":
+                self._widgets = self._widgets + self._widgets_tmp
+            # ------------------------------------------------------------------------------------------------------------
+        except:
+            self._widgets.append(widget)
+
+        if self._index < 0 and widget.is_selectable:
+            widget.set_selected()
+            self._index = len(self._widgets) - 1
+        if self._center_content:
+            self.center_content()
+        self._widgets_surface = None  # If added on execution time forces the update of the surface
+        self._render()
+    pymenu.Menu._append_widget = _new_append_widget

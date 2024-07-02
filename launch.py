@@ -16,7 +16,7 @@ sys.path.append("c:\\dkafe")
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame.cursors
 import pickle
-from math import floor
+from math import floor, ceil
 from random import randint, choice, sample
 from subprocess import call, run, Popen, CREATE_NO_WINDOW
 import dk_global as _g
@@ -24,6 +24,7 @@ import dk_system as _s
 from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches_and_addons, validate_rom
+
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
@@ -633,7 +634,7 @@ def build_menus(initial=False):
         if not _g.menu:
             # Pauline announces that the game list is being generated
             write_text("                           ", x=108 + _g.psx, y=38 + _g.psy, bg=BLACK, fg=BLACK, bubble=True)
-            write_text("Generating the game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+            write_text("Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
             process_interrupts()
             animate_jumpman()
             update_screen()
@@ -643,6 +644,7 @@ def build_menus(initial=False):
         _g.menu.add_vertical_margin(4)
 
         _lastname, _lastsystem = "", ""
+        _count = 0
         for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
             _system = get_system_description(name)
             if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
@@ -651,19 +653,24 @@ def build_menus(initial=False):
                         if _system and _system != _lastsystem:
                             _g.menu.add_label(f'{_system} {"_"*70}', font_color=GREY, font_name="fonts/tom-thumb.bdf")
                             _lastsystem = _system
-                            _unlock_msg = True
                         # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
                         if ":" in alt:
                             alt = alt.split(":")[1].strip()
+                        if not initial and ENABLE_ADDONS and not UNLOCK_MODE and _g.stage >= 2:
+                            _percent = ceil(_count / len(_g.romlist) * 100)
+                            write_text(f"Generating game list..{str(_percent)}%", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                            update_screen()
                         try:
-                            widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
-                        except IndexError:
-                            widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
+                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                        except (IndexError, ValueError) as error:
+                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
                         if _system:
                             widget.set_margin(8,2)
             if initial and int(icx) >= 0 and int(icy) >= 0:
                 _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
             _lastname = name
+            _count += 1
+
         if UNLOCK_MODE:
             _g.menu.add_vertical_margin(4)
             _g.menu.add_label("* Earn coins to add more games to this list.", font_color=GREY, font_name="fonts/tom-thumb.bdf")

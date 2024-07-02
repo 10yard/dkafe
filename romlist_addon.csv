@@ -224,7 +224,6 @@ nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,121000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,130000,2,4,8
-oric1_honeykong,shell,HoneyKong,ORIC: Honey Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,130000,2,4,8
 pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,221000,2,4,8
 pc_atarist_junior,shell,JR,ST: Donkey JR (G&W),9999,,,186000,2,4,8
@@ -254,7 +253,7 @@ vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##adam_dk_junior,shell,DK,ADAM: Donkey Kong Junior,####,,,0,2,4,8
-##cgenie_colourkong,shell,Same as colourkong,EG2000: Colour Kong,####,,,130000,2,4,8
+##cgenie_colourkong,shell,Same as colourkong,EG2000: Colour Kong,####,,,0,2,4,8
 ##dos_aldo2,shell,Aldo Again,DOS: Aldo Again,####,,,0,2,4,8
 ##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
 ##dos_jman2,shell,Jumpman Lives,DOS: Jumpman Lives,####,,,0,2,4,8
@@ -264,6 +263,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
 ##oric1_4k_kong,shell,4K Kong,ORIC: 4K Kong,####,,,0,2,4,8
+##oric1_honeykong,shell,**difficult to map,ORIC: Honey Kong,####,,,0,2,4,8
 ##pc_trs80_skyscraper,shell,**difficult to map,TRS80: Skyscraper,####,,,0,2,4,8
 ##plus4_dkplus,shell,**Terrible controls,C16/+4: Donkey Kong +,####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Screen issues,C16/+4: Larry Monkey,####,,,0,2,4,8

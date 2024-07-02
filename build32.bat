@@ -64,6 +64,7 @@ del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
 rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** build the exe in virtual environment ****
+set PYTHONOPTIMIZE=1
 venv32\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico --name launch32 --hidden-import charset_normalizer.md__mypyc
 
 echo **** clean up
