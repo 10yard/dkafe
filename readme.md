@@ -248,6 +248,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - Atari 2600
  - Amstrad CPC
  - Apple ][
+ - Arduino Arduboy
  - Atari 5200
  - Atari 7800
  - Atari 800XL
@@ -275,6 +276,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - Nintendo Gameboy Color
  - PC
  - Pico-8 Fantasy Console
+ - Pokitto DIY Handheld
  - Sega Genesis/Megadrive
  - Sharp MZ700
  - Sinclair Spectrum 

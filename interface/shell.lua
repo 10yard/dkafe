@@ -138,7 +138,8 @@ rom_table["mz700_crazykong"]         = {"",            true,  20650, {180,"LOAD\
 rom_table["mz700_donkeygorilla"]     = {"JJ",          true,  17500, {180,"LOAD\n",300,"{PLAY}"},                       0.5,   0,   0,   0 }
 rom_table["nes"]                     = {"P1",          false, 0,     {},                                                0.5,   0,   0,   0 }
 rom_table["oric1"]                   = {"P1",          true,  0,     {180,'CLOAD ""\n'},                                0,     0,   0,   16}
-rom_table["oric1_honeykong"]         = {"LR TT JJ",    true,  10000, {180,'CLOAD ""\n',10500,"S"},                      0,     0,   0,   16}
+rom_table["oric1_honeykong"]         = {"",            true,  10180, {180,'CLOAD ""\n',9700,"{SPACE}",
+										9860,"5",9920,"6",9980,"7",10040,"8",10120,"{SPACE}"},							0,     0,   0,   16}
 rom_table["oric1_orickong"]          = {"P1",          true,  4700,  {180,'CLOAD ""\n',4500,"RUN\n"},                   0,     0,   0,   16}
 rom_table["oric1_dinkykong"]         = {"P1",          true,  6400,  {180,'CLOAD ""\n',5000,'CLOAD ""\n'},              0,     0,   0,   16}
 rom_table["pet4032"]                 = {"P1",          false, 240,   {180,"RUN\n"},                                     0,     0,   0,   0 }

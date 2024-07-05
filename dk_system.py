@@ -64,11 +64,12 @@ def load_game_texts():
     return texts
 
 
-def read_romlist():
+def read_romlist(specific_romlist_file=None):
     # read romlists and return info about available roms (and shell scripts)
     romlists = {}
     usedslots, usedsubs, usedunique = [], [], []
-    for i, csv in enumerate(reversed(ROMLIST_FILES)):
+    romlist_files = ROMLIST_FILES if not specific_romlist_file else [specific_romlist_file, '']
+    for i, csv in enumerate(reversed(romlist_files)):
         romlists[i] = []
         if os.path.exists(csv):
             with open(csv) as rl:

@@ -176,6 +176,8 @@ coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,137000,2,
 cpc6128_climbit,shell,Climb-It,CPC: Climb-It,9999,,,131000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,131000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,131000,2,4,8
+cpm_ladder,shell,Ladder,CP/M: Ladder,9999,,,173000,2,4,8
+dos_aldo3,shell,Aldo's Assault,DOS: Aldo's Assault,9999,,,196000,2,4,8
 dos_davikong,shell,David's Kong,DOS: David's Kong,9999,,,173000,2,4,8
 dos_dk,shell,DOS,DOS: Donkey Kong (Original),9999,,,0,2,4,8
 dos_dkpc,shell,DKPC,DOS: Donkey Kong PC,9999,,,173000,2,4,8
@@ -224,8 +226,12 @@ nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,121000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,130000,2,4,8
+oric1_honeykong,shell,Honey Kong,ORIC: Honey Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,130000,2,4,8
 pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,221000,2,4,8
+pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,220000,2,4,8
+pc_arduboy_kong,shell,Kong,ARDUBOY: Kong,9999,,,220000,2,4,8
+pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,220000,2,4,8
 pc_atarist_junior,shell,JR,ST: Donkey JR (G&W),9999,,,186000,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,208000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
@@ -234,11 +240,14 @@ pc_lowresnx_denis_kogne,shell,DenisKogne,NX: Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,220000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
+pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
+pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
+pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,209000,2,4,8
 pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,220000,2,4,8
 pet4032_dk_junior,shell,DK Junior,G&W: Donkey Kong Junior (G&W),9999,,,133000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,C16/+4: Crazy Jump,9999,,,176000,2,4,8
+plus4_dkplus,shell,DK+,C16/+4: Donkey Kong +,9999,,,176000,2,4,8
 plus4_monkeykong,shell,MonkeyKong,C16/+4: Monkey Kong,9999,,,176000,2,4,8
-spectrum_ape_escape,shell,Aldo3,SPECTRUM: Aldo's Assault,9999,,,173000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,SPECTRUM: Ape Escape,9999,,,160000,2,4,8
 spectrum_killerknight,shell,KillerKnight,SPECTRUM: Killer Knight,9999,,,160000,2,4,8
 spectrum_kong_ocean,shell,Kong,SPECTRUM: Kong (Ocean),9999,,,160000,2,4,8
@@ -252,23 +261,22 @@ vic20_krazykong_nufecop,shell,KrazyKong,VIC20: Krazy Kong (Nufecop),9999,,,18800
 vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
+##a2600_pac_kong,shell,Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
 ##adam_dk_junior,shell,DK,ADAM: Donkey Kong Junior,####,,,0,2,4,8
 ##cgenie_colourkong,shell,Same as colourkong,EG2000: Colour Kong,####,,,0,2,4,8
-##dos_aldo2,shell,Aldo Again,DOS: Aldo Again,####,,,0,2,4,8
+##dos_aldo2,shell,Locks on title screen,DOS: Aldo Again,####,,,0,2,4,8
 ##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
-##dos_jman2,shell,Jumpman Lives,DOS: Jumpman Lives,####,,,0,2,4,8
-##dos_jumpman,shell,Jumpman,DOS: Jumpman,####,,,0,2,4,8
+##dos_jman2,shell,Not DK enough,DOS: Jumpman Lives,####,,,0,2,4,8
+##dos_jumpman,shell,Not DK enough,DOS: Jumpman,####,,,0,2,4,8
 ##dos_kongsrev,shell,KongsRevenge,DOS: Kong's Revenge,####,,,0,2,4,8
 ##hbf900a_congo,shell,**Controls not working,MSX: Congo,####,,,0,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
 ##oric1_4k_kong,shell,4K Kong,ORIC: 4K Kong,####,,,0,2,4,8
-##oric1_honeykong,shell,**difficult to map,ORIC: Honey Kong,####,,,0,2,4,8
-##pc_trs80_skyscraper,shell,**difficult to map,TRS80: Skyscraper,####,,,0,2,4,8
-##plus4_dkplus,shell,**Terrible controls,C16/+4: Donkey Kong +,####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Screen issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##spectrum_dk_arcade,shell,DKArcade,SPECTRUM: Donkey Kong Arcade,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
+##vic20_dk,shell,DK,VIC20: Donkey Kong,####,,,0,2,4,8
 ##vic20_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),####,,,0,2,4,8
 ##vic20_dkjr_gnw,shell,**Hangs,VIC20: Donkey Kong Junior (G&W),####,,,0,2,4,8
 ##vic20_logger,shell,**Start up trouble,VIC20: Logger,####,,,0,2,4,8

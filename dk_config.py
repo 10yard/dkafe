@@ -586,6 +586,7 @@ RECOGNISED_SYSTEMS = {
     "adam": "Coleco Adam",
     "amiga": "Commodore Amiga",
     "apple2e": "Apple ][",
+    "arduboy": "Arduino Arduboy Handheld",
     "atom":"Acorn Atom",
     "bbcb": "BBC Micro",
     "c64": "Commodore 64",
@@ -593,6 +594,7 @@ RECOGNISED_SYSTEMS = {
     "cgenie": "EACA Colour Genie EG2000",
     "coco3": "Tandy Colour Computer 3",
     "coleco": "Colecovision",
+    "cpm": "CP/M",
     "cpc6128":"Amstrad CPC",
     "crvision":"VTech Creativision",
     "dos":"MS-DOS",
@@ -615,6 +617,7 @@ RECOGNISED_SYSTEMS = {
     "pc":"PC",
     "pet4032":"Commodore PET",
     "pico8":"Pico-8 Fantasy Console",
+    "pokitto":"Pokitto DIY Handheld",
     "plus4":"Commodore C16/Plus4",
     "snes":"Super Nintendo Entertainment System",
     "spectrum":"Sinclair ZX Spectrum",
@@ -668,11 +671,13 @@ GAME_MEDIA = {
     "vic20_dk_ackenhausen":"-exp 16k -quik",
     "vic20_minikong": "-flop"}
 
-WIN64_ONLY_SYSTEMS = "pc", "dos"
+WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {
-    "dos_aldo3": "ctrl>space",
+    "cpm_ladder": "down>z|up>a|1>p|2>l|5>i|right>.|left>,|ctrl>space|alt>b|esc>forcequit:dosbox-x.exe",
     "dos_aldo": "ctrl>space",
+    "dos_aldo2": "ctrl>space",
+    "dos_aldo3": "ctrl>space",
     "dos_davikong": "ctrl>f1|num 2>n,enter|num 1>1,enter|esc>forcequit:dosbox-x.exe",
     "dos_heroman": "ctrl>enter|alt>space|esc>forcequit:dosbox-x.exe",
     "dos_dk": "y>n|ctrl>space|esc>forcequit:dosbox-x.exe|esc>forcequit:dosbox-x.exe",
@@ -680,6 +685,9 @@ KEYBOARD_REMAP = {
     "dos_kong": "num 1>enter|tab>esc|esc>forcequit:dosbox-x.exe",  # TAB to access and save in-game settings
     "dos_mamedk": "num 5>num 3|num 2>enter",
     "dos_willy": "num 1>enter|ctrl>space",
+    "pc_arduboy_kong":"ctrl>a|alt>b|p>s|1>a|2>b|esc>forcequit:projectabe.exe",
+    "pc_arduboy_kong2":"ctrl>a|alt>b|p>s|1>a|2>b|esc>forcequit:projectabe.exe",
+    "pc_arduboy_dkjr":"ctrl>a|alt>b|p>s|1>a|2>b|esc>forcequit:projectabe.exe",
     "pc_atarist_mb":"ctrl>space",
     "pc_atarist_junior":"num 1>a|num 2>b",
     "pc_atom_kong":"left>z|right>c|up>s|down>x|ctrl>shift,space|esc>forcequit:atomulator.exe",
@@ -696,6 +704,8 @@ KEYBOARD_REMAP = {
     "pc_pico8_ape":"ctrl>z|esc>forcequit:zepto8.exe",
     "pc_pico8_denis_kogne": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_pico8_dinkyking": "ctrl>x|esc>forcequit:zepto8.exe",
+    "pc_pokitto_dkjr":"ctrl>a|alt>b",
+    "pc_pokitto_kong2":"ctrl>a|alt>b",
     "pc_raiders":"ctrl>space",
     "pc_tic80_denis_kogne":"tab>esc|ctrl>z|alt>x|esc>forcequit:tic80.exe",
     "pc_kong_jr_gnw":"ctrl>x|esc>forcequit",
@@ -704,6 +714,7 @@ KEYBOARD_REMAP = {
     "pc_trs80_kong":"ctrl>space|num 1>home",
     "pc_trs80_dk":"ctrl>space|num 1>enter,1",
     "pc_trs80_killergorilla":"ctrl>space",
+    "pc_trs80_skyscraper":"ctrl>space|1>1,n,\\,enter",
     "pc_zx80_kong":"ctrl>num 0|esc>forcequit:zesarux.exe"}
 
 # Sound setup
@@ -752,7 +763,7 @@ pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
 
 if ARCH != "winxp":
-    # Optimise the append of menu items by monkey patching the pymenu function
+    # Optimise append of menu items by monkey patching the pymenu function
     def _new_append_widget(self, widget):
         if self._columns > 1:
             max_elements = self._columns * self._rows
@@ -767,7 +778,7 @@ if ARCH != "winxp":
             else:
                 self._widgets_tmp.append(widget)
             if widget._title == "Close Menu":
-                self._widgets = self._widgets + self._widgets_tmp
+                self._widgets += self._widgets_tmp
             # ------------------------------------------------------------------------------------------------------------
         except:
             self._widgets.append(widget)
