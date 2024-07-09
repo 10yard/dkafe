@@ -150,6 +150,7 @@ if os.path.exists("settings.txt"):
 if sys.gettrace():
     globals()["FULLSCREEN"] = 0
     globals()["TITLE"] = "DKAFE (Debugging Mode)"
+    globals()["FREE_PLAY"] = 1
 
 # Frontend version
 VERSION = ''
@@ -615,10 +616,12 @@ RECOGNISED_SYSTEMS = {
     "nes":"Nintendo Entertainment System",
     "oric1":"Tangerine ORIC",
     "pc":"PC",
+    "pcw10":"Amstrad PCW",
     "pet4032":"Commodore PET",
     "pico8":"Pico-8 Fantasy Console",
     "pokitto":"Pokitto DIY Handheld",
     "plus4":"Commodore C16/Plus4",
+    "sg1000":"Sega SG-1000",
     "snes":"Super Nintendo Entertainment System",
     "spectrum":"Sinclair ZX Spectrum",
     "ti99_4a":"Texas Instruments TI-99",
@@ -646,6 +649,7 @@ SYSTEM_MEDIA = {
     "mo5": "-cass",
     "mz700": "-cass",
     "oric1": "-cass",
+    "pcw10": "-flop",
     "pet4032": "-quik",
     "plus4": "-quik",
     "spectrum": "-dump",
@@ -655,6 +659,8 @@ SYSTEM_MEDIA = {
 
 # Game specific media to override the system media
 GAME_MEDIA = {
+    "adam_dk_junior":"-flop1",
+    "adam_dk_super":"-flop1",
     "c64_bonkeykong":"-flop",
     "c64_monkeykong":"-flop",
     "c64_logger":"-speed 1.5 -quik",
@@ -715,6 +721,7 @@ KEYBOARD_REMAP = {
     "pc_trs80_dk":"ctrl>space|num 1>enter,1",
     "pc_trs80_killergorilla":"ctrl>space",
     "pc_trs80_skyscraper":"ctrl>space|1>1,n,\\,enter",
+    "pc_spectrum_dk_arcade":"1>0|ctrl>space,0|up>q|down>a|left>o|right>p|esc>forcequit:zesarux.exe",
     "pc_zx80_kong":"ctrl>num 0|esc>forcequit:zesarux.exe"}
 
 # Sound setup

@@ -247,6 +247,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - Acorn Atom
  - Atari 2600
  - Amstrad CPC
+ - Amstrad PCW
  - Apple ][
  - Arduino Arduboy
  - Atari 5200
@@ -277,6 +278,7 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - PC
  - Pico-8 Fantasy Console
  - Pokitto DIY Handheld
+ - Sega SG-1000
  - Sega Genesis/Megadrive
  - Sharp MZ700
  - Sinclair Spectrum 

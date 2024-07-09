@@ -149,6 +149,8 @@ a7800_dk_pokey,shell,Pokey Kong,7800: Pokey Kong Hack,9999,,,147000,2,4,8
 a800xl_dk_junior,shell,DK Junior,A800: Donkey Kong Junior,9999,,,139000,2,4,8
 a800xl_fast_eddie,shell,FastEddie,A800: Fast Eddie,9999,,,139000,2,4,8
 adam_dk,shell,DK,ADAM: Donkey Kong (Original),9999,,,137000,2,4,8
+adam_dk_junior,shell,DK JR,ADAM: Donkey Kong JR Supergame,9999,,,137000,2,4,8
+adam_dk_super,shell,DK Super,ADAM: Donkey Kong Supergame,9999,,,137000,2,4,8
 apple2e_applekong,shell,AppleKong,A][: Apple Kong,9999,,,130000,2,4,8
 apple2e_cannonball,shell,A2 Blitz,A][: Cannonball Blitz,9999,,,130000,2,4,8
 bbcb_barrel_battle,shell,BarrelBattle,BBC: Barrel Battle,9999,,,129000,2,4,8
@@ -218,6 +220,7 @@ nes_dk_luigi,shell,DK Luigi,NES: Donkey Kong Luigi Edition,9999,,,121000,2,4,8
 nes_dk_qbert,shell,Q-Bert Kong,NES: Q-Bert Kong,9999,,,121000,2,4,8
 nes_dk_redux,shell,Redux,NES: Donkey Kong Redux,9999,,,0,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs Donkey Kong,9999,,,121000,2,4,8
+nes_dk_whatsup,shell,WhatsUp,NES: What's Up Donkey Kong,9999,,,121000,2,4,8
 nes_dk_zelda10,shell,ZK10,NES: ZeldaKong10 (Marin),9999,,,121000,2,4,8
 nes_dk_zelda11,shell,Z11,NES: ZeldaKong11 (Grandma),9999,,,121000,2,4,8
 nes_dk_zelda12,shell,Z12,NES: ZeldaKong12 (Tarin),9999,,,121000,2,4,8
@@ -242,12 +245,17 @@ pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,220000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
+pc_spectrum_dk_arcade,shell,DKArcade,SPECTRUM: Donkey Kong Arcade,9999,,,160000,2,4,8
 pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,209000,2,4,8
 pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,220000,2,4,8
+pcw10_climbit,shell,Climb-It,PCW: Climb-It,9999,,,132000,2,4,8
 pet4032_dk_junior,shell,DK Junior,G&W: Donkey Kong Junior (G&W),9999,,,133000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,C16/+4: Crazy Jump,9999,,,176000,2,4,8
 plus4_dkplus,shell,DK+,C16/+4: Donkey Kong +,9999,,,176000,2,4,8
 plus4_monkeykong,shell,MonkeyKong,C16/+4: Monkey Kong,9999,,,176000,2,4,8
+sg1000_congobongo,shell,CongoBongo,SG1000: Congo Bongo,9999,,,130000,2,4,8
+sg1000_dk,shell,DK,SG1000: Donkey Kong,9999,,,130000,2,4,8
+sg1000_dkjr,shell,DK JR,SG1000: Donkey Kong Junior,9999,,,130000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,SPECTRUM: Ape Escape,9999,,,160000,2,4,8
 spectrum_killerknight,shell,KillerKnight,SPECTRUM: Killer Knight,9999,,,160000,2,4,8
 spectrum_kong_ocean,shell,Kong,SPECTRUM: Kong (Ocean),9999,,,160000,2,4,8
@@ -262,7 +270,6 @@ vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##a2600_pac_kong,shell,Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
-##adam_dk_junior,shell,DK,ADAM: Donkey Kong Junior,####,,,0,2,4,8
 ##cgenie_colourkong,shell,Same as colourkong,EG2000: Colour Kong,####,,,0,2,4,8
 ##dos_aldo2,shell,Locks on title screen,DOS: Aldo Again,####,,,0,2,4,8
 ##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
@@ -273,8 +280,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
 ##oric1_4k_kong,shell,4K Kong,ORIC: 4K Kong,####,,,0,2,4,8
-##plus4_larrymonkey,shell,**Screen issues,C16/+4: Larry Monkey,####,,,0,2,4,8
-##spectrum_dk_arcade,shell,DKArcade,SPECTRUM: Donkey Kong Arcade,####,,,0,2,4,8
+##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
 ##vic20_dk,shell,DK,VIC20: Donkey Kong,####,,,0,2,4,8
 ##vic20_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),####,,,0,2,4,8
