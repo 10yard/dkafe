@@ -18,8 +18,8 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                           |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------|
-| [dkafe_win64_binary_v0.64.zip](https://github.com/10yard/dkafe/releases/download/v0.64/dkafe_win64_binary_v0.64.zip) | 0.64    | Windows 64 bit (x64) systems (Recommended) |
-| [dkafe_win32_binary_v0.64.zip](https://github.com/10yard/dkafe/releases/download/v0.64/dkafe_win32_binary_v0.64.zip) | 0.64    | Windows 32 bit (x86) systems               |
+| [dkafe_win64_binary_v0.65.zip](https://github.com/10yard/dkafe/releases/download/v0.65/dkafe_win64_binary_v0.65.zip) | 0.65    | Windows 64 bit (x64) systems (Recommended) |
+| [dkafe_win32_binary_v0.65.zip](https://github.com/10yard/dkafe/releases/download/v0.65/dkafe_win32_binary_v0.65.zip) | 0.65    | Windows 32 bit (x86) systems               |
 | [dkafe_winxp_binary_v0.64.zip](https://github.com/10yard/dkafe/releases/download/v0.64/dkafe_winxp_binary_v0.64.zip) | 0.64    | Windows XP only                            |
 | [dkafe_rpi4_image_v0.55.gz](https://github.com/10yard/dkafe/releases/download/v0.55/dkafe_rpi4_image_v0.55.gz)       | 0.55    | Raspberry Pi 4 and 400 only                |
 
@@ -52,8 +52,7 @@ Jumpman can traverse platforms using unbroken ladders and by utilising hammers (
 ![NEW Feature](https://github.com/10yard/dkafe/blob/master/artwork/about/new.png) 
 There is now a console add-on pack which adds extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See **Console Add-On Pack** section below.
 
-
-![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
+![Donkey Kong versions supported](https://github.com/10yard/dkafe/blob/master/artwork/about/versions_detected.png)
 
 
 ### The frontend includes:
@@ -64,10 +63,13 @@ There is now a console add-on pack which adds extra stages and is packed out wit
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional console add-on pack featuring over 200 ports, clones and hacks for classic gaming systems.
+ - An optional console add-on pack featuring over 250 ports, clones and hacks for classic gaming systems.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
+
+
+![DKAFE trophy award](https://github.com/10yard/dkafe/blob/master/artwork/about/trophy2.png)
 
 
 ## Automatically generated roms
@@ -242,7 +244,7 @@ A tally of the total number of continues made will appear at the top of the scre
 
 ## Console Add-on Pack
 
-An optional add-on pack includes over 200 Donkey Kong ports and hacks for the following classic home consoles and computers.
+An optional add-on pack includes over 250 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Acorn Atom
  - Atari 2600
@@ -278,10 +280,11 @@ An optional add-on pack includes over 200 Donkey Kong ports and hacks for the fo
  - PC
  - Pico-8 Fantasy Console
  - Pokitto DIY Handheld
- - Sega SG-1000
  - Sega Genesis/Megadrive
+ - Sega SG-1000
  - Sharp MZ700
- - Sinclair Spectrum 
+ - Sinclair Spectrum 48K
+ - Sinclair Spectrum 128K
  - Sinclair ZX80
  - Sinclair ZX81
  - Super Nintendo

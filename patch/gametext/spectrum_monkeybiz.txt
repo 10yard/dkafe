@@ -1,4 +1,4 @@
-ZX Spectrum - Monkey Bizness
+ZX Spectrum 48K - Monkey Bizness
 
 The barrels will roll for a while before Jumpman
 appears and you are able to move him.

@@ -1,0 +1,10 @@
+NES Console - What's Up Donkey Kong
+
+What's Up is a bootleg version of Donkey Kong found on
+the N-Powerjoy Plug N Play console in one of the 
+onboard multi-cart menus.  
+
+It's a hack of the 8-bit Nintendo Famicom/NES version
+of the game.
+
+Hack Developed by Inventor

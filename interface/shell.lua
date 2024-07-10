@@ -144,7 +144,7 @@ rom_table["oric1_orickong"]          = {"P1",          true,  4700,  {180,'CLOAD
 rom_table["oric1_dinkykong"]         = {"P1",          true,  6400,  {180,'CLOAD ""\n',5000,'CLOAD ""\n'},              0,     0,   0,   16}
 rom_table["pet4032"]                 = {"P1",          false, 240,   {180,"RUN\n"},                                     0,     0,   0,   0 }
 rom_table["pet4032_petscii_kong"]    = {"JJ",          false, 240,   {180,"RUN\n"},                                     0,     0,   0,   0 }
-rom_table["pcw10"]                   = {"",            false, 2900,  {1500,"2"},                                        4,     0,   0,   0 }
+rom_table["pcw10"]                   = {"",            false, 2900,  {1500,"2"},                                        8,     0,   0,   0 }
 rom_table["sg1000"]                  = {"JJ",          false, 0,     {},                                                2.5,   0,   0,   0 }
 rom_table["snes"]                    = {"P1",          false, 360,   {},                                                2.5,   0,   0,   0 }
 rom_table["spectrum"]                = {"P1",          false, 0,     {},                                                2,     4,   0,   0 }
@@ -157,6 +157,11 @@ rom_table["spectrum_kong"]           = {"JJ",          false, 200,   {60,"{SPACE
 rom_table["spectrum_krazykong"]      = {"JJ",          false, 0,     {15,"y"},                                          2,     4,   0,   0 }
 rom_table["spectrum_wallykong"]      = {"P1",          false, 200,   {60,"SS",100,"0",140,"0"},                         2,     4,   0,   0 }
 rom_table["spectrum_monkeybiz"]      = {"P1",          true,  360,   {200,"{SPACE}",300,"{SPACE}"},                     2,     4,   0,   0 }
+rom_table["spectrum_spec_kong"]      = {"",            false, 8000,  {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
+rom_table["spectrum_wrathofkong"]    = {"P1",          true,  5100,  {150,'J""\n', 300, "{PLAY}",5050,"{STOP}"},        2,     4,   0,   0 }
+rom_table["spectrum_dk_reloaded"]    = {"",            true,  12910, {150,'J""\n', 300, "{PLAY}",12900,"2"},            2,     4,   0,   0 }
+rom_table["spec128_dk_reload_again"] = {"",            false, 130,   {60,"x",120,"1"},                                  2,     4,   0,   0 }
+rom_table["spec128_dk_arcade"]       = {"",            false, 70,    {60,"0"},                                          2,     4,   0,   0 }
 rom_table["ti99_4a"]                 = {"JJ",          true,  600,   {60,"  2"},                                        0,     0,   0,   0 }
 rom_table["vic20"]                   = {"",            true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_minikong"]          = {"BUG",         true,  3200,  {360,'LOAD"*",8,1\n',1400,"RUN\n",2200,"N\n"},	    1.33,  2,   0,   0 }
@@ -259,6 +264,8 @@ function shell_main()
 					if screen:frame_number() == inputs[i-1] then
 						if inputs[i] == "{PLAY}" then
 							cass:play()
+						elseif inputs[i] == "{STOP}" then
+							cass:stop()
 						elseif inputs[i] == "{RESET}" then
 							mac:soft_reset()
 						elseif string.match(inputs[i], "{") then

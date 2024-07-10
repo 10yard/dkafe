@@ -1,0 +1,12 @@
+ZX Spectrum 48K - Donkey Kong Reloaded
+
+Created using AGD (Arcade Game Designer) by Jonathan 
+Cauldwell and inspired by the original Donkey Kong 
+from 1981.
+
+This version holds more to the tradition of classic 
+spectrum platformers as you journey through various 
+screens, jumping barrels and avoiding obstacles to
+rescue Pauline at the top.
+
+Homebrew Developed By Gabriele Amore

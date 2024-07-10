@@ -1,0 +1,9 @@
+ZX Spectrum 128K - Donkey Kong Reloaded Again
+
+Created using AGD (Arcade Game Designer) by Jonathan 
+Cauldwell.  It's an improved version of "Donkey Kong 
+Reloaded" by the same author.
+
+It's a short game and you get to start with 50 lives!
+
+Homebrew Developed By Gabriele Amore

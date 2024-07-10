@@ -573,7 +573,7 @@ Playlist music:
 """
 
 # Console Addon Specific
-ADDON_URL = "https://www.dropbox.com/scl/fi/h6i1i9w5bpfad47uogijm/dkafe_console_addon_pack_v3.zip?rlkey=hpbwog3m52qpq76idg07019v5&dl=0"
+ADDON_URL = "https://www.dropbox.com/scl/fi/6ycpwsq4r03rfuva8q2ck/dkafe_console_addon_pack_v4.zip?rlkey=6yb4hnwckf0zkk94ytf9ewpqr&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
@@ -623,7 +623,8 @@ RECOGNISED_SYSTEMS = {
     "plus4":"Commodore C16/Plus4",
     "sg1000":"Sega SG-1000",
     "snes":"Super Nintendo Entertainment System",
-    "spectrum":"Sinclair ZX Spectrum",
+    "spectrum":"Sinclair ZX Spectrum 48K",
+    "spec128":"Sinclair ZX Spectrum 128K",
     "ti99_4a":"Texas Instruments TI-99",
     "tic80":"TIC-80 Fantasy Console",
     "trs80":"Tandy TRS-80",
@@ -652,7 +653,8 @@ SYSTEM_MEDIA = {
     "pcw10": "-flop",
     "pet4032": "-quik",
     "plus4": "-quik",
-    "spectrum": "-dump",
+    "spectrum": "-nokeepaspect -dump",
+    "spec128": "-nokeepaspect -dump",
     "vic20": "-quik",
     "vic20p": "-quik",
     "zx81": "-cass"}
@@ -669,8 +671,11 @@ GAME_MEDIA = {
     "plus4_crazyjump":"-joy1 joy -quik",
     "plus4_dkplus":"-joy1 joy -quik",
     "spectrum_ape_escape":"-cass",
+    "spectrum_dk_reloaded":"-cass",
     "spectrum_kongs_revenge":"-cass",
     "spectrum_crazykongcity":"-cass",
+    "spectrum_spec_kong":"-cass",
+    "spectrum_wrathofkong":"-speed 1.1 -cass",
     "vic20_logger": "-ram 3k -cass",
     "vic20_mickybricky": "-cass",
     "vic20_fast_eddie":"-cart",
@@ -721,7 +726,7 @@ KEYBOARD_REMAP = {
     "pc_trs80_dk":"ctrl>space|num 1>enter,1",
     "pc_trs80_killergorilla":"ctrl>space",
     "pc_trs80_skyscraper":"ctrl>space|1>1,n,\\,enter",
-    "pc_spectrum_dk_arcade":"1>0|ctrl>space,0|up>q|down>a|left>o|right>p|esc>forcequit:zesarux.exe",
+    "pc_spectrum_dkjr2":"left>o|right>p|up>q|down>a|ctrl>m|num 2>num 1|num 3>num 1|alt>n|esc>forcequit:zesarux.exe",
     "pc_zx80_kong":"ctrl>num 0|esc>forcequit:zesarux.exe"}
 
 # Sound setup

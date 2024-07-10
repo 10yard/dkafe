@@ -1,0 +1,11 @@
+Amstrad PCW - Climb-It
+
+A Donkey Kong clone taken from "The Classic Collection
+Volume 2" compilation.
+
+It's a decent clone if you can master your timing when
+jumping over barrels.  There are 2 versions of the
+barrels stage,  1 with rolling barrels and 1 with wild
+barrels.  Other stages are included too.
+
+Developed by Micro Value
