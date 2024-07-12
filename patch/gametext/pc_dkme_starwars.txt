@@ -1,0 +1,11 @@
+PC - Donkey Kong: Star Wars
+
+A Donkey Kong and Star Wars fusion.
+A classic remake with a twist - Luke Skywalker and Han
+Solo are the heros.
+
+The game is divided into various phases that represent 
+scenes from the movie.  You control Luke Skywalker in 
+the first level and Han Solo in the second. 
+
+Developed by Bruneras

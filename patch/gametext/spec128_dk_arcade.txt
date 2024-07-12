@@ -1,0 +1,9 @@
+ZX Spectrum 128K - Donkey Kong Arcade
+
+A modification of the original ZX Spectrum Donkey Kong
+with more accurate colours and enhanced graphics.
+
+If only Jumpman would climb those ladders a little
+more quickly.
+
+Hack Developed By Stuart Campbell

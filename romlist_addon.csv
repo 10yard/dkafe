@@ -1,120 +1,121 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
-nes_dk,shell,NESDK,NES: Donkey Kong (Orig),82,,,112000,2,4,8
-nes_dk_icecream,shell,Ice,NES: Ice Cream!,83,,,113000,2,4,8
-nes_dk_kanakong,shell,KanaKong,NES: KanaKong,84,,,114000,2,4,8
-nes_dk_boosette,shell,Boo,NES: Boosette,85,,,115000,2,4,8
-nes_dk_3,shell,DK3,NES: Donkey Kong 3,86,,,116000,2,4,8
-nes_dk_redux,shell,Redux,NES: Donkey Kong Redux,87,,,117000,2,4,8
-nes_dk_junior,shell,JR,NES: Donkey Kong Junior,88,,,118000,2,4,8
-nes_crazykong,shell,CK,NES: Crazy Kong,89,,,119000,2,4,8
-nes_dk_wilford,shell,Wilf,NES: Wilford Kong,90,,,120000,2,4,8
-nes_dk_arcade_ror,shell,Arcade,NES: DK Arcade Accurate,91,,,121000,2,4,8
-a2600_dk,shell,2600DK,2600: Donkey Kong (Orig),92,,,122000,2,4,8
-a2600_dk_2,shell,DK 2,2600: Donkey Kong 2,93,,,123000,2,4,8
-a2600_dk_ghouls,shell,Ghouls!,2600: Ghouls n Ghosts,94,,,124000,2,4,8
-a2600_dk_popeye2,shell,Popeye,2600: Popeye 2 (Seahag),95,,,125000,2,4,8
-a2600_dk_vector_bw,shell,Vector,2600: Donkey Kong Vector,96,,,126000,2,4,8
-a2600_dk_xmas_dp,shell,Xmas,2600: Donkey Kong Xmas,97,,,127000,2,4,8
-a2600_dk_dragon,shell,Dragon,2600: Dragon Knight,98,,,128000,2,4,8
-a2600_dk_new,shell,DKNEW,2600: Donkey Kong New,99,,,129000,2,4,8
-bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,100,,,130000,2,4,8
-apple2e_dk,shell,ADK,A][: Donkey Kong (Orig),101,,,131000,2,4,8
-cpc6128_dk,shell,CPCDK,CPC: Donkey Kong (Orig),102,,,132000,2,4,8
-snes_classickong,shell,SNESDK,SNES: Classic Kong,103,,,133000,2,4,8
-c64p_dk_ocean,shell,C64DK,C64: Donkey Kong (Ocean),105,,,134000,2,4,8
-c64_dk_x,shell,DK+,C64: Donkey Kong+ (2016),106,,,135000,2,4,8
-c64p_dk_junior,shell,JR,C64: Donkey Kong Jr. (2014),107,,,136000,2,4,8
-crvision_policejump,shell,VTPolice,VTECH: Police Jump,108,,,137000,2,4,8
-coleco_dk,shell,CVDK,CVS: Donkey Kong (Orig),109,,,138000,2,4,8
-coleco_dk_junior,shell,JR,CVS: Donkey Kong Jr.,110,,,139000,2,4,8
-a800xl_dk,shell,800DK,A800: Donkey Kong (Orig),111,,,140000,2,4,8
-coco3_dk_emu,shell,COCODK,COCO3: Donkey Kong Emulator,112,,,141000,2,4,8
-coco3_dunkeymonkey,shell,Dunkey,COCO3: Dunkey Monkey,113,,,142000,2,4,8
-ti99-4a_dk,shell,TIDK,TI99: Donkey Kong (Orig),114,,,143000,2,4,8
-hbf900a_dk,shell,MSXDK,MSX: Donkey Kong (Orig),115,,,144000,2,4,8
-hbf900a_apeman,shell,ApeMan,MSX: Apeman Strikes Again,116,,,145000,2,4,8
-a5200_dk_encore,shell,5200DK,5200: Donkey Kong Encore,117,,,146000,2,4,8
-a5200_ck_hack,shell,CK,5200: Crazy Kong,118,,,147000,2,4,8
-a7800_dk,shell,7800DK,7800: Donkey Kong (Orig),119,,,148000,2,4,8
-a7800_dk_remix,shell,DKRemix,7800: Donkey Kong Remix,120,,,149000,2,4,8
-a7800_dk_killscreen,shell,L22,7800: L22-1 Killscreen,122,,,150000,2,4,8
-a7800_dk_xm,shell,XM,7800: Donkey Kong XM,123,,,151000,2,4,8
-intv_dk,shell,INTDK,INTV: Donkey Kong (Orig),124,,,152000,2,4,8
-gbcolor_dk_japan_us,shell,GBDK '94,GBC: Donkey Kong '94,125,,,153000,2,4,8
-nes_dk_bowsette,shell,NESBowsette,NES: Bowsette,126,,,154000,2,4,8
-nes_dk_pauline,shell,Pauline,NES: Donkey Kong Pauline,128,,,155000,2,4,8
-nes_dk_lyko1,shell,Lyko,NES: Lyko 1 Hack,129,,,156000,2,4,8
-nes_dk_pacquest,shell,Pac,NES: Pac-Quest,130,,,157000,2,4,8
-nes_jumpman_vs_dk,shell,JMDK,NES: Jumpman v Donkey Kong,131,,,158000,2,4,8
-nes_dk2_nuts_n_milk,shell,DK2,NES: Donkey Kong Nuts & Milk,132,,,159000,2,4,8
-nes_dk_bowsette_jr,shell,Bows.JR,NES: Bowsette Junior,133,,,160000,2,4,8
-spectrum_dk,shell,SPECDK,SPEC48K: Donkey Kong (Orig),134,,,161000,2,4,8
-spectrum_wrathofkong,shell,WoK,SPEC48K: Wrath of Kong,136,,,162000,2,4,8
-spectrum_killerkong,shell,Killer,SPEC48K: Killer Kong,137,,,163000,2,4,8
-spectrum_crazykongcity,shell,CK,SPEC48K: Crazy Kong City,138,,,164000,2,4,8
-spectrum_dk_reloaded,shell,Reloaded,SPEC48K: DK Reloaded,139,,,165000,2,4,8
-spec128_dk_reload_again,shell,Again!,SPEC128K: DK Reloaded Again,141,,,166000,2,4,8
-pcw10_climbit,shell,PCW,PCW: Climb-It,142,,,167000,2,4,8
-nes_dk_whatsup,shell,WhatUp?,NES: What's Up Donkey Kong,143,,,168000,2,4,8
-nes_dk_zelda01,shell,ZK1,NES: ZeldaKong 1 (Link),144,,,169000,2,4,8
-nes_dk_zelda02,shell,ZK2,NES: ZeldaKong 2 (Zelda),145,,,170000,2,4,8
-nes_dk_zelda03,shell,ZK3,NES: ZeldaKong 3 (Moblin),146,,,171000,2,4,8
-nes_dk_zelda04,shell,ZK4,NES: ZeldaKong 4 (Zol),147,,,172000,2,4,8
-nes_dk_zelda05,shell,ZK5,NES: ZeldaKong 5 (Armos),148,,,173000,2,4,8
-nes_dk_zelda06,shell,ZK6,NES: ZeldaKong 6 (Link 2),149,,,174000,2,4,8
-nes_dk_zelda07,shell,ZK7,NES: ZeldaKong 7 (Triforce),150,,,175000,2,4,8
-nes_dk_zelda08,shell,ZK8,NES: ZeldaKong 8 (Child),151,,,176000,2,4,8
-nes_dk_zelda09,shell,ZK9,NES: ZeldaKong 9 (GB Link),152,,,177000,2,4,8
-pet4032_petscii_kong,shell,PETDK,PET: Petscii Kong,153,,,178000,2,4,8
-plus4_climbit,shell,C16,C16/+4: Climb-It,154,,,179000,2,4,8
-plus4_rollerkong,shell,Rk,C16/+4: RollerKong,155,,,180000,2,4,8
-c64_dk,shell,C64,C64: Donkey Kong (Nintendo),156,,,181000,2,4,8
-c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,157,,,182000,2,4,8
-c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,183000,2,4,8
-c64_monkeykong,shell,Monkey,C64: Monkey Kong,159,,,184000,2,4,8
-c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,185000,2,4,8
-c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,186000,2,4,8
-c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,187000,2,4,8
-mo5_yeti,shell,MO5 Yeti,THOMSON: Yeti,164,,,188000,2,4,8
-mz700_donkeygorilla,shell,D/Gorilla,SHARP: Donkey Gorilla,166,,,189000,2,4,8
-mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,167,,,190000,2,4,8
-vic20_kongokong,shell,V20CK,VIC20: Kongo Kong,168,,,191000,2,4,8
-zx81_krazykong_pss,shell,ZX81CK,ZX81: Krazy Kong,169,,,192000,2,4,8
-pc_nes_dk_hdpack,shell,NESDK HD,NES: Donkey Kong HD Pack,170,,,193000,2,4,8
-dos_dk,shell,DOSDK,DOS: Donkey Kong (Orig),171,,,194000,2,4,8
-dos_mamedk,shell,OldMAME,DOS: Early MAME DK (1997),173,,,195000,2,4,8
-dos_kong,shell,Champ,DOS: Champ Kong,175,,,196000,2,4,8
-dos_aldo,shell,Aldo,DOS: Aldo's Adventure,177,,,197000,2,4,8
-pc_dk_amiga_pd,shell,AmigaDK,AMIGA: Amiga Donkey Kong,178,,,198000,2,4,8
-pc_jumpman_rtx,shell,JumpmanRTX,PC: Jumpman RTX,180,,,199000,2,4,8
-pc_dk_craze,shell,DKCraze,PC: Donkey Kong Craze,182,,,200000,2,4,8
-pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,183,,,201000,2,4,8
-pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,185,,,202000,2,4,8
-pc_raiders,shell,Raiders,PC: Donkey Kong Raiders,186,,,203000,2,4,8
-pc_dk_remake,shell,PCDK,PC: Donkey Kong Remake,187,,,204000,2,4,8
-pc_pico8_denis_kogne,shell,PICODK,PICO-8: Denis Kogne,188,,,205000,2,4,8
-pc_pico8_dinkyking,shell,DinkyKing,PICO-8: Dinky King,189,,,206000,2,4,8
-pc_pico8_ape,shell,Ape,PICO-8: Ape Approacher,190,,,207000,2,4,8
-pc_tic80_kongremake,shell,TIC80DK,TIC80: Kong Remake,191,,,208000,2,4,8
-pc_tic80_denis_kogne,shell,DenisKogne,TIC80: Denis Kogne,194,,,209000,2,4,8
-pc_trs80_killergorilla,shell,KillerGorilla,TRS80: Killer Gorilla,195,,,210000,2,4,8
-pc_trs80_ape,shell,Ape,TRS80: Ape Escape,196,,,211000,2,4,8
-pc_trs80_kong,shell,Kong,TRS80: Kong,197,,,212000,2,4,8
-pc_trs80_dk,shell,TRS,TRS80: Donkey Kong,198,,,213000,2,4,8
-pc_atarist_mb,shell,Monkey,ST: Monkey Business,199,,,214000,2,4,8
-pc_atarist_kidkong,shell,STDK,ST: Kid Kong,200,,,215000,2,4,8
-pc_zx80_kong,shell,ZX80,ZX80: Kong,201,,,216000,2,4,8
-gnw_dkong,shell,G&WDK,G&W: Donkey Kong (Orig),202,,,217000,2,4,8
-lcd_cdkong,shell,LCDDK,LCD: Donkey Kong Coleco,203,,,218000,2,4,8
-gnw_dkjr,shell,JR,G&W: Donkey Kong Junior,205,,,219000,2,4,8
-pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,206,,,220000,2,4,8
-pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,207,,,221000,2,4,8
-intv_intykong,shell,IntyKong,Inty Kong,209,,,222000,2,4,8
-apple2e_budgiekong,shell,A][ BudgieKong,A][: Budgie Kong,210,,,223000,2,4,8
-pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,224000,2,4,8
-cgenie_colourkong32,shell,EGCK,EG2000: Colour Kong 32,213,,,225000,2,4,8
-pc_fixitfelix,shell,PC FIFJR,PC: Fix-It Felix Classic,214,,,226000,2,4,8
-pc_dk_aa,shell,PC DKAttacks,PC: Donkey Kong Attacks,215,,,227000,2,4,8
+nes_dk,shell,NESDK,NES: Donkey Kong (Orig),82,,,0,2,4,8
+nes_dk_icecream,shell,Ice,NES: Ice Cream!,83,,,112000,2,4,8
+nes_dk_kanakong,shell,KanaKong,NES: KanaKong,84,,,113000,2,4,8
+nes_dk_boosette,shell,Boo,NES: Boosette,85,,,114000,2,4,8
+nes_dk_3,shell,DK3,NES: Donkey Kong 3,86,,,115000,2,4,8
+nes_dk_redux,shell,Redux,NES: Donkey Kong Redux,87,,,116000,2,4,8
+nes_dk_junior,shell,JR,NES: Donkey Kong Junior,88,,,117000,2,4,8
+nes_crazykong,shell,CK,NES: Crazy Kong,89,,,118000,2,4,8
+nes_dk_wilford,shell,Wilf,NES: Wilford Kong,90,,,119000,2,4,8
+nes_dk_arcade_ror,shell,Arcade,NES: DK Arcade Accurate,91,,,120000,2,4,8
+a2600_dk,shell,2600DK,2600: Donkey Kong (Orig),92,,,121000,2,4,8
+a2600_dk_2,shell,DK 2,2600: Donkey Kong 2,93,,,122000,2,4,8
+a2600_dk_ghouls,shell,Ghouls!,2600: Ghouls n Ghosts,94,,,123000,2,4,8
+a2600_dk_popeye2,shell,Popeye,2600: Popeye 2 (Seahag),95,,,124000,2,4,8
+a2600_dk_vector_bw,shell,Vector,2600: Donkey Kong Vector,96,,,125000,2,4,8
+a2600_dk_xmas_dp,shell,Xmas,2600: Donkey Kong Xmas,97,,,126000,2,4,8
+a2600_dk_dragon,shell,Dragon,2600: Dragon Knight,98,,,127000,2,4,8
+a2600_dk_new,shell,DKNEW,2600: Donkey Kong New,99,,,128000,2,4,8
+bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,100,,,129000,2,4,8
+apple2e_dk,shell,ADK,A][: Donkey Kong (Orig),101,,,130000,2,4,8
+cpc6128_dk,shell,CPCDK,CPC: Donkey Kong (Orig),102,,,131000,2,4,8
+snes_classickong,shell,SNESDK,SNES: Classic Kong,103,,,132000,2,4,8
+c64p_dk_ocean,shell,C64DK,C64: Donkey Kong (Ocean),105,,,133000,2,4,8
+c64_dk_x,shell,DK+,C64: Donkey Kong+ (2016),106,,,134000,2,4,8
+c64p_dk_junior,shell,JR,C64: Donkey Kong Jr. (2014),107,,,135000,2,4,8
+crvision_policejump,shell,VTPolice,VTECH: Police Jump,108,,,136000,2,4,8
+coleco_dk,shell,CVDK,CVS: Donkey Kong (Orig),109,,,137000,2,4,8
+coleco_dk_junior,shell,JR,CVS: Donkey Kong Jr.,110,,,138000,2,4,8
+a800xl_dk,shell,800DK,A800: Donkey Kong (Orig),111,,,139000,2,4,8
+coco3_dk_emu,shell,COCODK,COCO3: Donkey Kong Emulator,112,,,140000,2,4,8
+coco3_dunkeymonkey,shell,Dunkey,COCO3: Dunkey Monkey,113,,,141000,2,4,8
+ti99-4a_dk,shell,TIDK,TI99: Donkey Kong (Orig),114,,,142000,2,4,8
+hbf900a_dk,shell,MSXDK,MSX: Donkey Kong (Orig),115,,,143000,2,4,8
+hbf900a_apeman,shell,ApeMan,MSX: Apeman Strikes Again,116,,,144000,2,4,8
+a5200_dk_encore,shell,5200DK,5200: Donkey Kong Encore,117,,,145000,2,4,8
+a5200_ck_hack,shell,CK,5200: Crazy Kong,118,,,146000,2,4,8
+a7800_dk,shell,7800DK,7800: Donkey Kong (Orig),119,,,147000,2,4,8
+a7800_dk_remix,shell,Rmx,7800: Donkey Kong Remix,120,,,148000,2,4,8
+a7800_dk_killscreen,shell,L22,7800: L22-1 Killscreen,121,,,149000,2,4,8
+a7800_dk_xm,shell,XM,7800: Donkey Kong XM,122,,,150000,2,4,8
+intv_dk,shell,INTDK,INTV: Donkey Kong (Orig),123,,,152000,2,4,8
+intv_intykong,shell,Inty,Inty Kong,124,,,153000,2,4,8
+gbcolor_dk_japan_us,shell,GBDK '94,GBC: Donkey Kong '94,125,,,154000,2,4,8
+nes_dk_bowsette,shell,NESBowsette,NES: Bowsette,126,,,155000,2,4,8
+nes_dk_pauline,shell,Pauline,NES: Donkey Kong Pauline,128,,,156000,2,4,8
+nes_dk_lyko1,shell,Lyko,NES: Lyko 1 Hack,129,,,157000,2,4,8
+nes_dk_pacquest,shell,Pac,NES: Pac-Quest,130,,,158000,2,4,8
+nes_jumpman_vs_dk,shell,JMDK,NES: Jumpman v Donkey Kong,131,,,159000,2,4,8
+nes_dk2_nuts_n_milk,shell,DK2,NES: Donkey Kong Nuts & Milk,132,,,160000,2,4,8
+nes_dk_bowsette_jr,shell,Bows.JR,NES: Bowsette Junior,133,,,161000,2,4,8
+spectrum_dk,shell,SPECDK,SPEC48K: Donkey Kong (Orig),134,,,162000,2,4,8
+spectrum_wrathofkong,shell,WoK,SPEC48K: Wrath of Kong,136,,,163000,2,4,8
+spectrum_killerkong,shell,Killer,SPEC48K: Killer Kong,137,,,164000,2,4,8
+spectrum_crazykongcity,shell,CK,SPEC48K: Crazy Kong City,138,,,165000,2,4,8
+spectrum_dk_reloaded,shell,Reloaded,SPEC48K: DK Reloaded,139,,,166000,2,4,8
+spec128_dk_reload_again,shell,Again!,SPEC128K: DK Reloaded Again,141,,,167000,2,4,8
+pcw10_climbit,shell,PCW,PCW: Climb-It,142,,,168000,2,4,8
+nes_dk_whatsup,shell,WhatUp?,NES: What's Up Donkey Kong,143,,,169000,2,4,8
+nes_dk_zelda01,shell,ZK1,NES: ZeldaKong 1 (Link),144,,,170000,2,4,8
+nes_dk_zelda02,shell,ZK2,NES: ZeldaKong 2 (Zelda),145,,,171000,2,4,8
+nes_dk_zelda03,shell,ZK3,NES: ZeldaKong 3 (Moblin),146,,,172000,2,4,8
+nes_dk_zelda04,shell,ZK4,NES: ZeldaKong 4 (Zol),147,,,173000,2,4,8
+nes_dk_zelda05,shell,ZK5,NES: ZeldaKong 5 (Armos),148,,,174000,2,4,8
+nes_dk_zelda06,shell,ZK6,NES: ZeldaKong 6 (Link 2),149,,,175000,2,4,8
+nes_dk_zelda07,shell,ZK7,NES: ZeldaKong 7 (Triforce),150,,,176000,2,4,8
+nes_dk_zelda08,shell,ZK8,NES: ZeldaKong 8 (Child),151,,,177000,2,4,8
+nes_dk_zelda09,shell,ZK9,NES: ZeldaKong 9 (GB Link),152,,,178000,2,4,8
+pet4032_petscii_kong,shell,PETDK,PET: Petscii Kong,153,,,179000,2,4,8
+plus4_climbit,shell,C16,C16/+4: Climb-It,154,,,180000,2,4,8
+plus4_rollerkong,shell,Rk,C16/+4: RollerKong,155,,,181000,2,4,8
+c64_dk,shell,C64,C64: Donkey Kong (Nintendo),156,,,182000,2,4,8
+c64_krazykong64,shell,KrazyKong,C64: Krazy Kong 64,157,,,183000,2,4,8
+c64_ck64,shell,CK64,C64: Crazy Kong 64,158,,,184000,2,4,8
+c64_monkeykong,shell,Monkey,C64: Monkey Kong,159,,,185000,2,4,8
+c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,186000,2,4,8
+c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,187000,2,4,8
+c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,188000,2,4,8
+mo5_yeti,shell,MO5 Yeti,THOMSON: Yeti,164,,,189000,2,4,8
+mz700_donkeygorilla,shell,Gorilla,SHARP: Donkey Gorilla,166,,,190000,2,4,8
+mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,167,,,191000,2,4,8
+vic20_kongokong,shell,V20CK,VIC20: Kongo Kong,168,,,192000,2,4,8
+zx81_krazykong_pss,shell,ZX81CK,ZX81: Krazy Kong,169,,,193000,2,4,8
+pc_nes_dk_hdpack,shell,NESDK HD,NES: Donkey Kong HD Pack,170,,,194000,2,4,8
+dos_dk,shell,DOSDK,DOS: Donkey Kong (Orig),171,,,195000,2,4,8
+dos_mamedk,shell,OldMAME,DOS: Early MAME DK (1997),173,,,196000,2,4,8
+dos_kong,shell,Champ,DOS: Champ Kong,175,,,197000,2,4,8
+dos_aldo,shell,Aldo,DOS: Aldo's Adventure,177,,,198000,2,4,8
+pc_dk_amiga_pd,shell,AmigaDK,AMIGA: Amiga Donkey Kong,178,,,199000,2,4,8
+pc_jumpman_rtx,shell,JumpmanRTX,PC: Jumpman RTX,180,,,200000,2,4,8
+pc_dk_craze,shell,DKCraze,PC: Donkey Kong Craze,182,,,201000,2,4,8
+pc_dkme_alien,shell,Alien,PC: Donkey Kong Alien,183,,,202000,2,4,8
+pc_dkme_starwars,shell,StarWrs,PC: Donkey Kong StarWars,185,,,203000,2,4,8
+pc_dkme_raiders,shell,Raiders,PC: Donkey Kong Raiders,186,,,204000,2,4,8
+pc_dk_remake,shell,PCDK,PC: Donkey Kong Remake,187,,,205000,2,4,8
+pc_pico8_denis_kogne,shell,PICODK,PICO-8: Denis Kogne,188,,,206000,2,4,8
+pc_pico8_dinkyking,shell,DinkyKing,PICO-8: Dinky King,189,,,207000,2,4,8
+pc_pico8_ape,shell,Ape,PICO-8: Ape Approacher,190,,,208000,2,4,8
+pc_tic80_kongremake,shell,TIC80DK,TIC80: Kong Remake,191,,,209000,2,4,8
+pc_tic80_denis_kogne,shell,DenisKogne,TIC80: Denis Kogne,194,,,210000,2,4,8
+lcd_cdkong,shell,LCDDK,LCD: Donkey Kong Coleco,195,,,211000,2,4,8
+gnw_dkong,shell,G&W,G&W: Donkey Kong (Orig),196,,,212000,2,4,8
+pc_trs80_kong,shell,Kong,TRS80: Kong,197,,,213000,2,4,8
+pc_trs80_dk,shell,TRS,TRS80: Donkey Kong,198,,,214000,2,4,8
+pc_atarist_mb,shell,Monkey,ST: Monkey Business,199,,,215000,2,4,8
+pc_atarist_kidkong,shell,STDK,ST: Kid Kong,200,,,216000,2,4,8
+pc_zx80_kong,shell,ZX80,ZX80: Kong,201,,,217000,2,4,8
+pc_dkme_gremlins,shell,PC Gremlins,PC: Donkey Kong Gremlins,202,,,218000,2,4,8
+pc_dkme_flashgordon,shell,FG,PC: Donkey Kong Flash Gordon,203,,,219000,2,4,8
+pc_dkme_bigtrouble,shell,BT,PC: Donkey Kong Big Trouble,204,,,220000,2,4,8
+pc_dkme_conan,shell,Conan,PC: Donkey Kong Conan,205,,,221000,2,4,8
+pc_dkme_firstblood,shell,Rambo,PC: Donkey Kong First Blood,207,,,222000,2,4,8
+pc_dkme_totalrecall,shell,Recall,PC: Donkey Kong Total Recall,209,,,223000,2,4,8
+spec128_dk_arcade,shell,SPEC Arcade,SPEC128K: Donkey Kong Arcade,210,,,224000,2,4,8
+pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,225000,2,4,8
+cgenie_colourkong32,shell,EGCK,EG2000: Colour Kong 32,213,,,226000,2,4,8
+pc_fixitfelix,shell,PC FIFJR,PC: Fix-It Felix Classic,214,,,227000,2,4,8
+pc_dk_aa,shell,PC DKAttacks,PC: Donkey Kong Attacks,215,,,228000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,121000,2,4,8
 a2600_dk,shell,VCSDK,2600: Donkey Kong (Original),9999,,,0,2,4,8
@@ -153,6 +154,7 @@ adam_dk,shell,DK,ADAM: Donkey Kong (Original),9999,,,137000,2,4,8
 adam_dk_junior,shell,DK JR,ADAM: Donkey Kong JR Supergame,9999,,,137000,2,4,8
 adam_dk_super,shell,DK Super,ADAM: Donkey Kong Supergame,9999,,,137000,2,4,8
 apple2e_applekong,shell,AppleKong,A][: Apple Kong,9999,,,130000,2,4,8
+apple2e_budgiekong,shell,A][ BudgieKong,A][: Budgie Kong,9999,,,130000,2,4,8
 apple2e_cannonball,shell,A2 Blitz,A][: Cannonball Blitz,9999,,,130000,2,4,8
 bbcb_barrel_battle,shell,BarrelBattle,BBC: Barrel Battle,9999,,,129000,2,4,8
 bbcb_builder,shell,Builder,BBC: Builder,9999,,,129000,2,4,8
@@ -196,6 +198,7 @@ gbcolor_dk_4stage,shell,DK 4 Levels,GBC: Donkey Kong 4 Level Hack,9999,,,152000,
 gbcolor_dk_summer,shell,DK Summer,GBC: Donkey Kong Summer Hack,9999,,,152000,2,4,8
 genesis_felix,shell,GENFIFJR,GENESIS: Fix-It Felix Jr.,9999,,,130000,2,4,8
 gnw_dkcirc,shell,G&W Circus,G&W: Donkey Kong Circus,9999,,,213000,2,4,8
+gnw_dkjr,shell,JR,G&W: Donkey Kong Junior,9999,,,218000,2,4,8
 gnw_dkjrp,shell,DK JR (P),G&W: Donkey Kong JR (Panoroma),9999,,,186000,2,4,8
 gnw_dkong2,shell,DK2,G&W: Donkey Kong 2,9999,,,186000,2,4,8
 hbf900a_tokekong,shell,TokeKong,MSX: Toke Kong,9999,,,143000,2,4,8
@@ -237,17 +240,24 @@ pc_arduboy_kong,shell,Kong,ARDUBOY: Kong,9999,,,220000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,220000,2,4,8
 pc_atarist_junior,shell,JR,ST: Donkey JR (G&W),9999,,,186000,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,208000,2,4,8
+pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,9999,,,197000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
+pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,9999,,,197000,2,4,8
+pc_dkme_exorcist,shell,Exorcist,PC: Donkey Kong The Exorcist,9999,,,197000,2,4,8
+pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,9999,,,209000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,197000,2,4,8
+pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,9999,,,209000,2,4,8
 pc_lowresnx_denis_kogne,shell,DenisKogne,NX: Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
-pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,220000,2,4,8
+pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,209000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
 pc_spectrum_dkjr2,shell,DK JR2,SPEC48K: Donkey Kong Junior 2,9999,,,160000,2,4,8
-pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,209000,2,4,8
-pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,220000,2,4,8
+pc_trs80_ape,shell,Ape,TRS80: Ape Escape,9999,,,211000,2,4,8
+pc_trs80_killergorilla,shell,KillerGorilla,TRS80: Killer Gorilla,9999,,,211000,2,4,8
+pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,211000,2,4,8
+pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,209000,2,4,8
 pet4032_dk_junior,shell,DK Junior,G&W: Donkey Kong Junior (G&W),9999,,,133000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,C16/+4: Crazy Jump,9999,,,176000,2,4,8
 plus4_dkplus,shell,DK+,C16/+4: Donkey Kong +,9999,,,176000,2,4,8
@@ -255,7 +265,6 @@ plus4_monkeykong,shell,MonkeyKong,C16/+4: Monkey Kong,9999,,,176000,2,4,8
 sg1000_congobongo,shell,CongoBongo,SG1000: Congo Bongo,9999,,,130000,2,4,8
 sg1000_dk,shell,DK,SG1000: Donkey Kong,9999,,,130000,2,4,8
 sg1000_dkjr,shell,DK JR,SG1000: Donkey Kong Junior,9999,,,130000,2,4,8
-spec128_dk_arcade,shell,DKArcade,SPEC128K: Donkey Kong Arcade,9999,,,160000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,SPEC48K: Ape Escape,9999,,,160000,2,4,8
 spectrum_dk_junior,shell,DonkyJR,SPEC48K: Donky Junior,9999,,,160000,2,4,8
 spectrum_killerknight,shell,KillerKnight,SPEC48K: Killer Knight,9999,,,160000,2,4,8
@@ -265,6 +274,7 @@ spectrum_kongs_revenge,shell,KongsRevenge,SPEC48K: Kongs Revenge,9999,,,160000,2
 spectrum_krazykong,shell,Krazy,SPEC48K: Krazy Kong,9999,,,160000,2,4,8
 spectrum_monkeybiz,shell,Monkey,SPEC48K: Monkey Bizness,9999,,,160000,2,4,8
 spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,9999,,,160000,2,4,8
+spectrum_wrathofkong,shell,Wrath,SPEC48K: Wrath of Kong,9999,,,160000,2,4,8
 vic20_crazykong,shell,CrazyKong,VIC20: Crazy Kong,9999,,,188000,2,4,8
 vic20_fast_eddie,shell,FastEddie,VIC20: Fast Eddie,9999,,,188000,2,4,8
 vic20_hardhatclimber,shell,HardhatClimber,VIC20: Hardhat Climber,9999,,,188000,2,4,8
@@ -274,6 +284,7 @@ vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##a2600_pac_kong,shell,Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
+##a2600_spider_kong,shell,**Not DK enough,2600: Spider Kong,####,,,0,2,4,8
 ##cgenie_colourkong,shell,Same as colourkong,EG2000: Colour Kong,####,,,0,2,4,8
 ##dos_aldo2,shell,Locks on title screen,DOS: Aldo Again,####,,,0,2,4,8
 ##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
@@ -285,6 +296,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
 ##oric1_4k_kong,shell,4K Kong,ORIC: 4K Kong,####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
+##spectrum_spec_kong,shell,**jump not working,SPEC48K: Spec Kong,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
 ##vic20_dk,shell,DK,VIC20: Donkey Kong,####,,,0,2,4,8
 ##vic20_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),####,,,0,2,4,8
@@ -295,5 +307,3 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##vic20_minikong,shell,**Screen issues,VIC20: MiniKong,####,,,0,2,4,8
 ##vic20_vic_kong,shell,**Similar to nufecop,VIC20: Vic Kong,####,,,0,2,4,8
 ##zx81_kongsrevenge,shell,**slow and buggy,ZX81: Kongs Revenge,####,,,0,2,4,8
-##spectrum_spec_kong,shell,**jump not working,SPEC48K: Spec Kong,####,,,0,2,4,8
-spectrum_wrathofkong,shell,Wrath,SPEC48K: Wrath of Kong,0,,,0,2,4,8

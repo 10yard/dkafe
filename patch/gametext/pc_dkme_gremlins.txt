@@ -1,0 +1,9 @@
+PC - Donkey Kong: Gremlins
+
+A Donkey Kong and Gremlins fusion.
+A classic remake based on the Gremlins movie.
+
+The game is divided into various phases that represent 
+scenes from the movie.  
+
+Developed by Bruneras
