@@ -1,15 +1,13 @@
 LCD - Coleco Tabletop Donkey Kong
 
 Plays and sounds like the Donkey Kong arcade game!
-Well,  that's what it says in the instruction manual,
-along with the following.
+Well,  that's what it says in the instruction manual.
 
 "You'll find that this tabletop game is full of special
 features to make Donkey Kong exciting every time you
 play.  Experiment with different techniques - and 
 enjoy the game!"
 
-You get to play the barrels stage and the rivets 
-stages only.
+You get to play barrel and rivet stages only.
 
 Developed By Coleco

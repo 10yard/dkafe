@@ -114,12 +114,13 @@ rom_table["cpc6128_kongsrevenge"]    = {"",            false, 1260,  {60,'RUN"KO
 rom_table["crvision"]                = {"P2 TT P1",    false, 0,     {},                                                0,     0,   0,   0 }
 rom_table["dragon32"]                = {"JJ",          true,  0,     {120,"CLOADM\n"},                                  0,     0,   0,   16}
 rom_table["dragon32_kingcuthbert"]   = {"P1 TT P1 AA", true,  3250,  {120,"CLOADM\n",2900,"EXEC\n"},                    0,     0,   0,   16}
-rom_table["dragon32_donkeyking"]     = {"JJ",          false, 7300,  {120,"CLOADM\n"},                                  0,     0,   0,   16}
+rom_table["dragon32_donkeyking"]     = {"JJ",          false, 5000,  {120,"CLOADM\n"},                                  0,     0,   0,   16}
 rom_table["dragon32_dunkeymonkey"]   = {"JJ",          false, 6200,  {180,"CLOADM\n",6000,"EXEC\n"},                    0,     0,   0,   16}
-rom_table["dragon32_juniorsrevenge"] = {"JJ",          false, 20000, {120,"CLOADM\n"},                                  0,     0,   0,   16}
+rom_table["dragon32_juniorsrevenge"] = {"JJ",          false, 10000, {180,"CLOADM\n"},                                  0,     0,   0,   16}
 rom_table["fds"]                     = {"P1",          false, 600,   {},                                                0,     0,   0,   0 }
-rom_table["gameboy"]                 = {"P1",          false, 300,   {},                                                1.5,   0,   0,   10}
-rom_table["gbcolor"]                 = {"P1",          false, 180,   {},                                                1.5,   0,   0,   10}
+rom_table["gameboy"]                 = {"P1",          false, 300,   {},                                                -1.5,   0,   0,   8}
+rom_table["gbcolor"]                 = {"P1",          false, 180,   {},                                                -1.5,   0,   0,   8}
+rom_table["gbcolor_dk_arcade"]       = {"",            false, 220,   {},                                                -1.5,   0,   0,   8}
 rom_table["hbf900a"]                 = {"P1",          true , 2300,  {},                                                5,     12,  0,   0 }
 rom_table["hbf900a_tokekong"]        = {"JJ",          true , 3700,  {},                                                5,     12,  0,   0 }
 rom_table["hbf900a_apeman"]          = {"JJ",          true,  5300,  {},                                                5,     12,  0,   0 }
@@ -149,6 +150,7 @@ rom_table["sg1000"]                  = {"JJ",          false, 0,     {},        
 rom_table["snes"]                    = {"P1",          false, 360,   {},                                                2.5,   0,   0,   0 }
 rom_table["spectrum"]                = {"P1",          false, 0,     {},                                                2,     4,   0,   0 }
 rom_table["spectrum_ape_escape"]     = {"P1",          true,  16000, {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
+rom_table["spectrum_dk3_micro_vs"]   = {"P1",          true,  14500, {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
 rom_table["spectrum_crazykongcity"]  = {"P1",          true,  12700, {150,'J""\n', 300, "{PLAY}",12500,"M",12600,"1"},  2,     4,   0,   0 }
 rom_table["spectrum_kongs_revenge"]  = {"P1",          true,  15000, {150,'J""\n', 300, "{PLAY}"},                      2,     4,   0,   0 }
 rom_table["spectrum_killerkong"]     = {"P1",          false, 500,   {},                                                2,     4,   0,   0 }
@@ -164,7 +166,7 @@ rom_table["spec128_dk_reload_again"] = {"",            false, 130,   {60,"x",120
 rom_table["spec128_dk_arcade"]       = {"",            false, 70,    {60,"0"},                                          2,     4,   0,   0 }
 rom_table["ti99_4a"]                 = {"JJ",          true,  600,   {60,"  2"},                                        0,     0,   0,   0 }
 rom_table["vic20"]                   = {"",            true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
-rom_table["vic20_minikong"]          = {"BUG",         true,  3200,  {360,'LOAD"*",8,1\n',1400,"RUN\n",2200,"N\n"},	    1.33,  2,   0,   0 }
+rom_table["vic20_se"]                = {"",            false, 500,   {360,"SYS4096\n"},                                 1.33,  2,   0,   0 }
 rom_table["vic20_mickybricky"]       = {"P1",          false, 18000, {280,'LOAD\n',400,"{PLAY}"},					    1.33,  2,   0,   0 }
 rom_table["vic20_dk_ackenhausen"]    = {"P1",          false, 580,   {360,"RUN\n", 450, "1\n"},                         1.33,  2,   0,   0 }
 rom_table["vic20_fast_eddie"]        = {"",            false, 0,     {},                                                1.33,  2,   0,   0 }
@@ -177,6 +179,7 @@ rom_table["vic20_kongokong"]         = {"P1",          true,  400,   {360,"RUN\n
 rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_logger"]            = {"P1",          false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",
 													 5000,"{SHIFT}",5000,"{HOME}"},   1.33,  2,   0,   0 }
+rom_table["x1"]                      = {"",            false,  2100,  {},                                               9,     4,   0,   0 }
 rom_table["zx81_crazykong"]          = {"",            true,  10750, {360,'J""\n',420,"{PLAY}",10400,"\n",10500,"1\n"}, 2,     4,   0,   0 }
 rom_table["zx81_kongsrevenge"]       = {"",            false, 20200, {360,'J""\n',420,"{PLAY}",20100, "n\n"},           2,     4,   0,   0 }
 rom_table["zx81_krazykong_pss"]      = {"JJ",          true,  11660, {360,'J""\n',420,"{PLAY}",11500," ",11600," "},    2,     4,   0,   0 }
@@ -292,7 +295,7 @@ function shell_main()
 				_x = screen.width - _wid - 1
 				if time_played > 0 and time_played <= target_time or mac.paused then
 
-					if not mac.paused then
+					if not mac.paused and start_msg ~= "" then
 						screen:draw_box(0, 0, screen.width, 10 + scale, black, black)
 						screen:draw_text(0, 0,  start_msg, white, black)
 					end

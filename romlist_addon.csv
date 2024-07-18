@@ -77,8 +77,8 @@ c64_ck,shell,CrazyKong,C64: Crazy Kong,161,,,186000,2,4,8
 c64_mariosbrewery,shell,Brewery,C64: Marios Brewery,162,,,187000,2,4,8
 c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,188000,2,4,8
 mo5_yeti,shell,MO5 Yeti,THOMSON: Yeti,164,,,189000,2,4,8
-mz700_donkeygorilla,shell,Gorilla,SHARP: Donkey Gorilla,166,,,190000,2,4,8
-mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,167,,,191000,2,4,8
+mz700_donkeygorilla,shell,MZ Gorilla,SHARP: Donkey Gorilla,166,,,190000,2,4,8
+vic20-se_minikong,shell,Mini,VIC20: Mini Kong,167,,,191000,2,4,8
 vic20_kongokong,shell,V20CK,VIC20: Kongo Kong,168,,,192000,2,4,8
 zx81_krazykong_pss,shell,ZX81CK,ZX81: Krazy Kong,169,,,193000,2,4,8
 pc_nes_dk_hdpack,shell,NESDK HD,NES: Donkey Kong HD Pack,170,,,194000,2,4,8
@@ -195,6 +195,7 @@ gameboy_dk_4stage,shell,DK 4 Levels,GB: Donkey Kong 4 Level Hack,9999,,,152000,2
 gameboy_dk_japan_us,shell,DK,GB: Donkey Kong (Original),9999,,,152000,2,4,8
 gameboy_dk_summer,shell,DK Summer,GB: Donkey Kong Summer Hack,9999,,,152000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: Donkey Kong 4 Level Hack,9999,,,152000,2,4,8
+gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade (Demo),9999,,,152000,2,4,8
 gbcolor_dk_summer,shell,DK Summer,GBC: Donkey Kong Summer Hack,9999,,,152000,2,4,8
 genesis_felix,shell,GENFIFJR,GENESIS: Fix-It Felix Jr.,9999,,,130000,2,4,8
 gnw_dkcirc,shell,G&W Circus,G&W: Donkey Kong Circus,9999,,,213000,2,4,8
@@ -207,6 +208,7 @@ intv_dk_junior,shell,DK Junior,INTV: Donkey Kong Junior,9999,,,151000,2,4,8
 intv_monkey,shell,Monkey,Monkey Moon,9999,,,151000,2,4,8
 jupace_krazykong,shell,KrazyKong,JUP: Kong,9999,,,130000,2,4,8
 lcd_gckong,shell,Gakken CK,LCD: Gakken Crazy Kong,9999,,,186000,2,4,8
+mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,190000,2,4,8
 nes_crazykong,shell,CK,NES: Crazy Kong,9999,,,0,2,4,8
 nes_dk,shell,NESDK,NES: Donkey Kong (Original),9999,,,0,2,4,8
 nes_dk_3,shell,DK3,NES: Donkey Kong 3,9999,,,0,2,4,8
@@ -216,6 +218,7 @@ nes_dk_freddy_jason,shell,DK Freddy vs Jason,NES: Freddy vs Jason,9999,,,121000,
 nes_dk_godmode,shell,God,NES: Donkey Kong God Mode,9999,,,121000,2,4,8
 nes_dk_japan,shell,DK Japan,NES: Donkey Kong Japan,9999,,,121000,2,4,8
 nes_dk_jr_juancho,shell,JR Juancho,NES: Donkey Kong JR Juancho,9999,,,121000,2,4,8
+nes_dk_jr_math,shell,DK JR Math,NES: Donkey Kong Junior Math,9999,,,121000,2,4,8
 nes_dk_jr_rescue_kuck,shell,RescueKuck,NES: Donkey Kong Jr Rescue Kuck,9999,,,121000,2,4,8
 nes_dk_jr_simplified,shell,JR Simplified,NES: Donkey Kong JR Simplified,9999,,,121000,2,4,8
 nes_dk_junior,shell,JR,NES: Donkey Kong Junior,9999,,,0,2,4,8
@@ -228,6 +231,7 @@ nes_dk_zelda10,shell,ZK10,NES: ZeldaKong10 (Marin),9999,,,121000,2,4,8
 nes_dk_zelda11,shell,Z11,NES: ZeldaKong11 (Grandma),9999,,,121000,2,4,8
 nes_dk_zelda12,shell,Z12,NES: ZeldaKong12 (Tarin),9999,,,121000,2,4,8
 nes_dk3_bandits,shell,DK3 Bandits,NES: Donkey Kong 3 Bandits,9999,,,121000,2,4,8
+nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,121000,2,4,8
 nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,121000,2,4,8
@@ -251,6 +255,7 @@ pc_lowresnx_denis_kogne,shell,DenisKogne,NX: Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,209000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
+pc_pc88_dk3,shell,DK3 CounterAttack,PC88: DK3 Great Counter Attack,9999,,,190000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
 pc_spectrum_dkjr2,shell,DK JR2,SPEC48K: Donkey Kong Junior 2,9999,,,160000,2,4,8
@@ -267,6 +272,7 @@ sg1000_dk,shell,DK,SG1000: Donkey Kong,9999,,,130000,2,4,8
 sg1000_dkjr,shell,DK JR,SG1000: Donkey Kong Junior,9999,,,130000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,SPEC48K: Ape Escape,9999,,,160000,2,4,8
 spectrum_dk_junior,shell,DonkyJR,SPEC48K: Donky Junior,9999,,,160000,2,4,8
+spectrum_dk3_micro_vs,shell,DK3 MicroVs,SPECTRUM: DK3 Micro Vs (G&W),9999,,,160000,2,4,8
 spectrum_killerknight,shell,KillerKnight,SPEC48K: Killer Knight,9999,,,160000,2,4,8
 spectrum_kong,shell,Kong,SPEC48K: Kong,9999,,,160000,2,4,8
 spectrum_kong_ocean,shell,Kong,SPEC48K: Kong (Ocean),9999,,,160000,2,4,8
@@ -281,6 +287,7 @@ vic20_hardhatclimber,shell,HardhatClimber,VIC20: Hardhat Climber,9999,,,188000,2
 vic20_krazykong_cascade,shell,KrazyKong,VIC20: Krazy Kong (Cascade),9999,,,188000,2,4,8
 vic20_krazykong_nufecop,shell,KrazyKong,VIC20: Krazy Kong (Nufecop),9999,,,188000,2,4,8
 vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
+x1_dk3_counter_attack,shell,DK3 CounterAttack,X1: DK3 Great Counter Attack,9999,,,190000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##a2600_pac_kong,shell,Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
@@ -290,7 +297,9 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
 ##dos_jman2,shell,Not DK enough,DOS: Jumpman Lives,####,,,0,2,4,8
 ##dos_jumpman,shell,Not DK enough,DOS: Jumpman,####,,,0,2,4,8
-##dos_kongsrev,shell,KongsRevenge,DOS: Kong's Revenge,####,,,0,2,4,8
+##dos_kongsrev,shell,**Troublesome to map,DOS: Kong's Revenge,####,,,0,2,4,8
+##dragon32_donkeyking,shell,**Doesn't start,D32: Donkey King,####,,,0,2,4,8
+##dragon32_juniorsrevenge,shell,**Doesn't start,D32: Juniors Revenge,####,,,0,2,4,8
 ##hbf900a_congo,shell,**Controls not working,MSX: Congo,####,,,0,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
@@ -304,6 +313,5 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##vic20_logger,shell,**Start up trouble,VIC20: Logger,####,,,0,2,4,8
 ##vic20_logrun,shell,LogRun,VIC20: Log Run,####,,,0,2,4,8
 ##vic20_mickybricky,shell,**start up issue,VIC20: Micky The Bricky,####,,,0,2,4,8
-##vic20_minikong,shell,**Screen issues,VIC20: MiniKong,####,,,0,2,4,8
 ##vic20_vic_kong,shell,**Similar to nufecop,VIC20: Vic Kong,####,,,0,2,4,8
 ##zx81_kongsrevenge,shell,**slow and buggy,ZX81: Kongs Revenge,####,,,0,2,4,8

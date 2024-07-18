@@ -616,6 +616,7 @@ RECOGNISED_SYSTEMS = {
     "nes":"Nintendo Entertainment System",
     "oric1":"Tangerine ORIC",
     "pc":"PC",
+    "pc88":"NEC PC-88",
     "pcw10":"Amstrad PCW",
     "pet4032":"Commodore PET",
     "pico8":"Pico-8 Fantasy Console",
@@ -630,6 +631,8 @@ RECOGNISED_SYSTEMS = {
     "trs80":"Tandy TRS-80",
     "vic20":"Commodore VIC-20",
     "vic20p":"Commodore VIC-20",
+    "vic20_se":"Commodore VIC-20",
+    "x1":"Sharp X1",
     "zx80":"Sinclair ZX80",
     "zx81":"Sinclair ZX81"}
 
@@ -657,6 +660,8 @@ SYSTEM_MEDIA = {
     "spec128": "-nokeepaspect -dump",
     "vic20": "-quik",
     "vic20p": "-quik",
+    "vic20_se": "-quik",
+    "x1": "-floppydisk1",
     "zx81": "-cass"}
 
 # Game specific media to override the system media
@@ -666,11 +671,13 @@ GAME_MEDIA = {
     "c64_bonkeykong":"-flop",
     "c64_monkeykong":"-flop",
     "c64_logger":"-speed 1.5 -quik",
+    "gbcolor_dk_arcade":"-plugin gbstage -cart",
     "hbf900a_apeman":"-cart1",
     "hbf900a_congo":"-cass",
     "plus4_crazyjump":"-joy1 joy -quik",
     "plus4_dkplus":"-joy1 joy -quik",
     "spectrum_ape_escape":"-cass",
+    "spectrum_dk3_micro_vs":"-cass",
     "spectrum_dk_reloaded":"-cass",
     "spectrum_kongs_revenge":"-cass",
     "spectrum_crazykongcity":"-cass",
@@ -679,8 +686,7 @@ GAME_MEDIA = {
     "vic20_logger": "-ram 3k -cass",
     "vic20_mickybricky": "-cass",
     "vic20_fast_eddie":"-cart",
-    "vic20_dk_ackenhausen":"-exp 16k -quik",
-    "vic20_minikong": "-flop"}
+    "vic20_dk_ackenhausen":"-exp 16k -quik"}
 
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
@@ -729,6 +735,7 @@ KEYBOARD_REMAP = {
     "pc_dkme_totalrecall": "ctrl>space|esc>forcequit:dkme.exe",
     "pc_tic80_denis_kogne":"tab>esc|ctrl>z|alt>x|esc>forcequit:tic80.exe",
     "pc_kong_jr_gnw":"ctrl>x|esc>forcequit",
+    "pc_pc88_dk3":"ctrl>space|esc>forcequit:quasi88.exe",
     "pc_tic80_kongremake":"tab>esc|ctrl>z|esc>forcequit:tic80.exe",
     "pc_trs80_ape":"ctrl>space|p>enter,1|num 2>home|num 1>enter,1",
     "pc_trs80_kong":"ctrl>space|num 1>home",

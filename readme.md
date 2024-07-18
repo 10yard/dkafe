@@ -274,6 +274,7 @@ An optional add-on pack includes over 250 Donkey Kong ports and hacks for the fo
  - LowRes NX Fantasy Console
  - MS-DOS
  - MSX
+ - NEC PC-88
  - Nintendo Entertainment System
  - Nintendo Gameboy
  - Nintendo Gameboy Color
@@ -283,6 +284,7 @@ An optional add-on pack includes over 250 Donkey Kong ports and hacks for the fo
  - Sega Genesis/Megadrive
  - Sega SG-1000
  - Sharp MZ700
+ - Sharp X1
  - Sinclair Spectrum 48K
  - Sinclair Spectrum 128K
  - Sinclair ZX80
