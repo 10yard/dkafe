@@ -60,7 +60,10 @@ def load_game_texts():
     texts = []
     for filename in glob(os.path.join(PATCH_DIR, "gametext", "*.txt")):
         with open(filename) as f_in:
-            texts.append([os.path.basename(filename).split(".")[0], f_in.readlines()])
+            try:
+                texts.append([os.path.basename(filename).split(".")[0], f_in.readlines()])
+            except UnicodeDecodeError:
+                pass
     return texts
 
 
