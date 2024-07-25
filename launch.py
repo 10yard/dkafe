@@ -393,7 +393,7 @@ def play_intro_animation():
                 write_text(" FRONT END ", font=dk_font, x=69, y=8, bg=BLACK)
 
             show_score()
-            update_screen(delay_ms=int(CLOCK_RATE * 0.895))
+            update_screen(delay_ms=int(CLOCK_RATE * 0.875))
 
 
 def display_slots(version_only=False, logo_scene=False):

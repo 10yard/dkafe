@@ -195,7 +195,7 @@ gameboy_dk_4stage,shell,DK 4 Levels,GB: Donkey Kong 4 Level Hack,9999,,,152000,2
 gameboy_dk_japan_us,shell,DK,GB: Donkey Kong (Original),9999,,,152000,2,4,8
 gameboy_dk_summer,shell,DK Summer,GB: Donkey Kong Summer Hack,9999,,,152000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: Donkey Kong 4 Level Hack,9999,,,152000,2,4,8
-gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade (Demo),9999,,,152000,2,4,8
+gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,9999,,,152000,2,4,8
 gbcolor_dk_summer,shell,DK Summer,GBC: Donkey Kong Summer Hack,9999,,,152000,2,4,8
 genesis_felix,shell,GENFIFJR,GENESIS: Fix-It Felix Jr.,9999,,,130000,2,4,8
 gnw_dkcirc,shell,G&W Circus,G&W: Donkey Kong Circus,9999,,,213000,2,4,8
