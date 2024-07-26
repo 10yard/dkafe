@@ -615,6 +615,7 @@ RECOGNISED_SYSTEMS = {
     "mz700":"Sharp MZ-700",
     "nes":"Nintendo Entertainment System",
     "oric1":"Tangerine ORIC",
+    "orica":"Tangerine ORIC",
     "pc":"PC",
     "pc88":"NEC PC-88",
     "pcw10":"Amstrad PCW",
@@ -630,7 +631,6 @@ RECOGNISED_SYSTEMS = {
     "tic80":"TIC-80 Fantasy Console",
     "trs80":"Tandy TRS-80",
     "vic20":"Commodore VIC-20",
-    "vic20p":"Commodore VIC-20",
     "vic20_se":"Commodore VIC-20",
     "x1":"Sharp X1",
     "zx80":"Sinclair ZX80",
@@ -653,13 +653,13 @@ SYSTEM_MEDIA = {
     "mo5": "-cass",
     "mz700": "-cass",
     "oric1": "-cass",
+    "orica": "-cass",
     "pcw10": "-flop",
     "pet4032": "-quik",
     "plus4": "-quik",
     "spectrum": "-nokeepaspect -dump",
     "spec128": "-nokeepaspect -dump",
     "vic20": "-quik",
-    "vic20p": "-quik",
     "vic20_se": "-quik",
     "x1": "-floppydisk1",
     "zx81": "-cass"}
@@ -681,12 +681,13 @@ GAME_MEDIA = {
     "spectrum_dk_reloaded":"-cass",
     "spectrum_kongs_revenge":"-cass",
     "spectrum_crazykongcity":"-cass",
-    "spectrum_spec_kong":"-cass",
+    "spectrum_spec_kong":"-speed 1.1 -cass",
     "spectrum_wrathofkong":"-speed 1.1 -cass",
-    "vic20_logger": "-ram 3k -cass",
-    "vic20_mickybricky": "-cass",
+    "vic20-se_logger": "-cass",
+    "vic20-se_mickybricky": "-cass",
     "vic20_fast_eddie":"-cart",
-    "vic20_dk_ackenhausen":"-exp 16k -quik"}
+    "vic20-se_dkjr_gnw":"-exp 16k -quik",
+    "vic20-se_dk_ackenhausen":"-exp 16k -quik"}
 
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py

@@ -138,6 +138,7 @@ rom_table["mz700_crazykong"]         = {"",            true,  20650, {180,"LOAD\
 								  19000," ", 19500," ",20300,"L",20330,"R",20360,"U",20390,"D",20420,"Z",20450,"2"}, 	0.5,   0,   0,   0 }
 rom_table["mz700_donkeygorilla"]     = {"JJ",          true,  17500, {180,"LOAD\n",300,"{PLAY}"},                       0.5,   0,   0,   0 }
 rom_table["nes"]                     = {"P1",          false, 0,     {},                                                0.5,   0,   0,   0 }
+rom_table["orica"]                   = {"JJ",          true,  1850,  {180,'CLOAD ""\n'},                                0,     0,   0,   16}
 rom_table["oric1"]                   = {"P1",          true,  0,     {180,'CLOAD ""\n'},                                0,     0,   0,   16}
 rom_table["oric1_honeykong"]         = {"",            true,  10180, {180,'CLOAD ""\n',9700,"{SPACE}",
 										9860,"5",9920,"6",9980,"7",10040,"8",10120,"{SPACE}"},							0,     0,   0,   16}
@@ -167,17 +168,17 @@ rom_table["spec128_dk_arcade"]       = {"",            false, 70,    {60,"0"},  
 rom_table["ti99_4a"]                 = {"JJ",          true,  600,   {60,"  2"},                                        0,     0,   0,   0 }
 rom_table["vic20"]                   = {"",            true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_se"]                = {"",            false, 500,   {360,"SYS4096\n"},                                 1.33,  2,   0,   0 }
-rom_table["vic20_mickybricky"]       = {"P1",          false, 18000, {280,'LOAD\n',400,"{PLAY}"},					    1.33,  2,   0,   0 }
-rom_table["vic20_dk_ackenhausen"]    = {"P1",          false, 580,   {360,"RUN\n", 450, "1\n"},                         1.33,  2,   0,   0 }
+rom_table["vic20-se_mickybricky"]    = {"P1",          false, 18000, {360,'LOAD\n',420,"{PLAY}"},					    1.33,  2,   0,   0 }
+rom_table["vic20-se_dk_ackenhausen"] = {"P1",          false, 580,   {360,"RUN\n", 450, "1\n"},                         1.33,  2,   0,   0 }
 rom_table["vic20_fast_eddie"]        = {"",            false, 0,     {},                                                1.33,  2,   0,   0 }
 rom_table["vic20_hardhatclimber"]    = {"",            false, 600,   {360, "4 CH=99\n", 460,"RUN\n"},                   1.33,  2,   0,   0 }
 rom_table["vic20_cannonball"]        = {"",            false, 0,     {},                                                1.33,  2,   0,   0 }
-rom_table["vic20_logrun"]            = {"JJ",          true,  700,   {360,"RUN\n",500,"{SPACE}"},                       1.33,  2,   0,   0 }
+rom_table["vic20-se_logrun"]         = {"JJ",          true,  700,   {360,"RUN\n",500,"{SPACE}"},                       1.33,  2,   0,   0 }
 rom_table["vic20_littlekong"]        = {"",            true,  1100,  {360,"RUN\n"},                                     1.33,  2,   0,   0 }
-rom_table["vic20_dkjr_gnw"]          = {"JJ",          false, 500,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
+rom_table["vic20-se_dkjr_gnw"]       = {"JJ",          false, 500,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_kongokong"]         = {"P1",          true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
-rom_table["vic20_logger"]            = {"P1",          false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",
+rom_table["vic20-se_logger"]         = {"P1",          false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",
 													 5000,"{SHIFT}",5000,"{HOME}"},   1.33,  2,   0,   0 }
 rom_table["x1"]                      = {"",            false,  2100,  {},                                               9,     4,   0,   0 }
 rom_table["zx81_crazykong"]          = {"",            true,  10750, {360,'J""\n',420,"{PLAY}",10400,"\n",10500,"1\n"}, 2,     4,   0,   0 }
