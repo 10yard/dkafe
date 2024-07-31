@@ -145,7 +145,7 @@ def check_patches_available():
                 clear_screen()
                 write_text(f"INSTALLING ADD-ONS...       ", font=dk_font, y=0, fg=RED)
             _, _count = _s.read_romlist("romlist_addon.csv")
-            write_text(f"** {str(_count)} DK VARIANTS WERE INSTALLED WITH THE ADD-ON PACK**", font=pl_font, x=0, y=239, fg=PINK)
+            write_text(f"+ {str(_count)} DK VARIANTS WERE INSTALLED WITH THE ADD-ON PACK", font=pl_font, x=0, y=239, fg=PINK)
         if applied_patches or installed_addons:
             jump_to_continue(0)
     else:
@@ -358,6 +358,7 @@ def play_sound_effect(effect=None, stop=False):
 def play_intro_animation():
     play_sound_effect("jump.wav")
     if SHOW_SPLASHSCREEN:
+        _delay = int(CLOCK_RATE * 0.88)
         for _key in _s.intro_frames():
             check_for_input()
             if _g.jump or _g.start or _g.skip:
@@ -378,6 +379,7 @@ def play_intro_animation():
 
                 if 480 < current < 840:
                     write_text(f"{str(_g.romcount)} versions of DK detected!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
+                    _delay = int(CLOCK_RATE * 0.8)
 
                 # display nearby icons as girders are broken
                 for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
@@ -393,7 +395,7 @@ def play_intro_animation():
                 write_text(" FRONT END ", font=dk_font, x=69, y=8, bg=BLACK)
 
             show_score()
-            update_screen(delay_ms=int(CLOCK_RATE * 0.875))
+            update_screen(delay_ms=_delay)
 
 
 def display_slots(version_only=False, logo_scene=False):

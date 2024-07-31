@@ -88,6 +88,6 @@ echo **** Bonus roms includes with the addon pack
 copy roms\logger.zip dist\console_addon\roms\ /Y
 copy roms\congo.zip dist\console_addon\roms\ /Y
 
-del releases\add-ons\dkafe_console_addon_pack_v3.zip
+del releases\add-ons\dkafe_console_addon_pack_v4.zip
 %zip_path% a releases\add-ons\dkafe_console_addon_pack_v4.zip .\dist\console_addon\*
 rmdir dist\console_addon /s /Q

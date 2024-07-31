@@ -104,14 +104,14 @@ pc_trs80_kong,shell,Kong,TRS80: Kong,197,,,213000,2,4,8
 pc_trs80_dk,shell,TRS,TRS80: Donkey Kong,198,,,214000,2,4,8
 pc_atarist_mb,shell,Monkey,ST: Monkey Business,199,,,215000,2,4,8
 pc_atarist_kidkong,shell,STDK,ST: Kid Kong,200,,,216000,2,4,8
-pc_zx80_kong,shell,ZX80,ZX80: Kong,201,,,217000,2,4,8
+zx81_kong,shell,ZX80,ZX80: Kong,201,,,217000,2,4,8
 pc_dkme_gremlins,shell,PC Gremlins,PC: Donkey Kong Gremlins,202,,,218000,2,4,8
 pc_dkme_flashgordon,shell,FG,PC: Donkey Kong Flash Gordon,203,,,219000,2,4,8
 pc_dkme_bigtrouble,shell,BT,PC: Donkey Kong Big Trouble,204,,,220000,2,4,8
 pc_dkme_conan,shell,Conan,PC: Donkey Kong Conan,205,,,221000,2,4,8
 pc_dkme_firstblood,shell,Rambo,PC: Donkey Kong First Blood,207,,,222000,2,4,8
 pc_dkme_totalrecall,shell,Recall,PC: Donkey Kong Total Recall,209,,,223000,2,4,8
-spec128_dk_arcade,shell,SPEC Arcade,SPEC128K: Donkey Kong Arcade,210,,,224000,2,4,8
+spec128_dk_arcade,shell,SPEC Arcade,SPEC128K: DK Arcade,210,,,224000,2,4,8
 pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,225000,2,4,8
 cgenie_colourkong32,shell,EGCK,EG2000: Colour Kong 32,213,,,226000,2,4,8
 pc_fixitfelix,shell,PC FIFJR,PC: Fix-It Felix Classic,214,,,227000,2,4,8
@@ -240,7 +240,6 @@ pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,221000,2,4,
 pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,220000,2,4,8
 pc_arduboy_kong,shell,Kong,ARDUBOY: Kong,9999,,,220000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,220000,2,4,8
-pc_atarist_junior,shell,JR,ST: Donkey JR (G&W),9999,,,186000,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,208000,2,4,8
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,9999,,,197000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
@@ -306,11 +305,12 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##hbf900a_congo,shell,**Controls not working,MSX: Congo,####,,,0,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
+##pc_atarist_junior,shell,**Need to skip demo,ST: Donkey JR (G&W),####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##spectrum_spec_kong,shell,**jump not working,SPEC48K: Spec Kong,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
 ##vic20_dk,shell,**Start up trouble,VIC20: Donkey Kong,####,,,0,2,4,8
-##vic20_fast_eddie,shell,**Not DK enough,VIC20: Fast Eddie,####,,,188000,2,4,8
+##vic20_fast_eddie,shell,**Not DK enough,VIC20: Fast Eddie,####,,,0,2,4,8
 ##vic20_vic_kong,shell,**Similar to nufecop,VIC20: Vic Kong,####,,,0,2,4,8
 ##vic20-se_logger,shell,**Multi stage loading,VIC20: Logger,####,,,0,2,4,8
 ##vic20-se_mickybricky,shell,**tape speed issue,VIC20: Micky The Bricky,####,,,0,2,4,8

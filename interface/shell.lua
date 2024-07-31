@@ -181,6 +181,8 @@ rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n
 rom_table["vic20-se_logger"]         = {"P1",          false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",
 													 5000,"{SHIFT}",5000,"{HOME}"},   1.33,  2,   0,   0 }
 rom_table["x1"]                      = {"",            false,  2100,  {},                                               9,     4,   0,   0 }
+rom_table["zx81"]                    = {"",            false, 0,     {360,'J""\n',420,"{PLAY}"},                        2,     4,   0,   0 }
+rom_table["zx81_kong"]               = {"",            true,  19500, {360,'J""\n',420,"{PLAY}"},                        2,     4,   0,   0 }
 rom_table["zx81_crazykong"]          = {"",            true,  10750, {360,'J""\n',420,"{PLAY}",10400,"\n",10500,"1\n"}, 2,     4,   0,   0 }
 rom_table["zx81_kongsrevenge"]       = {"",            false, 20200, {360,'J""\n',420,"{PLAY}",20100, "n\n"},           2,     4,   0,   0 }
 rom_table["zx81_krazykong_pss"]      = {"JJ",          true,  11660, {360,'J""\n',420,"{PLAY}",11500," ",11600," "},    2,     4,   0,   0 }

@@ -506,7 +506,7 @@ Helpful hints:
 • Use practice modes to get 
   better at each stage.  
   Can you reach the infamous 
-  killscreen at level 22-1.
+  killscreen at level 22-1?
 
 Good luck!
 """
@@ -554,7 +554,7 @@ Donkey Kong rom hacks:
    Vic20 George
    Kirai Shouen & 125scratch
 
-Donkey Kong hacking resource:
+Donkey Kong hack resource:
    furrykef
 
 Feedback and feature ideas:
@@ -633,8 +633,7 @@ RECOGNISED_SYSTEMS = {
     "vic20":"Commodore VIC-20",
     "vic20_se":"Commodore VIC-20",
     "x1":"Sharp X1",
-    "zx80":"Sinclair ZX80",
-    "zx81":"Sinclair ZX81"}
+    "zx81":"Sinclair ZX80/81"}
 
 # System specific media switches when not simply "-cart"
 SYSTEM_MEDIA = {
@@ -707,7 +706,7 @@ KEYBOARD_REMAP = {
     "pc_arduboy_kong2":"ctrl>a|alt>b|p>s|1>a|2>b|esc>forcequit:projectabe.exe",
     "pc_arduboy_dkjr":"ctrl>a|alt>b|p>s|1>a|2>b|esc>forcequit:projectabe.exe",
     "pc_atarist_mb":"ctrl>space",
-    "pc_atarist_junior":"num 1>a|num 2>b",
+    "pc_atarist_junior":"ctrl>ctrl,space|num 1>a|num 2>b",
     "pc_atom_kong":"left>z|right>c|up>s|down>x|ctrl>shift,space|esc>forcequit:atomulator.exe",
     "pc_dk_aa": "1>enter|2>enter|ctrl>x",
     "pc_dk_craze": "esc>forcequit:stdrt.exe",
@@ -743,8 +742,7 @@ KEYBOARD_REMAP = {
     "pc_trs80_dk":"ctrl>space|num 1>enter,1",
     "pc_trs80_killergorilla":"ctrl>space",
     "pc_trs80_skyscraper":"ctrl>space|1>1,n,\\,enter",
-    "pc_spectrum_dkjr2":"left>o|right>p|up>q|down>a|ctrl>m|num 2>num 1|num 3>num 1|alt>n|esc>forcequit:zesarux.exe",
-    "pc_zx80_kong":"ctrl>num 0|esc>forcequit:zesarux.exe"}
+    "pc_spectrum_dkjr2":"left>o|right>p|up>q|down>a|ctrl>m|num 2>num 1|num 3>num 1|alt>n|esc>forcequit:zesarux.exe"}
 
 # Sound setup
 pygame.mixer.init(frequency=48000)

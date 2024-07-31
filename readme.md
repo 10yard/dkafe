@@ -386,7 +386,7 @@ If rotating your monitor then you may want to add the OPTION `-nokeepaspect` to 
 
 For Raspberry Pi,  refer to [Raspberry Pi Notes](rpi4/rpi4_notes.md) for information on connecting to a CRT TV via RGB Scart or Composite AV.
 
-![CRT goodness](https://github.com/10yard/dkafe/blob/master/artwork/about/crt_rgb.png)
+![CRT goodness](https://github.com/10yard/dkafe/blob/master/artwork/about/crt_rgb.jpg)
 
 
 ### Frontend Settings
