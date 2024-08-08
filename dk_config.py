@@ -93,7 +93,7 @@ LIFE_COST = 150                # How many coins Jumpman drops when time runs out
 SCORE_START = 500              # How many coins Jumpman starts with
 TIMER_START = 8000             # Timer starts countdown from this number
 COIN_VALUES = 0, 50, 100       # How many points awarded for collecting a coin. Integer
-COIN_FREQUENCY = 3             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc.)
+COIN_FREQUENCY = 2             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
@@ -272,7 +272,7 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckongpt2a_2023")
 
 # Roms that are not fully compatible
-HUD_UNFRIENDLY = ["dkongwizardry", "dkongduel", "dkongkonkey", "dkongaccelerate"]
+HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
 AUTOSTART_UNFRIENDLY = ["dkongduel", "dkongchorus"]
 SKIPINTRO_UNFRIENDLY = ["dkongchorus"]

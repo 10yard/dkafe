@@ -37,7 +37,7 @@ def exit_program(confirm=False):
             for attempt in 1, 2, 3:
                 try:
                     with open('save.p', 'wb') as f:
-                        pickle.dump([_g.score, _g.timer_adjust, _g.last_selected], f)
+                        pickle.dump([_g.score, _g.timer_adjust, _g.last_selected, _g.achievements], f)
                     break
                 except (EOFError, FileNotFoundError, IOError):
                     pygame.time.delay(250 * attempt)
@@ -120,9 +120,9 @@ def update_screen(delay_ms=0):
 def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
-            _g.score, _g.timer_adjust, _g.last_selected = pickle.load(f)
+            _g.score, _g.timer_adjust, _g.last_selected, _g.achievements = pickle.load(f)
     except (EOFError, FileNotFoundError, IOError, ValueError):
-        _g.score, _g.timer_adjust = SCORE_START, 0
+        _g.score, _g.timer_adjust, _g.last_selected, _g.achievements = SCORE_START, 0, None, {}
 
 
 def check_patches_available():
@@ -463,12 +463,16 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                         up_arrow = True
 
                 if not detect_only:
-                    if not(_x == 90 and _y == 34):
-                        if img:
-                            _g.screen.blit(img, (_x, _y))
-                        if up_arrow and not _g.ready:
-                            if pygame.time.get_ticks() % 550 < 275:
-                                _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
+                    if img:
+                        _g.screen.blit(img, (_x, _y))
+                        if sub+name in _g.achievements:
+                            # Show previously awarded trophy against the machine
+                            _tx = _x + (w / 2) - 9
+                            _tx = _tx if _tx > 0 else 0
+                            _g.screen.blit(get_image(f"artwork/sprite/sm_cup{str(_g.achievements[sub+name])}.png"), (_tx, _y + 14))
+                    if up_arrow and not _g.ready:
+                        if pygame.time.get_ticks() % 550 < 275:
+                            _g.screen.blit(get_image(f"artwork/sprite/up.png"), (_x+1, _y+22))
                     if "-record" in _s.get_emulator(emu).lower() and not _g.showinfo:
                         # Show recording text above icon
                         if _g.timer.duration % 2 < 1:
@@ -732,7 +736,9 @@ def get_addon():
         clear_screen()
         write_text("DOWNLOADING ADD-ON PACK", font=dk_font, y=0, fg=RED)
         write_text("The console add-on pack is being downloaded.", font=pl_font, y=14, fg=RED)
-        write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
+        _g.screen.blit(get_image("artwork/sprite/pauline.png"), (0, 215))
+        _g.screen.blit(get_image("artwork/sprite/dk0.png"), (167, 205))
+        write_text("Please wait...", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
         pygame.draw.rect(_g.screen, GREY, [0, 245, 224, 8], 0)
         update_screen()
         try:
@@ -748,12 +754,23 @@ def get_addon():
                     if chunk:
                         f.write(chunk)
                         download_size += chunk_size
-                        if pygame.time.get_ticks() % 50 == 0:
-                            percent = round((download_size / total_size) * 100)
-                            pygame.draw.rect(_g.screen, RED, [0, 245, (DISPLAY[0] / 100) * percent, 8], 0)
+                        if pygame.time.get_ticks() % 30 == 0:
+                            _progress = round((download_size / total_size) * DISPLAY[0])
+                            _percent = (download_size / total_size) * 100
+                            _g.screen.blit(get_image("artwork/sprite/dkblank.png"), (167, 205))
+                            if pygame.time.get_ticks() % 5000 < 2000:
+                                _g.screen.blit(get_image("artwork/sprite/dk0.png"), (167, 205))
+                            elif pygame.time.get_ticks() % 5000 < 3000:
+                                _g.screen.blit(get_image("artwork/sprite/dk1.png"), (167, 205))
+                            elif pygame.time.get_ticks() % 5000 < 4000:
+                                _g.screen.blit(get_image("artwork/sprite/dk2.png"), (167, 205))
+                            else:
+                                _g.screen.blit(get_image("artwork/sprite/dk3.png"), (167, 205))
+                            pygame.draw.rect(_g.screen, RED, [0, 245, _progress, 8], 0)
+                            write_text(f'{_percent:.2f}' + "% downloaded", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
                             update_screen()
 
-            # Allow up to 10 seconds for file to save fully.
+            # Allow up to 10 seconds for the file to save fully.
             for i in range(0, 10):
                 if os.path.exists(latest_addon_path):
                     break
@@ -1136,6 +1153,10 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     _g.timer.reset()
                     _g.lastexit = _g.timer.duration
                     _g.timer_adjust = 0
+                    place = get_prize_placing(scored)[0]
+                    if sub+name not in _g.achievements or place < _g.achievements[sub+name]:
+                        # record your best trophy achievement
+                        _g.achievements[sub+name] = place
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
                         movement = choice([-1, 1]) if _g.stage == 1 else 1
                         drop_coin(x=COIN_AWARD_POSX[_g.stage], y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=movement)
@@ -1305,7 +1326,11 @@ def process_interrupts():
                 _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a1.png"), (11 + _g.dkx, 52 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 60 + _g.dky))
             else:
-                _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a2.png"), (11 + _g.dkx, 45 + _g.dky))
+                if place == 1:
+                    # Grinning DK on 1st place trophy
+                    _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a3.png"), (11 + _g.dkx, 45 + _g.dky))
+                else:
+                    _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a2.png"), (11 + _g.dkx, 45 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 29 + _g.dky))
         else:
             _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
@@ -1373,7 +1398,7 @@ def process_interrupts():
                 write_text("P1 START", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA)
 
         # Display game text
-        if SHOW_GAMETEXT:
+        if SHOW_GAMETEXT and not "LADDER_DETECTED" in get_map_info():
             selected = sub if sub and sub != "shell" else name
             for rom, text_lines in _g.gametext:
                 if rom == selected and text_lines:

@@ -171,7 +171,7 @@ function display_awards(rom_offset)
 		if emu.romname() == "dkongx11" then
 			sep = {".", " C."}
 		end
-		if data_toggle_hud == 1 then
+		if data_toggle_hud == 1 or data_subfolder == "dkongwizardry" then
 			msg1, msg2, msg3 = "1"..sep[1]..data_score1_k, "2"..sep[1]..data_score2_k, "3"..sep[1]..data_score3_k
 			if data_subfolder == "dkonghrthnt" then
 				msg1 = " "..sep[1]..data_score1_k  -- Workaround alternative palette colour for DK Hearthunt
@@ -182,9 +182,13 @@ function display_awards(rom_offset)
 		elseif data_toggle_hud == 3 then
 			data_toggle_hud = 0
 		end
-		write_message(0xc7500 + _rom_offset, msg1)
-		write_message(0xc7501 + _rom_offset, msg2)
-		write_message(0xc7502 + _rom_offset, msg3)
+		if data_subfolder ~= "dkongaccelerate" then  -- workaround reduced space for DK Accelerate
+			write_message(0xc7500 + _rom_offset, msg1)
+			write_message(0xc7501 + _rom_offset, msg2)
+		end
+		if data_subfolder ~= "dkongwizardry" then  -- workaround reduced space for DK Wizardry
+			write_message(0xc7502 + _rom_offset, msg3)
+		end
 	end
 end
 

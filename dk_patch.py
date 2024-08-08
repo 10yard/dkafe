@@ -111,10 +111,11 @@ def install_addons():
         return
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
         # Installing message...
-        from launch import write_text, update_screen, dk_font, pl_font, RED, GREY
+        from launch import write_text, update_screen, dk_font, pl_font, RED, GREY, MAGENTA, PINK, get_image
         write_text("EXTRACTING ADD-ON PACK", font=dk_font, y=0, fg=RED)
         write_text("The console add-on pack is being extracted and installed.", font=pl_font, y=14, fg=RED)
-        write_text("PLEASE WAIT...", font=dk_font, y=236, fg=RED)
+        _g.screen.blit(get_image("artwork/sprite/pauline.png"), (0, 215))
+        write_text("Please wait...", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
         pygame.draw.rect(_g.screen, GREY, [0, 245, 224, 8], 0)
         update_screen()
 
@@ -124,8 +125,19 @@ def install_addons():
                 file_list = zf.namelist()
                 for idx, file in enumerate(file_list):
                     if idx % 5 == 0:
-                        percent = round((idx / len(file_list)) * 100)
-                        pygame.draw.rect(_g.screen, RED, [0, 245, (DISPLAY[0] / 100) * percent, 8], 0)
+                        _progress = round((idx / len(file_list)) * DISPLAY[0])
+                        _percent = (idx / len(file_list)) * 100
+                        _g.screen.blit(get_image("artwork/sprite/dkblank.png"), (167, 205))
+                        if pygame.time.get_ticks() % 5000 < 2000:
+                            _g.screen.blit(get_image("artwork/sprite/dk0.png"), (167, 205))
+                        elif pygame.time.get_ticks() % 5000 < 3000:
+                            _g.screen.blit(get_image("artwork/sprite/dk1.png"), (167, 205))
+                        elif pygame.time.get_ticks() % 5000 < 4000:
+                            _g.screen.blit(get_image("artwork/sprite/dk2.png"), (167, 205))
+                        else:
+                            _g.screen.blit(get_image("artwork/sprite/dk3.png"), (167, 205))
+                        pygame.draw.rect(_g.screen, RED, [0, 245, _progress, 8], 0)
+                        write_text(f'{_percent:.2f}' + "% installed", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
                         update_screen()
                     zf.extract(file)
                     update_screen()

@@ -18,8 +18,8 @@ The latest releases are available to download from below.  Refer to the **How to
 
 | Download Link                                                                                                        | Version | Operating System                           |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------|
-| [dkafe_win64_binary_v0.65.zip](https://github.com/10yard/dkafe/releases/download/v0.65/dkafe_win64_binary_v0.65.zip) | 0.65    | Windows 64 bit (x64) systems (Recommended) |
-| [dkafe_win32_binary_v0.65.zip](https://github.com/10yard/dkafe/releases/download/v0.65/dkafe_win32_binary_v0.65.zip) | 0.65    | Windows 32 bit (x86) systems               |
+| [dkafe_win64_binary_v0.66.zip](https://github.com/10yard/dkafe/releases/download/v0.66/dkafe_win64_binary_v0.66.zip) | 0.66    | Windows 64 bit (x64) systems (Recommended) |
+| [dkafe_win32_binary_v0.66.zip](https://github.com/10yard/dkafe/releases/download/v0.66/dkafe_win32_binary_v0.66.zip) | 0.66    | Windows 32 bit (x86) systems               |
 | [dkafe_winxp_binary_v0.64.zip](https://github.com/10yard/dkafe/releases/download/v0.64/dkafe_winxp_binary_v0.64.zip) | 0.64    | Windows XP only                            |
 | [dkafe_rpi4_image_v0.55.gz](https://github.com/10yard/dkafe/releases/download/v0.55/dkafe_rpi4_image_v0.55.gz)       | 0.55    | Raspberry Pi 4 and 400 only                |
 
@@ -47,7 +47,7 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be configured to launch other emulators and roms.
 
-Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet and pies stages.
+Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet, pie and elevator stages.
 
 ![NEW Feature](https://github.com/10yard/dkafe/blob/master/artwork/about/new.png) 
 There is now a console add-on pack which adds extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See **Console Add-On Pack** section below.
@@ -61,7 +61,7 @@ There is now a console add-on pack which adds extra stages and is packed out wit
  - Several Donkey Kong hacks and plugins made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong, and it's clones and bootlegs.
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
- - A built in music playlist that features 12 fantastic Donkey Kong remix tracks by default.
+ - A built in music playlist that features 14 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
  - An optional console add-on pack featuring over 250 ports, clones and hacks for classic gaming systems.
 
@@ -605,7 +605,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ### Music Playlist
 
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
-12 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3**, **.ogg** or **.wav** format. 
+14 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3**, **.ogg** or **.wav** format. 
 
 The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key) or it can be toggle on/off by pressing the CONTROL_PLAYLIST key (p).
 When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).
