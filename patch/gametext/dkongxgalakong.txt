@@ -5,8 +5,8 @@ wild barrels only. You'll need to pickup the ship
 a.s.a.p. and shoot barrels to survive. The jump 
 button also shoots. 
 
-The ship can be controlled independantly when you are 
-on a ladder.
+!!The ship can be controlled independantly when you are 
+!!on a ladder.
 
 Bonus points awarded for destroying multiple targets.  
 

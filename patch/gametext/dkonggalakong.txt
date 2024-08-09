@@ -7,8 +7,9 @@ destroying multiple barrels, pies, springs, fires etc.
 The jump button also shoots.
 
 Your ship follows Jumpman's position automatically. 
-The ship can be controlled independently of Jumpman 
-when he is on a ladder.  Sitting on a ladder and
-shooting enemies is a good points scoring strategy!
+
+!!The ship can be controlled independently of Jumpman 
+!!when he is on a ladder.  Sitting on a ladder and
+!!shooting enemies is a good points scoring strategy!
 
 Hack Developed by Jon Wilson (10yard)

@@ -276,6 +276,7 @@ spectrum_kong_ocean,shell,Kong,SPEC48K: Kong (Ocean),9999,,,160000,2,4,8
 spectrum_kongs_revenge,shell,KongsRevenge,SPEC48K: Kongs Revenge,9999,,,160000,2,4,8
 spectrum_krazykong,shell,Krazy,SPEC48K: Krazy Kong,9999,,,160000,2,4,8
 spectrum_monkeybiz,shell,Monkey,SPEC48K: Monkey Bizness,9999,,,160000,2,4,8
+spectrum_spec_kong,shell,Spec Kong,SPEC48K: Spec Kong,9999,,,160000,2,4,8
 spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,9999,,,160000,2,4,8
 spectrum_wrathofkong,shell,Wrath,SPEC48K: Wrath of Kong,9999,,,160000,2,4,8
 vic20_crazykong,shell,CrazyKong,VIC20: Crazy Kong,9999,,,188000,2,4,8
@@ -307,7 +308,6 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
 ##pc_atarist_junior,shell,**Need to skip demo,ST: Donkey JR (G&W),####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
-##spectrum_spec_kong,shell,**jump not working,SPEC48K: Spec Kong,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
 ##vic20_dk,shell,**Start up trouble,VIC20: Donkey Kong,####,,,0,2,4,8
 ##vic20_fast_eddie,shell,**Not DK enough,VIC20: Fast Eddie,####,,,0,2,4,8

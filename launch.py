@@ -1407,16 +1407,20 @@ def process_interrupts():
                     # Clear a space for text and draw borders
                     pygame.draw.rect(_g.screen, DARKGREY, (0, text_y-5, 224, len(text_lines)*6+8))
                     pygame.draw.rect(_g.screen, MIDGREY, (0, text_y - 5, 224, 14))
-                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 223, len(text_lines)*6+8), width=2)
+                    pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 224, len(text_lines)*6+8), width=2)
                     pygame.draw.rect(_g.screen, MIDGREY, (0, text_y+len(text_lines)*6+2, 224, 14))
                     # Display the game text
-                    # info_index = 0 if (_g.timer.duration - _g.lastmove) % 10 <= 6 else 1
                     for i, line in enumerate(text_lines + TEXT_INFO):
                         text = line.strip()
+                        _fg = WHITE
+                        if text.startswith("!!") or text.startswith("!Y") or text.startswith("!R"):
+                            # Highlight this line red or yellow
+                            _fg = BRIGHTRED if text.startswith("!R") else YELLOW
+                            text = text[2:]
                         if i == 0:
                             # Center align the title
                             text = " "*int((55 - len(text.strip())) / 2) + text
-                        write_text(text[:55], x=4, y=text_y+(i*6))
+                        write_text(text[:55], x=4, y=text_y+(i*6), fg=_fg)
                     break
 
     if _g.lastwarp > 0 and ticks - _g.lastwarp < 1000:

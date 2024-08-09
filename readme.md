@@ -127,6 +127,7 @@ Credit is given to the original authors below.
  - Donkey Kong Heart Hunt
  - Donkey Kong Accelerate
  - Donkey Kong Pac-Man Crossover
+ - Crazy Kong Pt2 DK Graphics
 
 ### By John Kowalski (Sock Master) - http://users.axess.com/twilight/sock/
  - Donkey Kong Spooky Remix
@@ -755,7 +756,7 @@ It is licensed under GNU GPLv3.
 
  - In the settings.txt file,  change emulator `OPTIONS` to use `-video gdi` instead of `-video opengl`
 
- - Disable the music playlist in the fronted settings.  The .mp3 decoding might be slowing the frontend down.
+ - Disable the music playlist in the frontend settings.  The .mp3 decoding might be slowing the frontend down.
 
  - Increase the speed adjust value in the frontend settings.
 

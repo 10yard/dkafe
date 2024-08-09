@@ -7,6 +7,6 @@ rise above Jumpman.
 The lava rises more quickly as you progress through
 the levels.
 
-Try not to panic!
+!RTry not to panic!
 
 Hack Developed by Jon Wilson (10yard)
