@@ -63,7 +63,7 @@ There is now a console add-on pack which adds extra stages and is packed out wit
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 14 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional console add-on pack featuring over 250 ports, clones and hacks for classic gaming systems.
+ - An optional console add-on pack featuring over 250 ports, clones and hacks for over 50 classic gaming systems.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -299,7 +299,7 @@ An optional add-on pack includes over 250 Donkey Kong ports and hacks for the fo
  - Thomson MO5
  - TIC-80 Fantasy Console
  - VTech Creativision
-
+ - Watara Supervision
 
 The Donkey Kong console games will appear on the pies and elevator stages.  There is also a crazy kong stage specific for PC and DOS.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.

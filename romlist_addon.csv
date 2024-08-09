@@ -256,6 +256,7 @@ pc_pc88_dk3,shell,DK3 CounterAttack,PC88: DK3 Great Counter Attack,9999,,,190000
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
 pc_spectrum_dkjr2,shell,DK JR2,SPEC48K: Donkey Kong Junior 2,9999,,,160000,2,4,8
+pc_supervision_superkong,shell,SuperKong,SV: Super Kong,9999,,,152000,2,4,8
 pc_trs80_ape,shell,Ape,TRS80: Ape Escape,9999,,,211000,2,4,8
 pc_trs80_killergorilla,shell,KillerGorilla,TRS80: Killer Gorilla,9999,,,211000,2,4,8
 pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,211000,2,4,8
