@@ -247,6 +247,7 @@ pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,9999,,,197000,2,4,8
 pc_dkme_exorcist,shell,Exorcist,PC: Donkey Kong The Exorcist,9999,,,197000,2,4,8
 pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,9999,,,209000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,197000,2,4,8
+pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,143000,2,4,8
 pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,9999,,,209000,2,4,8
 pc_lowresnx_denis_kogne,shell,DenisKogne,NX: Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
@@ -293,7 +294,6 @@ zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##a2600_pac_kong,shell,**Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
 ##a2600_spider_kong,shell,**Not DK enough,2600: Spider Kong,####,,,0,2,4,8
-##cgenie_colourkong,shell,**Same as colourkong,EG2000: Colour Kong,####,,,0,2,4,8
 ##dos_aldo2,shell,**Locks on title screen,DOS: Aldo Again,####,,,0,2,4,8
 ##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
 ##dos_jman2,shell,**Not DK enough,DOS: Jumpman Lives,####,,,0,2,4,8
@@ -304,7 +304,6 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##gameboy_dk_4stage,shell,**Same as gbcolor,GB: Donkey Kong 4 Level Hack,####,,,0,2,4,8
 ##gameboy_dk_japan_us,shell,**Same as gbcolor,GB: Donkey Kong (Original),####,,,0,2,4,8
 ##gameboy_dk_summer,shell,**Same as gbcolor,GB: Donkey Kong Summer Hack,####,,,0,2,4,8
-##hbf900a_congo,shell,**Controls not working,MSX: Congo,####,,,0,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
 ##pc_atarist_junior,shell,**Need to skip demo,ST: Donkey JR (G&W),####,,,0,2,4,8

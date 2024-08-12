@@ -716,6 +716,7 @@ KEYBOARD_REMAP = {
     "pc_dk_plus": "left>a|right>d|up>w|down>s|1>enter|ctrl>space,enter",
     "pc_dk_remake":"num 1>enter|ctrl>space|esc>forcequit",
     "pc_jumpman_rtx":"num 1>enter|num 5>enter|ctrl>space|esc>forcequit",
+    "pc_hbf900a_congo":"1>space|ctrl>space|esc>forcequit:zesarux.exe",
     "pc_lowresnx_denis_kogne":"ctrl>z",
     "pc_mc10_kong":"ctrl>space|left>a|right>s|up>w|down>z",
     "pc_nes_dk_hdpack":"alt>ctrl",
