@@ -38,6 +38,10 @@ def remap(name, mappings):
             else:
                 _program = f"{name}.*"
             keyboard.add_hotkey(src, lambda: kill_pc_external(program=_program))
+        elif src.startswith("delayspace"):
+            keyboard.call_later(fn=keyboard.send,args=" ", delay=float(dst))
+        elif src.startswith("delayenter"):
+            keyboard.call_later(fn=keyboard.send, args="\n", delay=float(dst))
         else:
             keyboard.remap_key(src, dst)
     while True:

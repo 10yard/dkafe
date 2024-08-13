@@ -207,6 +207,7 @@ jupace_krazykong,shell,KrazyKong,JUP: Kong,9999,,,130000,2,4,8
 lcd_gckong,shell,Gakken CK,LCD: Gakken Crazy Kong,9999,,,186000,2,4,8
 mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,190000,2,4,8
 nes_crazykong,shell,CK,NES: Crazy Kong,9999,,,0,2,4,8
+nes_dendymans_revenge,shell,Dendyman,NES: Dendyman's Revenge,9999,,,121000,2,4,8
 nes_dk,shell,NESDK,NES: Donkey Kong (Original),9999,,,0,2,4,8
 nes_dk_3,shell,DK3,NES: Donkey Kong 3,9999,,,0,2,4,8
 nes_dk_arrietty,shell,DK Arietty,NES: Arrietty World,9999,,,121000,2,4,8
@@ -229,8 +230,11 @@ nes_dk_zelda11,shell,Z11,NES: ZeldaKong11 (Grandma),9999,,,121000,2,4,8
 nes_dk_zelda12,shell,Z12,NES: ZeldaKong12 (Tarin),9999,,,121000,2,4,8
 nes_dk3_bandits,shell,DK3 Bandits,NES: Donkey Kong 3 Bandits,9999,,,121000,2,4,8
 nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,121000,2,4,8
+nes_dk3_battlebeasts,shell,DK3 BattleBeasts,NES: Donkey Kong 3 Battle Beast,9999,,,121000,2,4,8
+nes_dkjr_optimus_minor,shell,JROptimus,NES: Optimus Minor (JR),9999,,,121000,2,4,8
 nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
+nes_pinkfloyd,shell,PinkFloyd,NES: Pink Floyd's The Wall,9999,,,121000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,121000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,130000,2,4,8
 oric1_honeykong,shell,Honey Kong,ORIC: Honey Kong,9999,,,130000,2,4,8
@@ -240,6 +244,7 @@ pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,221000,2,4,
 pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,220000,2,4,8
 pc_arduboy_kong,shell,Kong,ARDUBOY: Kong,9999,,,220000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,220000,2,4,8
+pc_atarist_junior,shell,DK JR,ST: Donkey JR (G&W),9999,,,0,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,208000,2,4,8
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,9999,,,197000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
@@ -254,6 +259,8 @@ pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,209000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
 pc_pc88_dk3,shell,DK3 CounterAttack,PC88: DK3 Great Counter Attack,9999,,,190000,2,4,8
+pc_pinball_dkong,shell,DK,PINBALL: Donkey Kong,9999,,,227000,2,4,8
+pc_pinball_dkpin,shell,DK Pin,PINBALL: Donkey Kong The Pinball,9999,,,227000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
 pc_spectrum_dkjr2,shell,DK JR2,SPEC48K: Donkey Kong Junior 2,9999,,,160000,2,4,8
@@ -306,7 +313,6 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##gameboy_dk_summer,shell,**Same as gbcolor,GB: Donkey Kong Summer Hack,####,,,0,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
-##pc_atarist_junior,shell,**Need to skip demo,ST: Donkey JR (G&W),####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
 ##vic20_dk,shell,**Start up trouble,VIC20: Donkey Kong,####,,,0,2,4,8

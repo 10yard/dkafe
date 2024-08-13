@@ -281,6 +281,7 @@ An optional add-on pack includes over 250 Donkey Kong ports and hacks for the fo
  - Nintendo Gameboy Color
  - PC
  - Pico-8 Fantasy Console
+ - Pinball
  - Pokitto DIY Handheld
  - Sega Genesis/Megadrive
  - Sega SG-1000

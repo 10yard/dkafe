@@ -19,7 +19,7 @@ from dk_config import *
 from dk_interface import lua_interface
 
 def debounce():
-    sleep(0.25)
+    sleep(0.05)
 
 
 def get_system(return_video=False):
