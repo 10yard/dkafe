@@ -65,7 +65,7 @@ rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** build the exe in virtual environment ****
 set PYTHONOPTIMIZE=1
-venv32\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico --name launch32 --hidden-import charset_normalizer.md__mypyc
+venv32\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico --name launch32 --hidden-import charset_normalizer.md__mypyc --upx-dir upx32
 
 echo **** clean up
 rmdir build /s /Q
@@ -80,7 +80,7 @@ timeout 300
 
 echo **** package into a release ZIP getting the version from version.txt
 del releases\dkafe_win32_binary_%version%.zip
-%zip_path% a releases\dkafe_win32_binary_%version%.zip .\dist\*
+%zip_path% a releases\dkafe_win32_binary_%version%.zip .\dist\* -m0=LZMA -mx7
 
 :abort
 echo End

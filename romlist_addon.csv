@@ -115,7 +115,7 @@ spec128_dk_arcade,shell,SPEC Arcade,SPEC128K: DK Arcade,210,,,224000,2,4,8
 pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,225000,2,4,8
 cgenie_colourkong32,shell,EGCK,EG2000: Colour Kong 32,213,,,226000,2,4,8
 pc_fixitfelix,shell,PC FIFJR,PC: Fix-It Felix Classic,214,,,227000,2,4,8
-pc_dk_aa,shell,PC DKAttacks,PC: Donkey Kong Attacks,215,,,228000,2,4,8
+pc_pinball_dkpin,shell,PINDK,PINBALL: DK The Pinball,215,,,228000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,121000,2,4,8
 a2600_dk,shell,VCSDK,2600: Donkey Kong (Original),9999,,,0,2,4,8
@@ -229,8 +229,8 @@ nes_dk_zelda10,shell,ZK10,NES: ZeldaKong10 (Marin),9999,,,121000,2,4,8
 nes_dk_zelda11,shell,Z11,NES: ZeldaKong11 (Grandma),9999,,,121000,2,4,8
 nes_dk_zelda12,shell,Z12,NES: ZeldaKong12 (Tarin),9999,,,121000,2,4,8
 nes_dk3_bandits,shell,DK3 Bandits,NES: Donkey Kong 3 Bandits,9999,,,121000,2,4,8
-nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,121000,2,4,8
 nes_dk3_battlebeasts,shell,DK3 BattleBeasts,NES: Donkey Kong 3 Battle Beast,9999,,,121000,2,4,8
+nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,121000,2,4,8
 nes_dkjr_optimus_minor,shell,JROptimus,NES: Optimus Minor (JR),9999,,,121000,2,4,8
 nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
@@ -246,6 +246,7 @@ pc_arduboy_kong,shell,Kong,ARDUBOY: Kong,9999,,,220000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,220000,2,4,8
 pc_atarist_junior,shell,DK JR,ST: Donkey JR (G&W),9999,,,0,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,208000,2,4,8
+pc_dk_aa,shell,PC DKAttacks,PC: Donkey Kong Attacks,9999,,,197000,2,4,8
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,9999,,,197000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
 pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,9999,,,197000,2,4,8
@@ -259,8 +260,7 @@ pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,209000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
 pc_pc88_dk3,shell,DK3 CounterAttack,PC88: DK3 Great Counter Attack,9999,,,190000,2,4,8
-pc_pinball_dkong,shell,DK,PINBALL: Donkey Kong,9999,,,227000,2,4,8
-pc_pinball_dkpin,shell,DK Pin,PINBALL: Donkey Kong The Pinball,9999,,,227000,2,4,8
+pc_pinball_dkong,shell,PINDK,PINBALL: Donkey Kong,9999,,,227000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
 pc_spectrum_dkjr2,shell,DK JR2,SPEC48K: Donkey Kong Junior 2,9999,,,160000,2,4,8

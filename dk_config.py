@@ -574,7 +574,7 @@ Playlist music:
 """
 
 # Console Addon Specific
-ADDON_URL = "https://www.dropbox.com/scl/fi/6ycpwsq4r03rfuva8q2ck/dkafe_console_addon_pack_v4.zip?rlkey=6yb4hnwckf0zkk94ytf9ewpqr&dl=0"
+ADDON_URL = "https://www.dropbox.com/scl/fi/yqcwe91z5oe9sppvi7igm/dkafe_console_addon_pack_v5.zip?rlkey=n21o3w3tcrmnm6mi55yjvppk2&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
