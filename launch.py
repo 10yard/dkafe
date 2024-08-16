@@ -352,7 +352,13 @@ def play_sound_effect(effect=None, stop=False):
     if stop:
         pygame.mixer.stop()
     if effect:
-        pygame.mixer.Sound.play(pygame.mixer.Sound(os.path.join("sounds", effect)))
+        pygame.mixer.Sound.play(pygame.mixer.Sound(os.path.join(ROOT_DIR, "sounds", effect)))
+
+
+def play_sound_callback(effect=None, callback_id=None):
+    # Validate that the callback relates to the current game session
+    if callback_id == os.getenv("DKAFE_CALLBACK_ID"):
+        pygame.mixer.Sound.play(pygame.mixer.Sound(os.path.join(ROOT_DIR, "sounds", effect)))
 
 
 def play_intro_animation():
@@ -1114,7 +1120,20 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
 
             if name.startswith("pc_"):
                 os.chdir(os.path.join(ROM_DIR, "pc", name))
+                if competing:
+                    # Use threading callback to play sounds when target scores are achieved.
+                    # Each thread is unique to the game and time of launch - so not played if game is exited.
+                    from threading import Thread as _Thread
+                    _id = name + str(pygame.time.get_ticks())
+                    os.environ["DKAFE_CALLBACK_ID"] = _id
+                    _t3 = _Thread(target=lambda: (_s.sleep((int(st3) * 60) - 4), play_sound_callback(f"award3.wav", _id)))
+                    _t2 = _Thread(target=lambda: (_s.sleep((int(st2) * 60) - 4), play_sound_callback(f"award2.wav", _id)))
+                    _t1 = _Thread(target=lambda: (_s.sleep((int(st1) * 60) - 4), play_sound_callback(f"award1.wav", _id)))
+                    for _t in _t3, _t2, _t1:
+                        _t.daemon = True
+                        _t.start()
                 run(name, shell=True, creationflags=CREATE_NO_WINDOW)
+                os.environ["DKAFE_CALLBACK_ID"] = ""
                 os.chdir(ROOT_DIR)
             else:
                 if len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE":
