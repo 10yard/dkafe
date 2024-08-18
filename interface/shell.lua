@@ -50,6 +50,9 @@ local state = false
 local quick_start, scale, y_pad, x_off, y_off = 0, 0, 0, 0, 0
 local inputs = {}
 
+-- score targets achieved
+local st1, st2, st3 = false, false, false
+
 -- compatible roms with associated data
 local rom_data, rom_table = {}, {}
 --                                                            Quick                                                            Y    X    Y
@@ -221,6 +224,23 @@ function file_exists(name)
    if f~=nil then io.close(f) return true else return false end
 end
 
+function is_raspberry_pi()
+	return package.config:sub(1,1) == "/"
+end
+
+
+function play_wav(sound)
+	if is_raspberry_pi() then
+		io.popen("aplay -q ../sounds/"..sound..".wav &")
+	else
+		if file_exists("plugins/galakong/bin/wavplay.exe") then
+			-- on Windows reuse the bundled galakong wavplay utility - which also has an XP version
+			io.popen("start /B /HIGH plugins/galakong/bin/wavplay.exe ../sounds/"..sound..".wav")
+		end
+	end
+end
+
+
 function shell_main()
 	if mac ~= nil then
 		if screen and screen:frame_number() <= quick_start then
@@ -317,15 +337,27 @@ function shell_main()
 					-- Show prize award top-right when time target achieved
 					if data_score1 > 0 and time_played > data_score1 * 60 then
 						screen:draw_text(_x + x_off, y_off,  " 1ST WON "..tostring(data_score1_award.." "), gold, blue)
+						if not st1 then
+							play_wav("award1_short")
+							st1 = true
+						end
 					elseif data_score2 > 0 and time_played > data_score2 * 60 then
 						screen:draw_text(_x + x_off, y_off,  " 2ND WON "..tostring(data_score2_award.." "), silver, blue)
+						if not st2 then
+							play_wav("award2_short")
+							st2 = true
+						end
 					elseif data_score3 > 0 and time_played > data_score3 * 60 then
 						screen:draw_text(_x + x_off, y_off,  " 3RD WON "..tostring(data_score3_award.." "), bronze, blue)
+						if not st3 then
+							play_wav("award3_short")
+							st3 = true
+						end
 					end
 				end
 			end
 		end
 	end
 end
-	
+
 emu.register_frame_done(shell_main, "frame")

@@ -141,18 +141,42 @@ function display_awards(rom_offset)
 				-- Shorter message to workaround colour issue, see https://github.com/10yard/dkafe/issues/7
 				if best_score >= data_score1 then
 					write_message(0xc7660 + _rom_offset, "WON 1ST!")
+					if not st1 then
+						play_wav("award1_short")
+						st1 = true
+					end
 				elseif best_score >= data_score2 then
 					write_message(0xc7660 + _rom_offset, "WON 2ND!")
+					if not st2 then
+						play_wav("award2_short")
+						st2 = true
+					end
 				else
 					write_message(0xc7660 + _rom_offset, "WON 3RD!")
+					if not st3 then
+						play_wav("award3_short")
+						st3 = true
+					end
 				end
 			else
 				if best_score >= data_score1 then
 					write_message(0xc76a0 + _rom_offset, "1ST WON " .. data_score1_award .. "  ")
+					if not st1 then
+						play_wav("award1_short")
+						st1 = true
+					end
 				elseif best_score >= data_score2 then
 					write_message(0xc76a0 + _rom_offset, "2ND WON " .. data_score2_award .. "  ")
+					if not st2 then
+						play_wav("award2_short")
+						st2 = true
+					end
 				else
 					write_message(0xc76a0 + _rom_offset, "3RD WON " .. data_score3_award .. "  ")
+					if not st3 then
+						play_wav("award3_short")
+						st3 = true
+					end
 				end
 			end	
 		end
@@ -191,6 +215,27 @@ function display_awards(rom_offset)
 		end
 	end
 end
+
+function is_raspberry_pi()
+	return package.config:sub(1,1) == "/"
+end
+
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+function play_wav(sound)
+	if is_raspberry_pi() then
+		io.popen("aplay -q ../sounds/"..sound..".wav &")
+	else
+		if file_exists("plugins/galakong/bin/wavplay.exe") then
+			-- on Windows reuse the bundled galakong wavplay utility - which also has an XP version
+			io.popen("start /B /HIGH plugins/galakong/bin/wavplay.exe ../sounds/"..sound..".wav")
+		end
+	end
+end
+
 
 function record_in_compete_file()
 	if data_file then
