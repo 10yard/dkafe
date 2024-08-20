@@ -81,4 +81,4 @@ data_score3_k = os.getenv("DATA_SCORE3_K")
 data_score3_award = os.getenv("DATA_SCORE3_AWARD")
 
 -- score targets achieved
-local st1, st2, st3 = false, false, false
+st1, st2, st3 = false, false, false

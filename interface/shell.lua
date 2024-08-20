@@ -248,7 +248,7 @@ function shell_main()
 		end
 		time_played = os.time() - start_time
 
-		-- Speed up the inital loading screens
+		-- Speed up the initial loading screens
 		if quick_start > 0 then
 			-- States are automatically used to save/restore the machine start up steps
 			if state and file_exists(shell_state) then
