@@ -12,8 +12,7 @@ There may be existing "dkafe_bin" folders at /boot/dkafe_bin and /home/pi/dkafe_
 These will be automatically removed by the build script.
 
 $ git clone https://github.com/10yard/dkafe.git
-To create a "dkafe" folder containing the sources
-Note: Github has been failing recently so an alternative is to wget the source zip, unzip and rename directory to dkafe
+To create a "dkafe" folder containing the sources.
 
 $ cd dkafe
 $ chmod a+rwx build.sh

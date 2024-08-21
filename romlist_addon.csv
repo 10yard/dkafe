@@ -17,7 +17,8 @@ a2600_dk_vector_bw,shell,Vector,2600: Donkey Kong Vector,96,,,125000,2,4,8
 a2600_dk_xmas_dp,shell,Xmas,2600: Donkey Kong Xmas,97,,,126000,2,4,8
 a2600_dk_dragon,shell,Dragon,2600: Dragon Knight,98,,,127000,2,4,8
 a2600_dk_new,shell,DKNEW,2600: Donkey Kong New,99,,,128000,2,4,8
-bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,100,,,129000,2,4,8
+bbcb_zanykong,shell,BBCZK,BBC: Zany Kong,100.1,,,129000,2,4,8
+apple2e_budgiekong,shell,A][BK,A][: Budgie Kong,100.2,,,129000,2,4,8
 apple2e_dk,shell,ADK,A][: Donkey Kong (Orig),101,,,130000,2,4,8
 cpc6128_dk,shell,CPCDK,CPC: Donkey Kong (Orig),102,,,131000,2,4,8
 snes_classickong,shell,SNESDK,SNES: Classic Kong,103,,,132000,2,4,8

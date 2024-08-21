@@ -23,10 +23,10 @@ import dk_system as _s
 from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches_and_addons, validate_rom
-if ARCH == "rpi4":
-    from subprocess import call, run, Popen, CREATE_NO_WINDOW
+if _s.is_pi():
+    from subprocess import call, run, Popen, DEVNULL, STDOUT
 else:
-    from subprocess import call, run, Popen
+    from subprocess import call, run, Popen, DEVNULL, STDOUT, CREATE_NO_WINDOW
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
@@ -55,12 +55,13 @@ def exit_program(confirm=False):
 
 
 def kill_pc_external(pid=None, program=None):
-    from subprocess import call, DEVNULL, STDOUT, CREATE_NO_WINDOW
-    if pid:
-        call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
-    elif program:
-        call(f"taskkill /f /IM {os.path.basename(program)}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
-
+    try:
+        if pid:
+            call(f"taskkill /f /PID {pid}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
+        elif program:
+            call(f"taskkill /f /IM {os.path.basename(program)}", stdout=DEVNULL, stderr=STDOUT, creationflags=CREATE_NO_WINDOW)
+    except:
+        pass
 
 def rotate_display(exiting=False, initial=False, rotate=ROTATION):
     # Windows only display rotation
@@ -725,7 +726,7 @@ def build_menus(initial=False):
         _g.setmenu.add_selector('Highscore Save: ', [('Off', 0), ('On', 1)], default=HIGH_SCORE_SAVE, onchange=set_high)
         _g.setmenu.add_selector('Music Playlist: ', [('Off', 0), ('On', 1)], default=ENABLE_PLAYLIST, onchange=set_playlist)
         _g.setmenu.add_selector('   Music Volume: ',[('0%', 0), ('10%', 1), ('20%', 2), ('30%', 3), ('40%', 4), ('50%', 5), ('60%', 6), ('70%', 7), ('80%', 8), ('90%', 9), ('100%', 10)], default=PLAYLIST_VOLUME, onchange=set_volume)
-        if ARCH in ["win32", "win64"] and ADDONS_CONSIDERED and not ENABLE_ADDONS:
+        if (ARCH in ["win32", "win64"] or _s.is_pi()) and ADDONS_CONSIDERED and not ENABLE_ADDONS:
             _g.setmenu.add_vertical_margin(6)
             _g.setmenu.add_button('♥ Get Console Add-On Pack', get_addon)
         _g.setmenu.add_vertical_margin(6)
@@ -738,7 +739,7 @@ def build_menus(initial=False):
 
 
 def get_addon():
-    if ARCH in ["win32", "win64"]:
+    if ARCH in (["win32", "win64"]) or _s.is_pi():
         import requests
         latest_addon_path = os.path.join(ROOT_DIR, "dkafe_console_addon_pack_latest.zip")
         clear_screen()
@@ -1137,14 +1138,14 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                         _t.start()
                 if name.startswith("pc_"):
                     run(name, shell=True, creationflags=CREATE_NO_WINDOW)
-                elif ARCH != "rpi4":
-                    run(launch_command, creationflags=CREATE_NO_WINDOW)
-                else:
+                elif _s.is_pi():
                     run(launch_command)
+                else:
+                    run(launch_command, creationflags=CREATE_NO_WINDOW)
                 os.environ["DKAFE_CALLBACK_ID"] = ""
                 os.chdir(ROOT_DIR)
             else:
-                if (len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE") or ARCH == "rpi4":
+                if (len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE") or _s.is_pi():
                     # Don't hide the console output
                     run(launch_command)
                 else:
@@ -1238,10 +1239,10 @@ def playback_rom(info, inpfile):
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
 
-        if ARCH != "rpi4":
-            run(playback_command, creationflags=CREATE_NO_WINDOW)
-        else:
+        if _s.is_pi():
             run(playback_command)
+        else:
+            run(playback_command, creationflags=CREATE_NO_WINDOW)
 
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)

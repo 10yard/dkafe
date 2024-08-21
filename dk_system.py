@@ -18,24 +18,9 @@ from time import sleep, time
 from dk_config import *
 from dk_interface import lua_interface
 
+
 def debounce():
     sleep(0.05)
-
-
-def get_system(return_video=False):
-    if "uname" in dir(os) and os.uname().machine.startswith("arm"):
-        return ("pi", "accel")[int(return_video)]
-    else:
-        windows_version = sys.getwindowsversion()
-        if windows_version[0] > 5:
-            return ("win", "opengl")[int(return_video)]
-        else:
-            return ("win (old)", "gdi")[int(return_video)]
-
-
-def is_pi():
-    return get_system() == "pi"
-
 
 def get_datetime():
     return datetime.now().strftime("%Y%m%d-%H%M%S")

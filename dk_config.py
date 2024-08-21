@@ -16,6 +16,21 @@ import pygame
 import pygame_menu as pymenu
 from glob import glob
 
+# Determine system
+def get_system(return_video=False):
+    if "uname" in dir(os) and os.uname().machine.startswith("arm"):
+        return ("pi", "accel")[int(return_video)]
+    else:
+        windows_version = sys.getwindowsversion()
+        if windows_version[0] > 5:
+            return ("win", "opengl")[int(return_video)]
+        else:
+            return ("win (old)", "gdi")[int(return_video)]
+
+
+def is_pi():
+    return get_system() == "pi"
+
 
 pygame.init()
 
@@ -163,6 +178,8 @@ ARCH = 'win64'  # default
 if os.path.exists("ARCH"):
     with open("ARCH") as af:
         ARCH = af.readline().strip()
+elif is_pi():
+    ARCH = "pi"
 
 # Validate some settings
 ADDONS_CONSIDERED = ENABLE_ADDONS
@@ -799,7 +816,8 @@ dkafe_theme_left.widget_alignment = pymenu.locals.ALIGN_LEFT
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
 
-if ARCH != "winxp":
+
+if ARCH == "win32" or ARCH == "win64":
     # Optimise append of menu items by monkey patching the pymenu function
     def _new_append_widget(self, widget):
         if self._columns > 1:
