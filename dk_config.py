@@ -692,6 +692,8 @@ GAME_MEDIA = {
     "vic20-se_dk_ackenhausen":"-exp 16k -quik"}
 
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
+RPI4_UNSUPPORTED_SYSTEMS = "bbc",
+
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {
     "cpm_ladder": "down>z|up>a|1>p|2>l|5>i|right>.|left>,|ctrl>space|alt>b|esc>forcequit:dosbox-x.exe",
@@ -699,7 +701,7 @@ KEYBOARD_REMAP = {
     "dos_aldo2": "ctrl>space",
     "dos_aldo3": "ctrl>space",
     "dos_davikong": "ctrl>f1|num 2>n,enter|num 1>1,enter|esc>forcequit:dosbox-x.exe",
-    "dos_heroman": "ctrl>enter|alt>space|esc>forcequit:dosbox-x.exe",
+    "dos_heroman": "ctrl>enter,space|alt>space|esc>forcequit:dosbox-x.exe",
     "dos_dk": "y>n|ctrl>space|esc>forcequit:dosbox-x.exe|esc>forcequit:dosbox-x.exe",
     "dos_dkpc": "ctrl>space,f1|1>f1|2>f2|3>f3|esc>forcequit:dosbox-x.exe",
     "dos_kong": "num 1>enter|tab>esc|esc>forcequit:dosbox-x.exe",  # TAB to access and save in-game settings

@@ -90,6 +90,9 @@ def read_romlist(specific_romlist_file=None):
                             if ARCH != "win64" and name.split("_")[0] in WIN64_ONLY_SYSTEMS:
                                 # Skip over incompatible roms
                                 continue
+                            if ARCH == "rpi4" and name.split("_")[0] in RPI4_UNSUPPORTED_SYSTEMS:
+                                # Skip over unsupported system roms
+                                continue
 
                             # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
                             if name in OPTIONAL_NAMES and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):

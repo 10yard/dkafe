@@ -67,6 +67,9 @@ sudo rm -r dist/dkwolf/plugins/allenkong/binxp
 sudo chown -R pi:pi dist
 sudo chmod -R 777 dist
 
+# Export the system architecture to file
+sudo echo rpi4 &> dist/ARCH
+
 # Launch the installer on first boot
 sudo cp rpi4/firstboot.desktop /etc/xdg/autostart
 

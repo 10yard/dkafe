@@ -175,6 +175,7 @@ c64p_dk_ocean,shell,C64DK,C64: Donkey Kong (Ocean),9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,COCO3: Donkey Kong Remixed,9999,,,140000,2,4,8
 coco3_donkeyking,shell,DonkeyKing,COCO3: Donkey King,9999,,,140000,2,4,8
 coco3_monkeykong,shell,MonkeyKong,COCO3: Monkey Kong,9999,,,140000,2,4,8
+coleco_dk_luigi,shell,DKLuigi,CVS: Donkey Kong Luigi,9999,,,137000,2,4,8
 coleco_jumpmanjr,shell,JumpanJR,CVS: Jumpman Jr,9999,,,137000,2,4,8
 coleco_super_dk,shell,Super,CVS: Super Donkey Kong!,9999,,,137000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,137000,2,4,8
@@ -186,6 +187,7 @@ dos_aldo3,shell,Aldo's Assault,DOS: Aldo's Assault,9999,,,196000,2,4,8
 dos_davikong,shell,David's Kong,DOS: David's Kong,9999,,,173000,2,4,8
 dos_dk,shell,DOS,DOS: Donkey Kong (Original),9999,,,0,2,4,8
 dos_dkpc,shell,DKPC,DOS: Donkey Kong PC,9999,,,173000,2,4,8
+dos_heroman,shell,Hero Man,DOS: Hero Man,9999,,,173000,2,4,8
 dos_kong,shell,ChampKong,DOS: Champ Kong,9999,,,0,2,4,8
 dos_willy,shell,WillyWorm,DOS: Willy the Worm,9999,,,173000,2,4,8
 dragon32_kingcuthbert,shell,KingCuthbert,DOS: King Cuthbert,9999,,,130000,2,4,8
@@ -302,7 +304,6 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##a2600_pac_kong,shell,**Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
 ##a2600_spider_kong,shell,**Not DK enough,2600: Spider Kong,####,,,0,2,4,8
 ##dos_aldo2,shell,**Locks on title screen,DOS: Aldo Again,####,,,0,2,4,8
-##dos_heroman,shell,**buggy,DOS: Hero Man,####,,,0,2,4,8
 ##dos_jman2,shell,**Not DK enough,DOS: Jumpman Lives,####,,,0,2,4,8
 ##dos_jumpman,shell,**Not DK enough,DOS: Jumpman,####,,,0,2,4,8
 ##dos_kongsrev,shell,**Troublesome to map,DOS: Kong's Revenge,####,,,0,2,4,8

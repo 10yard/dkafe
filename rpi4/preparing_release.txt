@@ -4,7 +4,7 @@ Pi4 build and release notes
 Insert master SD card and boot to Pi OS Desktop
 A master SD card can be created from latest image ideally to 4GB card.
 
-Abort out of the automated install - if it starts
+Abort out of the automated install (CTRL-C) - if it starts
 Press CTRL-ALT-T to start terminal,  or use SSH to remotely connect to user: "pi", password "dkafe".
 
 $ ls
@@ -13,6 +13,7 @@ These will be automatically removed by the build script.
 
 $ git clone https://github.com/10yard/dkafe.git
 To create a "dkafe" folder containing the sources
+Note: Github has been failing recently so an alternative is to wget the source zip, unzip and rename directory to dkafe
 
 $ cd dkafe
 $ chmod a+rwx build.sh

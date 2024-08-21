@@ -18,13 +18,15 @@ import pygame.cursors
 import pickle
 from math import floor, ceil
 from random import randint, choice, sample
-from subprocess import call, run, Popen, CREATE_NO_WINDOW
 import dk_global as _g
 import dk_system as _s
 from dk_config import *
 from dk_interface import get_award, format_K
 from dk_patch import apply_patches_and_addons, validate_rom
-
+if ARCH == "rpi4":
+    from subprocess import call, run, Popen, CREATE_NO_WINDOW
+else:
+    from subprocess import call, run, Popen
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
@@ -1133,14 +1135,16 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     for _t in _t3, _t2, _t1:
                         _t.daemon = True
                         _t.start()
-                if name.startswith("_pc"):
+                if name.startswith("pc_"):
                     run(name, shell=True, creationflags=CREATE_NO_WINDOW)
-                else:
+                elif ARCH != "rpi4":
                     run(launch_command, creationflags=CREATE_NO_WINDOW)
+                else:
+                    run(launch_command)
                 os.environ["DKAFE_CALLBACK_ID"] = ""
                 os.chdir(ROOT_DIR)
             else:
-                if len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE":
+                if (len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE") or ARCH == "rpi4":
                     # Don't hide the console output
                     run(launch_command)
                 else:
@@ -1234,7 +1238,10 @@ def playback_rom(info, inpfile):
         if EMU_EXIT:
             launch_command += f"; {EMU_EXIT}"
 
-        run(playback_command, creationflags=CREATE_NO_WINDOW)
+        if ARCH != "rpi4":
+            run(playback_command, creationflags=CREATE_NO_WINDOW)
+        else:
+            run(playback_command)
 
         _g.lastexit = _g.timer.duration
         os.chdir(ROOT_DIR)

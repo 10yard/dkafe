@@ -70,16 +70,20 @@ Pi4 build specifics:
     wget https://github.com/mahlemiut/wolfmame/archive/refs/tags/wolf241.zip
 	unzip wolf241.zip
 	
-  Apply source changes (assuming the sources target):
-    cp ~/dkafe_bin/dkwolf/changes/wolf241-build/language.cpp ~/wolfmame-wolf241/src/frontend/mame/language.cpp
-	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/ui.cpp ~/wolfmame-wolf241/src/frontend/mame/ui/ui.cpp
-	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/romload.cpp ~/wolfmame-wolf241/src/emu/romload.cpp
-	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/validity.cpp ~/wolfmame-wolf241/src/emu/validity.cpp
-	cp ~/dkafe_bin/dkwolf/changes/wolf241-build/mame.cpp ~/wolfmame-wolf241/src/frontend/mame/mame.cpp
+  Apply source changes (assuming working directory is sources target):
+    cp language.cpp ~/wolfmame-wolf241/src/frontend/mame/language.cpp
+	cp ui.cpp ~/wolfmame-wolf241/src/frontend/mame/ui/ui.cpp
+	cp romload.cpp ~/wolfmame-wolf241/src/emu/romload.cpp
+	cp validity.cpp ~/wolfmame-wolf241/src/emu/validity.cpp
+	cp mame.cpp ~/wolfmame-wolf241/src/frontend/mame/mame.cpp
+	cp galaxian.cpp ~/wolfmame-wolf241/src/mame/drivers/galaxian.cpp
+	cp galaxian.h ~/wolfmame-wolf241/src/mame/includes/galaxian.h
+	cp mame.lst ~/wolfmame-wolf241/src/mame/mame.lst
+	cp machine.cpp ~/wolfmame-wolf241/src/emu/machine.cpp
+	cp video.h ~/wolfmame-wolf241/src/emu/video.h
 	
   Additional Pi4 flags are:
     NO_OPENGL=1
 	NO_X11=1
-	ARCHOPTS = -mcpu=cortex-a72 -mtune=cortex-a72 -mfpu=neon-vfpv4 -mfloat-abi=hard -funsafe-math-optimizations -fexpensive-optimizations -fprefetch-loop-arrays
 	
   make -j4 LDFLAGS="-Wl,--copy-dt-needed-entries"
