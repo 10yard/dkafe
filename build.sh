@@ -66,6 +66,8 @@ sudo rm -r dist/dkwolf/plugins/allenkong/binxp
 # Grant all permissions on dist
 sudo chown -R pi:pi dist
 sudo chmod -R 777 dist
+sudo chmod -R 777 dist/dkwolf
+sudo chmod -R 777 dist/shell
 
 # Export the system architecture to file
 sudo echo pi &> dist/ARCH

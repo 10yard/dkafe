@@ -83,11 +83,15 @@ def rotate_display(exiting=False, initial=False, rotate=ROTATION):
                 pass
 
 def initialise_screen(reset=False):
-    try:
-        _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
-    except AttributeError:
+    if _s.is_pi():
         # Target doesn't support WINDOWFOCUSGAINED
         _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
+    else:
+        try:
+            _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
+        except AttributeError:
+            # Target doesn't support WINDOWFOCUSGAINED
+            _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
 
@@ -1138,16 +1142,16 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                         _t.start()
                 if name.startswith("pc_"):
                     run(name, shell=True, creationflags=CREATE_NO_WINDOW)
-                elif _s.is_pi():
-                    run(launch_command)
                 else:
                     run(launch_command, creationflags=CREATE_NO_WINDOW)
                 os.environ["DKAFE_CALLBACK_ID"] = ""
                 os.chdir(ROOT_DIR)
             else:
-                if (len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE") or _s.is_pi():
+                if (len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE"):
                     # Don't hide the console output
                     run(launch_command)
+                elif _s.is_pi():
+                    run(launch_command, shell=True)
                 else:
                     run(launch_command, creationflags=CREATE_NO_WINDOW)
 
@@ -1240,7 +1244,7 @@ def playback_rom(info, inpfile):
             launch_command += f"; {EMU_EXIT}"
 
         if _s.is_pi():
-            run(playback_command)
+            run(playback_command, shell=True)
         else:
             run(playback_command, creationflags=CREATE_NO_WINDOW)
 

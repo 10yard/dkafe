@@ -75,7 +75,7 @@ def read_romlist(specific_romlist_file=None):
                             if ARCH != "win64" and name.split("_")[0] in WIN64_ONLY_SYSTEMS:
                                 # Skip over incompatible roms
                                 continue
-                            if ARCH == "rpi4" and name.split("_")[0] in RPI4_UNSUPPORTED_SYSTEMS:
+                            if ARCH == "pi" and name.split("_")[0] in PI_UNSUPPORTED_SYSTEMS:
                                 # Skip over unsupported system roms
                                 continue
 
@@ -191,7 +191,10 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_NAME"] = name
             os.environ["DKAFE_SHELL_NAME_2"] = name.split("_")[1] if "_" in name else name
             os.environ["DKAFE_SHELL_MEDIA"] = GAME_MEDIA.get(name) or SYSTEM_MEDIA.get(_system) or "-cart"
-            os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
+            if is_pi():
+                os.environ["DKAFE_SHELL_BOOT"] = f'-script {os.path.join(ROOT_DIR, "interface", "shell.lua")}'
+            else:
+                os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
             os.environ["DKAFE_SHELL_ROR"] = ""
             os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".state"))
             os.environ["DKAFE_SHELL_ARCH"] = ARCH

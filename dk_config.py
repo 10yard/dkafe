@@ -709,7 +709,7 @@ GAME_MEDIA = {
     "vic20-se_dk_ackenhausen":"-exp 16k -quik"}
 
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
-RPI4_UNSUPPORTED_SYSTEMS = "bbc",
+PI_UNSUPPORTED_SYSTEMS = "bbcb",
 
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {
