@@ -70,9 +70,9 @@ del releases\dkafe_win64_binary_%version%.zip
 %zip_path% a releases\dkafe_win64_binary_%version%.zip .\dist\* -m0=LZMA -mx7
 
 echo ----------------------------------------------------------------------------------------------
-echo  Package the Console Add-On Pack
-echo  (use LZMA compression 
+echo  Package the Console Add-On Pack using addon_version number
 echo ----------------------------------------------------------------------------------------------
+set addon_version=v5
 copy dist\remap_pc.exe roms\pc\ /Y
 
 for %%s in (%systems%) do xcopy roms\%%s dist\console_addon\roms\%%s /S /i /Y
@@ -89,6 +89,15 @@ echo **** Bonus roms includes with the addon pack
 copy roms\logger.zip dist\console_addon\roms\ /Y
 copy roms\congo.zip dist\console_addon\roms\ /Y
 
-del releases\add-ons\dkafe_console_addon_pack_v5.zip
-%zip_path% a releases\add-ons\dkafe_console_addon_pack_v5.zip .\dist\console_addon\* -m0=LZMA -mx6
+echo **** Full add-on pack for 64 bit windows
+del releases\add-ons\dkafe_console_addon_pack_%addon_version%.zip
+%zip_path% a releases\add-ons\dkafe_console_addon_pack_%addon_version%.zip .\dist\console_addon\* -m0=LZMA -mx6
+
+echo **** Reduced add-on pack for 32 bit Windows and Pi
+del releases\add-ons\dkafe_console_addon_pack_%addon_version%_reduced.zip
+del dist\console_addon\roms\pc /s /Q
+del dist\console_addon\roms\dos /s /Q
+%zip_path% a releases\add-ons\dkafe_console_addon_pack_%addon_version%_reduced.zip .\dist\console_addon\* -m0=LZMA -mx6
+
+echo **** Clean up add-on work folder
 rmdir dist\console_addon /s /Q
