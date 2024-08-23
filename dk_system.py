@@ -193,10 +193,11 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_MEDIA"] = GAME_MEDIA.get(name) or SYSTEM_MEDIA.get(_system) or "-cart"
             if is_pi():
                 os.environ["DKAFE_SHELL_BOOT"] = f'-script {os.path.join(ROOT_DIR, "interface", "shell.lua")}'
+                os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + "_pi.state"))
             else:
+                os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".state"))
                 os.environ["DKAFE_SHELL_BOOT"] = f'-script "{os.path.join(ROOT_DIR, "interface", "shell.lua")}"'
             os.environ["DKAFE_SHELL_ROR"] = ""
-            os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".state"))
             os.environ["DKAFE_SHELL_ARCH"] = ARCH
             if "_ror" in name:
                 os.environ["DKAFE_SHELL_ROR"] = "-ror"

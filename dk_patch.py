@@ -145,8 +145,8 @@ def install_addons():
         except:
             pass
 
-        if ARCH != "win64":
-            # load states are pregenerated for Windows 64 only.
+        if ARCH != "win64" and ARCH != "pi":
+            # load states are pregenerated for Windows 64 and Pi only.
             # For other platforms,  they will be generated on first load of a game, so it's instant on next launch
             pathlist = Path(ROM_DIR).glob('**/*.state')
             for path in pathlist:
