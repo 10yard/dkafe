@@ -5,6 +5,9 @@ echo ---------------------------------------------------------------------------
 echo  Build and package the Windows x64 binary release (and add-ons)
 echo ----------------------------------------------------------------------------------------------
 
+@echo off
+set /p _check=Do you wish to build the console add-on pack? [Y/N]: 
+
 echo **** remove existing build folders ****
 rmdir build /s /Q
 rmdir dist /s /Q
@@ -72,6 +75,8 @@ del releases\dkafe_win64_binary_%version%.zip
 echo ----------------------------------------------------------------------------------------------
 echo  Package the Console Add-On Pack using addon_version number
 echo ----------------------------------------------------------------------------------------------
+if %_check% NEQ Y GOTO end
+
 set addon_version=v5
 copy dist\remap_pc.exe roms\pc\ /Y
 
@@ -101,3 +106,5 @@ del dist\console_addon\roms\dos /s /Q
 
 echo **** Clean up add-on work folder
 rmdir dist\console_addon /s /Q
+
+:end
