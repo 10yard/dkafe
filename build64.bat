@@ -53,8 +53,8 @@ rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** build the exe in virtual environment ****
 set PYTHONOPTIMIZE=1
-venv64\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico --upx-dir upx64
-venv64\Scripts\pyinstaller remap_pc.py --onefile --clean --noconsole --upx-dir upx64
+venv64\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
+venv64\Scripts\pyinstaller remap_pc.py --onefile --clean --noconsole
 
 echo **** clean up
 rmdir build /s /Q
@@ -67,7 +67,7 @@ echo **** package into a release ZIP getting the version from version.txt
 set /p version=<VERSION
 set zip_path="C:\Program Files\7-Zip\7z"
 del releases\dkafe_win64_binary_%version%.zip
-%zip_path% a releases\dkafe_win64_binary_%version%.zip .\dist\* -m0=LZMA -mx7
+%zip_path% a releases\dkafe_win64_binary_%version%.zip .\dist\*
 
 echo ----------------------------------------------------------------------------------------------
 echo  Package the Console Add-On Pack using addon_version number
