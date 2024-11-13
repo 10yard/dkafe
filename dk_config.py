@@ -20,6 +20,8 @@ from glob import glob
 def get_system(return_video=False):
     if "uname" in dir(os) and os.uname().machine.startswith("arm"):
         return ("pi", "accel")[int(return_video)]
+    elif "uname" in dir(os) and os.uname().sysname == "Linux":
+        return ("linux", "opengl")[int(return_video)]
     else:
         windows_version = sys.getwindowsversion()
         if windows_version[0] > 5:
@@ -29,7 +31,7 @@ def get_system(return_video=False):
 
 
 def is_pi():
-    return get_system() == "pi"
+    return get_system() == "pi" or get_system() == "linux"
 
 
 pygame.init()
@@ -119,7 +121,7 @@ ROOT_DIR = os.getcwd()
 
 # Emulator and rom path defaults
 ROM_DIR = '<ROOT>/roms'
-OPTIONS = '-rompath "<ROM_DIR>" -view "Pixel Aspect (7:8)"'
+OPTIONS = '-rompath "<ROM_DIR>" -view "Pixel Aspect (7:8)" -nofilter -nosleep'
 EMU_1 = '<ROOT>/dkwolf/dkwolf <OPTIONS>'
 EMU_2 = '<ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID>'
 EMU_3, EMU_4, EMU_5, EMU_6, EMU_7, EMU_8 = (None,) * 6
@@ -762,6 +764,7 @@ KEYBOARD_REMAP = {
     "pc_dkme_raiders":"ctrl>space|esc>forcequit:dkme.exe",
     "pc_dkme_starwars": "ctrl>space|esc>forcequit:dkme.exe",
     "pc_dkme_totalrecall": "ctrl>space|esc>forcequit:dkme.exe",
+    "pc_kidnappers_inc":"ctrl>space|1>space|esc>forcequit",
     "pc_tic80_denis_kogne":"tab>esc|ctrl>z|alt>x|esc>forcequit:tic80.exe",
     "pc_kong_jr_gnw":"ctrl>x|esc>forcequit",
     "pc_pc88_dk3":"ctrl>space|esc>forcequit:quasi88.exe",

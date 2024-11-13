@@ -209,11 +209,14 @@ intv_monkey,shell,Monkey,Monkey Moon,9999,,,151000,2,4,8
 jupace_krazykong,shell,KrazyKong,JUP: Kong,9999,,,130000,2,4,8
 lcd_gckong,shell,Gakken CK,LCD: Gakken Crazy Kong,9999,,,186000,2,4,8
 mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,190000,2,4,8
+nes_clintonkong,shell,ClintonKong,NES: Clinton Kong,9999,,,121000,2,4,8
 nes_crazykong,shell,CK,NES: Crazy Kong,9999,,,0,2,4,8
 nes_dendymans_revenge,shell,Dendyman,NES: Dendyman's Revenge,9999,,,121000,2,4,8
 nes_dk,shell,NESDK,NES: Donkey Kong (Original),9999,,,0,2,4,8
 nes_dk_3,shell,DK3,NES: Donkey Kong 3,9999,,,0,2,4,8
+nes_dk_3_cincinnati_zoo,shell,DK3 Zoo,NES: Donkey Kong 3 Zoo Edition,9999,,,121000,2,4,8
 nes_dk_arrietty,shell,DK Arietty,NES: Arrietty World,9999,,,121000,2,4,8
+nes_dk_badly_drawn,shell,BadlyDrawn,NES: Badly Drawn Donkey Kong,9999,,,121000,2,4,8
 nes_dk_cure,shell,DK Cure,NES: Donkey Kong Cure,9999,,,121000,2,4,8
 nes_dk_freddy_jason,shell,DK Freddy vs Jason,NES: Freddy vs Jason,9999,,,121000,2,4,8
 nes_dk_godmode,shell,God,NES: Donkey Kong God Mode,9999,,,121000,2,4,8
@@ -235,6 +238,7 @@ nes_dk3_bandits,shell,DK3 Bandits,NES: Donkey Kong 3 Bandits,9999,,,121000,2,4,8
 nes_dk3_battlebeasts,shell,DK3 BattleBeasts,NES: Donkey Kong 3 Battle Beast,9999,,,121000,2,4,8
 nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,121000,2,4,8
 nes_dkjr_optimus_minor,shell,JROptimus,NES: Optimus Minor (JR),9999,,,121000,2,4,8
+nes_donnod_kook_clasalc,shell,DonnodKook,NES: Donnod Kook Clasalc,9999,,,121000,2,4,8
 nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
 nes_pinkfloyd,shell,PinkFloyd,NES: Pink Floyd's The Wall,9999,,,121000,2,4,8
@@ -253,10 +257,12 @@ pc_dk_aa,shell,PC DKAttacks,PC: Donkey Kong Attacks,9999,,,197000,2,4,8
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,9999,,,197000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
 pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,9999,,,197000,2,4,8
+pc_dkbros,shell,DK Bros.,PC: DK Bros.,9999,,,197000,2,4,8
 pc_dkme_exorcist,shell,Exorcist,PC: Donkey Kong The Exorcist,9999,,,197000,2,4,8
 pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,9999,,,209000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,197000,2,4,8
 pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,143000,2,4,8
+pc_kidnappers_inc,shell,Kidnappers Inc,PC: Kidnappers Inc.,9999,,,197000,2,4,8
 pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,9999,,,209000,2,4,8
 pc_lowresnx_denis_kogne,shell,DenisKogne,NX: Denis Kogne,9999,,,203000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8

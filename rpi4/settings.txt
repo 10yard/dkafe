@@ -30,7 +30,7 @@ ROM_DIR = <ROOT>/roms
 ALLOW_ROM_OVERWRITE = 0
 
 # Emulator Settings for Raspberry Pi4
-OPTIONS = -rompath <ROM_DIR> -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video accel
+OPTIONS = -rompath <ROM_DIR> -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video accel -nosleep
 EMU_1 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolfrpi <OPTIONS> -nvram_directory /dev/null -record <RECORD_ID>
 
