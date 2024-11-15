@@ -273,7 +273,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 os.environ[launch_plugin.upper() + "_PARAMETER"] = parameter
             else:
                 os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
-            if "-plugin" in launch_command:
+            if "-plugin " in launch_command:
                 launch_command += f",{launch_plugin}"
             else:
                 launch_command += f" -plugin {launch_plugin}"
@@ -284,14 +284,14 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
         # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
         if high_score_save and not launch_plugin and subfolder not in HISCORE_UNFRIENDLY:
             os.environ["DKAFE_SUBFOLDER"] = subfolder + "_" if subfolder else ""
-            if "-plugin" in launch_command:
+            if "-plugin " in launch_command:
                 launch_command += ",hiscore"
             else:
                 launch_command += " -plugin hiscore"
 
         # Are we using the refocus plugin
         if refocus:
-            if "-plugin" in launch_command:
+            if "-plugin " in launch_command:
                 launch_command += ",refocus"
             else:
                 launch_command += " -plugin refocus"

@@ -15,10 +15,6 @@ require "functions"
 require "graphics"
 require "globals"
 
--- additional globals for dkong sound
-soundcpu = mac.devices[":soundcpu"]
-soundmem = soundcpu.spaces["data"]
-
 -- Register function for each frame
 ------------------------------------------------------------------------------------------------
 emu.register_frame(function()

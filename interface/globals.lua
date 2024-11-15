@@ -31,6 +31,12 @@ else
 	print("ERROR: The DKAFE system requires MAME version 0.196 or greater.")
 end
 if mac ~= nil then
+	if emu.romname() == "dkong" then
+		-- additional globals for dkong sound
+		soundcpu = mac.devices[":soundcpu"]
+		soundmem = soundcpu.spaces["data"]
+	end
+
 	screen = mac.screens[":screen"]
 	-- Cater for systems that have a different screen ID i.e. SEGA Genesis
 	if not screen then
