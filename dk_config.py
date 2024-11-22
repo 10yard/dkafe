@@ -834,7 +834,7 @@ if ARCH == "win32" or ARCH == "win64":
             # 10yard - Use additional temporary list to optimise append --------------------------------------------------
             if len(self._widgets) == 0:
                 self._widgets_tmp = []
-            if len(self._widgets) <= 80:
+            if len(self._widgets) <= 50:
                 self._widgets.append(widget)
             else:
                 self._widgets_tmp.append(widget)
@@ -849,6 +849,244 @@ if ARCH == "win32" or ARCH == "win64":
             self._index = len(self._widgets) - 1
         if self._center_content:
             self.center_content()
-        self._widgets_surface = None  # If added on execution time forces the update of the surface
+        self._widgets_surface = True  # If added on execution time forces the update of the surface
         self._render()
     pymenu.Menu._append_widget = _new_append_widget
+
+    # Optimise scrolling speed in large menus by monkey patching the pymenu function
+    import pygame_menu.controls as _controls
+    import pygame_menu.events as _events
+    import pygame_menu.utils as _utils
+    import pygame_menu.widgets as _widgets
+    def _new_update(self, events):
+        """
+        Update the status of the Menu using external events.
+        The update event is applied only on the current Menu.
+
+        .. note::
+
+            This method should not be used along :py:meth:`pygame_menu.Menu.get_current()`
+
+        :param events: Pygame events as a list
+        :type events: list[:py:class:`pygame.event.Event`]
+        :return: True if mainloop must be stopped
+        :rtype: bool
+        """
+        assert isinstance(events, list)
+
+        # Check if window closed
+        for event in events:
+            if event.type == _events.PYGAME_QUIT or (
+                    event.type == pygame.KEYDOWN and event.key == pygame.K_F4 and (
+                    event.mod == pygame.KMOD_LALT or event.mod == pygame.KMOD_RALT)) or \
+                    event.type == _events.PYGAME_WINDOWCLOSE:
+                self._current._exit()
+                return True
+
+        # If any widget status changes, set the status as True
+        updated = False
+
+        # Update mouse
+        pygame.mouse.set_visible(self._current._mouse_visible)
+
+        # noinspection PyTypeChecker
+        selected_widget = None  # (type: _widgets.core.Widget, None)
+        if len(self._current._widgets) >= 1:
+            index = self._current._index % len(self._current._widgets)
+            selected_widget = self._current._widgets[index]
+            if not selected_widget.visible or not selected_widget.is_selectable:
+                selected_widget = None
+
+        # Update scroll bars
+        if self._current._scroll.update(events):
+            updated = True
+
+        # Update the menubar, it may change the status of the widget because
+        # of the button back/close
+        elif self._current._menubar.update(events):
+            updated = True
+
+        # Check selected widget
+        elif selected_widget is not None and selected_widget.update(events):
+            updated = True
+
+        # Check others
+        else:
+
+            # If mouse motion enabled, add the current mouse position to event list
+            if self._current._mouse and self._current._mouse_motion_selection:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                events.append(pygame.event.Event(pygame.MOUSEMOTION, {'pos': (mouse_x, mouse_y)}))
+
+            for event in events:  # type: pygame.event.Event
+
+                if event.type == pygame.KEYDOWN:
+
+                    # Check key event is valid
+                    if not _utils.check_key_pressed_valid(event):
+                        continue
+
+                    if event.key == _controls.KEY_MOVE_DOWN:
+                        self._current._select(self._current._index - 1)
+                        self._current._sounds.play_key_add()
+                    elif event.key == _controls.KEY_MOVE_UP:
+                        self._current._select(self._current._index + 1)
+                        self._current._sounds.play_key_add()
+                    elif event.key == _controls.KEY_LEFT and self._current._columns > 1:
+                        self._current._left()
+                        self._current._sounds.play_key_add()
+                    elif event.key == _controls.KEY_RIGHT and self._current._columns > 1:
+                        self._current._right()
+                        self._current._sounds.play_key_add()
+                    elif event.key == _controls.KEY_BACK and self._top._prev is not None:
+                        self._current._sounds.play_close_menu()
+                        self.reset(1)  # public, do not use _current
+                    elif event.key == _controls.KEY_CLOSE_MENU:
+                        self._current._sounds.play_close_menu()
+                        if self._current._close():
+                            updated = True
+
+                elif self._current._joystick and event.type == pygame.JOYHATMOTION:
+                    if event.value == _controls.JOY_UP:
+                        self._current._select(self._current._index - 1)
+                    elif event.value == _controls.JOY_DOWN:
+                        self._current._select(self._current._index + 1)
+                    elif event.value == _controls.JOY_LEFT and self._current._columns > 1:
+                        self._current._left()
+                    elif event.value == _controls.JOY_RIGHT and self._current._columns > 1:
+                        self._current._right()
+
+                elif self._current._joystick and event.type == pygame.JOYAXISMOTION:
+                    prev = self._current._joy_event
+                    self._current._joy_event = 0
+                    if event.axis == _controls.JOY_AXIS_Y and event.value < -_controls.JOY_DEADZONE:
+                        self._current._joy_event |= self._current._joy_event_up
+                    if event.axis == _controls.JOY_AXIS_Y and event.value > _controls.JOY_DEADZONE:
+                        self._current._joy_event |= self._current._joy_event_down
+                    if event.axis == _controls.JOY_AXIS_X and event.value < -_controls.JOY_DEADZONE and \
+                            self._current._columns > 1:
+                        self._current._joy_event |= self._current._joy_event_left
+                    if event.axis == _controls.JOY_AXIS_X and event.value > _controls.JOY_DEADZONE and \
+                            self._current._columns > 1:
+                        self._current._joy_event |= self._current._joy_event_right
+                    if self._current._joy_event:
+                        self._current._handle_joy_event()
+                        if self._current._joy_event == prev:
+                            pygame.time.set_timer(self._current._joy_event_repeat, _controls.JOY_REPEAT)
+                        else:
+                            pygame.time.set_timer(self._current._joy_event_repeat, _controls.JOY_DELAY)
+                    else:
+                        pygame.time.set_timer(self._current._joy_event_repeat, 0)
+
+                elif event.type == self._current._joy_event_repeat:
+                    if self._current._joy_event:
+                        self._current._handle_joy_event()
+                        pygame.time.set_timer(self._current._joy_event_repeat, _controls.JOY_REPEAT)
+                    else:
+                        pygame.time.set_timer(self._current._joy_event_repeat, 0)
+
+                # Select widget by clicking
+                elif self._current._mouse and event.type == pygame.MOUSEBUTTONDOWN and \
+                        event.button in (1, 2, 3):  # Don't consider the mouse wheel (button 4 & 5)
+
+                    # If the mouse motion selection is disabled then select a widget by clicking
+                    if not self._current._mouse_motion_selection:
+                        for index in range(len(self._current._widgets)):
+                            widget = self._current._widgets[index]
+                            # Don't consider the mouse wheel (button 4 & 5)
+                            if widget.is_selectable and widget.visible and \
+                                    self._current._scroll.collide(widget, event):
+                                self._current._select(index)
+                                break
+
+                    # If mouse motion selection, clicking will disable the active state
+                    # only if the user clicked outside the widget
+                    else:
+                        if selected_widget is not None:
+                            if not self._current._scroll.collide(selected_widget, event):
+                                selected_widget.active = False
+
+                # Select widgets by mouse motion, this is valid only if the current selected widget
+                # is not active and the pointed widget is selectable
+                elif self._current._mouse_motion_selection and event.type == pygame.MOUSEMOTION and \
+                        (selected_widget is not None and not selected_widget.active or selected_widget is None):
+                    for index in range(len(self._current._widgets)):
+                        widget = self._current._widgets[index]  # type: _widgets.core.Widget
+                        if self._current._scroll.collide(widget, event) and widget.is_selectable and widget.visible:
+                            self._current._select(index)
+                            break
+
+                # Mouse events in selected widget
+                elif self._current._mouse and event.type == pygame.MOUSEBUTTONUP and selected_widget is not None:
+                    self._current._sounds.play_click_mouse()
+                    # Don't consider the mouse wheel (button 4 & 5)
+                    if event.button in (1, 2, 3) and self._current._scroll.collide(selected_widget, event):
+                        new_event = pygame.event.Event(event.type, **event.dict)
+                        new_event.dict['origin'] = self._current._scroll.to_real_position((0, 0))
+                        new_event.pos = self._current._scroll.to_world_position(event.pos)
+                        selected_widget.update((new_event,))  # This widget can change the current Menu to a submenu
+                        updated = True  # It is updated
+                        break
+
+                # Touchscreen event:
+                elif self._current._touchscreen and event.type == pygame.FINGERDOWN:
+                    # If the touchscreen motion selection is disabled then select a widget by clicking
+                    if not self._current._touchscreen_motion_selection:
+                        for index in range(len(self._current._widgets)):
+                            widget = self._current._widgets[index]
+                            # Don't consider the mouse wheel (button 4 & 5)
+                            if self._current._scroll.collide(widget, event) and \
+                                    widget.is_selectable and widget.visible:
+                                self._current._select(index)
+                                break
+
+                    # If touchscreen motion selection, clicking will disable the active state
+                    # only if the user clicked outside the widget
+                    else:
+                        if selected_widget is not None:
+                            if not self._current._scroll.collide(selected_widget, event):
+                                selected_widget.active = False
+
+                # Select widgets by touchscreen motion, this is valid only if the current selected widget
+                # is not active and the pointed widget is selectable
+                elif self._current._touchscreen_motion_selection and event.type == pygame.FINGERMOTION and \
+                        (selected_widget is not None and not selected_widget.active or selected_widget is None):
+                    for index in range(len(self._current._widgets)):
+                        widget = self._current._widgets[index]  # type: _widgets.core.Widget
+                        if self._current._scroll.collide(widget, event) and widget.is_selectable:
+                            self._current._select(index)
+                            break
+
+                # Touchscreen events in selected widget
+                elif self._current._touchscreen and event.type == pygame.FINGERUP and selected_widget is not None:
+                    self._current._sounds.play_click_mouse()
+
+                    if self._current._scroll.collide(selected_widget, event):
+                        new_event = pygame.event.Event(pygame.MOUSEBUTTONUP, **event.dict)
+                        new_event.dict['origin'] = self._current._scroll.to_real_position((0, 0))
+                        finger_pos = (event.x * self._current._window_size[0],
+                                      event.y * self._current._window_size[1])
+                        new_event.pos = self._current._scroll.to_world_position(finger_pos)
+                        selected_widget.update((new_event,))  # This widget can change the current Menu to a submenu
+                        updated = True  # It is updated
+                        break
+
+        # Check if the menu widgets size changed, if True, updates the surface
+        # forcing the rendering of all widgets
+        menu_surface_needs_update = False
+        if len(self._current._widgets) > 0:
+            for widget in self._current._widgets:  # type: _widgets.core.Widget
+                menu_surface_needs_update = menu_surface_needs_update or widget.surface_needs_update()
+
+        # 10 yard -  patch for improved speed on large menus
+        menu_surface_needs_update = False
+
+        if menu_surface_needs_update:
+            self._current._widgets_surface = None
+
+        # A widget has closed the Menu
+        if not self.is_enabled():
+            updated = True
+
+        return updated
+    pymenu.Menu.update = _new_update

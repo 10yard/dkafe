@@ -11,6 +11,9 @@ Main program
 """
 import os
 import sys
+
+import pygame_menu.controls
+
 sys.path.append("c:\\dkafe")
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
@@ -666,6 +669,7 @@ def build_menus(initial=False):
         _lastname, _lastsystem = "", ""
         _count = 0
         for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
+            alt = alt.replace("0riginal", "Original")
             _system = get_system_description(name)
             if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
                 if sub != "shell" or name != _lastname:
@@ -677,9 +681,10 @@ def build_menus(initial=False):
                         if ":" in alt:
                             alt = alt.split(":")[1].strip()
                         if not initial and ENABLE_ADDONS and not UNLOCK_MODE and _g.stage >= 2:
-                            _percent = ceil(_count / len(_g.romlist) * 100)
-                            write_text(f"Generating game list..{str(_percent)}%", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                            update_screen()
+                            write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                            #_percent = ceil(_count / len(_g.romlist) * 100)
+                            # write_text(f"Generating game list..{str(_percent)}%", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                            # update_screen()
                         try:
                            widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                         except (IndexError, ValueError) as error:
@@ -1030,15 +1035,21 @@ def menu_callback():
     _g.last_down = _g.last_down + 1 if keys[CONTROL_DOWN] else 0
     game_menu = _g.current_menu_title == QUESTION
 
-    if keys and (_s.time() - _g.last_press > 0.1 or _g.last_up > 8 or _g.last_down > 8):
+    if keys and game_menu and (_s.time() - _g.last_press > 0.25 or _g.last_up > 10 or _g.last_down > 10):
+        step = 1
         k = None
-        if (keys[CONTROL_LEFT] and game_menu) or keys[CONTROL_PAGEUP] or _g.last_up > 10:
+        if _g.last_up > 10:
             k = CONTROL_UP
-        elif (keys[CONTROL_RIGHT] and game_menu) or keys[CONTROL_PAGEDOWN] or _g.last_down > 10:
+        elif _g.last_down > 10:
             k = CONTROL_DOWN
+        elif keys[CONTROL_LEFT] or keys[CONTROL_PAGEUP]:
+            k = CONTROL_UP
+            step = 10
+        elif keys[CONTROL_RIGHT] or keys[CONTROL_PAGEDOWN]:
+            k = CONTROL_DOWN
+            step = 10
         if k:
             # Simulate up or down keypress 10 times for quicker scrolling
-            step = 1 if _g.last_up > 8 or _g.last_down > 8 else 6
             for i in range(0, step):
                 event = pygame.event.Event(pygame.KEYDOWN, {'key': k})
                 pygame.event.post(event)
