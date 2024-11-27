@@ -305,6 +305,7 @@ vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
 vic20-se_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),9999,,,188000,2,4,8
 vic20-se_dkjr_gnw,shell,DK JR,VIC20: Donkey Kong Junior (G&W),9999,,,188000,2,4,8
 vic20-se_logrun,shell,LogRun,VIC20: Log Run,9999,,,188000,2,4,8
+vic20_konkeykong,shell,KonkeyKong,VIC20: Konkey Kong,9999,,,188000,2,4,8
 x1_dk3_counter_attack,shell,DK3 CounterAttack,X1: DK3 Great Counter Attack,9999,,,190000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8

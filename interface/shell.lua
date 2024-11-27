@@ -180,10 +180,11 @@ rom_table["vic20_cannonball"]        = {"",            false, 0,     {},        
 rom_table["vic20-se_logrun"]         = {"JJ",          true,  700,   {360,"RUN\n",500,"{SPACE}"},                       1.33,  2,   0,   0 }
 rom_table["vic20_littlekong"]        = {"",            true,  1100,  {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20-se_dkjr_gnw"]       = {"JJ",          false, 500,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
+rom_table["vic20_konkeykong"]        = {"",            true,  8900,  {360,"LOAD\n",450,"{PLAY}",3300,"RUN\n"},          1.33,  2,   0,   0 }
 rom_table["vic20_kongokong"]         = {"P1",          true,  400,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20_krazykong_nufecop"] = {"P1",          true,  550,   {360,"RUN\n"},                                     1.33,  2,   0,   0 }
 rom_table["vic20-se_logger"]         = {"P1",          false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",
-													 5000,"{SHIFT}",5000,"{HOME}"},   1.33,  2,   0,   0 }
+														5000,"{SHIFT}",5000,"{HOME}"},   1.33,  2,   0,   0 }
 rom_table["x1"]                      = {"",            false,  2100,  {},                                               9,     4,   0,   0 }
 rom_table["zx81"]                    = {"",            false, 0,     {360,'J""\n',420,"{PLAY}"},                        2,     4,   0,   0 }
 rom_table["zx81_kong"]               = {"",            true,  19500, {360,'J""\n',420,"{PLAY}"},                        2,     4,   0,   0 }
@@ -191,7 +192,7 @@ rom_table["zx81_crazykong"]          = {"",            true,  10750, {360,'J""\n
 rom_table["zx81_kongsrevenge"]       = {"",            false, 20200, {360,'J""\n',420,"{PLAY}",20100, "n\n"},           2,     4,   0,   0 }
 rom_table["zx81_krazykong_pss"]      = {"JJ",          true,  11660, {360,'J""\n',420,"{PLAY}",11500," ",11600," "},    2,     4,   0,   0 }
 rom_table["zx81_zonkeykong"]         = {"",            true,  16150, {360,'J""\n',420,"{PLAY}",
-														  16000,"L", 16030,"R", 16060, "U", 16090, "D", 16120, "Y"},    2,     4,   0,   0 }
+														16000,"L", 16030,"R", 16060, "U", 16090, "D", 16120, "Y"},    2,     4,   0,   0 }
 
 -- Read rom data
 rom_data = rom_table[shell_name] or rom_table[emu:romname()]

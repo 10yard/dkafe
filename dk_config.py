@@ -256,7 +256,8 @@ PLUGINS = (
     ("dkongjrspringboard", "dkstart5:1"),
     ("dkongjrvines", "dkstart5:2"),
     ("dkongjrchains", "dkstart5:3"),
-    ("dkongjrhideout", "dkstart5:4")
+    ("dkongjrhideout", "dkstart5:4"),
+    ("bigkong_barrels", "dkstart5:1")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
@@ -711,6 +712,7 @@ GAME_MEDIA = {
     "spectrum_crazykongcity":"-cass",
     "spectrum_spec_kong":"-speed 1.1 -cass",
     "spectrum_wrathofkong":"-speed 1.1 -cass",
+    "vic20_konkeykong": "-cass",
     "vic20-se_logger": "-cass",
     "vic20-se_mickybricky": "-cass",
     "vic20_fast_eddie":"-cart",
