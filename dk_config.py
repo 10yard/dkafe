@@ -252,7 +252,11 @@ PLUGINS = (
     ("dkongjrcontinue", "continue"),
     ("ckongpt2_continue", "continue"),
     ("dkongl22", "dklevel22"),
-    ("ckongpt2_l22", "dklevel22")
+    ("ckongpt2_l22", "dklevel22"),
+    ("dkongjrspringboard", "dkstart5:1"),
+    ("dkongjrvines", "dkstart5:2"),
+    ("dkongjrchains", "dkstart5:3"),
+    ("dkongjrhideout", "dkstart5:4")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).

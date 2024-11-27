@@ -58,8 +58,10 @@ end
 
 function clear_sounds()
 	-- clear music on soundcpu
-	for key=0, 32 do
-		soundmem:write_u8(0x0 + key, 0x00)
+	if soundmem then
+		for key=0, 32 do
+			soundmem:write_u8(0x0 + key, 0x00)
+		end
 	end
 	-- clear soundfx buffer
 	for key=0, 8 do
