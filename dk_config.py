@@ -257,6 +257,10 @@ PLUGINS = (
     ("dkongjrvines", "dkstart5:2"),
     ("dkongjrchains", "dkstart5:3"),
     ("dkongjrhideout", "dkstart5:4"),
+    ("ckongpt2_barrels", "dkstart5:1"),
+    ("ckongpt2_pies", "dkstart5:2"),
+    ("ckongpt2_springs", "dkstart5:3"),
+    ("ckongpt2_rivets", "dkstart5:4"),
     ("bigkong_barrels", "dkstart5:1")
 )
 
