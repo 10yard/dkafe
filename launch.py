@@ -42,7 +42,7 @@ def exit_program(confirm=False):
             for attempt in 1, 2, 3:
                 try:
                     with open('save.p', 'wb') as f:
-                        pickle.dump([_g.score, _g.timer_adjust, _g.last_selected, _g.achievements], f)
+                        pickle.dump([_g.score, _g.timer_adjust, _g.achievements], f)
                     break
                 except (EOFError, FileNotFoundError, IOError):
                     pygame.time.delay(250 * attempt)
@@ -130,9 +130,9 @@ def update_screen(delay_ms=0):
 def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
-            _g.score, _g.timer_adjust, _g.last_selected, _g.achievements = pickle.load(f)
+            _g.score, _g.timer_adjust, _g.achievements = pickle.load(f)
     except (EOFError, FileNotFoundError, IOError, ValueError):
-        _g.score, _g.timer_adjust, _g.last_selected, _g.achievements = SCORE_START, 0, None, {}
+        _g.score, _g.timer_adjust, _g.achievements = SCORE_START, 0, {}
 
 
 def check_patches_available():
@@ -145,7 +145,7 @@ def check_patches_available():
             for i, patch in enumerate(applied_patches):
                 write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset)
                 update_screen(delay_ms=20)
-                y_offset += 7
+                y_offset += 6
                 if y_offset > 232:
                     x_offset += 75
                     y_offset = 11
@@ -684,7 +684,7 @@ def build_menus(initial=False):
                             write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
                             #_percent = ceil(_count / len(_g.romlist) * 100)
                             # write_text(f"Generating game list..{str(_percent)}%", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                            # update_screen()
+                            #update_screen()
                         try:
                            widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                         except (IndexError, ValueError) as error:
@@ -1019,6 +1019,7 @@ def open_menu(menu, remember_selection=False):
                 pass
         _g.current_menu_title = menu.get_title()
         menu.enable()
+
         menu.mainloop(_g.screen, bgfun=menu_callback)
         reset_all_inputs()
 
