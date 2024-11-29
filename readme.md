@@ -14,16 +14,17 @@ An article on the Set Side B gaming blog - https://setsideb.com/romhack-thursday
 
 ## Get DKAFE for your system
 
-The latest releases are available to download from below.  Refer to the **How to Install** and **Troubleshooting** sections.
+The latest releases are available to download from below.  Refer to the [How to Install](#how-to-install) and [Troubleshooting](#troubleshooting) sections.
 
 | Download Link                                                                                                        | Version | Operating System                           |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------|
-| [dkafe_win64_binary_v0.68.zip](https://github.com/10yard/dkafe/releases/download/v0.68/dkafe_win64_binary_v0.68.zip) | 0.68    | Windows 64 bit (x64) systems (Recommended) |
-| [dkafe_win32_binary_v0.68.zip](https://github.com/10yard/dkafe/releases/download/v0.68/dkafe_win32_binary_v0.68.zip) | 0.68    | Windows 32 bit (x86) systems               |
+| [dkafe_win64_binary_v0.69.zip](https://github.com/10yard/dkafe/releases/download/v0.69/dkafe_win64_binary_v0.69.zip) | 0.69    | Windows 64 bit (x64) systems (Recommended) |
+| [dkafe_win32_binary_v0.69.zip](https://github.com/10yard/dkafe/releases/download/v0.69/dkafe_win32_binary_v0.69.zip) | 0.69    | Windows 32 bit (x86) systems               |
 | [dkafe_winxp_binary_v0.67.zip](https://github.com/10yard/dkafe/releases/download/v0.67/dkafe_winxp_binary_v0.67.zip) | 0.67    | Windows XP only                            |
 | [dkafe_rpi4_image_v0.67.gz](https://github.com/10yard/dkafe/releases/download/v0.67/dkafe_rpi4_image_v0.67.gz)       | 0.67    | Raspberry Pi 4 and 400 only                |
 
 * Windows binaries are digitally signed to ensure the origin of the files and their integrity.
+* DKAFE sources can also run on other systems, for example, see the section on installing to [Ubuntu Linux](#ubuntu-linux)
 
 ## About DKAFE
 
@@ -50,7 +51,7 @@ The frontend can be configured to launch other emulators and roms.
 Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet, pie and elevator stages.
 
 ![NEW Feature](https://github.com/10yard/dkafe/blob/master/artwork/about/new.png) 
-There is now a console add-on pack which adds extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See **Console Add-On Pack** section below.
+There is now a console add-on pack which adds extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See [Console Add-on Pack](#console-add-on-pack) section below.
 
 ![Donkey Kong versions supported](https://github.com/10yard/dkafe/blob/master/artwork/about/versions_detected.png)
 
@@ -63,7 +64,7 @@ There is now a console add-on pack which adds extra stages and is packed out wit
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 14 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional console add-on pack featuring over 250 ports, clones and hacks for over 50 classic gaming systems.
+ - An optional console add-on pack featuring almost 300 ports, clones and hacks for over 50 classic gaming systems.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -88,6 +89,7 @@ Credit is given to the original authors below.
  - VectorKong
  - GalaKong and Extreme Galakong
  - GalaKong Junior
+ - DK Bros.
  - Allen Kong
  - OctoMonkey
  - Half Kong
@@ -169,9 +171,9 @@ Credit is given to the original authors below.
 
 ### By others
  - Donkey Kong Wild Barrel Hack
+ - Donkey Kong Hard
  - Donkey Kong 2 Marios
  - Donkey Kong Naked
- - Donkey Kong Hard
  - Donkey Kong Japan
 
 ### Bootlegs
@@ -245,7 +247,7 @@ A tally of the total number of continues made will appear at the top of the scre
 
 ## Console Add-on Pack
 
-An optional add-on pack includes over 250 Donkey Kong ports and hacks for the following classic home consoles and computers.
+An optional add-on pack includes almost 300 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Acorn Atom
  - Atari 2600
@@ -315,7 +317,7 @@ The default controls for these games have been configured to work with arcade co
 
 ## How to install
 
-Steps to install the default frontend are as follows.  Also refer to **How to set up**.
+Steps to install the default frontend are as follows.  Also refer to [How to set up](#how-to-set-up).
 
 
 ### Windows
@@ -348,6 +350,29 @@ Steps to install the default frontend are as follows.  Also refer to **How to se
 ```
 
 
+### Ubuntu Linux
+
+A full list of steps to get DKAFE running on Ubuntu 24.04 was provided by Christopher Kremer.
+These steps includes compiling wolfmame v0.241 which is required for the best compatibility.
+
+```
+git clone https://github.com/10yard/dkafe.git
+mkdir ./dkafe/pipenv
+python3 -m venv ./dkafe/pipenv
+source ./dkafe/pipenv/bin/activate
+pip install pygame pygame-menu==3.5.8 ips-util stopwatch.py
+wget https://github.com/mahlemiut/wolfmame/archive/refs/tags/wolf241.tar.gz
+tar -xvzf wolf241.tar.gz
+cd ./wolfmame-wolf241
+nano ./src/lib/netlist/plib/pstring.h and add #include <cstdint> to includes list
+nano ./src/lib/netlist/plib/ptypes.h and add #include <cstdint> to includes list
+make SUBTARGET=arcade CFLAGS="-Wno-dangling-pointer -Wno-use-after-free -Wno-uninitialized -Wno-address -Wno-deprecated-declarations"
+cp mamearcade ../dkafe/dkwolf/dkwolf
+nano ./dkafe/settings.txt and append -pluginspath ./plugins to OPTIONS
+rm ./dkafe/romlist_addon.csv
+python3 launch.py
+```
+
 ## How to set up?
 
 The default set up simply requires that you place **dkong.zip** into DKAFE's **/roms** folder.  Optionally, you may place **dkongjr.zip** and **dkong3.zip** into the dkafe/roms folder.  
@@ -355,9 +380,9 @@ The frontend will automatically generate a bunch of Donkey Kong roms using patch
 
 The application requires settings.txt and romlist.csv to be present in the installation folder.  Defaults are provided.
  
-The settings.txt contains the emulator, rom path, controls and other configuration.  See **Frontend Settings** section below.
+The settings.txt contains the emulator, rom path, controls and other configuration.  See [Frontend Settings](#frontend-settings) section below.
 
-The romlist.csv contains information about the roms, which game slot they should appear in and how they can be unlocked and launched in the frontend.  See **How to use romlist.csv** below.
+The romlist.csv contains information about the roms, which game slot they should appear in and how they can be unlocked and launched in the frontend.  See [How to use romlist.csv](#how-to-use-romlist-csv) below.
 There are 215 configurable game slots in total. 
 
 
@@ -613,7 +638,7 @@ The "Music Playlist" can also be activated via the frontend settings menu (by pr
 When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).
 
 
-### How to use romlist.csv
+### How to use romlist CSV
 
 A default `romlist.csv` is provided for use with the automatically generated roms (see above).
 

@@ -721,6 +721,7 @@ GAME_MEDIA = {
     "vic20-se_logger": "-cass",
     "vic20-se_mickybricky": "-cass",
     "vic20_fast_eddie":"-cart",
+    "vic20-se_witchway":"-cart",
     "vic20-se_dkjr_gnw":"-exp 16k -quik",
     "vic20-se_dk_ackenhausen":"-exp 16k -quik"}
 

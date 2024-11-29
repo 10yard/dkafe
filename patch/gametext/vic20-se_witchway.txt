@@ -1,0 +1,14 @@
+VIC-20 - Witch Way
+
+A single screen Donkey Kong style game where you 
+start off in a big black cauldron with a damsel in 
+distress at the bottom of the screen. 
+
+Your mission is to get to the top where the water tap
+is, to turn it on and put out the fire before the 
+damsel gets cooked! 
+
+You need to beware of rolling rocks and flying witches
+as you are messing with their supper.
+
+Developed By CDS

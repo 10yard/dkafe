@@ -80,7 +80,7 @@ c64_bonkeykong,shell,BonkeyKong,C64: Bonkey Kong,163,,,188000,2,4,8
 mo5_yeti,shell,MO5 Yeti,THOMSON: Yeti,164,,,189000,2,4,8
 mz700_donkeygorilla,shell,MZ Gorilla,SHARP: Donkey Gorilla,166,,,190000,2,4,8
 vic20-se_minikong,shell,Mini,VIC20: Mini Kong,167,,,191000,2,4,8
-vic20_kongokong,shell,V20CK,VIC20: Kongo Kong,168,,,192000,2,4,8
+vic20-se_witchway,shell,V20 WW,VIC20: Witch Way,168,,,192000,2,4,8
 zx81_krazykong_pss,shell,ZX81CK,ZX81: Krazy Kong,169,,,193000,2,4,8
 pc_nes_dk_hdpack,shell,NESDK HD,NES: Donkey Kong HD Pack,170,,,194000,2,4,8
 dos_dk,shell,DOSDK,DOS: Donkey Kong (Orig),171,,,195000,2,4,8
@@ -117,6 +117,7 @@ pc_a2600_arcade_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),212,,,225000,2,4
 cgenie_colourkong32,shell,EGCK,EG2000: Colour Kong 32,213,,,226000,2,4,8
 pc_fixitfelix,shell,PC FIFJR,PC: Fix-It Felix Classic,214,,,227000,2,4,8
 pc_pinball_dkpin,shell,PINDK,PINBALL: DK The Pinball,215,,,228000,2,4,8
+##vic20-se_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),9999,,,188000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,121000,2,4,8
 a2600_dk,shell,VCSDK,2600: Donkey Kong (Original),9999,,,0,2,4,8
@@ -299,13 +300,13 @@ spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,9999,,,160000,2,4,8
 spectrum_wrathofkong,shell,Wrath,SPEC48K: Wrath of Kong,9999,,,160000,2,4,8
 vic20_crazykong,shell,CrazyKong,VIC20: Crazy Kong,9999,,,188000,2,4,8
 vic20_hardhatclimber,shell,HardhatClimber,VIC20: Hardhat Climber,9999,,,188000,2,4,8
+vic20_kongokong,shell,V20CK,VIC20: Kongo Kong,9999,,,188000,2,4,8
+vic20_konkeykong,shell,KonkeyKong,VIC20: Konkey Kong,9999,,,188000,2,4,8
 vic20_krazykong_cascade,shell,KrazyKong,VIC20: Krazy Kong (Cascade),9999,,,188000,2,4,8
 vic20_krazykong_nufecop,shell,KrazyKong,VIC20: Krazy Kong (Nufecop),9999,,,188000,2,4,8
 vic20_littlekong,shell,LittleKong,VIC20: Little Kong,9999,,,188000,2,4,8
-vic20-se_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),9999,,,188000,2,4,8
 vic20-se_dkjr_gnw,shell,DK JR,VIC20: Donkey Kong Junior (G&W),9999,,,188000,2,4,8
 vic20-se_logrun,shell,LogRun,VIC20: Log Run,9999,,,188000,2,4,8
-vic20_konkeykong,shell,KonkeyKong,VIC20: Konkey Kong,9999,,,188000,2,4,8
 x1_dk3_counter_attack,shell,DK3 CounterAttack,X1: DK3 Great Counter Attack,9999,,,190000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
