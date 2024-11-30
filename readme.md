@@ -764,6 +764,8 @@ https://www.youtube.com/watch?v=crhTHJGgFag
 Donkey Kong NES Medley by Chiptunema
 https://www.youtube.com/watch?v=TnNTVwKzs0o
 
+Donkey Kong Country Synthwave Remix by RetroKid
+https://www.youtube.com/watch?v=_CnkT5VcVhI
 
 ![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
 

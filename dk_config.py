@@ -575,31 +575,30 @@ THANKS_TO = """
 Thanks to these folks!
 
 Donkey Kong rom hacks: 
-   Paul Goes
-   Sockmaster
-   Jeff Kulczycki, 
-   Mike Mika & Clay Cowgill
-   Don Hodges
-   Tim Appleton 
-   Vic20 George
-   Kirai Shouen & 125scratch
+  Paul Goes, Sockmaster,
+  Jeff Kulczycki, 
+  Mike Mika & Clay Cowgill,
+  Kirai Shouen & 125scratch,
+  Don Hodges, Tim Appleton, 
+  Vic20 George,
 
 Donkey Kong hack resource:
-   furrykef
+  furrykef
 
 Feedback and feature ideas:
-   Superjustinbros
+  Superjustinbros
 
 Playlist music:
-   LeviR.star's Music
-   Nintega Dario
-   MyNameIsBanks
-   SanHolo
-   MotionRide Music
-   Buckner & Garcia
-   Sascha Zeidler
-   Mitchel Gatzke
-   Chiptunema
+  LeviR.star's Music
+  Nintega Dario
+  MyNameIsBanks
+  SanHolo
+  MotionRide Music
+  Buckner & Garcia
+  Sascha Zeidler
+  Mitchel Gatzke
+  Chiptunema
+  RetroKid
 """
 
 # Console Addon Specific

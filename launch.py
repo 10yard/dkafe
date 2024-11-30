@@ -670,7 +670,6 @@ def build_menus(initial=False):
         _lastname, _lastsystem = "", ""
         _count = 0
         for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
-            alt = alt.replace("0riginal", "Original")
             _system = get_system_description(name)
             if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
                 if sub != "shell" or name != _lastname:

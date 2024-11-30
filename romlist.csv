@@ -1,6 +1,6 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
-dkong,,0riginal Donkey Kong,,1,1,2,,10000,25000,40000
-dkongjr,,0riginal Donkey Kong Jr.,,3.1,1,2,,10000,15000,30000
+dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
+dkongjr,,DK Junior,,3.1,1,2,,10000,15000,30000
 dkong,dkongpies,DK Pies,DK Pies Only,3.2,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,,4,1,2,,20000,40000,60000
 dkongx11,dkongspooky,Spooky,DK Spooky Remix,6,1,2,1000,10000,15000,30000
@@ -11,7 +11,7 @@ dkong,dkongspringy,DK Springy,DK Springs Only,11,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,13,1,2,8000,10000,20000,40000
 dkong,dkongwho,DK Who,DK Who and the Daleks,14,1,2,10000,10000,20000,40000
 dkong,dkongaccelerate,DK Accel,DK Accelerate,16,1,2,12000,10000,25000,40000
-ckongpt2,ckongpt2,0riginal Crazy Kong,Crazy Kong (Part II),17,1,2,14000,10000,25000,40000
+ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),17,1,2,14000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,18,1,2,16000,8000,15000,35000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,19,1,2,18000,10000,15000,30000
 dkong,dkongvector,VectorKong,DK Vector Kong,20,1,2,20000,10000,20000,40000
@@ -31,7 +31,7 @@ dkongf,dkongrdemo,DKRemix,DK Remix,34,1,2,44000,10000,20000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,36,1,2,46000,10000,20000,40000
 dkong,dkongkana,Kana,DK Kana Kong,38,1,2,48000,10000,20000,40000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,39,1,2,50000,10000,20000,40000
-dkong3,,0riginal Donkey Kong 3,,40.1,1,2,52000,,,
+dkong3,, DK3,,40.1,1,2,52000,,,
 dkong,dkongnoluck,NoLuck,DK NoLuck Kong,40.2,1,2,52000,15000,25000,50000
 dkong,dkongbarpal,DK Palooza,DK Barrelpalooza,42,1,2,54000,10000,25000,50000
 dkong,dkongwbh,DK Wild,,43,1,2,56000,1000,2000,5000

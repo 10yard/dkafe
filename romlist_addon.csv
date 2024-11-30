@@ -244,6 +244,7 @@ nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
 nes_pinkfloyd,shell,PinkFloyd,NES: Pink Floyd's The Wall,9999,,,121000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,121000,2,4,8
+nes_dk_ksfix,shell,KS Free,NES: Donkey Kong KillscreenFree,9999,,,121000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,130000,2,4,8
 oric1_honeykong,shell,Honey Kong,ORIC: Honey Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,130000,2,4,8
