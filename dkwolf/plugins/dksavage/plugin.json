@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "dksavage",
+"description": "DK Savage",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

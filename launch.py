@@ -396,15 +396,12 @@ def play_intro_animation():
 
                 if 480 < current < 840:
                     write_text(f"{str(_g.romcount)} versions of DK detected!", x=108, y=38, bg=MAGENTA, fg=PINK, bubble=True)
-                    _delay = int(CLOCK_RATE * 0.8)
+                    _delay = int(CLOCK_RATE * 0.78)
 
                 # display nearby icons as girders are broken
                 for from_scene, to_scene, below_y, above_y, smash_scene in SCENE_ICONS:
                     if from_scene < current < to_scene:
                         display_icons(below_y=below_y, above_y=above_y, intro=True, smash=current < smash_scene)
-                    #    display_slots()
-                    #else:
-                    #    display_slots(version_only=True)
 
                 # Title and messages
                 write_text(("", QUESTION)[855 < current < 1010], font=dk_font, x=12, y=240, bg=BLACK)
@@ -641,7 +638,8 @@ def sort_key(x):
     slot = str(x[4])
     if slot == "9999":
         slot = "0"
-    return key0.ljust(30) + key1.ljust(30) + slot.zfill(4)
+    core = "9" if not key1 in ARCADE_CORE_ORDER else str(ARCADE_CORE_ORDER.index(key1))
+    return key0.ljust(30) + core + key1.ljust(30) + slot.zfill(4)
 
 
 def build_menus(initial=False):
@@ -682,9 +680,6 @@ def build_menus(initial=False):
                             alt = alt.split(":")[1].strip()
                         if not initial and ENABLE_ADDONS and not UNLOCK_MODE and _g.stage >= 2:
                             write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                            #_percent = ceil(_count / len(_g.romlist) * 100)
-                            # write_text(f"Generating game list..{str(_percent)}%", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                            #update_screen()
                         try:
                            widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
                         except (IndexError, ValueError) as error:
