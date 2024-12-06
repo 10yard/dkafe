@@ -1,0 +1,8 @@
+Donkey Kong Insanity
+
+An insane version of Donkey Kong were the barrels,
+fireballs and other obstacles are rapidly deployed.  
+
+You must think quickly to surive.
+
+Hack Developed by Jon Wilson (10yard)

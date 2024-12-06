@@ -248,7 +248,7 @@ PLUGINS = (
     ("dkongvector", "vectorkong"),
     ("dkongallen", "allenkong"),
     ("dkongchorus", "dkchorus"),
-    ("dkongsavage", "dksavage"),
+    ("dkonginsanity", "dkinsanity"),
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
     ("ckongpt2_continue", "continue"),
@@ -274,7 +274,7 @@ COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"
 COACH_L5_FRIENDLY = ("dkongspringy", "dkongbarrels")
 CHORUS_FRIENDLY = ("dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
-                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongksfix", "dkongsavage")
+                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongksfix", "dkonginsanity")
 CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline", "ckong", "ckongpt2", "ckongpt2b",
                      "ckongpt2_117", "dkongspooky", "dkongxmas", "dkongrdemo", "dkongrev", "dkongcb", "dkong40",
                      "dkongitd", "dkong2600", "dkongtj", "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongkana",
@@ -282,8 +282,8 @@ CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs", "dkongwizardry",
                      "dkongoctomonkey", "dkongaccelerate", "dkonghalf", "dkongquarter", "dkongwho", "dkonglava",
                      "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong", "dkongpacmancross",
-                     "ckongpt2a_2023", "ckongpt2_dk", "dkongsavage")
-SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkongsavage")
+                     "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity")
+SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkonginsanity")
 START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
                    "dkongjrgala", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
@@ -299,7 +299,7 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkonghrd",
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
-                  "ckongpt2a_2023", "ckongpt2_dk", "dkongsavage")
+                  "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity")
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey"]

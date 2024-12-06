@@ -98,6 +98,7 @@ Credit is given to the original authors below.
  - NoLuck Kong
  - DK Lava Panic!
  - DK Who and the Daleks
+ - DK Savage Difficulty
  - Konkey Dong
  - Donkey Kong Barrels Only
  - Donkey Kong Pies Only

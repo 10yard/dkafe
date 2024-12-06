@@ -1,8 +1,0 @@
-Donkey Kong Savage Difficulty
-
-A harder version of Donkey Kong were the barrels are
-deployed much more quickly and the fires appear almost
-instantly. 
-All springs are released at the same time too. 
-
-Hack Developed by Jon Wilson (10yard)

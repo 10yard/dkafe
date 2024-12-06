@@ -6,19 +6,19 @@ dkong,dkonggalakong,GalaKong,,4,1,2,,20000,40000,60000
 dkongx11,dkongspooky,Spooky,DK Spooky Remix,6,1,2,1000,10000,15000,30000
 dkong,dkongwizardry,DK Wizard,DK Wizardry,8,1,2,2000,10000,20000,40000
 dkong,dkongpacmancross,Pac-X,DK Pac-Man Crossover,9,1,2,3000,8000,15000,30000
-dkong,dkong40,DK 40!!,DK Anniversary Edition,10,1,2,4000,10000,25000,40000
+dkong,dkong40,DK 40,DK Anniversary Edition,10,1,2,4000,10000,25000,40000
 dkong,dkongspringy,DK Springy,DK Springs Only,11,1,2,6000,10000,15000,30000
 dkong,dkonglava,DK Lava,DK Lava Panic!,13,1,2,8000,10000,20000,40000
 dkong,dkongwho,DK Who,DK Who and the Daleks,14,1,2,10000,10000,20000,40000
 dkong,dkongaccelerate,DK Accel,DK Accelerate,16,1,2,12000,10000,25000,40000
 ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),17,1,2,14000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,18,1,2,16000,8000,15000,35000
-dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,19,1,2,18000,10000,15000,30000
+dkong,dkonginsanity,Insane,DK Insanity,19,1,2,18000,10000,25000,40000
 dkong,dkongvector,VectorKong,DK Vector Kong,20,1,2,20000,10000,20000,40000
 dkongjr,dkongjrgala,GalaJR,Junior GalaKong,21.1,1,2,22000,10000,20000,30000
 dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,21.2,1,2,22000,10000,20000,40000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,23,1,2,24000,10000,25000,45000
-dkong,dkongsavage,Savage,DK Savage Difficulty,24,1,2,26000,10000,25000,40000
+dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,24,1,2,26000,10000,15000,30000
 dkong,dkongrivets,DKRivet,DK Rivets Only,25,1,2,28000,10000,20000,40000
 dkong,dkongotr,DK OnTheRun,DK On The Run,26,1,2,30000,10000,15000,30000
 dkong,dkongoctomonkey,OctoMonkey,DK OctoMonkey,28,1,2,32000,60000,100000,200000
@@ -57,7 +57,7 @@ dkong,dkongrainbow,DK Rainbow,,71,1,2,92000,10000,25000,40000
 ckongpt2,ckongpt2_continue,CK Cont.,CK Continue,72,1,2,94000,10000,15000,30000
 dkong,dkongkonkey,KD,Konkey Dong,73,1,2,96000,10000,15000,25000
 dkong,dkongnoluck,NOLuck,NoLuck Kong,74,1,2,98000,15000,25000,50000
-dkong,dkongduel,DK Duel,,75,1,2,100000,5000,6500,8000
+dkong,dkongfr,DK Freerun,DK Freerun Edition,75,1,2,100000,20000,40000,60000
 ckongs,ckongs,CK Scramble,CK Scramble Hardware,77,1,2,102000,10000,25000,40000
 ckongg,ckongg,CK Galax.,CK Galaxian Hardware,78,1,2,104000,10000,25000,40000
 ckongpt2a,ckongpt2a_2023,CK2023,Crazy Kong 2023,79,1,2,106000,10000,25000,40000
@@ -93,9 +93,10 @@ congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,,,,
 dkong,dkongtrn,DK Trainer,,9999,1,2,,,,
 dkong,dkongpace,DK Pace,,9999,1,2,,,,
 dkong,dkongbcc,DK Barrel Control,,9999,1,2,,,,
+dkong,dkongsprites,DK Sprites,DK Sprites & Hitboxes,9999,1,2,,,,
 dkong,dkongbarrelboss,DK Barrel Boss,,9999,1,2,,,,
 dkong,dkongsprfin,DK Springfinity,,9999,1,2,,,,
-dkong,dkongfr,DK Free,DK Freerun Edition,9999,1,2,,20000,40000,60000
+dkong,dkongduel,DK Duel,DK Duel (2 Player),9999,1,2,,5000,6500,8000
 dkongf,dkongst2,DK Springs Trainer,,9999,1,2,,,,
 dkongjr,dkongjrcontinue,JRCont.,DK Junior Continue,9999,1,2,,,,
 dkongjr,dkongjrspringboard,JR Springboard,Junior Springboard,9999,1,2,,10000,15000,30000
