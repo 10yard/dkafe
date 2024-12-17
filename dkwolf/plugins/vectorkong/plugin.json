@@ -2,7 +2,7 @@
 "plugin": {
 "name": "vectorkong",
 "description": "Vector Kong",
-"version": "0.14",
+"version": "0.15",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
 "start": "false"

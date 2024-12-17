@@ -1,11 +1,12 @@
 Vector Kong
 
-A vector graphics version of Donkey Kong.  
-
-You play the barrel stage only.
+A vector graphics version of Donkey Kong.
 
 The hack suppresses the normal video output completely
 and renders high resolution vectors to the screen 
-instead of pixels.
+instead of pixels.  
+Imagine you are playing Donkey Kong on the Vectrex!
+
+You play the barrel stage only.
 
 Hack Developed by Jon Wilson (10yard)

@@ -91,14 +91,14 @@ Credit is given to the original authors below.
  - GalaKong Junior
  - DK Bros.
  - Allen Kong
+ - DK Lava Panic!
+ - DK Who and the Daleks
+ - Donkey Kong Insanity
  - OctoMonkey
  - Half Kong
  - Quarter Kong
  - 2NUT Kong
  - NoLuck Kong
- - DK Lava Panic!
- - DK Who and the Daleks
- - DK Savage Difficulty
  - Konkey Dong
  - Donkey Kong Barrels Only
  - Donkey Kong Pies Only
