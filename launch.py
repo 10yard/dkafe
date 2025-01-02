@@ -1537,6 +1537,12 @@ def animate_rolling_coins(out_of_time=False):
             elif "APPROACHING_END_OF_LADDER" in map_info and _g.stage == 1:
                 co_dir = choice([-1, 1])  # Random direction change after taking a ladder on rivets
             co_y += COIN_SPEED  # Move down the ladder
+        elif "BLOCKED_RIGHT" in map_info and co_y < 220:
+            co_dir = -1
+            co_x += co_dir * COIN_SPEED  # Increment horizontal movement
+        elif "BLOCKED_LEFT" in map_info and co_y < 220:
+            co_dir = 1
+            co_x += co_dir * COIN_SPEED  # Increment horizontal movement
         else:
             co_x += co_dir * COIN_SPEED  # Increment horizontal movement
         co_rot += co_dir * COIN_CYCLE

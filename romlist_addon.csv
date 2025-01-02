@@ -181,7 +181,7 @@ coleco_dk_luigi,shell,DKLuigi,CVS: Donkey Kong Luigi,9999,,,137000,2,4,8
 coleco_jumpmanjr,shell,JumpanJR,CVS: Jumpman Jr,9999,,,137000,2,4,8
 coleco_super_dk,shell,Super,CVS: Super Donkey Kong!,9999,,,137000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,137000,2,4,8
-cpc6128_climbit,shell,Climb-It,CPC: Climb-It,9999,,,131000,2,4,8
+cpc6128_climbit,shell,Climb-It,CPC: Climb-It,216,,,131000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,131000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,131000,2,4,8
 cpm_ladder,shell,Ladder,CP/M: Ladder,9999,,,173000,2,4,8

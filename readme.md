@@ -28,7 +28,7 @@ The latest releases are available to download from below.  Refer to the [How to 
 
 ## About DKAFE
 
-The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on 4 familiar stages and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
+The DKAFE frontend system mimics Donkey Kong gameplay.  You control Jumpman on several familiar stages and have him select which arcade game to launch.  Simply walk up to a machine,  push "Up" to face towards it, then push "Jump" to play.  
 
 The default setup showcases all the excellent Donkey Kong hacks that have been developed by the community along with some new hacks that were made specifically by me for this frontend. 
 
@@ -48,7 +48,7 @@ If you're not up for the challenge then it is possible to adjust things and have
 
 The frontend can be configured to launch other emulators and roms.
 
-Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between barrel, rivet, pie and elevator stages.
+Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between the stages.
 
 ![NEW Feature](https://github.com/10yard/dkafe/blob/master/artwork/about/new.png) 
 There is now a console add-on pack which adds extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See [Console Add-on Pack](#console-add-on-pack) section below.
@@ -305,7 +305,7 @@ An optional add-on pack includes 300 Donkey Kong ports and hacks for the followi
  - VTech Creativision
  - Watara Supervision
 
-The Donkey Kong console games will appear on the pies and elevator stages.  There is also a crazy kong stage specific for PC and DOS.
+The Donkey Kong console games will appear on the pie, elevator, crazy kong (Win x64 only) and big kong stages.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
@@ -456,7 +456,7 @@ Increase the frontend speed.  0 is normal.  If frontend is running slow then try
 How difficult are the target scores.  1 (Beginner) to 10 (Expert).
 
 `START_STAGE = 0`
-The stage to start the frontend on.  0 is barrels stage, 1 is rivets stage, 2 is pie factory stage.
+The stage to start the frontend on.  0 is barrels stage, 1 is rivets stage, 2 is pie factory stage, 3 is springs stage, 4 is crazy kong stage, 5 is big kong stage.
 
 `HIGH_SCORE_SAVE = 1`
 Save your high score tables for each game.
