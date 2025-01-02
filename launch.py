@@ -1596,6 +1596,13 @@ def stage_check(warp=False):
         _g.stage = (current_stage + 1) % STAGES
         _g.ypos = 238
 
+    if ARCH != "win64" and current_stage != _g.stage:
+        # Skip the Window x64 specific stage
+        if current_stage == 3 and _g.stage == 4:
+            _g.stage = 5
+        elif current_stage == 5 and _g.stage == 4:
+            _g.stage = 3
+
     # Set Donkey Kong and Pauline position
     _g.dkx, _g.dky = KONG_POSXY[_g.stage]
     _g.psx, _g.psy = PAULINE_POSXY[_g.stage]
@@ -1640,7 +1647,7 @@ def play_from_tracklist():
 
 def dk_ck():
     # DK or CK graphics
-    return "ck" if _g.stage == 4 else "dk"
+    return "ck" if _g.stage == 4 or _g.stage == 5 else "dk"
 
 
 def main(initial=True):

@@ -31,7 +31,7 @@ function vectorkong.startplugin()
 	local STACKED_BARRELS = {{173,0},{173,10},{189,0},{189,10}}
 	local BARRELS = {0x6700,0x6720,0x6740,0x6760,0x6780,0x67a0,0x67c0,0x67e0,0x6800,0x6820}
 	local FIREBALLS = {0x6400, 0x6420, 0x6440, 0x6460, 0x6480}
-	local BR = 0xffff  -- instuction to break in a vector chain
+	local BR = 0xffff  -- instruction to break in a vector chain
 
 	function initialize()
 		if emu.romname() == "dkong" then
@@ -220,6 +220,7 @@ function vectorkong.startplugin()
 
 	---- Basic vector drawing functions
 	-----------------------------------
+	
 	function vector(y1, x1, y2, x2)
 		-- draw a single vector
 		scr:draw_line(y1, x1, y2, x2, vector_color)

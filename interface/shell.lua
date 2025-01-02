@@ -308,7 +308,7 @@ function shell_main()
 						screen:draw_text(0, 0,  start_msg.." ", white, black)
 					end
 					--Simple prize target message
-					mac:popmessage('DKAFE Prizes:\n\n'..'1st prize at '..tostring(data_score1)..' mins\n'..'2nd prize at '..tostring(data_score2)..' mins\n'..'3rd prize at '..tostring(data_score3)..' mins')
+					mac:popmessage('DKAFE Prizes:\n1st at '..tostring(data_score1)..' mins, 2nd at '..tostring(data_score2)..' mins, 3rd at '..tostring(data_score3)..' mins')
 				end
 
 				if not mac.paused then

@@ -187,10 +187,7 @@ elif is_pi():
 ADDONS_CONSIDERED = ENABLE_ADDONS
 if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
     globals()["ENABLE_ADDONS"] = 0
-if ENABLE_ADDONS:
-    STAGES = 5 if ARCH == "win64" else 4
-else:
-    STAGES = 3
+STAGES = 6 if ENABLE_ADDONS else 3
 
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
@@ -368,11 +365,13 @@ SLOTS = (
     (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (20, 121), (1, 120),
     (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (194, 88), (210, 87),
     (162, 64), (146, 63), (114, 62), (90, 62), (2, 62),
-    (98, 34)
+    (98, 34),
+
+    (2, 226), (34, 226)
 )
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 215)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 215), (215, 217)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -427,16 +426,16 @@ LADDER_ZONES = (
 LADDER_CENTRES = (4, 12, 20, 28, 36, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204)
 
 # Stage specific positions, colours etc
-BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE)
-HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178)), ((3, 159), (206, 70)), ((32, 96), (167, 190))
-TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140)), ((206, 72), (3, 161)), ((164, 193), (32, 92))
-OILCAN_POSXY = (16, 232), (172, 152), (104, 128), (68, 112), (16, 232)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142), (72, 126), (20, 246)
-PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (8, 0)
-KONG_POSXY = (0, 0), (80, 4), (0, 4), (0, 4), (0, 0)
-COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77), (67, 77), (67, 73)
-COIN_AWARD_POSX = 0, 112, 28, 0, 0
-LADDER_CHANCE = 3, 2, 3, 3,3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
+BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE), (WHITE, WHITE)
+HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178)), ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190))
+TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140)), ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92))
+OILCAN_POSXY = (16, 232), (172, 152), (104, 128), (68, 112), (16, 232), (16, 232)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142), (72, 126), (20, 246), (20, 246)
+PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (8, 0), (8, 0)
+KONG_POSXY = (0, 0), (80, 4), (0, 4), (0, 4), (0, 0), (0, 0)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77), (67, 77), (67, 73), (67, 73)
+COIN_AWARD_POSX = 0, 112, 28, 0, 0, 0
+LADDER_CHANCE = 3, 2, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
 
 # Pies specific.  Location of the 2 moving ladder sections
 MOVING_LADDER_POSXY = (15, 96), (199, 96)
