@@ -1,0 +1,18 @@
+LCD - Gakken Crazy Kong
+
+This version is superior to Coleco's LCD Donkey Kong. 
+The movement and gameplay is smooth and the levels 
+are interesting and enjoyable.
+
+The first level - has moving rocks that fall from the 
+top and roll right/left on the lower levels, a 
+conveyor belt that moves right/left (a beep signals 
+the change in direction) with moving carts on the 
+middle level, and a bouncing fireball on the top level
+before you go up to save your maiden.
+
+The second level - slightly puzzley with up/down 
+moving platforms, items to get for points, and 
+falling rocks accompanied with bouncing fireballs.
+
+Developed By Gakken

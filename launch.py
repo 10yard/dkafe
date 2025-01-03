@@ -1602,12 +1602,12 @@ def stage_check(warp=False):
         _g.stage = (current_stage + 1) % STAGES
         _g.ypos = 238
 
-    if ARCH != "win64" and current_stage != _g.stage:
-        # Skip the Window x64 specific stage
-        if current_stage == 3 and _g.stage == 4:
-            _g.stage = 5
-        elif current_stage == 5 and _g.stage == 4:
-            _g.stage = 3
+    # if ARCH != "win64" and current_stage != _g.stage:
+    #     # Skip the Window x64 specific stage
+    #     if current_stage == 3 and _g.stage == 4:
+    #         _g.stage = 5
+    #     elif current_stage == 5 and _g.stage == 4:
+    #         _g.stage = 3
 
     # Set Donkey Kong and Pauline position
     _g.dkx, _g.dky = KONG_POSXY[_g.stage]

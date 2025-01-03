@@ -1,0 +1,6 @@
+Jupiter Ace - Krazy Kong
+
+A prototype Donkey Kong clone written for the 
+Jupiter Ace that was never released.
+
+Developed by Guy Wilkinson

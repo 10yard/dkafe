@@ -1,0 +1,10 @@
+Commodore Vic20 - Log Run
+
+Log Run is a clone of Donkey Kong, but you are not 
+rescuing a damsel in distress, instead you are 
+trying to rescue your hammer.
+
+You also don't jump over barrels, instead you jump 
+over logs.
+
+Developed By Terminal Software

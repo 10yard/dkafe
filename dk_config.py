@@ -187,13 +187,22 @@ elif is_pi():
 ADDONS_CONSIDERED = ENABLE_ADDONS
 if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
     globals()["ENABLE_ADDONS"] = 0
-STAGES = 6 if ENABLE_ADDONS else 3
+
+if ENABLE_ADDONS:
+    STAGES = 6 if ARCH == "win64" else 4
+else:
+    STAGES = 3
 
 if PLAYLIST_VOLUME > 10: globals()["PLAYLIST_VOLUME"] = 10
 if PLAYLIST_VOLUME < 0: globals()["PLAYLIST_VOLUME"] = 0
 if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
 if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 if START_STAGE > STAGES: START_STAGE = 0
+
+#TESTING
+START_STAGE = 5
+FREE_PLAY = 1
+UNLOCK_MODE = 0
 
 # Expected location of original DK zips (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
@@ -369,7 +378,7 @@ SLOTS = (
 
     (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (194, 220), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (34, 188), (18, 187), (1, 186),
-    (34, 164), (82, 161), (98, 160), (130, 158), (162, 156), (194, 154), (210, 153),
+    (31, 164), (82, 161), (98, 160), (130, 158), (162, 156), (194, 154), (210, 153),
     (194, 132), (130, 128), (98, 126), (82, 125),
     (66, 96), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (194, 88), (210, 87),
     (194, 66), (162, 64), (146, 63), (130, 62), (90, 62), (2, 62),

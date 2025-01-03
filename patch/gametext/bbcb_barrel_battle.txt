@@ -1,0 +1,6 @@
+BBC Micro - Barrel Battle
+
+A Donkey Kong clone published in Micro User 
+magazine, volume 1, issue 11, in January 1984.
+
+Developed by Barry Wakelin

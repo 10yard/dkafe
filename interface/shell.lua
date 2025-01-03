@@ -40,7 +40,7 @@ local white, black = 0xffffffff, 0xff000000
 local attenuation = sound.attenuation
 
 -- Adjustments for systems
-local target_time = 5
+local target_time = 6
 local time_played = 0
 
 --defaults
@@ -302,13 +302,18 @@ function shell_main()
 		if screen then
 			if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then
 				-- Draw time targets at startup (or when paused)
-				if time_played > 0 and (time_played <= target_time or mac.paused) then
-					if not mac.paused and start_msg ~= "" then
-						screen:draw_text(0, 4,  start_msg.." ", black, black) -- clear block for message
-						screen:draw_text(0, 0,  start_msg.." ", white, black)
+				if time_played > 0 then
+					if time_played < target_time or mac.paused then
+						if not mac.paused and start_msg ~= "" then
+							screen:draw_text(0, 4,  start_msg.." ", black, black) -- clear block for message
+							screen:draw_text(0, 0,  start_msg.." ", white, black)
+						end
+						--Simple prize target message
+						mac:popmessage('DKAFE Prizes:\n1st at '..tostring(data_score1)..' mins, 2nd at '..tostring(data_score2)..' mins, 3rd at '..tostring(data_score3)..' mins')
+					elseif time_played == target_time then
+						-- clear the target message
+						mac:popmessage()
 					end
-					--Simple prize target message
-					mac:popmessage('DKAFE Prizes:\n1st at '..tostring(data_score1)..' mins, 2nd at '..tostring(data_score2)..' mins, 3rd at '..tostring(data_score3)..' mins')
 				end
 
 				if not mac.paused then

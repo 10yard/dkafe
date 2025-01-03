@@ -1,0 +1,15 @@
+MS-DOS - David's Kong
+
+David's Kong is a classic knock-off of Donkey Kong,
+developed by an unknown author (probably named David).
+Here the basic object is the same, rescue the maiden 
+in distress from the top of the screen while avoiding 
+oil barrels and fireballs. Run and jump along the 
+platforms to avoid them. 
+
+After rescuing the girl, the level changes a bit and 
+you have to run back down. Its CGA four-color graphics
+and primitive PC speaker sound effects will be 
+nostalgic for people who played this many years ago! 
+
+Probably Developed by David

@@ -1,0 +1,9 @@
+BBC Micro - Krazy Ape 2
+
+A Donkey Kong clone published in Personal Computing 
+Today magazine, volume 3, number 10, in May 1985.
+
+The game was designed for the Acorn Electron and has 
+been tweaked to make it more playable on a BBC Micro.
+
+Developed by G. Bailey

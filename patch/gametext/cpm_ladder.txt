@@ -1,0 +1,15 @@
+CP/M - Ladder
+
+Ladder is a platform game similar to Donkey Kong 
+written for the CP/M operating system and made to be 
+operated on the early Kaypro line of luggable 
+computers. 
+
+Since the Kaypro only has a text mode, the game uses 
+letters, numbers, and symbols lined up to create walls
+and platforms, pits/traps, characters, trampolines and 
+goals. The floors in Ladder are made of equal signs, 
+and the ladders themselves are made of capital "H"s 
+stacked on top of each other.
+
+Developed By Yahoo Software

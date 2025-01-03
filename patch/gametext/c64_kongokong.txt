@@ -1,0 +1,18 @@
+Commodore 64 - Kongo Kong
+
+It is a blatant clone of Donkey Kong, although it is 
+one of the few which has unique level designs. 
+Graphically and in terms of gameplay, it is very much 
+considered to be vastly inferior to DK, although not 
+to the extent that some clones can be.
+
+The game's story, such is it, is that a gorilla has 
+escaped a local city zoo and kidnapped a random woman. 
+
+The player controls a nameless firefighter as he 
+trapezes through various stages in order to confront 
+the gorilla and rescue the damsel. If the player 
+"rescues" her three times, they are granted an extra 
+life.
+
+Developed By Mike Wacker / Victory Software

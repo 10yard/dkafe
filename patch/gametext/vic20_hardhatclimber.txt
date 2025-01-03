@@ -1,0 +1,11 @@
+VIC 20 - Hardhat Climber
+
+This Compute type-in is a BASIC take on Donkey Kong 
+and Jumpman. You collect items like Jumpman, while the
+level design looks like Donkey Kong and you dodge 
+barrels...umm...well, ONE barrel.
+
+Despite its simplicity, it’s pretty charming and it 
+could serve as the basis for a more interesting game.
+
+Developed By Compute!
