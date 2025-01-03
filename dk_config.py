@@ -199,11 +199,6 @@ if SPEED_ADJUST > 8:  globals()["SPEED_ADJUST"] = 8
 if SPEED_ADJUST < 0:  globals()["SPEED_ADJUST"] = 0
 if START_STAGE > STAGES: START_STAGE = 0
 
-#TESTING
-START_STAGE = 5
-FREE_PLAY = 1
-UNLOCK_MODE = 0
-
 # Expected location of original DK zips (not provided with software)
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
@@ -379,7 +374,7 @@ SLOTS = (
     (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (194, 220), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (34, 188), (18, 187), (1, 186),
     (31, 164), (82, 161), (98, 160), (130, 158), (162, 156), (194, 154), (210, 153),
-    (194, 132), (130, 128), (98, 126), (82, 125),
+    (194, 132), (130, 128), (98, 126), (82, 125), (1, 120),
     (66, 96), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (194, 88), (210, 87),
     (194, 66), (162, 64), (146, 63), (130, 62), (90, 62), (2, 62),
     (98, 34)

@@ -1,0 +1,14 @@
+NES Console - Donkey Kong 3: The Great Counter Attack
+
+A Donkey Kong 3 sequel. The gameplay is much more 
+simplistic than its predecessor, as you can no longer
+jump, and instead the stages revolve around you 
+shooting enemies that appear from the top of the 
+screen, similar to classic shooters such as Galaga. 
+Donkey Kong is located at the top of the screen and 
+moves slightly up when you shoot him, though unlike 
+Donkey Kong 3, he isn't climbing on poles, but rather 
+holding onto two parachutes. 
+You win the level if you shoot Donkey Kong offscreen.
+
+Hack Developed by Hudson Soft

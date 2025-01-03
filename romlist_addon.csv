@@ -130,6 +130,11 @@ jupace_krazykong,shell,JUP Krazy,JUP: Kong,236,,,239000,2,4,8
 lcd_gckong,shell,LCD Gakken,LCD: Gakken Crazy Kong,238,,,240000,2,4,8
 pc_lowresnx_denis_kogne,shell,NX D.Kogne,NX: Denis Kogne,241,,,241000,2,4,8
 dos_davikong,shell,DOS David's,DOS: David's Kong,242,,,242000,2,4,8
+nes_dk_badly_drawn,shell,NES Badly,NES: Badly Drawn Donkey Kong,243,,,243000,2,4,8
+nes_dk_zelda12,shell,NES Zelda12,NES: ZeldaKong12 (Tarin),245,,,244000,2,4,8
+pc_pc88_dk3,shell,DK3 CounterAttack,PC88: DK3 Great Counter Attack,246,,,245000,2,4,8
+nes_dk_jr_rescue_kuck,shell,NES Rescue,NES: Donkey Kong Jr Rescue Kuck,247,,,246000,2,4,8
+gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,248,,,247000,2,4,8
 ##vic20-se_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),9999,,,188000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,121000,2,4,8
@@ -201,7 +206,6 @@ dos_willy,shell,WillyWorm,DOS: Willy the Worm,9999,,,173000,2,4,8
 fds_dk_japan,shell,DK,FDS: Donkey Kong (Original),9999,,,121000,2,4,8
 fds_dk_jr_japan,shell,DK Junior,FDS: Donkey Kong Junior,9999,,,121000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: Donkey Kong 4 Level Hack,9999,,,152000,2,4,8
-gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,9999,,,152000,2,4,8
 gbcolor_dk_summer,shell,DK Summer,GBC: Donkey Kong Summer Hack,9999,,,152000,2,4,8
 genesis_felix,shell,GENFIFJR,GENESIS: Fix-It Felix Jr.,9999,,,130000,2,4,8
 gnw_dkcirc,shell,G&W Circus,G&W: Donkey Kong Circus,9999,,,213000,2,4,8
@@ -220,14 +224,12 @@ nes_dk,shell,NESDK,NES: Donkey Kong (Original),9999,,,0,2,4,8
 nes_dk_3,shell,DK3,NES: Donkey Kong 3,9999,,,0,2,4,8
 nes_dk_3_cincinnati_zoo,shell,DK3 Zoo,NES: Donkey Kong 3 Zoo Edition,9999,,,121000,2,4,8
 nes_dk_arrietty,shell,DK Arietty,NES: Arrietty World,9999,,,121000,2,4,8
-nes_dk_badly_drawn,shell,BadlyDrawn,NES: Badly Drawn Donkey Kong,9999,,,121000,2,4,8
 nes_dk_cure,shell,DK Cure,NES: Donkey Kong Cure,9999,,,121000,2,4,8
 nes_dk_freddy_jason,shell,DK Freddy vs Jason,NES: Freddy vs Jason,9999,,,121000,2,4,8
 nes_dk_godmode,shell,God,NES: Donkey Kong God Mode,9999,,,121000,2,4,8
 nes_dk_japan,shell,DK Japan,NES: Donkey Kong Japan,9999,,,121000,2,4,8
 nes_dk_jr_juancho,shell,JR Juancho,NES: Donkey Kong JR Juancho,9999,,,121000,2,4,8
 nes_dk_jr_math,shell,DK JR Math,NES: Donkey Kong Junior Math,9999,,,121000,2,4,8
-nes_dk_jr_rescue_kuck,shell,RescueKuck,NES: Donkey Kong Jr Rescue Kuck,9999,,,121000,2,4,8
 nes_dk_jr_simplified,shell,JR Simplified,NES: Donkey Kong JR Simplified,9999,,,121000,2,4,8
 nes_dk_junior,shell,JR,NES: Donkey Kong Junior,9999,,,0,2,4,8
 nes_dk_kingkoopa,shell,KingKoopa,NES: King Koopa,9999,,,121000,2,4,8
@@ -238,7 +240,6 @@ nes_dk_redux,shell,Redux,NES: Donkey Kong Redux,9999,,,0,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs Donkey Kong,9999,,,121000,2,4,8
 nes_dk_zelda10,shell,ZK10,NES: ZeldaKong10 (Marin),9999,,,121000,2,4,8
 nes_dk_zelda11,shell,Z11,NES: ZeldaKong11 (Grandma),9999,,,121000,2,4,8
-nes_dk_zelda12,shell,Z12,NES: ZeldaKong12 (Tarin),9999,,,121000,2,4,8
 nes_dk3_bandits,shell,DK3 Bandits,NES: Donkey Kong 3 Bandits,9999,,,121000,2,4,8
 nes_dk3_battlebeasts,shell,DK3 BattleBeasts,NES: Donkey Kong 3 Battle Beast,9999,,,121000,2,4,8
 nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,121000,2,4,8
@@ -271,7 +272,6 @@ pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,9999,,,209000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,209000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
-pc_pc88_dk3,shell,DK3 CounterAttack,PC88: DK3 Great Counter Attack,9999,,,190000,2,4,8
 pc_pinball_dkong,shell,PINDK,PINBALL: Donkey Kong,9999,,,227000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,220000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8

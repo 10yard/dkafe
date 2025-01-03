@@ -1,0 +1,14 @@
+NES Console - Rescue Kuck
+
+Rescue Kuck is a weird bootleg of Donkey Kong Jr that 
+was on one of those 64 in 1 carts for the Famicom. 
+The sprites are a bit weird including a modified smurf
+instead of Donkey Kong and overall just well weird. 
+
+The player character in this game is Conte, replacing 
+Jr. The character that Conte has to save at the end of
+each stage, (potentially named Kuck), is a recolor of 
+the main character, Numen, from another hacked NES 
+game, Bruce & Leo.
+
+Hack Developed by Inventor
