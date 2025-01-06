@@ -1,0 +1,10 @@
+Tangerine ORIC - Honey Kong
+
+A good "Kong" game with some nice animations. 
+The collision detection could be a bit better, which 
+means the barrels are quite hard to jump at first, 
+but with practice, it becomes easier.
+
+There are 20 levels to work through!
+
+Developed by Sprites

@@ -129,12 +129,17 @@ dragon32_kingcuthbert,shell,D32 Cuthbert,D32: King Cuthbert,235,,,238000,2,4,8
 jupace_krazykong,shell,JUP Krazy,JUP: Kong,236,,,239000,2,4,8
 lcd_gckong,shell,LCD Gakken,LCD: Gakken Crazy Kong,238,,,240000,2,4,8
 pc_lowresnx_denis_kogne,shell,NX D.Kogne,NX: Denis Kogne,241,,,241000,2,4,8
-dos_davikong,shell,DOS David's,DOS: David's Kong,242,,,242000,2,4,8
+nes_dk_jr_rescue_kuck,shell,NES Rescue,NES: Donkey Kong Jr Rescue Kuck,242,,,242000,2,4,8
 nes_dk_badly_drawn,shell,NES Badly,NES: Badly Drawn Donkey Kong,243,,,243000,2,4,8
 nes_dk_zelda12,shell,NES Zelda12,NES: ZeldaKong12 (Tarin),245,,,244000,2,4,8
-pc_pc88_dk3,shell,DK3 CounterAttack,PC88: DK3 Great Counter Attack,246,,,245000,2,4,8
-nes_dk_jr_rescue_kuck,shell,NES Rescue,NES: Donkey Kong Jr Rescue Kuck,247,,,246000,2,4,8
-gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,248,,,247000,2,4,8
+pc_pc88_dk3,shell,PC88 DK3 Counter,PC88: DK3 Great Counter Attack,247,,,245000,2,4,8
+dos_davikong,shell,DOS David's,DOS: David's Kong,248,,,246000,2,4,8
+gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,250,,,247000,2,4,8
+pc_dk_aa,shell,PC Attacks,PC: Donkey Kong Attacks,253,,,248000,2,4,8
+spectrum_wallykong,shell,SPEC Wally,SPEC48K: Wally Kong,256,,,249000,2,4,8
+pc_trs80_killergorilla,shell,TRS80 KillerGorilla,TRS80: Killer Gorilla,260,,,250000,2,4,8
+oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,261,,,251000,2,4,8
+pc_kong_jr_gnw,shell,PC Jr. Tribute,G&W: Kong Jr Tribute,262,,,252000,2,4,8
 ##vic20-se_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),9999,,,188000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,121000,2,4,8
@@ -250,7 +255,6 @@ nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
 nes_pinkfloyd,shell,PinkFloyd,NES: Pink Floyd's The Wall,9999,,,121000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,121000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,130000,2,4,8
-oric1_honeykong,shell,Honey Kong,ORIC: Honey Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,130000,2,4,8
 orica_4k_kong,shell,4K Kong,ORIC: 4K Kong,9999,,,130000,2,4,8
 pc_a2600_arcade_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,221000,2,4,8
@@ -258,7 +262,6 @@ pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,220000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,220000,2,4,8
 pc_atarist_junior,shell,DK JR,ST: Donkey JR (G&W),9999,,,0,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,208000,2,4,8
-pc_dk_aa,shell,PC DKAttacks,PC: Donkey Kong Attacks,9999,,,197000,2,4,8
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,9999,,,197000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,197000,2,4,8
 pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,9999,,,197000,2,4,8
@@ -268,7 +271,6 @@ pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,9999,,,209000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,197000,2,4,8
 pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,143000,2,4,8
 pc_kidnappers_inc,shell,Kidnappers Inc,PC: Kidnappers Inc.,9999,,,197000,2,4,8
-pc_kong_jr_gnw,shell,Kong!,G&W: Kong Jr Tribute,9999,,,209000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,209000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
@@ -278,7 +280,6 @@ pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,220000,2,4,8
 pc_spectrum_dkjr2,shell,DK JR2,SPEC48K: Donkey Kong Junior 2,9999,,,160000,2,4,8
 pc_supervision_superkong,shell,SuperKong,SV: Super Kong,9999,,,152000,2,4,8
 pc_trs80_ape,shell,Ape,TRS80: Ape Escape,9999,,,211000,2,4,8
-pc_trs80_killergorilla,shell,KillerGorilla,TRS80: Killer Gorilla,9999,,,211000,2,4,8
 pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,211000,2,4,8
 pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,209000,2,4,8
 pet4032_dk_junior,shell,DK Junior,G&W: Donkey Kong Junior (G&W),9999,,,133000,2,4,8
@@ -298,7 +299,6 @@ spectrum_kongs_revenge,shell,KongsRevenge,SPEC48K: Kongs Revenge,9999,,,160000,2
 spectrum_krazykong,shell,Krazy,SPEC48K: Krazy Kong,9999,,,160000,2,4,8
 spectrum_monkeybiz,shell,Monkey,SPEC48K: Monkey Bizness,9999,,,160000,2,4,8
 spectrum_spec_kong,shell,Spec Kong,SPEC48K: Spec Kong,9999,,,160000,2,4,8
-spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,9999,,,160000,2,4,8
 spectrum_wrathofkong,shell,Wrath,SPEC48K: Wrath of Kong,9999,,,160000,2,4,8
 vic20_crazykong,shell,CrazyKong,VIC20: Crazy Kong,9999,,,188000,2,4,8
 vic20_kongokong,shell,V20CK,VIC20: Kongo Kong,9999,,,188000,2,4,8
