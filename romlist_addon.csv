@@ -134,13 +134,13 @@ nes_dk_badly_drawn,shell,NES Badly,NES: Badly Drawn Donkey Kong,243,,,243000,2,4
 nes_dk_zelda12,shell,NES Zelda12,NES: ZeldaKong12 (Tarin),245,,,244000,2,4,8
 pc_pc88_dk3,shell,PC88 DK3 Counter,PC88: DK3 Great Counter Attack,247,,,245000,2,4,8
 dos_davikong,shell,DOS David's,DOS: David's Kong,248,,,246000,2,4,8
-gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,250,,,247000,2,4,8
-pc_dk_aa,shell,PC Attacks,PC: Donkey Kong Attacks,253,,,248000,2,4,8
-spectrum_wallykong,shell,SPEC Wally,SPEC48K: Wally Kong,256,,,249000,2,4,8
-pc_trs80_killergorilla,shell,TRS80 KillerGorilla,TRS80: Killer Gorilla,260,,,250000,2,4,8
-oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,261,,,251000,2,4,8
-pc_kong_jr_gnw,shell,PC Jr. Tribute,G&W: Kong Jr Tribute,262,,,252000,2,4,8
-##vic20-se_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),9999,,,188000,2,4,8
+dos_aldo3,shell,DOS Aldo3,DOS: Aldo's Assault,250,,,247000,2,4,8
+gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,253,,,248000,2,4,8
+pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,256,,,249000,2,4,8
+spectrum_wallykong,shell,SPEC Wally,SPEC48K: Wally Kong,258,,,250000,2,4,8
+pc_trs80_killergorilla,shell,TRS80 Killer,TRS80: Killer Gorilla,260,,,251000,2,4,8
+oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,261,,,252000,2,4,8
+pc_kong_jr_gnw,shell,PC Jr. Tribute,G&W: Kong Jr Tribute,262,,,253000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,0,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,121000,2,4,8
 a2600_dk,shell,VCSDK,2600: Donkey Kong (Original),9999,,,0,2,4,8
@@ -202,7 +202,6 @@ coleco_super_dk,shell,Super,CVS: Super Donkey Kong!,9999,,,137000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,137000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,131000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,131000,2,4,8
-dos_aldo3,shell,Aldo's Assault,DOS: Aldo's Assault,9999,,,196000,2,4,8
 dos_dk,shell,DOS,DOS: Donkey Kong (Original),9999,,,0,2,4,8
 dos_dkpc,shell,DKPC,DOS: Donkey Kong PC,9999,,,173000,2,4,8
 dos_heroman,shell,Hero Man,DOS: Hero Man,9999,,,173000,2,4,8
@@ -328,6 +327,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
 ##vic20_dk,shell,**Start up trouble,VIC20: Donkey Kong,####,,,0,2,4,8
 ##vic20_fast_eddie,shell,**Not DK enough,VIC20: Fast Eddie,####,,,0,2,4,8
 ##vic20_vic_kong,shell,**Similar to nufecop,VIC20: Vic Kong,####,,,0,2,4,8
+##vic20-se_dk_ackenhausen,shell,DK,VIC20: Donkey Kong (Ackenhausen),####,,,0,2,4,8
 ##vic20-se_logger,shell,**Multi stage loading,VIC20: Logger,####,,,0,2,4,8
 ##vic20-se_mickybricky,shell,**tape speed issue,VIC20: Micky The Bricky,####,,,0,2,4,8
 ##zx81_kongsrevenge,shell,**slow and buggy,ZX81: Kongs Revenge,####,,,0,2,4,8

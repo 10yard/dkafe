@@ -615,9 +615,9 @@ Playlist music:
 
 # Console Addon Specific
 if ARCH == "win64":
-    ADDON_URL = "https://www.dropbox.com/scl/fi/3dunefby5v6tli44ccxf7/dkafe_console_addon_pack_v6.zip?rlkey=8345b3ptmtcyj301036cfl6tz&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/cxul57d4baisjppavgt9b/dkafe_console_addon_pack_v7.zip?rlkey=5vemrlfg3lsprrsh66syndwzv&dl=0"
 else:
-    ADDON_URL = "https://www.dropbox.com/scl/fi/upu233qwz580e8shezung/dkafe_console_addon_pack_v6_reduced.zip?rlkey=ps95z200pwyxd5193tm9xt38z&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/qlhjv7mv0gou28xshuozr/dkafe_console_addon_pack_v7_reduced.zip?rlkey=invydtbp24fpx94dhsgyvfoht&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
