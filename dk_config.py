@@ -247,6 +247,8 @@ PLUGINS = (
     ("dkongkonkey", "konkeydong"),
     ("dkong2600", "gingerbreadkong"),
     ("dkongvector", "vectorkong"),
+    ("dkongvectorwild", "vectorkong"),
+    ("dkongwobble", "wobblekong"),
     ("dkongallen", "allenkong"),
     ("dkongchorus", "dkchorus"),
     ("dkonginsanity", "dkinsanity"),
@@ -293,7 +295,7 @@ START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow", "dkongcontinue",
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
                    "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b", "dkongpacmancross",
-                   "ckongpt2a_2023", "ckongpt2_dk")
+                   "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild")
 STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
@@ -320,8 +322,9 @@ BLUE = (4, 3, 255)
 DARKBLUE = (4, 2, 220)
 MIDBLUE = (4, 3, 255)
 YELLOW = (244, 186, 21)
-BROWN = (172, 5, 7)
 LIGHTBROWN = (238, 117, 17)
+BROWN = (172, 5, 7)
+LIGHTGREY = (164, 164, 164)
 GREY = (128, 128, 128)
 MIDGREY = (104, 104, 104)
 DARKGREY = (40, 40, 40)
@@ -714,6 +717,7 @@ GAME_MEDIA = {
     "adam_dk_junior":"-flop1",
     "adam_dk_super":"-flop1",
     "c64_bonkeykong":"-flop",
+    "c64_eskimo_eddie":"-flop",
     "c64_monkeykong":"-flop",
     "c64_logger":"-speed 1.5 -quik",
     "gbcolor_dk_arcade":"-plugin gbstage -cart",
@@ -724,6 +728,7 @@ GAME_MEDIA = {
     "spectrum_ape_escape":"-cass",
     "spectrum_dk3_micro_vs":"-cass",
     "spectrum_dk_reloaded":"-cass",
+    "spectrum_eskimo_eddie":"-cass",
     "spectrum_kongs_revenge":"-cass",
     "spectrum_crazykongcity":"-cass",
     "spectrum_spec_kong":"-speed 1.1 -cass",
@@ -759,6 +764,7 @@ KEYBOARD_REMAP = {
     "pc_atarist_kidkong": "delayspace>22",
     "pc_atarist_junior":"ctrl>ctrl,space|num 1>a|num 2>b|delayspace>5.25",
     "pc_atom_kong":"left>z|right>c|up>s|down>x|ctrl>shift,space|esc>forcequit:atomulator.exe",
+    "pc_crashtime_plumber": "ctrl>space",
     "pc_dk_aa": "1>enter|2>enter|ctrl>x",
     "pc_dk_craze": "esc>forcequit:stdrt.exe",
     "pc_dk_jr_remake": "num 1>enter|ctrl>space|esc>forcequit",
@@ -773,6 +779,10 @@ KEYBOARD_REMAP = {
     "pc_pico8_ape":"ctrl>z|esc>forcequit:zepto8.exe",
     "pc_pico8_denis_kogne": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_pico8_dinkyking": "ctrl>x|esc>forcequit:zepto8.exe",
+    "pc_pico8_dinkyking1": "ctrl>x|esc>forcequit:zepto8.exe",
+    "pc_pico8_dinkyking2": "ctrl>x|esc>forcequit:zepto8.exe",
+    "pc_pico8_dinkyking3": "ctrl>x|esc>forcequit:zepto8.exe",
+    "pc_pico8_dinkyking4": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_pinball_dkpin":"1>5,1|esc>forcequit:vpinball990.exe",
     "pc_pinball_dkong":"1>5,s||esc>forcequit:vpinball990.exe",
     "pc_pokitto_dkjr":"ctrl>a|alt>b",

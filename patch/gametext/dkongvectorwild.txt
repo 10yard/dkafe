@@ -1,0 +1,16 @@
+Vector Kong (Wild Barrels)
+
+A variation of Vector Kong - which is a vectorised
+version of Donkey Kong.
+
+The hack suppresses the normal video output completely
+and renders high resolution vectors to the screen 
+instead of pixels.  
+
+This "Wild Barrels" version is extremely difficult to
+master.  A constant stream of wild barrels is being 
+thrown down from above.
+
+You play the barrel stage only.
+
+Hack Developed by Jon Wilson (10yard)

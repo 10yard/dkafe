@@ -82,6 +82,7 @@ rom_table["c64"]                     = {"P1",            true,  550,   {150,"RUN
 rom_table["c64p"]                    = {"P1",            true,  550,   {150,"RUN\n"}}
 rom_table["c64_fast_eddie"]          = {"JJ TT JJ AA",   true,  700,   {150,"RUN\n"}}
 rom_table["c64_ck64"]                = {"P1",            true,  900,   {150,"RUN\n"}}
+rom_table["c64_eskimo_eddie"]        = {"JJ",            true,  5300,  {150,'LOAD"*",8,1\n',5000,"RUN\n",5200,"{F1}"}}
 rom_table["c64_dk_x"]                = {"JJ TT P1",      false, 750,   {150,"RUN\n",300,"{ENTER}"}}
 rom_table["c64_kong"]                = {"JJ",            true,  550,   {150,"RUN\n"}}
 rom_table["c64_kongokong"]           = {"P1",            true,  1430,  {150,"RUN\n",1250,"{F7}",1400,"{F1}"}}
@@ -148,6 +149,7 @@ rom_table["spectrum"]                = {"P1",            false, 0,     {}}
 rom_table["spectrum_ape_escape"]     = {"P1",            true,  16000, {150,'J""\n',300,"{PLAY}"}}
 rom_table["spectrum_dk3_micro_vs"]   = {"P1",            true,  14500, {150,'J""\n',300,"{PLAY}"}}
 rom_table["spectrum_crazykongcity"]  = {"P1",            true,  12700, {150,'J""\n',300,"{PLAY}",12500,"M",12600,"1"}}
+rom_table["spectrum_eskimo_eddie"]   = {"P1",            true,  11250, {150,'J""\n',300,"{PLAY}"}}
 rom_table["spectrum_kongs_revenge"]  = {"P1",            true,  15000, {150,'J""\n',300,"{PLAY}"}}
 rom_table["spectrum_killerkong"]     = {"P1",            false, 500,   {}}
 rom_table["spectrum_killerknight"]   = {"POOR", 	     false, 0,     {}}
@@ -259,7 +261,7 @@ function shell_main()
 					if quick_start > 240 then
 						local _remain = tostring(math.floor((screen:frame_number() / quick_start) * 100)).."%"
 						if state and not file_exists(shell_state) then
-							mac:popmessage('LOADING...'.._remain..'\n\nNOTE: SUBSEQUENT LOADS WILL BE INSTANT')
+							mac:popmessage('LOADING...'.._remain..'\nSUBSEQUENT LOADS WILL BE INSTANT')
 						else
 							mac:popmessage('LOADING...'.._remain)
 						end

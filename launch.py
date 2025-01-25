@@ -42,7 +42,7 @@ def exit_program(confirm=False):
             for attempt in 1, 2, 3:
                 try:
                     with open('save.p', 'wb') as f:
-                        pickle.dump([_g.score, _g.timer_adjust, _g.achievements], f)
+                        pickle.dump([_g.score, _g.timer_adjust, _g.achievements, _g.played], f)
                     break
                 except (EOFError, FileNotFoundError, IOError):
                     pygame.time.delay(250 * attempt)
@@ -130,9 +130,9 @@ def update_screen(delay_ms=0):
 def load_frontend_state():
     try:
         with open('save.p', "rb") as f:
-            _g.score, _g.timer_adjust, _g.achievements = pickle.load(f)
+            _g.score, _g.timer_adjust, _g.achievements, _g.played = pickle.load(f)
     except (EOFError, FileNotFoundError, IOError, ValueError):
-        _g.score, _g.timer_adjust, _g.achievements = SCORE_START, 0, {}
+        _g.score, _g.timer_adjust, _g.achievements, _g.played = SCORE_START, 0, {}, []
 
 
 def check_patches_available():
@@ -444,7 +444,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
             if not below_y or not above_y or (below_y >= _y >= above_y):
                 icon_image = os.path.join("artwork/icon", sub, name + ".png")
                 if smash:
-                    icon_image = f"artwork/sprite/smash{str(randint(0, 3))}.png"
+                    icon_image = f"artwork/sprite/smash{str(randint(0, 2))}.png"
                 if not os.path.exists(icon_image):
                     icon_image = os.path.join("artwork/icon/default.png")
                 img = get_image(icon_image, fade=not unlocked)
@@ -680,10 +680,12 @@ def build_menus(initial=False):
                             alt = alt.split(":")[1].strip()
                         if not initial and ENABLE_ADDONS and not UNLOCK_MODE and _g.stage >= 2:
                             write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                        # Played games use a grey font
+                        _color = LIGHTGREY if sub+name in _g.played else PINK
                         try:
-                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name)
+                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name, font_color=_color)
                         except (IndexError, ValueError) as error:
-                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1))
+                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), font_color=_color)
                         if _system:
                             widget.set_margin(8,2)
             if initial and int(icx) >= 0 and int(icy) >= 0:
@@ -1154,7 +1156,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                 os.environ["DKAFE_CALLBACK_ID"] = ""
                 os.chdir(ROOT_DIR)
             else:
-                if (len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE"):
+                if len(sys.argv) >= 2 and sys.argv[1] == "SHOWCONSOLE":
                     # Don't hide the console output
                     run(launch_command)
                 elif _s.is_pi():
@@ -1182,6 +1184,10 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             os.chdir(ROOT_DIR)
 
             clear_screen(and_reset_display=True)
+
+            if sub+name not in _g.played:
+                _g.played.append(sub+name)
+
             if competing:
                 # Check to see if Jumpman achieved 1st, 2nd or 3rd score target to earn coins
                 scored = get_award(sub, name, st3, st2, st1, time_start=time_start, time_end=time_end)
@@ -1601,13 +1607,6 @@ def stage_check(warp=False):
     elif _g.ypos < 20 and not _g.jump:
         _g.stage = (current_stage + 1) % STAGES
         _g.ypos = 238
-
-    # if ARCH != "win64" and current_stage != _g.stage:
-    #     # Skip the Window x64 specific stage
-    #     if current_stage == 3 and _g.stage == 4:
-    #         _g.stage = 5
-    #     elif current_stage == 5 and _g.stage == 4:
-    #         _g.stage = 3
 
     # Set Donkey Kong and Pauline position
     _g.dkx, _g.dky = KONG_POSXY[_g.stage]

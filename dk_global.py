@@ -96,5 +96,8 @@ psy = 0
 # Playlist
 tracklist, trackhistory = [], []
 
-# Achieved Awards
+# Achieved Awards and Play History
 achievements = {}
+
+# Play history
+played = []
