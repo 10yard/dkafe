@@ -1,6 +1,5 @@
--- Wobble Kong is Vector Kong with an adjustment to the vector function
--- It introduces randomness by +/- 1 pixel to all vector co-ordinates.
--- Girders are output twice to make them appear thicker
+-- Dizzy Kong is Vector Kong with an adjustment to the vector function
+-- It introduces distortion and rotation that increases as you progress the levels
 -----------------------------------------------------------------------------------------
 -- Copied from
 -- Vector Kong by Jon Wilson (10yard)
@@ -11,22 +10,23 @@
 -----------------------------------------------------------------------------------------
 
 local exports = {}
-exports.name = "wobblekong"
+exports.name = "dizzykong"
 exports.version = "0.1"
-exports.description = "Wobble Kong"
+exports.description = "Dizzy Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
-local wobblekong = exports
+local dizzykong = exports
 
-function wobblekong.startplugin()
+function dizzykong.startplugin()
 	local mame_version
 	local vector_count, vector_color
 	local game_mode, last_mode, zigzags
 	local vector_lib = {}
 	local barrel_state = {}
+	local bonus_timer
 
 	-- Constants
-	local MODE, STAGE, LEVEL = 0x600a, 0x6227, 0x6229
+	local MODE, STAGE, LEVEL, BONUS = 0x600a, 0x6227, 0x6229, 0x62b1
 	local VRAM_TR, VRAM_BL = 0x7440, 0x77bf  -- top-right and bottom-left bytes of video ram
 	local BLK, WHT, YEL, RED, BLU, MBR = 0xff000000, 0xffffffff, 0xfff0f050, 0xfff00000, 0xff0000f0, 0xe0f27713 -- color
 	local BRN, MAG, PNK, LBR, CYN, GRY = 0xffD60609, 0xfff057e8, 0xffffd1dc, 0xfff4b98b, 0xff14f3ff, 0xffb0b0b0
@@ -49,7 +49,7 @@ function wobblekong.startplugin()
 					bnk = mac:memory()
 				end
 			else
-				print("ERROR: The wobblekong plugin requires MAME version 0.196 or greater.")
+				print("ERROR: The dizzykong plugin requires MAME version 0.196 or greater.")
 			end
 		end
 		if mac ~= nil then
@@ -61,7 +61,8 @@ function wobblekong.startplugin()
 			mem:write_direct_u16(0x07d3, 0xff3e)     -- increase timer for title screen
 			
 			-- ROM modifications
-			write_rom_message(0x36b4, "WOBBLEKONG")		
+			write_rom_message(0x36b4, "DIZZY KONG")
+			write_rom_message(0x36ce, "HOW DIZZY CAN YOU GET")		
 		end
 		vector_lib = load_vector_library()
 		zigzags = false
@@ -72,6 +73,8 @@ function wobblekong.startplugin()
 			vector_count = 0
 			vector_color = WHT
 			game_mode = read(MODE)
+			bonus_timer = read(BONUS)
+			level = read(LEVEL)
 
 			if read(VRAM_BL, 0xf0) then draw_girder_stage() end
 			--if read(VRAM_BL, 0xb0) then draw_rivet_stage() end
@@ -228,10 +231,53 @@ function wobblekong.startplugin()
 	---- Basic vector drawing functions
 	-----------------------------------
 	
+	function axis_rotate(v_x, v_y, ang) 
+		ang = math.rad(ang)
+		local c = math.cos(ang)
+		local s = math.sin(ang)
+		return (-112+v_x)*c-(-128+v_y)*s + 112, (-112+v_x)*s+(-128+v_y)*c + 128
+	end
+	
 	function vector(y1, x1, y2, x2)
 		-- draw a single vector
-		local _adjust = ({vector_color, vector_color, vector_color, 0xaaffffff, 0xffffffff})[math.random(5)]
-		scr:draw_line(y1 + math.random(-1, 0) ,x1 + math.random(-1, 0), y2 + math.random(-1, 0), x2 + math.random(-1, 0), _adjust)
+		local _angle
+		local _skill
+		local _adjust = ({vector_color, vector_color, vector_color, 0x88ffffff, 0xaaffffff, 0xffffffff})[math.random(8)]
+		_skill = ((80 - bonus_timer) / 170) * ((level / 10) + 1) 
+		
+		if screen:frame_number() % 120 < 60 then
+			_angle = ((screen:frame_number() % 60) - 30) * _skill
+		else
+			_angle = ((60 - (screen:frame_number()) % 60) - 30) * _skill
+		end
+
+		if screen:frame_number() % 60 == 0 then
+			-- play sound
+			mem:write_direct_u8(0x6082, 0x01)
+		end
+		
+		-- rotate vectors arounds centre of screen
+		local _x1, _y1 = axis_rotate(x1, y1, _angle)
+		local _x2, _y2 = axis_rotate(x2, y2, _angle)
+		
+		if math.random(2) == 1 and (_x1 > 0 and _y1 > 0) or (_x2 > 0 and _y2 > 0) then
+			scr:draw_line(_y1,_x1, _y2, _x2, _adjust)
+		end
+
+		-- corrupt the Y axis
+		_y1 = _y1+(_angle*_skill) + (level / 10)
+		_y2 = _y2+(_angle*_skill) + (level / 10)
+		
+		if (_x1 > 0 and _y1 > 0) or (_x2 > 0 and _y2 > 0) then
+			scr:draw_line(_y1,_x1, _y2, _x2, _adjust)
+		end
+		vector_count = vector_count + 1
+	end
+
+	function vector_basic(y1, x1, y2, x2)
+		-- draw a single vector
+		local _adjust = ({vector_color, vector_color, vector_color, 0x88ffffff, 0xaaffffff, 0xffffffff})[math.random(6)]
+		scr:draw_line(y1, x1, y2, x2, _adjust)
 		vector_count = vector_count + 1
 	end
 
@@ -259,6 +305,31 @@ function wobblekong.startplugin()
 		end
 	end
 
+	function polyline_basic(data, offset_y, offset_x, flip_x, flip_y)
+		-- draw multiple chained lines from a table of y,x points.  Optional offset for start y,x.
+		local _offy, _offx = offset_y or 0, offset_x or 0
+		local _savey, _savex, _datay, _datax
+		if data then
+			for _i=1, #data, 2 do
+				_datay, _datax = data[_i], data[_i+1]
+				if _savey and _savey ~= BR and _datay ~= BR then
+					if flip_y and flip_y > 0 then
+						vector_basic(flip_y-_datay+_offy, _datax+_offx, flip_y-_savey+_offy, _savex+_offx)
+					elseif flip_x and flip_x > 0 then
+						vector_basic(_datay+_offy, flip_x-_datax+_offx, _savey+_offy, flip_x-_savex+_offx)
+					else
+						vector_basic(_datay+_offy, _datax+_offx, _savey+_offy, _savex+_offx)
+					end
+				else
+					-- break in the vector chain and maybe change colour
+					if _datax > 0x00ffffff then vector_color = _datax end
+				end
+				_savey, _savex = _datay, _datax
+			end
+		end
+	end
+
+
 	function box(y, x, h, w)
 		-- draw a simple box at given position with height and width
 		polyline({y,x,y+h,x,y+h,x+w,y,x+w,y,x})
@@ -283,9 +354,9 @@ function wobblekong.startplugin()
 		for _x=223, 0, -8 do
 			for _y=255, 0, -8 do
 				if _y == 255 then
-					draw_object(mem:read_u8(_addr), _y - 6, _x - 6, RED)
+					draw_object_basic(mem:read_u8(_addr), _y - 6, _x - 6, RED)
 				else
-					draw_object(mem:read_u8(_addr), _y - 6, _x - 6)
+					draw_object_basic(mem:read_u8(_addr), _y - 6, _x - 6)
 				end
 				_addr = _addr + 1
 			end
@@ -299,6 +370,14 @@ function wobblekong.startplugin()
 		vector_color = WHT
 	end
 
+	function draw_object_basic(name, y, x, color, flip_x, flip_y)
+		-- draw object from the vector library
+		vector_color = color or vector_color
+		polyline_basic(vector_lib[name], y, x, flip_x, flip_y)
+		vector_color = WHT
+	end
+
+
 	---- Draw game objects
 	----------------------
 	function draw_ladder(y, x, h)
@@ -311,14 +390,12 @@ function wobblekong.startplugin()
 
 	function draw_girder(y1, x1, y2, x2, open)
 		-- draw girder at given y,x position.  Girders are based on parallel vectors (offset by 7 pixels).
-		for _=1, 2 do
-			polyline({y1,x1,y2,x2,BR,BR,y1+7,x1,y2+7,x2})
-			if not open or open ~= "L" then	polyline({y1,x1,y1+7,x1}) end  -- close the girder ends
-			if not open or open ~= "R" then polyline({y2,x2,y2+7,x2}) end
-			if zigzags then
-				for _x=x1, x2 - 1, 16 do  -- Fill the girders with zig zags
-					draw_object("zigzag", y1 + (((y2 - y1) / (x2 - x1)) * (_x - x1)), _x, GRY)
-				end
+		polyline({y1,x1,y2,x2,BR,BR,y1+7,x1,y2+7,x2})
+		if not open or open ~= "L" then	polyline({y1,x1,y1+7,x1}) end  -- close the girder ends
+		if not open or open ~= "R" then polyline({y2,x2,y2+7,x2}) end
+		if zigzags then
+			for _x=x1, x2 - 1, 16 do  -- Fill the girders with zig zags
+				draw_object("zigzag", y1 + (((y2 - y1) / (x2 - x1)) * (_x - x1)), _x, GRY)
 			end
 		end
 	end

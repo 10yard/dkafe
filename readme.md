@@ -86,9 +86,8 @@ Credit is given to the original authors below.
 
 
 ### By Jon Wilson (me)
- - VectorKong
- - GalaKong and Extreme Galakong
- - GalaKong Junior
+ - VectorKong and Dizzy Kong
+ - GalaKong, Extreme GalaKong and GalaKong Junior
  - DK Bros.
  - Allen Kong
  - DK Lava Panic!

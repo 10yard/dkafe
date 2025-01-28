@@ -248,6 +248,7 @@ PLUGINS = (
     ("dkong2600", "gingerbreadkong"),
     ("dkongvector", "vectorkong"),
     ("dkongvectorwild", "vectorkong"),
+    ("dkongdizzy", "dizzykong"),
     ("dkongwobble", "wobblekong"),
     ("dkongallen", "allenkong"),
     ("dkongchorus", "dkchorus"),
@@ -295,7 +296,7 @@ START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow", "dkongcontinue",
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
                    "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b", "dkongpacmancross",
-                   "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild")
+                   "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild", "dkongdizzy")
 STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",

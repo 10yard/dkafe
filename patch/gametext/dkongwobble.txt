@@ -1,0 +1,16 @@
+Wobble Kong
+
+A variation of Vector Kong - which is a vectorised
+version of Donkey Kong.
+
+The hack suppresses the normal video output completely
+and renders high resolution vectors to the screen 
+instead of pixels.
+
+This "Wobble" version introduces randomness to the
+vector line drawing and colouration.  The whole game 
+wobbles as you play.
+
+You play the barrel stage only.
+
+Hack Developed by Jon Wilson (10yard)
