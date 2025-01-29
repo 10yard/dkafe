@@ -22,7 +22,7 @@ INACTIVE_TIME = 20
 SPEED_ADJUST = 0
 SKILL_LEVEL = 1
 START_STAGE = 0
-HIGH_SCORE_SAVE = 0
+HIGH_SCORE_SAVE = 1
 ENABLE_PLAYLIST = 1
 PLAYLIST_VOLUME = 5
 ENABLE_ADDONS = 1
@@ -32,7 +32,7 @@ ROM_DIR = <ROOT>/roms
 ALLOW_ROM_OVERWRITE = 0
 
 # Emulator Settings for Windows
-OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video opengl -nosleep
+OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video opengl
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID> 
 

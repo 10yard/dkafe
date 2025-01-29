@@ -1,5 +1,6 @@
 -- Dizzy Kong is Vector Kong with an adjustment to the vector function
--- It introduces distortion and rotation that increases as you progress the levels
+-- It introduces distortion and rotation that increases intensity as the bonus timer runs
+-- down and as you progress through the levels.
 -----------------------------------------------------------------------------------------
 -- Copied from
 -- Vector Kong by Jon Wilson (10yard)
@@ -194,11 +195,13 @@ function dizzykong.startplugin()
 		local _y, _x
 		if game_mode == 0x06 and last_mode == 0x06 then
 			-- display a growling Kong on the title screen
-			draw_kong(48, 92, true)
+			draw_kong(60, 92, true)
 			-- show vector logo and "vectorised by 10yard" in the footer
-			draw_object("logo", 128, 16,  0xff444444 + math.random(0xbbbbbb))
+			draw_object("logo", 120, 16,  0xff444444 + math.random(0xbbbbbb))
+			draw_object("logo", 122, 18,  0xff444444 + math.random(0xbbbbbb))
+			draw_object("logo", 124, 20,  0xff444444 + math.random(0xbbbbbb))
 			for _k, _v in ipairs({0x26,0x15,0x13,0x24,0x1f,0x22,0x19,0x23,0x15,0x14,0x10,0x12,0x29,0x10,0x01,0x00,0x29,0x11,0x22,0x14}) do
-				draw_object(_v, 8, _k*8+25, GRY)
+				draw_object_basic(_v, 8, _k*8+25, GRY)
 			end
 			-- restore the game startup logic
 			if mem:read_direct_u32(0x01ea) ~= 0xaf622732 then
@@ -242,42 +245,39 @@ function dizzykong.startplugin()
 		-- draw a single vector
 		local _angle
 		local _skill
-		local _adjust = ({vector_color, vector_color, vector_color, 0x88ffffff, 0xaaffffff, 0xffffffff})[math.random(8)]
+		local _adjust = ({vector_color, vector_color, vector_color, vector_color - 0x10000000, vector_color - 0x20000000, vector_color - 0x30000000})[math.random(8)]
 		_skill = ((80 - bonus_timer) / 170) * ((level / 10) + 1) 
 		
-		if screen:frame_number() % 120 < 60 then
-			_angle = ((screen:frame_number() % 60) - 30) * _skill
+		if scr:frame_number() % 120 < 60 then
+			_angle = ((scr:frame_number() % 60) - 30) * _skill
 		else
-			_angle = ((60 - (screen:frame_number()) % 60) - 30) * _skill
-		end
-
-		if screen:frame_number() % 60 == 0 then
-			-- play sound
-			mem:write_direct_u8(0x6082, 0x01)
+			_angle = ((60 - (scr:frame_number()) % 60) - 30) * _skill
 		end
 		
 		-- rotate vectors arounds centre of screen
 		local _x1, _y1 = axis_rotate(x1, y1, _angle)
 		local _x2, _y2 = axis_rotate(x2, y2, _angle)
 		
-		if math.random(2) == 1 and (_x1 > 0 and _y1 > 0) or (_x2 > 0 and _y2 > 0) then
-			scr:draw_line(_y1,_x1, _y2, _x2, _adjust)
-		end
-
+		--if math.abs(math.abs(_x1) - math.abs(_x2)) > 20 then
+			if ((_x1 > 0 and _y1 > 0) or (_x2 > 0 and _y2 > 0)) then
+				scr:draw_line(_y1,_x1, _y2, _x2, _adjust)
+				vector_count = vector_count + 1
+			end
+		--end
+		
 		-- corrupt the Y axis
 		_y1 = _y1+(_angle*_skill) + (level / 10)
 		_y2 = _y2+(_angle*_skill) + (level / 10)
 		
 		if (_x1 > 0 and _y1 > 0) or (_x2 > 0 and _y2 > 0) then
 			scr:draw_line(_y1,_x1, _y2, _x2, _adjust)
+			vector_count = vector_count + 1
 		end
-		vector_count = vector_count + 1
 	end
 
 	function vector_basic(y1, x1, y2, x2)
 		-- draw a single vector
-		local _adjust = ({vector_color, vector_color, vector_color, 0x88ffffff, 0xaaffffff, 0xffffffff})[math.random(6)]
-		scr:draw_line(y1, x1, y2, x2, _adjust)
+		scr:draw_line(y1, x1, y2, x2, vector_color)
 		vector_count = vector_count + 1
 	end
 

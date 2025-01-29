@@ -3,9 +3,9 @@ Dizzy Kong
 A variation of Vector Kong - which is a vectorised
 version of Donkey Kong.
 
-The hack distorts and rotates vectors to induce a
-dizzy experience for the player that increases in
-intensity as you progress through the levels.
+This hack introduces distortion and rotation that 
+increases intensity as the bonus timer runs down and 
+as you progress through the levels.
 
 You play the barrel stage only.
 
