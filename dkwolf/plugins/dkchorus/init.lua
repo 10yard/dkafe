@@ -152,7 +152,7 @@ function dkchorus.startplugin()
 		if is_pi then
 			io.popen("aplay -q plugins/dkchorus/sounds/"..sound..".wav &")
 		else
-			io.popen("start plugins/dkchorus/bin/sounder.exe /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkchorus/sounds/"..sound..".wav")
+			io.popen("start /B plugins/dkchorus/bin/sounder.exe /volume "..tostring(volume).." /id "..sound.." /stopbyid "..sound.." plugins/dkchorus/sounds/"..sound..".wav")
 		end
 		return os.clock()
 	end
@@ -161,7 +161,7 @@ function dkchorus.startplugin()
 		if is_pi then
 			io.popen("pkill aplay &")
 		else
-			io.popen("start plugins/dkchorus/bin/sounder.exe /stop")
+			io.popen("start /B plugins/dkchorus/bin/sounder.exe /stop")
 		end
 	end
 	

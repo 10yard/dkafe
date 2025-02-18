@@ -45,6 +45,7 @@ function allenkong.startplugin()
 	local soundplay_index, random_index, streak_index = 1, 1, 1
 	local celebrating, lukey, selected = false, false, false
 	local level_select = 17
+	local level_22 = false
 
 	function initialize()
 		mame_version = tonumber(emu.app_version())
@@ -81,6 +82,12 @@ function allenkong.startplugin()
 					table.insert(starfield, math.random(255))
 					table.insert(starfield, math.random(223))
 					table.insert(starfield, math.random(0xffaaaaaa, 0xffffffff))
+				end
+
+				--Is there level 22 (Killscreen) parameter
+				local _param = os.getenv("ALLENKONG_PARAMETER")
+				if _param and string.find(os.getenv("ALLENKONG_PARAMETER"), "22") then
+					level_22 = true
 				end
 			end
 		end
@@ -150,8 +157,12 @@ function allenkong.startplugin()
 				write_ram_message(0x77be, "         ")
 			end
 
+			if level_22 then
+				write(0x6229, 22)
+			end
+
 			-- level selection screen --------------------------------------------------------------------------------
-			if mode1 == 3 and mode2 == 7 then
+			if mode1 == 3 and mode2 == 7 and not(level_22) then
 				if get("mode2") ~= 7 then selected = false end
 
 				draw_level_selection()

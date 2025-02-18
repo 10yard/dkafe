@@ -64,7 +64,7 @@ There is now a console add-on pack which adds extra stages and is packed out wit
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 14 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional console add-on pack featuring 300 ports, clones and hacks for over 50 classic gaming systems.
+ - An optional console add-on pack featuring over 300 ports, clones and hacks for over 50 classic gaming systems.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -247,7 +247,7 @@ A tally of the total number of continues made will appear at the top of the scre
 
 ## Console Add-on Pack
 
-An optional add-on pack includes 300 Donkey Kong ports and hacks for the following classic home consoles and computers.
+An optional add-on pack includes over 300 Donkey Kong ports and hacks for the following classic home consoles and computers.
 
  - Acorn Atom
  - Atari 2600
@@ -278,6 +278,7 @@ An optional add-on pack includes 300 Donkey Kong ports and hacks for the followi
  - MS-DOS
  - MSX
  - NEC PC-88
+ - Nintendo DS
  - Nintendo Entertainment System
  - Nintendo Gameboy
  - Nintendo Gameboy Color
@@ -286,6 +287,7 @@ An optional add-on pack includes 300 Donkey Kong ports and hacks for the followi
  - Pinball
  - Pokitto DIY Handheld
  - Sega Genesis/Megadrive
+ - Sega Master System
  - Sega SG-1000
  - Sharp MZ700
  - Sharp X1

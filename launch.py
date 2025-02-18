@@ -10,12 +10,6 @@ Main program
 ------------
 """
 import os
-import sys
-
-import pygame_menu.controls
-
-sys.path.append("c:\\dkafe")
-
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame.cursors
 import pickle
@@ -140,15 +134,15 @@ def check_patches_available():
         applied_patches, installed_addons = apply_patches_and_addons()
         if applied_patches:
             clear_screen()
-            x_offset, y_offset = 0, 11
+            x_offset, y_offset = 0, 10
             write_text(f"APPLYING {str(len(applied_patches))} ARCADE PATCHES", font=dk_font, y=0, fg=RED)
             for i, patch in enumerate(applied_patches):
-                write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset)
+                write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset, fg=(WHITE, LIGHTGREY)[i % 2])
                 update_screen(delay_ms=20)
-                y_offset += 6
-                if y_offset > 232:
+                y_offset += 5
+                if y_offset > 234:
                     x_offset += 75
-                    y_offset = 11
+                    y_offset = 10
         if installed_addons:
             if not applied_patches:
                 # Do we need a heading?
@@ -1279,6 +1273,8 @@ def show_score():
     write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, bg=BLACK)
     if _g.active:
         write_text(f"L={str(SKILL_LEVEL).zfill(2)}", font=dk_font, x=169, y=24, fg=DARKBLUE, bg=BLACK)
+    if ENABLE_ADDONS and _g.stage >= 2:
+        write_text(" DK ARCADE+", font=dk_font, x=69, fg=RED, bg=BLACK)
 
 
 def drop_coin(x=67, y=73, rotate=2, movement=1, use_ladders=True, coin_type=1, awarded=0):

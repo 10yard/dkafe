@@ -75,6 +75,10 @@ function dizzykong.startplugin()
 			vector_color = WHT
 			game_mode = read(MODE)
 			bonus_timer = read(BONUS)
+			if bonus_timer > 50 then
+				bonus_timer = 50
+			end
+			
 			level = read(LEVEL)
 
 			if read(VRAM_BL, 0xf0) then draw_girder_stage() end

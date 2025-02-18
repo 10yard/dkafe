@@ -261,6 +261,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     else:
         # Reset the optional start and level parameters
         os.environ["DKSTART5_PARAMETER"] = ""
+        os.environ["ALLENKONG_PARAMETER"] = ""  # TO DO: Reset based on plugin name
 
         # Are we using an optional launch plugin or parameter plugin?
         if parameter_plugin:

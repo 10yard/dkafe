@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "dkfree",
+"description": "DK Free",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

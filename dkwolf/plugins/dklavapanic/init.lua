@@ -70,6 +70,12 @@ function dklavapanic.startplugin()
 				else
 					lava_difficulty = math_floor(1.2 * (22 - level))
 				end
+				
+				-- Support for Donkey Kong Jr. - More time was needed
+				if emu.romname() == "dkongjr" then
+					lava_difficulty = math_floor(3 * (22 - level))
+				end
+				
 				-- reset lava level
 				lava_y = -7
 				-- remember default music

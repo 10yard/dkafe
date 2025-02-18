@@ -187,12 +187,12 @@ bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,129000,2,4
 bbcb_krazyjohn,shell,KrazyJohn,BBC: Krazy John,9999,,,129000,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong JR,9999,,,129000,2,4,8
 c64_dk,shell,DK,C64: Donkey Kong (Nintendo),9999,,,0,2,4,8
+c64_eskimo_eddie,shell,Eskimo Eddie,C64: Eskimo Eddie,9999,,,133000,2,4,8
 c64_fast_eddie,shell,FastEddie,C64: Fast Eddie,9999,,,133000,2,4,8
 c64_felix,shell,FelixJR,C64: Fix-It Felix Jr.,9999,,,133000,2,4,8
 c64_jumpman,shell,Jumpman,C64: Jumpman Junior,9999,,,133000,2,4,8
 c64_kong_sputnik,shell,Kong,C64: Kong,9999,,,133000,2,4,8
 c64_logger,shell,Logger,C64: Logger,9999,,,133000,2,4,8
-c64_eskimo_eddie,shell,Eskimo Eddie,C64: Eskimo Eddie,9999,,,133000,2,4,8
 c64p_dk_ocean,shell,C64DK,C64: Donkey Kong (Ocean),9999,,,0,2,4,8
 coco3_dk_remixed,shell,DKRemix,COCO3: Donkey Kong Remixed,9999,,,140000,2,4,8
 coco3_donkeyking,shell,DonkeyKing,COCO3: Donkey King,9999,,,140000,2,4,8
@@ -201,6 +201,7 @@ coleco_dk_luigi,shell,DKLuigi,CVS: Donkey Kong Luigi,9999,,,137000,2,4,8
 coleco_jumpmanjr,shell,JumpanJR,CVS: Jumpman Jr,9999,,,137000,2,4,8
 coleco_super_dk,shell,Super,CVS: Super Donkey Kong!,9999,,,137000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,137000,2,4,8
+coleco_monkey,shell,Monkey,CVS: Monkey Moon,9999,,,137000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,131000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,131000,2,4,8
 dos_dk,shell,DOS,DOS: Donkey Kong (Original),9999,,,0,2,4,8
@@ -220,7 +221,7 @@ gnw_dkong2,shell,DK2,G&W: Donkey Kong 2,9999,,,186000,2,4,8
 hbf900a_tokekong,shell,TokeKong,MSX: Toke Kong,9999,,,143000,2,4,8
 intv_beautybeast,shell,BeautyBeast,INTV: Beauty and the Beast,9999,,,151000,2,4,8
 intv_dk_junior,shell,DK Junior,INTV: Donkey Kong Junior,9999,,,151000,2,4,8
-intv_monkey,shell,Monkey,Monkey Moon,9999,,,151000,2,4,8
+intv_monkey,shell,Monkey,INTV: Monkey Moon,9999,,,151000,2,4,8
 mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,190000,2,4,8
 nes_clintonkong,shell,ClintonKong,NES: Clinton Kong,9999,,,121000,2,4,8
 nes_crazykong,shell,CK,NES: Crazy Kong,9999,,,0,2,4,8
@@ -229,6 +230,7 @@ nes_dk,shell,NESDK,NES: Donkey Kong (Original),9999,,,0,2,4,8
 nes_dk_3,shell,DK3,NES: Donkey Kong 3,9999,,,0,2,4,8
 nes_dk_3_cincinnati_zoo,shell,DK3 Zoo,NES: Donkey Kong 3 Zoo Edition,9999,,,121000,2,4,8
 nes_dk_arrietty,shell,DK Arietty,NES: Arrietty World,9999,,,121000,2,4,8
+nes_dk_barrels,shell,Barrels Only,NES: Donkey Kong Barrels Only,9999,,,121000,2,4,8
 nes_dk_cure,shell,DK Cure,NES: Donkey Kong Cure,9999,,,121000,2,4,8
 nes_dk_freddy_jason,shell,DK Freddy vs Jason,NES: Freddy vs Jason,9999,,,121000,2,4,8
 nes_dk_godmode,shell,God,NES: Donkey Kong God Mode,9999,,,121000,2,4,8
@@ -245,16 +247,19 @@ nes_dk_redux,shell,Redux,NES: Donkey Kong Redux,9999,,,0,2,4,8
 nes_dk_wario,shell,Wario vs DK,NES: Wario vs Donkey Kong,9999,,,121000,2,4,8
 nes_dk_zelda10,shell,ZK10,NES: ZeldaKong10 (Marin),9999,,,121000,2,4,8
 nes_dk_zelda11,shell,Z11,NES: ZeldaKong11 (Grandma),9999,,,121000,2,4,8
+nes_dk_specialbarrels,shell,Special Barrels,NES: Donkey Kong Special Barrel,9999,,,121000,2,4,8
 nes_dk3_bandits,shell,DK3 Bandits,NES: Donkey Kong 3 Bandits,9999,,,121000,2,4,8
 nes_dk3_battlebeasts,shell,DK3 BattleBeasts,NES: Donkey Kong 3 Battle Beast,9999,,,121000,2,4,8
 nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,121000,2,4,8
+nes_dk3_sailormoon,shell,DK3 Sailor Moon,NES: Donkey Kong 3 Sailor Moon,9999,,,121000,2,4,8
+nes_dk3_atari,shell,DK3 Atari,NES: Donkey Kong 3 Atari Style,9999,,,121000,2,4,8
+nes_dk3_cnn_sucks,shell,DK3 CNN,NES: Donkey Kong 3 CNN Sucks,9999,,,121000,2,4,8
 nes_dkjr_optimus_minor,shell,JROptimus,NES: Optimus Minor (JR),9999,,,121000,2,4,8
 nes_donnod_kook_clasalc,shell,DonnodKook,NES: Donnod Kook Clasalc,9999,,,121000,2,4,8
 nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,121000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles JR,9999,,,121000,2,4,8
 nes_pinkfloyd,shell,PinkFloyd,NES: Pink Floyd's The Wall,9999,,,121000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,121000,2,4,8
-nes_dk_barrels,shell,Barrels Only,NES: Donkey Kong Barrels Only,9999,,,121000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,130000,2,4,8
 oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,130000,2,4,8
 orica_4k_kong,shell,4K Kong,ORIC: 4K Kong,9999,,,130000,2,4,8
@@ -275,6 +280,7 @@ pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,143000,2,4,8
 pc_kidnappers_inc,shell,Kidnappers Inc,PC: Kidnappers Inc.,9999,,,197000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,208000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,209000,2,4,8
+pc_nes_dk_hdpack_barrels,shell,NESDK HD Barrels,NES: Donkey Kong HD Barrels,9999,,,112000,2,4,8
 pc_nes_dkjr_hdpack,shell,NESJR HD,NES: Donkey Kong JR HD Pack,9999,,,112000,2,4,8
 pc_pico8_dinkyking1,shell,DinkyKing Barrels,PICO-8: Dinky King Barrels Only,9999,,,220000,2,4,8
 pc_pico8_dinkyking2,shell,DinkyKing Springs,PICO-8: Dinky King Springs Only,9999,,,220000,2,4,8
@@ -288,6 +294,7 @@ pc_supervision_superkong,shell,SuperKong,SV: Super Kong,9999,,,152000,2,4,8
 pc_trs80_ape,shell,Ape,TRS80: Ape Escape,9999,,,211000,2,4,8
 pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,211000,2,4,8
 pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,209000,2,4,8
+pc_nds_dk2,shell,DS DK 2,NDS: Donkey Kong II,9999,,,112000,2,4,8
 pet4032_dk_junior,shell,DK Junior,G&W: Donkey Kong Junior (G&W),9999,,,133000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,C16/+4: Crazy Jump,9999,,,176000,2,4,8
 plus4_dkplus,shell,DK+,C16/+4: Donkey Kong +,9999,,,176000,2,4,8
@@ -316,6 +323,8 @@ vic20-se_dkjr_gnw,shell,DK JR,VIC20: Donkey Kong Junior (G&W),9999,,,188000,2,4,
 x1_dk3_counter_attack,shell,DK3 CounterAttack,X1: DK3 Great Counter Attack,9999,,,190000,2,4,8
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,160000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,160000,2,4,8
+zx81_sultans_tower,shell,SultansTower,ZX81: Sultan's Tower,9999,,,160000,2,4,8
+##smskr_kingkong,shell,King Kong,SMS: King Kong,####,,,0,2,4,8
 ##a2600_pac_kong,shell,**Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
 ##a2600_spider_kong,shell,**Not DK enough,2600: Spider Kong,####,,,0,2,4,8
 ##dos_aldo2,shell,**Locks on title screen,DOS: Aldo Again,####,,,0,2,4,8
