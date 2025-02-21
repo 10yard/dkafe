@@ -38,7 +38,7 @@ function dizzykong.startplugin()
 
 	local characters = "0123456789       ABCDEFGHIJKLMNOPQRSTUVWXYZ@-"
 
-	function initialize()
+	function dizzy_initialize()
 		if emu.romname() == "dkong" then
 			mame_version = tonumber(emu.app_version())
 			if  mame_version >= 0.196 then
@@ -69,7 +69,7 @@ function dizzykong.startplugin()
 		zigzags = false
 	end
 
-	function main()
+	function dizzy_main()
 		if cpu ~= nil then
 			vector_count = 0
 			vector_color = WHT
@@ -805,9 +805,9 @@ function dizzykong.startplugin()
 	---- event registration
 	-----------------------
 	emu.register_start(function()
-		initialize()
+		dizzy_initialize()
 	end)
 
-	emu.register_frame_done(main, "frame")
+	emu.register_frame_done(dizzy_main, "frame")
 end
 return exports

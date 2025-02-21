@@ -18,8 +18,8 @@ The latest releases are available to download from below.  Refer to the [How to 
 
 | Download Link                                                                                                        | Version | Operating System                           |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------|
-| [dkafe_win64_binary_v0.71.zip](https://github.com/10yard/dkafe/releases/download/v0.71/dkafe_win64_binary_v0.71.zip) | 0.71    | Windows 64 bit (x64) systems (Recommended) |
-| [dkafe_win32_binary_v0.71.zip](https://github.com/10yard/dkafe/releases/download/v0.71/dkafe_win32_binary_v0.71.zip) | 0.71    | Windows 32 bit (x86) systems               |
+| [dkafe_win64_binary_v0.72.zip](https://github.com/10yard/dkafe/releases/download/v0.72/dkafe_win64_binary_v0.72.zip) | 0.72    | Windows 64 bit (x64) systems (Recommended) |
+| [dkafe_win32_binary_v0.72.zip](https://github.com/10yard/dkafe/releases/download/v0.72/dkafe_win32_binary_v0.72.zip) | 0.72    | Windows 32 bit (x86) systems               |
 | [dkafe_winxp_binary_v0.67.zip](https://github.com/10yard/dkafe/releases/download/v0.67/dkafe_winxp_binary_v0.67.zip) | 0.67    | Windows XP only                            |
 | [dkafe_rpi4_image_v0.70.gz](https://github.com/10yard/dkafe/releases/download/v0.70/dkafe_rpi4_image_v0.70.gz)       | 0.70    | Raspberry Pi 4 and 400 only                |
 
@@ -106,8 +106,8 @@ Credit is given to the original authors below.
  - Donkey Kong Killscreen
  - Donkey Kong Coach
  - Donkey Kong Chorus
- - Donkey Kong/Crazy Kong Continue
- - Donkey Kong Ends (L=01 and L=03)
+ - Donkey Kong Continue
+ - Donkey Kong Ends
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition
@@ -303,6 +303,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Texas Instruments TI99/4
  - Thomson MO5
  - TIC-80 Fantasy Console
+ - Uzebox - Atmega Game Console
  - VTech Creativision
  - Watara Supervision
 

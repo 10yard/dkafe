@@ -1,0 +1,12 @@
+Dizzy Lava Kong
+
+A mash-up of Dizzy Kong and Lava Panic!
+
+This hack introduces distortion and rotation that 
+increases intensity as lava flows and the bonus timer
+runs down.  It gets more difficult as you progress
+through the levels.
+
+You play the barrel stage only.
+
+Hack Developed by Jon Wilson (10yard)

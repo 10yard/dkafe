@@ -1,0 +1,14 @@
+Vector GalaKong
+
+A vectorised version of GalaKong which is played
+entirely on the barrel stage.
+
+Jumpman is assisted by an accompanying spaceship which
+can take out enemies.  Bonus points are awarded for 
+destroying multiple barrels, pies, springs, fires etc.
+
+The jump button also shoots.
+
+Your ship follows Jumpman's position automatically. 
+
+Hack Developed by Jon Wilson (10yard)

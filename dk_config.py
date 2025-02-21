@@ -111,7 +111,7 @@ SCORE_START = 500              # How many coins Jumpman starts with
 TIMER_START = 8000             # Timer starts countdown from this number
 COIN_VALUES = 0, 50, 100       # How many points awarded for collecting a coin. Integer
 COIN_FREQUENCY = 2             # How frequently DK will grab a coin (1 = always, 2 = 1/2,  3 = 1/3 etc.)
-COIN_HIGH = 4                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc.)
+COIN_HIGH = 3                  # Frequency of coin being higher value (1 = always, 2 = 1/2,  3 = 1/3 etc.)
 COIN_SPEED = 1.6               # Number of pixels to move coin per display update. Decimal
 COIN_CYCLE = 0.15              # How often the coin sprite is updated. Decimal
 INP_FAVOURITE = 10             # Flag .inp recordings of this duration or greater (in minutes) by prefixing with ♥
@@ -204,10 +204,19 @@ DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 
+ARCADE_JUNIOR = "dkongjr",
+ARCADE_CRAZY = "ckong", "ckongpt2", "ckongpt2a", "ckongpt2b", "ckongs", "ckongg", "ckongdks", "ckongmc"
+ARCADE_BONUS = "logger", "congo"
+ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
+                   "dkongcoach", "dkongcoachsprings", "dkongl05")
+ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
+ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros."
+SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Crazy Kong)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)"
+
 # Optional rom names
 OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
 if ARCH != "winxp":
-    OPTIONAL_NAMES += "logger", "congo"
+    OPTIONAL_NAMES += ARCADE_BONUS
 
 # Plugins add functionality to certain roms
 PLUGINS = (
@@ -231,6 +240,8 @@ PLUGINS = (
     ("dkonggalakong4", "dkstart5:4"),
     ("dkongxgalakong", "galakong"),
     ("dkongjrgala", "galakong"),
+    ("dkongcoach","dkcoach"),
+    ("dkongcoachsprings","dkcoach"),
     ("dkongjrfree", "dkfree"),
     ("dkongjrlavapanic", "dklavapanic"),
     ("bigkong_free", "dkfree"),
@@ -263,6 +274,7 @@ PLUGINS = (
     ("dkongjrcontinue", "continue"),
     ("ckongpt2_continue", "continue"),
     ("bigkong_continue", "continue"),
+    ("bigkong_lava", "dklavapanic"),
     ("dkongl22", "dklevel22"),
     ("ckongpt2_l22", "dklevel22"),
     ("bigkong_l22", "dklevel22"),
@@ -271,11 +283,13 @@ PLUGINS = (
     ("dkongjrchains", "dkstart5:3"),
     ("dkongjrhideout", "dkstart5:4"),
     ("dkongjrl22", "dklevel22"),
+    ("ckongpt2_lava","dklavapanic"),
     ("ckongpt2_barrels", "dkstart5:1"),
     ("ckongpt2_pies", "dkstart5:2"),
     ("ckongpt2_springs", "dkstart5:3"),
     ("ckongpt2_rivets", "dkstart5:4"),
-    ("bigkong_barrels", "dkstart5:1")
+    ("bigkong_barrels", "dkstart5:1"),
+    ("dkongvectorgala","galakong,vectorkong")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
@@ -304,7 +318,7 @@ START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow", "dkongcontinue",
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
                    "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b", "dkongpacmancross",
-                   "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild", "dkongdizzy")
+                   "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild", "dkongdizzy", "dkongvectorgala")
 STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
@@ -503,8 +517,6 @@ INVALID_ROM_MESSAGE = [
     "The zip should contain only",
     "the following files:", ""]
 
-ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3"
-
 INSTRUCTION = """
 
 Donkey Kong has captured
@@ -627,14 +639,15 @@ Playlist music:
 
 # Console Addon Specific
 if ARCH == "win64":
-    ADDON_URL = "https://www.dropbox.com/scl/fi/cxul57d4baisjppavgt9b/dkafe_console_addon_pack_v7.zip?rlkey=5vemrlfg3lsprrsh66syndwzv&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/dxen3esjbmzl0447cqrzq/dkafe_console_addon_pack_v8.zip?rlkey=jbpeh5a78pjbsxoizqe7bfqns&dl=0"
 else:
-    ADDON_URL = "https://www.dropbox.com/scl/fi/qlhjv7mv0gou28xshuozr/dkafe_console_addon_pack_v7_reduced.zip?rlkey=invydtbp24fpx94dhsgyvfoht&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/6suvxppt8y71bbhno8k5l/dkafe_console_addon_pack_v8_reduced.zip?rlkey=wjhi9gi2d8p0f3v0zauzas3or&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
 
 RECOGNISED_SYSTEMS = {
+    "arcade": "Arcade",
     "a2600": "Atari 2600",
     "a5200": "Atari 5200",
     "a7800": "Atari 7800",
@@ -693,6 +706,7 @@ RECOGNISED_SYSTEMS = {
     "trs80":"Tandy TRS-80",
     "vic20":"Commodore VIC-20",
     "vic20_se":"Commodore VIC-20",
+    "uzebox":"Uzebox - Atmega Game Console",
     "x1":"Sharp X1",
     "zx81":"Sinclair ZX80/81"}
 
@@ -820,6 +834,7 @@ KEYBOARD_REMAP = {
     "pc_trs80_dk":"ctrl>space|num 1>enter,1",
     "pc_trs80_killergorilla":"ctrl>space",
     "pc_trs80_skyscraper":"ctrl>space|1>1,n,\\,enter",
+    "pc_uzebox_dkong":"ctrl>a|1>enter|esc>forcequit:uzem.exe",
     "pc_spectrum_dkjr2":"left>o|right>p|up>q|down>a|ctrl>m|num 2>num 1|num 3>num 1|alt>n|esc>forcequit:zesarux.exe"}
 
 # Sound setup

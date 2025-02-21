@@ -33,7 +33,7 @@ function vectorkong.startplugin()
 	local FIREBALLS = {0x6400, 0x6420, 0x6440, 0x6460, 0x6480}
 	local BR = 0xffff  -- instruction to break in a vector chain
 
-	function initialize()
+	function vector_initialize()
 		if emu.romname() == "dkong" then
 			mame_version = tonumber(emu.app_version())
 			if  mame_version >= 0.196 then
@@ -60,7 +60,7 @@ function vectorkong.startplugin()
 		zigzags = false
 	end
 
-	function main()
+	function vector_main()
 		if cpu ~= nil then
 			vector_count = 0
 			vector_color = WHT
@@ -707,9 +707,9 @@ function vectorkong.startplugin()
 	---- event registration
 	-----------------------
 	emu.register_start(function()
-		initialize()
+		vector_initialize()
 	end)
 
-	emu.register_frame_done(main, "frame")
+	emu.register_frame_done(vector_main, "frame")
 end
 return exports

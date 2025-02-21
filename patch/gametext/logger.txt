@@ -1,6 +1,6 @@
-Logger
+Logger - The Arcade Version
 
-A rip-off of Nintendo "Donkey Kong".
+A rip-off of Nintendo "Donkey Kong".  
 
 Help the unfortunate lumberjack to retrieve his axe
 and all tools stolen by a giant blue parrot for this

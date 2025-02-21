@@ -125,8 +125,8 @@ def read_romlist(specific_romlist_file=None):
                                     # is this an add-on rom
                                     add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
 
-                                    romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
                                     if name + sub not in usedunique:
+                                        romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
                                         usedunique.append(name + sub)
                                 usedslots.append(slot)
     return romlists[1] + romlists[0], len(usedunique)
@@ -259,8 +259,11 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             script = lua_interface("shell", name, subfolder, score3, score2, score1, basic_mode)
             competing = True
     else:
-        # Reset the optional start and level parameters
-        os.environ["DKSTART5_PARAMETER"] = ""
+        # Reset the optional parameters for all available plugins
+        for filename in os.listdir(os.path.join(ROOT_DIR, "dkwolf", "plugins")):
+            if os.path.isdir(os.path.join(ROOT_DIR, "dkwolf", "plugins", filename)):
+                os.environ[f"{filename.upper()}_PARAMETER"] = ""
+
         os.environ["ALLENKONG_PARAMETER"] = ""  # TO DO: Reset based on plugin name
 
         # Are we using an optional launch plugin or parameter plugin?

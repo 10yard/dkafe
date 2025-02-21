@@ -47,7 +47,7 @@ function allenkong.startplugin()
 	local level_select = 17
 	local level_22 = false
 
-	function initialize()
+	function allen_initialize()
 		mame_version = tonumber(emu.app_version())
 		is_pi = package.config:sub(1,1) == "/"
 		math.randomseed(os.time())
@@ -93,7 +93,7 @@ function allenkong.startplugin()
 		end
 	end
 
-	function main()
+	function allen_main()
 		if cpu ~= nil then
 			frame = scr:frame_number()
 			jumpx, jumpy = read(0x6203), read(0x6205)
@@ -649,13 +649,13 @@ function allenkong.startplugin()
 	end
 
 	emu.register_start(function()
-		initialize()
+		allen_initialize()
 	end)
 
 	emu.register_stop(function()
 		random_play("bye")
 	end)
 
-	emu.register_frame_done(main, "frame")
+	emu.register_frame_done(allen_main, "frame")
 end
 return exports

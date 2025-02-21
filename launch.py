@@ -135,14 +135,19 @@ def check_patches_available():
         if applied_patches:
             clear_screen()
             x_offset, y_offset = 0, 10
+            stripe = WHITE
             write_text(f"APPLYING {str(len(applied_patches))} ARCADE PATCHES", font=dk_font, y=0, fg=RED)
             for i, patch in enumerate(applied_patches):
-                write_text(patch.upper().replace("_","-"), font=pl_font7, x=x_offset, y=y_offset, fg=(WHITE, LIGHTGREY)[i % 2])
-                update_screen(delay_ms=20)
-                y_offset += 5
-                if y_offset > 234:
-                    x_offset += 75
+                _patch = patch.upper().replace("_","-")
+                if len(_patch) > 14:
+                    _patch = _patch.replace("DKONG", "DK").replace("BIGKONG", "BK").replace("CKONG", "CK")
+                write_text(_patch, font=pl_font7, x=x_offset, y=y_offset, fg=stripe)
+                update_screen(delay_ms=30)
+                y_offset += 6
+                if y_offset > 230:
+                    x_offset += 56
                     y_offset = 10
+                    stripe = PINK if stripe == WHITE else WHITE
         if installed_addons:
             if not applied_patches:
                 # Do we need a heading?
@@ -150,7 +155,7 @@ def check_patches_available():
                 write_text(f"INSTALLING ADD-ONS...       ", font=dk_font, y=0, fg=RED)
             _, _count = _s.read_romlist("romlist_addon.csv")
             _count += 2  # add "logger" and "congo bongo" to count
-            write_text(f"+ {str(_count)} DK VARIANTS WERE INSTALLED WITH THE ADD-ON PACK", font=pl_font, x=0, y=239, fg=PINK)
+            write_text(f"+ {str(_count)} CLONES, PORTS & HACKS IN THE CONSOLE ADD-ON PACK", font=pl_font, x=0, y=239, fg=WHITE)
         if applied_patches or installed_addons:
             jump_to_continue(0)
     else:
@@ -612,7 +617,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
     play_sound_effect(sound_file)
 
 
-def get_system_description(name):
+def get_system_description(name, sub):
     _system = name.split("_")[0].replace("-", "_")
     if _system == "pc":
         # Some PC are emulated and can be categorised as other systems
@@ -620,20 +625,31 @@ def get_system_description(name):
             if s in name and s != "pc":
                 _system = s
                 break
-    if _system in RECOGNISED_SYSTEMS:
+    if name in ARCADE_BONUS:
+        return "Arcade (Bonus)"
+    elif name in ARCADE_JUNIOR:
+        return "Arcade (Donkey Kong Junior)"
+    elif name in ARCADE_CRAZY:
+        return "Arcade (Crazy Kong)"
+    elif sub in ARCADE_TRAINERS:
+        return "Arcade (Practice)"
+    elif sub in ARCADE_2PLAYER or name in ARCADE_2PLAYER:
+        return "Arcade (Two Players)"
+    elif _system in RECOGNISED_SYSTEMS:
         return RECOGNISED_SYSTEMS[_system]
     else:
-        return ""
+        return "Arcade (Donkey Kong)"
 
 
 def sort_key(x):
-    key0 = get_system_description(x[0])
-    key1 = (x[3] or x[0]).replace("Bonus:", "ZZBonus:")
+    key0 = get_system_description(x[0], x[1])
+    key1 = (x[3] or x[0]).replace("Arcade", "__Arcade")
     slot = str(x[4])
     if slot == "9999":
         slot = "0"
-    core = "9" if not key1 in ARCADE_CORE_ORDER else str(ARCADE_CORE_ORDER.index(key1))
-    return key0.ljust(30) + core + key1.ljust(30) + slot.zfill(4)
+    system_core = "9" if not key0 in SYSTEM_CORE_ORDER else str(SYSTEM_CORE_ORDER.index(key0))
+    arcade_core = "9" if not key1 in ARCADE_CORE_ORDER else str(ARCADE_CORE_ORDER.index(key1))
+    return system_core + key0.ljust(30) + arcade_core + key1.ljust(30) + slot.zfill(4)
 
 
 def build_menus(initial=False):
@@ -661,35 +677,37 @@ def build_menus(initial=False):
 
         _lastname, _lastsystem = "", ""
         _count = 0
+        _unlocked = 0
         for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
-            _system = get_system_description(name)
+            _system = get_system_description(name, sub)
             if _g.score >= unlock or not UNLOCK_MODE or BASIC_MODE:
                 if sub != "shell" or name != _lastname:
-                    if (_g.stage < 2 and not add) or (_g.stage >= 2 and (add and ENABLE_ADDONS or not add and not ENABLE_ADDONS)):
-                        if _system and _system != _lastsystem:
-                            _g.menu.add_label(f'{_system} {"_"*70}', font_color=GREY, font_name="fonts/tom-thumb.bdf")
-                            _lastsystem = _system
-                        # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
-                        if ":" in alt:
-                            alt = alt.split(":")[1].strip()
-                        if not initial and ENABLE_ADDONS and not UNLOCK_MODE and _g.stage >= 2:
-                            write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                        # Played games use a grey font
-                        _color = LIGHTGREY if sub+name in _g.played else PINK
-                        try:
-                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name, font_color=_color)
-                        except (IndexError, ValueError) as error:
-                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), font_color=_color)
-                        if _system:
-                            widget.set_margin(8,2)
+                    if _system and _system != _lastsystem:
+                        _g.menu.add_label(f'{_system} {"_"*70}', font_color=GREY, font_name="fonts/tom-thumb.bdf")
+                        _lastsystem = _system
+                    # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
+                    if ":" in alt:
+                        alt = alt.split(":")[1].strip()
+                    if not initial and ENABLE_ADDONS and not UNLOCK_MODE and _g.stage >= 2:
+                        write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
+                    # Played games use a grey font
+                    _color = LIGHTGREY if sub+name in _g.played else PINK
+                    try:
+                       widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name, font_color=_color)
+                    except (IndexError, ValueError) as error:
+                       widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), font_color=_color)
+                    widget.set_margin(8,2)
+                    _unlocked += 1
             if initial and int(icx) >= 0 and int(icy) >= 0:
                 _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
             _lastname = name
             _count += 1
 
+        _g.menu.add_vertical_margin(6)
         if UNLOCK_MODE:
-            _g.menu.add_vertical_margin(4)
-            _g.menu.add_label("* Earn coins to add more games to this list.", font_color=GREY, font_name="fonts/tom-thumb.bdf")
+            _g.menu.add_label(f"* Earn coins to add more games to this list ({_unlocked}/{_g.romcount}).", font_color=GREY, font_name="fonts/tom-thumb.bdf")
+        else:
+            _g.menu.add_label(f"* All {_g.romcount} games have been unlocked!", font_color=GREY, font_name="fonts/tom-thumb.bdf")
         _g.menu.add_vertical_margin(6)
         _g.menu.add_button('Settings', open_settings_menu)
         _g.menu.add_button('Close Menu', close_menu)
