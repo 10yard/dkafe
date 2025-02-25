@@ -269,12 +269,14 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Commodore VIC-20
  - Dragon 32
  - EACA Colour Genie EG2000
+ - Epoch Cassette Vision
  - Famicom Disk System
  - Game and Watch
  - Intellivision
  - Jupiter Ace
  - LCD and Handheld
  - LowRes NX Fantasy Console
+ - Microsoft Windows PC
  - MS-DOS
  - MSX
  - NEC PC-88
@@ -282,7 +284,6 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Nintendo Entertainment System
  - Nintendo Gameboy
  - Nintendo Gameboy Color
- - PC
  - Pico-8 Fantasy Console
  - Pinball
  - Pokitto DIY Handheld

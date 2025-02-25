@@ -1054,10 +1054,10 @@ def menu_callback():
             k = CONTROL_DOWN
         elif keys[CONTROL_LEFT] or keys[CONTROL_PAGEUP]:
             k = CONTROL_UP
-            step = 10
+            step = 16
         elif keys[CONTROL_RIGHT] or keys[CONTROL_PAGEDOWN]:
             k = CONTROL_DOWN
-            step = 10
+            step = 16
         if k:
             # Simulate up or down keypress 10 times for quicker scrolling
             for i in range(0, step):

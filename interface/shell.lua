@@ -162,6 +162,7 @@ rom_table["spectrum_monkeybiz"]      = {"P1",            true,  360,   {200,"{SP
 rom_table["spectrum_spec_kong"]      = {"",			     true,  9360,  {150,'J""\n',300,"{PLAY}",9000,"\n",9100,"\n",9200,"\n",9300,"1\n"}}
 rom_table["spectrum_wrathofkong"]    = {"P1",            true,  5100,  {150,'J""\n',300,"{PLAY}",5050,"{STOP}"}}
 rom_table["spectrum_dk_reloaded"]    = {"",              true,  12910, {150,'J""\n',300,"{PLAY}",12900,"2"}}
+rom_table["spectrum_dk_techdemo"]    = {"JJ",            true,  14100, {150,'J""\n',300,"{PLAY}"}}
 rom_table["spec128_dk_reload_again"] = {"",              false, 130,   {60,"x",120,"1"}}
 rom_table["spec128_dk_arcade"]       = {"",              false, 70,    {60,"0"}}
 rom_table["ti99_4a"]                 = {"JJ",            true,  600,   {60,"  2"}}
