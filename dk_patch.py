@@ -91,6 +91,12 @@ def apply_patches_and_addons():
                             os.mkdir(subfolder)
                             shutil.copy(DKONGJR_ZIP, os.path.join(ROM_DIR, subfolder))
                             applied_patches_list.append(name)
+                    elif name.startswith("dkong3"):
+                        if os.path.exists(DKONG3_ZIP):
+                            # Copying DK 3 plugin hacks to subfolder. No patching - IPS is empty.
+                            os.mkdir(subfolder)
+                            shutil.copy(DKONG3_ZIP, os.path.join(ROM_DIR, subfolder))
+                            applied_patches_list.append(name)
                     else:
                         # Patching DK rom and writing to subfolder
                         os.mkdir(subfolder)

@@ -263,7 +263,7 @@ pc_crashtime_plumber,shell,PC Crashtime,PC: Crashtime Plumber,9999,,,139000,2,4,
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong JR Remake,9999,,,139000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,139000,2,4,8
 pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,9999,,,139000,2,4,8
-pc_dkbros,shell,DK Bros.,PC: DK Bros.,9999,,,0,2,4,8
+pc_dkbros,shell,DK Bros.,PC: DK Bros.,9999,,,59000,2,4,8
 pc_dkme_exorcist,shell,Exorcist,PC: Donkey Kong The Exorcist,9999,,,139000,2,4,8
 pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,9999,,,157000,2,4,8
 pc_ecv_monster_mansion,shell,MonsterMansion,ECV: Monster Mansion,9999,,,82000,2,4,8
@@ -282,7 +282,7 @@ pc_pico8_dinkyking4,shell,DinkyKing Rivets,PICO-8: Dinky King Rivets Only,9999,,
 pc_pinball_dkong,shell,PINDK,PINBALL: Donkey Kong,9999,,,173000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,151000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,151000,2,4,8
-pc_sms_kingkong,shell,King Kong,SMS: King Kong,9999,,,0,2,4,8
+pc_sms_kingkong,shell,King Kong,SMS: King Kong,9999,,,172000,2,4,8
 pc_spectrum_dkjr2,shell,DK JR2,SPEC48K: Donkey Kong Junior 2,9999,,,107000,2,4,8
 pc_supervision_superkong,shell,SuperKong,SV: Super Kong,9999,,,107000,2,4,8
 pc_trs80_ape,shell,Ape,TRS80: Ape Escape,9999,,,158000,2,4,8
@@ -294,7 +294,7 @@ plus4_crazyjump,shell,CrazyJumpman,C16/+4: Crazy Jump,9999,,,79000,2,4,8
 plus4_dkplus,shell,DK+,C16/+4: Donkey Kong +,9999,,,79000,2,4,8
 plus4_monkeykong,shell,MonkeyKong,C16/+4: Monkey Kong,9999,,,79000,2,4,8
 sg1000_congobongo,shell,CongoBongo,SG1000: Congo Bongo,9999,,,79000,2,4,8
-sg1000_dk,shell,DK,SG1000: Donkey Kong,9999,,,79000,2,4,8
+sg1000_dk,shell,DK,SG1000: Donkey Kong (Original),9999,,,79000,2,4,8
 sg1000_dkjr,shell,DK JR,SG1000: Donkey Kong Junior,9999,,,79000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,SPEC48K: Ape Escape,9999,,,107000,2,4,8
 spectrum_dk_junior,shell,DonkyJR,SPEC48K: Donky Junior,9999,,,107000,2,4,8

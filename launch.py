@@ -13,7 +13,7 @@ import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pygame.cursors
 import pickle
-from math import floor, ceil
+from math import floor
 from random import randint, choice, sample
 import dk_global as _g
 import dk_system as _s
@@ -24,6 +24,7 @@ if _s.is_pi():
     from subprocess import call, run, Popen, DEVNULL, STDOUT
 else:
     from subprocess import call, run, Popen, DEVNULL, STDOUT, CREATE_NO_WINDOW
+
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
@@ -46,7 +47,6 @@ def exit_program(confirm=False):
             if EMU_EXIT:
                 # system command to issue prior to exit
                 os.system(EMU_EXIT)
-
             pygame.quit()
             sys.exit()
 
@@ -60,13 +60,13 @@ def kill_pc_external(pid=None, program=None):
     except:
         pass
 
+
 def rotate_display(exiting=False, initial=False, rotate=ROTATION):
     # Windows only display rotation
     if _s.get_system() == "win":
         windows_version = sys.getwindowsversion()
         if windows_version[0] > 5:
             import rotatescreen
-            # noinspection PyBroadException
             try:
                 primary = rotatescreen.get_primary_display()
                 if primary:
@@ -79,16 +79,13 @@ def rotate_display(exiting=False, initial=False, rotate=ROTATION):
             except Exception:
                 pass
 
+
 def initialise_screen(reset=False):
-    if _s.is_pi():
+    try:
+        _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
+    except AttributeError:
         # Target doesn't support WINDOWFOCUSGAINED
         _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
-    else:
-        try:
-            _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
-        except AttributeError:
-            # Target doesn't support WINDOWFOCUSGAINED
-            _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
 
@@ -629,8 +626,12 @@ def get_system_description(name, sub):
         return "Arcade (Bonus)"
     elif name in ARCADE_JUNIOR:
         return "Arcade (Donkey Kong Junior)"
+    elif name in ARCADE_DK3:
+        return "Arcade (Donkey Kong 3)"
     elif name in ARCADE_CRAZY:
         return "Arcade (Crazy Kong)"
+    elif name in ARCADE_BIG:
+        return "Arcade (Big Kong)"
     elif sub in ARCADE_TRAINERS:
         return "Arcade (Practice)"
     elif sub in ARCADE_2PLAYER or name in ARCADE_2PLAYER:
@@ -1630,7 +1631,7 @@ def stage_check(warp=False):
         # Update when switching stage
         _g.coins = []
         _g.screen_map.blit(get_image(f"artwork/map{_g.stage}.png"), TOPLEFT)
-        update_screen()
+
 
 def teleport_between_hammers():
     if ENABLE_HAMMERS:

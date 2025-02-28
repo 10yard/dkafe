@@ -52,7 +52,7 @@ function dklevel22.startplugin()
 	
 	function dklevel22_main()
 		if mem ~= nil then
-			if mem:read_u8(0x6229) == 1 then
+			if mem:read_u8(0x6229) == 1 or mem:read_u8(0x6229) == 11 then
 				mem:write_u8(0x6229, 22)  -- update to level 22
 				mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
 			end

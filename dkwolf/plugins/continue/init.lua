@@ -5,7 +5,7 @@
 -- Push P1-Start button to continue your game and your score will be reset.
 -- A tally of the number of continues appears at the top of screen.
 --
--- Tested with latest MAME version 0.242
+-- Tested with MAME version 0.241
 -- Compatible with all MAME versions from 0.196
 --
 -- Minimum start up arguments:
@@ -55,6 +55,8 @@ function continue.startplugin()
 	rom_table["dkongf"]     = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["dkongj"]     = {"dkong_func", {234,009}, {096,044}, CYN, false, false, 1}
 	rom_table["dkongjr"]    = {"dkong_func", {234,002}, {096,044}, YEL, false, false, 1}
+	rom_table["dkong3"]     = {"dkon3_func", {242,002}, {096,044}, YEL, false, false, 1}
+	rom_table["dkong3j"]    = {"dkon3_func", {242,002}, {096,044}, YEL, false, false, 1}
 	rom_table["frogger"]    = {"frogr_func", {052,219}, {336,032}, WHT, true,  false, 3}
 	rom_table["galaga"]     = {"galag_func", {016,219}, {092,045}, WHT, true,  false, 1}
 	rom_table["galagamf"]   = {"galag_func", {016,219}, {092,045}, WHT, true,  false, 1}
@@ -400,6 +402,35 @@ function continue.startplugin()
 					mem:write_u8(0x6228, h_start_lives + 1)
 					reset(0x60b2, 3)  -- reset score in memory
 					for _addr = 0x76e1, 0x7781, 0x20 do reset(_addr, 1) end  -- reset score on screen
+				end
+			end
+		end
+	end
+
+	function dkon3_func()
+		h_mode = read(0x6000)
+		h_start_lives = read(0x6037)
+		h_remain_lives = read(0x601a)
+		b_1p_game = read(0x600f, 0)
+
+		b_almost_gameover = h_mode == 1 and read(0x601a, 1) and read(0x6001, 10)
+		b_reset_tally = h_mode == 0 or i_tally == nil
+		b_show_tally = h_mode  == 1
+		b_push_p1 = i_stop and to_bits(read(0x7c00))[6] == 1
+
+		-- Logic
+		if b_1p_game then
+			if b_almost_gameover and not i_stop then
+				i_stop = i_frame + 600
+			end
+			if i_stop and i_stop > i_frame then
+				mem:write_u8(0x6009, 8) -- suspend game
+				draw_continue_box()
+				if b_push_p1 then
+					i_tally = i_tally + 1 ; i_stop = nil
+					mem:write_u8(0x601a, h_start_lives + 1)
+					reset(0x68f0, 3)  -- reset score in memory
+					for _addr = 0x76a0, 0x7740, 0x20 do reset(_addr, 0) end  -- reset score on screen
 				end
 			end
 		end

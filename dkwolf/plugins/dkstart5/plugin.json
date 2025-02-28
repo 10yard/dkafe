@@ -2,7 +2,7 @@
 "plugin": {
 "name": "dkstart5",
 "description": "DK Start 5",
-"version": "0.4",
+"version": "0.5",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
 "start": "false"

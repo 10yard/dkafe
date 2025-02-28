@@ -403,7 +403,7 @@ function galakong.startplugin()
 		mame_version = tonumber(emu.app_version())
 		is_pi = is_raspberry_pi()
 		play("load")	
-		if emu.romname() == "dkong" or emu.romname() == "dkongjr" then
+		if emu.romname() == "dkong" or emu.romname() == "dkongjr" or emu.romname() == "dkongf" then
 			if mame_version >= 0.196 then
 				if type(manager.machine) == "userdata" then
 					mac = manager.machine
@@ -873,7 +873,7 @@ function galakong.startplugin()
 			if _input >= 128 then
 				_fire = true
 				_input = _input - 128
-			end		
+			end
 			if _input == 4 then
 				_left = true
 			end

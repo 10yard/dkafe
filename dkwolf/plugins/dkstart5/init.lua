@@ -14,7 +14,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {
 	name = "dkstart5",
-	version = "0.4",
+	version = "0.5",
 	description = "DK Start 5",
 	license = "GNU GPLv3",
 	author = { name = "Jon Wilson (10yard)" } }
@@ -46,9 +46,9 @@ function dkstart5.startplugin()
 		end
 		
 		_param = os.getenv("DKSTART5_PARAMETER")
-		if _param and _param >= "1" and _param <= "4" then
+		if _param and _param >= "1" and _param <= "5" then
 			stage = tonumber(_param)
-		end	
+		end
 	end
 	
 	function dkstart5_main()
@@ -57,10 +57,15 @@ function dkstart5.startplugin()
 				-- These crazy kong bootlegs start at level 11 difficulty but report level 1 in the game.
 				mem:write_u8(0x6229, 15)  -- update to level 5
 				mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
+			elseif emu.romname() == "dkongf" and stage == 5 then
+				-- Special case for Foundry with stage 5 parameter - Start from level 1
+				if mem:read_u8(0x6229) == 1 then
+					mem:write_u8(0x6229, 1)
+				end
 			else
 				-- Regular DK
 				if mem:read_u8(0x6229) == 1 then
-					mem:write_u8(0x6229, 5)  -- update to level 5 
+					mem:write_u8(0x6229, 5)  -- update to level 5
 					mem:write_u16(0x622a, 0x3a73)  -- update screen sequence
 				end
 			end	

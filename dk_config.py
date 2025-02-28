@@ -205,13 +205,15 @@ DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 
 ARCADE_JUNIOR = "dkongjr",
+ARCADE_DK3 = "dkong3",
 ARCADE_CRAZY = "ckong", "ckongpt2", "ckongpt2a", "ckongpt2b", "ckongs", "ckongg", "ckongdks", "ckongmc"
+ARCADE_BIG = "bigkong", "bigkonggx"
 ARCADE_BONUS = "logger", "congo"
 ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
                    "dkongcoach", "dkongcoachsprings", "dkongl05")
 ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
-ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros."
-SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Crazy Kong)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)"
+ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros.", "Crazy Kong (Part I)", "Crazy Kong (Part II)", "Big Kong"
+SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)"
 
 # Optional rom names
 OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
@@ -243,6 +245,7 @@ PLUGINS = (
     ("dkongcoach","dkcoach"),
     ("dkongcoachsprings","dkcoach"),
     ("dkongjrfree", "dkfree"),
+    ("dkong3free", "dkfree"),
     ("dkongjrlavapanic", "dklavapanic"),
     ("bigkong_free", "dkfree"),
     ("ckongpt2_free", "dkfree"),
@@ -270,14 +273,18 @@ PLUGINS = (
     ("dkongallen", "allenkong"),
     ("dkongchorus", "dkchorus"),
     ("dkonginsanity", "dkinsanity"),
+    ("ckongpt2_insanity", "dkinsanity"),
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
+    ("dkong3continue", "continue"),
     ("ckongpt2_continue", "continue"),
     ("bigkong_continue", "continue"),
     ("bigkong_lava", "dklavapanic"),
+    ("bigkong_insanity", "dkinsanity"),
     ("dkongl22", "dklevel22"),
     ("ckongpt2_l22", "dklevel22"),
     ("bigkong_l22", "dklevel22"),
+    ("bigkonggx_barrels", "dkstart5:1"),
     ("dkongjrspringboard", "dkstart5:1"),
     ("dkongjrvines", "dkstart5:2"),
     ("dkongjrchains", "dkstart5:3"),
@@ -289,7 +296,11 @@ PLUGINS = (
     ("ckongpt2_springs", "dkstart5:3"),
     ("ckongpt2_rivets", "dkstart5:4"),
     ("bigkong_barrels", "dkstart5:1"),
-    ("dkongvectorgala","galakong,vectorkong")
+    ("dkongvectorgala","galakong,vectorkong"),
+    ("dkong3blue", "dk3stage:0"),
+    ("dkong3gray", "dk3stage:1"),
+    ("dkong3yellow", "dk3stage:2"),
+    ("dkongfoundryonly", "dkstart5:5")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
@@ -308,7 +319,7 @@ CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs", "dkongwizardry",
                      "dkongoctomonkey", "dkongaccelerate", "dkonghalf", "dkongquarter", "dkongwho", "dkonglava",
                      "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong", "dkongpacmancross",
-                     "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity")
+                     "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3")
 SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkonginsanity")
 START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
@@ -354,7 +365,7 @@ DARKGREY = (40, 40, 40)
 BRIGHTRED = (238, 75, 43)
 
 # Alpha channel value for faded/locked arcade machines
-FADE_LEVEL = 75
+FADE_LEVEL = 50
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = (

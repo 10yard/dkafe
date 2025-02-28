@@ -1,8 +1,8 @@
 {
 "plugin": {
-"name": "continue",
-"description": "Continue plugin",
-"version": "0.21",
+"name": "dk3stage",
+"description": "DK3 Stage",
+"version": "0.1",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
 "start": "false"
