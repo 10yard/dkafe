@@ -1,0 +1,17 @@
+Nintendo Gameboy - Game & Watch Gallery 3: DK Junior
+
+Game & Watch Gallery 3 features five games based upon 
+the Game & Watch brand of handheld games. 
+Each game contains a 'Classic' mode, resembling the 
+gameplay and presentation of the original Game & Watc
+h title, and a 'Modern' mode, which contains additional 
+gameplay mechanics and revised graphics based on the 
+Mario franchise. Normal and Hard difficulty settings 
+can be selected for each mode.
+
+You are launched right into the Donkey Kong Junior 
+title from the DKAFE frontend.  Players rescue Donkey 
+Kong from Mario by jumping on vines and collecting 
+keys whilst avoiding enemies.
+
+Developed By Tose, Published by Nintendo

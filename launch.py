@@ -632,6 +632,8 @@ def get_system_description(name, sub):
         return "Arcade (Crazy Kong)"
     elif name in ARCADE_BIG:
         return "Arcade (Big Kong)"
+    elif name in ARCADE_LOGGER:
+        return "Arcade (Logger)"
     elif sub in ARCADE_TRAINERS:
         return "Arcade (Practice)"
     elif sub in ARCADE_2PLAYER or name in ARCADE_2PLAYER:
@@ -888,6 +890,14 @@ def build_launch_menu():
                 _g.launchmenu.add_button('- Practice vines          ', launch_rom, nearby, "dkstart5:2")
                 _g.launchmenu.add_button('- Practice chains         ', launch_rom, nearby, "dkstart5:3")
                 _g.launchmenu.add_button('- Practice hideout        ', launch_rom, nearby, "dkstart5:4")
+            elif name == "dkong3":
+                _g.launchmenu.add_button('- Practice blue stage     ', launch_rom, nearby, "dk3stage:0")
+                _g.launchmenu.add_button('- Practice gray stage     ', launch_rom, nearby, "dk3stage:1")
+                _g.launchmenu.add_button('- Practice yellow stage   ', launch_rom, nearby, "dk3stage:2")
+            elif name.startswith("logger"):
+                _g.launchmenu.add_button('- Practice barrels        ', launch_rom, nearby, "loggerstage:0")
+                _g.launchmenu.add_button('- Practice pies           ', launch_rom, nearby, "loggerstage:1")
+                _g.launchmenu.add_button('- Practice springs        ', launch_rom, nearby, "loggerstage:2")
             else:
                 _g.launchmenu.add_button('- Practice barrels        ', launch_rom, nearby, "dkstart5:1")
                 _g.launchmenu.add_button('- Practice pies           ', launch_rom, nearby, "dkstart5:2")

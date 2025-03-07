@@ -203,22 +203,25 @@ if START_STAGE > STAGES: START_STAGE = 0
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
+LOGGER_ZIP = os.path.join(ROM_DIR, "logger.zip")
+LOGGERR2_ZIP = os.path.join(ROM_DIR, "loggerr2.zip")
 
 ARCADE_JUNIOR = "dkongjr",
 ARCADE_DK3 = "dkong3",
 ARCADE_CRAZY = "ckong", "ckongpt2", "ckongpt2a", "ckongpt2b", "ckongs", "ckongg", "ckongdks", "ckongmc"
 ARCADE_BIG = "bigkong", "bigkonggx"
-ARCADE_BONUS = "logger", "congo"
+ARCADE_LOGGER = "logger", "loggerr2"
+ARCADE_BONUS =  "congo",
 ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
                    "dkongcoach", "dkongcoachsprings", "dkongl05")
 ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
 ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros.", "Crazy Kong (Part I)", "Crazy Kong (Part II)", "Big Kong"
-SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)"
+SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)"
 
 # Optional rom names
 OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
 if ARCH != "winxp":
-    OPTIONAL_NAMES += ARCADE_BONUS
+    OPTIONAL_NAMES += ARCADE_BONUS + ARCADE_LOGGER
 
 # Plugins add functionality to certain roms
 PLUGINS = (
@@ -300,7 +303,13 @@ PLUGINS = (
     ("dkong3blue", "dk3stage:0"),
     ("dkong3gray", "dk3stage:1"),
     ("dkong3yellow", "dk3stage:2"),
-    ("dkongfoundryonly", "dkstart5:5")
+    ("dkongfoundryonly", "dkstart5:5"),
+    ("loggerbarrels", "loggerstage:0"),
+    ("loggerpies", "loggerstage:1"),
+    ("loggersprings", "loggerstage:2"),
+    ("loggerr2barrels", "loggerstage:0"),
+    ("loggerr2pies", "loggerstage:1"),
+    ("loggerr2springs", "loggerstage:2")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
@@ -336,7 +345,7 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkonghrd",
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
-                  "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity")
+                  "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2")
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey"]
@@ -779,6 +788,8 @@ GAME_MEDIA = {
     "vic20-se_witchway":"-cart",
     "vic20-se_dkjr_gnw":"-exp 16k -quik",
     "vic20-se_dk_ackenhausen":"-exp 16k -quik"}
+
+STATEKEEP_MEDIA_EXCEPTIONS = ("gbcolor_dk_gw_gallery2", "gbcolor_dk_gw_gallery3")
 
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
 PI_UNSUPPORTED_SYSTEMS = "bbcb",

@@ -1,0 +1,19 @@
+Nintendo Gameboy - Game & Watch Gallery 2: Donkey Kong
+
+Game & Watch Gallery 2 features six games based upon 
+the Game & Watch brand of handheld games.  Each game 
+contains a 'Classic' mode, resembling the gameplay and 
+presentation of the original Game & Watch title, and a
+'Modern' mode, which contains additional gameplay 
+mechanics and revised graphics based on the Mario 
+franchise. Normal and Hard difficulty settings can be 
+selected for each mode.
+
+You are launched right into the Donkey Kong title from
+the frontend. The player moves left and right and jumps
+to avoid barrels, making their way up platforms and 
+ladders towards Donkey Kong. In the 'Modern' version,
+platforms disappear and levels change for greater 
+variation.
+
+Developed By Tose, Published by Nintendo

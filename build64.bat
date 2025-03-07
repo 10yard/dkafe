@@ -92,6 +92,7 @@ copy roms\dkong3.zip dist\console_addon\roms\ /Y
 
 echo **** Bonus roms includes with the addon pack
 copy roms\logger.zip dist\console_addon\roms\ /Y
+copy roms\loggerr2.zip dist\console_addon\roms\ /Y
 copy roms\congo.zip dist\console_addon\roms\ /Y
 
 echo **** Full add-on pack for 64 bit windows

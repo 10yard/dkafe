@@ -78,7 +78,7 @@ dkong,dkongwho1,WhoBarrels,DK Who Barrels,109,1,2,70000,10000,20000,40000
 dkong,dkongwho2,WhoPies,DK Who Pies,112,1,2,71000,10000,20000,40000
 dkong,dkongwho3,WhoSprings,DK Who Springs,113,1,2,72000,10000,20000,40000
 dkong,dkongwho4,WhoRivets,DK Who Rivets,115,1,2,73000,10000,20000,40000
-dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrels),117,1,2,74000,1000,2000,5000
+dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrel),117,1,2,74000,1000,2000,5000
 dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,118,1,2,75000,8000,16000,30000
 ckongpt2,ckongpt2_l22,CK Killscrn,CK KillScreen 22,120,1,2,76000,1000,2000,3000
 dkong,dkongksfix,KSFix,DK Killscreen Fix,123,1,2,77000,10000,25000,40000
@@ -129,4 +129,11 @@ dkongjr,dkongjrl22,JR Killscreen,JR Killscreen 22,9999,1,2,3000,1500,2500,4000
 dkongjr,dkongjrfree,JR FreeRun,JR Free Run,9999,1,2,9000,10000,15000,30000
 dkongjr,dkongjrlavapanic,JR Lava!,JR Lava Panic!,9999,1,2,6000,10000,15000,30000
 kong,kong,DK Galax.,DK Galaxian Hardware,9999,1,2,54000,,,
-logger,,Logger,Bonus: Logger,9999,1,2,3000,,,
+logger,,Logger,Bonus: Logger R1,9999,1,2,3000,,,
+loggerr2,,Logger2,Bonus: Logger R2,9999,1,2,3000,,,
+logger,loggerbarrels,Logger Barrels,Logger R1 Barrels Only,9999,1,2,3000,,,
+logger,loggerpies,Logger Pies,Logger R1 Pies Only,9999,1,2,3000,,,
+logger,loggersprings,Logger Springs,Logger R1 Springs Only,9999,1,2,3000,,,
+loggerr2,loggerr2barrels,Logger R2 Barrels,Logger R2 Barrels Only,9999,1,2,3000,,,
+loggerr2,loggerr2pies,Logger R2 Pies,Logger R2 Pies Only,9999,1,2,3000,,,
+loggerr2,loggerr2springs,Logger R2 Springs,Logger R2 Springs Only,9999,1,2,3000,,,

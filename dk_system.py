@@ -77,12 +77,14 @@ def read_romlist(specific_romlist_file=None):
                             if ARCH != "win64" and name.split("_")[0] in WIN64_ONLY_SYSTEMS:
                                 # Skip over incompatible roms
                                 continue
+                            if ARCH != "win64" and name in STATEKEEP_MEDIA_EXCEPTIONS:
+                                # Skip over roms that use a .statekeep file when not running Win64
+                                continue
                             if ARCH == "pi" and name.split("_")[0] in PI_UNSUPPORTED_SYSTEMS:
                                 # Skip over unsupported system roms
                                 continue
-
-                            # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
                             if name in OPTIONAL_NAMES and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
+                                # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
                                 continue
 
                             if not alt:
@@ -193,7 +195,13 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             os.environ["DKAFE_SHELL_NAME"] = name
             os.environ["DKAFE_SHELL_NAME_2"] = name.split("_")[1] if "_" in name else name
             os.environ["DKAFE_SHELL_MEDIA"] = GAME_MEDIA.get(name) or SYSTEM_MEDIA.get(_system) or "-cart"
-            os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".state"))
+            if name in STATEKEEP_MEDIA_EXCEPTIONS:
+                # .statekeep is for exceptions, when the generation of .state is not possible using shell.lua
+                # e.g. gbcolor will not listen to simulated keyboard inputs so a state file is created independently
+                if ARCH == "win64":
+                    os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".statekeep"))
+            else:
+                os.environ["DKAFE_SHELL_STATE"] = os.path.normpath(os.path.join(ROM_DIR, _system, name + ".state"))
             if is_pi():
                 os.environ["DKAFE_SHELL_BOOT"] = f'-script {os.path.join(ROOT_DIR, "interface", "shell.lua")}'
             else:

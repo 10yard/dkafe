@@ -84,6 +84,8 @@ function continue.startplugin()
 	rom_table["sinistar"]   = {"snstr_func", {287,001}, {102,052}, WHT, false, false, 1}
 	rom_table["sinistar2"]  = {"snstr_func", {287,001}, {102,052}, WHT, false, false, 1}
 	rom_table["sinistarp"]  = {"snstr_func", {287,001}, {102,052}, WHT, false, false, 1}
+	rom_table["logger"]     = {"loggr_func", {242,002}, {096,044}, YEL, false, false, 1}
+	rom_table["loggerr2"]   = {"loggr_func", {242,002}, {096,044}, YEL, false, false, 1}
 
 	-- encoded message data
 	message_data = {"*","*","*","*","*","*","*","*","8&@2@3@2&3@3@9&@5@93&4&@3@!3&@3&@8","8@3@1@3@1@2@2@3@9@3@3@!92@2@5@4@1@2@3@4@91",
@@ -494,6 +496,36 @@ function continue.startplugin()
 		end
 	end
 
+	function loggr_func()
+		h_mode = read(0x1d58)
+		h_start_lives = 3
+		h_remain_lives = read(0x1cbf)
+		b_1p_game = read(0x1d3e, 0)
+
+		-- Need to find something that triggers before death on collision not 0x1c8d
+
+		b_almost_gameover = h_mode == 1 and read(0x1400, 0xff) and h_remain_lives == 0
+		b_reset_tally = h_mode == 0 or i_tally == nil
+		b_show_tally = h_mode  == 1
+		b_push_p1 = i_stop and to_bits(read(0x7c00))[6] == 1
+		
+		-- Logic
+		if b_1p_game then
+			if b_almost_gameover and not i_stop then
+				i_stop = i_frame + 600
+			end
+			if i_stop and i_stop > i_frame then
+				mem:write_u8(0x6009, 8) -- suspend game
+				draw_continue_box()
+				if b_push_p1 then
+					i_tally = i_tally + 1 ; i_stop = nil
+					mem:write_u8(0x601a, h_start_lives + 1)
+					reset(0x68f0, 3)  -- reset score in memory
+					for _addr = 0x76a0, 0x7740, 0x20 do reset(_addr, 0) end  -- reset score on screen
+				end
+			end
+		end
+	end
 
 	function galax_func()
 		-- ROM disassembly at http://seanriddle.com/galaxian.asm
@@ -867,6 +899,9 @@ function continue.startplugin()
 				if b_show_tally then
 					draw_tally(i_tally)
 				end
+			end
+			if emu.romname() == "logger" then
+				video.throttle_rate = 5  -- TEST
 			end
 		end
 	end
