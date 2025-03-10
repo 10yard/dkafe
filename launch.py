@@ -151,7 +151,7 @@ def check_patches_available():
                 clear_screen()
                 write_text(f"INSTALLING ADD-ONS...       ", font=dk_font, y=0, fg=RED)
             _, _count = _s.read_romlist("romlist_addon.csv")
-            _count += 2  # add "logger" and "congo bongo" to count
+            _count += 1  # add "congo bongo" to count
             write_text(f"+ {str(_count)} CLONES, PORTS & HACKS IN THE CONSOLE ADD-ON PACK", font=pl_font, x=0, y=239, fg=WHITE)
         if applied_patches or installed_addons:
             jump_to_continue(0)

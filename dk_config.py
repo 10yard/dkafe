@@ -203,8 +203,6 @@ if START_STAGE > STAGES: START_STAGE = 0
 DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
-LOGGER_ZIP = os.path.join(ROM_DIR, "logger.zip")
-LOGGERR2_ZIP = os.path.join(ROM_DIR, "loggerr2.zip")
 
 ARCADE_JUNIOR = "dkongjr",
 ARCADE_DK3 = "dkong3",
@@ -221,7 +219,7 @@ SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arca
 # Optional rom names
 OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
 if ARCH != "winxp":
-    OPTIONAL_NAMES += ARCADE_BONUS + ARCADE_LOGGER
+    OPTIONAL_NAMES += ARCADE_BONUS
 
 # Plugins add functionality to certain roms
 PLUGINS = (
@@ -304,12 +302,12 @@ PLUGINS = (
     ("dkong3gray", "dk3stage:1"),
     ("dkong3yellow", "dk3stage:2"),
     ("dkongfoundryonly", "dkstart5:5"),
-    ("loggerbarrels", "loggerstage:0"),
-    ("loggerpies", "loggerstage:1"),
-    ("loggersprings", "loggerstage:2"),
-    ("loggerr2barrels", "loggerstage:0"),
-    ("loggerr2pies", "loggerstage:1"),
-    ("loggerr2springs", "loggerstage:2")
+    ("logger_barrels", "loggerstage:0"),
+    ("logger_pies", "loggerstage:1"),
+    ("logger_springs", "loggerstage:2"),
+    ("loggerr2_barrels", "loggerstage:0"),
+    ("loggerr2_pies", "loggerstage:1"),
+    ("loggerr2_springs", "loggerstage:2")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).

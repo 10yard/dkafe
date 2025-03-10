@@ -141,8 +141,8 @@ dos_davikong,shell,David's,DOS: David's Kong,250,,,193000,2,4,8
 gbcolor_dk_gw_gallery3,shell,GBC JR,GBC: G&W Gallery JR,252,,,194000,2,4,8
 gbcolor_dk_gw_gallery2,shell,GBC DK,GBC: G&W Gallery DK,254,,,195000,2,4,8
 spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,256,,,196000,2,4,8
-loggerr2,,Logger2,Logger R2,257,,,197000,2,4,8
-logger,,Logger,Logger R1,259,,,198000,2,4,8
+loggerr2,loggerr2,Logger2,Logger R2,257,,,197000,2,4,8
+logger,logger,Logger,Logger R1,259,,,198000,2,4,8
 pc_trs80_killergorilla,shell,TRS80 KG,TRS80: Killer Gorilla,260,,,199000,2,4,8
 oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,261,,,200000,2,4,8
 pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,262,,,201000,2,4,8
