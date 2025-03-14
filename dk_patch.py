@@ -97,19 +97,6 @@ def apply_patches_and_addons():
                             os.mkdir(subfolder)
                             shutil.copy(DKONG3_ZIP, os.path.join(ROM_DIR, subfolder))
                             applied_patches_list.append(name)
-                    #elif name.startswith("loggerr2"):
-                    #    if os.path.exists(LOGGERR2_ZIP):
-                    #        # Copying Loggerr2 plugin hacks to subfolder. No patching - IPS is empty.
-                    #        os.mkdir(subfolder)
-                    #        shutil.copy(LOGGER_ZIP, os.path.join(ROM_DIR, subfolder))
-                    #        shutil.copy(LOGGERR2_ZIP, os.path.join(ROM_DIR, subfolder))
-                    #        applied_patches_list.append(name)
-                    #elif name.startswith("logger"):
-                    #    if os.path.exists(LOGGER_ZIP):
-                    #        # Copying Logger plugin hacks to subfolder. No patching - IPS is empty.
-                    #        os.mkdir(subfolder)
-                    #        shutil.copy(LOGGER_ZIP, os.path.join(ROM_DIR, subfolder))
-                    #        applied_patches_list.append(name)
                     else:
                         # Patching DK rom and writing to subfolder
                         os.mkdir(subfolder)

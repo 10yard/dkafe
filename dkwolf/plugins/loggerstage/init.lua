@@ -43,7 +43,7 @@ function loggerstage.startplugin()
 		end
 		
 		_param = os.getenv("LOGGERSTAGE_PARAMETER")
-		if _param and _param >= "0" and _param <= "2" then
+		if _param and _param >= "0" and _param <= "3" then
 			stage = tonumber(_param)
 		else
 			stage = 0

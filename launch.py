@@ -151,7 +151,7 @@ def check_patches_available():
                 clear_screen()
                 write_text(f"INSTALLING ADD-ONS...       ", font=dk_font, y=0, fg=RED)
             _, _count = _s.read_romlist("romlist_addon.csv")
-            _count += 1  # add "congo bongo" to count
+            _count += 2  # add "congo bongo" and "dkongjre" to count
             write_text(f"+ {str(_count)} CLONES, PORTS & HACKS IN THE CONSOLE ADD-ON PACK", font=pl_font, x=0, y=239, fg=WHITE)
         if applied_patches or installed_addons:
             jump_to_continue(0)
@@ -619,7 +619,7 @@ def get_system_description(name, sub):
     if _system == "pc":
         # Some PC are emulated and can be categorised as other systems
         for s in RECOGNISED_SYSTEMS:
-            if s in name and s != "pc":
+            if ("_" + s + "_") in name and s != "pc":
                 _system = s
                 break
     if name in ARCADE_BONUS:
@@ -1056,19 +1056,19 @@ def menu_callback():
     _g.last_down = _g.last_down + 1 if keys[CONTROL_DOWN] else 0
     game_menu = _g.current_menu_title == QUESTION
 
-    if keys and game_menu and (_s.time() - _g.last_press > 0.25 or _g.last_up > 10 or _g.last_down > 10):
+    if keys and game_menu and (_s.time() - _g.last_press > 0.10 or _g.last_up > 5 or _g.last_down > 5):
         step = 1
         k = None
-        if _g.last_up > 10:
+        if _g.last_up > 5:
             k = CONTROL_UP
-        elif _g.last_down > 10:
+        elif _g.last_down > 5:
             k = CONTROL_DOWN
         elif keys[CONTROL_LEFT] or keys[CONTROL_PAGEUP]:
             k = CONTROL_UP
-            step = 16
+            step = 18
         elif keys[CONTROL_RIGHT] or keys[CONTROL_PAGEDOWN]:
             k = CONTROL_DOWN
-            step = 16
+            step = 18
         if k:
             # Simulate up or down keypress 10 times for quicker scrolling
             for i in range(0, step):
@@ -1160,7 +1160,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             if name.split("_")[0] in WIN64_ONLY_SYSTEMS:
                 if name.startswith("pc_"):
                     os.chdir(os.path.join(ROM_DIR, "pc", name))
-                if competing:
+                if competing and st1 and st2 and st3:
                     # Use threading callback to play sounds when target scores are achieved.
                     # Each thread is unique to the game and time of launch - so not played if game is exited.
                     from threading import Thread as _Thread

@@ -42,7 +42,8 @@ echo **** clear the snaps folder
 del dist\artwork\snap\*.png /Q
 
 echo **** create empty roms folder
-xcopy roms\---* dist\roms /S /i /Y
+mkdir dist\roms
+type NUL > "dist\roms\---Place dkong.zip file into this folder---"
 
 echo **** create minimal dkwolf folder
 xcopy dkwolf\dkwolf32.exe dist\dkwolf\dkwolf.exe* /Y

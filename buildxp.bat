@@ -51,7 +51,8 @@ echo **** export the system architecture to file
 echo winxp > dist\launchxp\ARCH
 
 echo **** create empty roms folder
-xcopy roms\---* dist\launchxp\roms /S /i /Y
+mkdir dist\roms
+type NUL > "dist\roms\---Place dkong.zip file into this folder---"
 
 echo **** create minimal dkwolf folder
 xcopy dkwolf\dkwolfxp.exe dist\launchxp\dkwolf\dkwolf.exe* /Y

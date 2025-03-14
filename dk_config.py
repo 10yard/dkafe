@@ -204,7 +204,7 @@ DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 
-ARCADE_JUNIOR = "dkongjr",
+ARCADE_JUNIOR = "dkongjr", "dkongjre"
 ARCADE_DK3 = "dkong3",
 ARCADE_CRAZY = "ckong", "ckongpt2", "ckongpt2a", "ckongpt2b", "ckongs", "ckongg", "ckongdks", "ckongmc"
 ARCADE_BIG = "bigkong", "bigkonggx"
@@ -305,9 +305,11 @@ PLUGINS = (
     ("logger_barrels", "loggerstage:0"),
     ("logger_pies", "loggerstage:1"),
     ("logger_springs", "loggerstage:2"),
+    ("logger_rivets", "loggerstage:3"),
     ("loggerr2_barrels", "loggerstage:0"),
     ("loggerr2_pies", "loggerstage:1"),
-    ("loggerr2_springs", "loggerstage:2")
+    ("loggerr2_springs", "loggerstage:2"),
+    ("loggerr2_rivets", "loggerstage:3")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
@@ -765,6 +767,8 @@ GAME_MEDIA = {
     "c64_eskimo_eddie":"-flop",
     "c64_monkeykong":"-flop",
     "c64_logger":"-speed 1.5 -quik",
+    "dragon32_baby_monkey":"-ramsize 64k -flop1",
+    "dragon32_dk_reloaded":"-ramsize 64k -flop1",
     "gbcolor_dk_arcade":"-plugin gbstage -cart",
     "hbf900a_apeman":"-cart1",
     "hbf900a_congo":"-cass",
@@ -773,6 +777,7 @@ GAME_MEDIA = {
     "spectrum_ape_escape":"-cass",
     "spectrum_dk3_micro_vs":"-cass",
     "spectrum_dk_reloaded":"-cass",
+    "spectrum_baby_monkey":"-cass",
     "spectrum_eskimo_eddie":"-cass",
     "spectrum_kongs_revenge":"-cass",
     "spectrum_crazykongcity":"-cass",
@@ -813,6 +818,13 @@ KEYBOARD_REMAP = {
     "pc_atarist_kidkong": "delayspace>22",
     "pc_atarist_junior":"ctrl>ctrl,space|num 1>a|num 2>b|delayspace>5.25",
     "pc_atom_kong":"left>z|right>c|up>s|down>x|ctrl>shift,space|esc>forcequit:atomulator.exe",
+    "pc_atom_crazykongcity1":"left>o|right>p|up>q|down>a|ctrl>m,q,1|2>1|3>1|esc>forcequit:atomulator.exe",
+    "pc_atom_crazykongcity2":"left>o|right>p|up>q|down>a|ctrl>m,q,1|2>1|3>1|esc>forcequit:atomulator.exe",
+    "pc_atom_dkjunior":"left>o|right>p|up>q|down>a|ctrl>m,q,1|2>1|3>1|esc>forcequit:atomulator.exe",
+    "pc_atom_dkjunior2":"left>o|right>p|up>q|down>a|ctrl>m,q,1|2>1|3>1|esc>forcequit:atomulator.exe",
+    "pc_atom_dkreloaded":"left>o|right>p|up>q|down>a|ctrl>space,m,1|2>1|3>1|esc>forcequit:atomulator.exe",
+    "pc_atom_dkreloadedagain":"left>o|right>p|up>q|down>a|ctrl>space,m,1|2>1|3>1|esc>forcequit:atomulator.exe",
+    "pc_atom_baby_monkey_alba":"left>o|right>p|up>q|down>a|ctrl>space,m,1|2>1|3>1|esc>forcequit:atomulator.exe",
     "pc_crashtime_plumber": "ctrl>space",
     "pc_dk_aa": "1>enter|2>enter|ctrl>x",
     "pc_dk_craze": "esc>forcequit:stdrt.exe",
@@ -851,6 +863,7 @@ KEYBOARD_REMAP = {
     "pc_tic80_denis_kogne":"tab>esc|ctrl>z|alt>x|esc>forcequit:tic80.exe",
     "pc_kong_jr_gnw":"ctrl>x|esc>forcequit",
     "pc_pc88_dk3":"ctrl>space|esc>forcequit:quasi88.exe",
+    "pc_snes_dk4_riseandrepeat":"alt>5|esc>forcequit:snes9x.exe",
     "pc_supervision_superkong":"ctrl>a|alt>b|esc>forcequit:wataroo.exe",
     "pc_tic80_kongremake":"tab>esc|ctrl>z|esc>forcequit:tic80.exe",
     "pc_trs80_ape":"ctrl>space|p>enter,1|num 2>home|num 1>enter,1",
@@ -858,6 +871,12 @@ KEYBOARD_REMAP = {
     "pc_trs80_dk":"ctrl>space|num 1>enter,1",
     "pc_trs80_killergorilla":"ctrl>space",
     "pc_trs80_skyscraper":"ctrl>space|1>1,n,\\,enter",
+    "pc_trs80_dk_reloaded":"ctrl>space,1|2>1|left>o|right>p|up>q|down>a",
+    "pc_trs80_dk_reloaded_again":"ctrl>space,1|2>1|left>o|right>p|up>q|down>a",
+    "pc_trs80_dk_junior":"ctrl>space,1|2>1|left>o|right>p|up>q|down>a",
+    "pc_trs80_dk_junior2":"ctrl>space,1|2>1|left>o|right>p|up>q|down>a",
+    "pc_trs80_baby_monkey":"ctrl>space,1|2>1|left>o|right>p|up>q|down>a",
+    "pc_trs80_crazykongcity":"left>o|right>p|up>q|down>a|ctrl>space,q,1|2>1",
     "pc_uzebox_dkong":"ctrl>a|1>enter|esc>forcequit:uzem.exe",
     "pc_spectrum_dkjr2":"left>o|right>p|up>q|down>a|ctrl>m|num 2>num 1|num 3>num 1|alt>n|esc>forcequit:zesarux.exe"}
 

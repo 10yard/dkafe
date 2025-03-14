@@ -33,7 +33,8 @@ echo **** clear the snaps folder
 del dist\artwork\snap\*.png /Q
 
 echo **** create empty roms folder
-xcopy roms\---* dist\roms /S /i /Y
+mkdir dist\roms
+type NUL > "dist\roms\---Place dkong.zip file into this folder---"
 
 echo **** create minimal dkwolf folder
 xcopy dkwolf\dkwolf.exe dist\dkwolf\ /Y
@@ -89,10 +90,9 @@ echo **** Include arcade in the addon pack to allow complete frontend setup from
 copy roms\dkong.zip dist\console_addon\roms\ /Y
 copy roms\dkongjr.zip dist\console_addon\roms\ /Y
 copy roms\dkong3.zip dist\console_addon\roms\ /Y
+copy roms\dkongjre.zip dist\console_addon\roms\ /Y
 
 echo **** Bonus roms includes with the addon pack
-copy roms\logger.zip dist\console_addon\roms\ /Y
-copy roms\loggerr2.zip dist\console_addon\roms\ /Y
 copy roms\congo.zip dist\console_addon\roms\ /Y
 
 echo **** Full add-on pack for 64 bit windows

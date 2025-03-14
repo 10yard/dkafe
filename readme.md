@@ -139,6 +139,7 @@ Credit is given to the original authors below.
  - Donkey Kong Trainer
  - Donkey Kong Pace
  - Donkey Kong Rainbow
+ - Doonkey Kong Junior Bugfix
  - Crazy Kong Part II 2023 Revision
 
 ### By Jeff Kulczycki - http://www.jeffsromhack.com/products/d2k.htm
