@@ -263,17 +263,16 @@ nes_dk3_battlebeasts,shell,DK3 BattleBeasts,NES: Donkey Kong 3 Battle Beast,9999
 nes_dk3_cnn_sucks,shell,DK3 CNN,NES: Donkey Kong 3 CNN Sucks,9999,,,100000,2,4,8
 nes_dk3_ebola,shell,DK3 Ebola,NES: Donkey Kong 3 Ebola,9999,,,100000,2,4,8
 nes_dk3_sailormoon,shell,DK3 Sailor Moon,NES: Donkey Kong 3 Sailor Moon,9999,,,100000,2,4,8
+nes_dk4,shell,DK4,NES: Donkey Kong 4,9999,,,100000,2,4,8
 nes_dkjr_optimus_minor,shell,JROptimus,NES: Optimus Minor (Jr.),9999,,,100000,2,4,8
 nes_donnod_kook_clasalc,shell,DonnodKook,NES: Donnod Kook Clasalc,9999,,,100000,2,4,8
 nes_elfkong,shell,Elf Kong,NES: Elf Kong,9999,,,100000,2,4,8
 nes_ninjaturtles_jr,shell,Ninja JR,NES: Ninja Turtles Jr.,9999,,,100000,2,4,8
 nes_pinkfloyd,shell,PinkFloyd,NES: Pink Floyd's The Wall,9999,,,100000,2,4,8
 nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,100000,2,4,8
-nes_dk4,shell,DK4,NES: Donkey Kong 4,9999,,,100000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,97000,2,4,8
 oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,97000,2,4,8
 orica_4k_kong,shell,4K Kong,ORIC: 4K Kong,9999,,,97000,2,4,8
-pc_dk_revenge,shell,DK Revenge,PC: Donkey Kong's Revenge,9999,,,139000,2,4,8
 pc_a2600_arc_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,170000,2,4,8
 pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,151000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,151000,2,4,8
@@ -289,13 +288,16 @@ pc_crashtime_plumber,shell,PC Crashtime,PC: Crashtime Plumber,9999,,,139000,2,4,
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong Jr. Remake,9999,,,139000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,139000,2,4,8
 pc_dk_redux,shell,Redux,PC: Donkey Kong Redux,9999,,,139000,2,4,8
+pc_dk_revenge,shell,DK Revenge,PC: Donkey Kong's Revenge,9999,,,139000,2,4,8
 pc_dkbros,shell,DK Bros.,PC: DK Bros.,9999,,,59000,2,4,8
+pc_dkjr_beat,shell,DJ Junior Beat,PC: DK Junior Beat,9999,,,139000,2,4,8
 pc_dkme_exorcist,shell,Exorcist,PC: Donkey Kong The Exorcist,9999,,,139000,2,4,8
 pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,9999,,,157000,2,4,8
 pc_ecv_monster_mansion,shell,MonsterMansion,ECV: Monster Mansion,9999,,,82000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,139000,2,4,8
 pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,75000,2,4,8
 pc_kidnappers_inc,shell,Kidnappers Inc,PC: Kidnappers Inc.,9999,,,139000,2,4,8
+pc_cookout,shell,CookOut,PC: Cook Out,9999,,,139000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,139000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,157000,2,4,8
 pc_nds_dk2,shell,DS DK 2,NDS: Donkey Kong II,9999,,,82000,2,4,8

@@ -659,9 +659,9 @@ Playlist music:
 
 # Console Addon Specific
 if ARCH == "win64":
-    ADDON_URL = "https://www.dropbox.com/scl/fi/dxen3esjbmzl0447cqrzq/dkafe_console_addon_pack_v8.zip?rlkey=jbpeh5a78pjbsxoizqe7bfqns&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/6i8p9w353j9irajvl1cax/dkafe_console_addon_pack_v9.zip?rlkey=ulmhjzh1r86hehksr07cyf7rh&dl=0"
 else:
-    ADDON_URL = "https://www.dropbox.com/scl/fi/6suvxppt8y71bbhno8k5l/dkafe_console_addon_pack_v8_reduced.zip?rlkey=wjhi9gi2d8p0f3v0zauzas3or&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/3eg09sufpslynzz3pxuea/dkafe_console_addon_pack_v9_reduced.zip?rlkey=vhdu5b04dvkp59ta28sywr7t1&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
@@ -831,6 +831,8 @@ KEYBOARD_REMAP = {
     "pc_dk_jr_remake": "num 1>enter|ctrl>space|esc>forcequit",
     "pc_dk_plus": "left>a|right>d|up>w|down>s|1>enter|ctrl>space,enter",
     "pc_dk_remake":"num 1>enter|ctrl>space|esc>forcequit",
+    "pc_dkjr_beat":"left>f|right>j|ctrl>space|up>f,j",
+    "pc_cookout":"ctrl>z|alt>x",
     "pc_ecv_monster_mansion": "left>a|right>d|ctrl>h|1>e|esc>forcequit",
     "pc_jumpman_rtx":"num 1>enter|num 5>enter|ctrl>space|esc>forcequit|delayenter>8.25",
     "pc_hbf900a_congo":"1>space|ctrl>space|esc>forcequit:zesarux.exe",
