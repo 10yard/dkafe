@@ -540,7 +540,6 @@ Optional system command to issue after exiting emulator
 Attempt to refocus DKAFE window when exiting from LUA interface (Windows Only)
 
 
-
 ### DK Interface Settings
 
 These settings relate to Donkey Kong hacks.
@@ -782,6 +781,20 @@ It is licensed under GNU GPLv3.
 
 
 ## Troubleshooting
+
+#### I have a multiple monitor setup.  How do I make MAME appear on a specific monitor?
+ - In the settings.txt file,  add the following to `OPTIONS` with `\\.\DISPLAY1` or `\\.\DISPLAY2` being your chosen monitor.
+
+```
+-numscreens 1 -screen0 \\.\DISPLAY1
+```
+
+your revised options should now look something like the following.
+
+```
+OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video opengl -numscreens 1 -screen0 \\.\DISPLAY1
+```
+
 
 #### The system is running slow on an older machine
 
