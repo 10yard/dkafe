@@ -129,13 +129,15 @@ dkongjr,dkongjrl22,JR Killscreen,JR Killscreen 22,9999,1,2,3000,1500,2500,4000
 dkongjr,dkongjrfree,JR FreeRun,JR Free Run,9999,1,2,9000,10000,15000,30000
 dkongjr,dkongjrlavapanic,JR Lava!,JR Lava Panic!,9999,1,2,6000,10000,15000,30000
 kong,kong,DK Galax.,DK Galaxian Hardware,9999,1,2,54000,,,
-logger,logger,Logger R1,Bonus: Logger R1 (Big Bird),9999,1,2,3000,,,
-loggerr2,loggerr2,Logger R2,Bonus: Logger R2 (Squirrel),9999,1,2,3000,,,
+logger,logger,Logger R1,Logger R1 (Big Bird),9999,1,2,3000,,,
+loggerr2,loggerr2,Logger R2,Logger R2 (Squirrel),9999,1,2,3000,,,
 logger,logger_barrels,Logger Barrels,Logger R1 Barrels Only,9999,1,2,3000,,,
 logger,logger_pies,Logger Pies,Logger R1 Pies Only,9999,1,2,3000,,,
 logger,logger_springs,Logger Springs,Logger R1 Springs Only,9999,1,2,3000,,,
 logger,logger_rivets,Logger Rivets,Logger R1 Rivets Only,9999,1,2,3000,,,
+logger,logger_continue,Logger Continue,Logger R1 Continue,9999,1,2,3000,,,
 loggerr2,loggerr2_barrels,Logger R2 Barrels,Logger R2 Barrels Only,9999,1,2,3000,,,
 loggerr2,loggerr2_pies,Logger R2 Pies,Logger R2 Pies Only,9999,1,2,3000,,,
 loggerr2,loggerr2_springs,Logger R2 Springs,Logger R2 Springs Only,9999,1,2,3000,,,
 loggerr2,loggerr2_rivets,Logger R2 Rivets,Logger R2 Rivets Only,9999,1,2,3000,,,
+loggerr2,loggerr2_continue,Logger R2 Continue,Logger R2 Continue,9999,1,2,3000,,,

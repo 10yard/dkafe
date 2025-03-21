@@ -141,8 +141,8 @@ dos_davikong,shell,David's,DOS: David's Kong,250,,,193000,2,4,8
 gbcolor_dk_gw_gallery3,shell,GBC JR,GBC: G&W Gallery JR,252,,,194000,2,4,8
 gbcolor_dk_gw_gallery2,shell,GBC DK,GBC: G&W Gallery DK,254,,,195000,2,4,8
 spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,256,,,196000,2,4,8
-loggerr2,loggerr2,Logger R2,Bonus: Logger R2 (Squirrel),257,,,197000,2,4,8
-logger,logger,Logger R1,Bonus: Logger R1 (Big Bird),259,,,198000,2,4,8
+loggerr2,loggerr2,Log R2,Logger R2 (Squirrel),257,,,197000,2,4,8
+logger,logger,Log R1,Logger R1 (Big Bird),259,,,198000,2,4,8
 pc_trs80_killergorilla,shell,TRS80 KG,TRS80: Killer Gorilla,260,,,199000,2,4,8
 oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,261,,,200000,2,4,8
 pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,262,,,201000,2,4,8
@@ -194,6 +194,8 @@ a800xl_fast_eddie,shell,FastEddie,A800: Fast Eddie,9999,,,67000,2,4,8
 adam_dk,shell,DK,ADAM: Donkey Kong (Original),9999,,,59000,2,4,8
 adam_dk_junior,shell,DK JR,ADAM: Donkey Kong Jr. Supergame,9999,,,59000,2,4,8
 adam_dk_super,shell,DK Super,ADAM: Donkey Kong Supergame,9999,,,59000,2,4,8
+apfimag_dk,shell,Donkey Kong,APF: Donkey Kong,9999,,,67000,2,4,8
+apfimag_dk_jr,shell,Donkey Kong Jr.,APF: Donkey Kong Junior,9999,,,67000,2,4,8
 apple2e_applekong,shell,AppleKong,A][: Apple Kong,9999,,,76000,2,4,8
 apple2e_cannonball,shell,A2 Blitz,A][: Cannonball Blitz,9999,,,76000,2,4,8
 bbcb_builder,shell,Builder,BBC: Builder,9999,,,75000,2,4,8
@@ -284,6 +286,7 @@ pc_atom_dkjunior2,shell,DK Junior 2,ATOM: Donkey Kong Junior 2,9999,,,75000,2,4,
 pc_atom_dkreloaded,shell,DK Reloaded,ATOM: Donkey Kong Reloaded,9999,,,75000,2,4,8
 pc_atom_dkreloadedagain,shell,DK Reloaded Again,ATOM: Donkey Kong Reloaded Again,9999,,,75000,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,75000,2,4,8
+pc_cookout,shell,CookOut,PC: Cook Out,9999,,,139000,2,4,8
 pc_crashtime_plumber,shell,PC Crashtime,PC: Crashtime Plumber,9999,,,139000,2,4,8
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong Jr. Remake,9999,,,139000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,139000,2,4,8
@@ -297,7 +300,6 @@ pc_ecv_monster_mansion,shell,MonsterMansion,ECV: Monster Mansion,9999,,,82000,2,
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,139000,2,4,8
 pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,75000,2,4,8
 pc_kidnappers_inc,shell,Kidnappers Inc,PC: Kidnappers Inc.,9999,,,139000,2,4,8
-pc_cookout,shell,CookOut,PC: Cook Out,9999,,,139000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,139000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,157000,2,4,8
 pc_nds_dk2,shell,DS DK 2,NDS: Donkey Kong II,9999,,,82000,2,4,8
@@ -336,6 +338,7 @@ snes_dk2_rise_of_jumpman,shell,Rise of Jumpman,SNES: DK2 Rise of Jumpman,9999,,,
 snes_dk3_another_rise,shell,Another Rise,SNES: DK3 Another Rise,9999,,,78000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,SPEC48K: Ape Escape,9999,,,107000,2,4,8
 spectrum_baby_monkey,shell,Baby Monkey Alba,SPEC48K: Baby Monkey Alba,9999,,,107000,2,4,8
+spectrum_crazycong,shell,Crazy Cong,SPEC48K: Crazy Cong,9999,,,107000,2,4,8
 spectrum_dk_junior,shell,DonkyJR,SPEC48K: Donky Junior,9999,,,107000,2,4,8
 spectrum_dk_techdemo,shell,DK TechDemo,SPEC48K: DK RX Tech Demo,9999,,,107000,2,4,8
 spectrum_dk3_micro_vs,shell,DK3 MicroVs,SPECTRUM: DK3 Micro Vs (G&W),9999,,,107000,2,4,8
@@ -371,6 +374,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,138000,2,4,8
 ##gameboy_dk_summer,shell,**Same as gbcolor,GB: Donkey Kong Summer Hack,####,,,0,2,4,8
 ##mz700_building_hopper,shell,**Not DK enough,SHARP: Building Hopper,####,,,0,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
+##pc_atarist_platform,shell,**Joystick map issue,ST: Platform Capers,####,,,0,2,4,8
 ##pc_atom_crazykongcity2,shell,**Not DK enough,ATOM: Crazy Kong City 2,####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##spectrum_eskimo_eddie,shell,**DK not first level,SPEC48K: Eskimo Eddie,####,,,0,2,4,8

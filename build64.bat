@@ -86,6 +86,9 @@ for %%s in (%systems%) do xcopy roms\%%s dist\console_addon\roms\%%s /S /i /Y
 copy romlist_addon.csv dist\console_addon\ /Y
 xcopy dkwolf\artwork dist\console_addon\dkwolf\artwork /S /i /Y
 
+echo **** Software list necessary for APF Imagination Machine
+xcopy dkwolf\hash dist\console_addon\dkwolf\hash /S /i /Y
+
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip
 copy roms\dkong.zip dist\console_addon\roms\ /Y
 copy roms\dkongjr.zip dist\console_addon\roms\ /Y

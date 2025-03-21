@@ -64,7 +64,7 @@ There is now a console add-on pack which adds extra stages and is packed out wit
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 14 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional console add-on pack featuring over 300 ports, clones and hacks for over 50 classic gaming systems.
+ - An optional console add-on pack featuring over 300 ports, clones and hacks for 60 classic gaming systems.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -99,10 +99,7 @@ Credit is given to the original authors below.
  - 2NUT Kong
  - NoLuck Kong
  - Konkey Dong
- - Donkey Kong Barrels Only
- - Donkey Kong Pies Only
- - Donkey Kong Springs Only
- - Donkey Kong Rivets Only
+ - Donkey Kong Barrels, Pies, Springs, Rivets
  - Donkey Kong Killscreen
  - Donkey Kong Coach
  - Donkey Kong Chorus
@@ -255,6 +252,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Amstrad CPC
  - Amstrad PCW
  - Apple ][
+ - APF Imagination Machine
  - Arduino Arduboy
  - Atari 5200
  - Atari 7800
@@ -308,6 +306,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Uzebox - Atmega Game Console
  - VTech Creativision
  - Watara Supervision
+ 
 
 The Donkey Kong console games will appear on the pie and elevator stages.  There are 2 additional stages on Win x64 platform (crazy kong and big kong).
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.

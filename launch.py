@@ -652,7 +652,7 @@ def sort_key(x):
         slot = "0"
     system_core = "9" if not key0 in SYSTEM_CORE_ORDER else str(SYSTEM_CORE_ORDER.index(key0))
     arcade_core = "9" if not key1 in ARCADE_CORE_ORDER else str(ARCADE_CORE_ORDER.index(key1))
-    return system_core + key0.ljust(30) + arcade_core + key1.ljust(30) + slot.zfill(4)
+    return (system_core + key0.ljust(30) + arcade_core + key1.ljust(30) + slot.zfill(4)).lower()
 
 
 def build_menus(initial=False):
@@ -898,6 +898,7 @@ def build_launch_menu():
                 _g.launchmenu.add_button('- Practice barrels        ', launch_rom, nearby, "loggerstage:0")
                 _g.launchmenu.add_button('- Practice pies           ', launch_rom, nearby, "loggerstage:1")
                 _g.launchmenu.add_button('- Practice springs        ', launch_rom, nearby, "loggerstage:2")
+                _g.launchmenu.add_button('- Practice rivets         ', launch_rom, nearby, "loggerstage:3")
             else:
                 _g.launchmenu.add_button('- Practice barrels        ', launch_rom, nearby, "dkstart5:1")
                 _g.launchmenu.add_button('- Practice pies           ', launch_rom, nearby, "dkstart5:2")

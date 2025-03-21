@@ -309,7 +309,9 @@ PLUGINS = (
     ("loggerr2_barrels", "loggerstage:0"),
     ("loggerr2_pies", "loggerstage:1"),
     ("loggerr2_springs", "loggerstage:2"),
-    ("loggerr2_rivets", "loggerstage:3")
+    ("loggerr2_rivets", "loggerstage:3"),
+    ("logger_continue", "continue"),
+    ("loggerr2_continue", "continue")
 )
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
@@ -328,7 +330,7 @@ CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs", "dkongwizardry",
                      "dkongoctomonkey", "dkongaccelerate", "dkonghalf", "dkongquarter", "dkongwho", "dkonglava",
                      "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong", "dkongpacmancross",
-                     "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3")
+                     "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2")
 SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkonginsanity")
 START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
@@ -672,6 +674,7 @@ RECOGNISED_SYSTEMS = {
     "a5200": "Atari 5200",
     "a7800": "Atari 7800",
     "a800xl": "Atari 8 Bit Computer (A800)",
+    "apfimag": "APF Imagination Machine",
     "atarist": "Atari ST",
     "adam": "Coleco Adam",
     "amiga": "Commodore Amiga",
@@ -693,7 +696,7 @@ RECOGNISED_SYSTEMS = {
     "fds":"Famicom Disk System",
     "gameboy":"Nintendo Gameboy",
     "gbcolor":"Nintendo Gameboy Color",
-    "genesis":"SEGA Genesis/Megadrive",
+    "genesis":"Sega Genesis/Megadrive",
     "gnw":"Game and Watch",
     "hbf900a":"MSX",
     "intv":"Intellivision",
@@ -735,6 +738,7 @@ RECOGNISED_SYSTEMS = {
 SYSTEM_MEDIA = {
     "adam": "-cart1",
     "apple2e": "-gameio joy -flop1",
+    "apfimag": "-cart basic -cass",
     "bbcb": "-flop1",
     "c64": "-joy1 joy -quik",
     "c64p": "-joy1 joy -quik",
@@ -783,6 +787,7 @@ GAME_MEDIA = {
     "spectrum_crazykongcity":"-cass",
     "spectrum_dk_techdemo":"-cass",
     "spectrum_spec_kong":"-speed 1.1 -cass",
+    "spectrum_crazycong":"-cass",
     "spectrum_wrathofkong":"-speed 1.1 -cass",
     "vic20_konkeykong": "-cass",
     "vic20-se_logger": "-cass",
@@ -792,7 +797,7 @@ GAME_MEDIA = {
     "vic20-se_dkjr_gnw":"-exp 16k -quik",
     "vic20-se_dk_ackenhausen":"-exp 16k -quik"}
 
-STATEKEEP_MEDIA_EXCEPTIONS = ("gbcolor_dk_gw_gallery2", "gbcolor_dk_gw_gallery3")
+STATEKEEP_MEDIA_EXCEPTIONS = ("gbcolor_dk_gw_gallery2", "gbcolor_dk_gw_gallery3", "apfimag_dk", "apfimag_dk_jr")
 
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
 PI_UNSUPPORTED_SYSTEMS = "bbcb",

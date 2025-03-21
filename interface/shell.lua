@@ -71,6 +71,8 @@ rom_table["apple2e_dk"]              = {"P1",            true,  600,   {500,"S"}
 rom_table["apple2e_applekong"]       = {"WAIT TO START", true,  1420,  {440,"R",540,"A"}}
 rom_table["apple2e_budgiekong"]      = {"WAIT TO START", false, 2000,  {}}
 rom_table["apple2e_cannonball"]      = {"P1",            true,  700,   {}}
+rom_table["apfimag_dk"]              = {"JJ",            true,  1,     {}}
+rom_table["apfimag_dk_jr"]           = {"WAIT TO START", true,  1,     {}}
 rom_table["bbcb"]                    = {"JJ",            false, 300,   {60,'*EXEC !BOOT\n'}}
 rom_table["bbcb_dk_junior"]          = {"P1",            true,  1300,  {60,'*EXEC !BOOT\n',300,"{S5}{S5}"}}
 rom_table["bbcb_krazyjohn"]          = {"",              false, 500,   {60,'*EXEC !BOOT\n',400,"N"}}
@@ -165,6 +167,7 @@ rom_table["spectrum_kong"]           = {"JJ",            false, 200,   {60,"{SPA
 rom_table["spectrum_krazykong"]      = {"JJ",            false, 0,     {15,"y"}}
 rom_table["spectrum_wallykong"]      = {"P1",            false, 200,   {60,"SS",100,"0",140,"0"}}
 rom_table["spectrum_monkeybiz"]      = {"P1",            true,  360,   {200,"{SPACE}",300,"{SPACE}"}}
+rom_table["spectrum_crazycong"]      = {"",			     true,  4100,  {150,'J""\n',300,"{PLAY}",4070,"{STOP}"}}
 rom_table["spectrum_spec_kong"]      = {"",			     true,  9360,  {150,'J""\n',300,"{PLAY}",9000,"\n",9100,"\n",9200,"\n",9300,"1\n"}}
 rom_table["spectrum_wrathofkong"]    = {"P1",            true,  5100,  {150,'J""\n',300,"{PLAY}",5050,"{STOP}"}}
 rom_table["spectrum_dk_reloaded"]    = {"",              true,  12910, {150,'J""\n',300,"{PLAY}",12900,"2"}}
@@ -295,6 +298,9 @@ function shell_main()
 							cass:stop()
 						elseif inputs[i] == "{RESET}" then
 							mac:soft_reset()
+						elseif inputs[i] == "{STATEKEEP}" then
+							-- Permanent state file for Win x64 only exceptions
+							mac:save(shell_state)
 						elseif string.match(inputs[i], "{") then
 							coded = string.gsub(inputs[i], "{S5}", "{SPACE}{SPACE}{SPACE}{SPACE}{SPACE}")
 							keyb:post_coded(coded)
@@ -307,6 +313,13 @@ function shell_main()
 						end
 					end
 				end
+			end
+		end
+
+		-- Game specific hacks e.g. Crazy Cong stops when game over and needs to be instructed to RUN again
+		if screen and keyb then
+			if shell_name == "spectrum_crazycong" and screen:frame_number() % 60 == 0 then
+				keyb:post("R\n")
 			end
 		end
 

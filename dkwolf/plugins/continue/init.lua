@@ -13,7 +13,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "continue"
-exports.version = "0.21"
+exports.version = "0.22"
 exports.description = "Continue plugin"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -84,8 +84,8 @@ function continue.startplugin()
 	rom_table["sinistar"]   = {"snstr_func", {287,001}, {102,052}, WHT, false, false, 1}
 	rom_table["sinistar2"]  = {"snstr_func", {287,001}, {102,052}, WHT, false, false, 1}
 	rom_table["sinistarp"]  = {"snstr_func", {287,001}, {102,052}, WHT, false, false, 1}
-	rom_table["logger"]     = {"loggr_func", {242,002}, {096,044}, YEL, false, false, 1}
-	rom_table["loggerr2"]   = {"loggr_func", {242,002}, {096,044}, YEL, false, false, 1}
+	rom_table["logger"]     = {"loggr_func", {002,245}, {104,064}, YEL, true,  false, 1}
+	rom_table["loggerr2"]   = {"loggr_func", {002,245}, {104,064}, YEL, true,  false, 1}
 
 	-- encoded message data
 	message_data = {"*","*","*","*","*","*","*","*","8&@2@3@2&3@3@9&@5@93&4&@3@!3&@3&@8","8@3@1@3@1@2@2@3@9@3@3@!92@2@5@4@1@2@3@4@91",
@@ -502,28 +502,36 @@ function continue.startplugin()
 		h_remain_lives = read(0x1cbf)
 		b_1p_game = read(0x1d3e, 0)
 
-		-- Need to find something that triggers before death on collision not 0x1c8d
-		--print(read(0x3400))
-		b_almost_gameover = h_mode == 1 and read(0x3400, 0xff) and h_remain_lives == 0
+		b_almost_gameover = h_mode == 1 and read(0x1d80, 1) and h_remain_lives == 1
 		b_reset_tally = h_mode == 0 or i_tally == nil
 		b_show_tally = h_mode  == 1
-		b_push_p1 = i_stop and to_bits(read(0x7c00))[6] == 1
+		b_push_p1 = i_stop and to_bits(ports[':IN0']:read())[1] == 0
 
 		-- Logic
 		if b_1p_game then
 			if b_almost_gameover and not i_stop then
-				i_stop = i_frame + 600
+				i_stop = i_frame + 60
+				video.throttle_rate = 0.17
+				sound.attenuation = -32
 			end
 			if i_stop and i_stop > i_frame then
-				mem:write_u8(0x6009, 8) -- suspend game
-				draw_continue_box()
+				draw_continue_box(10)
 				if b_push_p1 then
 					i_tally = i_tally + 1 ; i_stop = nil
-					mem:write_u8(0x601a, h_start_lives + 1)
-					reset(0x68f0, 3)  -- reset score in memory
-					for _addr = 0x76a0, 0x7740, 0x20 do reset(_addr, 0) end  -- reset score on screen
+					mem:write_u8(0x1cbf, h_start_lives + 1)
+					reset(0x1c85, 4)  -- reset score in memory
 				end
 			end
+			if h_mode == 1 and read(0x1c85) + read(0x1c86) + read(0x1c87) + read(0x1c88) == 0 then
+				-- after continue,  zero score does not update until points are awarded,  so
+				-- block out score to make it appear like zero when score is zero in RAM
+				if emu.romname() == "loggerr2" then
+					box(16, 244, 24, 185, 0xff00006d, 0xff00006d)
+				else
+					box(16, 244, 24, 185, 0xff000000, 0xff000000)
+				end
+			end
+
 		end
 	end
 
@@ -899,9 +907,6 @@ function continue.startplugin()
 				if b_show_tally then
 					draw_tally(i_tally)
 				end
-			end
-			if emu.romname() == "logger" then
-				video.throttle_rate = 5  -- TEST
 			end
 		end
 	end
