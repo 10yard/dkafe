@@ -196,6 +196,7 @@ adam_dk_junior,shell,DK JR,ADAM: Donkey Kong Jr. Supergame,9999,,,59000,2,4,8
 adam_dk_super,shell,DK Super,ADAM: Donkey Kong Supergame,9999,,,59000,2,4,8
 apfimag_dk,shell,Donkey Kong,APF: Donkey Kong,9999,,,67000,2,4,8
 apfimag_dk_jr,shell,Donkey Kong Jr.,APF: Donkey Kong Junior,9999,,,67000,2,4,8
+apfimag_heartattack,shell,Heart Attack,APF: Heart Attack,9999,,,67000,2,4,8
 apple2e_applekong,shell,AppleKong,A][: Apple Kong,9999,,,76000,2,4,8
 apple2e_cannonball,shell,A2 Blitz,A][: Cannonball Blitz,9999,,,76000,2,4,8
 bbcb_builder,shell,Builder,BBC: Builder,9999,,,75000,2,4,8
@@ -220,7 +221,6 @@ coleco_super_dk,shell,Super,CVS: Super Donkey Kong!,9999,,,83000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,83000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,77000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,77000,2,4,8
-dkongjre,,DK Junior BugFix,Jr. with Bug Fixes (E Kit),9999,1,2,5000,1000,15000,30000
 dos_dkpc,shell,DKPC,DOS: Donkey Kong PC,9999,,,140000,2,4,8
 dos_heroman,shell,Hero Man,DOS: Hero Man,9999,,,140000,2,4,8
 dos_willy,shell,WillyWorm,DOS: Willy the Worm,9999,,,140000,2,4,8
@@ -361,6 +361,8 @@ x1_dk3_counter_attack,shell,DK3 CounterAttack,X1: DK3 Great Counter Attack,9999,
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,138000,2,4,8
 zx81_sultans_tower,shell,SultansTower,ZX81: Sultan's Tower,9999,,,138000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,138000,2,4,8
+dkongjre,,DK Junior BugFix,Jr. with Bug Fixes (E Kit),9999,1,2,5000,1000,15000,30000
+##apfimag_dk2,shell,**key map issue,APF: Donkey Kong 2,####,,,0,2,4,8
 ##a2600_pac_kong,shell,**Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
 ##a2600_spider_kong,shell,**Not DK enough,2600: Spider Kong,####,,,0,2,4,8
 ##dos_aldo2,shell,**Locks on title screen,DOS: Aldo Again,####,,,0,2,4,8

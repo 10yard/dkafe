@@ -767,6 +767,7 @@ SYSTEM_MEDIA = {
 GAME_MEDIA = {
     "adam_dk_junior":"-flop1",
     "adam_dk_super":"-flop1",
+    "apfimag_dk": "-speed 1.1 -cart basic -cass",
     "c64_bonkeykong":"-flop",
     "c64_eskimo_eddie":"-flop",
     "c64_monkeykong":"-flop",
@@ -797,7 +798,8 @@ GAME_MEDIA = {
     "vic20-se_dkjr_gnw":"-exp 16k -quik",
     "vic20-se_dk_ackenhausen":"-exp 16k -quik"}
 
-STATEKEEP_MEDIA_EXCEPTIONS = ("gbcolor_dk_gw_gallery2", "gbcolor_dk_gw_gallery3", "apfimag_dk", "apfimag_dk_jr")
+STATEKEEP_MEDIA_EXCEPTIONS = ("gbcolor_dk_gw_gallery2", "gbcolor_dk_gw_gallery3", "apfimag_dk", "apfimag_dk2",
+                              "apfimag_dk_jr", "apfimag_heartattack")
 
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
 PI_UNSUPPORTED_SYSTEMS = "bbcb",
