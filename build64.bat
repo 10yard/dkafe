@@ -46,7 +46,7 @@ xcopy dkwolf\hash dist\dkwolf\hash /S /i /Y
 rmdir dist\dkwolf\inp /s /Q
 
 echo **** define systems to be included in the add-on pack
-set systems=a2600,a5200,a7800,a800xl,adam,apple2e,bbcb,c64,c64p,cgenie,coco3,coleco,cpc6128,crvision,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,jupace,lcd,mo5,mz700,nes,oric1,orica,pc,pcw10,pet4032,plus4,sg1000,smskr,snes,spec128,spectrum,ti99_4a,vic20,vic20_se,x1,zx81
+set systems=a2600,a5200,a7800,a800xl,adam,apfimag,apple2e,bbcb,c64,c64p,cgenie,coco3,coleco,cpc6128,crvision,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,jupace,lcd,mo5,mz700,nes,oric1,orica,pc,pcw10,pet4032,plus4,sg1000,smskr,snes,spec128,spectrum,ti99_4a,vic20,vic20_se,x1,zx81
 
 echo **** adjust controller defaults for some consoles
 for %%s in (%systems%) do xcopy dkwolf\cfg\%%s*.cfg dist\dkwolf\cfg\ /Y
@@ -58,7 +58,7 @@ rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 echo **** build the exe in virtual environment ****
 set PYTHONOPTIMIZE=1
 venv64\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
-venv64\Scripts\pyinstaller remap_pc.py --onefile --clean --noconsole 
+venv64\Scripts\pyinstaller remap_pc.py --onefile --clean --noconsole --icon artwork\remap_pc.ico
 
 echo **** clean up
 rmdir build /s /Q

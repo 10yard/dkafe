@@ -91,6 +91,7 @@ rom_table["c64_eskimo_eddie"]        = {"JJ",            true,  5300,  {150,'LOA
 rom_table["c64_dk_x"]                = {"JJ TT P1",      false, 750,   {150,"RUN\n",300,"{ENTER}"}}
 rom_table["c64_kong"]                = {"JJ",            true,  550,   {150,"RUN\n"}}
 rom_table["c64_kongokong"]           = {"P1",            true,  1430,  {150,"RUN\n",1250,"{F7}",1400,"{F1}"}}
+rom_table["c64_barrel_bunger"]       = {"WAIT TO START", false, 4000,  {150,'LOAD"*",8,1\n'}}
 rom_table["c64_bonkeykong"]          = {"JJ",            true,  14000, {150,'LOAD"*",8,1\n',13000,"RUN\n"}}
 rom_table["c64_monkeykong"]          = {"WAIT TO START", true,  5900,  {150,'LOAD"*",8,1\n',2100,"RUN\n",2900,"{F1}",3000,"{F1}",3100,"{F1}",3400,"{F3}{F3}{F3}{F3}"}}
 rom_table["c64_felix"]               = {"JJ TT JJ AA",   true,  550,   {150,'RUN\n'}}

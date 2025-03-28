@@ -771,6 +771,7 @@ GAME_MEDIA = {
     "c64_bonkeykong":"-flop",
     "c64_eskimo_eddie":"-flop",
     "c64_monkeykong":"-flop",
+    "c64_barrel_bunger":"-flop",
     "c64_logger":"-speed 1.5 -quik",
     "dragon32_baby_monkey":"-ramsize 64k -flop1",
     "dragon32_dk_reloaded":"-ramsize 64k -flop1",

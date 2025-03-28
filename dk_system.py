@@ -131,7 +131,7 @@ def read_romlist(specific_romlist_file=None):
 
                                     if name + sub not in usedunique:
                                         romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
-                                        usedunique.append(name + sub)
+                                        usedunique.append(name + "|" + sub)
                                 usedslots.append(slot)
     return romlists[1] + romlists[0], len(usedunique)
 

@@ -13,6 +13,7 @@ which can't be otherwise configured
 from subprocess import call, DEVNULL, STDOUT, CREATE_NO_WINDOW
 import keyboard
 import sys
+import ctypes
 
 def kill_pc_external(pid=None, program=None):
     """force kill an external program"""
@@ -50,3 +51,6 @@ def remap(name, mappings):
 if __name__ == "__main__":
     if len(sys.argv) >= 3:
         remap(sys.argv[1], sys.argv[2])
+    else:
+        ctypes.windll.user32.MessageBoxW(0, "This program is not intended to be run directly.",
+                                         "DKAFE Keyboard Remapping", 0)
