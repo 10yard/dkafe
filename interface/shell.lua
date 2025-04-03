@@ -57,6 +57,7 @@ local rom_data, rom_table = {}, {}
 --                                                              Quick
 -- System or rom name                  Message           State  Start  Inputs
 rom_table["a2600"]                   = {"JJ",            false, 0,     {}}
+rom_table["a2600_artificial_lifeform"] = {"P1",          false, 0,     {}}
 rom_table["a2600_dk_kingkong"]       = {"P1",            false, 0,     {}}
 rom_table["a2600_young_plumber_lcd"] = {"P1",            false, 0,     {}}
 rom_table["a2600_dk_junior"]         = {"P1 TT JJ",      false, 0,     {}}
@@ -140,6 +141,7 @@ rom_table["intv_beautybeast"]        = {"JJ",            false, 0,     {}}
 rom_table["intv_monkey"]             = {"JJ",            false, 0,     {}}
 rom_table["intv_intykong"]           = {"",              false, 0,     {}}
 rom_table["jupace"]                  = {"JJ",            false, 180,   {}}
+rom_table["laser310"]                = {"HOLD P1",       true,  360,   {180,'RUN\n'}}
 rom_table["mo5"]                     = {"P1",            false, 5000,  {90,'RUN""\n'}}
 rom_table["mz700_jumpman"]           = {"JJ",            false, 10000, {180,"LOAD\n",300,"{PLAY}"}}
 rom_table["mz700_crazykong"]         = {"",              true,  20650, {180,"LOAD\n",300,"{PLAY}",18000," ",18500," ",19000," ", 19500," ",20300,"L",20330,"R",20360,"U",20390,"D",20420,"Z",20450,"2"}}
@@ -218,6 +220,7 @@ if rom_data then
 	start_msg = string.gsub(start_msg, "TT", "THEN")
 	start_msg = string.gsub(start_msg, "AA", "AGAIN")
 	start_msg = string.gsub(start_msg, "LR", "LEFT,RIGHT,UP,DOWN")
+	start_msg = string.gsub(start_msg, "PUSH HOLD", "HOLD")
 	start_msg = string.gsub(start_msg, "BUG", "KNOWN SCREEN ISSUE :(")
 	start_msg = string.gsub(start_msg, "POOR", "POOR CONTROLS :(")
 end

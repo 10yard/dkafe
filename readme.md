@@ -269,6 +269,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Dragon 32
  - EACA Colour Genie EG2000
  - Epoch Cassette Vision
+ - Exelvision EXL100
  - Famicom Disk System
  - Game and Watch
  - Intellivision
@@ -305,6 +306,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - TIC-80 Fantasy Console
  - Uzebox - Atmega Game Console
  - VTech Creativision
+ - Vtech Laser VZ
  - Watara Supervision
  
 

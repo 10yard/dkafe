@@ -146,6 +146,8 @@ logger,logger,Log R1,Logger R1 (Big Bird),259,,,198000,2,4,8
 pc_trs80_killergorilla,shell,TRS80 KG,TRS80: Killer Gorilla,260,,,199000,2,4,8
 oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,261,,,200000,2,4,8
 pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,262,,,201000,2,4,8
+a2600_alien_1979,shell,Alien,2600: Alien 1979,9999,,,67000,2,4,8
+a2600_artificial_lifeform,shell,Artifical Lifeform,2600: Artifical Lifeform,9999,,,67000,2,4,8
 a2600_big_mario,shell,Big Mario,2600: Big Mario,9999,,,67000,2,4,8
 a2600_ck,shell,CK,2600: Crazy Kong,9999,,,67000,2,4,8
 a2600_ck_fast,shell,CK Fast,2600: CK Fast,9999,,,67000,2,4,8
@@ -171,6 +173,7 @@ a2600_dk_si_hack,shell,SI Hack,2600: Donkey Kong Space Invader,9999,,,67000,2,4,
 a2600_dk_take2,shell,DK Take2,2600: Donkey Kong Take 2,9999,,,67000,2,4,8
 a2600_dk_vector,shell,Vector Colour,2600: Donkey Kong Vector Colour,9999,,,67000,2,4,8
 a2600_dk_vector_grn,shell,Vector Green,2600: Donkey Kong Vector Green,9999,,,67000,2,4,8
+a2600_dk_with_barrel,shell,DK with Barrel,2600: Donkey Kong with Barrel,9999,,,67000,2,4,8
 a2600_dk_zartog,shell,DK Zartog,2600: Donkey Kong Zartog,9999,,,67000,2,4,8
 a2600_DKEscapes,shell,DK Escapes,2600: Donkey Kong Escapes,9999,,,67000,2,4,8
 a2600_donkey_kong_fusion,shell,Donkey Kong Fusion,2600: Donkey Kong Fusion,9999,,,67000,2,4,8
@@ -239,6 +242,7 @@ hbf900a_tokekong,shell,TokeKong,MSX: Toke Kong,9999,,,75000,2,4,8
 intv_beautybeast,shell,BeautyBeast,INTV: Beauty and the Beast,9999,,,97000,2,4,8
 intv_dk_junior,shell,DK Junior,INTV: Donkey Kong Junior,9999,,,97000,2,4,8
 intv_monkey,shell,Monkey,INTV: Monkey Moon,9999,,,97000,2,4,8
+laser310_ladder,shell,Ladder,VZ: Ladder Challenge,9999,,,82000,2,4,8
 mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,87000,2,4,8
 nes_clintonkong,shell,ClintonKong,NES: Clinton Kong,9999,,,100000,2,4,8
 nes_dendymans_revenge,shell,Dendyman,NES: Dendyman's Revenge,9999,,,100000,2,4,8
@@ -280,6 +284,7 @@ pc_a2600_arc_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,170000,2,4,8
 pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,151000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,151000,2,4,8
 pc_atarist_junior,shell,DK JR,ST: Donkey Jr. (G&W),9999,,,160000,2,4,8
+pc_atarist_crashtime,shell,Crashtime,ST: Crashtime Plumber,9999,,,160000,2,4,8
 pc_atom_baby_monkey_alba,shell,Baby Monkey Alba,ATOM: Baby Monkey Alba,9999,,,75000,2,4,8
 pc_atom_crazykongcity1,shell,CK City 1,ATOM: Crazy Kong City,9999,,,75000,2,4,8
 pc_atom_dkjunior,shell,DK Junior,ATOM: Donkey Kong Junior,9999,,,75000,2,4,8
@@ -298,6 +303,7 @@ pc_dkjr_beat,shell,DJ Junior Beat,PC: DK Junior Beat,9999,,,139000,2,4,8
 pc_dkme_exorcist,shell,Exorcist,PC: Donkey Kong The Exorcist,9999,,,139000,2,4,8
 pc_dkongse_gnw,shell,SE,G&W: Donkey Kong Special,9999,,,157000,2,4,8
 pc_ecv_monster_mansion,shell,MonsterMansion,ECV: Monster Mansion,9999,,,82000,2,4,8
+pc_exl100_kong,shell,Kong,EXL100: Kong,9999,,,82000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,139000,2,4,8
 pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,75000,2,4,8
 pc_kidnappers_inc,shell,Kidnappers Inc,PC: Kidnappers Inc.,9999,,,139000,2,4,8
@@ -379,6 +385,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,138000,2,4,8
 ##mz700_jumpman,shell,**Crashes,SHARP: Jumpman,####,,,0,2,4,8
 ##pc_atarist_platform,shell,**Joystick map issue,ST: Platform Capers,####,,,0,2,4,8
 ##pc_atom_crazykongcity2,shell,**Not DK enough,ATOM: Crazy Kong City 2,####,,,0,2,4,8
+##pc_exl100_monkeykong,shell,**Poor game and map,EXL100: Monkey Kong,####,,,0,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##spectrum_eskimo_eddie,shell,**DK not first level,SPEC48K: Eskimo Eddie,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
