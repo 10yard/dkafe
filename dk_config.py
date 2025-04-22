@@ -772,6 +772,7 @@ GAME_MEDIA = {
     "adam_dk_super":"-flop1",
     "apfimag_dk": "-speed 1.1 -cart basic -cass",
     "c64_bonkeykong":"-flop",
+    "c64_superbonkeykong":"-flop",
     "c64_eskimo_eddie":"-flop",
     "c64_monkeykong":"-flop",
     "c64_barrel_bunger":"-flop",

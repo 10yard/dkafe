@@ -799,7 +799,7 @@ OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -vi
 
 #### The system is running slow on an older machine
 
- - Reduce your screen resolution.  This will definitely improve performance in the frontend and emulation.  Step it right down to 640x480 to see the improvement.
+ - Reduce your screen resolution.  This will definitely improve performance in the frontend and emulation.
 
  - In the settings.txt file,  change emulator `OPTIONS` to use `-video gdi` instead of `-video opengl`
 

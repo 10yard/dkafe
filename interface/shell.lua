@@ -94,6 +94,7 @@ rom_table["c64_kong"]                = {"JJ",            true,  550,   {150,"RUN
 rom_table["c64_kongokong"]           = {"P1",            true,  1430,  {150,"RUN\n",1250,"{F7}",1400,"{F1}"}}
 rom_table["c64_barrel_bunger"]       = {"WAIT TO START", false, 4000,  {150,'LOAD"*",8,1\n'}}
 rom_table["c64_bonkeykong"]          = {"JJ",            true,  14000, {150,'LOAD"*",8,1\n',13000,"RUN\n"}}
+rom_table["c64_superbonkeykong"]     = {"RR",            true,  17500, {150,'LOAD"*",8,1\n',13000,"RUN\n"}}
 rom_table["c64_monkeykong"]          = {"WAIT TO START", true,  5900,  {150,'LOAD"*",8,1\n',2100,"RUN\n",2900,"{F1}",3000,"{F1}",3100,"{F1}",3400,"{F3}{F3}{F3}{F3}"}}
 rom_table["c64_felix"]               = {"JJ TT JJ AA",   true,  550,   {150,'RUN\n'}}
 rom_table["c64_krazykong64"]         = {"JJ",            true,  550,   {150,"RUN\n"}}
@@ -219,6 +220,8 @@ if rom_data then
 	start_msg = string.gsub(start_msg, "JJ", "JUMP")
 	start_msg = string.gsub(start_msg, "TT", "THEN")
 	start_msg = string.gsub(start_msg, "AA", "AGAIN")
+	start_msg = string.gsub(start_msg, "LL", "LEFT")
+	start_msg = string.gsub(start_msg, "RR", "RIGHT")
 	start_msg = string.gsub(start_msg, "LR", "LEFT,RIGHT,UP,DOWN")
 	start_msg = string.gsub(start_msg, "PUSH HOLD", "HOLD")
 	start_msg = string.gsub(start_msg, "BUG", "KNOWN SCREEN ISSUE :(")

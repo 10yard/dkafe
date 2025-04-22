@@ -208,6 +208,7 @@ bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,75000,2,4,8
 bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,75000,2,4,8
 bbcb_krazyjohn,shell,KrazyJohn,BBC: Krazy John,9999,,,75000,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong Jr.,9999,,,75000,2,4,8
+c64_superbonkeykong,shell,SuperBonkeyKong,C64: Super Bonkey Kong,9999,,,133000,2,4,8
 c64_eskimo_eddie,shell,Eskimo Eddie,C64: Eskimo Eddie,9999,,,79000,2,4,8
 c64_fast_eddie,shell,FastEddie,C64: Fast Eddie,9999,,,79000,2,4,8
 c64_felix,shell,FelixJR,C64: Fix-It Felix Jr.,9999,,,79000,2,4,8
@@ -283,8 +284,8 @@ orica_4k_kong,shell,4K Kong,ORIC: 4K Kong,9999,,,97000,2,4,8
 pc_a2600_arc_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,170000,2,4,8
 pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,151000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,151000,2,4,8
-pc_atarist_junior,shell,DK JR,ST: Donkey Jr. (G&W),9999,,,160000,2,4,8
 pc_atarist_crashtime,shell,Crashtime,ST: Crashtime Plumber,9999,,,160000,2,4,8
+pc_atarist_junior,shell,DK JR,ST: Donkey Jr. (G&W),9999,,,160000,2,4,8
 pc_atom_baby_monkey_alba,shell,Baby Monkey Alba,ATOM: Baby Monkey Alba,9999,,,75000,2,4,8
 pc_atom_crazykongcity1,shell,CK City 1,ATOM: Crazy Kong City,9999,,,75000,2,4,8
 pc_atom_dkjunior,shell,DK Junior,ATOM: Donkey Kong Junior,9999,,,75000,2,4,8
