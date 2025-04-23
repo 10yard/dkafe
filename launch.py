@@ -569,9 +569,11 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             sound_file = WALK_SOUNDS[_g.sprite_index % 12]
 
     elif direction in ("u", "d"):
+        print(_g.xpos)
+
         if "LADDER_DETECTED" in map_info:
             # Centre Jumpman on ladder
-            for c in LADDER_CENTRES:
+            for c in LADDER_CENTRES[_g.stage]:
                 if c - 4 <= _g.xpos <= c + 4:
                     _g.xpos = c
             if "END_OF_LADDER" in map_info:
