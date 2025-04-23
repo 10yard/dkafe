@@ -72,33 +72,33 @@ dkong,dkonggalakong3,GalaSprings,DK Gala-Springs,96,1,2,64000,10000,20000,40000
 dkong,dkonggalakong4,GalaRivets,DK Gala-Rivets,98,1,2,65000,10000,20000,40000
 dkong,dkonglava1,LavaBarrels,DK Lava Barrels,99,1,2,66000,8000,12000,15000
 dkong,dkonglava2,LavaPie,DK Lava Pies,100,1,2,67000,8000,12000,15000
-dkong,dkonglava3,LavaSprings,DK Lava Springs,101,1,2,68000,8000,12000,15000
-dkong,dkonglava4,LavaRivets,DK Lava Rivets,104,1,2,69000,8000,12000,15000
-dkong,dkongwho1,WhoBarrels,DK Who Barrels,106,1,2,70000,10000,20000,40000
-dkong,dkongwho2,WhoPies,DK Who Pies,107,1,2,71000,10000,20000,40000
-dkong,dkongwho3,WhoSpng,DK Who Springs,109,1,2,72000,10000,20000,40000
-dkong,dkongwho4,WhoRivets,DK Who Rivets,111,1,2,73000,10000,20000,40000
-dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrel),112,1,2,74000,1000,2000,5000
-dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,114,1,2,75000,8000,16000,30000
-ckongpt2,ckongpt2_l22,CK Killscrn,CK KillScreen 22,120,1,2,76000,1000,2000,3000
-dkong,dkongksfix,KSFix,DK Killscreen Fix,123,1,2,77000,10000,25000,40000
+ckongpt2,ckongpt2_lava,CKLava,CK Lava Panic!,101,1,2,68000,10000,25000,40000
+dkong,dkonglava3,LavaSpr.,DK Lava Springs,103,1,2,69000,8000,12000,15000
+dkong,dkonglava4,LavaRivets,DK Lava Rivets,105,1,2,70000,8000,12000,15000
+dkong,dkongwho1,WhoBarrels,DK Who Barrels,106,1,2,71000,10000,20000,40000
+dkong,dkongwho2,WhoPies,DK Who Pies,107,1,2,72000,10000,20000,40000
+dkong,dkongwho3,WhoSpr.,DK Who Springs,109,1,2,73000,10000,20000,40000
+dkong,dkongwho4,WhoRivets,DK Who Rivets,111,1,2,74000,10000,20000,40000
+dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrel),112,1,2,75000,1000,2000,5000
+dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,114,1,2,76000,8000,16000,30000
+ckongpt2,ckongpt2_free,CKFree,CK Free Run,115,1,2,77000,10000,25000,40000
+ckongpt2,ckongpt2_insanity,CK Insanity,CK Insanity,117,1,2,78000,8000,15000,25000
+ckongpt2,ckongpt2_dk,CK DK ,CK with DK Graphics,118,1,2,79000,10000,25000,40000
+dkong,dkongksfix,KSFix,DK Killscreen Fix,119,1,2,80000,10000,25000,40000
+bigkong,bigkong_l22,BigKong KS,BK KillScreen 22,120,1,2,81000,4000,7000,10000
+ckongpt2,ckongpt2_l22,CK Killscrn,CK KillScreen 22,122,1,2,82000,1000,2000,3000
+ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,83000,10000,25000,40000
 bigkong,bigkong_barrels,BigKong Barrels,BK Barrels Only,9999,1,2,21000,4000,10000,20000
 bigkong,bigkong_continue,BigKong Continue,BK Continue,9999,1,2,21000,5000,15000,25000
-bigkong,bigkong_l22,BigKong KS,BK KillScreen 22,9999,1,2,21000,4000,7000,10000
 bigkong,bigkong_free,BigKong Free,BK Free Run,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_lava,BigKong Lava,BK Lava Panic!,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_insanity,BigKong Insanity,BK Insanity,9999,1,2,21000,5000,15000,25000
 bigkonggx,bigkonggx_barrels,BigKong GX Barrels,BK Galaxian Barrels,9999,1,2,57000,10000,20000,40000
-ckongdks,ckongdks,CK Spanish,CK Spanish Bootleg,9999,1,2,54000,10000,25000,40000
 ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,9999,1,2,54000,10000,25000,40000
-ckongpt2,ckongpt2_dk,CK DK ,CK with DK Graphics,9999,1,2,54000,10000,25000,40000
 ckongpt2,ckongpt2_barrels,CK Barrels,CK Barrels Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_pies,CK Pies,CK Pies Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_springs,CK Springs,CK Springs Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_rivets,CK Rivets,CK Rivets Only,9999,1,2,9000,10000,25000,40000
-ckongpt2,ckongpt2_free,CK Free,CK Free Run,9999,1,2,9000,10000,25000,40000
-ckongpt2,ckongpt2_lava,CK Lava,CK Lava Panic!,9999,1,2,9000,10000,25000,40000
-ckongpt2,ckongpt2_insanity,CK Insanity,CK Insanity,9999,1,2,9000,8000,15000,25000
 congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,3000,,,
 dkong,dkongl05,DK Skip,DK Skip Start,9999,1,2,,,,
 dkong,dkongwobble,WobbleKong,DK Wobble Kong,9999,1,2,38000,10000,20000,40000
@@ -130,12 +130,12 @@ dkongjr,dkongjrfree,JR FreeRun,JR Free Run,9999,1,2,9000,10000,15000,30000
 dkongjr,dkongjrlavapanic,JR Lava!,JR Lava Panic!,9999,1,2,6000,10000,15000,30000
 kong,kong,DK Galax.,DK Galaxian Hardware,9999,1,2,54000,,,
 logger,logger,Logger R1,Logger R1 (Big Bird),9999,1,2,3000,,,
-loggerr2,loggerr2,Logger R2,Logger R2 (Squirrel),9999,1,2,3000,,,
 logger,logger_barrels,Logger Barrels,Logger R1 Barrels Only,9999,1,2,3000,,,
 logger,logger_pies,Logger Pies,Logger R1 Pies Only,9999,1,2,3000,,,
 logger,logger_springs,Logger Springs,Logger R1 Springs Only,9999,1,2,3000,,,
 logger,logger_rivets,Logger Rivets,Logger R1 Rivets Only,9999,1,2,3000,,,
 logger,logger_continue,Logger Continue,Logger R1 Continue,9999,1,2,3000,,,
+loggerr2,loggerr2,Logger R2,Logger R2 (Squirrel),9999,1,2,3000,,,
 loggerr2,loggerr2_barrels,Logger R2 Barrels,Logger R2 Barrels Only,9999,1,2,3000,,,
 loggerr2,loggerr2_pies,Logger R2 Pies,Logger R2 Pies Only,9999,1,2,3000,,,
 loggerr2,loggerr2_springs,Logger R2 Springs,Logger R2 Springs Only,9999,1,2,3000,,,

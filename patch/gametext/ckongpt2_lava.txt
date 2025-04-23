@@ -1,0 +1,14 @@
+Crazy Kong Lava Panic!
+
+Jumpman must keep his cool and move quickly up the 
+platforms to avoid rising Lava.  Don't let the lava
+rise above Jumpman.
+
+Yes,  It's the Crazy Kong version of my hack.
+
+The lava rises more quickly as you progress through
+the levels.
+
+!RTry not to panic!
+
+Hack Developed by Jon Wilson (10yard)

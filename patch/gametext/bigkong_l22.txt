@@ -1,0 +1,17 @@
+Big Kong Killscreen L=22
+
+You get to play the Big Kong Killscreen level!
+Your game beings at Level 22.
+
+You will only get a few seconds before your timer
+runs out so you must try to score as many points as 
+possible.
+
+Big Kong starts on the Pies stage,  so if you are
+really quick you can get to the barrels stage. You
+have until the timer gets down to "3600" due to a 
+bug in the original programming.
+
+Good luck!
+
+Hack Developed by Jon Wilson (10yard)

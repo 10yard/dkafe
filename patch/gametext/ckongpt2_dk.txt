@@ -1,0 +1,15 @@
+Crazy Kong with Donkey Kong Graphics
+
+An updated version of Crazy Kong (Part 2) that much 
+more resembles the original Donkey Kong.  
+
+The sprites/characters are copied and the colour 
+palettes are fixed for the wrongly colored ladders 
+near some hammers and bonus-items. 
+All in all only a few small changes to accomplish 
+a much better looking game. 
+
+Why Falcon didn't do this? Was it deliberately making
+it look different from the original?
+
+Graphics Hack Developed by Paul Goes
