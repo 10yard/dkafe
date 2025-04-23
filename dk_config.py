@@ -379,8 +379,6 @@ BRIGHTRED = (238, 75, 43)
 # Alpha channel value for faded/locked arcade machines
 FADE_LEVEL = 50
 
-START_STAGE = 2
-
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = (
     (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
