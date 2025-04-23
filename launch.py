@@ -316,6 +316,9 @@ def check_for_input(force_exit=False, continue_only=False):
             if event.key == CONTROL_PLAYLIST:
                 globals()["ENABLE_PLAYLIST"] = 1 if ENABLE_PLAYLIST == 0 else 0
                 set_playlist(None, ENABLE_PLAYLIST, external=True)  # Fix pygamemenu issue
+            if event.key == CONTROL_DEBUG_DROP and sys.gettrace():
+                # Debug mode press to drop coins
+                drop_coin(x=COIN_GRAB_POSXY[_g.stage][0], y=COIN_GRAB_POSXY[_g.stage][1], coin_type=randint(1,2))
 
         # Optional joystick controls
         if USE_JOYSTICK:
@@ -660,12 +663,7 @@ def build_menus(initial=False):
     _g.menu = None
     if not UNLOCK_MODE and not initial:
         # Restore full addon menu from cache for improved performance
-        if ENABLE_ADDONS and _g.stage >= 2:
-            if _g.menu_cache_addon:
-                _g.menu = _g.menu_cache_addon
-        else:
-            if _g.menu_cache_arcade:
-                _g.menu = _g.menu_cache_arcade
+        _g.menu = _g.menu_cache
         if not _g.menu:
             # Pauline announces that the game list is being generated
             write_text("                           ", x=108 + _g.psx, y=38 + _g.psy, bg=BLACK, fg=BLACK, bubble=True)
@@ -691,7 +689,7 @@ def build_menus(initial=False):
                     # Don't show duplicates in the gamelist.  If the button_id already exists then don't provide one.
                     if ":" in alt:
                         alt = alt.split(":")[1].strip()
-                    if not initial and ENABLE_ADDONS and not UNLOCK_MODE and _g.stage >= 2:
+                    if not initial and ENABLE_ADDONS and not UNLOCK_MODE:
                         write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
                     # Played games use a grey font
                     _color = LIGHTGREY if sub+name in _g.played else PINK
@@ -717,12 +715,7 @@ def build_menus(initial=False):
 
         if not UNLOCK_MODE:
             # Cache the full unlocked menu build
-            if ENABLE_ADDONS and _g.stage >= 2:
-                if not _g.menu_cache_addon:
-                    _g.menu_cache_addon = _g.menu
-            else:
-                if not _g.menu_cache_arcade:
-                    _g.menu_cache_arcade = _g.menu
+            _g.menu_cache = _g.menu
 
     if initial:
         # Exit menu
@@ -1303,7 +1296,7 @@ def show_score():
     write_text(str(_g.score).zfill(6), font=dk_font, x=9, y=8, bg=BLACK)
     if _g.active:
         write_text(f"L={str(SKILL_LEVEL).zfill(2)}", font=dk_font, x=169, y=24, fg=DARKBLUE, bg=BLACK)
-    if ENABLE_ADDONS and _g.stage >= 2:
+    if ENABLE_ADDONS and _g.stage >= 3:
         write_text(" DK ARCADE+", font=dk_font, x=69, fg=RED, bg=BLACK)
 
 
@@ -1516,7 +1509,7 @@ def get_prize_placing(awarded):
 
 
 def animate_moving_ladders():
-    if _g.stage == 2:
+    if _g.stage == 3:
         _index = MOVING_LADDER_OFFSETS[floor(_g.frames / 4) % len(MOVING_LADDER_OFFSETS)]
         _x0, _x1 = MOVING_LADDER_POSXY[0][0], MOVING_LADDER_POSXY[1][0]
         _y = MOVING_LADDER_POSXY[0][1]
@@ -1557,11 +1550,11 @@ def animate_rolling_coins(out_of_time=False):
             map_info = []
 
         # Move the coin along the platform and down ladders
-        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage != 0 and _g.stage != 4:
+        if "FOOT_UNDER_PLATFORM" in map_info and _g.stage != 0 and _g.stage != 5:
             co_y -= 1  # correct coin position by moving it up the girder
         elif "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
-            if (_g.stage == 1 or _g.stage == 3) and int(co_y) in (232, 192, 152, 112):
+            if (_g.stage == 1 or _g.stage == 4) and int(co_y) in (232, 192, 152, 112):
                 co_dir *= -1  # Flip horizontal direction when falling off platform on rivets
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info and _g.stage != 1:
@@ -1678,7 +1671,7 @@ def play_from_tracklist():
 
 def dk_ck():
     # DK or CK graphics
-    return "ck" if _g.stage == 4 or _g.stage == 5 else "dk"
+    return "ck" if _g.stage == 5 or _g.stage == 6 else "dk"
 
 
 def main(initial=True):

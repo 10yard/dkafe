@@ -65,7 +65,7 @@ rmdir build /s /Q
 del *.spec
 
 echo **** Code sign program executables with Open Source Developer Certificate
-"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /tr http://timestamp.digicert.com /n "Open Source Developer" dist\launch.exe dist\remap_pc.exe dist\dkwolf\dkwolf.exe
+"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /tr http://timestamp.apple.com/ts01 /n "Open Source Developer" dist\launch.exe dist\remap_pc.exe dist\dkwolf\dkwolf.exe
 
 echo **** package into a release ZIP getting the version from version.txt
 set /p version=<VERSION

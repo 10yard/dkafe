@@ -61,6 +61,7 @@ CONTROL_PLAYLIST = pygame.K_p
 CONTROL_SKIP = pygame.K_s
 CONTROL_PAGEUP = pygame.K_PAGEUP
 CONTROL_PAGEDOWN = pygame.K_PAGEDOWN
+CONTROL_DEBUG_DROP = pygame.K_HOME
 
 # Joystick Options and Button Assignments
 USE_JOYSTICK = 0
@@ -189,7 +190,7 @@ if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
     globals()["ENABLE_ADDONS"] = 0
 
 if ENABLE_ADDONS:
-    STAGES = 6 if ARCH == "win64" else 4
+    STAGES = 7 if ARCH == "win64" else 4
 else:
     STAGES = 3
 
@@ -378,6 +379,8 @@ BRIGHTRED = (238, 75, 43)
 # Alpha channel value for faded/locked arcade machines
 FADE_LEVEL = 50
 
+START_STAGE = 2
+
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = (
     (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
@@ -395,10 +398,19 @@ SLOTS = (
     (42, 66), (82, 66), (170, 66),
     (106, 26),
 
-    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (209, 226),
+    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (138, 226), (154, 226), (170, 226), (209, 226),
+    (34, 196), (82, 193), (99, 192), (114, 192), (130, 193), (146, 194), (178, 196),
+    (34, 162), (82, 165), (116, 166), (131, 165), (146, 164), (178, 162), (210, 160),
+    (34, 132), (82, 129), (98, 128), (114, 128), (130, 129), (146, 130),
+    (34, 98), (67, 100), (83, 101), (130, 98), (146, 97), (162, 96), (210, 93),
+
+    (2, 62), (90, 62), (106, 62), (146, 63), (162, 64), (178, 65),
+    (90, 34),
+
+    (2, 226), (34, 226), (50, 226), (90, 226), (106, 226), (122, 226), (146, 226), (162, 226), (178, 226), (209, 226),
     (8, 186), (34, 186), (50, 186), (90, 186), (122, 186), (154, 186), (174, 186), (202, 186),
     (2, 146), (34, 146), (50, 146), (90, 146), (106, 146), (122, 146), (154, 146), (174, 146), (202, 146),
-    (33, 106), (52, 106), (67, 106), (90, 106), (122,106), (154, 106), (174, 106), (210, 106),
+    (33, 106), (52, 106), (67, 106), (90, 106), (122, 106), (154, 106), (174, 106), (210, 106),
     (2, 66), (90, 66), (106, 66), (138, 66), (154, 66), (170, 66), (186, 66), (208, 66),
     (90, 34),
 
@@ -429,7 +441,7 @@ SLOTS = (
 )
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 215), (215, 262)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -483,17 +495,32 @@ LADDER_ZONES = (
 # Jumpman's x position when centre of ladder
 LADDER_CENTRES = (4, 12, 20, 28, 36, 44, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204)
 
+# # Stage specific positions, colours etc
+# BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE), (WHITE, WHITE), (WHITE, WHITE)
+# HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178)), ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)), ((195, 128), (195, 192))
+# TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140)), ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)), ((192, 190), (192, 126))
+# OILCAN_POSXY = (16, 232), (172, 152), (104, 128), (68, 112), (16, 232), (16, 232), (16, 232)
+# WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142), (72, 126), (20, 246), (20, 246), (20, 246)
+# PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (8, 0), (8, 0), (8, 0)
+# KONG_POSXY = (0, 0), (80, 4), (0, 4), (0, 4), (0, 0), (0, 0), (0, 0)
+# COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77), (67, 77), (67, 73), (67, 73), (67, 73)
+# COIN_AWARD_POSX = 0, 112, 28, 0, 0, 0, 0
+# LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
+
 # Stage specific positions, colours etc
-BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE), (WHITE, WHITE)
-HAMMER_POSXY = ((16, 98), (167, 190)), ((8, 140), (104, 100)), ((12, 140), (104, 178)), ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190))
-TELEPORT_TO_POSXY = ((164, 193), (20, 92)), ((101, 98), (11, 138)), ((104, 180), (16, 140)), ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92))
-OILCAN_POSXY = (16, 232), (172, 152), (104, 128), (68, 112), (16, 232), (16, 232)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (108, 142), (72, 126), (20, 246), (20, 246)
-PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (8, 0), (8, 0)
-KONG_POSXY = (0, 0), (80, 4), (0, 4), (0, 4), (0, 0), (0, 0)
-COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 77), (67, 77), (67, 73), (67, 73)
-COIN_AWARD_POSX = 0, 112, 28, 0, 0, 0
-LADDER_CHANCE = 3, 2, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
+BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, WHITE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE), (WHITE, WHITE)
+HAMMER_POSXY = (((16, 98), (167, 190)), ((8, 140), (104, 100)), ((195, 128), (195, 192)), ((12, 140), (104, 178)),
+                ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)))
+TELEPORT_TO_POSXY = (((164, 193), (20, 92)), ((101, 98), (11, 138)), ((192, 190), (192, 126)), ((104, 180), (16, 140)),
+                     ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)))
+OILCAN_POSXY = (16, 232), (172, 152), (16, 232), (104, 128), (68, 112), (16, 232), (16, 232)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246), (108, 142), (72, 126), (20, 246), (20, 246)
+PAULINE_POSXY = (0, 0), (16, -8), (8, 0), (0, 0), (0, 0), (8, 0), (8, 0)
+KONG_POSXY = (0, 0), (80, 4), (0, 0), (0, 4), (0, 4), (0, 0), (0, 0)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73), (67, 77), (67, 77), (67, 73), (67, 73)
+COIN_AWARD_POSX = 0, 112, 0, 28, 0, 0, 0
+LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
+
 
 # Pies specific.  Location of the 2 moving ladder sections
 MOVING_LADDER_POSXY = (15, 96), (199, 96)

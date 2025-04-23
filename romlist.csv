@@ -66,20 +66,20 @@ dkong,dkongchorus,DK Chorus,,81,1,2,58000,10000,20000,40000
 dkong,dkongend1,DK End L1,DK Ends at L=01,83,1,2,59000,10000,15000,20000
 dkong,dkongend2,DK End L2,DK Ends at L=02,85,1,2,60000,10000,20000,30000
 dkong,dkongend3,DK End L3,DK Ends at L=03,88,1,2,61000,10000,25000,40000
-dkong,dkonggalakong1,GalaBarrels,DK Gala-Barrels,93,1,2,62000,10000,20000,40000
-dkong,dkonggalakong2,GalaPie,DK Gala-Pies,95,1,2,63000,10000,20000,40000
+dkong,dkonggalakong1,GalaBarrels,DK Gala-Barrels,92,1,2,62000,10000,20000,40000
+dkong,dkonggalakong2,GalaPies,DK Gala-Pies,93,1,2,63000,10000,20000,40000
 dkong,dkonggalakong3,GalaSprings,DK Gala-Springs,96,1,2,64000,10000,20000,40000
 dkong,dkonggalakong4,GalaRivets,DK Gala-Rivets,98,1,2,65000,10000,20000,40000
-dkong,dkonglava1,LavaBarrels,DK Lava Barrels,101,1,2,66000,8000,12000,15000
-dkong,dkonglava2,LavaPie,DK Lava Pies,103,1,2,67000,8000,12000,15000
-dkong,dkonglava3,LavaSprings,DK Lava Springs,105,1,2,68000,8000,12000,15000
-dkong,dkonglava4,LavaRivets,DK Lava Rivets,108,1,2,69000,8000,12000,15000
-dkong,dkongwho1,WhoBarrels,DK Who Barrels,109,1,2,70000,10000,20000,40000
-dkong,dkongwho2,WhoPies,DK Who Pies,112,1,2,71000,10000,20000,40000
-dkong,dkongwho3,WhoSprings,DK Who Springs,113,1,2,72000,10000,20000,40000
-dkong,dkongwho4,WhoRivets,DK Who Rivets,115,1,2,73000,10000,20000,40000
-dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrel),117,1,2,74000,1000,2000,5000
-dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,118,1,2,75000,8000,16000,30000
+dkong,dkonglava1,LavaBarrels,DK Lava Barrels,99,1,2,66000,8000,12000,15000
+dkong,dkonglava2,LavaPie,DK Lava Pies,100,1,2,67000,8000,12000,15000
+dkong,dkonglava3,LavaSprings,DK Lava Springs,101,1,2,68000,8000,12000,15000
+dkong,dkonglava4,LavaRivets,DK Lava Rivets,104,1,2,69000,8000,12000,15000
+dkong,dkongwho1,WhoBarrels,DK Who Barrels,106,1,2,70000,10000,20000,40000
+dkong,dkongwho2,WhoPies,DK Who Pies,107,1,2,71000,10000,20000,40000
+dkong,dkongwho3,WhoSpng,DK Who Springs,109,1,2,72000,10000,20000,40000
+dkong,dkongwho4,WhoRivets,DK Who Rivets,111,1,2,73000,10000,20000,40000
+dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrel),112,1,2,74000,1000,2000,5000
+dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,114,1,2,75000,8000,16000,30000
 ckongpt2,ckongpt2_l22,CK Killscrn,CK KillScreen 22,120,1,2,76000,1000,2000,3000
 dkong,dkongksfix,KSFix,DK Killscreen Fix,123,1,2,77000,10000,25000,40000
 bigkong,bigkong_barrels,BigKong Barrels,BK Barrels Only,9999,1,2,21000,4000,10000,20000

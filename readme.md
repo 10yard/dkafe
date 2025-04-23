@@ -51,7 +51,7 @@ The frontend can be configured to launch other emulators and roms.
 Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between the stages.
 
 ![NEW Feature](https://github.com/10yard/dkafe/blob/master/artwork/about/new.png) 
-There is now a console add-on pack which adds extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See [Console Add-on Pack](#console-add-on-pack) section below.
+There is now a console add-on pack which adds 4 extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See [Console Add-on Pack](#console-add-on-pack) section below.
 
 ![Donkey Kong versions supported](https://github.com/10yard/dkafe/blob/master/artwork/about/versions_detected.png)
 
@@ -310,7 +310,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Watara Supervision
  
 
-The Donkey Kong console games will appear on the pie and elevator stages.  There are 2 additional stages on Win x64 platform (crazy kong and big kong).
+The Donkey Kong console games will appear on the 4 extra stages (*Crazy Kong and Big Kong stages are exclusive to Win x64 platform).
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
@@ -389,7 +389,7 @@ The application requires settings.txt and romlist.csv to be present in the insta
 The settings.txt contains the emulator, rom path, controls and other configuration.  See [Frontend Settings](#frontend-settings) section below.
 
 The romlist.csv contains information about the roms, which game slot they should appear in and how they can be unlocked and launched in the frontend.  See [How to use romlist.csv](#how-to-use-romlist-csv) below.
-There are 262 configurable game slots in total. 
+There are 306 configurable game slots in total. 
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)
@@ -651,7 +651,7 @@ The file can be configured to launch roms from the default rom directory (by lea
 The subfolder is useful when you have multiple roms with the same name e.g. there are lots of hacked versions of dkong.zip.  If the emulator supports a rompath argument then DKAFE will launch the rom directly from its subfolder.
 If the emulator does not support a rompath (e.g. Advmame) then the rom will be copied over to the main rompath. See `ALLOW_ROM_OVERWRITE` option.  With this approach I recommend the original rom be placed into its own subfolder (e.g. `/roms/original`) to prevent it from being overwritten.
 
-All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 262) and a basic descriptive name.  Set the slot position to 0 or 999 if you want the rom to only appear in the menu. 
+All roms in the list should be given an emulator number (e.g. 1 for DKWolf, as defined in `settings.txt`), a slot position (between 1 and 306) and a basic descriptive name.  Set the slot position to 0 or 999 if you want the rom to only appear in the menu. 
 
 As well as an emulator number,  the roms can be given a recording emulator number (e.g. 2 for DK Wolf recordings).  This provides emulator details for when the rom is launched in recording mode.  Set to zero to disable recording.
 
