@@ -512,7 +512,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     _display_pil = False
                     break
             if _display_pil:
-                _g.screen.blit(get_image(os.path.join("artwork/sprite/pellet.png")), SLOTS[_i])
+                _g.screen.blit(get_image(os.path.join("artwork/sprite/pellet.png"), fade=UNLOCK_MODE), (SLOTS[_i][0] - 2, SLOTS[_i][1]))
     return nearby
 
 

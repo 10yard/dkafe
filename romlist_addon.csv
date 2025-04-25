@@ -147,8 +147,11 @@ pc_trs80_killergorilla,shell,TRS80 KG,TRS80: Killer Gorilla,304,,,224000,2,4,8
 oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,305,,,225000,2,4,8
 pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,306,,,226000,2,4,8
 pacman,,Pac-Man,,307,,,227000,2,4,8
-mspacman,,Ms.Pac,Ms. Pac-Man,308,,,228000,2,4,8
-pacplus,,Pac-Plus,Pac-Man Plus,310,,,229000,2,4,8
+mspacman,,MsPac,Ms. Pac-Man,308,,,228000,2,4,8
+pacplus,,PacPlus,Pac-Man Plus,310,,,229000,2,4,8
+pacland,,PacLand,Pac Land,312,,,230000,2,4,8
+pacmanf,,PacSpeed,Pac-Man Speedup Hack,314,,,231000,2,4,8
+mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,316,,,232000,2,4,8
 a2600_alien_1979,shell,Alien,2600: Alien 1979,9999,,,78000,2,4,8
 a2600_artificial_lifeform,shell,Artifical Lifeform,2600: Artifical Lifeform,9999,,,78000,2,4,8
 a2600_big_mario,shell,Big Mario,2600: Big Mario,9999,,,78000,2,4,8

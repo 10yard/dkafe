@@ -214,7 +214,7 @@ ARCADE_BONUS =  "congo",
 ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
                    "dkongcoach", "dkongcoachsprings", "dkongl05")
 ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
-ARCADE_OTHER = "pacman", "mspacman", "pacplus"
+ARCADE_OTHER = "pacman", "mspacman", "pacplus", "pacland", "pacmanf", "mspacmnf"
 ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros.", "Crazy Kong (Part I)", "Crazy Kong (Part II)", "Big Kong"
 SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)", "Arcade (Other)"
 
