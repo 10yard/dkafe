@@ -432,6 +432,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
     nearby = None
     info_list = []
+
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
         if int(slot) - 1 in range(*SLOTS_PER_STAGE[_g.stage]):
@@ -445,7 +446,10 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                 if smash:
                     icon_image = f"artwork/sprite/smash{str(randint(0, 2))}.png"
                 if not os.path.exists(icon_image):
-                    icon_image = os.path.join("artwork/icon/default.png")
+                    if name in ARCADE_OTHER:
+                        icon_image = os.path.join("artwork/icon/other.png")
+                    else:
+                        icon_image = os.path.join("artwork/icon/default.png")
                 img = get_image(icon_image, fade=not unlocked)
                 w, h = img.get_width(), img.get_height()
                 if _x < _g.xpos + SPRITE_HALF < _x + w and (_y < _g.ypos + SPRITE_HALF < _y + h) and not intro:
@@ -490,14 +494,25 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                         # Show recording text above icon
                         if _g.timer.duration % 2 < 1:
                             write_text("REC", x=_x, y=_y - 6, bg=RED)
-                if _g.showinfo:
-                    info_list.append((des, _x, _y, w, unlocked))
+                info_list.append((name, des, _x, _y, w, unlocked))
 
     if _g.showinfo:
         # Show game info above icons.  Done as last step so that icons do not overwrite the text.
-        for des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
-            write_text(des, x=x, y=y - 6, fg=[BLACK, MAGENTA][unlocked], bg=[GREY, WHITE][unlocked], box=True,
+        for name, des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
+            _adj = 1 if name in ARCADE_OTHER else 6
+            write_text(des, x=x, y=y-_adj, fg=[BLACK, MAGENTA][unlocked], bg=[GREY, WHITE][unlocked], box=True,
                        rj_adjust=(not (len(des) * 4) + x <= 224) * (w - 1))
+
+    # Other arcade games on stage 7 show pellets were the slots are not taken
+    if _g.stage == 7:
+        for _i in range(*SLOTS_PER_STAGE[7]):
+            _display_pil = True
+            for name, des, _x, _y, w, unlocked in info_list:
+                if SLOTS[_i][0] == _x and SLOTS[_i][1] == _y:
+                    _display_pil = False
+                    break
+            if _display_pil:
+                _g.screen.blit(get_image(os.path.join("artwork/sprite/pellet.png")), SLOTS[_i])
     return nearby
 
 
@@ -569,8 +584,6 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             sound_file = WALK_SOUNDS[_g.sprite_index % 12]
 
     elif direction in ("u", "d"):
-        print(_g.xpos)
-
         if "LADDER_DETECTED" in map_info:
             # Centre Jumpman on ladder
             for c in LADDER_CENTRES[_g.stage]:
@@ -643,6 +656,8 @@ def get_system_description(name, sub):
         return "Arcade (Practice)"
     elif sub in ARCADE_2PLAYER or name in ARCADE_2PLAYER:
         return "Arcade (Two Players)"
+    elif name in ARCADE_OTHER:
+        return "Arcade (Other)"
     elif _system in RECOGNISED_SYSTEMS:
         return RECOGNISED_SYSTEMS[_system]
     else:
@@ -655,8 +670,8 @@ def sort_key(x):
     slot = str(x[4])
     if slot == "9999":
         slot = "0"
-    system_core = "9" if not key0 in SYSTEM_CORE_ORDER else str(SYSTEM_CORE_ORDER.index(key0))
-    arcade_core = "9" if not key1 in ARCADE_CORE_ORDER else str(ARCADE_CORE_ORDER.index(key1))
+    system_core = "Z" if not key0 in SYSTEM_CORE_ORDER else str(SYSTEM_CORE_ORDER.index(key0))
+    arcade_core = "Z" if not key1 in ARCADE_CORE_ORDER else str(ARCADE_CORE_ORDER.index(key1))
     return (system_core + key0.ljust(30) + arcade_core + key1.ljust(30) + slot.zfill(4)).lower()
 
 
@@ -1153,7 +1168,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                             Popen(f'"{remap_program}" "{name}" "{_keys}', creationflags=CREATE_NO_WINDOW)
                             break
 
-            if name.split("_")[0] in WIN64_ONLY_SYSTEMS:
+            if name.split("_")[0] in WIN64_ONLY_SYSTEMS or name in ARCADE_OTHER:
                 if name.startswith("pc_"):
                     os.chdir(os.path.join(ROM_DIR, "pc", name))
                 if competing and st1 and st2 and st3:
@@ -1432,6 +1447,12 @@ def process_interrupts():
                 _g.grab = randint(1, COIN_FREQUENCY) == 1
             _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
+    if dk_ck() == "pm":
+        if ticks % 300 > 150:
+            _g.screen.blit(get_image(f"artwork/sprite/pmoilcan2.png"), OILCAN_POSXY[_g.stage])
+        else:
+            _g.screen.blit(get_image(f"artwork/sprite/pmoilcan.png"), OILCAN_POSXY[_g.stage])
+
     animate_rolling_coins()
 
     # Purge coins
@@ -1672,8 +1693,8 @@ def play_from_tracklist():
 
 
 def dk_ck():
-    # DK or CK graphics
-    return "ck" if _g.stage == 5 or _g.stage == 6 else "dk"
+    # dk, ck or pm graphics
+    return GRAPHICS_THEME[_g.stage]
 
 
 def main(initial=True):

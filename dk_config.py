@@ -190,7 +190,7 @@ if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
     globals()["ENABLE_ADDONS"] = 0
 
 if ENABLE_ADDONS:
-    STAGES = 7 if ARCH == "win64" else 4
+    STAGES = 8 if ARCH == "win64" else 4
 else:
     STAGES = 3
 
@@ -214,8 +214,9 @@ ARCADE_BONUS =  "congo",
 ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
                    "dkongcoach", "dkongcoachsprings", "dkongl05")
 ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
+ARCADE_OTHER = "pacman", "mspacman", "pacplus"
 ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros.", "Crazy Kong (Part I)", "Crazy Kong (Part II)", "Big Kong"
-SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)"
+SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)", "Arcade (Other)"
 
 # Optional rom names
 OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
@@ -401,7 +402,6 @@ SLOTS = (
     (34, 162), (82, 165), (116, 166), (131, 165), (146, 164), (178, 162), (210, 160),
     (34, 132), (82, 129), (98, 128), (114, 128), (130, 129), (146, 130),
     (34, 98), (67, 100), (83, 101), (130, 98), (146, 97), (162, 96), (210, 93),
-
     (2, 62), (90, 62), (106, 62), (146, 63), (162, 64), (178, 65),
     (90, 34),
 
@@ -435,11 +435,13 @@ SLOTS = (
     (194, 132), (130, 128), (98, 126), (82, 125), (66, 124), (1, 120),
     (66, 96), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (194, 88), (210, 87),
     (194, 66), (162, 64), (146, 63), (130, 62), (90, 62), (2, 62),
-    (98, 34)
+    (98, 34),
+
+    (2, 226), (34, 226), (50, 226), (66, 226), (92, 226), (108, 226), (124, 226), (140, 226), (156, 226), (178, 225), (210, 223)
 )
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 317)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -490,35 +492,31 @@ LADDER_ZONES = (
     ("ANY_LADDER", (20, 30, 60, 90, 160, 170, 180, 190, 240)),
     ("TOP_OF_ANY_LADDER", (60, 170, 180)))
 
-# Jumpman's x position when centre of ladder by stage
-LADDER_CENTRES = (4, 12, 20, 28, 36, 44, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204)
+# Stage specific positions, colours etc
+GRAPHICS_THEME = "dk", "dk", "dk", "dk", "dk", "ck", "ck", "pm"
+BONUS_COLORS = ((CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, WHITE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE),
+                (WHITE, WHITE), (WHITE, BLUE))
+HAMMER_POSXY = (((16, 98), (167, 190)), ((8, 140), (104, 100)), ((195, 128), (195, 192)), ((12, 140), (104, 178)),
+                ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)), ((16, 98), (167, 190)))
+TELEPORT_TO_POSXY = (((164, 193), (20, 92)), ((101, 98), (11, 138)), ((192, 190), (192, 126)), ((104, 180), (16, 140)),
+                     ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)), ((164, 193), (20, 92)))
+OILCAN_POSXY = (16, 232), (172, 152), (16, 232), (104, 128), (68, 112), (16, 232), (16, 232), (16, 232)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246), (108, 142), (72, 126), (20, 246), (20, 246), (20, 246)
+PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (0, 0), (8, 0), (8, 0), (0, 0)
+KONG_POSXY = (0, 0), (80, 4), (0, 0), (0, 4), (0, 4), (0, 0), (0, 0), (0, 0)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73), (67, 77), (67, 77), (67, 73), (67, 73), (67, 73)
+COIN_AWARD_POSX = 0, 112, 0, 28, 0, 0, 0, 0
+LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2, 3 = 1/3 etc) by stage
 
+# Jumpman's x position when centre of ladder by stage
 LADDER_CENTRES = ((28, 60, 68, 76, 84, 92, 108, 124, 164, 180),
                   (4, 12, 20, 28, 60, 68, 76, 100, 140, 148, 180, 188, 196, 204, ),
                   (20, 50, 60, 76, 116, 124, 156, 164, 175, 188),
-
-# TODO
-                  (4, 12, 20, 28, 36, 44, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204),
-                  (4, 12, 20, 28, 36, 44, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204),
-                  (4, 12, 20, 28, 36, 44, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204),
-                  (4, 12, 20, 28, 36, 44, 60, 68, 76, 84, 92, 100, 108, 116, 124, 132, 140, 148, 164, 180, 188, 196, 204))
-
-
-# Stage specific positions, colours etc
-BONUS_COLORS = (CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, WHITE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE), (WHITE, WHITE)
-HAMMER_POSXY = (((16, 98), (167, 190)), ((8, 140), (104, 100)), ((195, 128), (195, 192)), ((12, 140), (104, 178)),
-                ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)))
-TELEPORT_TO_POSXY = (((164, 193), (20, 92)), ((101, 98), (11, 138)), ((192, 190), (192, 126)), ((104, 180), (16, 140)),
-                     ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)))
-OILCAN_POSXY = (16, 232), (172, 152), (16, 232), (104, 128), (68, 112), (16, 232), (16, 232)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246), (108, 142), (72, 126), (20, 246), (20, 246)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246), (108, 142), (72, 126), (20, 246), (20, 246)
-PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (0, 0), (8, 0), (8, 0)
-KONG_POSXY = (0, 0), (80, 4), (0, 0), (0, 4), (0, 4), (0, 0), (0, 0)
-COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73), (67, 77), (67, 77), (67, 73), (67, 73)
-COIN_AWARD_POSX = 0, 112, 0, 28, 0, 0, 0
-LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2,  3 = 1/3 etc.) by stage
-
+                  (12, 20, 60, 76, 124, 132, 140, 188, 196),
+                  (4, 12, 60, 76, 116, 124, 164, 180, 204),
+                  (28, 60, 68, 76, 84, 92, 108, 124, 164, 180),
+                  (12, 28, 60, 44, 76, 84, 92, 108, 148, 164, 180),
+                  (20, 60, 68, 76, 84, 92, 108, 124, 164, 188))
 
 # Pies specific.  Location of the 2 moving ladder sections
 MOVING_LADDER_POSXY = (15, 96), (199, 96)

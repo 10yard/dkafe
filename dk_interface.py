@@ -11,7 +11,7 @@ MAME Interface routines
 """
 import os
 from dk_config import ROOT_DIR, AWARDS
-from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD, HUD_UNFRIENDLY
+from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD, HUD_UNFRIENDLY, ARCADE_OTHER
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
@@ -52,7 +52,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
 
 def get_award(sub, rom, score3, score2, score1, time_start=None, time_end=None):
     # Read data from the compete.dat file to detemine if coins should be awarded to Jumpman.
-    if sub == "shell" and time_start and time_end:
+    if (sub == "shell" or rom in ARCADE_OTHER) and time_start and time_end:
         # Award based on the amount of time the game was played in seconds
         try:
             seconds = (time_end - time_start) + 10  # generously add 10 seconds
