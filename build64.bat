@@ -81,6 +81,7 @@ if %_check% NEQ Y GOTO end
 set addon_version=v9
 copy dist\remap_pc.exe roms\pc\ /Y
 
+
 for %%s in (%systems%) do xcopy roms\%%s dist\console_addon\roms\%%s /S /i /Y
 
 copy romlist_addon.csv dist\console_addon\ /Y
@@ -89,11 +90,16 @@ xcopy dkwolf\artwork dist\console_addon\dkwolf\artwork /S /i /Y
 echo **** Software list necessary for APF Imagination Machine
 xcopy dkwolf\hash dist\console_addon\dkwolf\hash /S /i /Y
 
+echo **** Addon version of dkwolf includes all drivers
+copy dkwolf\dkwolf_addon.exe dist\console_addon\dkwolf\ /Y
+
 echo **** Include arcade in the addon pack to allow complete frontend setup from the single zip
 copy roms\dkong.zip dist\console_addon\roms\ /Y
 copy roms\dkongjr.zip dist\console_addon\roms\ /Y
 copy roms\dkong3.zip dist\console_addon\roms\ /Y
 copy roms\dkongjre.zip dist\console_addon\roms\ /Y
+copy roms\dkongjrm.zip dist\console_addon\roms\ /Y
+copy roms\dkongjrmc.zip dist\console_addon\roms\ /Y
 
 echo **** Bonus roms includes with the addon pack
 copy roms\congo.zip dist\console_addon\roms\ /Y
@@ -104,8 +110,17 @@ del releases\add-ons\dkafe_console_addon_pack_%addon_version%.zip
 
 echo **** Reduced add-on pack for 32 bit Windows and Pi
 del releases\add-ons\dkafe_console_addon_pack_%addon_version%_reduced.zip
+echo **** Addon version of dkwolf includes all drivers
+copy dkwolf\dkwolf_addon.exe dist\console_addon\dkwolf\ /Y
+
 del dist\console_addon\roms\pc /s /Q
 del dist\console_addon\roms\dos /s /Q
+
+echo **** Addon version of dkwolf 32 bit includes all drivers
+del dist\console_addon\dkwolf\dkwolf.exe /s /Q
+copy dkwolf\dkwolf_addon32.exe dist\console_addon\dkwolf\dkwolf_addon.exe /Y
+
+
 %zip_path% a releases\add-ons\dkafe_console_addon_pack_%addon_version%_reduced.zip .\dist\console_addon\* -m0=LZMA -mx6
 
 echo **** Clean up add-on work folder

@@ -504,7 +504,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                        rj_adjust=(not (len(des) * 4) + x <= 224) * (w - 1))
 
     # Other arcade games on stage 7 show pellets were the slots are not taken
-    if _g.stage == 7:
+    if get_theme() == "pm":
         for _i in range(*SLOTS_PER_STAGE[7]):
             _display_pil = True
             for name, des, _x, _y, w, unlocked in info_list:
@@ -1237,8 +1237,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                         # record your best trophy achievement
                         _g.achievements[sub+name] = place
                     for i, coin in enumerate(range(0, scored, COIN_VALUES[-1])):
-                        movement = choice([-1, 1]) if _g.stage == 1 else 1
-                        drop_coin(x=COIN_AWARD_POSX[_g.stage], y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=movement)
+                        drop_coin(x=COIN_AWARD_POSX[_g.stage], y=i * 2, coin_type=len(COIN_VALUES) - 1, awarded=scored, movement=1)
                     _g.timer.reset()
                     _g.lastexit = _g.timer.duration
                     award_channel.play(pygame.mixer.Sound("sounds/win.wav"))
@@ -1304,7 +1303,7 @@ def playback_rom(info, inpfile):
 def show_hammers():
     if ENABLE_HAMMERS:
         for position in HAMMER_POSXY[_g.stage]:
-            _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}hammer.png"), position)
+            _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}hammer.png"), position)
 
 
 def show_score():
@@ -1339,7 +1338,7 @@ def show_timeup_animation(sprite_number, loss=0):
     # Display items that don't get updated in this loop
     show_score()
     write_text(" 000", font=dk_font, x=177, y=48, fg=BONUS_COLORS[_g.stage][1])
-    _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
+    _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
     if loss > 0:
         write_text(f"-{str(loss)}", x=_g.xpos, y=_g.ypos - 10, bg=RED, box=True)
@@ -1371,10 +1370,7 @@ def process_interrupts():
                     if _g.score >= COIN_VALUES[coin_type] and loss + COIN_VALUES[coin_type] <= LIFE_COST:
                         loss += COIN_VALUES[coin_type]
                         _g.score -= COIN_VALUES[coin_type]
-                        if _g.stage == 1:
-                            movement = choice([-1, 1])
-                        else:
-                            movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
+                        movement = 1 if _g.ypos <= 73 or (139 >= _g.ypos > 106) or (205 >= _g.ypos > 172) else -1
                         drop_coin(x=_g.xpos + i, y=_g.ypos, coin_type=coin_type, movement=movement)
                         i += 1
 
@@ -1404,26 +1400,26 @@ def process_interrupts():
         place, place_text = get_prize_placing(_g.awarded)
         if _g.timer.duration > 1:
             if _g.timer.duration < 2:
-                _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}g1.png"), (11 + _g.dkx, 52 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}g1.png"), (11 + _g.dkx, 52 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5 + _g.dkx, 62 + _g.dky))
             elif _g.timer.duration < 3:
-                _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a1.png"), (11 + _g.dkx, 52 + _g.dky))
+                _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}a1.png"), (11 + _g.dkx, 52 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 60 + _g.dky))
             else:
                 if place == 1:
                     # Grinning DK on 1st place trophy
-                    _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a3.png"), (11 + _g.dkx, 45 + _g.dky))
+                    _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}a3.png"), (11 + _g.dkx, 45 + _g.dky))
                 else:
-                    _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}a2.png"), (11 + _g.dkx, 45 + _g.dky))
+                    _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}a2.png"), (11 + _g.dkx, 45 + _g.dky))
                 _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (33 + _g.dkx, 29 + _g.dky))
         else:
-            _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
+            _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}0.png"), (11 + _g.dkx, 52 + _g.dky))
             _g.screen.blit(get_image(f"artwork/sprite/cup{str(place)}.png"), (5 + _g.dkx, 62 + _g.dky))
     elif _g.timer.duration - _g.lastaward < 2:
-        _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}0.png"), (11 + _g.dkx, 52 + _g.dky))
+        _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}0.png"), (11 + _g.dkx, 52 + _g.dky))
     else:
         # Animate DK stomping,  sometimes DK will grab a coin
-        prefix = (dk_ck(), f"{dk_ck()}g")[_g.grab]
+        prefix = (get_theme(), f"{get_theme()}g")[_g.grab]
         if _g.grab and _g.cointype == 0:
             # Determine next coin to be grabbed by DK. Higher value coins are released less frequenly
             _g.cointype = int(randint(1, COIN_HIGH) == 1) + 1
@@ -1447,7 +1443,7 @@ def process_interrupts():
                 _g.grab = randint(1, COIN_FREQUENCY) == 1
             _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
-    if dk_ck() == "pm":
+    if get_theme() == "pm":
         if ticks % 300 > 150:
             _g.screen.blit(get_image(f"artwork/sprite/pmoilcan2.png"), OILCAN_POSXY[_g.stage])
         else:
@@ -1516,7 +1512,7 @@ def process_interrupts():
     if _g.lastwarp > 0 and ticks - _g.lastwarp < 1000:
         # After warping, Jumpman appears from inside the oilcan
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-        _g.screen.blit(get_image(f"artwork/sprite/{dk_ck()}oilcan.png"), OILCAN_POSXY[_g.stage])
+        _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}oilcan.png"), OILCAN_POSXY[_g.stage])
     if not _g.lastwarp or ticks - _g.lastwarp > 600:
         # Flash a down arrow when Jumpman is stood on an oilcan to indicate he can warp to next/previous stage.
         if "FOOT_ABOVE_OILCAN" in get_map_info():
@@ -1567,9 +1563,9 @@ def animate_rolling_coins(out_of_time=False):
         map_info = get_map_info(direction="d", x=int(co_x + (9, 4)[co_dir == 1]), y=int(co_y + 9))
 
         # Toggle ladders.  Virtual ladders are always active.
-        if "APPROACHING_LADDER" in map_info or ("TOP_OF_LADDER" in map_info and _g.stage == 1):
+        if "APPROACHING_LADDER" in map_info:
             co_ladder = not randint(1, LADDER_CHANCE[_g.stage]) == 1
-        elif _g.stage != 1 and "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
+        elif "VIRTUAL_LADDER" not in map_info and "FOOT_ABOVE_PLATFORM" not in map_info and co_ladder:
             map_info = []
 
         # Move the coin along the platform and down ladders
@@ -1577,8 +1573,6 @@ def animate_rolling_coins(out_of_time=False):
             co_y -= 1  # correct coin position by moving it up the girder
         elif "FOOT_ABOVE_PLATFORM" in map_info:
             co_y += 1  # coin moves down the sloped girder to touch the platform
-            if (_g.stage == 1 or _g.stage == 4) and int(co_y) in (232, 192, 152, 112):
-                co_dir *= -1  # Flip horizontal direction when falling off platform on rivets
         elif "ANY_LADDER" in map_info and co_y < 238:
             if "TOP_OF_ANY_LADDER" in map_info and _g.stage != 1:
                 co_dir *= -1  # Flip horizontal direction after taking a ladder on barrels
@@ -1692,7 +1686,7 @@ def play_from_tracklist():
                 break
 
 
-def dk_ck():
+def get_theme():
     # dk, ck or pm graphics
     return GRAPHICS_THEME[_g.stage]
 

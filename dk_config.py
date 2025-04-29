@@ -205,7 +205,7 @@ DKONG_ZIP = os.path.join(ROM_DIR, "dkong.zip")
 DKONGJR_ZIP = os.path.join(ROM_DIR, "dkongjr.zip")
 DKONG3_ZIP = os.path.join(ROM_DIR, "dkong3.zip")
 
-ARCADE_JUNIOR = "dkongjr", "dkongjre"
+ARCADE_JUNIOR = "dkongjr", "dkongjre", "dkongjrm", "dkongjrmc"
 ARCADE_DK3 = "dkong3",
 ARCADE_CRAZY = "ckong", "ckongpt2", "ckongpt2a", "ckongpt2b", "ckongs", "ckongg", "ckongdks", "ckongmc"
 ARCADE_BIG = "bigkong", "bigkonggx"

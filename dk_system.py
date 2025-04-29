@@ -128,8 +128,7 @@ def read_romlist(specific_romlist_file=None):
                                 if name != "empty":
                                     # is this an add-on rom
                                     add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
-
-                                    if name + sub not in usedunique:
+                                    if name + "|" + sub not in usedunique:
                                         romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
                                         usedunique.append(name + "|" + sub)
                                 usedslots.append(slot)
@@ -332,7 +331,8 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
             os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
 
-    # print(launch_command)  # debug launch arguments
+    if sys.gettrace():
+        print(launch_command)  # debug launch arguments
     return launch_command, launch_directory, competing, inp_file
 
 

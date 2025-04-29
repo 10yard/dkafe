@@ -231,7 +231,9 @@ coleco_super_dk,shell,Super,CVS: Super Donkey Kong!,9999,,,78000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,78000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,78000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,78000,2,4,8
-dkongjre,,DK Junior BugFix,Jr. with Bug Fixes (E Kit),9999,1,2,78000,1000,15000,30000
+dkongjre,,DK Junior BugFix,JR with Bug Fixes (E Kit),9999,1,2,78000,1000,15000,30000
+dkongjrm,,DK JR MoonCresta,JR on MoonCresta,9999,1,2,78000,,,
+dkongjrmc,,DK JR MoonCresta 2,JR on MoonCresta (Set 2),9999,1,2,78000,,,
 dos_dkpc,shell,DKPC,DOS: Donkey Kong PC,9999,,,78000,2,4,8
 dos_heroman,shell,Hero Man,DOS: Hero Man,9999,,,78000,2,4,8
 dos_willy,shell,WillyWorm,DOS: Willy the Worm,9999,,,78000,2,4,8
