@@ -46,7 +46,7 @@ xcopy dkwolf\hash dist\dkwolf\hash /S /i /Y
 rmdir dist\dkwolf\inp /s /Q
 
 echo **** define systems to be included in the add-on pack
-set systems=a2600,a5200,a7800,a800xl,adam,apfimag,apple2e,bbcb,c64,c64p,cgenie,coco3,coleco,cpc6128,crvision,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,jupace,laser310,lcd,mo5,mz700,nes,oric1,orica,pc,pcw10,pet4032,plus4,sg1000,smskr,snes,spec128,spectrum,ti99_4a,vic20,vic20_se,x1,zx81
+set systems=a2600,a5200,a7800,a800xl,adam,apfimag,apple2e,bbcb,c64,c64p,cgenie,coco3,coleco,cpc6128,crvision,dos,dragon32,fds,gameboy,gbcolor,genesis,gnw,hbf900a,intv,jupace,laser310,lcd,mo5,mz700,nes,other,oric1,orica,pc,pcw10,pet4032,plus4,sg1000,smskr,snes,spec128,spectrum,ti99_4a,vic20,vic20_se,x1,zx81
 
 echo **** adjust controller defaults for some consoles
 for %%s in (%systems%) do xcopy dkwolf\cfg\%%s*.cfg dist\dkwolf\cfg\ /Y

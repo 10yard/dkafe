@@ -1,9 +1,0 @@
-Pinball - Donkey Kong The Pinball
-
-A Donkey Kong Pinball game!
-
-A custom table based on Unidesa/Cirsa/Stargame's table
-from 1987. This is JP Salas's interpretation of that 
-table with own sounds and rules.
-
-Table developed by jpsalas with help from berk104

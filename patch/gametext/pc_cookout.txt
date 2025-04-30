@@ -1,0 +1,18 @@
+PC - Cook Out!
+
+Cook Out! is a fan game made to look like an arcade 
+game Nintendo could have produced circa 1984. 
+
+The objective of the game is to throw veggies into a 
+cooking pot while avoiding getting caught by beings 
+of fire. 
+The game features 4 unique boards and up to 99 levels
+of play. How high of a score can YOU get?
+
+Use your 2nd button to pick up and drop the veggies 
+into the cooking pot.
+
+This was made for the minigame competition hosted on
+the MFGG forums.
+
+Developed by Cruise Elroy

@@ -214,9 +214,13 @@ ARCADE_BONUS =  "congo",
 ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
                    "dkongcoach", "dkongcoachsprings", "dkongl05")
 ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
-ARCADE_OTHER = "pacman", "mspacman", "pacplus", "pacland", "pacmanf", "mspacmnf", "jrpacman"
 ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros.", "Crazy Kong (Part I)", "Crazy Kong (Part II)", "Big Kong"
 SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)", "Arcade (Other)"
+
+# Generated list of arcade other roms - included in add-on pack.  Users can also drop additional arcade roms in here.
+ARCADE_OTHER = []
+for _rom in glob(os.path.join(ROM_DIR, "other", "*.zip")):
+    ARCADE_OTHER.append(os.path.basename(_rom).split(".")[0])
 
 # Optional rom names
 OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
@@ -378,7 +382,7 @@ DARKGREY = (40, 40, 40)
 BRIGHTRED = (238, 75, 43)
 
 # Alpha channel value for faded/locked arcade machines
-FADE_LEVEL = 50
+FADE_LEVEL = 40
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = (
@@ -437,11 +441,19 @@ SLOTS = (
     (194, 66), (162, 64), (146, 63), (130, 62), (90, 62), (2, 62),
     (98, 34),
 
-    (2, 226), (34, 226), (50, 226), (66, 226), (92, 226), (108, 226), (124, 226), (140, 226), (156, 226), (178, 225), (210, 223)
+    (2, 226), (34, 226), (50, 226), (66, 226), (92, 226), (108, 226), (124, 226), (140, 226), (156, 226), (178, 225), (210, 223),
+    (178, 195), (140, 194), (124, 194), (108, 194), (66, 194), (50, 194), (34, 193), (2, 191),
+    (34, 163), (50, 162), (78, 162), (124, 162), (140, 162), (156, 162), (178, 161), (210, 159),
+    (178, 131), (147, 130), (131, 130), (99, 130), (83, 130), (50, 130), (34, 129), (2, 128),
+    (34, 99), (99, 98), (115, 98), (131, 98), (147, 98), (178, 97), (210, 95),
+    (178, 63), (162, 62), (146, 62), (112, 62), (92, 62), (2, 62),
+    (90, 34)
 )
 
+START_STAGE = 7
+
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 317)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 355)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -497,9 +509,9 @@ GRAPHICS_THEME = "dk", "dk", "dk", "dk", "dk", "ck", "ck", "pm"
 BONUS_COLORS = ((CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, WHITE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE),
                 (WHITE, WHITE), (WHITE, BLUE))
 HAMMER_POSXY = (((16, 98), (167, 190)), ((8, 140), (104, 100)), ((195, 128), (195, 192)), ((12, 140), (104, 178)),
-                ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)), ((16, 98), (167, 190)))
+                ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)), ((52, 94), (158, 191)))
 TELEPORT_TO_POSXY = (((164, 193), (20, 92)), ((101, 98), (11, 138)), ((192, 190), (192, 126)), ((104, 180), (16, 140)),
-                     ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)), ((164, 193), (20, 92)))
+                     ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)), ((158, 198), (52, 98)))
 OILCAN_POSXY = (16, 232), (172, 152), (16, 232), (104, 128), (68, 112), (16, 232), (16, 232), (16, 232)
 WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246), (108, 142), (72, 126), (20, 246), (20, 246), (20, 246)
 PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (0, 0), (8, 0), (8, 0), (0, 0)
@@ -740,7 +752,6 @@ RECOGNISED_SYSTEMS = {
     "pcw10":"Amstrad PCW",
     "pet4032":"Commodore PET",
     "pico8":"Pico-8 Fantasy Console",
-    "pinball":"Pinball",
     "pokitto":"Pokitto DIY Handheld",
     "plus4":"Commodore C16/Plus4",
     "sg1000":"Sega SG-1000",
@@ -884,8 +895,6 @@ KEYBOARD_REMAP = {
     "pc_pico8_dinkyking2": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_pico8_dinkyking3": "ctrl>x|esc>forcequit:zepto8.exe",
     "pc_pico8_dinkyking4": "ctrl>x|esc>forcequit:zepto8.exe",
-    "pc_pinball_dkpin":"1>5,1|esc>forcequit:vpinball990.exe",
-    "pc_pinball_dkong":"1>5,s||esc>forcequit:vpinball990.exe",
     "pc_pokitto_dkjr":"ctrl>a|alt>b",
     "pc_pokitto_kong2":"ctrl>a|alt>b",
     "pc_dkme_alien":"ctrl>space|esc>forcequit:dkme.exe",

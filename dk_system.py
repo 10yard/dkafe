@@ -66,6 +66,7 @@ def read_romlist(specific_romlist_file=None):
                     if data.strip() and not data.startswith("#") and not data.startswith(",,") and data.count(",") >= 10:
                         # read romlist data and tweak the descriptions
                         name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1, *_ = [x.strip() for x in data.split(",")]
+
                         slot = slot.split(".")[0] # decimal places are used only for sorting
                         if not slot:
                             slot = "9999"

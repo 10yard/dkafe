@@ -117,7 +117,7 @@ spec128_dk_arcade,shell,SPEC Arcade,SPEC128K: DK Arcade,254,,,194000,2,4,8
 pc_a2600_arc_easy,shell,2600 Arcade,2600: Arcade Demo (Easy),256,,,195000,2,4,8
 cgenie_colourkong32,shell,EGCK,EG2000: Colour Kong 32,257,,,196000,2,4,8
 pc_fixitfelix,shell,PC FIFJR,PC: Fix-It Felix Classic,258,,,197000,2,4,8
-pc_pinball_dkpin,shell,PINDK,PINBALL: DK The Pinball,259,,,198000,2,4,8
+pc_cookout,shell,CookOut!,PC: Cook Out!,259,,,198000,2,4,8
 apple2e_budgiekong,shell,A2 Budgie,A][: Budgie Kong,260,,,199000,2,4,8
 cpc6128_climbit,shell,CPC Climb,CPC: Climb-It,262,,,200000,2,4,8
 pc_arduboy_kong,shell,ARDUKong,ARDUBOY: Kong,263,,,201000,2,4,8
@@ -149,10 +149,35 @@ pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,306,,,226000,2,4,8
 pacman,,Pac-Man,,307,3,4,227000,2,4,8
 mspacman,,MsPac,Ms. Pac-Man,308,3,4,228000,2,4,8
 pacplus,,PacPlus,Pac-Man Plus,310,3,4,229000,2,4,8
-pacland,,PacLand,Pac Land,312,3,4,230000,2,4,8
+jrpacman,,JrPac,Jr. Pac-Man,312,3,4,230000,2,4,8
 pacmanf,,PacSpeed,Pac-Man Speedup Hack,314,3,4,231000,2,4,8
 mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,316,3,4,232000,2,4,8
-jrpacman,,JrPac,Jr. Pac-Man,317,3,4,233000,2,4,8
+pacmania,,PacMania,,318,3,4,233000,2,4,8
+superpacm,,SuperPac,Super Pac-Man,319,3,4,234000,2,4,8
+mspacmat,,Attack,Ms. Pac-Attack,321,3,4,235000,2,4,
+hyperpac,,HyperPac,Hyper Pac-Man,322,3,4,236000,2,4,8
+pacland,,PacLand,Pac Land,324,3,4,237000,2,4,8
+pacnpal,,PacPal,Pac n Pal,325,3,4,238000,2,4,8
+nrallyx,,NewRallyX,New Rally-X,326,3,4,239000,2,4,8
+rallyx,,RallyX,Rally-X,328,3,4,240000,2,4,8
+qbert,,Q*Bert,,329,3,4,241000,2,4,8
+popeye,,Popeye,,331,3,4,242000,2,4,8
+cclimber,,Climber,Crazy Climber,333,3,4,243000,2,4,8
+galaga,,Galaga,,334,3,4,244000,2,4,8
+galaxian,,Galaxian,,336,3,4,245000,2,4,8
+gaplus,,GalPlus,Galaga Plus,337,3,4,246000,2,4,8
+xevious,,Xevious,,339,3,4,247000,2,4,8
+1942,,1942,,341,3,4,248000,2,4,8
+panic,,SpacePanic,Space Panic,342,3,4,249000,2,4,8
+digdug,,DigDug,Dig Dug,343,3,4,250000,2,4,8
+frogger,,Frogger,,345,3,4,251000,2,4,8
+btimem,,BurgerTime,Burger Time,347,3,4,252000,2,4,8
+mappy,,Mappy,,352,3,4,253000,2,4,8
+arkanoidu,,Arkanoid,,349,3,4,254000,2,4,8
+ladybug,,LadyBug,Lady Bug,351,3,4,255000,2,4,8
+mrdo,,MrDo,Mr. Do's Castle,353,3,4,256000,2,4,8
+invaders,,Invaders,Space Invaders,354,3,4,257000,2,4,8
+10yardj,,10Yard,10 Yard Fight,355,3,4,258000,2,4,
 a2600_alien_1979,shell,Alien,2600: Alien 1979,9999,,,78000,2,4,8
 a2600_artificial_lifeform,shell,Artifical Lifeform,2600: Artifical Lifeform,9999,,,78000,2,4,8
 a2600_big_mario,shell,Big Mario,2600: Big Mario,9999,,,78000,2,4,8
@@ -215,13 +240,13 @@ bbcb_killergorilla,shell,KillerGorilla,BBC: Killer Gorilla,9999,,,78000,2,4,8
 bbcb_killergorilla2,shell,KillerGorilla2,BBC: Killer Gorilla 2,9999,,,78000,2,4,8
 bbcb_krazyjohn,shell,KrazyJohn,BBC: Krazy John,9999,,,78000,2,4,8
 bbcb_zanykong_jr,shell,ZanyKong JR,BBC: Zany Kong Jr.,9999,,,78000,2,4,8
-c64_superbonkeykong,shell,SuperBonkeyKong,C64: Super Bonkey Kong,9999,,,78000,2,4,8
 c64_eskimo_eddie,shell,Eskimo Eddie,C64: Eskimo Eddie,9999,,,78000,2,4,8
 c64_fast_eddie,shell,FastEddie,C64: Fast Eddie,9999,,,78000,2,4,8
 c64_felix,shell,FelixJR,C64: Fix-It Felix Jr.,9999,,,78000,2,4,8
 c64_jumpman,shell,Jumpman,C64: Jumpman Junior,9999,,,78000,2,4,8
 c64_kong_sputnik,shell,Kong,C64: Kong,9999,,,78000,2,4,8
 c64_logger,shell,Logger,C64: Logger,9999,,,78000,2,4,8
+c64_superbonkeykong,shell,SuperBonkeyKong,C64: Super Bonkey Kong,9999,,,78000,2,4,8
 coco3_dk_remixed,shell,DKRemix,COCO3: Donkey Kong Remixed,9999,,,78000,2,4,8
 coco3_donkeyking,shell,DonkeyKing,COCO3: Donkey King,9999,,,78000,2,4,8
 coco3_monkeykong,shell,MonkeyKong,COCO3: Monkey Kong,9999,,,78000,2,4,8
@@ -302,7 +327,6 @@ pc_atom_dkjunior2,shell,DK Junior 2,ATOM: Donkey Kong Junior 2,9999,,,78000,2,4,
 pc_atom_dkreloaded,shell,DK Reloaded,ATOM: Donkey Kong Reloaded,9999,,,78000,2,4,8
 pc_atom_dkreloadedagain,shell,DK Reloaded Again,ATOM: Donkey Kong Reloaded Again,9999,,,78000,2,4,8
 pc_atom_kong,shell,AcornKong,ATOM: Acorn Kong,9999,,,78000,2,4,8
-pc_cookout,shell,CookOut,PC: Cook Out,9999,,,78000,2,4,8
 pc_crashtime_plumber,shell,PC Crashtime,PC: Crashtime Plumber,9999,,,78000,2,4,8
 pc_dk_jr_remake,shell,JR,PC: Donkey Kong Jr. Remake,9999,,,78000,2,4,8
 pc_dk_plus,shell,PC DK+,PC: Donkey Kong Plus,9999,,,78000,2,4,8
@@ -326,7 +350,6 @@ pc_pico8_dinkyking1,shell,DinkyKing Barrels,PICO-8: Dinky King Barrels Only,9999
 pc_pico8_dinkyking2,shell,DinkyKing Springs,PICO-8: Dinky King Springs Only,9999,,,78000,2,4,8
 pc_pico8_dinkyking3,shell,DinkyKing Conveyors,PICO-8: Dinky King Conveyors Only,9999,,,78000,2,4,8
 pc_pico8_dinkyking4,shell,DinkyKing Rivets,PICO-8: Dinky King Rivets Only,9999,,,78000,2,4,8
-pc_pinball_dkong,shell,PINDK,PINBALL: Donkey Kong,9999,,,78000,2,4,8
 pc_pokitto_dkjr,shell,DK JR,POKITTO: Donkey Kong Junior (G&W),9999,,,78000,2,4,8
 pc_pokitto_kong2,shell,Kong 2,POKITTO: Donkey Kong 2 (G&W),9999,,,78000,2,4,8
 pc_sms_kingkong,shell,King Kong,SMS: King Kong,9999,,,78000,2,4,8
