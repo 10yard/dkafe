@@ -1,0 +1,21 @@
+New Rally-X
+
+New Rally-X is a scrolling, overhead maze-based racing
+game in which the player drives a racing car and must 
+collect ten yellow flags before the fuel runs out. 
+Red enemy cars pursue and try to ram into and destroy 
+the player's car. 
+
+If the player's car runs into a wall, it will turn 
+automatically and continue moving. To disrupt the 
+chasing enemy cars a smoke-screen can be activated 
+behind the player's car, causing any pursuing vehicles
+to crash.  Activating the smoke uses a significant 
+amount of fuel, so be careful to not overuse it.
+
+Each maze also has rock formations and crashing into 
+these will result in the loss of a player car. A radar
+display to the right-hand side of the playing area 
+shows the positions of the flags, rocks and enemies.
+
+Developed by Namco

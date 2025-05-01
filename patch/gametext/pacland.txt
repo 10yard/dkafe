@@ -1,0 +1,26 @@
+Pac-Land
+
+Pac-Land is a horizontally-scrolling platform game set
+in the cartoon world of the game's title. A fairy has 
+lost her way and needs Pac-Man to help her get back to
+her home of Fairyland. Pac-Man, with the fairy safely 
+hidden beneath his hat, must run and jump through the 
+colourful world until he reaches and enters the 
+magical door to Fairyland. Upon being rescued, the 
+fairy gives Pac-Man a pair of magical shoes for his 
+trip back home. These enable him to jump wherever he 
+wants, without the need for a platform to jump from. 
+This effectively means Pac-Man can 'sky-jump' back 
+home if he so wishes.
+
+Directional buttons make Pac-Man walk left and right
+and it's possible to make him run by tapping the 
+desired directional button twice. 
+
+The game's stages are called 'trips', with players 
+able to start on any one of the first five. Each trip
+made up of four rounds (three rounds to reach 
+Fairyland and one round to return home) with a short
+interval between each one.
+
+Developed by Namco

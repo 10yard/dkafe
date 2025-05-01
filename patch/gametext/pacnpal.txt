@@ -1,0 +1,16 @@
+Pac & Pal
+
+Pac-Man has a new friend named Miru, but she tries to
+grab the fruit and take it to the ghost pen. Pac-Man
+now not only has to collect the stuff lying around the
+board, but he must also watch Miru to make sure she 
+doesn't take the stuff for her own use.
+
+This game is a proper sequel to Super Pac-Man, 
+maintaining elements such as doors and eating fruit 
+instead of dots. In addition to Miru, Pac-Man can 
+obtain a stun ability; He can enter the ghost pen; 
+There are bonus rounds; and there is music playing 
+throughout the level.
+
+Developed by Namco

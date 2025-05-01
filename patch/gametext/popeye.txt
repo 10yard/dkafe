@@ -1,0 +1,19 @@
+Popeye
+
+Popeye is a platform game featuring characters from 
+the famous cartoon show. The aim of the game is to 
+rescue Popeye's girlfriend, Olive Oyl. This is 
+achieved by catching a set number of objects thrown 
+down by Olive from the top of the screen; such as 
+hearts, letters and musical notes. Popeye is 
+constantly pursued in his quest by love rival, Brutus
+(originally known as Bluto). Popeye must either run 
+away from Brutus or grab some spinach and punch him 
+off the screen (he will, of course, return).
+
+Should any of Olive Oyl's items fail to be caught, 
+they will fall into the water at the bottom of the 
+screen. Popeye will then have only a few seconds to 
+retrieve the object or a life is lost. 
+
+Developed by Nintendo

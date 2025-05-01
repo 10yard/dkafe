@@ -1,0 +1,17 @@
+Burger Time
+
+The game was originally titled "Hamburger" in Japan, 
+but was renamed "Burger Time" before being exported 
+internationally.
+
+When main protagonist, chef Peter Pepper, the player's
+character, walks the length of an ingredient, it falls
+one level. If it lands atop another ingredient, the 
+latter in turn falls one level. A burger is completed 
+when all vertically aligned ingredients have been 
+dropped out of the maze and onto a waiting plate. 
+
+Once all burgers are completed, the game level is 
+finished.
+
+Developed by Data East

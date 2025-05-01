@@ -1,0 +1,12 @@
+Galaga
+
+A shoot-em-up in which the player controls a 'Fighter'
+spaceship and must defend the home planet against the 
+hordes of alien invaders called "Galagans". The 
+Fighter can only move left and right along the bottom
+of the screen. Galagans fly in various formations 
+before forming troop lines at the top of the screen. 
+Once all troop lines are formed the Galagans separate 
+and start attacking the player's Fighter.
+
+Developed by Namco

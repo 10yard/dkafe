@@ -152,32 +152,32 @@ pacplus,,PacPlus,Pac-Man Plus,310,3,4,229000,2,4,8
 jrpacman,,JrPac,Jr. Pac-Man,312,3,4,230000,2,4,8
 pacmanf,,PacSpeed,Pac-Man Speedup Hack,314,3,4,231000,2,4,8
 mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,316,3,4,232000,2,4,8
-pacmania,,PacMania,,318,3,4,233000,2,4,8
-superpacm,,SuperPac,Super Pac-Man,319,3,4,234000,2,4,8
-mspacmat,,Attack,Ms. Pac-Attack,321,3,4,235000,2,4,
-hyperpac,,HyperPac,Hyper Pac-Man,322,3,4,236000,2,4,8
-pacland,,PacLand,Pac Land,324,3,4,237000,2,4,8
-pacnpal,,PacPal,Pac n Pal,325,3,4,238000,2,4,8
-nrallyx,,NewRallyX,New Rally-X,326,3,4,239000,2,4,8
-rallyx,,RallyX,Rally-X,328,3,4,240000,2,4,8
-qbert,,Q*Bert,,329,3,4,241000,2,4,8
-popeye,,Popeye,,331,3,4,242000,2,4,8
-cclimber,,Climber,Crazy Climber,333,3,4,243000,2,4,8
-galaga,,Galaga,,334,3,4,244000,2,4,8
-galaxian,,Galaxian,,336,3,4,245000,2,4,8
-gaplus,,GalPlus,Galaga Plus,337,3,4,246000,2,4,8
-xevious,,Xevious,,339,3,4,247000,2,4,8
-1942,,1942,,341,3,4,248000,2,4,8
-panic,,SpacePanic,Space Panic,342,3,4,249000,2,4,8
-digdug,,DigDug,Dig Dug,343,3,4,250000,2,4,8
-frogger,,Frogger,,345,3,4,251000,2,4,8
-btimem,,BurgerTime,Burger Time,347,3,4,252000,2,4,8
-mappy,,Mappy,,352,3,4,253000,2,4,8
-arkanoidu,,Arkanoid,,349,3,4,254000,2,4,8
-ladybug,,LadyBug,Lady Bug,351,3,4,255000,2,4,8
-mrdo,,MrDo,Mr. Do's Castle,353,3,4,256000,2,4,8
-invaders,,Invaders,Space Invaders,354,3,4,257000,2,4,8
-10yardj,,10Yard,10 Yard Fight,355,3,4,258000,2,4,
+pacmania,,PacMania,,319,3,4,233000,2,4,8
+superpacm,,SuperPac,Super Pac-Man,321,3,4,234000,2,4,8
+mspacmat,,Attack,Ms. Pac-Attack,323,3,4,235000,2,4,8
+hyperpac,,HyperPac,Hyper Pac-Man,325,3,4,236000,2,4,8
+pacland,,PacLand,Pac-Land,327,3,4,237000,2,4,8
+pacnpal,,PacPal,Pac & Pal,328,3,4,238000,2,4,8
+rallyx,,RallyX,Rally-X,330,3,4,239000,2,4,8
+nrallyx,,NewRallyX,New Rally-X,332,3,4,240000,2,4,8
+qbert,,Q*Bert,,334,3,4,241000,2,4,8
+popeye,,Popeye,,336,3,4,242000,2,4,8
+cclimber,,Climber,Crazy Climber,338,3,4,243000,2,4,8
+galaga,,Galaga,,340,3,4,244000,2,4,8
+galaxian,,Galaxian,,342,3,4,245000,2,4,8
+gaplus,,Gaplus,,344,3,4,246000,2,4,8
+xevious,,Xevious,,346,3,4,247000,2,4,8
+1942,,1942,,348,3,4,248000,2,4,8
+panic,,SpacePanic,Space Panic,350,3,4,249000,2,4,8
+digdug,,DigDug,Dig Dug,353,3,4,250000,2,4,8
+frogger,,Frogger,,355,3,4,251000,2,4,8
+btimem,,BurgerTime,Burger Time,358,3,4,252000,2,4,8
+arkanoidu,,Arkanoid,,361,3,4,254000,2,4,8
+ladybug,,LadyBug,Lady Bug,363,3,4,255000,2,4,8
+mappy,,Mappy,,363,3,4,253000,2,4,8
+mrdo,,MrDo,Mr. Do!,365,3,4,256000,2,4,8
+invaders,,Invaders,Space Invaders,366,3,4,257000,2,4,8
+10yardj,,10Yard,10 Yard Fight,367,3,4,258000,2,4,8
 a2600_alien_1979,shell,Alien,2600: Alien 1979,9999,,,78000,2,4,8
 a2600_artificial_lifeform,shell,Artifical Lifeform,2600: Artifical Lifeform,9999,,,78000,2,4,8
 a2600_big_mario,shell,Big Mario,2600: Big Mario,9999,,,78000,2,4,8

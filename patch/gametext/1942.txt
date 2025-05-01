@@ -1,0 +1,11 @@
+1942
+
+1942 is a vertically-scrolling shoot-em-up set in the
+Pacific theatre during World War II, in which the goal
+is to reach Tokyo and destroy the Japanese air fleet.
+The player has to shoot down waves of enemy planes 
+while avoiding incoming enemy fire. The 'Super Ace' 
+can perform a limited number of rolls to evade enemy 
+planes and shots.
+
+Developed by Capcom

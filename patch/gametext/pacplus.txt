@@ -1,0 +1,22 @@
+Pac-Man Plus
+
+The programming is a lot like "Pac-Man" except that 
+the maze is outlined in green instead of blue. The 
+prizes that appear in the middle of the maze are cans
+of Coke, cocktails, green beans, cakes, gift-wrapped
+boxes, etc. 
+Whenever Pac-Man eats an energizer, the ghosts not 
+only turn blue but they also get apple stems on their 
+heads. On later levels, sometimes only three of the 
+ghosts turn blue.
+
+The game plays exactly like the original except that 
+there are various events (apparently selected at 
+random) that may or may not occur after Pac-Man eats 
+one of the four power pellets. These events include but
+are not limited to: the maze's structure becoming 
+temporarily invisible, the ghosts turning invisible 
+while they are blue, or only three of the four ghosts 
+turning blue. 
+
+Developed by Namco/Midway

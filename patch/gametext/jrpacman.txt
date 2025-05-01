@@ -1,0 +1,26 @@
+Jr. Pac-Man
+
+One of many sequels to the legendary "Pac-Man", Jr. 
+Pac-Man features the character of Pac-Man's son. 
+For the first time in the series' history, side 
+scrolling mazes were introduced, with each maze being
+two screens wide.
+
+This time, the mazes have no exit tunnels through 
+which players can make an escape. The bonus items that
+appear move around the maze and are now something of a 
+mixed blessing, as not only will they destroy any 
+Power Pills they come across, but they will also turn 
+any normal dots they pass over into large dots that 
+slow the player's movements considerably, but are 
+worth more points than normal dots if eaten by the 
+player. Any mutated dots in the maze will disappear if
+the player loses a life.
+
+The Pac character is once again pursued by four ghosts
+(Blinky, Pinky, Inky and Tim) in his quest to eat all
+of the dots in each maze. And, as before, numerous 
+Power Pills litter the mazes that, when eaten, allow 
+Jr. to eat the pursuing ghosts.
+
+Developed by Bally Midway

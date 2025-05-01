@@ -190,7 +190,7 @@ if not os.path.exists("romlist_addon.csv") and not glob("dkafe_*_addon_*.zip"):
     globals()["ENABLE_ADDONS"] = 0
 
 if ENABLE_ADDONS:
-    STAGES = 8 if ARCH == "win64" else 4
+    STAGES = 8
 else:
     STAGES = 3
 
@@ -442,18 +442,16 @@ SLOTS = (
     (98, 34),
 
     (2, 226), (34, 226), (50, 226), (66, 226), (92, 226), (108, 226), (124, 226), (140, 226), (156, 226), (178, 225), (210, 223),
-    (178, 195), (140, 194), (124, 194), (108, 194), (66, 194), (50, 194), (34, 193), (2, 191),
-    (34, 163), (50, 162), (78, 162), (124, 162), (140, 162), (156, 162), (178, 161), (210, 159),
-    (178, 131), (147, 130), (131, 130), (99, 130), (83, 130), (50, 130), (34, 129), (2, 128),
-    (34, 99), (99, 98), (115, 98), (131, 98), (147, 98), (178, 97), (210, 95),
-    (178, 63), (162, 62), (146, 62), (112, 62), (92, 62), (2, 62),
+    (194, 195), (178, 195), (160, 194), (140, 194), (124, 194), (108, 194), (82, 194), (66, 194), (50, 194), (34, 193), (2, 191),
+    (18, 164), (34, 163), (50, 162), (78, 162), (94, 162), (124, 162), (140, 162), (156, 162), (178, 161), (210, 159),
+    (194, 130), (178, 131), (147, 130), (131, 130), (115, 130), (99, 130), (83, 130), (50, 130), (34, 129), (2, 128),
+    (18, 100), (34, 99), (50, 98), (66, 98), (99, 98), (115, 98), (131, 98), (147, 98), (162, 97), (178, 96), (210, 95),
+    (194, 63), (178, 63), (162, 62), (146, 62), (112, 62), (92, 62), (2, 62),
     (90, 34)
 )
 
-START_STAGE = 7
-
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 355)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 367)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -696,9 +694,9 @@ Playlist music:
 
 # Console Addon Specific
 if ARCH == "win64":
-    ADDON_URL = "https://www.dropbox.com/scl/fi/6i8p9w353j9irajvl1cax/dkafe_console_addon_pack_v9.zip?rlkey=ulmhjzh1r86hehksr07cyf7rh&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/siflv9a33tqii4wzzh6oz/dkafe_console_addon_pack_v10.zip?rlkey=4oh5jot37kkzg3ge2pl3ugwkp&dl=0"
 else:
-    ADDON_URL = "https://www.dropbox.com/scl/fi/3eg09sufpslynzz3pxuea/dkafe_console_addon_pack_v9_reduced.zip?rlkey=vhdu5b04dvkp59ta28sywr7t1&dl=0"
+    ADDON_URL = "https://www.dropbox.com/scl/fi/qeegogpo52ufebfgddb0e/dkafe_console_addon_pack_v10_reduced.zip?rlkey=4xyn98onmeu3coffoi91zznba&dl=0"
 if ENABLE_ADDONS:
     VERSION += "+"
 ROMLIST_FILES = ["romlist.csv", "romlist_addon.csv" if ENABLE_ADDONS else ""]
@@ -840,6 +838,7 @@ GAME_MEDIA = {
 STATEKEEP_MEDIA_EXCEPTIONS = ("gbcolor_dk_gw_gallery2", "gbcolor_dk_gw_gallery3", "apfimag_dk", "apfimag_dk2",
                               "apfimag_dk_jr", "apfimag_heartattack")
 
+WIN64_ONLY_STAGES = 5, 6
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
 PI_UNSUPPORTED_SYSTEMS = "bbcb",
 

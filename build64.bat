@@ -78,7 +78,7 @@ echo  Package the Console Add-On Pack using addon_version number
 echo ----------------------------------------------------------------------------------------------
 if %_check% NEQ Y GOTO end
 
-set addon_version=v9
+set addon_version=v10
 copy dist\remap_pc.exe roms\pc\ /Y
 
 

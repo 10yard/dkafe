@@ -1,0 +1,20 @@
+Pac-Man
+
+Pac-Man is a maze-based arcade game that was released
+in 1980, created by Toru Iwatani, a Japanese game 
+designer. It was released by Midway in the United 
+States. Pac-Man quickly gained popularity, surpassing 
+games such as Asteroids and Space Invaders to become 
+one of the world's all-time most famous games. 
+
+In Pac-Man, the player controls the Pac-Man character
+which looks like a yellow circle with a missing 
+pie-shape piece (which represents the mouth). 
+ 
+Pac-Man eats pac-dots as it travels through the maze. 
+Once all the dots on the screen are eaten he moves to 
+the next level. Pac-Man loses one of his lives if he 
+is touched by Clyde, Inly, Pinky, or Blinky - his 
+enemies.
+
+Developed by Namco/Midway

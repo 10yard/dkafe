@@ -1634,15 +1634,19 @@ def stage_check(warp=False):
         _g.lastwarp = pygame.time.get_ticks()
 
     current_stage = _g.stage
-    if warp:
-        _g.stage = (_g.stage + 1) % STAGES
-        _g.xpos, _g.ypos = OILCAN_POSXY[_g.stage]
-    elif _g.ypos > 239 and not _g.jump:
-        _g.stage = (current_stage - 1) % STAGES
-        _g.ypos = 20
-    elif _g.ypos < 20 and not _g.jump:
-        _g.stage = (current_stage + 1) % STAGES
-        _g.ypos = 238
+
+    while True:
+        if warp:
+            _g.stage = (_g.stage + 1) % STAGES
+            _g.xpos, _g.ypos = OILCAN_POSXY[_g.stage]
+        elif _g.ypos > 239 and not _g.jump:
+            _g.stage = (current_stage - 1) % STAGES
+            _g.ypos = 20
+        elif _g.ypos < 20 and not _g.jump:
+            _g.stage = (current_stage + 1) % STAGES
+            _g.ypos = 238
+        if ARCH == "win64" or not _g.stage in WIN64_ONLY_STAGES:
+            break
 
     # Set Donkey Kong and Pauline position
     _g.dkx, _g.dky = KONG_POSXY[_g.stage]

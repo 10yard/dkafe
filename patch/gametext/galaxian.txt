@@ -1,0 +1,12 @@
+Galaxian
+
+A legendary shoot-em-up! Each screen starts with a 
+wave of multi-colored aliens moving left and right at
+the top of the screen; the aliens quickly break ranks
+and start dive-bombing the Galaxip (player's ship) - 
+either in single units or in groups of 3 - dropping 
+multiple missiles as they descend. 
+All of the aliens need to be destroyed before the 
+player can progress to the next wave.r.
+
+Developed by Namco

@@ -1,0 +1,11 @@
+Xevious
+
+Xevious is a vertically-scrolling shoot-em-up in which
+the player pilots the heavily-armed 'Solvalou' combat 
+ship and must destroy the evil Xevious forces trying 
+to take over the planet. The Solvalou is equipped with
+two weapon systems; the forwards-firing "air zapper" 
+for shooting air-based enemies and 'blaster bombs', 
+for destroying ground-based enemies. 
+
+Developed by Namco

@@ -1,0 +1,18 @@
+Dig Dug
+
+Dig Dug is single screen action game in which the 
+player must dig horizontal and vertical tunnels to 
+reach and eliminate the underground-dwelling monsters
+living there. This is achieved by either inflating 
+them with an air pump until they explode, or by 
+dropping rocks onto them.
+
+There are two kinds of enemies in the game; 'Pookas'
+(red monsters) and 'Fygars' (green dragons). Monsters
+are initially trapped in caves and can escape in one
+of two ways: Dig Dug can dig them out, after which 
+they will immediately start chasing the player, but 
+after the set time monsters can also escape a cave 
+by turning into ghosts.
+
+Developed by Namco

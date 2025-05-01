@@ -1,0 +1,16 @@
+Space Panic
+
+The granddaddy of all platform games, as it predates
+Nintendo's Donkey Kong (from 1981) which is often 
+cited as the original platform game.
+
+Space Panic lacks Donkey Kong's jump mechanic - the 
+main character instead digs holes in the platforms 
+into which he must lure the aliens. He must then hit
+them to knock them out of the hole and off the screen.
+In later levels, two or more holes must be lined up 
+vertically in order to dispose of the aliens. There is
+also a limited supply of oxygen, which functions as a
+timer.
+
+Developed by Universal

@@ -1,0 +1,9 @@
+Pac-Man Speedup Hack
+
+A more challenging sped up version of Pac-Man.
+
+The speed-up chip kit was originally produced on the 
+bootleg market, but was later sold/used officially by
+both Midway and Namco.
+
+Developed by Midway/Namco

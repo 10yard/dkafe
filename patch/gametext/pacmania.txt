@@ -1,0 +1,27 @@
+Pac-Mania
+
+Pac-Mania is a maze-based game in which players 
+maneuver Pac-Man through a world of isometric 3-D 
+mazes. As with previous games in the series, the 
+objective is to eat all of the pellets and power pills
+in the mazes while avoiding the pursuing ghosts. 
+
+Pac-Man can now bounce, allowing him to jump over 
+ghosts to avoid being caught.
+
+At the start of a game players are given the 
+opportunity to choose which of three worlds they 
+wish to tackle first: Block Town, Pac-Man's Park 
+or Sandbox Land. Block Town is the easiest of the
+three and Sandbox Land is the hardest, with more 
+points earned for completing a harder world.
+
+Each maze contains four power-pills that make Pac-Man
+temporarily invincible, during this time the ghosts 
+turn blue and can be eaten. These 'Skinned' ghosts, 
+now visible as a pair of eyes only, will then return 
+to their den in the middle of the maze, regenerate 
+into their former selves, and return to the maze to 
+continue their pursuit.
+
+Developed by Namco

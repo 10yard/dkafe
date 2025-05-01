@@ -1,0 +1,17 @@
+Frogger
+
+Players must safely guide the frog from the bottom of
+the screen to one of five home bases situated at the 
+top of the screen.
+The lower half of the screen has traffic moving across
+five lanes. To navigate across the road safely, 
+Frogger's hops must be timed to avoid the vehicles
+The upper half of the screen has a fast-flowing river 
+populated with logs, crocodiles and turtles. 
+Frogger will drown if he has any contact with the 
+water and these act as platforms onto which Frogger 
+can hop.
+A round is completed once five frogs have been guided
+safely home.
+
+Developed by Konami

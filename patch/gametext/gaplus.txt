@@ -1,0 +1,12 @@
+Gaplus
+
+A Galaga sequel where you can capture the enemies and
+make them work for you by hitting the queen ship when
+it dives. The game has the same look and feel as the 
+original Galaga. The "bees" were redesigned to look a 
+little more modern. A possible contributing factor to 
+the game's lack of success in the arcades is that it 
+becomes extremely difficult after Parsec 4 or 5. 
+Games end quickly!
+
+Developed by Namco

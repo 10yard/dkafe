@@ -1,0 +1,19 @@
+Ms. Pac Attack
+
+Basically this game is "Ms. Pac-Man", with a few minor
+differences. The major difference is that the ghosts 
+have fewer restrictions on their movement, making them
+more formidable. Also adding to the challenge are the 
+different mazes and the fact that the fruit no longer 
+stays in one place, but moves in, out and around the 
+maze. Fortunately there is a power pellet in each 
+corner that (usually) turns the ghosts blue for a 
+period of time, allowing you to eat them for points.
+
+The main difference being the order of levels has been
+changed. As in the regular "Ms. Pac-Man" game, the 
+maze turns invisible at a certain point. However, in 
+Ms. Pac Attacks, this point is reached much earlier - 
+at about the 144th screen instead of the 255th.
+
+Hack of Ms. Pac-Man

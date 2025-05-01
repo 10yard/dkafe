@@ -1,0 +1,26 @@
+Super Pac-Man
+
+As in the original "Pac-Man" game, the goal is to 
+clear each maze, but this time, instead of dots, the
+maze consists of prizes which are locked away behind 
+gates. There are two ways to access the prizes. You 
+can eat the keys which open a particular gate, and not
+always the gate which is closest to that key. Or you 
+can crash through the gate after you eat a Super Pill
+and become Super Pac-Man. You are not required to eat 
+all of the keys in order to complete the stage.
+
+Four Power Pills are in maze and allow Pac-Man to turn
+the tables on the ghosts and eat them for a short 
+time. When the ghosts begin to flash, time is running 
+out and they will switch back, so beware.
+
+New in this game is the Super Pill. There are two 
+Super Pills in the maze which allow Pac-Man to become 
+Super Pac-Man for a limited period of time. While in 
+Super form, Pac-Man can crash through the maze gates, 
+fly over the ghosts and avoid being killed and travel 
+at super speed whenever the player presses and holds 
+the Super Speed button. 
+
+Developed by Namco

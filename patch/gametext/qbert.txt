@@ -1,0 +1,21 @@
+Q*Bert
+
+Your objective as Q*Bert is to change the color of the
+top of the cubes to the Destination Color indicated at
+the upper-left corner of the screen by hopping onto 
+them. When all the cubes in the pyramid have been 
+changed to the Destination Color, the screen will 
+advance to the next round, with the player-controlled 
+Q•Bert character starting back on the top cube. 
+
+Each level consists of four rounds. The current level 
+number and round number is displayed at the top-right
+corner of the screen.
+
+Gameplay starts with Q•bert appearing at the top of 
+the pyramid. The joystick will move Q•bert from cube
+to cube by hopping in any of four diagonal 
+directions. Q•bert can move anywhere on the pyramid,
+but jumping off will kill him.
+
+Developed by Gottlieb
