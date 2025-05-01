@@ -291,6 +291,9 @@ PLUGINS = (
     ("dkongl22", "dklevel22"),
     ("ckongpt2_l22", "dklevel22"),
     ("bigkong_l22", "dklevel22"),
+    ("dkongl00", "dklevel0"),
+    ("ckongpt2_l00", "dklevel0"),
+    ("bigkong_l00", "dklevel0"),
     ("bigkonggx_barrels", "dkstart5:1"),
     ("dkongjrspringboard", "dkstart5:1"),
     ("dkongjrvines", "dkstart5:2"),
@@ -328,7 +331,8 @@ COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong"
 COACH_L5_FRIENDLY = ("dkongspringy", "dkongbarrels")
 CHORUS_FRIENDLY = ("dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
-                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongksfix", "dkonginsanity")
+                   "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongksfix", "dkonginsanity",
+                   "dkongl00")
 CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline", "ckong", "ckongpt2", "ckongpt2b",
                      "ckongpt2_117", "dkongspooky", "dkongxmas", "dkongrdemo", "dkongrev", "dkongcb", "dkong40",
                      "dkongitd", "dkong2600", "dkongtj", "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongkana",
@@ -353,7 +357,7 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkonghrd",
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
-                  "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2")
+                  "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00")
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey"]
