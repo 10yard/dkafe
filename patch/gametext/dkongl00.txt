@@ -1,9 +1,9 @@
 Donkey Kong Level Zero (Zero Sense)
 
-Weird things happen when you start Donkey Kong on 
+Weird things happen when you play Donkey Kong on 
 Level 0.  This hack makes it possible to play this
-normally inaccessible level.  There are bugs and 
-there are some odd gameplay mechanics.
+normally inaccessible level.  There are bugs and there
+are some odd gameplay mechanics.
 
 - DK sometimes throws wild barrels at lightspeed
 - Barrels can freeze and then start moving again
@@ -13,7 +13,7 @@ there are some odd gameplay mechanics.
 
 This hack was inspired by the work of Kosmic when
 investigating progression beyond the killscreen.
-Kosmic also looked at behaviour of other advanced
-and normally unattainable levels.
+Kosmic also looked at behaviour of other advanced and
+normally unattainable levels.
 
 Hack Developed by Jon Wilson (10yard)

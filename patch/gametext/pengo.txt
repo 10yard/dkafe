@@ -1,0 +1,15 @@
+Pengo
+
+Pengo is a 2D action arcade game that takes place in a
+maze-like environment filled with ice blocks and 
+enemies.
+
+The gameplay involves moving Pengo around the maze 
+using the joystick and pushing the ice blocks to 
+defeat the enemies.
+
+The main objective of the game is to collect all the 
+diamonds scattered throughout the maze while avoiding 
+and defeating the enemies.
+
+Developed by Sega

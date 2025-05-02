@@ -457,7 +457,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
                     if not unlocked and since_last_move() % 4 > 2:
                         p_des = f"Unlock at {unlock}"
                     elif unlocked and st3 and st2 and st1 and not BASIC_MODE:
-                        _mins = " mins" if sub == "shell" else ""
+                        _mins = " mins" if sub == "shell" or emu == 3 else ""
                         if since_last_move() % 5 > 4:
                             p_des = f'1st prize at {format_K(st1, st3)}' + _mins
                         elif since_last_move() % 5 > 3:
@@ -1457,14 +1457,14 @@ def process_interrupts():
     if _g.ready:
         icons = display_icons(detect_only=True)
         if icons:
-            sub, name, alt, _, _, _, st3, st2, st1 = icons
+            sub, name, alt, emu, rec, unlock, st3, st2, st1 = icons
         else:
-            sub, name, alt, st3, st2, st1 = ("",) * 6
+            sub, name, alt, st3, st2, st1 = ("",) * 9
 
         # Pauline announces the launch options
         if SHOW_GAMETEXT and alt:
             # Gametext already informs about JUMP and P1 Start buttons,  so announce the score targets instead.
-            _mins = " mins" if sub == "shell" else ""
+            _mins = " mins" if sub == "shell" or emu == 3 else ""
             if since_last_move() % 4 > 3:
                 p_des = f'1st prize at {format_K(st1, st3)}' + _mins
             elif since_last_move() % 4 > 2:

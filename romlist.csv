@@ -84,16 +84,18 @@ dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,114,1,2,76000,8000,16000,30000
 ckongpt2,ckongpt2_free,CKFree,CK Free Run,115,1,2,77000,10000,25000,40000
 ckongpt2,ckongpt2_insanity,CK Insanity,CK Insanity,117,1,2,78000,8000,15000,25000
 ckongpt2,ckongpt2_dk,CK DK ,CK with DK Graphics,118,1,2,79000,10000,25000,40000
-dkong,dkongksfix,KSFix,DK Killscreen Fix,119,1,2,80000,10000,25000,40000
-dkong,dkongl00,DK Zero,DK Zero Sense,120,1,2,81000,10000,25000,40000
-bigkong,bigkong_l22,DK KS,BK KillScreen 22,122,1,2,82000,4000,7000,10000
-ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,124,1,2,83000,1000,2000,3000
-ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,84000,10000,25000,40000
+ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,119,1,2,80000,1000,2000,3000
+bigkong,bigkong_l22,BK KS,BK KillScreen 22,121,1,2,81000,4000,7000,10000
+dkong,dkongl00,DK00,DK Zero Sense,122,1,2,82000,10000,25000,40000
+ckongpt2,ckongpt2_l00,CK00,CK Zero Sense,123,1,2,83000,10000,25000,40000
+dkong,dkongksfix,KSFix,DK Killscreen Fix,124,1,2,84000,10000,25000,40000
+ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,85000,10000,25000,40000
 bigkong,bigkong_barrels,BigKong Barrels,BK Barrels Only,9999,1,2,21000,4000,10000,20000
 bigkong,bigkong_continue,BigKong Continue,BK Continue,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_free,BigKong Free,BK Free Run,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_lava,BigKong Lava,BK Lava Panic!,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_insanity,BigKong Insanity,BK Insanity,9999,1,2,21000,5000,15000,25000
+bigkong,bigkong_l00,BK Zero,BK Zero Sense,9999,1,2,9000,10000,25000,40000
 bigkonggx,bigkonggx_barrels,BigKong GX Barrels,BK Galaxian Barrels,9999,1,2,57000,10000,20000,40000
 ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,9999,1,2,54000,10000,25000,40000
 ckongpt2,ckongpt2_barrels,CK Barrels,CK Barrels Only,9999,1,2,9000,10000,25000,40000
@@ -101,7 +103,6 @@ ckongpt2,ckongpt2_pies,CK Pies,CK Pies Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_springs,CK Springs,CK Springs Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_rivets,CK Rivets,CK Rivets Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_l00,CK Zero,CK Zero Sense,9999,1,2,9000,10000,25000,40000
-bigkong,bigkong_l00,BK Zero,BK Zero Sense,9999,1,2,9000,10000,25000,40000
 congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,3000,,,
 dkong,dkongl05,DK Skip,DK Skip Start,9999,1,2,,,,
 dkong,dkongwobble,WobbleKong,DK Wobble Kong,9999,1,2,38000,10000,20000,40000

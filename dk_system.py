@@ -159,6 +159,10 @@ def get_inp_files(rec, name, sub, num):
     return sorted(glob(os.path.join(get_inp_dir(rec), f"{name}_{sub}_*.inp")), reverse=True)[:num]
 
 
+def add_plugin(command, plugin):
+    return f"{command},{plugin}" if "-plugin " in command else f"{command} -plugin {plugin}"
+
+
 def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=False, fullscreen=True, launch_plugin=None, playback=False):
     # Receives subfolder (optional), name, emulator, unlock and target scores from info
     # If mame emulator supports a rompath (recommended) then the rom can be launched direct from the subfolder
@@ -287,10 +291,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 os.environ[launch_plugin.upper() + "_PARAMETER"] = parameter
             else:
                 os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
-            if "-plugin " in launch_command:
-                launch_command += f",{launch_plugin}"
-            else:
-                launch_command += f" -plugin {launch_plugin}"
+            launch_command = add_plugin(launch_command, launch_plugin)
         if parameter_plugin:
             # Clear launch plugin so the following restrictions are not applied
             launch_plugin = None
@@ -298,17 +299,15 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
         # Are we using the hiscore plugin - and no launch plugin (such as stage practice or level 5 start) ?
         if high_score_save and not launch_plugin and subfolder not in HISCORE_UNFRIENDLY:
             os.environ["DKAFE_SUBFOLDER"] = subfolder + "_" if subfolder else ""
-            if "-plugin " in launch_command:
-                launch_command += ",hiscore"
-            else:
-                launch_command += " -plugin hiscore"
+            launch_command = add_plugin(launch_command, "hiscore")
 
         # Are we using the refocus plugin
         if refocus:
-            if "-plugin " in launch_command:
-                launch_command += ",refocus"
-            else:
-                launch_command += " -plugin refocus"
+            launch_command = add_plugin(launch_command, "refocus")
+
+        # Should we use the skipstartupframes plugin
+        if "dkwolf_addon" in launch_command and ("roms/other" in launch_command or "roms\\other" in launch_command):
+            launch_command = add_plugin(launch_command, "skipstartupframes")
 
         if not fullscreen:
             launch_command += " -window"
