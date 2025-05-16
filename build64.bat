@@ -65,7 +65,7 @@ rmdir build /s /Q
 del *.spec
 
 echo **** Code sign program executables with Open Source Developer Certificate
-"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /tr http://timestamp.apple.com/ts01 /n "Open Source Developer" dist\launch.exe dist\remap_pc.exe dist\dkwolf\dkwolf.exe
+"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /tr http://timestamp.ssl.trustwave.com /n "Open Source Developer" dist\launch.exe dist\remap_pc.exe dist\dkwolf\dkwolf.exe
 
 echo **** package into a release ZIP getting the version from version.txt
 set /p version=<VERSION
@@ -117,8 +117,8 @@ del dist\console_addon\roms\pc /s /Q
 del dist\console_addon\roms\dos /s /Q
 
 echo **** Addon version of dkwolf 32 bit includes all drivers
-del dist\console_addon\dkwolf\dkwolf.exe /s /Q
-copy dkwolf\dkwolf_addon32.exe dist\console_addon\dkwolf\dkwolf_addon.exe /Y
+del dist\console_addon\dkwolf\dkwolf_addon.exe /s /Q
+copy dkwolf\dkwolf32_addon.exe dist\console_addon\dkwolf\dkwolf_addon.exe /Y
 
 
 %zip_path% a releases\add-ons\dkafe_console_addon_pack_%addon_version%_reduced.zip .\dist\console_addon\* -m0=LZMA -mx6

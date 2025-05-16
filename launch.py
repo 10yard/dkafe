@@ -153,6 +153,13 @@ def check_patches_available():
             _, _count = _s.read_romlist("romlist_addon.csv")
             _count += 2  # add "congo bongo" and "dkongjre" to count
             write_text(f"+ {str(_count)} CLONES, PORTS & HACKS IN THE CONSOLE ADD-ON PACK", font=pl_font, x=0, y=239, fg=WHITE)
+
+            # Refresh list of arcade other roms
+            arcade_other = []
+            for _rom in glob(os.path.join(ROM_DIR, "other", "*.zip")):
+                arcade_other.append(os.path.basename(_rom).split(".")[0])
+            globals()["ARCADE_OTHER"] = arcade_other
+
         if applied_patches or installed_addons:
             jump_to_continue(0)
     else:
@@ -778,7 +785,7 @@ def get_addon():
         write_text("The console add-on pack is being downloaded.", font=pl_font, y=14, fg=RED)
         _g.screen.blit(get_image("artwork/sprite/pauline.png"), (0, 215))
         _g.screen.blit(get_image("artwork/sprite/dk0.png"), (167, 205))
-        write_text("Please wait...", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
+        write_text("Downloading...", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
         pygame.draw.rect(_g.screen, GREY, [0, 245, 224, 8], 0)
         update_screen()
         try:
@@ -790,11 +797,12 @@ def get_addon():
         if total_size > 0:
             chunk_size, download_size = 1024, 0
             with open(latest_addon_path, 'wb') as f:
+                _counter = 0
                 for chunk in r.iter_content(chunk_size=chunk_size):
                     if chunk:
                         f.write(chunk)
                         download_size += chunk_size
-                        if pygame.time.get_ticks() % 30 == 0:
+                        if pygame.time.get_ticks() % 60 == 0:
                             _progress = round((download_size / total_size) * DISPLAY[0])
                             _percent = (download_size / total_size) * 100
                             _g.screen.blit(get_image("artwork/sprite/dkblank.png"), (167, 205))
@@ -806,10 +814,13 @@ def get_addon():
                                 _g.screen.blit(get_image("artwork/sprite/dk2.png"), (167, 205))
                             else:
                                 _g.screen.blit(get_image("artwork/sprite/dk3.png"), (167, 205))
-                            pygame.draw.rect(_g.screen, RED, [0, 245, _progress, 8], 0)
-                            write_text(f'{_percent:.2f}' + "% downloaded", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
+                            pygame.draw.rect(_g.screen, RED, [0, 245, _progress, 8], 0) # progress bar
+                            pygame.draw.rect(_g.screen, BLACK, [22, 210, 150, 16], 0)  # clear message
+                            write_text(DOWNLOAD_INFO[int(_counter % (len(DOWNLOAD_INFO) * 60) / 60)], x=22, y=218,
+                                       bg=MAGENTA, fg=PINK, bubble=True)
+                            _counter += 1
                             update_screen()
-
+                    pygame.event.clear()
             # Allow up to 10 seconds for the file to save fully.
             for i in range(0, 10):
                 if os.path.exists(latest_addon_path):

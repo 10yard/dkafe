@@ -547,6 +547,8 @@ QUESTION = "WHAT GAME WILL YOU PLAY ?"
 COIN_INFO = ["Hey Jumpman!", '', "You must collect coins..", "to unlock more games", "", "Push COIN for game info", ""]
 FREE_INFO = ["Hey Jumpman!", '', "All arcades are free to play", "", "Push COIN to for game info", ""]
 TEXT_INFO = ["", "Push 'JUMP' to play or 'P1 START' for game options"]
+INSTALL_INFO = ["Hey, we're installing everything now", "Hang tight while we sort it all out", "It shouldn't take too much longer"]
+DOWNLOAD_INFO = ["Hey, we're downloading the add-on", "It's jam packed with cool stuff",  "Hang on in there"]
 
 NO_ROMS_MESSAGE = [
     "NO ROMS WERE FOUND!", "",

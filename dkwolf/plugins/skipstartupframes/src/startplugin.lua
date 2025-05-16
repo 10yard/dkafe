@@ -175,7 +175,7 @@ function ssf:startplugin()
     menuNotifier = emu.register_menu(menu_callback, menu_populate, _p("plugin-skipstartupframes", "Skip Startup Frames"))
 
   -- otherwise MAME 0.227 and newer compatibility check
-  elseif tonumber(emu.app_version()) >= 0.227 then
+  elseif emu.app_version() >= "0.227" then
    	emu.register_start(function()
 		startNotifier = True
         start()

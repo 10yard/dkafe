@@ -20,8 +20,8 @@ The latest releases are available to download from below.  Refer to the [How to 
 | -------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------|
 | [dkafe_win64_binary_v0.73.zip](https://github.com/10yard/dkafe/releases/download/v0.73/dkafe_win64_binary_v0.73.zip) | 0.73    | Windows 64 bit (x64) systems (Recommended) |
 | [dkafe_win32_binary_v0.73.zip](https://github.com/10yard/dkafe/releases/download/v0.73/dkafe_win32_binary_v0.73.zip) | 0.73    | Windows 32 bit (x86) systems               |
-| [dkafe_winxp_binary_v0.67.zip](https://github.com/10yard/dkafe/releases/download/v0.67/dkafe_winxp_binary_v0.67.zip) | 0.67    | Windows XP only                            |
 | [dkafe_rpi4_image_v0.72.gz](https://github.com/10yard/dkafe/releases/download/v0.72/dkafe_rpi4_image_v0.72.gz)       | 0.72    | Raspberry Pi 4 and 400 only                |
+| [dkafe_winxp_binary_v0.67.zip](https://github.com/10yard/dkafe/releases/download/v0.67/dkafe_winxp_binary_v0.67.zip) | 0.67    | Windows XP (No longer maintained)          |
 
 * Windows binaries are digitally signed to ensure the origin of the files and their integrity.
 * DKAFE sources can also run on other systems, for example, see the section on installing to [Ubuntu Linux](#ubuntu-linux)
@@ -62,9 +62,9 @@ There is now a console add-on pack which adds 4 extra stages and is packed out w
  - Several Donkey Kong hacks and plugins made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong, and it's clones and bootlegs.
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
- - A built in music playlist that features 14 fantastic Donkey Kong remix tracks by default.
+ - A built in music playlist that features 16 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - An optional console add-on pack featuring over 300 ports, clones and hacks for 60 classic gaming systems.
+ - An optional console add-on pack featuring over 300 ports, clones and hacks for 60 classic gaming systems, and a bonus arcade stage.
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.
@@ -309,7 +309,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Watara Supervision
  
 
-The Donkey Kong console games will appear on the 4 extra stages (*Crazy Kong and Big Kong stages are exclusive to Win x64 platform).
+The Donkey Kong console games will appear on the 4 extra stages (*Crazy Kong and Big Kong stages are exclusive to Win x64 platform).  There is also a bonus arcade stage.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
@@ -716,7 +716,6 @@ I would love to get to the infamous killscreen on level 22.  My current PB is 51
 ## What's next?
 
  - Add a test screen for the player controls and a welcome screen to set the initial frontend preferences.
- - Create an alternative frontend for vertical arcade games (like 60-in-1 board) with DK, Pacman, Ms Pacman, Galaga, Burger Time, Frogger etc.  No roms will be provided.
  
  
 ## Thanks to

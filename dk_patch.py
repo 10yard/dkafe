@@ -117,16 +117,17 @@ def install_addons():
         return
     for addon in reversed(glob("dkafe_*_addon_*.zip")):
         # Installing message...
-        from launch import write_text, update_screen, dk_font, pl_font, RED, GREY, MAGENTA, PINK, get_image
+        from launch import write_text, update_screen, dk_font, pl_font, RED, GREY, MAGENTA, PINK, BLACK, INSTALL_INFO, get_image
         write_text("EXTRACTING ADD-ON PACK", font=dk_font, y=0, fg=RED)
         write_text("The console add-on pack is being extracted and installed.", font=pl_font, y=14, fg=RED)
         _g.screen.blit(get_image("artwork/sprite/pauline.png"), (0, 215))
-        write_text("Please wait...", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
+        write_text("Installing...", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
         pygame.draw.rect(_g.screen, GREY, [0, 245, 224, 8], 0)
         update_screen()
 
         # Do Install
         try:
+            _counter = 0
             with zipfile.ZipFile(addon) as zf:
                 file_list = zf.namelist()
                 for idx, file in enumerate(file_list):
@@ -142,10 +143,14 @@ def install_addons():
                             _g.screen.blit(get_image("artwork/sprite/dk2.png"), (167, 205))
                         else:
                             _g.screen.blit(get_image("artwork/sprite/dk3.png"), (167, 205))
-                        pygame.draw.rect(_g.screen, RED, [0, 245, _progress, 8], 0)
-                        write_text(f'{_percent:.2f}' + "% installed", x=22, y=218, bg=MAGENTA, fg=PINK, bubble=True)
+                        pygame.draw.rect(_g.screen, RED, [0, 245, _progress, 8], 0)  # progress bar
+                        pygame.draw.rect(_g.screen, BLACK, [22, 210, 150, 16], 0)   # clear message
+                        write_text(INSTALL_INFO[int(_counter % (len(INSTALL_INFO) * 60) / 60)], x=22, y=218,
+                                   bg=MAGENTA, fg=PINK, bubble=True)
+                        _counter += 1
                         update_screen()
                     zf.extract(file)
+                    pygame.event.clear()
                     update_screen()
                 zf.close()
         except:
@@ -158,6 +163,7 @@ def install_addons():
             for path in pathlist:
                 os.remove(str(path))
         os.remove(addon)
+
         return addon  # restrict to install of 1 add-on for now
 
 
