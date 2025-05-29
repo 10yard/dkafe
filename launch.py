@@ -1470,7 +1470,7 @@ def process_interrupts():
         if icons:
             sub, name, alt, emu, rec, unlock, st3, st2, st1 = icons
         else:
-            sub, name, alt, st3, st2, st1 = ("",) * 9
+            sub, name, alt, emu, rec, unlock, st3, st2, st1 = ("",) * 9
 
         # Pauline announces the launch options
         if SHOW_GAMETEXT and alt:

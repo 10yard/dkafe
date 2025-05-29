@@ -1,0 +1,13 @@
+Tapper
+
+It’s fun! It’s refreshing!
+
+You are a bartender serving root beer to patrons.
+You must serve everyone a beer before they work their
+way up to the kegs. You must also grab empty mugs 
+before they slide off the end of the bar. 
+Extra points for collecting tips. Bonus rounds involve
+locating the one beer that has not been shaken, and 
+serving it.
+
+Developed by Bally Midway
