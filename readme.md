@@ -563,6 +563,10 @@ Allow the DK climb scene to be quickly skipped in game by pressing Jump button
 1, 2 or 3 to enable the HUD to be displayed in the top right corner.  Press `P2 Start` to toggle the data.
 1=Targets, 2=Awards, 3=No data, 0 to disable the HUD.
 
+`ANNOUNCE_AWARD_INGAME = 1`    
+1 to enable prize award announcements during gameplay.
+
+
 
 ### Control Settings
 

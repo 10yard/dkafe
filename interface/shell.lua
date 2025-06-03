@@ -355,19 +355,19 @@ function shell_main()
 					if data_score1 > 0 and time_played > data_score1 * 60 and time_played < data_score1 * 60 + 5 then
 						mac:popmessage('Won 1st Prize of '..tostring(data_score1_award)..' coins')
 						if not st1 then
-							play_wav("award1_short")
+							if data_announce_award == "1" then play_wav("award1_short") end
 							st1 = true
 						end
 					elseif data_score2 > 0 and time_played > data_score2 * 60 and time_played < data_score2 * 60 + 5 then
 						mac:popmessage('Won 2nd Prize of '..tostring(data_score2_award)..' coins')
 						if not st2 then
-							play_wav("award2_short")
+							if data_announce_award == "1" then play_wav("award2_short") end
 							st2 = true
 						end
 					elseif data_score3 > 0 and time_played > data_score3 * 60 and time_played < data_score3 * 60 + 5 then
 						mac:popmessage('Won 3rd Prize of '..tostring(data_score3_award)..' coins')
 						if not st3 then
-							play_wav("award3_short")
+							if data_announce_award == "1" then play_wav("award3_short") end
 							st3 = true
 						end
 					end

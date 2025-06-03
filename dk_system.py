@@ -270,6 +270,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
 
     if subfolder == "shell":
         if not basic_mode:
+            os.environ["DATA_ANNOUNCE_AWARD"] = str(ANNOUNCE_AWARD_INGAME)
             script = lua_interface("shell", name, subfolder, score3, score2, score1, basic_mode)
             competing = True
     else:
@@ -330,6 +331,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             if competing:
                 os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
             os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
+            os.environ["DATA_ANNOUNCE_AWARD"] = str(ANNOUNCE_AWARD_INGAME)
 
     if sys.gettrace():
         print(launch_command)  # debug launch arguments

@@ -69,6 +69,7 @@ data_autostart = os.getenv("DATA_AUTOSTART") or "0"
 ---------------------------------------------------------------
 data_show_award_targets = os.getenv("DATA_SHOW_AWARD_TARGETS")
 data_show_award_progress = os.getenv("DATA_SHOW_AWARD_PROGRESS")
+data_announce_award = os.getenv("DATA_ANNOUNCE_AWARD")
 data_allow_skip_intro = os.getenv("DATA_ALLOW_SKIP_INTRO")
 data_show_hud = os.getenv("DATA_SHOW_HUD")
 data_toggle_hud = tonumber(data_show_hud)

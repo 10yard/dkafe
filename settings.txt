@@ -38,12 +38,13 @@ EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID>
 EMU_3 = <ROOT>/dkwolf/dkwolf_addon <OPTIONS> -rompath "<ROM_DIR>/other"
 EMU_4 = <ROOT>/dkwolf/dkwolf_addon <OPTIONS> -rompath "<ROM_DIR>/other" -nvram_directory NUL -record <RECORD_ID> 
 
-# DKWolf/Interface Settings
+# Interface Settings
 CREDITS = 1
 AUTOSTART = 1
 ALLOW_SKIP_INTRO = 1
 SHOW_AWARD_PROGRESS = 1
 SHOW_AWARD_TARGETS = 1
+ANNOUNCE_AWARD_INGAME = 1
 SHOW_HUD = 1
 REFOCUS_WINDOW = 0
 

@@ -625,6 +625,7 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             if pygame.time.get_ticks() - _g.lastwarp > 1000:
                 play_sound_effect("warp.wav")
                 stage_check(warp=True)
+                return
     else:
         # Ensure jumpman is not left floating after jumping from the oilcan
         if "FOOT_ABOVE_PLATFORM" not in get_map_info():
@@ -1182,7 +1183,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
             if name.split("_")[0] in WIN64_ONLY_SYSTEMS or name in ARCADE_OTHER:
                 if name.startswith("pc_"):
                     os.chdir(os.path.join(ROM_DIR, "pc", name))
-                if competing and st1 and st2 and st3:
+                if ANNOUNCE_AWARD_INGAME and competing and st1 and st2 and st3:
                     # Use threading callback to play sounds when target scores are achieved.
                     # Each thread is unique to the game and time of launch - so not played if game is exited.
                     from threading import Thread as _Thread

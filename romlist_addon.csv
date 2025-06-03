@@ -149,12 +149,12 @@ pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,306,,,228000,2,4,8
 pacman,,Pac-Man,,307,3,4,229000,2,4,8
 mspacman,,MsPac,Ms. Pac-Man,308,3,4,230000,2,4,8
 pacplus,,PacPlus,Pac-Man Plus,310,3,4,231000,2,4,8
-jrpacman,,JrPac,Jr. Pac-Man,312,3,4,232000,2,4,8
+mspacmat,,Attack,Ms. Pac-Attack,312,3,4,232000,2,4,8
 pacmanf,,PacSpeed,Pac-Man Speedup Hack,314,3,4,233000,2,4,8
 mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,316,3,4,234000,2,4,8
 pacmania,,PacMania,,319,3,4,235000,2,4,8
 superpacm,,SuperPac,Super Pac-Man,321,3,4,236000,2,4,8
-mspacmat,,Attack,Ms. Pac-Attack,323,3,4,237000,2,4,8
+jrpacman,,JrPac,Jr. Pac-Man,323,3,4,237000,2,4,8
 hyperpac,,HyperPac,Hyper Pac-Man,325,3,4,238000,2,4,8
 pacland,,PacLand,Pac-Land,327,3,4,239000,2,4,8
 pacnpal,,PacPal,Pac & Pal,328,3,4,240000,2,4,8

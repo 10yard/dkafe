@@ -99,6 +99,7 @@ ALLOW_SKIP_INTRO = 1           # Allow the DK climb scene to be quickly skipped 
 SHOW_AWARD_PROGRESS = 1        # Show award progress when playing game (appears top of screen replacing high score)
 SHOW_AWARD_TARGETS = 1         # Show award targets when playing game (appears during the DK intro/climb scene)
 SHOW_HUD = 1                   # Show in game HUD by default (in top right corner) and use P2 to toggle data
+ANNOUNCE_AWARD_INGAME = 1      # Play award sounds during gameplay
 REFOCUS_WINDOW = 0             # Attempt to refocus DKAFE window after exiting LUA interface (Windows Only)
 
 # Basic mode switch overrides some settings
@@ -340,7 +341,9 @@ CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "dkongl05", "dkongbarrels", "dkongspringy", "dkongpies", "dkongrivets", "ckongs", "dkongwizardry",
                      "dkongoctomonkey", "dkongaccelerate", "dkonghalf", "dkongquarter", "dkongwho", "dkonglava",
                      "dkong2600", "dkongchorus", "dkonggalakong", "dkongjrgala", "dkongxgalakong", "dkongpacmancross",
-                     "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2")
+                     "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2",
+                     "pacman", "mspacman", "pacplus", "pacmanf", "mspacmnf", "mspacmat", "qbert", "frogger", "invaders",
+                     "galaga", "galaxian")
 SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkonginsanity")
 START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
