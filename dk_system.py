@@ -321,8 +321,6 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 # An interface script is available
                 competing = True
                 launch_command += f' -noconsole -autoboot_script "{os.path.join(ROOT_DIR, "interface", script)}"'
-            elif name in ARCADE_OTHER:
-                competing = True
 
         os.environ["DATA_AUTOSTART"] = "0"
         if competing or launch_plugin:

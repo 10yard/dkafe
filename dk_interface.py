@@ -24,6 +24,8 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
             script = "dkong.lua"
         elif rom in ("ckong", "ckongpt2", "ckongpt2b", "ckongpt2a", "bigkong", "bigkonggx", "ckongs", "ckongg", "ckongmc", "ckongdks"):
             script = "ckong.lua"
+        elif rom in ARCADE_OTHER:
+            script = "other.lua"
         elif subfolder == "shell":
             script = "shell.lua"
 

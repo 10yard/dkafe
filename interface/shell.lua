@@ -48,6 +48,7 @@ local start_msg = "PUSH P1 TO START"
 local state = false
 local quick_start = 0
 local inputs = {}
+local msg_displayed = false
 
 -- score targets achieved
 local st1, st2, st3 = false, false, false
@@ -230,27 +231,6 @@ end
 
 local start_time = os.time()
 
-function file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
-end
-
-function is_raspberry_pi()
-	return package.config:sub(1,1) == "/"
-end
-
-
-function play_wav(sound)
-	if is_raspberry_pi() then
-		io.popen("aplay -q ../sounds/"..sound..".wav &")
-	else
-		if file_exists("plugins/galakong/bin/wavplay.exe") then
-			-- on Windows reuse the bundled galakong wavplay utility - which also has an XP version
-			io.popen("start /B /HIGH plugins/galakong/bin/wavplay.exe ../sounds/"..sound..".wav")
-		end
-	end
-end
-
 
 function shell_main()
 	if mac ~= nil then
@@ -336,17 +316,21 @@ function shell_main()
 		if screen then
 			if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then
 				-- Draw time targets at startup (or when paused)
-				if time_played > 0 then
+				if time_played > -1 then
 					if time_played < target_time or mac.paused then
 						if not mac.paused and start_msg ~= "" then
 							screen:draw_text(0, 4,  start_msg.." ", black, black) -- clear block for message
 							screen:draw_text(0, 0,  start_msg.." ", white, black)
 						end
 						--Simple prize target message
-						mac:popmessage('DKAFE Prizes:\n1st at '..tostring(data_score1)..' mins, 2nd at '..tostring(data_score2)..' mins, 3rd at '..tostring(data_score3)..' mins')
-					elseif time_played == target_time then
-						-- clear the target message
-						mac:popmessage()
+						mac:popmessage('DKAFE Prizes:\n1st at '..tostring(data_score1)..' mins,  2nd at '..tostring(data_score2)..' mins,  3rd at '..tostring(data_score3)..' mins')
+						msg_displayed = true
+					else
+						if msg_displayed then
+							-- clear the target message
+							mac:popmessage()
+							msg_displayed = false
+						end
 					end
 				end
 

@@ -1180,7 +1180,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                             Popen(f'"{remap_program}" "{name}" "{_keys}', creationflags=CREATE_NO_WINDOW)
                             break
 
-            if name.split("_")[0] in WIN64_ONLY_SYSTEMS or name in ARCADE_OTHER:
+            if name.split("_")[0] in WIN64_ONLY_SYSTEMS:
                 if name.startswith("pc_"):
                     os.chdir(os.path.join(ROM_DIR, "pc", name))
                 if ANNOUNCE_AWARD_INGAME and competing and st1 and st2 and st3:
