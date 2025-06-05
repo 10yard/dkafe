@@ -113,8 +113,10 @@ del releases\add-ons\dkafe_console_addon_pack_%addon_version%_reduced.zip
 echo **** Addon version of dkwolf includes all drivers
 copy dkwolf\dkwolf_addon.exe dist\console_addon\dkwolf\ /Y
 
-del dist\console_addon\roms\pc /s /Q
-del dist\console_addon\roms\dos /s /Q
+del dist\console_addon\roms\pc /s /q
+rmdir dist\console_addon\roms\pc /s /q
+del dist\console_addon\roms\dos /s /q
+rmdir dist\console_addon\roms\dos /s /q
 
 echo **** Addon version of dkwolf 32 bit includes all drivers
 del dist\console_addon\dkwolf\dkwolf_addon.exe /s /Q
