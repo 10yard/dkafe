@@ -6,7 +6,7 @@ ooooooooo   oooo   oooo       o       ooooooooooo  ooooooooooo
 o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
                                         by Jon Wilson (10yard)
 
-Remap Controls for PC and DOS systems
+Remap Controls for PC and DOS
 which can't be otherwise configured
 -----------------------------------
 """
@@ -14,6 +14,7 @@ from subprocess import call, DEVNULL, STDOUT, CREATE_NO_WINDOW
 import keyboard
 import sys
 import ctypes
+import pygetwindow
 
 def kill_pc_external(pid=None, program=None):
     """force kill an external program"""
@@ -27,6 +28,11 @@ def kill_pc_external(pid=None, program=None):
 
 def remap(name, mappings):
     """asynchronous: temporary keyboard remapping and force quit option"""
+
+    # Move mouse cursor to the bottom right corner
+    ctypes.windll.user32.SetCursorPos(999999, 999999)
+
+    # Remap controls and other special functions
     for m in mappings.split("|"):
         try:
             src, dst = m.split(">")
@@ -43,6 +49,10 @@ def remap(name, mappings):
             keyboard.call_later(fn=keyboard.send,args=" ", delay=float(dst))
         elif src.startswith("delayenter"):
             keyboard.call_later(fn=keyboard.send, args="\n", delay=float(dst))
+        elif src.startswith("maximize"):
+            win = pygetwindow.getWindowsWithTitle(dst)
+            if win:
+                win[0].maximize()
         else:
             keyboard.remap_key(src, dst)
     while True:

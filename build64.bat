@@ -56,7 +56,7 @@ del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
 rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
 
 echo **** build the exe in virtual environment ****
-set PYTHONOPTIMIZE=1
+set PYTHONOPTIMIZE=2
 venv64\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico
 venv64\Scripts\pyinstaller remap_pc.py --onefile --clean --noconsole --icon artwork\remap_pc.ico
 

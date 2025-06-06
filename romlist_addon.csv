@@ -124,8 +124,8 @@ pc_arduboy_kong,shell,ARDUKong,ARDUBOY: Kong,263,,,203000,2,4,8
 pc_kong_jr_gnw,shell,Jr.,G&W: Kong Jr Tribute,265,,,204000,2,4,8
 bbcb_krazyape2,shell,BBC KrazyApe,BBC: Krazy Ape,266,,,205000,2,4,8
 bbcb_barrel_battle,shell,Battle,BBC: Barrel Battle,269,,,206000,2,4,8
-cpm_ladder,shell,CP/M,CP/M: Ladder,270,,,207000,2,4,8
-c64_kongokong,shell,C64 KongoKong,C64: Kongo Kong,272,,,208000,2,4,8
+pc_exl100_kong,shell,EXL Kong,EXL100: Kong,270,,,207000,2,4,8
+c64_kongokong,shell,C64 Kongo,C64: Kongo Kong,272,,,208000,2,4,8
 vic20-se_logrun,shell,VIC20 LogRun,VIC20: Log Run,275,,,209000,2,4,8
 vic20_hardhatclimber,shell,VIC20 Hardhat,VIC20: Hardhat Climber,278,,,210000,2,4,8
 dragon32_kingcuthbert,shell,D32 Cuthbert,D32: King Cuthbert,279,,,211000,2,4,8
@@ -258,6 +258,7 @@ coleco_super_dk,shell,Super,CVS: Super Donkey Kong!,9999,,,86000,2,4,8
 coleco_super_dk_jr,shell,SuperJR,CVS: Super Donkey Kong! Junior,9999,,,86000,2,4,8
 cpc6128_killergorilla,shell,KillerGorilla,CPC: Killer Gorilla,9999,,,86000,2,4,8
 cpc6128_kongsrevenge,shell,KongsRevenge,CPC: Kong's Revenge,9999,,,86000,2,4,8
+cpm_ladder,shell,CP/M,CP/M: Ladder,9999,,,86000,2,4,8
 dkongjre,,DK Junior BugFix,JR with Bug Fixes (E Kit),9999,1,2,86000,1000,15000,30000
 dkongjrm,,DK JR MoonCresta,JR on MoonCresta,9999,1,2,86000,,,
 dkongjrmc,,DK JR MoonCresta 2,JR on MoonCresta (Set 2),9999,1,2,86000,,,

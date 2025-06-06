@@ -36,11 +36,11 @@ if mame_version >= 0.241 then
 	end
 end
 
-local white, black = 0xffffffff, 0xff000000
+local white, black, grey = 0xffffffff, 0xff000000, 0xff333333
 local attenuation = sound.attenuation
 
 -- Adjustments for systems
-local target_time = 6
+local display_time = 6
 local time_played = 0
 
 --defaults
@@ -62,6 +62,7 @@ rom_table["a2600_artificial_lifeform"] = {"P1",          false, 0,     {}}
 rom_table["a2600_dk_kingkong"]       = {"P1",            false, 0,     {}}
 rom_table["a2600_young_plumber_lcd"] = {"P1",            false, 0,     {}}
 rom_table["a2600_dk_junior"]         = {"P1 TT JJ",      false, 0,     {}}
+rom_table["a2600_dk_ghouls"]         = {"P1 TT JJ",      false, 0,     {}}
 rom_table["a5200"]                   = {"P1",            true,  600,   {}}
 rom_table["a7800"]                   = {"P1",            false, 200,   {}}
 rom_table["a7800_dk_remix"]          = {"P1",            true,  750,   {}}
@@ -315,15 +316,19 @@ function shell_main()
 		-- HUD
 		if screen then
 			if data_show_hud ~= 0 and data_score1 and data_score2 and data_score3 then
-				-- Draw time targets at startup (or when paused)
 				if time_played > -1 then
-					if time_played < target_time or mac.paused then
-						if not mac.paused and start_msg ~= "" then
-							screen:draw_text(0, 4,  start_msg.." ", black, black) -- clear block for message
-							screen:draw_text(0, 0,  start_msg.." ", white, black)
+					if time_played < display_time + 2 and start_msg ~= "" and not mac.paused and video.frameskip == 0 then
+						-- flash any start instructions
+						if screen:frame_number() % 60 < 30 then
+							screen:draw_text(0, 0,  start_msg, white, black)
+						else
+							screen:draw_text(0, 0,  start_msg, grey, black)
 						end
-						--Simple prize target message
-						mac:popmessage('DKAFE Prizes:\n1st at '..tostring(data_score1)..' mins, 2nd at '..tostring(data_score2)..' mins, 3rd at '..tostring(data_score3)..' mins')
+					end
+
+					if time_played < display_time or mac.paused then
+						--Display prize target message
+						mac:popmessage('Prizes: 1st at '..tostring(data_score1)..' mins, 2nd at '..tostring(data_score2)..' mins, 3rd at '..tostring(data_score3)..' mins')
 						msg_displayed = true
 					else
 						if msg_displayed then
@@ -335,20 +340,20 @@ function shell_main()
 				end
 
 				if not mac.paused then
-					-- Show prize award for 5 seconds when time target achieved
-					if data_score1 > 0 and time_played > data_score1 * 60 and time_played < data_score1 * 60 + 5 then
+					-- Show prize award when time target achieved
+					if data_score1 > 0 and time_played > data_score1 * 60 and time_played < data_score1 * 60 + display_time then
 						mac:popmessage('Won 1st Prize of '..tostring(data_score1_award)..' coins')
 						if not st1 then
 							if data_announce_award == "1" then play_wav("award1_short") end
 							st1 = true
 						end
-					elseif data_score2 > 0 and time_played > data_score2 * 60 and time_played < data_score2 * 60 + 5 then
+					elseif data_score2 > 0 and time_played > data_score2 * 60 and time_played < data_score2 * 60 + display_time then
 						mac:popmessage('Won 2nd Prize of '..tostring(data_score2_award)..' coins')
 						if not st2 then
 							if data_announce_award == "1" then play_wav("award2_short") end
 							st2 = true
 						end
-					elseif data_score3 > 0 and time_played > data_score3 * 60 and time_played < data_score3 * 60 + 5 then
+					elseif data_score3 > 0 and time_played > data_score3 * 60 and time_played < data_score3 * 60 + display_time then
 						mac:popmessage('Won 3rd Prize of '..tostring(data_score3_award)..' coins')
 						if not st3 then
 							if data_announce_award == "1" then play_wav("award3_short") end

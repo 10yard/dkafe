@@ -32,7 +32,7 @@ ROM_DIR = <ROOT>/roms
 ALLOW_ROM_OVERWRITE = 0
 
 # Emulator Settings for Windows
-OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video opengl -fontpath <ROOT>/fonts -uifont 6x10.bdf
+OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -video opengl -fontpath <ROOT>/fonts -uifont spleen-5x8.bdf
 EMU_1 = <ROOT>/dkwolf/dkwolf <OPTIONS>
 EMU_2 = <ROOT>/dkwolf/dkwolf <OPTIONS> -nvram_directory NUL -record <RECORD_ID> 
 EMU_3 = <ROOT>/dkwolf/dkwolf_addon <OPTIONS> -rompath "<ROM_DIR>/other"

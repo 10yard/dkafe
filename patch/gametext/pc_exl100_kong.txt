@@ -1,0 +1,6 @@
+Exelvision EXL 100 - Kong
+
+A colourful port of Donkey Kong with great graphics and
+decent gameplay.
+
+Developed by JMR.Diffusion

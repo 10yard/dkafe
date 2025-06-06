@@ -51,7 +51,7 @@ The frontend can be configured to launch other emulators and roms.
 Jumpman can traverse platforms using unbroken ladders and by utilising hammers (to teleport short distances).  Jumpman can drop through an oilcan to quickly warp between the stages.
 
 ![NEW Feature](https://github.com/10yard/dkafe/blob/master/artwork/about/new.png) 
-There is now a console add-on pack which adds 4 extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See [Console Add-on Pack](#console-add-on-pack) section below.
+The console add-on pack adds up to 5 extra stages and is packed out with hundreds of Donkey Kong ports, clones and hacks for a myriad of console and computer systems.  See [Console Add-on Pack](#console-add-on-pack) section below.
 
 ![Donkey Kong versions supported](https://github.com/10yard/dkafe/blob/master/artwork/about/versions_detected.png)
 
@@ -309,7 +309,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Watara Supervision
  
 
-The Donkey Kong console games will appear on the 4 extra stages (*Crazy Kong and Big Kong stages are exclusive to Win x64 platform).  There is also a bonus arcade stage.
+The Donkey Kong console games will appear on 4 extra stages (*Crazy Kong and Big Kong stages are exclusive to Windows x64 platform).  There is also a bonus arcade stage.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
