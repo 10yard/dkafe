@@ -81,9 +81,6 @@ def read_romlist(specific_romlist_file=None):
                             if ARCH != "win64" and name in STATEKEEP_MEDIA_EXCEPTIONS:
                                 # Skip over roms that use a .statekeep file when not running Win64
                                 continue
-                            if ARCH == "pi" and name.split("_")[0] in PI_UNSUPPORTED_SYSTEMS:
-                                # Skip over unsupported system roms
-                                continue
                             if name in OPTIONAL_NAMES and not os.path.exists(os.path.join(ROM_DIR, name + ".zip")):
                                 # Skip over specific hacks when an optional rom is not found e.g. Galakong JR
                                 continue

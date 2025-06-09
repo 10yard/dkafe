@@ -849,7 +849,6 @@ STATEKEEP_MEDIA_EXCEPTIONS = ("gbcolor_dk_gw_gallery2", "gbcolor_dk_gw_gallery3"
 
 WIN64_ONLY_STAGES = 5, 6
 WIN64_ONLY_SYSTEMS = "pc", "dos", "cpm"
-PI_UNSUPPORTED_SYSTEMS = "bbcb",
 
 # use scan code or see keycodes at: https://github.com/boppreh/keyboard/blob/master/keyboard/_canonical_names.py
 KEYBOARD_REMAP = {
