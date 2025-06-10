@@ -15,6 +15,7 @@ $ git clone https://github.com/10yard/dkafe.git
 To create a "dkafe" folder containing the sources.
 
 $ cd dkafe
+$ sudo rm dkwolf/*.exe
 $ chmod a+rwx build.sh
 $ ./build.sh
 
