@@ -17,7 +17,7 @@ sudo xset s off
 sudo xset -dpms
 sudo xset s noblank
 
-# Run the binary from dkafe_bin folder
+# Run the python script or binary from dkafe_bin folder
 cd /home/pi/dkafe_bin
 #./launch >nul 2>&1
 python3 launch.py >nul 2>&1

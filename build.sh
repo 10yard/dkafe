@@ -24,7 +24,7 @@ sudo rm -r -f dist
 sudo rm -r -f build
 
 # build the application binary
-# 11/06/2025 - running direct from python works better so the binary is not used by default
+# 11/06/2025 - launching python script actually works better so this binary is not used by default
 sudo pyinstaller launch.py --onefile --clean --noconsole --exclude-module rotate-screen
 
 # copy program resources
