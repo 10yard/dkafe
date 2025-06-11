@@ -14,6 +14,7 @@ These will be automatically removed by the build script.
 $ git clone https://github.com/10yard/dkafe.git --depth=1
 To create a "dkafe" folder containing the sources.
 
+$ cd dkafe
 $ chmod a+rwx build.sh
 $ ./build.sh
 The build script will run.  It will create a "dkafe_bin" folder on the /boot partition

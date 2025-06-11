@@ -24,6 +24,7 @@ sudo rm -r -f dist
 sudo rm -r -f build
 
 # build the application binary
+# 11/06/2025 - running direct from python works better so the binary is not used by default
 sudo pyinstaller launch.py --onefile --clean --noconsole --exclude-module rotate-screen
 
 # copy program resources
@@ -39,6 +40,7 @@ sudo cp romlist.csv dist
 sudo cp readme.md dist
 sudo cp VERSION dist
 sudo cp COPYING dist
+sudo cp *.py dist
 
 # copy rpi4 specific settings
 sudo cp rpi4/settings.txt dist
