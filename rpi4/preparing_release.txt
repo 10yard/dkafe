@@ -26,7 +26,8 @@ If all OK we can now remove the sources
 
 $ sudo rm -r /home/pi/dkafe
 
-Now we're ready to make an SD card image.
+You can stop here and reboot to test the build works - but then have to start steps again from the top before continuing.
+Otherwise, now we're ready to make an SD card image.
 Insert an empty USB stick - this will be target for the SD card image.  Recommend minimum 4GB USB stick.
 
 $ lsblk

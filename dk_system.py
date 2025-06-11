@@ -304,7 +304,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             launch_command = add_plugin(launch_command, "refocus")
 
         # Should we use the skipstartupframes plugin
-        if "dkwolf_addon" in launch_command and ("roms/other" in launch_command or "roms\\other" in launch_command):
+        if "dkwolf" in launch_command and "_addon" in launch_command and ("roms/other" in launch_command or "roms\\other" in launch_command):
             launch_command = add_plugin(launch_command, "skipstartupframes")
 
         if not fullscreen:

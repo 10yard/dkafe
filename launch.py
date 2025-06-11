@@ -157,11 +157,11 @@ def check_patches_available():
             _count += 2  # add "congo bongo" and "dkongjre" to count
             write_text(f"+ {str(_count)} CLONES, PORTS & HACKS IN THE CONSOLE ADD-ON PACK", font=pl_font, x=0, y=239, fg=WHITE)
 
-            # # Refresh list of arcade other roms
-            # arcade_other = []
-            # for _rom in glob(os.path.join(ROM_DIR, "other", "*.zip")):
-            #     arcade_other.append(os.path.basename(_rom).split(".")[0])
-            # globals()["ARCADE_OTHER"] = arcade_other
+            # Refresh list of arcade other roms
+            arcade_other = []
+            for _rom in glob(os.path.join(ROM_DIR, "other", "*.zip")):
+                arcade_other.append(os.path.basename(_rom).split(".")[0])
+            globals()["ARCADE_OTHER"] = arcade_other
 
         if applied_patches or installed_addons:
             jump_to_continue(0)
@@ -169,12 +169,6 @@ def check_patches_available():
         for i, line in enumerate(INVALID_ROM_MESSAGE + ROM_CONTENTS):
             write_text(line, font=dk_font, x=8, y=17 + (i * 9), fg=[WHITE, RED][i == 0])
         jump_to_continue()
-
-    # Refresh list of arcade other roms
-    arcade_other = []
-    for _rom in glob(os.path.join(ROM_DIR, "other", "*.zip")):
-        arcade_other.append(os.path.basename(_rom).split(".")[0])
-    globals()["ARCADE_OTHER"] = arcade_other
 
 
 def check_roms_available():
