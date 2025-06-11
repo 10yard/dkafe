@@ -834,9 +834,15 @@ def get_addon():
             clear_screen()
             if os.path.exists(latest_addon_path):
                 write_text("♥ DOWNLOAD FINISHED", font=dk_font, y=0, fg=WHITE)
-                write_text("DKAFE will now exit and you must relaunch it to", font=pl_font, y=14, fg=WHITE)
-                write_text("complete the add-on pack installation.", font=pl_font, y=22, fg=WHITE)
+                if _s.is_pi():
+                    write_text("DKAFE will now reboot to complete the add-on", font=pl_font, y=14, fg=WHITE)
+                    write_text("pack installation.", font=pl_font, y=22, fg=WHITE)
+                else:
+                    write_text("DKAFE will now exit and you must relaunch it to", font=pl_font, y=14, fg=WHITE)
+                    write_text("complete the add-on pack installation.", font=pl_font, y=22, fg=WHITE)
                 jump_to_continue()
+                if _s.is_pi():
+                    os.system(f"sudo reboot")
                 pygame.quit()
                 sys.exit()
             else:

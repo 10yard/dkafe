@@ -16,7 +16,7 @@ from pathlib import Path
 import shutil
 import hashlib
 import zipfile
-from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH, DISPLAY
+from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH, DISPLAY, ROOT_DIR
 from dk_system import is_pi, copy
 
 
@@ -150,6 +150,7 @@ def install_addons():
                         _counter += 1
                         update_screen()
                     zf.extract(file)
+
                     pygame.event.clear()
                     update_screen()
                 zf.close()
@@ -162,8 +163,12 @@ def install_addons():
             pathlist = Path(ROM_DIR).glob('**/*.state')
             for path in pathlist:
                 os.remove(str(path))
-        os.remove(addon)
+        if is_pi():
+            _path = os.path.join(ROOT_DIR, "dkwolf", "dkwolfrpi_addon")
+            if os.path.exists(_path):
+                os.system(f"sudo chmod a+rwx {_path}")
 
+        os.remove(addon)
         return addon  # restrict to install of 1 add-on for now
 
 
