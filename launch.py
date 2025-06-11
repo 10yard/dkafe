@@ -81,11 +81,14 @@ def rotate_display(exiting=False, initial=False, rotate=ROTATION):
 
 
 def initialise_screen(reset=False):
-    try:
-        _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
-    except AttributeError:
-        # Target doesn't support WINDOWFOCUSGAINED
+    if _s.is_pi():
         _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
+    else:
+        try:
+            _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED | pygame.WINDOWFOCUSGAINED)
+        except AttributeError:
+            # Target doesn't support WINDOWFOCUSGAINED
+            _g.screen = pygame.display.set_mode(DISPLAY, pygame.FULLSCREEN * int(FULLSCREEN) | pygame.SCALED)
     pygame.event.set_grab(FULLSCREEN == 1)
     pygame.mouse.set_visible(False)
 

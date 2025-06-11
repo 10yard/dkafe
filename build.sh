@@ -53,7 +53,6 @@ sudo cp roms/---* dist/roms
 # create minimal dkwolf folder
 sudo mkdir dist/dkwolf
 sudo cp dkwolf/dkwolfrpi dist/dkwolf
-sudo cp dkwolf/dkwolfrpi_addon dist/dkwolf
 sudo cp -r dkwolf/*.txt dist/dkwolf
 sudo cp -r dkwolf/plugins dist/dkwolf
 sudo cp -r dkwolf/changes dist/dkwolf

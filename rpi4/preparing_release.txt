@@ -14,15 +14,6 @@ These will be automatically removed by the build script.
 $ git clone https://github.com/10yard/dkafe.git --depth=1
 To create a "dkafe" folder containing the sources.
 
-$ cd dkafe
-$ cd dkwolf
-$ sudo rm *.exe
-$ sudo wget https://www.dropbox.com/scl/fi/wbteduc2d5mxgkrer7xhg/dkwolf_pi.zip?rlkey=605nccjq0ikfbvd9x91egnvt9 -O dkwolf_pi.zip
-$ unzip dkwolf_pi.zip
-$ sudo rm dkwolf_pi.zip
-$ cd ..
-To update dkwolf executables, removing Windows OS versions, and grabbing the Pi4 versions. (Github versions are broken at the moment)
-
 $ chmod a+rwx build.sh
 $ ./build.sh
 The build script will run.  It will create a "dkafe_bin" folder on the /boot partition
