@@ -121,6 +121,9 @@ del dist\console_addon\dkwolf\dkwolf_addon.exe /s /Q
 copy dkwolf\dkwolf32_addon.exe dist\console_addon\dkwolf\dkwolf_addon.exe /Y
 copy dkwolf\dkwolfrpi_addon dist\console_addon\dkwolf\dkwolfrpi_addon /Y
 
+echo **** Remove state files for this reduced addon
+del dist\console_addon\roms\*.state /a /s
+
 %zip_path% a releases\add-ons\dkafe_console_addon_pack_%addon_version%_reduced.zip .\dist\console_addon\* -m0=LZMA -mx6
 
 echo **** Clean up add-on work folder

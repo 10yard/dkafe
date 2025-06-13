@@ -717,10 +717,6 @@ I wanted to bring together all the amazing Donkey Kong roms and hacks into one p
 I would love to get to the infamous killscreen on level 22.  My current PB is 513,900 points at level 15.
 
 
-## What's next?
-
- - Add a test screen for the player controls and a welcome screen to set the initial frontend preferences.
- 
  
 ## Thanks to
 
