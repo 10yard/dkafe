@@ -1,0 +1,17 @@
+Eyes
+
+The player controls an eyeball in a maze. As in 
+Pac-Man the goal is to collect all of the dots to 
+advance to next level, but in Eyes the player shoots
+the dots rather than eating them. Computer-controlled 
+eyes chase and shoot at the player. Shooting a 
+computer eye gives points and removes it from the 
+level, but it will reappear a short time later. 
+Being shot by a computer eye is fatal.
+
+As the game progresses, more computer eyes are added 
+to levels and they take less time to shoot at the 
+player. They also move faster. There are eight 
+different mazes.
+
+Developed by Rock-Ola

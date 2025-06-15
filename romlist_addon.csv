@@ -150,14 +150,14 @@ pacman,,Pac-Man,,307,3,4,229000,2,4,8
 mspacman,,MsPac,Ms. Pac-Man,308,3,4,230000,2,4,8
 pacplus,,PacPlus,Pac-Man Plus,310,3,4,231000,2,4,8
 mspacmat,,Attack,Ms. Pac-Attack,312,3,4,232000,2,4,8
-pacmanf,,PacSpeed,Pac-Man Speedup Hack,314,3,4,233000,2,4,8
-mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,316,3,4,234000,2,4,8
-pacmania,,PacMania,,319,3,4,235000,2,4,8
+pacnpal,,Pac&Pal,Pac & Pal,314,3,4,233000,2,4,8
+mtrap,,MouseTrap,Mouse Trap,316,3,4,234000,2,4,8
+lnc,,Lock&Chase,Lock n Chase,319,3,4,235000,2,4,8
 superpacm,,SuperPac,Super Pac-Man,321,3,4,236000,2,4,8
 jrpacman,,JrPac,Jr. Pac-Man,323,3,4,237000,2,4,8
 hyperpac,,HyperPac,Hyper Pac-Man,325,3,4,238000,2,4,8
-pacland,,PacLand,Pac-Land,327,3,4,239000,2,4,8
-pacnpal,,PacPal,Pac & Pal,328,3,4,240000,2,4,8
+eyes,,Eyes,,327,3,4,239000,2,4,8
+amidar,,Amidar,,328,3,4,240000,2,4,8
 rallyx,,RallyX,Rally-X,330,3,4,241000,2,4,8
 nrallyx,,NewRallyX,New Rally-X,332,3,4,242000,2,4,8
 qbert,,Q*Bert,,334,3,4,243000,2,4,8
@@ -281,6 +281,7 @@ intv_beautybeast,shell,BeautyBeast,INTV: Beauty and the Beast,9999,,,86000,2,4,8
 intv_dk_junior,shell,DK Junior,INTV: Donkey Kong Junior,9999,,,86000,2,4,8
 intv_monkey,shell,Monkey,INTV: Monkey Moon,9999,,,86000,2,4,8
 laser310_ladder,shell,Ladder,VZ: Ladder Challenge,9999,,,86000,2,4,8
+mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,9999,3,4,229000,2,4,8
 mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,86000,2,4,8
 nes_clintonkong,shell,ClintonKong,NES: Clinton Kong,9999,,,86000,2,4,8
 nes_dendymans_revenge,shell,Dendyman,NES: Dendyman's Revenge,9999,,,86000,2,4,8
@@ -318,6 +319,9 @@ nes_udx_vs_dk,shell,UDX vs DK,NES: UDX vs Donkey Kong,9999,,,86000,2,4,8
 oric1_dinkykong,shell,DinkyKong,ORIC: Dinky Kong,9999,,,86000,2,4,8
 oric1_orickong,shell,OricKong,ORIC: Oric Kong,9999,,,86000,2,4,8
 orica_4k_kong,shell,4K Kong,ORIC: 4K Kong,9999,,,86000,2,4,8
+pacland,,PacLand,Pac-Land,9999,3,4,229000,2,4,8
+pacmanf,,PacSpeed,Pac-Man Speedup Hack,9999,3,4,229000,2,4,8
+pacmania,,PacMania,,9999,3,4,229000,2,4,8
 pc_a2600_arc_hard,shell,VCS(Hard),2600: Arcade Demo (Hard),9999,,,86000,2,4,8
 pc_arduboy_dkjr,shell,DK JR,ARDUBOY: DK Junior,9999,,,86000,2,4,8
 pc_arduboy_kong2,shell,Kong 2,ARDUBOY: Kong 2,9999,,,86000,2,4,8

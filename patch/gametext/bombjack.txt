@@ -1,0 +1,15 @@
+Bomb Jack
+
+Bomb Jack is a fast-moving platform game in which the
+aim is to collect all of the bombs on each level 
+before progressing to the next. A variety of 
+constantly spawning mechanical enemies patrol the 
+platforms and airspace so the longer a player takes to
+collect all of the bombs, the more difficult progress
+becomes.
+
+The basic play mechanic of collecting objects to clear
+a level, as well as the powerball feature, is hugely 
+reminiscent of Namco's seminal "Pac-Man".
+
+Developed by Tehkan

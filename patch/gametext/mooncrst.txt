@@ -1,0 +1,10 @@
+Moon Cresta 
+
+Aliens swarm at the top of the screen, swooping down 
+on your spacecraft. Your craft begins with three 
+segments, one deployed at a time. After the "insect" 
+and "fireball" levels, you are able to attempt 
+docking the segments together. A successful dock gives
+you more firepower for the upcoming levels.
+
+Developed by Nichibutsu

@@ -1,0 +1,20 @@
+Amidar
+
+Rather than moving through a maze (a la Pac-Man), you
+instead move along the edges of a series of 
+interconnected boxes, trying to ‘paint’ them a 
+different colour (or pick up coconuts, depending on 
+the level). If you manage to paint around all four 
+sides of a box it fills itself in, and the ultimate 
+aim on each level is to fill every box on-screen. 
+Which is not easy because there are a variety of 
+chasing monsters and they are tricky to avoid.
+
+You do have a ‘jump’ ability to help you, although 
+pressing jump makes the enemies jump – not you. They
+jump, and you move underneath them. Which is weird, 
+but it works well enough and can save your skin when 
+in a tight corner. You start with only three jumps but
+can be awarded more.
+
+Developed by Konami

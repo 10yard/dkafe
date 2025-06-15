@@ -1,0 +1,12 @@
+Mr. TNT
+
+Move along lines, erasing them as you go, to collect
+flashing or spinning items. If you collide with one
+of the yellow dots that are moving around erasing 
+lines or if you end up at a dead end with nowhere to
+go, you lose a life. 
+A level is cleared when the player has collected all
+the dynamite or when all fuses have been burned out. 
+The player then moves on to another level.
+
+Developed by Telko
