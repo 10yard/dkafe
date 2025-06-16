@@ -25,7 +25,7 @@ local display_time = 6
 local time_played = 0
 local start_time = os.time()
 local msg_displayed = false
-
+local reset = false
 
 function other_main()
 	if mac ~= nil then
@@ -72,6 +72,13 @@ function other_main()
 					end
 				end
 			end
+
+			-- Qix needs a reset on startup
+			if emu:romname() == "qix" and screen:frame_number() > 30 and screen:frame_number() < 60 and not(reset) then
+				reset = true
+				mac:soft_reset()
+			end
+
 		end
 	end
 end

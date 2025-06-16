@@ -158,27 +158,28 @@ jrpacman,,JrPac,Jr. Pac-Man,323,3,4,237000,2,4,8
 hyperpac,,HyperPac,Hyper Pac-Man,325,3,4,238000,2,4,8
 eyes,,Eyes,,327,3,4,239000,2,4,8
 amidar,,Amidar,,328,3,4,240000,2,4,8
-rallyx,,RallyX,Rally-X,330,3,4,241000,2,4,8
-nrallyx,,NewRallyX,New Rally-X,332,3,4,242000,2,4,8
-qbert,,Q*Bert,,334,3,4,243000,2,4,8
-popeye,,Popeye,,336,3,4,244000,2,4,8
-rbtapper,,Tapper,Tapper (Root Beer),338,3,4,245000,2,4,8
-galaga,,Galaga,,340,3,4,246000,2,4,8
-galaxian,,Galaxian,,342,3,4,247000,2,4,8
-gaplus,,Gaplus,,344,3,4,248000,2,4,8
-mrtnt,,MrTNT,Mr. TNT,346,3,4,249000,2,4,8
-mooncrst,,MoonCresta,Moon Cresta,348,3,4,250000,2,4,8
-ladybug,,Bug,,350,3,4,251000,2,4,8
-panic,,SpacePanic,Space Panic,351,3,4,252000,2,4,8
-digdug,,DigDug,Dig Dug,353,3,4,253000,2,4,8
-frogger,,Frogger,,355,3,4,254000,2,4,8
-btimem,,BurgerTime,Burger Time,358,3,4,255000,2,4,8
-nibbler,,Nibbler,,361,3,4,256000,2,4,8
-pengo,,Pengo,,363,3,4,257000,2,4,8
-mappy,,Mappy,,364,3,4,258000,2,4,8
-mrdobl,,MrDo,Mr. Do!,365,3,4,259000,2,4,8
-invaders,,Invaders,Space Invaders,366,3,4,260000,2,4,8
-bombjack,,BombJack,Bomb Jack,367,3,4,261000,2,4,8
+qix,,Qix,,330,3,4,241000,2,4,8
+rallyx,,RallyX,Rally-X,331,3,4,242000,2,4,8
+nrallyx,,NewRallyX,New Rally-X,332,3,4,243000,2,4,8
+qbert,,Q*Bert,,334,3,4,244000,2,4,8
+popeye,,Popeye,,336,3,4,245000,2,4,8
+rbtapper,,Tapper,Tapper (Root Beer),338,3,4,246000,2,4,8
+galaga,,Galaga,,340,3,4,247000,2,4,8
+galaxian,,Galaxian,,342,3,4,248000,2,4,8
+gaplus,,Gaplus,,344,3,4,249000,2,4,8
+mrtnt,,MrTNT,Mr. TNT,346,3,4,250000,2,4,8
+mooncrst,,MoonCresta,Moon Cresta,348,3,4,251000,2,4,8
+ladybug,,Bug,,350,3,4,252000,2,4,8
+panic,,SpacePanic,Space Panic,351,3,4,253000,2,4,8
+digdug,,DigDug,Dig Dug,353,3,4,254000,2,4,8
+frogger,,Frogger,,355,3,4,255000,2,4,8
+btimem,,BurgerTime,Burger Time,358,3,4,256000,2,4,8
+nibbler,,Nibbler,,361,3,4,257000,2,4,8
+pengo,,Pengo,,363,3,4,258000,2,4,8
+mappy,,Mappy,,364,3,4,259000,2,4,8
+mrdobl,,MrDo,Mr. Do!,365,3,4,260000,2,4,8
+invaders,,Invaders,Space Invaders,366,3,4,261000,2,4,8
+bombjack,,BombJack,Bomb Jack,367,3,4,262000,2,4,8
 10yardj,,10Yard,10 Yard Fight,9999,3,4,229000,2,4,8
 a2600_alien_1979,shell,Alien,2600: Alien 1979,9999,,,86000,2,4,8
 a2600_artificial_lifeform,shell,Artifical Lifeform,2600: Artifical Lifeform,9999,,,86000,2,4,8

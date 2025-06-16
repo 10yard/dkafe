@@ -312,6 +312,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
 
         launch_command += " -skip_gameinfo -nonvram_save"
 
+
         if not basic_mode and not launch_plugin and "-record" not in launch_command:
             script = lua_interface(get_emulator(emu), name, subfolder, score3, score2, score1, basic_mode)
             if script:
