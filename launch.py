@@ -154,8 +154,8 @@ def check_patches_available():
                 clear_screen()
                 write_text(f"INSTALLING ADD-ONS...       ", font=dk_font, y=0, fg=RED)
             _, _count = _s.read_romlist("romlist_addon.csv")
-            _count += 2  # add "congo bongo" and "dkongjre" to count
-            write_text(f"+ {str(_count)} CLONES, PORTS & HACKS IN THE CONSOLE ADD-ON PACK", font=pl_font, x=0, y=239, fg=WHITE)
+            write_text(f"+ {str(_count)} clones, ports & hacks in the console add-on pack", font=pl_font, x=0, y=235, fg=WHITE)
+            write_text(f"+ A bonus stage with many classic arcade games", font=pl_font, x=0, y=241, fg=WHITE)
 
             # Refresh list of arcade other roms
             arcade_other = []
@@ -651,9 +651,7 @@ def get_system_description(name, sub):
             if ("_" + s + "_") in name and s != "pc":
                 _system = s
                 break
-    if name in ARCADE_BONUS:
-        return "Arcade (Bonus)"
-    elif name in ARCADE_JUNIOR:
+    if name in ARCADE_JUNIOR:
         return "Arcade (Donkey Kong Junior)"
     elif name in ARCADE_DK3:
         return "Arcade (Donkey Kong 3)"

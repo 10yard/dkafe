@@ -1,0 +1,12 @@
+Scramble
+
+Scramble is a sideways scrolling shoot-em-up were the
+player controls a spaceship and must try to fight 
+through six different enemy-packed levels destroying
+as many fuel tanks and ground intallations as possible
+before reaching the enemy base and destroying it.
+
+Scramble is rightly considered to be a classic and was
+the world's first ever 'multi-level' shoot-em-up.
+
+Developed by Konami

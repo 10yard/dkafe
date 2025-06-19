@@ -73,6 +73,7 @@ function other_main()
 				end
 			end
 
+			-- Game Specific Hacks
 			-- Qix needs a reset on startup
 			if emu:romname() == "qix" and screen:frame_number() > 30 and screen:frame_number() < 60 and not(reset) then
 				reset = true

@@ -54,6 +54,7 @@ def load_game_texts():
 
 def read_romlist(specific_romlist_file=None):
     # read romlists and return info about available roms (and shell scripts)
+    count_dk, count_other = 0, 0
     romlists = {}
     usedslots, usedsubs, usedunique = [], [], []
     romlist_files = ROMLIST_FILES if not specific_romlist_file else [specific_romlist_file, '']
@@ -129,8 +130,12 @@ def read_romlist(specific_romlist_file=None):
                                     if name + "|" + sub not in usedunique:
                                         romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
                                         usedunique.append(name + "|" + sub)
+                                        if int(emu) < 3:
+                                            count_dk += 1
+                                        else:
+                                            count_other += 1
                                 usedslots.append(slot)
-    return romlists[1] + romlists[0], len(usedunique)
+    return romlists[1] + romlists[0], count_dk - count_other
 
 
 def get_romkeys(romlist):

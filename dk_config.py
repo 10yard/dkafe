@@ -211,12 +211,11 @@ ARCADE_DK3 = "dkong3",
 ARCADE_CRAZY = "ckong", "ckongpt2", "ckongpt2a", "ckongpt2b", "ckongs", "ckongg", "ckongdks", "ckongmc"
 ARCADE_BIG = "bigkong", "bigkonggx"
 ARCADE_LOGGER = "logger", "loggerr2"
-ARCADE_BONUS =  "congo",
 ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
                    "dkongcoach", "dkongcoachsprings", "dkongl05")
 ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
 ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros.", "Crazy Kong (Part I)", "Crazy Kong (Part II)", "Big Kong"
-SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Bonus)", "Arcade (Other)"
+SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Other)"
 
 # Generated list of arcade other roms - included in add-on pack.  Users can also drop additional arcade roms in here.
 ARCADE_OTHER = []
@@ -225,8 +224,6 @@ for _rom in glob(os.path.join(ROM_DIR, "other", "*.zip")):
 
 # Optional rom names
 OPTIONAL_NAMES = "dkong", "dkongjr", "dkong3"
-if ARCH != "winxp":
-    OPTIONAL_NAMES += ARCADE_BONUS
 
 # Plugins add functionality to certain roms
 PLUGINS = (
@@ -408,7 +405,7 @@ SLOTS = (
     (42, 66), (82, 66), (170, 66),
     (106, 26),
 
-    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (138, 226), (154, 226), (170, 226), (209, 226),
+    (2, 226), (34, 226), (50,226), (90, 226), (106, 226), (122, 226), (138, 226), (154, 226), (178, 226), (209, 226),
     (34, 196), (82, 193), (99, 192), (114, 192), (130, 193), (146, 194), (178, 196),
     (34, 162), (82, 165), (116, 166), (131, 165), (146, 164), (178, 162), (210, 160),
     (34, 132), (82, 129), (98, 128), (114, 128), (130, 129), (146, 130),
@@ -448,7 +445,7 @@ SLOTS = (
     (194, 66), (162, 64), (146, 63), (130, 62), (90, 62), (2, 62),
     (98, 34),
 
-    (2, 226), (34, 226), (50, 226), (66, 226), (92, 226), (108, 226), (124, 226), (140, 226), (156, 226), (178, 225), (210, 223),
+    (2, 226), (34, 226), (50, 226), (66, 226), (93, 226), (109, 226), (125, 226), (141, 226), (157, 226), (178, 225), (210, 223),
     (194, 195), (178, 195), (160, 194), (140, 194), (124, 194), (108, 194), (82, 194), (66, 194), (50, 194), (34, 193), (2, 191),
     (18, 164), (34, 163), (50, 162), (78, 162), (94, 162), (124, 162), (140, 162), (156, 162), (178, 161), (210, 159),
     (194, 130), (178, 131), (147, 130), (131, 130), (115, 130), (99, 130), (83, 130), (50, 130), (34, 129), (2, 128),
@@ -523,7 +520,7 @@ PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (0, 0), (8, 0), (8, 0), (0, 0)
 KONG_POSXY = (0, 0), (80, 4), (0, 0), (0, 4), (0, 4), (0, 0), (0, 0), (0, 0)
 COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73), (67, 77), (67, 77), (67, 73), (67, 73), (67, 73)
 COIN_AWARD_POSX = 0, 112, 0, 28, 0, 0, 0, 0
-LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2, 3 = 1/3 etc) by stage
+LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2 etc.) by stage
 
 # Jumpman's x position when centre of ladder by stage
 LADDER_CENTRES = ((28, 60, 68, 76, 84, 92, 108, 124, 164, 180),
