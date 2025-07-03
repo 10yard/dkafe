@@ -42,7 +42,7 @@ a7800_dk_remix,shell,Rmx,7800: Donkey Kong Remix,164,,,122000,2,4,8
 a7800_dk_killscreen,shell,L22,7800: L22-1 Killscreen,165,,,123000,2,4,8
 a7800_dk_xm,shell,XM,7800: Donkey Kong XM,166,,,124000,2,4,8
 intv_dk,shell,INTDK,INTV: Donkey Kong (Original),167,,,125000,2,4,8
-intv_intykong,shell,Inty,Inty Kong,168,,,126000,2,4,8
+intv_intykong,shell,Inty,INTV: Inty Kong,168,,,126000,2,4,8
 gbcolor_dk_japan_us,shell,GBDK '94,GBC: Donkey Kong '94,169,,,127000,2,4,8
 nes_dk_bowsette,shell,NESBowsette,NES: Bowsette,170,,,128000,2,4,8
 nes_dk_pauline,shell,Pauline,NES: Donkey Kong Pauline,172,,,129000,2,4,8
@@ -392,7 +392,7 @@ spectrum_baby_monkey,shell,Baby Monkey Alba,SPEC48K: Baby Monkey Alba,9999,,,860
 spectrum_crazycong,shell,Crazy Cong,SPEC48K: Crazy Cong,9999,,,86000,2,4,8
 spectrum_dk_junior,shell,DonkyJR,SPEC48K: Donky Junior,9999,,,86000,2,4,8
 spectrum_dk_techdemo,shell,DK TechDemo,SPEC48K: DK RX Tech Demo,9999,,,86000,2,4,8
-spectrum_dk3_micro_vs,shell,DK3 MicroVs,SPECTRUM: DK3 Micro Vs (G&W),9999,,,86000,2,4,8
+spectrum_dk3_micro_vs,shell,DK3 MicroVs,SPEC48K: DK3 Micro Vs (G&W),9999,,,86000,2,4,8
 spectrum_killerknight,shell,KillerKnight,SPEC48K: Killer Knight,9999,,,86000,2,4,8
 spectrum_kong,shell,Kong,SPEC48K: Kong,9999,,,86000,2,4,8
 spectrum_kong_ocean,shell,Kong,SPEC48K: Kong (Ocean),9999,,,86000,2,4,8

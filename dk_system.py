@@ -217,6 +217,9 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             if "_ror" in name:
                 os.environ["DKAFE_SHELL_ROR"] = "-ror"
                 os.environ["DKAFE_SHELL_BOOT"] = ""
+            os.environ["DKAFE_SHELL_PLUGIN"] = ""
+            if launch_plugin:
+                os.environ["DKAFE_SHELL_PLUGIN"] = f"-plugin {launch_plugin}"
 
             # If there is a specific config file then copy it over system default prior to running
             cfg_file = os.path.join(ROOT_DIR, "dkwolf", "cfg", name + ".cfg")

@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "janky3d",
+"description": "Janky 3D",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}

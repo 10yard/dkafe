@@ -3,19 +3,15 @@ Mouse Trap
 Mouse Trap is similar to Pac-Man. The differences are 
 mostly aesthetic: the dots become cheese, the player 
 is a mouse, the ghosts are cats, and power pills are 
-bones that turn the player into a dog. The gameplay of
-Mouse Trap differs from that of Pac-Man in the 
-following ways: 
+bones that turn the player into a dog. 
 The player can open and close the yellow, red, and 
-blue sets of doors at the press of a matching colored
-button. 
+blue sets of doors at the press of a button. 
 The player can store dog bones for later use at his or
-her discretion by pressing a 2nd button
+her discretion by pressing a 2nd button.
 The four ghosts are replaced by six cats, worth 100 
 points for the first cat eaten, 300 for the second, 
 500 for the third, 700 for the fourth, and 900 for the
 fifth and subsequent cats. 
-Each cat eaten spawns a slightly faster replacement. 
 A seventh monster, a hawk, will eat both mouse and 
 dog. Only the mid-screen "IN" field stops the hawk, 
 by causing it to move randomly instead of chasing the

@@ -647,10 +647,11 @@ def get_system_description(name, sub):
     _system = name.split("_")[0].replace("-", "_")
     if _system == "pc":
         # Some PC are emulated and can be categorised as other systems
-        for s in RECOGNISED_SYSTEMS:
-            if ("_" + s + "_") in name and s != "pc":
-                _system = s
-                break
+        _system = next((s for s in RECOGNISED_SYSTEMS if f"_{s}_" in name and s != "pc"), _system)
+        #for s in RECOGNISED_SYSTEMS:
+        #    if ("_" + s + "_") in name and s != "pc":
+        #        _system = s
+        #        break
     if name in ARCADE_JUNIOR:
         return "Arcade (Donkey Kong Junior)"
     elif name in ARCADE_DK3:
@@ -871,14 +872,18 @@ def build_launch_menu():
     nearby = display_icons(detect_only=True)
     if nearby:
         sub, name, alt, emu, rec, unlock, st3, st2, st1 = nearby
-        show_chorus = sub in CHORUS_FRIENDLY or (not sub and name in CHORUS_FRIENDLY)
-        show_continue = sub in CONTINUE_FRIENDLY or (not sub and name in CONTINUE_FRIENDLY)
-        show_start5 = sub in START5_FRIENDLY or (not sub and name in START5_FRIENDLY)
-        show_stage = sub in STAGE_FRIENDLY  or (not sub and name in STAGE_FRIENDLY)
-        show_coach = sub in COACH_FRIENDLY or (not sub and name in COACH_FRIENDLY)
-        show_coach_l5 = sub in COACH_L5_FRIENDLY or (not sub and name in COACH_L5_FRIENDLY)
-        show_shoot = sub in SHOOT_FRIENDLY or (not sub and name in SHOOT_FRIENDLY)
-        inps = _s.get_inp_files(rec, name, sub, 12 - show_coach - show_coach_l5 - show_chorus - show_continue - show_shoot - show_start5 - (show_stage*4))
+        _key = name if not sub or sub == "shell" else sub
+
+        show_chorus = _key in CHORUS_FRIENDLY
+        show_continue = _key in CONTINUE_FRIENDLY
+        show_start5 = _key in START5_FRIENDLY
+        show_stage = _key in STAGE_FRIENDLY
+        show_coach = _key in COACH_FRIENDLY
+        show_coach_l5 = _key in COACH_L5_FRIENDLY
+        show_shoot = _key in SHOOT_FRIENDLY
+        show_3d = _key in JANKY3D_FRIENDLY
+
+        inps = _s.get_inp_files(rec, name, sub, 14 - show_coach - show_coach_l5 - show_chorus - show_continue - show_shoot - show_start5 - (show_stage*4) - show_3d)
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game               ', launch_rom, nearby)
@@ -897,20 +902,22 @@ def build_launch_menu():
                     except ValueError:
                         pass
 
-        if show_coach or show_chorus or show_continue or show_shoot or show_start5 or show_coach_l5:
+        if show_coach or show_chorus or show_continue or show_shoot or show_start5 or show_coach_l5 or show_3d:
             _g.launchmenu.add_vertical_margin(10)
             if show_start5:
                 _g.launchmenu.add_button('↑ Launch at level 5       ', launch_rom, nearby, "dkstart5")
             if show_continue:
                 _g.launchmenu.add_button('» Launch with continues   ', launch_rom, nearby, "continue")
             if show_coach:
-                _g.launchmenu.add_button('Č Launch with coach       ', launch_rom, nearby, "dkcoach")
+                _g.launchmenu.add_button('ĉ Launch with coach       ', launch_rom, nearby, "dkcoach")
             if show_coach_l5:
-                _g.launchmenu.add_button('Č Launch with coach at L=5', launch_rom, nearby, "dkcoach,dkstart5")
+                _g.launchmenu.add_button('ĉ Launch with coach at L=5', launch_rom, nearby, "dkcoach,dkstart5")
             if show_chorus:
                 _g.launchmenu.add_button('♪ Launch with chorus      ', launch_rom, nearby, "dkchorus")
             if show_shoot:
                 _g.launchmenu.add_button('▲ Launch with shooter     ', launch_rom, nearby, "galakong")
+            if show_3d:
+                _g.launchmenu.add_button(' Launch with 3D (Janky)  ', launch_rom, nearby, "janky3d")
 
         if show_stage:
             _g.launchmenu.add_vertical_margin(10)

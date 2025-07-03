@@ -358,6 +358,11 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
                   "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00")
+JANKY3D_FRIENDLY = ("dkong", "dkongjr",
+                    "pacman", "mspacman",
+                    "a2600_dk", "a2600_dk", "a2600_dk_2", "a2600_dk_ghouls", "a2600_dk_popeye2",
+                    "a2600_dk_vector_bw", "a2600_dk_xmas_dp", "a2600_dk_dragon", "a2600_dk_new", "coleco_dk",
+                    "intv_dk", "intv_intykong")
 
 # Roms that are not fully compatible
 HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey"]
@@ -983,28 +988,29 @@ if ARCH == "win32" or ARCH == "win64":
     def _new_append_widget(self, widget):
         if self._columns > 1:
             max_elements = self._columns * self._rows
-            assert len(self._widgets) + 1 <= max_elements, \
-                'total widgets cannot be greater than columns*rows ({0} elements)'.format(max_elements)
-        try:
-            # 10yard - Use additional temporary list to optimise append --------------------------------------------------
-            if len(self._widgets) == 0:
-                self._widgets_tmp = []
-            if len(self._widgets) <= 50:
-                self._widgets.append(widget)
-            else:
-                self._widgets_tmp.append(widget)
-            if widget._title == "Close Menu":
-                self._widgets += self._widgets_tmp
-            # ------------------------------------------------------------------------------------------------------------
-        except:
+            if len(self._widgets) + 1 > max_elements:
+                raise ValueError(f'total widgets cannot be greater than columns*rows ({max_elements} elements)')
+
+        if not self._widgets:
+            self._widgets_tmp = []
+
+        if len(self._widgets) <= 50:
             self._widgets.append(widget)
+        else:
+            self._widgets_tmp.append(widget)
+
+        if widget._title == "Close Menu":
+            self._widgets.extend(self._widgets_tmp)
+            self._widgets_tmp.clear()
 
         if self._index < 0 and widget.is_selectable:
             widget.set_selected()
             self._index = len(self._widgets) - 1
+
         if self._center_content:
             self.center_content()
-        self._widgets_surface = True  # If added on execution time forces the update of the surface
+
+        self._widgets_surface = True
         self._render()
     pymenu.Menu._append_widget = _new_append_widget
 

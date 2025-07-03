@@ -1,2 +1,2 @@
 cd dkwolf
-./dkwolfrpi_addon $DKAFE_SHELL_SYSTEM -rompath $DKAFE_SHELL_ROMS $DKAFE_SHELL_MEDIA $DKAFE_SHELL_ROMS/$DKAFE_SHELL_SYSTEM/$DKAFE_SHELL_NAME.zip -nofilter $DKAFE_SHELL_VIDEO $DKAFE_SHELL_BOOT -fontpath $DKAFE_SHELL_ROOT/fonts -uifont "spleen-5x8.bdf" $DKAFE_SHELL_ROR -ui_active -nonvram_save
+./dkwolfrpi_addon $DKAFE_SHELL_SYSTEM -rompath $DKAFE_SHELL_ROMS $DKAFE_SHELL_MEDIA $DKAFE_SHELL_ROMS/$DKAFE_SHELL_SYSTEM/$DKAFE_SHELL_NAME.zip -nofilter $DKAFE_SHELL_VIDEO $DKAFE_SHELL_BOOT -fontpath $DKAFE_SHELL_ROOT/fonts -uifont "spleen-5x8.bdf" $DKAFE_SHELL_ROR -ui_active -nonvram_save $DKAFE_SHELL_PLUGIN
