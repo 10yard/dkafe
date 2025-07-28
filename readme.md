@@ -205,7 +205,7 @@ These plugins add extra features to some roms.
 
 ### DK Coach
 
-The coaching plugin can help you master the spring and barrel stages.
+My coaching plugin can help you master the spring and barrel stages.
 
 
 [![DK Coach](https://github.com/10yard/dkafe/blob/master/artwork/about/coach.png)](https://www.youtube.com/watch?v=8cUUOP9Pjis&t)
@@ -215,7 +215,7 @@ The coaching plugin can help you master the spring and barrel stages.
 
 ### DK Chorus
 
-The chorus plugin replaces the default samples and music with acapella sounds.
+My chorus plugin replaces the default samples and music with acapella sounds.
 
 [
 ![DK Chorus](https://github.com/10yard/dkafe/blob/master/artwork/about/launchmenu.png)](https://www.youtube.com/watch?v=nYCNioYWcO4)
@@ -225,7 +225,7 @@ The chorus plugin replaces the default samples and music with acapella sounds.
 
 ### DK Practice
 
-The practice plugin allows you to practice playing a particular stage to refine your skills.    
+My practice plugin allows you to practice playing a particular stage to refine your skills.    
 Typically you will be able to select from Barrels, Pies, Springs and Rivets.  There is also an option to start the game from level 5.
  
  
@@ -234,13 +234,20 @@ Typically you will be able to select from Barrels, Pies, Springs and Rivets.  Th
 
 ### DK Continue
 
-The continue plugin gives you the opportunity to continue playing when your game would normally be over.
+My continue plugin gives you the opportunity to continue playing when your game would normally be over.
 
 A continue option will appear with a 10 second countdown timer. Simply push the P1 Start button to continue your game and your score will be reset to zero.
 A tally of the total number of continues made will appear at the top of the screen.
 
 
 ![DK Continue](https://github.com/10yard/dkafe/blob/master/artwork/about/continue.png)
+
+
+## Janky 3D Plugin (Experimental)
+
+My 3D plugin adds a simple 3D effect by drawing diagonal lines extending out from coloured pixels.  
+The LUA line drawing has an impact on performance so this is an experimental feature at the moment.
+
 
 
 ## Console Add-on Pack

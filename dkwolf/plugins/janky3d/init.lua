@@ -1,6 +1,9 @@
 -- Janky 3D Plugin for MAME
 -- by Jon Wilson (10yard)
 --
+-- Adds a simple 3D effect by drawing diagonal lines extending out from coloured pixels.  
+-- LUA line drawing has a big impact on performance hence the name Janky 3D.
+--
 -- Minimum start up arguments:
 --   mame dkong -plugin janky3d
 -----------------------------------------------------------------------------------------
@@ -23,7 +26,12 @@ function janky3d.startplugin()
 	  -- System parameters are maintained in parameters.lua file
 		require "janky3d.parameters"
 		
-		mac = manager.machine
+		if tonumber(emu.app_version()) >= 0.241 then
+			mac = manager.machine
+		else
+			print("ERROR: The janky3d plugin requires MAME version 0.241 or greater.")
+		end
+
 		if mac then
 			cpu = mac.devices[":maincpu"]
 			mem = cpu.spaces["program"]
@@ -75,8 +83,8 @@ function janky3d.startplugin()
 			local w, h = _scr.width, _scr.height
 
 			-- Loop through all screen pizels
-			for y = h, 0, -1 do
-				for x = 0, w do
+			for y = h, 1, -1 do
+				for x = 1, w do
 					-- Determine index of pixel at X, Y and read A,R,G,B colour values
 					i = ((x + (w * y)) * 4) + 1
 					a, r, g, b = _byte(p, i, i + 4)
@@ -92,7 +100,7 @@ function janky3d.startplugin()
 							else
 								d = _depth_default
 							end
-							_scr:draw_line(x, y+1, x - (d * _depth_flip), y - d, c)
+							_scr:draw_line(x+1, y+1, x - (d * _depth_flip), y - d, c)							
 						end
 					end
 				end

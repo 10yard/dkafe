@@ -882,8 +882,9 @@ def build_launch_menu():
         show_coach_l5 = _key in COACH_L5_FRIENDLY
         show_shoot = _key in SHOOT_FRIENDLY
         show_3d = _key in JANKY3D_FRIENDLY
+        show_pactrain = _key in PACTRAINER_FRIENDLY
 
-        inps = _s.get_inp_files(rec, name, sub, 14 - show_coach - show_coach_l5 - show_chorus - show_continue - show_shoot - show_start5 - (show_stage*4) - show_3d)
+        inps = _s.get_inp_files(rec, name, sub, 14 - show_coach - show_coach_l5 - show_chorus - show_continue - show_shoot - show_start5 - (show_stage*4) - show_3d - show_pactrain)
         _g.launchmenu = pymenu.Menu(256, 224, _g.selected.center(26), mouse_visible=False, mouse_enabled=False, theme=dkafe_theme, onclose=close_menu)
         if '-record' not in _s.get_emulator(emu):
             _g.launchmenu.add_button('Launch game               ', launch_rom, nearby)
@@ -902,7 +903,7 @@ def build_launch_menu():
                     except ValueError:
                         pass
 
-        if show_coach or show_chorus or show_continue or show_shoot or show_start5 or show_coach_l5 or show_3d:
+        if show_coach or show_chorus or show_continue or show_shoot or show_start5 or show_coach_l5 or show_3d or show_pactrain:
             _g.launchmenu.add_vertical_margin(10)
             if show_start5:
                 _g.launchmenu.add_button('↑ Launch at level 5       ', launch_rom, nearby, "dkstart5")
@@ -918,6 +919,8 @@ def build_launch_menu():
                 _g.launchmenu.add_button('▲ Launch with shooter     ', launch_rom, nearby, "galakong")
             if show_3d:
                 _g.launchmenu.add_button(' Launch with 3D (Janky)  ', launch_rom, nearby, "janky3d")
+            if show_pactrain:
+                _g.launchmenu.add_button('… Launch with Pac-Trainer ', launch_rom, nearby, "pactrainer")
 
         if show_stage:
             _g.launchmenu.add_vertical_margin(10)
