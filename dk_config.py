@@ -358,8 +358,8 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
                   "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00")
-JANKY3D_FRIENDLY = ("dkong", "dkongjr",
-                    "pacman", "puckman", "mspacman",
+JANKY3D_FRIENDLY = ("dkong", "dkongjr", "ckong", "ckongpt2", "bigkong",
+                    "pacman", "puckman", "mspacman", "panic",
                     "a2600_dk", "a2600_dk", "a2600_dk_2", "a2600_dk_ghouls", "a2600_dk_popeye2",
                     "a2600_dk_vector_bw", "a2600_dk_xmas_dp", "a2600_dk_dragon", "a2600_dk_new", "coleco_dk",
                     "intv_intykong")
