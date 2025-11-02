@@ -1,0 +1,14 @@
+NES Console - Donkey Kong Fair Maiden Edition
+
+In this hack,  you play as Link, and he is unable to
+jump. He is not defenceless though, as he posesses a
+sword that can be used up to 3 times per level.
+
+The sword is mapped to the 2nd action button, and
+there's a handy counter that appears above the player
+whenever the sword is used, to tell you how many uses
+are left.
+
+You will need to use the sword sparingly.  Good luck!
+
+Hack Developed by RussianMan

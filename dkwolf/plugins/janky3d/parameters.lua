@@ -9,6 +9,6 @@ TAB["a7800"]             = {  1,    {0xFF000000, 0xFFFFFFFF},              4,   
 TAB["a7800|106825279"]   = {  1,    {0xFF000000, 0xFFFFFFFF, 0xFF79B4FF},  4,       0, {},                        0, {} }
 TAB["nes"]               = {  1,    {0xFF000000, 0xFFFFFFFF},              4,       8, {0xFFB14E8C},              3, {0xFF7DD3DB} }
 TAB["coleco|1014438284"] = {  1,    {0xFF000000},                          4,       8, {},                        2, {0xFFFFFFFF} }
-TAB["dkong"]             = { -1,    {0xFF000000},                          4,       8, {0xFFEC3194},              3, {0xFFFEFCFF, 0xFF14F3FF} }
+TAB["dkong"]             = { -1,    {0xFF000000},                          1,       8, {0xFFEC3194},              3, {0xFF14F3FF} }
 TAB["pacman"]            = { -1,    {0xFF000000},                          4,       8, {0xFF2121FF},              2, {0xFFFFB8AE} }
 

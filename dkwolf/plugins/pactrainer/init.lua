@@ -49,12 +49,12 @@
 --Minimum start up arguments:
 --    mame pacman -plugin pactrainer
 --
---Compatible with all MAME versions from 0.226 upwards.
+--Compatible with all MAME versions from at least 0.196
 --Works with "pacman" and "puckman" roms only.
 -----------------------------------------------------------------------------------------
 local exports = {
 	name = "pactrainer",
-	version = "0.1j",
+	version = "0.1n",
 	description = "Pac-Man Pattern Trainer",
 	license = "GNU GPLv3",
 	author = { name = "Jon Wilson (10yard)" } }
@@ -67,13 +67,17 @@ function pactrainer.startplugin()
 	local LAG_PIXELS_DEFAULT = 5
 
 	local mac, cpu, mem, scr
+	local plugin_path
 	local patx, paty, pacx, pacy, oldpacx, oldpacy, lagx, lagy
 	local mode, level, patid, patgroup, state, pills, oldstate, folder, first
 	local seq, switch = 0, 0
-	local pattern, group = {}, {}
+	local pattern, group, info = {}, {}, {}
 	local loaded, valid, failed, adjusted, lagging, ignore, freestyle, perfect = false, false, false, false, false, false, false, false
 	local lag_pixels = LAG_PIXELS_DEFAULT
 	
+	info["pacstrats"] = "Uses only 3 patterns to clear boards 1 through 255."
+	info["killerclown"] = "Uses 5 similar patterns that should be easier to learn."
+	info["perfect_nrc"] = "An advanced pattern set for attaining a perfect score."
 	
 	function get_next(table, id)
 		local found = false
@@ -89,12 +93,22 @@ function pactrainer.startplugin()
 	end
 	
 	function pactrainer_initialize()
-		mac = manager.machine
+		if type(manager.machine) == "userdata" then
+			mac = manager.machine
+			plugin_path = manager.plugins["pactrainer"].directory
+		else
+			mac = manager:machine()
+			plugin_path = manager:options().entries["pluginspath"]:value()
+		end	
+		plugin_path = "plugins/pactrainer"
 		if mac then
 			if emu.romname() == "pacman" or emu.romname() == "puckman" then
 				cpu = mac.devices[":maincpu"]
 				mem = cpu.spaces["program"]
-				scr = mac.screens[":screen"]								
+				scr = mac.screens[":screen"]
+				if not plugin_path then
+					plugin_path = "plugins/pactrainer"
+				end
 			else
 				print("The Pac-Man trainer works only with 'pacman' and 'puckman' roms.")
 			end
@@ -106,7 +120,7 @@ function pactrainer.startplugin()
 				
 		-- look for the active pattern folder
 		if not folder then
-			file = io.open("plugins/pactrainer/patterns/active.dat", "r")
+			file = io.open(plugin_path.."/patterns/active.dat", "r")
 			if file then
 				folder = file:read("*all")
 				file:close()
@@ -123,7 +137,7 @@ function pactrainer.startplugin()
 		group = {}
 		for l=1, 256 do
 			for g=1, 21 do
-				file = io.open("plugins/pactrainer/patterns/"..folder.."/"..tostring(l).."_"..tostring(g)..".dat", "r")
+				file = io.open(plugin_path.."/patterns/"..folder.."/"..tostring(l).."_"..tostring(g)..".dat", "r")
 				if file then
 					valid = true
 					-- store the starting level and group associated with the level
@@ -152,20 +166,23 @@ function pactrainer.startplugin()
 	
 	function pattern_toggle()
 		-- Check for pattern change when P2 key press is detected
-		if mode == 1 and state == 0 then
-			mac:popmessage("Using '"..string.upper(folder).."' patterns.  Push 'P2' to toggle.")		
+		if mode == 1 then
+			if info[folder] then
+				mac:popmessage(string.upper(folder).." patterns:\n"..info[folder].."\n(Push P2 to toggle)")		
+			else
+				mac:popmessage(string.upper(folder).." patterns\n(Push P2 to toggle)")		
+			end
 		end
-		
 		if scr:frame_number() > switch + 30 and string.sub(integer_to_binary(mem:read_u8(0x5040)), 2, 2) == "0" then
 			folder = get_next(SETS, folder)
 			pactrainer_patterns()
 			if not(mode == 1 and state == 0) then
-				mac:popmessage("Switched to '"..string.upper(folder).."' patterns.  Active from next level start.")
+				mac:popmessage(string.upper(folder).." patterns will be active at next level start.")
 			end
 			switch = scr:frame_number()
 			
 			-- save as default
-			file = io.open("plugins/pactrainer/patterns/active.dat", "w")
+			file = io.open(plugin_path.."/patterns/active.dat", "w")
 			if file then
 				file:write(folder)
 				file:close()

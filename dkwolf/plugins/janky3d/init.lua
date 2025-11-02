@@ -82,7 +82,7 @@ function janky3d.startplugin()
 			local a, r, g, b
 			local w, h = _scr.width, _scr.height
 
-			-- Loop through all screen pizels
+			-- Loop through all screen pixels
 			for y = h, 1, -1 do
 				for x = 1, w do
 					-- Determine index of pixel at X, Y and read A,R,G,B colour values
@@ -100,7 +100,9 @@ function janky3d.startplugin()
 							else
 								d = _depth_default
 							end
-							_scr:draw_line(x+1, y+1, x - (d * _depth_flip), y - d, c)							
+							if d > 0 then
+								_scr:draw_line(x+1, y+1, x - (d * _depth_flip), y - d, c)							
+							end
 						end
 					end
 				end

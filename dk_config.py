@@ -831,6 +831,7 @@ GAME_MEDIA = {
     "spectrum_ape_escape":"-cass",
     "spectrum_dk3_micro_vs":"-cass",
     "spectrum_dk_reloaded":"-cass",
+    "spectrum_dk_remake":"-cass",
     "spectrum_baby_monkey":"-cass",
     "spectrum_eskimo_eddie":"-cass",
     "spectrum_kongs_revenge":"-cass",

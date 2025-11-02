@@ -1,0 +1,23 @@
+ZX Spectrum 48K - Donkey Kong Remake
+
+This is the ultimate Speccy conversion of Donkey Kong,
+head and shoulders above anything anyone else has 
+attempted, and if you're a fan of the game then you'll
+be very pleased to get your hands on this and fire up 
+onto your Speccy.
+
+The game runs smoothly as butter, too, as you leap 
+over each barrel and climb up each ladder, aiming to 
+rescue your fair lady at the top of the screen. 
+The sprite work and animations are excellent and are 
+joyous to look at.
+
+Each level has been excellently designed to match that
+of the arcade, and no stone is left unturned when it 
+comes to the details; even that annoying bouncing 
+spring thing makes an appearance in level 3 to keep 
+the game authentic. The sound is also on par with the 
+arcade, with the beeper used extremely well to emulate
+those sounds.
+
+Developed By Artonapilos
