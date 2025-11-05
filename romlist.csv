@@ -106,6 +106,7 @@ ckongpt2,ckongpt2_rivets,CK Rivets,CK Rivets Only,9999,1,2,9000,10000,25000,4000
 ckongpt2,ckongpt2_l00,CK Zero,CK Zero Sense,9999,1,2,9000,10000,25000,40000
 congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,3000,,,
 dkong,dkongl05,DK Skip,DK Skip Start,9999,1,2,,,,
+dkong,dkongattract,DK Attract,DK Attract Mode Play,9999,1,2,32000,,,
 dkong,dkongwobble,WobbleKong,DK Wobble Kong,9999,1,2,38000,10000,20000,40000
 dkong,dkongend4,DK End L4,DK Ends at L=04,9999,1,2,61000,10000,25000,40000
 dkong,dkongtrn,DK Trainer,,9999,1,2,,,,

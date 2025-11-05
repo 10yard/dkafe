@@ -99,6 +99,7 @@ Credit is given to the original authors below.
  - 2NUT Kong
  - NoLuck Kong
  - Konkey Dong
+ - Attract Mode Play Only
  - Donkey Kong Barrels, Pies, Springs, Rivets
  - Donkey Kong Killscreen
  - Donkey Kong Coach
