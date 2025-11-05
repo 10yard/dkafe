@@ -5,7 +5,7 @@ nes_dk,shell,NESDK,NES: Donkey Kong (Original),126,,,0,2,4,8
 nes_dk_icecream,shell,Ice,NES: Ice Cream!,127,,,0,2,4,8
 nes_dk_kanakong,shell,KanaKong,NES: KanaKong,128,,,87000,2,4,8
 nes_dk_boosette,shell,Boo,NES: Boosette,129,,,88000,2,4,8
-nes_dk_3,shell,DK3,NES: Donkey Kong 3,130,,,89000,2,4,8
+nes_dk_retro_vs_golmonger,shell,RvG,NES: Retro vs Golmonger DK Edition,130,,,89000,2,4,8
 nes_dk_redux,shell,Redux,NES: Donkey Kong Redux,131,,,90000,2,4,8
 nes_dk_junior,shell,JR,NES: Donkey Kong Junior,132,,,91000,2,4,8
 nes_crazykong,shell,CK,NES: Crazy Kong,133,,,92000,2,4,8
@@ -134,55 +134,56 @@ jupace_krazykong,shell,JUP Krazy,JUP: Kong,280,,,214000,2,4,8
 lcd_gckong,shell,LCD Gakken,LCD: Gakken Crazy Kong,282,,,215000,2,4,8
 pc_lowresnx_denis_kogne,shell,NX D.Kogne,NX: Denis Kogne,285,,,216000,2,4,8
 nes_dk_jr_rescue_kuck,shell,NES Rescue,NES: Donkey Kong Jr Rescue Kuck,286,,,217000,2,4,8
-nes_dk_badly_drawn,shell,NES Badly,NES: Badly Drawn Donkey Kong,287,,,218000,2,4,8
-nes_dk_zelda12,shell,NES Zelda12,NES: ZeldaKong12 (Tarin),289,,,219000,2,4,8
-pc_pc88_dk3,shell,PC88 DK3 Counter,PC88: DK3 Great Counter Attack,291,,,220000,2,4,8
-dos_aldo3,shell,DOS Aldo3,DOS: Aldo's Assault,292,,,221000,2,4,8
-dos_davikong,shell,David's,DOS: David's Kong,294,,,222000,2,4,8
-gbcolor_dk_gw_gallery3,shell,GBC JR,GBC: G&W Gallery JR,296,,,223000,2,4,8
-gbcolor_dk_gw_gallery2,shell,GBC DK,GBC: G&W Gallery DK,298,,,224000,2,4,8
-spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,300,,,225000,2,4,8
-loggerr2,loggerr2,Log R2,Logger R2 (Squirrel),301,,,226000,2,4,8
-logger,logger,Log R1,Logger R1 (Big Bird),303,,,227000,2,4,8
-pc_trs80_killergorilla,shell,TRS80 KG,TRS80: Killer Gorilla,304,,,228000,2,4,8
-oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,305,,,229000,2,4,8
-pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,306,,,230000,2,4,8
-pacman,,Pac-Man,,307,3,4,231000,2,4,8
-mspacman,,MsPac,Ms. Pac-Man,308,3,4,232000,2,4,8
-mspacmat,,Attack,Ms. Pac-Attack,310,3,4,233000,2,4,8
-pacplus,,PacPlus,Pac-Man Plus,311,3,4,234000,2,4,8
-pacnpal,,Pac&Pal,Pac & Pal,313,3,4,235000,2,4,8
-jrpacman,,JrPac,Jr. Pac-Man,315,3,4,236000,2,4,8
-superpacm,,SuperPac,Super Pac-Man,317,3,4,237000,2,4,8
-lnc,,Lock&Chase,Lock n Chase,319,3,4,238000,2,4,8
-mtrap,,MouseTrap,Mouse Trap,321,3,4,239000,2,4,8
-ladybug,,LadyBug,Lady Bug,323,3,4,240000,2,4,8
-eyes,,Eyes,,324,3,4,241000,2,4,8
-mpatrol,,MoonPatrol,Moon Patrol,327,3,4,242000,2,4,8
-amidar,,Amidar,,328,3,4,243000,2,4,8
-qix,,Qix,,330,3,4,244000,2,4,8
-rallyx,,RallyX,Rally-X,331,3,4,245000,2,4,8
-congo,,CongoBongo,Congo Bongo,332,3,4,246000,2,4,8
-qbert,,Q*Bert,,334,3,4,247000,2,4,8
-popeye,,Popeye,,336,3,4,248000,2,4,8
-rbtapper,,Tapper,Tapper (Root Beer),338,3,4,249000,2,4,8
-galaga,,Galaga,,340,3,4,250000,2,4,8
-galaxian,,Galaxian,,342,3,4,251000,2,4,8
-gaplus,,Gaplus,,344,3,4,252000,2,4,8
-scramble,,Scramble,,346,3,4,253000,2,4,8
-mooncrst,,MoonCresta,Moon Cresta,348,3,4,254000,2,4,8
-mrtnt,,MrTNT,Mr. TNT,350,3,4,255000,2,4,8
-digdug,,DigDug,Dig Dug,352,3,4,256000,2,4,8
-panic,,SpacePanic,Space Panic,353,3,4,257000,2,4,8
-frogger,,Frogger,,356,3,4,258000,2,4,8
-btimem,,BurgerTime,Burger Time,358,3,4,259000,2,4,8
-nibbler,,Nibbler,,361,3,4,260000,2,4,8
-pengo,,Pengo,,363,3,4,261000,2,4,8
-mappy,,Mappy,,364,3,4,262000,2,4,8
-mrdobl,,MrDo,Mr. Do!,365,3,4,263000,2,4,8
-invaders,,Invaders,Space Invaders,366,3,4,264000,2,4,8
-bombjack,,BombJack,Bomb Jack,367,3,4,265000,2,4,8
-10yardj,,10Yard,10 Yard Fight,9999,3,4,230000,2,4,8
+nes_spooky_kong,shell,Spooky,NES: Spooky Kong,287,,,218000,2,4,8
+nes_dk_zelda12,shell,Zelda12,NES: ZeldaKong12 (Tarin),288,,,219000,2,4,8
+nes_dk_badly_drawn,shell,NES Bad,NES: Badly Drawn Donkey Kong,290,,,220000,2,4,8
+pc_pc88_dk3,shell,PC88 DK3 Counter,PC88: DK3 Great Counter Attack,291,,,221000,2,4,8
+dos_aldo3,shell,DOS Aldo3,DOS: Aldo's Assault,292,,,222000,2,4,8
+dos_davikong,shell,David's,DOS: David's Kong,294,,,223000,2,4,8
+gbcolor_dk_gw_gallery3,shell,GBC JR,GBC: G&W Gallery JR,296,,,224000,2,4,8
+gbcolor_dk_gw_gallery2,shell,GBC DK,GBC: G&W Gallery DK,298,,,225000,2,4,8
+spectrum_wallykong,shell,Wally,SPEC48K: Wally Kong,300,,,226000,2,4,8
+loggerr2,loggerr2,Log R2,Logger R2 (Squirrel),301,,,227000,2,4,8
+logger,logger,Log R1,Logger R1 (Big Bird),303,,,228000,2,4,8
+pc_trs80_killergorilla,shell,TRS80 KG,TRS80: Killer Gorilla,304,,,229000,2,4,8
+oric1_honeykong,shell,ORIC Honey Kong,ORIC: Honey Kong,305,,,230000,2,4,8
+pc_dk_aa,shell,PC DKAA,PC: Donkey Kong Attacks,306,,,231000,2,4,8
+pacman,,Pac-Man,,307,3,4,232000,2,4,8
+mspacman,,MsPac,Ms. Pac-Man,308,3,4,233000,2,4,8
+mspacmat,,Attack,Ms. Pac-Attack,310,3,4,234000,2,4,8
+pacplus,,PacPlus,Pac-Man Plus,311,3,4,235000,2,4,8
+pacnpal,,Pac&Pal,Pac & Pal,313,3,4,236000,2,4,8
+jrpacman,,JrPac,Jr. Pac-Man,315,3,4,237000,2,4,8
+superpacm,,SuperPac,Super Pac-Man,317,3,4,238000,2,4,8
+lnc,,Lock&Chase,Lock n Chase,319,3,4,239000,2,4,8
+mtrap,,MouseTrap,Mouse Trap,321,3,4,240000,2,4,8
+ladybug,,LadyBug,Lady Bug,323,3,4,241000,2,4,8
+eyes,,Eyes,,324,3,4,242000,2,4,8
+mpatrol,,MoonPatrol,Moon Patrol,327,3,4,243000,2,4,8
+amidar,,Amidar,,328,3,4,244000,2,4,8
+qix,,Qix,,330,3,4,245000,2,4,8
+rallyx,,RallyX,Rally-X,331,3,4,246000,2,4,8
+congo,,CongoBongo,Congo Bongo,332,3,4,247000,2,4,8
+qbert,,Q*Bert,,334,3,4,248000,2,4,8
+popeye,,Popeye,,336,3,4,249000,2,4,8
+rbtapper,,Tapper,Tapper (Root Beer),338,3,4,250000,2,4,8
+galaga,,Galaga,,340,3,4,251000,2,4,8
+galaxian,,Galaxian,,342,3,4,252000,2,4,8
+gaplus,,Gaplus,,344,3,4,253000,2,4,8
+scramble,,Scramble,,346,3,4,254000,2,4,8
+mooncrst,,MoonCresta,Moon Cresta,348,3,4,255000,2,4,8
+mrtnt,,MrTNT,Mr. TNT,350,3,4,256000,2,4,8
+digdug,,DigDug,Dig Dug,352,3,4,257000,2,4,8
+panic,,SpacePanic,Space Panic,353,3,4,258000,2,4,8
+frogger,,Frogger,,356,3,4,259000,2,4,8
+btimem,,BurgerTime,Burger Time,358,3,4,260000,2,4,8
+nibbler,,Nibbler,,361,3,4,261000,2,4,8
+pengo,,Pengo,,363,3,4,262000,2,4,8
+mappy,,Mappy,,364,3,4,263000,2,4,8
+mrdobl,,MrDo,Mr. Do!,365,3,4,264000,2,4,8
+invaders,,Invaders,Space Invaders,366,3,4,265000,2,4,8
+bombjack,,BombJack,Bomb Jack,367,3,4,230000,2,4,8
+10yardj,,10Yard,10 Yard Fight,9999,3,4,231000,2,4,8
 a2600_alien_1979,shell,Alien,2600: Alien 1979,9999,,,86000,2,4,8
 a2600_artificial_lifeform,shell,Artifical Lifeform,2600: Artifical Lifeform,9999,,,86000,2,4,8
 a2600_big_mario,shell,Big Mario,2600: Big Mario,9999,,,86000,2,4,8
@@ -289,12 +290,14 @@ mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,9999,3,4,230000,2,4,8
 mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,86000,2,4,8
 nes_clintonkong,shell,ClintonKong,NES: Clinton Kong,9999,,,86000,2,4,8
 nes_dendymans_revenge,shell,Dendyman,NES: Dendyman's Revenge,9999,,,86000,2,4,8
+nes_dk_3,shell,DK3,NES: Donkey Kong 3,9999,,,86000,2,4,8
 nes_dk_3_cincinnati_zoo,shell,DK3 Zoo,NES: Donkey Kong 3 Zoo Edition,9999,,,86000,2,4,8
 nes_dk_arrietty,shell,DK Arietty,NES: Arrietty World,9999,,,86000,2,4,8
 nes_dk_barrels,shell,Barrels Only,NES: Donkey Kong Barrels Only,9999,,,86000,2,4,8
 nes_dk_cure,shell,DK Cure,NES: Donkey Kong Cure,9999,,,86000,2,4,8
 nes_dk_freddy_jason,shell,DK Freddy vs Jason,NES: Freddy vs Jason,9999,,,86000,2,4,8
 nes_dk_godmode,shell,God,NES: Donkey Kong God Mode,9999,,,86000,2,4,8
+nes_dk_golmonger,shell,Golmonger,NES: Golmonger DK Edition,9999,,,86000,2,4,8
 nes_dk_japan,shell,DK Japan,NES: Donkey Kong Japan,9999,,,86000,2,4,8
 nes_dk_jr_juancho,shell,JR Juancho,NES: Donkey Kong Jr. Juancho,9999,,,86000,2,4,8
 nes_dk_jr_math,shell,DK JR Math,NES: Donkey Kong Junior Math,9999,,,86000,2,4,8
@@ -386,9 +389,9 @@ sg1000_congobongo,shell,CongoBongo,SG1000: Congo Bongo,9999,,,86000,2,4,8
 sg1000_dk,shell,DK,SG1000: Donkey Kong (Original),9999,,,86000,2,4,8
 sg1000_dkjr,shell,DK JR,SG1000: Donkey Kong Junior,9999,,,86000,2,4,8
 snes_dk_jumpman_returns,shell,Jumpman Returns,SNES: DK Jumpman Returns,9999,,,86000,2,4,8
+snes_dk_junior_hack,shell,DK Junior,SNES: DK Junior A&S Hack,9999,,,86000,2,4,8
 snes_dk2_rise_of_jumpman,shell,Rise of Jumpman,SNES: DK2 Rise of Jumpman,9999,,,86000,2,4,8
 snes_dk3_another_rise,shell,Another Rise,SNES: DK3 Another Rise,9999,,,86000,2,4,8
-snes_dk_junior_hack,shell,DK Junior,SNES: DK Junior A&S Hack,9999,,,86000,2,4,8
 spectrum_ape_escape,shell,ApeEscape,SPEC48K: Ape Escape,9999,,,86000,2,4,8
 spectrum_baby_monkey,shell,Baby Monkey Alba,SPEC48K: Baby Monkey Alba,9999,,,86000,2,4,8
 spectrum_crazycong,shell,Crazy Cong,SPEC48K: Crazy Cong,9999,,,86000,2,4,8
