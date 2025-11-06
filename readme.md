@@ -618,11 +618,29 @@ Button numbers 0-19 relate to the first joystick and 20-39 relate to the second 
 USE_JOYSTICK = 1
 BUTTON_JUMP = 0
 BUTTON_ACTION = 1
-BUTTON_P1 = 9
-BUTTON_P2 = 29
+BUTTON_P1 = 2
+BUTTON_P2 = 3
 BUTTON_EXIT = 6
 BUTTON_COIN = 7
 ```
+
+You can get button numbers from any connected controller on Windows using the "Setup USB Game Controllers" utility in Control Panel.  
+Click on the "Properties" for you controller and then you will see button numbers light up when you press them.  
+You will need to subtract 1 from that number shown in the Windows test since DKAFE starts at 0 and Windows starts at 1.
+
+For example,  the common buttons available to DKAFE from the Xbox One controller are as follows.
+
+Button 0: A
+Button 1: B
+Button 2: X
+Button 3: Y
+Button 4: Left Bumper
+Button 5: Right Bumper
+Button 6: View
+Button 7: Menu
+Button 8: Left Thumb
+Button 9: Right Thumb
+
 
 #### GPIO Inputs
 
