@@ -683,7 +683,7 @@ Donkey Kong rom hacks:
   Mike Mika & Clay Cowgill,
   Kirai Shouen & 125scratch,
   Don Hodges, Tim Appleton, 
-  Vic20 George,
+  Vic20 George
 
 Donkey Kong hack resource:
   furrykef
@@ -692,16 +692,16 @@ Feedback and feature ideas:
   Superjustinbros
 
 Playlist music:
-  LeviR.star's Music
-  Nintega Dario
-  MyNameIsBanks
-  SanHolo
-  MotionRide Music
-  Buckner & Garcia
-  Sascha Zeidler
-  Mitchel Gatzke
-  Chiptunema
-  RetroKid
+  LeviR.star's Music,
+  Nintega Dario,
+  MyNameIsBanks,
+  SanHolo,
+  MotionRide Music,
+  Buckner & Garcia,
+  Sascha Zeidler,
+  Mitchel Gatzke,
+  Chiptunema,
+  RetroKid and Pringles
 """
 
 # Console Addon Specific

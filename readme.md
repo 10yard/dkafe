@@ -19,7 +19,7 @@ The latest releases are available to download from below.  Refer to the [How to 
 | Download Link                                                                                                        | Version | Operating System                           |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------|
 | [dkafe_win64_binary_v0.76.zip](https://github.com/10yard/dkafe/releases/download/v0.76/dkafe_win64_binary_v0.76.zip) | 0.76    | Windows 64 bit (x64) systems (Recommended) |
-| [dkafe_win32_binary_v0.75.zip](https://github.com/10yard/dkafe/releases/download/v0.75/dkafe_win32_binary_v0.75.zip) | 0.75    | Windows 32 bit (x86) systems               |
+| [dkafe_win32_binary_v0.76.zip](https://github.com/10yard/dkafe/releases/download/v0.76/dkafe_win32_binary_v0.76.zip) | 0.76    | Windows 32 bit (x86) systems               |
 | [dkafe_rpi4_image_v0.75.gz](https://github.com/10yard/dkafe/releases/download/v0.75/dkafe_rpi4_image_v0.75.gz)       | 0.75    | Raspberry Pi 4 and 400 only                |
 | [dkafe_winxp_binary_v0.67.zip](https://github.com/10yard/dkafe/releases/download/v0.67/dkafe_winxp_binary_v0.67.zip) | 0.67    | Windows XP (No longer maintained)          |
 
@@ -795,6 +795,9 @@ https://www.youtube.com/watch?v=TnNTVwKzs0o
 
 Donkey Kong Country Synthwave Remix by RetroKid
 https://www.youtube.com/watch?v=_CnkT5VcVhI
+
+Donkey Kong/Junior Smash Remix 64 by Pringles
+https://www.youtube.com/watch?v=8_GX3iviLYU&list=RD8_GX3iviLYU
 
 ![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
 
