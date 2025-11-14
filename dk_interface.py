@@ -11,7 +11,7 @@ MAME Interface routines
 """
 import os
 from dk_config import ROOT_DIR, AWARDS
-from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD, HUD_UNFRIENDLY, ARCADE_OTHER
+from dk_config import SHOW_AWARD_TARGETS, SHOW_AWARD_PROGRESS, SHOW_HUD, HUD_UNFRIENDLY, TARGETS_UNFRIENDLY, ARCADE_OTHER
 
 COMPETE_FILE = os.path.join(ROOT_DIR, "interface", "compete.dat")
 
@@ -40,7 +40,7 @@ def lua_interface(emulator=None, rom=None, subfolder=None, score3=None, score2=N
         os.environ["DATA_SUBFOLDER"] = subfolder
 
         # Are we going to show the awards targets and progress while playing the game
-        os.environ["DATA_SHOW_AWARD_TARGETS"] = str(SHOW_AWARD_TARGETS)
+        os.environ["DATA_SHOW_AWARD_TARGETS"] = "0" if (subfolder in TARGETS_UNFRIENDLY) else str(SHOW_AWARD_TARGETS)
         os.environ["DATA_SHOW_AWARD_PROGRESS"] = str(SHOW_AWARD_PROGRESS)
         os.environ["DATA_SHOW_HUD"] = "0" if (subfolder in HUD_UNFRIENDLY or rom == "dkongjr") else str(SHOW_HUD)
 

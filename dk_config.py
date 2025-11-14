@@ -369,7 +369,8 @@ JANKY3D_FRIENDLY = ("dkong", "dkongjr", "ckong", "ckongpt2", "bigkong",
 PACTRAINER_FRIENDLY = ("pacman", "puckman")
 
 # Roms that are not fully compatible
-HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey"]
+HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey", "dkongcam"]
+TARGETS_UNFRIENDLY = ["dkongcam"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
 AUTOSTART_UNFRIENDLY = ["dkongduel", "dkongchorus"]
 SKIPINTRO_UNFRIENDLY = ["dkongchorus"]
