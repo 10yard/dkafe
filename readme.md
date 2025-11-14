@@ -93,6 +93,7 @@ Credit is given to the original authors below.
  - DK Lava Panic!
  - DK Who and the Daleks
  - Donkey Kong Insanity
+ - DK Cam
  - OctoMonkey
  - Half Kong
  - Quarter Kong
@@ -354,8 +355,8 @@ Steps to install the default frontend are as follows.  Also refer to [How to set
 	 Hide the Pi desktop?                     (Recommend Y)
 	 Hide the Pi mouse cursor?                (Recommend Y)
 	 Use headphone jack for audio?
-	 Optimise framebuffer    (Recommend Y for HDMI and VGA)
-	 Force 640x480 mode on boot?
+	 Optimise framebuffer           (Recommend Y for HDMI and VGA)
+	 Force 640x480 mode on boot?    (Recommend Y for HDMI and VGA)
 	 Map GPIO to keyboard input controls?     (Recommend Y)
 	 Disable non-essential Services?          (Recommend Y)
 	 Disable networking services (WiFi, SSH)?

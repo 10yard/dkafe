@@ -250,6 +250,10 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 if os.path.exists(rom_source):
                     copy(rom_source, rom_target)
 
+            # Does the rom have a custom bezel?  The config for these is stored with the bezel artwork.
+            if subfolder in CUSTOM_BEZELS:
+                launch_command += f' -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)}'
+
             # Does the rom have a dedicated plugin?
             for plugin_folder, plugin in PLUGINS:
                 if plugin_folder == subfolder:

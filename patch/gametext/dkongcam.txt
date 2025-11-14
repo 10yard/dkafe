@@ -1,0 +1,10 @@
+DK Cam
+
+The hack provides a new viewpoint of the game. 
+The display is adapted to place Jumpman (or DK) in the
+centre of the gameplay as he is followed by a camera.
+
+The camera zooms in on the action when Jumpman is
+jumping or hammering.
+
+Hack Developed by Jon Wilson (10yard)

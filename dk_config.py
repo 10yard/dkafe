@@ -278,6 +278,7 @@ PLUGINS = (
     ("dkongallen", "allenkong"),
     ("dkongchorus", "dkchorus"),
     ("dkonginsanity", "dkinsanity"),
+    ("dkongcam", "dkcam"),
     ("ckongpt2_insanity", "dkinsanity"),
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
@@ -323,6 +324,8 @@ PLUGINS = (
 
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
 PARAMETER_PLUGINS = "dkongend1", "dkongend3", "dkonglava1", "dkonglava2", "dkonglava3", "dkonglava4"
+
+CUSTOM_BEZELS = "dkongcam",
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong")

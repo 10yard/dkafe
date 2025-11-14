@@ -17,18 +17,19 @@ o888ooo88   o888o o888o  o88o  o888o  o888o        o888ooo8888
 2. Copy dkong.zip to the /boot partition of the SD card.
 3. Boot your Raspberry Pi with card inserted.
 4. The DKAFE install script will ask the following questions. 
-	 Launch DKAFE on boot?                        (Recommend Y)
-	 Hide the Pi taskbar?                         (Recommend Y)
-	 Hide the Pi desktop?                         (Recommend Y)
-	 Hide the Pi mouse cursor?                    (Recommend Y)
-	 Use headphone jack for audio?                (Recommend Y)
 	 Rotate the display?
-     Optimise framebuffer (recommend for HDMI and VGA displays)   
-	 Force 640x480 mode on boot?     (for scan line generators)
-	 Map GPIO to keyboard input controls? (for arcade controls)
-	 Disable non-essential Services?              (Recommend Y)
+	 Launch DKAFE on boot?                    (Recommend Y)
+	 Hide startup messages?                   (Recommend Y)
+	 Hide the Pi taskbar?                     (Recommend Y)
+	 Hide the Pi desktop?                     (Recommend Y)
+	 Hide the Pi mouse cursor?                (Recommend Y)
+	 Use headphone jack for audio?
+	 Optimise framebuffer           (Recommend Y for HDMI and VGA)
+	 Force 640x480 mode on boot?    (Recommend Y for HDMI and VGA)
+	 Map GPIO to keyboard input controls?     (Recommend Y)
+	 Disable non-essential Services?          (Recommend Y)
 	 Disable networking services (WiFi, SSH)?
-	 Reboot now?                                  (Recommend Y)	 
+	 Reboot now?	 
 
 
 ### Manual setup
