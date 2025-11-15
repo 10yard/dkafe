@@ -1,20 +1,20 @@
--- DK CAM Plugin for MAME
+-- DK TV Plugin for MAME
 -- Jumpman's position remains central with camera zooms for jumping or hammering.
 -- by Jon Wilson (10yard)
 --
 -- Minimum start up arguments:
---   mame dkong -plugin dkcam
+--   mame dkong -plugin dktv
 -----------------------------------------------------------------------------------------
 local exports = {
-	name = "dkcam",
+	name = "dktv",
 	version = "0.1",
-	description = "DK CAM",
+	description = "DK TV",
 	license = "GNU GPLv3",
 	author = { name = "Jon Wilson (10yard)" } }
 
-local dkcam = exports
+local dktv = exports
 
-function dkcam.startplugin()
+function dktv.startplugin()
 	local mame_version, mac, cpu, mem, scr	
 	local x, y, h, mode1, mode2, zoom_level
 	local zoom_default = 1.25
@@ -23,7 +23,7 @@ function dkcam.startplugin()
 	local show_score, complete
 	local characters = "0123456789       ABCDEFGHIJKLMNOPQRSTUVWXYZ@-"
 
-	function dkcam_initialize()
+	function dktv_initialize()
 		mame_version = tonumber(emu.app_version())
 		mac = manager.machine
 
@@ -34,7 +34,7 @@ function dkcam.startplugin()
 			con = scr.container			
 			
 			-- Update title
-			write_rom_message(0x36b4, "  DK CAM  ")
+			write_rom_message(0x36b4, "  DK TV   ")
 			
 			-- Update how high text
 			--write_rom_message(0x36ce, "SMILE FOR THE CAMERA  ")					-- Mod: Update how high text
@@ -51,7 +51,7 @@ function dkcam.startplugin()
 		end
 	end
 
-	function dkcam_main()
+	function dktv_main()
 		if con then
 			mode1, mode2 = mem:read_u8(0x6005), mem:read_u8(0x600a)
 			x, y = 0, 0
@@ -157,11 +157,11 @@ function dkcam.startplugin()
 	end
 			
 	emu.register_start(function()
-		dkcam_initialize()
+		dktv_initialize()
 	end)
 	
 	emu.register_frame_done(function() 
-		dkcam_main() 
+		dktv_main() 
 	end)
 		
 end

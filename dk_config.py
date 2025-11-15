@@ -278,7 +278,7 @@ PLUGINS = (
     ("dkongallen", "allenkong"),
     ("dkongchorus", "dkchorus"),
     ("dkonginsanity", "dkinsanity"),
-    ("dkongcam", "dkcam"),
+    ("dkongtv", "dktv"),
     ("ckongpt2_insanity", "dkinsanity"),
     ("dkongcontinue", "continue"),
     ("dkongjrcontinue", "continue"),
@@ -325,7 +325,7 @@ PLUGINS = (
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
 PARAMETER_PLUGINS = "dkongend1", "dkongend3", "dkonglava1", "dkonglava2", "dkonglava3", "dkonglava4"
 
-CUSTOM_BEZELS = "dkongcam",
+CUSTOM_BEZELS = "dkongtv",
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong")
@@ -361,16 +361,12 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
                   "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00")
-JANKY3D_FRIENDLY = ("dkong", "dkongjr", "ckong", "ckongpt2", "bigkong",
-                    "pacman", "puckman", "mspacman", "panic",
-                    "a2600_dk", "a2600_dk", "a2600_dk_2", "a2600_dk_ghouls", "a2600_dk_popeye2",
-                    "a2600_dk_vector_bw", "a2600_dk_xmas_dp", "a2600_dk_dragon", "a2600_dk_new", "coleco_dk",
-                    "intv_intykong")
+DKTV_FRIENDLY = ("dkong", "dkongwizardry")
 PACTRAINER_FRIENDLY = ("pacman", "puckman")
 
 # Roms that are not fully compatible
-HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey", "dkongcam"]
-TARGETS_UNFRIENDLY = ["dkongcam"]
+HUD_UNFRIENDLY = ["dkongduel", "dkongkonkey", "dkongtv"]
+TARGETS_UNFRIENDLY = ["dkongtv"]
 HISCORE_UNFRIENDLY = ["dkongd2k"]
 AUTOSTART_UNFRIENDLY = ["dkongduel", "dkongchorus"]
 SKIPINTRO_UNFRIENDLY = ["dkongchorus"]

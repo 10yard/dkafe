@@ -250,10 +250,6 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 if os.path.exists(rom_source):
                     copy(rom_source, rom_target)
 
-            # Does the rom have a custom bezel?  The config for these is stored with the bezel artwork.
-            if subfolder in CUSTOM_BEZELS:
-                launch_command += f' -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)}'
-
             # Does the rom have a dedicated plugin?
             for plugin_folder, plugin in PLUGINS:
                 if plugin_folder == subfolder:
@@ -276,6 +272,13 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
 
     else:
         launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(ROM_DIR))
+
+    # Does the rom have a custom bezel?  The config for these is stored with the bezel artwork.
+    if subfolder in CUSTOM_BEZELS:
+        launch_command += f' -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)}'
+    elif launch_plugin and "dktv" in launch_plugin:
+        # Are we using the DKTV plugin? If so, it requires a bezel
+        launch_command += f' -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")}'
 
     if subfolder == "shell":
         if not basic_mode:

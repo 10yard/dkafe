@@ -1,7 +1,7 @@
 {
 "plugin": {
-"name": "dkcam",
-"description": "DK CAM",
+"name": "dktv",
+"description": "DK TV",
 "version": "0.1",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
