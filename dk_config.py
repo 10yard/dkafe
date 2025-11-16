@@ -365,11 +365,11 @@ DKTV_FRIENDLY =  ("dkong", "dkongpies", "dkongwizardry", "dkong40", "dkongspring
                   "dkongvector", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
                   "dkonghrthnt", "dkongd2k", "dkongrev", "dkongcb", "dkongkana", "dkongrndmzr", "dkongnoluck",
                   "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkongbarrels", "dkonghrd", "dkongchorus",
-                  "dkongrainbow", "dkongcontinue", "dkongksfix", "dkongbcc", "dkongbarrelboss",
-                  "dkongsprfin", "dkongpacmancross", "dkongwobble", "dkongvectorwild",
-                  "dkonggalakong", "dkongspooky", "dkonglava", "dkongwho", "dkonginsanity", "dkongxmas",
-                  "dkongbarpal", "dkongoctomonkey", "dkongxgalakong", "dkongd2k", "dkongrdemo", "dkong2nut",
-                  "dkongallen")
+                  "dkongrainbow", "dkongcontinue", "dkongksfix", "dkongbcc", "dkongbarrelboss", "dkongsprfin",
+                  "dkongpacmancross", "dkongwobble", "dkongvectorwild", "dkonggalakong", "dkongspooky", "dkonglava",
+                  "dkongwho", "dkonginsanity", "dkongxmas", "dkongbarpal", "dkongoctomonkey", "dkongxgalakong",
+                  "dkongd2k", "dkongrdemo", "dkong2nut", "dkongallen", "dkonghalf", "dkongquarter", "dkongl22",
+                  "dkongl00")
 PACTRAINER_FRIENDLY = ("pacman", "puckman")
 
 # Roms that are not fully compatible

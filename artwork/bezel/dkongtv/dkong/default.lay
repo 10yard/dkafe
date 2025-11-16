@@ -8,8 +8,8 @@
 		<screen index="0">
 			<bounds x="0" y="0" width="224" height="256" />
 		</screen>
-		<bezel element="bezel">
+		<element ref="bezel">
 			<bounds x="0" y="0" width="224" height="256" />
-		</bezel>
+		</element>
 	</view>
 </mamelayout>

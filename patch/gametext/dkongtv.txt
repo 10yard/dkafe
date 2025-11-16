@@ -1,10 +1,16 @@
 DK TV
 
-The hack provides a new viewpoint of the game. 
+This hack provides an alternative viewpoint of the game. 
 The display is adapted to place Jumpman (or DK) in the
 centre of the gameplay as he is followed by a camera.
 
-The camera zooms in on the action when Jumpman is
-jumping or hammering.
+The camera zooms in further on the action when Jumpman
+is jumping or hammering.
+
+Difficulty is increased because you will not get to 
+see all of the screen and you will have to 
+anticipate enemies and obstacles.
+
+Don't forget to smile for the camera!
 
 Hack Developed by Jon Wilson (10yard)

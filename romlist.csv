@@ -15,8 +15,7 @@ ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),17,1,2,9000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,18,1,2,10000,8000,15000,35000
 dkong,dkonginsanity,Insane,DK Insanity,19,1,2,11000,8000,15000,30000
 dkong,dkongvector,VectorKong,DK VectorKong,20,1,2,12000,10000,20000,40000
-dkongjr,dkongjrgala,GalaJR,JR GalaKong,21.1,1,2,13000,10000,20000,30000
-dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,21.2,1,2,13000,10000,20000,40000
+dkong,dkongtv,DKTV,DK TV,21,1,2,28000,10000,20000,40000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,23,1,2,14000,10000,25000,45000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,24,1,2,15000,10000,15000,30000
 dkong,dkongbarpal,DKPaloo,DK Barrelpalooza,25,1,2,16000,10000,25000,50000
@@ -31,7 +30,8 @@ dkongf,dkongrdemo,DKRemix,DK Remix,34,1,2,24000,10000,20000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,36,1,2,25000,10000,20000,40000
 dkong,dkongkana,Kana,DK Kana Kong,38,1,2,26000,10000,20000,40000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,39,1,2,27000,10000,20000,40000
-dkong,dkongtv,DKTV,DK TV,40,1,2,28000,10000,20000,40000
+dkongjr,dkongjrgala,GalaJR,JR GalaKong,40.1,1,2,13000,10000,20000,30000
+dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,40.2,1,2,13000,10000,20000,40000
 dkong,dkongrivets,DKRivet,DK Rivets Only,41,1,2,29000,10000,20000,40000
 dkong3,,DK3,Donkey Kong 3,42.1,1,2,30000,,,
 dkong,dkongnoluck,NoL,DK NoLuck Kong,42.2,1,2,30000,15000,25000,50000
