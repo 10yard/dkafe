@@ -36,15 +36,16 @@ function dktv.startplugin()
 			-- Update title
 			--write_rom_message(0x36b4, "  DK TV   ")
 						
-			-- ROM mod to hide bottom edge of timer - so Jumpman can jump there without being cropped by the blanking box.
-			for i=0x384c, 0x385b, 3 do
-				mem:write_direct_u8(i, 0x10)
-			end			
-		
-			-- ROM mod to start on title screen
-			mem:write_direct_u32(0x01ea, 0x0000063e)
-			mem:write_direct_u16(0x07d3, 0xff3e)
-			
+			if emu.romname() == "dkong" then
+				-- ROM mod to hide bottom edge of timer - so Jumpman can jump there without being cropped by the blanking box.
+				for i=0x384c, 0x385b, 3 do
+					mem:write_direct_u8(i, 0x10)
+				end
+
+				-- ROM mod to start on title screen
+				mem:write_direct_u32(0x01ea, 0x0000063e)
+				mem:write_direct_u16(0x07d3, 0xff3e)
+			end
 		end
 	end
 

@@ -361,13 +361,15 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
                   "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00")
-DKTV_FRIENDLY =  ("dkong", "dkongwizardry")
 DKTV_FRIENDLY =  ("dkong", "dkongpies", "dkongwizardry", "dkong40", "dkongspringy", "dkongitd",
                   "dkongvector", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
                   "dkonghrthnt", "dkongd2k", "dkongrev", "dkongcb", "dkongkana", "dkongrndmzr", "dkongnoluck",
                   "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkongbarrels", "dkonghrd", "dkongchorus",
-                  "dkongkonkey", "dkongrainbow", "dkongcontinue", "dkongksfix", "dkongbcc", "dkongbarrelboss",
-                  "dkongsprfin", "dkongpacmancross", "dkongwobble", "dkongvectorwild", "dkongdizzy")
+                  "dkongrainbow", "dkongcontinue", "dkongksfix", "dkongbcc", "dkongbarrelboss",
+                  "dkongsprfin", "dkongpacmancross", "dkongwobble", "dkongvectorwild",
+                  "dkonggalakong", "dkongspooky", "dkonglava", "dkongwho", "dkonginsanity", "dkongxmas",
+                  "dkongbarpal", "dkongoctomonkey", "dkongxgalakong", "dkongd2k", "dkongrdemo", "dkong2nut",
+                  "dkongallen")
 PACTRAINER_FRIENDLY = ("pacman", "puckman")
 
 # Roms that are not fully compatible

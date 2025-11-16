@@ -918,7 +918,7 @@ def build_launch_menu():
             if show_shoot:
                 _g.launchmenu.add_button('▲ Launch with shooter     ', launch_rom, nearby, "galakong")
             if show_dktv:
-                _g.launchmenu.add_button(' Launch with DKTV        ', launch_rom, nearby, "dktv")
+                _g.launchmenu.add_button('Ŏ Launch with DKTV        ', launch_rom, nearby, "dktv")
             if show_pactrain:
                 _g.launchmenu.add_button('… Launch with Pac-Trainer ', launch_rom, nearby, "pactrainer")
 

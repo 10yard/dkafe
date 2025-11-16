@@ -273,13 +273,6 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     else:
         launch_command = launch_command.replace("<ROM_DIR>", os.path.normpath(ROM_DIR))
 
-    # Does the rom have a custom bezel?  The config for these is stored with the bezel artwork.
-    if subfolder in CUSTOM_BEZELS:
-        launch_command += f' -view "Camera Overlay" -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)}'
-    elif launch_plugin and "dktv" in launch_plugin:
-        # Are we using the DKTV plugin? If so, it requires a bezel
-        launch_command += f' -view "Camera Overlay" -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")}'
-
     if subfolder == "shell":
         if not basic_mode:
             os.environ["DATA_ANNOUNCE_AWARD"] = str(ANNOUNCE_AWARD_INGAME)
@@ -343,6 +336,13 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
                 os.environ["DATA_AUTOSTART"] = str(AUTOSTART) if CREDITS > 0 and subfolder not in AUTOSTART_UNFRIENDLY else "0"
             os.environ["DATA_ALLOW_SKIP_INTRO"] = str(ALLOW_SKIP_INTRO) if subfolder not in SKIPINTRO_UNFRIENDLY else "0"
             os.environ["DATA_ANNOUNCE_AWARD"] = str(ANNOUNCE_AWARD_INGAME)
+
+    # Does the rom have a custom bezel?  The config for these is stored with the bezel artwork.
+    if subfolder in CUSTOM_BEZELS:
+        launch_command += f' -view "Camera Overlay" -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)}'
+    elif launch_plugin and "dktv" in launch_plugin:
+        # Are we using the DKTV plugin? If so, it requires a bezel
+        launch_command += f' -view "Camera Overlay" -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")}'
 
     if sys.gettrace():
         print(launch_command)  # debug launch arguments
