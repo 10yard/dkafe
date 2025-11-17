@@ -340,7 +340,7 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
     # Does the rom have a custom bezel?  The config for these is stored with the bezel artwork.
     if subfolder in CUSTOM_BEZELS:
         launch_command += f' -view "Camera Overlay" -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", subfolder)}'
-    elif launch_plugin and "dktv" in launch_plugin:
+    elif (launch_plugin and "dktv" in launch_plugin) or (subfolder.startswith("dkong") and subfolder.endswith("tv")):
         # Are we using the DKTV plugin? If so, it requires a bezel
         launch_command += f' -view "Camera Overlay" -artpath {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")} -cfg_directory {os.path.join(ROOT_DIR, "artwork", "bezel", "dkongtv")}'
 

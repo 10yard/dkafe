@@ -306,6 +306,7 @@ PLUGINS = (
     ("ckongpt2_rivets", "dkstart5:4"),
     ("bigkong_barrels", "dkstart5:1"),
     ("dkongvectorgala","galakong,vectorkong"),
+    ("dkongvectortv","dktv,vectorkong"),
     ("dkong3blue", "dk3stage:0"),
     ("dkong3gray", "dk3stage:1"),
     ("dkong3yellow", "dk3stage:2"),
