@@ -1,5 +1,3 @@
-<!-- ckong.lay -->
-
 <mamelayout version="2">
 	<element name="bezel">
 		<image file="overlay.png" />

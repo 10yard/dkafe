@@ -74,7 +74,7 @@ def main():
         if os.path.exists(F_AUTOSTART_BU):
             # -------- Launch DKAFE on boot --------
             # --------------------------------------
-            answer = yesno("Launch DKAFE on boot")
+            answer = yesno("Launch DKAFE on boot (recommend)")
             if answer:
                 # append DKAFE start script to autoboot file
                 with open(F_AUTOSTART, "a") as f:
@@ -84,7 +84,7 @@ def main():
             if os.path.exists(F_AUTOSTART_BU2):
                 # -------- Hide the Raspberry Pi taskbar --------
                 # -----------------------------------------------
-                answer = yesno("Hide the Pi taskbar")
+                answer = yesno("Hide the Pi taskbar (recommend)")
                 if answer:
                     changes_made = True
                     # comment the "lxpanel" line in autoboot file
@@ -101,7 +101,7 @@ def main():
     if os.path.exists(F_PCMAN_CONFIG):
         os.system(f"sudo cp {F_PCMAN_CONFIG} {F_PCMAN_CONFIG_BU}")
         if os.path.exists(F_PCMAN_CONFIG_BU):
-            answer = yesno("Hide the Pi Desktop")
+            answer = yesno("Hide the Pi Desktop (recommend)")
             if answer:
                 changes_made = True
                 # Blank out the desktop splash image
@@ -126,7 +126,7 @@ def main():
     if os.path.exists(F_DESKTOP_CONFIG):
         os.system(f"sudo cp {F_DESKTOP_CONFIG} {F_DESKTOP_CONFIG_BU}")
         if os.path.exists(F_DESKTOP_CONFIG_BU):
-            answer = yesno("Hide the Pi mouse cursor")
+            answer = yesno("Hide the Pi mouse cursor (recommend)")
             if answer:
                 changes_made = True
                 # add no cursor command to end of desktop config file
@@ -176,7 +176,7 @@ def main():
                                 f_out.write(line)
             # -------- Force 640x480 mode on boot --------
             # --------------------------------------------
-            answer = yesno("Force 640x480 mode on boot (for scan line generators)")
+            answer = yesno("Force 640x480 mode on boot (recommend for performance)")
             if answer:
                 os.system(f"sudo cp {F_CONFIG} {F_CONFIG_BU2}")
                 changes_made = True
@@ -202,7 +202,7 @@ def main():
 
     # -------- Disable non-essential services --------
     # ------------------------------------------------
-    answer = yesno("Disable non-essential services")
+    answer = yesno("Disable non-essential services (recommend)")
     if answer:
         changes_made = True
         print("Disabling services, please wait...")

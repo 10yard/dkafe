@@ -142,7 +142,7 @@ def check_patches_available():
                 if len(_patch) > 14:
                     _patch = _patch.replace("DKONG", "DK").replace("BIGKONG", "BK").replace("CKONG", "CK")
                 write_text(_patch, font=pl_font7, x=x_offset, y=y_offset, fg=stripe)
-                update_screen(delay_ms=30)
+                update_screen(delay_ms=20)
                 y_offset += 6
                 if y_offset > 230:
                     x_offset += 56
@@ -1239,6 +1239,12 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                     cfg_system = os.path.join(ROOT_DIR, "dkwolf", "cfg", _system + ".cfg")
                     if os.path.exists(cfg_system):
                         _s.copy(cfg_system, cfg_file)
+
+            # Remove any temporary bezel config files
+            for (dirname, dirs, files) in os.walk(os.path.join(ROOT_DIR, "artwork", "bezel")):
+                for file in files:
+                    if file.endswith('.cfg'):
+                        os.remove(os.path.join(dirname, file))
 
             time_end = _s.time()
             _s.debounce()

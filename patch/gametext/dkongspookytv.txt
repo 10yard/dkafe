@@ -1,0 +1,16 @@
+Donkey Kong Spooky TV
+
+A halloween themed version of Donkey Kong with new 
+challenging stages and bonus levels.
+
+It's challenging to play because the scenarios are 
+more complex with more elements mixed together and 
+more things to process/anticipate simultaneously 
+while playing. 
+
+This hack provides an alternative viewpoint.  Jumpman 
+is placed in the centre of the gameplay as he is 
+followed around by a camera.
+
+ROM Developed by John Kowalski (SockMaster)
+with DKTV plugin by Jon Wilson (10yard)

@@ -1,0 +1,15 @@
+Gala TV
+
+A DK TV version of GalaKong
+
+Jumpman is assisted by an accompanying spaceship which
+can take out enemies.  Bonus points are awarded for 
+destroying multiple barrels, pies, springs, fires etc.
+
+The jump button also shoots.
+
+This hack provides an alternative viewpoint.  Jumpman 
+is placed in the centre of the gameplay as he is 
+followed around by a camera.
+
+Hack Developed by Jon Wilson (10yard)

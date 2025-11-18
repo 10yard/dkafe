@@ -250,6 +250,7 @@ A tally of the total number of continues made will appear at the top of the scre
 My DKTC plugin provides an alternative viewpoint of the game.  Jumpman is fixed to the centre of the screen as his movements are followed by the camera.
 The camera zooms in further on the action when Jumpman is jumping or hammering.
 
+![DK TV](https://github.com/10yard/dkafe/blob/master/artwork/about/dktv.png)
 
 
 ## Console Add-on Pack
