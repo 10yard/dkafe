@@ -117,6 +117,7 @@ def clear_screen(colour=BLACK, and_reset_display=False):
 
 def update_screen(delay_ms=0):
     pygame.display.update()
+    if pygame.time.get_ticks() - _g.lastwarp < 200: return # speed hack so no delay when warping
     pygame.time.delay(delay_ms)
     clock.tick(CLOCK_RATE + (SPEED_ADJUST * 5))
 
@@ -144,7 +145,7 @@ def check_patches_available():
                 write_text(_patch, font=pl_font7, x=x_offset, y=y_offset, fg=stripe)
                 update_screen(delay_ms=20)
                 y_offset += 6
-                if y_offset > 230:
+                if y_offset > 236:
                     x_offset += 56
                     y_offset = 10
                     stripe = PINK if stripe == WHITE else WHITE
@@ -154,8 +155,7 @@ def check_patches_available():
                 clear_screen()
                 write_text(f"INSTALLING ADD-ONS...       ", font=dk_font, y=0, fg=RED)
             _, _count = _s.read_romlist("romlist_addon.csv")
-            write_text(f"+ {str(_count)} clones, ports & hacks in the console add-on pack", font=pl_font, x=0, y=235, fg=WHITE)
-            write_text(f"+ A bonus stage with many classic arcade games", font=pl_font, x=0, y=241, fg=WHITE)
+            write_text(f"+ {str(_count)} more in the add-on pack and a bonus arcade stage!", font=pl_font, x=0, y=241, fg=WHITE)
 
             # Refresh list of arcade other roms
             arcade_other = []
@@ -538,7 +538,7 @@ def adjust_jumpman():
             break
 
     # Jumpman can grab a ladder when jumping from the oilcan
-    if pygame.time.get_ticks() - _g.lastwarpready < 1000 and _g.xpos >= 188 and _g.ypos < 152:
+    if pygame.time.get_ticks() - _g.lastwarpready < 800 and _g.xpos >= 188 and _g.ypos < 152:
         _g.xpos = 190
         if "CLIMBING_LADDER" in get_map_info(platforms_only=True):
             animate_jumpman("u")
@@ -625,15 +625,15 @@ def animate_jumpman(direction=None, horizontal_movement=1, midjump=False):
             sprite_file = f'artwork/sprite/jmr0.png'
             _g.ready = False
         elif direction == "d" and "FOOT_ABOVE_OILCAN" in get_map_info():
-            if pygame.time.get_ticks() - _g.lastwarp > 1000:
-                play_sound_effect("warp.wav")
+            if pygame.time.get_ticks() - _g.lastwarp > 800:
                 stage_check(warp=True)
+                play_sound_effect("warp.wav")
                 return
     else:
         # Ensure jumpman is not left floating after jumping from the oilcan
         if "FOOT_ABOVE_PLATFORM" not in get_map_info():
             _g.lastwarpready = 0
-        if pygame.time.get_ticks() - _g.lastwarpready < 1000:
+        if pygame.time.get_ticks() - _g.lastwarpready < 800:
             adjust_jumpman()
 
     img = _g.last_image if "#" in sprite_file else get_image(sprite_file)
@@ -1544,7 +1544,7 @@ def process_interrupts():
                         write_text(text[:55], x=4, y=text_y+(i*6), fg=_fg)
                     break
 
-    if _g.lastwarp > 0 and ticks - _g.lastwarp < 1000:
+    if _g.lastwarp > 0 and ticks - _g.lastwarp < 800:
         # After warping, Jumpman appears from inside the oilcan
         write_text("Warp Pipe!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}oilcan.png"), OILCAN_POSXY[_g.stage])

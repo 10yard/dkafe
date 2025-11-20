@@ -90,12 +90,13 @@ dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,114,1,2,82000,8000,16000,30000
 ckongpt2,ckongpt2_free,CKFree,CK Free Run,115,1,2,83000,10000,25000,40000
 ckongpt2,ckongpt2_insanity,CK Insanity,CK Insanity,117,1,2,84000,8000,15000,25000
 ckongpt2,ckongpt2_dk,CK DK ,CK with DK Graphics,118,1,2,85000,10000,25000,40000
-ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,119,1,2,86000,1000,2000,3000
-bigkong,bigkong_l22,BK KS,BK KillScreen 22,121,1,2,87000,4000,7000,10000
-dkong,dkongl00,DK00,DK Zero Sense,122,1,2,88000,10000,25000,40000
-ckongpt2,ckongpt2_l00,CK00,CK Zero Sense,123,1,2,89000,10000,25000,40000
-dkong,dkongksfix,KSFix,DK Killscreen Fix,124,1,2,90000,10000,25000,40000
-ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,91000,10000,25000,40000
+dkong,dkongspringtv,SpringTV,DK Spring TV,119,1,2,86000,8000,12000,20000
+dkong,dkongl00,DK0,DK Zero Sense,120,1,2,87000,10000,25000,40000
+ckongpt2,ckongpt2_l00,CK0,CK Zero Sense,121,1,2,88000,10000,25000,40000
+ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,122,1,2,89000,1000,2000,3000
+bigkong,bigkong_l22,BK KS,BK KillScreen 22,123,1,2,90000,4000,7000,10000
+dkong,dkongksfix,KSFix,DK Killscreen Fix,124,1,2,91000,10000,25000,40000
+ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,92000,10000,25000,40000
 bigkong,bigkong_barrels,BigKong Barrels,BK Barrels Only,9999,1,2,21000,4000,10000,20000
 bigkong,bigkong_continue,BigKong Continue,BK Continue,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_free,BigKong Free,BK Free Run,9999,1,2,21000,5000,15000,25000

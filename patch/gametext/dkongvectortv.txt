@@ -1,6 +1,7 @@
 Vector Kong TV
 
 A vector graphics version of DKTV,  giving you an
-alternative viewpoint of the game.
+alternative viewpoint of the game as Jumpman is
+followed by a camera.
 
 Hack Developed by Jon Wilson (10yard)

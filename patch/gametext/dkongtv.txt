@@ -1,8 +1,8 @@
 DK TV
 
-This hack provides an alternative viewpoint of the game. 
-The display is adapted to place Jumpman (or DK) in the
-centre of the gameplay as he is followed by a camera.
+This hack provides an alternative viewpoint, with 
+Jumpman fixed in the centre of the gameplay as he is 
+followed by a camera.
 
 The camera zooms in further on the action when Jumpman
 is jumping or hammering.

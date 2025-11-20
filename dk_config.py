@@ -309,6 +309,7 @@ PLUGINS = (
     ("dkongvectortv","dktv,vectorkong"),
     ("dkonggalatv","dktv,galakong"),
     ("dkongspookytv","dktv"),
+    ("dkongspringtv", "dktv"),
     ("dkong3blue", "dk3stage:0"),
     ("dkong3gray", "dk3stage:1"),
     ("dkong3yellow", "dk3stage:2"),
@@ -356,14 +357,16 @@ START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkonghrd", "ckong", "ckongpt2b", "dkongchorus", "dkongkonkey", "dkongrainbow", "dkongcontinue",
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
                    "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b", "dkongpacmancross",
-                   "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild", "dkongdizzy", "dkongvectorgala")
+                   "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild", "dkongdizzy", "dkongvectorgala",
+                   "dkongtv", "dkongvectortv", "dkonggalatv")
 STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
                   "dkongrndmzr", "dkongnoluck", "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkonghrd",
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
-                  "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00")
+                  "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00",
+                  "dkongtv", "dkonggalatv")
 DKTV_FRIENDLY =  ("dkong", "dkongpies", "dkongwizardry", "dkong40", "dkongspringy", "dkongitd",
                   "dkongvector", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
                   "dkonghrthnt", "dkongd2k", "dkongrev", "dkongcb", "dkongkana", "dkongrndmzr", "dkongnoluck",
