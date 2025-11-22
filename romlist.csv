@@ -15,7 +15,7 @@ ckongpt2,ckongpt2,Crazy Kong,Crazy Kong (Part II),17,1,2,9000,10000,25000,40000
 dkong,dkongitd,DK Dark,DK Into The Dark,18,1,2,10000,8000,15000,35000
 dkong,dkonginsanity,Insane,DK Insanity,19,1,2,11000,8000,15000,30000
 dkong,dkongvector,VectorKong,DK VectorKong,20,1,2,12000,10000,20000,40000
-dkong,dkongtv,DKTV,DK TV,21,1,2,28000,10000,20000,40000
+dkong,dkongtv,DKTV,DK TV,21,1,2,13000,10000,20000,40000
 dkong,dkongtj,DK Jungle,DK Twisted Jungle,23,1,2,14000,10000,25000,45000
 dkongx11,dkongxmas,DK Xmas,DK Christmas Remix,24,1,2,15000,10000,15000,30000
 dkong,dkongbarpal,DKPaloo,DK Barrelpalooza,25,1,2,16000,10000,25000,50000
@@ -30,8 +30,8 @@ dkongf,dkongrdemo,DKRemix,DK Remix,34,1,2,24000,10000,20000,45000
 dkong,dkongcb,DK Crazy,DK Crazy Barrels,36,1,2,25000,10000,20000,40000
 dkong,dkongkana,Kana,DK Kana Kong,38,1,2,26000,10000,20000,40000
 dkong,dkongrndmzr,DK RNDMZR,DK RNDMZR,39,1,2,27000,10000,20000,40000
-dkongjr,dkongjrgala,GalaJR,JR GalaKong,40.1,1,2,13000,10000,20000,30000
-dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,40.2,1,2,13000,10000,20000,40000
+dkongjr,dkongjrgala,GalaJR,JR GalaKong,40.1,1,2,28000,10000,20000,30000
+dkong,dkong2600,DK 2600,DK Atari 2600 Graphics,40.2,1,2,28000,10000,20000,40000
 dkong,dkongrivets,DKRivet,DK Rivets Only,41,1,2,29000,10000,20000,40000
 dkong3,,DK3,Donkey Kong 3,42.1,1,2,30000,,,
 dkong,dkongnoluck,NoL,DK NoLuck Kong,42.2,1,2,30000,15000,25000,50000
@@ -51,52 +51,53 @@ dkong,dkongvectorgala,VectorGala,DK Vector GalaKong,60,1,2,43000,10000,20000,400
 ckongpt2b,ckongpt2b,CK Alt,CK Alternative Levels,62,1,2,44000,4000,8000,12000
 dkong,dkongl22,DK Kills,DK KillScreen 22,63,1,2,45000,500,1000,1500
 dkongf,dkongfoundry,DK Foundry,,65,1,2,46000,10000,25000,50000
-dkong,dkongrnd,DK Random,DK Randomized,66,1,2,47000,10000,20000,40000
-dkong,dkonghalf,1/2 Kong,DK Half Kong,68,1,2,48000,20000,50000,80000
-dkong,dkongce,DKChamp,DK Championship Edition,69,1,2,49000,10000,25000,50000
-dkong,dkongrainbow,DK Rainbow,,71,1,2,50000,10000,25000,40000
-dkong,dkongcontinue,DK Cont.,DK Continue,72,1,2,51000,10000,15000,30000
-dkong,dkongfr,DK Free,DK Freerun Edition,73,1,2,52000,20000,40000,60000
-dkong,dkongnoluck,NOLuck,NoLuck Kong,74,1,2,53000,15000,25000,50000
-dkong,dkongkonkey,KD,DK Konkey Dong,75,1,2,54000,10000,15000,25000
-dkongx11,dkongspookytv,SpookTV,DK Spooky Remix TV,76,1,2,55000,20000,40000,60000
-ckongs,ckongs,CK Scramble,CK Scramble Hardware,77,1,2,56000,10000,25000,40000
-ckongg,ckongg,CK Galax.,CK Galaxian Hardware,78,1,2,57000,10000,25000,40000
-ckongpt2a,ckongpt2a_2023,CK2023,CK 2023,79,1,2,58000,10000,25000,40000
-bigkonggx,bigkonggx,BK Galax.,BK Galaxian Hardware,80,1,2,59000,10000,20000,40000
-dkong,dkongchorus,DK Chorus,,81,1,2,60000,10000,20000,40000
-ckongpt2,ckongpt2_springs,CKSprings,CK Springs Only,82,1,2,61000,10000,25000,40000
-dkong,dkongvectortv,VectorTV,DK Vector TV,84,1,2,62000,10000,15000,20000
-dkong,dkongend1,DKEnd=1,DK Ends at L=01,85,1,2,63000,10000,20000,30000
-dkong,dkongend2,DKEnd=2,DK Ends at L=02,87,1,2,64000,10000,25000,40000
-dkong,dkongend3,DKEnd=3,DK Ends at L=03,89,1,2,65000,10000,25000,40000
-ckongpt2,ckongpt2_pies,CK Pies,CK Pies Only,91,1,2,66000,10000,25000,40000
-dkong,dkonggalakong1,GalaBarrels,DK Gala-Barrels,92,1,2,67000,10000,20000,40000
-dkong,dkonggalakong2,GalaPie,DK Gala-Pies,93,1,2,68000,10000,20000,40000
-dkong,dkonggalatv,GalaTV,DK Gala-TV,95,1,2,69000,10000,20000,40000
-dkong,dkonggalakong3,GalaSpr,DK Gala-Springs,97,1,2,70000,10000,20000,40000
-dkong,dkonggalakong4,GalaRivets,DK Gala-Rivets,98,1,2,71000,10000,20000,40000
-dkong,dkonglava1,LavaBarrels,DK Lava Barrels,99,1,2,72000,8000,12000,15000
-dkong,dkonglava2,LavaPie,DK Lava Pies,100,1,2,73000,8000,12000,15000
-ckongpt2,ckongpt2_lava,CKLava,CK Lava Panic!,101,1,2,74000,10000,25000,40000
-dkong,dkonglava3,LavaSpr.,DK Lava Springs,103,1,2,75000,8000,12000,15000
-dkong,dkonglava4,LavaRivets,DK Lava Rivets,105,1,2,76000,8000,12000,15000
-dkong,dkongwho1,WhoBarrels,DK Who Barrels,106,1,2,77000,10000,20000,40000
-dkong,dkongwho2,WhoPies,DK Who Pies,107,1,2,78000,10000,20000,40000
-dkong,dkongwho3,WhoSpr.,DK Who Springs,109,1,2,79000,10000,20000,40000
-dkong,dkongwho4,WhoRivets,DK Who Rivets,111,1,2,80000,10000,20000,40000
-dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrel),112,1,2,81000,1000,2000,5000
-dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,114,1,2,82000,8000,16000,30000
-ckongpt2,ckongpt2_free,CKFree,CK Free Run,115,1,2,83000,10000,25000,40000
-ckongpt2,ckongpt2_insanity,CK Insanity,CK Insanity,117,1,2,84000,8000,15000,25000
-ckongpt2,ckongpt2_dk,CK DK ,CK with DK Graphics,118,1,2,85000,10000,25000,40000
-dkong,dkongspringtv,SpringTV,DK Spring TV,119,1,2,86000,8000,12000,20000
-dkong,dkongl00,DK0,DK Zero Sense,120,1,2,87000,10000,25000,40000
-ckongpt2,ckongpt2_l00,CK0,CK Zero Sense,121,1,2,88000,10000,25000,40000
-ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,122,1,2,89000,1000,2000,3000
-bigkong,bigkong_l22,BK KS,BK KillScreen 22,123,1,2,90000,4000,7000,10000
-dkong,dkongksfix,KSFix,DK Killscreen Fix,124,1,2,91000,10000,25000,40000
-ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,92000,10000,25000,40000
+dkong,dkonglongtime,DK ~,DK LongTime,66,1,2,47000,4000,7500,10000
+dkong,dkongrnd,DK Random,DK Randomized,67,1,2,48000,10000,20000,40000
+dkong,dkonghalf,1/2 Kong,DK Half Kong,68,1,2,49000,20000,50000,80000
+dkong,dkongce,DKChamp,DK Championship Edition,69,1,2,50000,10000,25000,50000
+dkong,dkongrainbow,DK Rainbow,,71,1,2,51000,10000,25000,40000
+dkong,dkongcontinue,DK Cont.,DK Continue,72,1,2,52000,10000,15000,30000
+dkong,dkongfr,DK Free,DK Freerun Edition,73,1,2,53000,20000,40000,60000
+dkong,dkongnoluck,NOLuck,NoLuck Kong,74,1,2,54000,15000,25000,50000
+dkong,dkongkonkey,KD,DK Konkey Dong,75,1,2,55000,10000,15000,25000
+dkongx11,dkongspookytv,SpookTV,DK Spooky Remix TV,76,1,2,56000,20000,40000,60000
+ckongs,ckongs,CK Scramble,CK Scramble Hardware,77,1,2,57000,10000,25000,40000
+ckongg,ckongg,CK Galax.,CK Galaxian Hardware,78,1,2,58000,10000,25000,40000
+ckongpt2a,ckongpt2a_2023,CK2023,CK 2023,79,1,2,59000,10000,25000,40000
+bigkonggx,bigkonggx,BK Galax.,BK Galaxian Hardware,80,1,2,60000,10000,20000,40000
+dkong,dkongchorus,DK Chorus,,81,1,2,61000,10000,20000,40000
+ckongpt2,ckongpt2_springs,CKSprings,CK Springs Only,82,1,2,62000,10000,25000,40000
+dkong,dkongvectortv,VectorTV,DK Vector TV,84,1,2,63000,10000,15000,20000
+dkong,dkongend1,DKEnd=1,DK Ends at L=01,85,1,2,64000,10000,20000,30000
+dkong,dkongend2,DKEnd=2,DK Ends at L=02,87,1,2,65000,10000,25000,40000
+dkong,dkongend3,DKEnd=3,DK Ends at L=03,89,1,2,66000,10000,25000,40000
+ckongpt2,ckongpt2_pies,CK Pies,CK Pies Only,91,1,2,67000,10000,25000,40000
+dkong,dkonggalakong1,GalaBarrels,DK Gala-Barrels,92,1,2,68000,10000,20000,40000
+dkong,dkonggalakong2,GalaPie,DK Gala-Pies,93,1,2,69000,10000,20000,40000
+dkong,dkonggalatv,GalaTV,DK Gala TV,95,1,2,70000,10000,20000,40000
+dkong,dkonggalakong3,GalaSpr,DK Gala-Springs,97,1,2,71000,10000,20000,40000
+dkong,dkonggalakong4,GalaRivets,DK Gala-Rivets,98,1,2,72000,10000,20000,40000
+dkong,dkonglava1,LavaBarrels,DK Lava Barrels,99,1,2,73000,8000,12000,15000
+dkong,dkonglava2,LavaPie,DK Lava Pies,100,1,2,74000,8000,12000,15000
+ckongpt2,ckongpt2_lava,CKLava,CK Lava Panic!,101,1,2,75000,10000,25000,40000
+dkong,dkonglava3,LavaSpr.,DK Lava Springs,103,1,2,76000,8000,12000,15000
+dkong,dkonglava4,LavaRivets,DK Lava Rivets,105,1,2,77000,8000,12000,15000
+dkong,dkongwho1,WhoBarrels,DK Who Barrels,106,1,2,78000,10000,20000,40000
+dkong,dkongwho2,WhoPies,DK Who Pies,107,1,2,79000,10000,20000,40000
+dkong,dkongwho3,WhoSpr.,DK Who Springs,109,1,2,80000,10000,20000,40000
+dkong,dkongwho4,WhoRivets,DK Who Rivets,111,1,2,81000,10000,20000,40000
+dkong,dkongvectorwild,VectorWild,DK VectorKong (WildBarrel),112,1,2,82000,1000,2000,5000
+dkong,dkongdizzylava,DizzyLava!,DK Dizzy Lava!,114,1,2,83000,8000,16000,30000
+ckongpt2,ckongpt2_free,CKFree,CK Free Run,115,1,2,84000,10000,25000,40000
+ckongpt2,ckongpt2_insanity,CK Insanity,CK Insanity,117,1,2,85000,8000,15000,25000
+ckongpt2,ckongpt2_dk,CK DK ,CK with DK Graphics,118,1,2,86000,10000,25000,40000
+dkong,dkongspringtv,SpringTV,DK Spring TV,119,1,2,87000,8000,12000,20000
+dkong,dkongl00,DK0,DK Zero Sense,120,1,2,88000,10000,25000,40000
+ckongpt2,ckongpt2_l00,CK0,CK Zero Sense,121,1,2,89000,10000,25000,40000
+ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,122,1,2,90000,1000,2000,3000
+bigkong,bigkong_l22,BK KS,BK KillScreen 22,123,1,2,91000,4000,7000,10000
+dkong,dkongksfix,KSFix,DK Killscreen Fix,124,1,2,92000,10000,25000,40000
+ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,93000,10000,25000,40000
 bigkong,bigkong_barrels,BigKong Barrels,BK Barrels Only,9999,1,2,21000,4000,10000,20000
 bigkong,bigkong_continue,BigKong Continue,BK Continue,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_free,BigKong Free,BK Free Run,9999,1,2,21000,5000,15000,25000
@@ -104,16 +105,15 @@ bigkong,bigkong_lava,BigKong Lava,BK Lava Panic!,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_insanity,BigKong Insanity,BK Insanity,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_l00,BK Zero,BK Zero Sense,9999,1,2,9000,10000,25000,40000
 bigkonggx,bigkonggx_barrels,BigKong GX Barrels,BK Galaxian Barrels,9999,1,2,57000,10000,20000,40000
-ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,9999,1,2,54000,10000,25000,40000
+ckongmc,ckongmc,CK Moon,CK MoonCresta Hardware,9999,1,2,57000,10000,25000,40000
 ckongpt2,ckongpt2_barrels,CK Barrels,CK Barrels Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_rivets,CK Rivets,CK Rivets Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_l00,CK Zero,CK Zero Sense,9999,1,2,9000,10000,25000,40000
 congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,3000,,,
-dkong,dkongend1,DK End L1,DK Ends at L=01,9999,1,2,60000,10000,15000,20000
 dkong,dkongl05,DK Skip,DK Skip Start,9999,1,2,,,,
 dkong,dkongattract,DK Attract,DK Attract Mode Play,9999,1,2,32000,,,
 dkong,dkongwobble,WobbleKong,DK Wobble Kong,9999,1,2,38000,10000,20000,40000
-dkong,dkongend4,DK End L4,DK Ends at L=04,9999,1,2,61000,10000,25000,40000
+dkong,dkongend4,DK End L4,DK Ends at L=04,9999,1,2,66000,10000,25000,40000
 dkong,dkongtrn,DK Trainer,,9999,1,2,,,,
 dkong,dkongpace,DK Pace,,9999,1,2,,,,
 dkong,dkongbcc,DK Barrel Control,,9999,1,2,,,,
@@ -124,11 +124,11 @@ dkong,dkongduel,DK Duel,DK Duel,9999,1,2,32000,5000,6500,8000
 dkong,dkongallenl22,DK Allen KS,DK Allen's Killscreen,9999,1,2,32000,,,
 dkong,dkongcoach,DK Coach,DK Coach,9999,1,2,,,,
 dkong,dkongcoachsprings,DK Coach Springs,DK Springs Coach,9999,1,2,,,,
-dkong3,dkong3continue,DK3 Continue,DK3 Continue,9999,1,2,28000,,,
-dkong3,dkong3free,DK3 Free,DK3 Free Run,9999,1,2,28000,,,
-dkong3,dkong3blue,DK3 Blue,DK3 Blue Stage,9999,1,2,28000,,,
-dkong3,dkong3gray,DK3 Gray,DK3 Gray Stage,9999,1,2,28000,,,
-dkong3,dkong3yellow,DK3 Yellow,DK3 Yellow Stage,9999,1,2,28000,,,
+dkong3,dkong3continue,DK3 Continue,DK3 Continue,9999,1,2,30000,,,
+dkong3,dkong3free,DK3 Free,DK3 Free Run,9999,1,2,30000,,,
+dkong3,dkong3blue,DK3 Blue,DK3 Blue Stage,9999,1,2,30000,,,
+dkong3,dkong3gray,DK3 Gray,DK3 Gray Stage,9999,1,2,30000,,,
+dkong3,dkong3yellow,DK3 Yellow,DK3 Yellow Stage,9999,1,2,30000,,,
 dkongf,dkongst2,DK Springs Trainer,,9999,1,2,,,,
 dkongf,dkongfoundryonly,DK Foundry Only,DK Foundry Only,9999,1,2,22000,2000,4000,8000
 dkongjr,dkongjrcontinue,JRCont.,JR Continue,9999,1,2,3000,10000,15000,30000
@@ -139,7 +139,7 @@ dkongjr,dkongjrhideout,JR Hideout,JR Hideout Only,9999,1,2,3000,10000,15000,3000
 dkongjr,dkongjrl22,JR Killscreen,JR Killscreen 22,9999,1,2,3000,1500,2500,4000
 dkongjr,dkongjrfree,JR FreeRun,JR Free Run,9999,1,2,9000,10000,15000,30000
 dkongjr,dkongjrlavapanic,JR Lava!,JR Lava Panic!,9999,1,2,6000,10000,15000,30000
-kong,kong,DK Galax.,DK Galaxian Hardware,9999,1,2,54000,,,
+kong,kong,DK Galax.,DK Galaxian Hardware,9999,1,2,57000,,,
 logger,logger,Logger R1,Logger R1 (Big Bird),9999,1,2,3000,,,
 logger,logger_barrels,Logger Barrels,Logger R1 Barrels Only,9999,1,2,3000,,,
 logger,logger_pies,Logger Pies,Logger R1 Pies Only,9999,1,2,3000,,,

@@ -102,6 +102,7 @@ Credit is given to the original authors below.
  - Konkey Dong
  - Attract Mode Play Only
  - Donkey Kong Barrels, Pies, Springs, Rivets
+ - Donkey Kong Long Time
  - Donkey Kong Killscreen
  - Donkey Kong Coach
  - Donkey Kong Chorus

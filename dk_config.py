@@ -332,12 +332,12 @@ PARAMETER_PLUGINS = "dkongend1", "dkongend3", "dkonglava1", "dkonglava2", "dkong
 CUSTOM_BEZELS = "dkongtv",
 
 # Roms that are compatible with my plugins
-COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong")
+COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong", "dkonglongtime")
 COACH_L5_FRIENDLY = ("dkongspringy", "dkongbarrels")
 CHORUS_FRIENDLY = ("dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
                    "dkong2nut", "dkongoctomonkey", "dkonghalf", "dkongquarter", "dkongksfix", "dkonginsanity",
-                   "dkongl00")
+                   "dkongl00", "dkonglongtime")
 CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline", "ckong", "ckongpt2", "ckongpt2b",
                      "ckongpt2_117", "dkongspooky", "dkongxmas", "dkongrdemo", "dkongrev", "dkongcb", "dkong40",
                      "dkongitd", "dkong2600", "dkongtj", "dkongfoundry", "dkongotr", "dkonghrthnt", "dkongkana",
@@ -348,7 +348,8 @@ CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2",
                      "pacman", "mspacman", "pacplus", "pacmanf", "mspacmnf", "mspacmat", "qbert", "frogger", "invaders",
                      "galaga", "galaxian")
-SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkonginsanity")
+SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkonginsanity",
+                  "dkonglongtime")
 START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
                    "dkongjrgala", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
@@ -375,7 +376,7 @@ DKTV_FRIENDLY =  ("dkong", "dkongpies", "dkongwizardry", "dkong40", "dkongspring
                   "dkongpacmancross", "dkongwobble", "dkongvectorwild", "dkonggalakong", "dkongspooky", "dkonglava",
                   "dkongwho", "dkonginsanity", "dkongxmas", "dkongbarpal", "dkongoctomonkey", "dkongxgalakong",
                   "dkongd2k", "dkongrdemo", "dkong2nut", "dkongallen", "dkonghalf", "dkongquarter", "dkongl22",
-                  "dkongl00")
+                  "dkongl00", "dkonglongtime")
 PACTRAINER_FRIENDLY = ("pacman", "puckman")
 
 # Roms that are not fully compatible
