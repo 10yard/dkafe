@@ -197,6 +197,7 @@ rom_table["vic20-se_logrun"]         = {"JJ",            true,  700,   {360,"RUN
 rom_table["vic20_littlekong"]        = {"",              true,  1100,  {360,"RUN\n"}}
 rom_table["vic20-se_dkjr_gnw"]       = {"JJ",            false, 500,   {360,"RUN\n"}}
 rom_table["vic20_konkeykong"]        = {"",              true,  8900,  {360,"LOAD\n",450,"{PLAY}",3300,"RUN\n"}}
+rom_table["vic20_sky_ape_er"]        = {"",              true,  6600,  {360,"LOAD\n",450,"{PLAY}",2900,"RUN\n",3000,"1"}}
 rom_table["vic20_kongokong"]         = {"P1",            true,  400,   {360,"RUN\n"}}
 rom_table["vic20_krazykong_nufecop"] = {"P1",            true,  550,   {360,"RUN\n"}}
 rom_table["vic20-se_logger"]         = {"P1",            false, 4600,  {360,"LOAD\n",420,"{PLAY}",4100,"RUN\n",5000,"{SHIFT}",5000,"{HOME}"}}
