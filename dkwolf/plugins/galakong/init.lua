@@ -28,7 +28,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "1.4"
+exports.version = "1.5"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -63,6 +63,7 @@ function galakong.startplugin()
 	local end_of_level = false
 	local dead = false
 	local extreme = false
+	local pac_crossover = false
 	local name_entry = 0
 	
 	local score = "000000"
@@ -426,6 +427,11 @@ function galakong.startplugin()
 				extreme = true
 				pickup_table[1] = {10, 96} -- easier pickup location on barrels
 			end
+			
+			-- Is this being launched on top of with pacman crossover - by Paul Goes
+			if mem:read_direct_u64(0x3f5f) == 0x101c1c1110241115 then
+				pac_crossover = true
+			end
 
 			change_title()
 
@@ -593,7 +599,7 @@ function galakong.startplugin()
 				end
 				if howhigh_ready then
 					-- random chance of displaying alternative message
-					if _random(2) == 1 then
+					if not pac_crossover and _random(2) == 1 then
 						write_ram_message(0xc777e, "    ALL YOUR BASE ARE       ")
 						write_ram_message(0xc777f, "     BELONG TO US !!        ")
 					end
@@ -1083,11 +1089,12 @@ function galakong.startplugin()
 	end
 	
 	function change_title()
-		if emu.romname() == "dkong" then
+		if pac_crossover then
+			write_rom_message(0x36ce,"SHOOT STUFF AND        ")
+		elseif emu.romname() == "dkong" then
 			-- no error checking, pay attention to string lengths, also you need to YELL, only caps
 			-- change "HIGH SCORE" to "DK SHOOTER"
 			-- HIGH SCORE is 10 characters, pad with space if necessary
-			--                        1234567890
 			if extreme then
 				write_rom_message(0x36b4,"X-GALAKONG")
 			else
@@ -1098,19 +1105,7 @@ function galakong.startplugin()
 			-- how high is 23 characters, pad with space if necessary
 			--                        12345678901234567890123
 			write_rom_message(0x36ce,"HOW UP CAN YOU SCHMUP?")
-			
-			-- high score entries are 12 character no need to pad with spaces
-			--                          123456789012
-			--1st
-			--write_rom_message(0x3574,"PAC-MAN")
-			--2nd
-			--write_rom_message(0x3596,"ATE")
-			--3rd
-			--write_rom_message(0x35b8,"MY")
-			--4th
-			--write_rom_message(0x35da,"HAMSTER")
-			--5th
-			--write_rom_message(0x35fc,"!!!:::::!!!!")
+
 		end
 	end
 	

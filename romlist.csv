@@ -110,6 +110,7 @@ ckongpt2,ckongpt2_barrels,CK Barrels,CK Barrels Only,9999,1,2,9000,10000,25000,4
 ckongpt2,ckongpt2_rivets,CK Rivets,CK Rivets Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_l00,CK Zero,CK Zero Sense,9999,1,2,9000,10000,25000,40000
 congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,3000,,,
+dkong,dkongpaccrossgala,DK PacXGalaga,DK Pac-Man X Galaga,9999,1,2,3000,10000,20000,40000
 dkong,dkongl05,DK Skip,DK Skip Start,9999,1,2,,,,
 dkong,dkongattract,DK Attract,DK Attract Mode Play,9999,1,2,32000,,,
 dkong,dkongwobble,WobbleKong,DK Wobble Kong,9999,1,2,38000,10000,20000,40000
@@ -124,6 +125,7 @@ dkong,dkongduel,DK Duel,DK Duel,9999,1,2,32000,5000,6500,8000
 dkong,dkongallenl22,DK Allen KS,DK Allen's Killscreen,9999,1,2,32000,,,
 dkong,dkongcoach,DK Coach,DK Coach,9999,1,2,,,,
 dkong,dkongcoachsprings,DK Coach Springs,DK Springs Coach,9999,1,2,,,,
+dkong,dkongshorttime,DK ShortTime,DK ShortTime,9999,1,2,47000,4000,7500,10000
 dkong3,dkong3continue,DK3 Continue,DK3 Continue,9999,1,2,30000,,,
 dkong3,dkong3free,DK3 Free,DK3 Free Run,9999,1,2,30000,,,
 dkong3,dkong3blue,DK3 Blue,DK3 Blue Stage,9999,1,2,30000,,,
