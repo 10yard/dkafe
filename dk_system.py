@@ -93,7 +93,7 @@ def read_romlist(specific_romlist_file=None):
                             des = des.replace("BK ", "^ ").replace("BK", "^ ")
                             des = des.replace("ZK ", "² ").replace("ZK", "² ")
                             des = des.replace("JR ", "³ ").replace("JR", "³ ")
-                            des = des.replace("1/2", "{ ").replace("1/4", "} ")
+                            des = des.replace("1/2", "{  ").replace("1/4", "}  ")
 
                             alt = alt.replace("00", "№")  # Single character 00
 

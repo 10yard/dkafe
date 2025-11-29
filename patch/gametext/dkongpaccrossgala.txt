@@ -1,0 +1,19 @@
+Donkey Kong Pac-Man Crossover
+
+A crazy mash-up of Donkey Kong, Pac-Man and Galaga.
+Jumpman is assisted by Pac-man and a Galaga ship.
+
+Each board contains pellets that must all be picked
+up before the board can be finished. You start each 
+board playing as Jumpman, but you can temporarily 
+transform to Pac-Man by picking up a power pellet. 
+When you play as Pac-Man you are invincible.
+You can shoot enemies when the Galaga ship appears.
+The ship follows Jumpman's position but can be 
+controlled independently when Jumpman is on a ladder. 
+
+Thanks to Paul Goes for his excellent Pac-Man hack, 
+forming the base for this Galaga variation.
+
+Pac-Man Crossover Hack Developed by Paul Goes
+Galaga Plugin Developed by Jon Wilson (10yard)
