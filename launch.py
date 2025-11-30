@@ -1706,6 +1706,7 @@ def stage_check(warp=False, door=-1):
             if pygame.time.get_ticks() - _g.lastdoor > 300:
                 _g.stage = door
                 _g.ready = False
+                animate_jumpman("r")
                 _g.lastdoor = pygame.time.get_ticks()
         if ARCH == "win64" or not _g.stage in WIN64_ONLY_STAGES:
             break
