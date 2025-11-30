@@ -86,6 +86,7 @@ ENABLE_ADDONS = 1              # Enable add-on packs.  Set to 0 to disable previ
 INACTIVE_TIME = 20             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
 SHOW_GAMETEXT = 1              # Show the game text description when Jumpman faces an arcade machine
+ENABLE_TRAINING = 1            # Enable training stage.  A warp door appears in front of the oilcan on the 1st screen.
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
 ENABLE_PLAYLIST = 1            # Play background music from playlist folder
@@ -412,7 +413,7 @@ FADE_LEVEL = 40
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = (
-    (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
+    (2, 226), (16, 218), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
     (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
     (194, 132), (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
@@ -473,11 +474,13 @@ SLOTS = (
     (194, 130), (178, 131), (147, 130), (131, 130), (115, 130), (99, 130), (83, 130), (50, 130), (34, 129), (2, 128),
     (18, 100), (34, 99), (50, 98), (66, 98), (99, 98), (115, 98), (131, 98), (147, 98), (162, 97), (178, 96), (210, 95),
     (194, 63), (178, 63), (162, 62), (146, 62), (112, 62), (92, 62), (2, 62),
-    (90, 34)
+    (90, 34),
+
+    (16, 218), (34, 226), (50, 226), (66, 226)
 )
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 367)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 367), (367, 371)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
@@ -529,30 +532,33 @@ LADDER_ZONES = (
     ("TOP_OF_ANY_LADDER", (60, 170, 180)))
 
 # Stage specific positions, colours etc
-GRAPHICS_THEME = "dk", "dk", "dk", "dk", "dk", "ck", "ck", "pm"
+GRAPHICS_THEME = "dk", "dk", "dk", "dk", "dk", "ck", "ck", "pm", "dk"
 BONUS_COLORS = ((CYAN, MAGENTA), (YELLOW, MIDBLUE), (WHITE, WHITE), (WHITE, LIGHTBROWN), (CYAN, MAGENTA), (WHITE, WHITE),
-                (WHITE, WHITE), (WHITE, BLUE))
+                (WHITE, WHITE), (WHITE, BLUE), (YELLOW, MIDBLUE))
 HAMMER_POSXY = (((16, 98), (167, 190)), ((8, 140), (104, 100)), ((195, 128), (195, 192)), ((12, 140), (104, 178)),
-                ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)), ((52, 94), (158, 191)))
+                ((3, 159), (206, 70)), ((32, 96), (167, 190)), ((32, 96), (167, 190)), ((52, 94), (158, 191)),
+                ((224, 256), (224, 256)))
 TELEPORT_TO_POSXY = (((164, 193), (20, 92)), ((101, 98), (11, 138)), ((192, 190), (192, 126)), ((104, 180), (16, 140)),
-                     ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)), ((158, 198), (52, 98)))
-OILCAN_POSXY = (16, 232), (172, 152), (16, 232), (104, 128), (68, 112), (16, 232), (16, 232), (16, 232)
-WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246), (108, 142), (72, 126), (20, 246), (20, 246), (20, 246)
-PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (0, 0), (8, 0), (8, 0), (0, 0)
-KONG_POSXY = (0, 0), (80, 4), (0, 0), (0, 4), (0, 4), (0, 0), (0, 0), (0, 0)
-COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73), (67, 77), (67, 77), (67, 73), (67, 73), (67, 73)
-COIN_AWARD_POSX = 0, 112, 0, 28, 0, 0, 0, 0
-LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3, 3   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2 etc.) by stage
+                     ((206, 72), (3, 161)), ((164, 193), (32, 92)), ((164, 193), (32, 92)), ((158, 198), (52, 98)),
+                     ((224, 256), (224, 256)))
+OILCAN_POSXY = (16, 232), (172, 152), (16, 232), (104, 128), (68, 112), (16, 232), (16, 232), (16, 232), (172, 152)
+WARP_ARROW_POSXY = (20, 246), (176, 166), (20, 246), (108, 142), (72, 126), (20, 246), (20, 246), (20, 246), (176, 166)
+PAULINE_POSXY = (0, 0), (16, -8), (0, 0), (0, 0), (0, 0), (8, 0), (8, 0), (0, 0), (16, -8)
+KONG_POSXY = (0, 0), (80, 4), (0, 0), (0, 4), (0, 4), (0, 0), (0, 0), (0, 0), (80, 4)
+COIN_GRAB_POSXY = (67, 73), (147, 77), (67, 73), (67, 77), (67, 77), (67, 73), (67, 73), (67, 73), (147, 77)
+COIN_AWARD_POSX = 0, 112, 0, 28, 0, 0, 0, 0, 112
+LADDER_CHANCE = 3, 2, 3, 3, 3, 3, 3, 3, 1   # Chance of coin rolling down a ladder (1 = always, 2 = 1/2 etc.) by stage
 
 # Jumpman's x position when centre of ladder by stage
 LADDER_CENTRES = ((28, 60, 68, 76, 84, 92, 108, 124, 164, 180),
-                  (4, 12, 20, 28, 60, 68, 76, 100, 140, 148, 180, 188, 196, 204, ),
+                  (4, 12, 20, 28, 60, 68, 76, 100, 140, 148, 180, 188, 196, 204),
                   (20, 50, 60, 76, 116, 124, 156, 164, 175, 188),
                   (12, 20, 60, 76, 124, 132, 140, 188, 196),
                   (4, 12, 60, 76, 116, 124, 164, 180, 204),
                   (28, 60, 68, 76, 84, 92, 108, 124, 164, 180),
                   (12, 28, 60, 44, 76, 84, 92, 108, 148, 164, 180),
-                  (20, 60, 68, 76, 84, 92, 108, 124, 164, 188))
+                  (20, 60, 68, 76, 84, 92, 108, 124, 164, 188),
+                  (4, 12, 20, 28, 60, 68, 76, 100, 140, 148, 180, 188, 196, 204))
 
 # Pies specific.  Location of the 2 moving ladder sections
 MOVING_LADDER_POSXY = (15, 96), (199, 96)
@@ -569,6 +575,7 @@ QUESTION = "WHAT GAME WILL YOU PLAY ?"
 COIN_INFO = ["Hey Jumpman!", '', "You must collect coins..", "to unlock more games", "", "Push COIN for game info", ""]
 FREE_INFO = ["Hey Jumpman!", '', "All arcades are free to play", "", "Push COIN to for game info", ""]
 TEXT_INFO = ["", "Push 'JUMP' to play or 'P1 START' for game options"]
+DOOR_INFO = ["", "Push 'JUMP' to go through the door"]
 INSTALL_INFO = ["Hey, we're installing everything now", "Hang tight while we sort it all out", "It shouldn't take too much longer"]
 DOWNLOAD_INFO = ["Hey, we're downloading the add-on", "It's jam packed with cool stuff",  "Hang on in there"]
 

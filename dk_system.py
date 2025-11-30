@@ -71,6 +71,7 @@ def read_romlist(specific_romlist_file=None):
                         slot = slot.split(".")[0] # decimal places are used only for sorting
                         if not slot:
                             slot = "9999"
+
                         _shell = sub == "shell"
                         if _shell or sub not in usedsubs:
                             if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):

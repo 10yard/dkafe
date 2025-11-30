@@ -33,6 +33,7 @@ lastexit = 0       # Time of exiting last emulated game
 lastaward = 0      # Time of last award
 lastwarpready = 0  # Time of last ready to warp
 lastwarp = 0       # Time of last warp
+lastdoor = 0       # Time of last door
 score = 0          # Jumpman's score
 facing = 1         # Direction Jumpman is facing 0=Left, Right=1
 jump_sequence = 0  # Sequence number of jump.  0 = Not jumping.  Refer to JUMP_PIXELS array.

@@ -1,5 +1,6 @@
 #Rom Name,Sub Folder,Frontend Description,Alt Menu Description,Slot,Emu,Rec,Unlock,3rd Prize,2nd Prize,1st Prize
-dkong,,Donkey Kong,,1,1,2,,10000,25000,40000
+dkong,,Donkey Kong,Donkey Kong,1,1,2,,10000,25000,40000
+trainerstage8,,DK Trainers,DK Trainer Stage,2,,,,,,
 dkongjr,,DK Junior,Donkey Kong Junior,3.1,1,2,,10000,15000,30000
 dkong,dkongpies,DK Pies,DK Pies Only,3.2,1,2,,10000,15000,30000
 dkong,dkonggalakong,GalaKong,DK GalaKong,4,1,2,,10000,20000,40000
@@ -99,6 +100,7 @@ ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,122,1,2,91000,1000,2000,3000
 bigkong,bigkong_l22,BK KS,BK KillScreen 22,123,1,2,92000,4000,7000,10000
 dkong,dkongksfix,KSFix,DK Killscreen Fix,124,1,2,93000,10000,25000,40000
 ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,94000,10000,25000,40000
+trainerstage0,,DK Trainers,DK Trainer Stage,368,,,,,,
 bigkong,bigkong_barrels,BigKong Barrels,BK Barrels Only,9999,1,2,21000,4000,10000,20000
 bigkong,bigkong_continue,BigKong Continue,BK Continue,9999,1,2,21000,5000,15000,25000
 bigkong,bigkong_free,BigKong Free,BK Free Run,9999,1,2,21000,5000,15000,25000

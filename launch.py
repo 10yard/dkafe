@@ -445,6 +445,9 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
+        if not ENABLE_TRAINING and name.startswith("trainerstage"):
+            continue
+
         if int(slot) - 1 in range(*SLOTS_PER_STAGE[_g.stage]):
             p_des = alt.replace("№","00") if alt.strip() else des
             unlocked = True
@@ -509,6 +512,9 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
     if _g.showinfo:
         # Show game info above icons.  Done as last step so that icons do not overwrite the text.
         for name, des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
+            if ENABLE_TRAINING and name.startswith("trainerstage"):
+                y = y + 18
+
             _adj = 1 if name in ARCADE_OTHER else 6
             write_text(des, x=x, y=y-_adj, fg=[BLACK, MAGENTA][unlocked], bg=[GREY, WHITE][unlocked], box=True,
                        rj_adjust=(not (len(des) * 4) + x <= 224) * (w - 1))
@@ -718,14 +724,15 @@ def build_menus(initial=False):
                         alt = alt.split(":")[1].strip()
                     if not initial and ENABLE_ADDONS and not UNLOCK_MODE:
                         write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                    # Played games use a grey font
-                    _color = LIGHTGREY if sub+name in _g.played else PINK
-                    try:
-                       widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name, font_color=_color)
-                    except (IndexError, ValueError) as error:
-                       widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), font_color=_color)
-                    widget.set_margin(8,2)
-                    _unlocked += 1
+                    if not name.startswith("trainerstage"):
+                        # Played games use a grey font
+                        _color = LIGHTGREY if sub+name in _g.played else PINK
+                        try:
+                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), button_id=sub+name, font_color=_color)
+                        except (IndexError, ValueError) as error:
+                           widget = _g.menu.add_button(alt, launch_rom, (sub, name, alt, emu, rec, unlock, st3, st2, st1), font_color=_color)
+                        widget.set_margin(8,2)
+                        _unlocked += 1
             if initial and int(icx) >= 0 and int(icy) >= 0:
                 _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
             _lastname = name
@@ -757,6 +764,8 @@ def build_menus(initial=False):
         _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
         _g.setmenu.add_selector('      Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
         _g.setmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
+        _g.setmenu.add_selector('Training Stage: ', [('Off', 0), ('On', 1)], default=ENABLE_TRAINING, onchange=set_training)
+        _g.setmenu.add_vertical_margin(6)
         if _s.get_system() == "win":
             _g.setmenu.add_selector('     Rotation: ',[('0', 0), ('90', 90), ('180', 180), ('270', 270)], default=ROTATION//90, onchange=set_rotate)
         _g.setmenu.add_selector('  Confirm Exit: ', [('Off', 0), ('On', 1)], default=CONFIRM_EXIT, onchange=set_confirm)
@@ -967,6 +976,8 @@ def save_menu_settings():
                             f_out.write(f"FREE_PLAY = {FREE_PLAY}\n")
                         elif "FULLSCREEN=" in line_packed:
                             f_out.write(f"FULLSCREEN = {FULLSCREEN}\n")
+                        elif "ENABLE_TRAINING=" in line_packed:
+                            f_out.write(f"ENABLE_TRAINING = {ENABLE_TRAINING}\n")
                         elif "ROTATION=" in line_packed:
                             f_out.write(f"ROTATION = {ROTATION}\n")
                         elif "CONFIRM_EXIT=" in line_packed:
@@ -999,6 +1010,8 @@ def set_unlock(_, setting_value):
 def set_freeplay(_, setting_value):
     globals()["FREE_PLAY"] = setting_value
 
+def set_training(_, setting_value):
+    globals()["ENABLE_TRAINING"] = setting_value
 
 def set_splash(_, setting_value):
     globals()["SHOW_SPLASHSCREEN"] = setting_value
@@ -1152,6 +1165,12 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
        Override is used to change emu number in case of recordings (to rec number)."""
     if _g.active and info:
         sub, name, alt, emu, rec, unlock, st3, st2, st1 = info
+        if name.startswith("trainerstage"):
+            _door = int(name[-1:])
+            stage_check(door=_door)  # door to a target stage
+            _g.jump = False
+            return
+
         if override_emu:
             emu = override_emu
             info = sub, name, alt, emu, rec, unlock, st3, st2, st1
@@ -1531,7 +1550,7 @@ def process_interrupts():
                     pygame.draw.rect(_g.screen, MIDGREY, (0, text_y-5, 224, len(text_lines)*6+8), width=2)
                     pygame.draw.rect(_g.screen, MIDGREY, (0, text_y+len(text_lines)*6+2, 224, 14))
                     # Display the game text
-                    for i, line in enumerate(text_lines + TEXT_INFO):
+                    for i, line in enumerate(text_lines + (DOOR_INFO if name.startswith("trainerstage") else TEXT_INFO)):
                         text = line.strip()
                         _fg = WHITE
                         if text.startswith("!!") or text.startswith("!Y") or text.startswith("!R"):
@@ -1551,6 +1570,9 @@ def process_interrupts():
     if not _g.lastwarp or ticks - _g.lastwarp > 600:
         # Flash a down arrow when Jumpman is stood on an oilcan to indicate he can warp to next/previous stage.
         if "FOOT_ABOVE_OILCAN" in get_map_info():
+            if _g.stage == 0:
+                # Oilcan appears when training enabled and stood on top of it
+                _g.screen.blit(get_image(f"artwork/sprite/{get_theme()}oilcan.png"), OILCAN_POSXY[_g.stage])
             _g.lastwarpready = ticks
             if pygame.time.get_ticks() % 550 < 275:
                 _g.screen.blit(get_image(f"artwork/sprite/down.png"), WARP_ARROW_POSXY[_g.stage])
@@ -1662,7 +1684,7 @@ def activity_check():
         process_interrupts()
 
 
-def stage_check(warp=False):
+def stage_check(warp=False, door=-1):
     # Reset Jumpmans position when exiting the stage via ladders or warping through an oilcan
     if warp:
         _g.jump = True
@@ -1680,6 +1702,11 @@ def stage_check(warp=False):
         elif _g.ypos < 20 and not _g.jump:
             _g.stage = (current_stage + 1) % STAGES
             _g.ypos = 238
+        elif door > -1:
+            if pygame.time.get_ticks() - _g.lastdoor > 300:
+                _g.stage = door
+                _g.ready = False
+                _g.lastdoor = pygame.time.get_ticks()
         if ARCH == "win64" or not _g.stage in WIN64_ONLY_STAGES:
             break
 
@@ -1756,7 +1783,7 @@ def main(initial=True):
     # Initialise Jumpman
     _s.debounce()
     animate_jumpman("r", horizontal_movement=0)
-    _g.lastmove, _g.lastwarp = 0, 0
+    _g.lastmove, _g.lastwarp, _g.lastdoor = 0, 0, 0
     _g.timer.reset()
     _g.lastexit = _g.timer.duration
     _g.active = True
