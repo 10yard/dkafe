@@ -68,9 +68,6 @@ The console add-on pack adds up to 5 extra stages and is packed out with hundred
  - A training room,  where you can work on improving your Donkey Kong playing skills.
 
 
-![Training room](https://github.com/10yard/dkafe/blob/master/artwork/about/training_room.png)
-
-
 ### The frontend does not include:
  - Roms or information on how to obtain them.
 
@@ -82,10 +79,6 @@ The console add-on pack adds up to 5 extra stages and is packed out with hundred
 
 DKAFE comes with a default frontend built from various patches of the original **dkong.zip** (US Set 1) arcade rom.  The original rom is required for the patching to work.
 All patch files are included in the **/patch folder**.
-
-
-![DKAFE game info](https://github.com/10yard/dkafe/blob/master/artwork/about/patches.png)
-
 
 Credit is given to the original authors below.
 
@@ -701,6 +694,8 @@ The special subfolder name `shell` can be used when you want to launch a batch f
 
 An accompanying icon in .png format should be placed into the `artwork/icons` folder or subfolder with the same name as the rom.  Recommended icon size is 12px wide x 22px High.
 
+
+![DKAFE Training room](https://github.com/10yard/dkafe/blob/master/artwork/about/training_room.png)
 
 
 ## Emulator recommendation
