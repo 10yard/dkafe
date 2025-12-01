@@ -60,10 +60,6 @@ set systems=a2600,a5200,a7800,a800xl,adam,apfimag,apple2e,bbcb,c64,c64p,cgenie,c
 echo **** adjust controller defaults for some consoles
 for %%s in (%systems%) do xcopy dkwolf\cfg\%%s*.cfg dist\dkwolf\cfg\ /Y
 
-echo **** remove unwanted plugin files for this system
-del dist\dkwolf\plugins\galakong\bin\wavplayxp.exe
-rmdir dist\dkwolf\plugins\allenkong\binxp /s /Q
-
 echo **** build the exe in virtual environment ****
 set PYTHONOPTIMIZE=1
 venv32\Scripts\pyinstaller launch.py --onefile --clean --noconsole --icon artwork\dkafe.ico --name launch32 --hidden-import charset_normalizer.md__mypyc

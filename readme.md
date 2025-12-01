@@ -18,8 +18,8 @@ The latest releases are available to download from below.  Refer to the [How to 
 
 | Download Link                                                                                                        | Version | Operating System                           |
 | -------------------------------------------------------------------------------------------------------------------- | ------- | -------------------------------------------|
-| [dkafe_win64_binary_v0.77.zip](https://github.com/10yard/dkafe/releases/download/v0.77/dkafe_win64_binary_v0.77.zip) | 0.77    | Windows 64 bit (x64) systems (Recommended) |
-| [dkafe_win32_binary_v0.77.zip](https://github.com/10yard/dkafe/releases/download/v0.77/dkafe_win32_binary_v0.77.zip) | 0.77    | Windows 32 bit (x86) systems               |
+| [dkafe_win64_binary_v0.78.zip](https://github.com/10yard/dkafe/releases/download/v0.78/dkafe_win64_binary_v0.78.zip) | 0.78    | Windows 64 bit (x64) systems (Recommended) |
+| [dkafe_win32_binary_v0.78.zip](https://github.com/10yard/dkafe/releases/download/v0.78/dkafe_win32_binary_v0.78.zip) | 0.78    | Windows 32 bit (x86) systems               |
 | [dkafe_rpi4_image_v0.77.gz](https://github.com/10yard/dkafe/releases/download/v0.77/dkafe_rpi4_image_v0.77.gz)       | 0.77    | Raspberry Pi 4 and 400 only                |
 | [dkafe_winxp_binary_v0.67.zip](https://github.com/10yard/dkafe/releases/download/v0.67/dkafe_winxp_binary_v0.67.zip) | 0.67    | Windows XP (No longer maintained)          |
 
@@ -64,8 +64,12 @@ The console add-on pack adds up to 5 extra stages and is packed out with hundred
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 16 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
- - A training room,  where you can improve your Donkey Kong playing skills.
  - An optional console add-on pack featuring over 300 ports, clones and hacks for 60 classic gaming systems, and a bonus arcade stage.
+ - A training room,  where you can work on improving your Donkey Kong playing skills.
+
+
+![Training room](https://github.com/10yard/dkafe/blob/master/artwork/about/training_room.png)
+
 
 ### The frontend does not include:
  - Roms or information on how to obtain them.

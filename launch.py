@@ -135,20 +135,19 @@ def check_patches_available():
         applied_patches, installed_addons = apply_patches_and_addons()
         if applied_patches:
             clear_screen()
-            x_offset, y_offset = 0, 10
-            stripe = WHITE
             write_text(f"APPLYING {str(len(applied_patches))} ARCADE PATCHES", font=dk_font, y=0, fg=RED)
+            x_offset, y_offset = 0, 10
+            _stripe = WHITE
             for i, patch in enumerate(applied_patches):
-                _patch = patch.upper().replace("_","-")
-                if len(_patch) > 10:
-                    _patch = _patch.replace("DKONG", "DK").replace("BIGKONG", "BK").replace("CKONG", "CK").replace("LOGGER", "LG")
-                write_text(_patch, font=pl_font7, x=x_offset, y=y_offset, fg=stripe)
+                _patch = patch.upper().replace("_","")
+                _width = (len(_patch) * 4) + 3
+                if x_offset + _width > 223:
+                    x_offset = 0
+                    y_offset += 6
+                write_text(_patch, font=pl_font7, x=x_offset, y=y_offset, fg=_stripe)
+                _stripe = PINK if _stripe == WHITE else WHITE
+                x_offset += _width
                 update_screen(delay_ms=20)
-                y_offset += 6
-                if y_offset > 236:
-                    x_offset += 44
-                    y_offset = 10
-                    stripe = PINK if stripe == WHITE else WHITE
         if installed_addons:
             if not applied_patches:
                 # Do we need a heading?
@@ -1497,8 +1496,9 @@ def process_interrupts():
                 _g.grab = False
                 _g.cointype = 0
             if ticks % 5000 > 4500:
-                # Will DK grab a coin?
-                _g.grab = randint(1, COIN_FREQUENCY) == 1
+                # Will DK grab a coin?  Doesn't grab a coin on the last stage (training)
+                if _g.stage < 8:
+                    _g.grab = randint(1, COIN_FREQUENCY) == 1
             _g.screen.blit(get_image(f"artwork/sprite/{prefix}0.png"), (11 + _g.dkx, 52 + _g.dky))
 
     if get_theme() == "pm":
@@ -1521,16 +1521,19 @@ def process_interrupts():
 
         # Pauline announces the launch options
         if SHOW_GAMETEXT and alt:
-            # Gametext already informs about JUMP and P1 Start buttons,  so announce the score targets instead.
-            _mins = " mins" if sub == "shell" or emu == 3 else ""
-            if since_last_move() % 4 > 3:
-                p_des = f'1st prize at {format_K(st1, st3)}' + _mins
-            elif since_last_move() % 4 > 2:
-                p_des = f'2nd prize at {format_K(st2, st3)}' + _mins
-            elif since_last_move() % 4 > 1:
-                p_des = f'3rd prize at {format_K(st3, st3)}' + _mins
+            if st3 and st2 and st1 and not BASIC_MODE:
+                # Gametext already informs about JUMP and P1 Start buttons,  so announce the score targets instead.
+                _mins = " mins" if sub == "shell" or emu == 3 else ""
+                if since_last_move() % 4 > 3:
+                    p_des = f'1st prize at {format_K(st1, st3)}' + _mins
+                elif since_last_move() % 4 > 2:
+                    p_des = f'2nd prize at {format_K(st2, st3)}' + _mins
+                elif since_last_move() % 4 > 1:
+                    p_des = f'3rd prize at {format_K(st3, st3)}' + _mins
+                else:
+                    p_des = alt.replace(" :", ":").replace("№","00")
             else:
-                p_des = alt.replace(" :", ":").replace("№","00")
+                p_des = alt.replace(" :", ":").replace("№", "00")
             if p_des:
                 write_text(p_des, x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
         else:
