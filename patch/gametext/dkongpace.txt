@@ -1,0 +1,13 @@
+Donkey Kong Pace
+
+This trainer plays just like normal Donkey Kong, but 
+extensive pace information is provided.
+
+Your pace is automatically calculated and displayed
+at the top of the screen.
+
+At the end of each stage,  you will see a full pace 
+breakdown with detailed information about your 
+progress.
+
+ROM Developed by John Kowalski (SockMaster)

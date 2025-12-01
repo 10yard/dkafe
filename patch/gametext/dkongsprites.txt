@@ -1,0 +1,19 @@
+Donkey Kong Sprites & HitBoxes
+
+This is a graphical romhack that illustrates which
+graphics are part of the background layer and which 
+are part of the sprite layer. Background graphics 
+are displayed in blue and sprites are displayed 
+outlined in white with yellow dots to indicate the
+sprite borders and a red box to indicate the hitbox of
+the sprite (when used). The game code is not altered. 
+
+Use this hack to observe: the seperation between 
+background and sprites, the actual sizes of the 
+various hitboxes, the difference in hitboxes for 
+fireballs and firefoxes, the big hitboxes around DK
+in rivets, the hitboxes above the oil can, the 
+black sprites that cover the top of DK's ladder, and
+more!
+
+Hack Developed by Paul Goes

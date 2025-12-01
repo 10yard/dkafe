@@ -1,4 +1,4 @@
-Donkey Kong Frontend
+Exit Training
 
 Go through this door to exit from the training stage
 and show of your new skills.

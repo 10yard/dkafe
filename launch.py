@@ -140,13 +140,13 @@ def check_patches_available():
             write_text(f"APPLYING {str(len(applied_patches))} ARCADE PATCHES", font=dk_font, y=0, fg=RED)
             for i, patch in enumerate(applied_patches):
                 _patch = patch.upper().replace("_","-")
-                if len(_patch) > 14:
-                    _patch = _patch.replace("DKONG", "DK").replace("BIGKONG", "BK").replace("CKONG", "CK")
+                if len(_patch) > 10:
+                    _patch = _patch.replace("DKONG", "DK").replace("BIGKONG", "BK").replace("CKONG", "CK").replace("LOGGER", "LG")
                 write_text(_patch, font=pl_font7, x=x_offset, y=y_offset, fg=stripe)
                 update_screen(delay_ms=20)
                 y_offset += 6
                 if y_offset > 236:
-                    x_offset += 56
+                    x_offset += 44
                     y_offset = 10
                     stripe = PINK if stripe == WHITE else WHITE
         if installed_addons:
@@ -513,7 +513,7 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
         # Show game info above icons.  Done as last step so that icons do not overwrite the text.
         for name, des, x, y, w, unlocked in [info_list, reversed(info_list)][_g.timer.duration % 4 < 2]:
             if ENABLE_TRAINING and name.startswith("trainerstage"):
-                y = y + 18
+                y = y + 17
 
             _adj = 1 if name in ARCADE_OTHER else 6
             write_text(des, x=x, y=y-_adj, fg=[BLACK, MAGENTA][unlocked], bg=[GREY, WHITE][unlocked], box=True,
@@ -764,7 +764,7 @@ def build_menus(initial=False):
         _g.setmenu.add_selector('   Unlock Mode: ', [('Off', 0), ('On', 1)], default=UNLOCK_MODE, onchange=set_unlock)
         _g.setmenu.add_selector('      Free Play: ', [('Off', 0), ('On', 1)], default=FREE_PLAY, onchange=set_freeplay)
         _g.setmenu.add_selector('    Fullscreen: ', [('Off', 0), ('On', 1)], default=FULLSCREEN, onchange=set_fullscreen)
-        _g.setmenu.add_selector('Training Stage: ', [('Off', 0), ('On', 1)], default=ENABLE_TRAINING, onchange=set_training)
+        _g.setmenu.add_selector(' Training Room: ', [('Off', 0), ('On', 1)], default=ENABLE_TRAINING, onchange=set_training)
         _g.setmenu.add_vertical_margin(6)
         if _s.get_system() == "win":
             _g.setmenu.add_selector('     Rotation: ',[('0', 0), ('90', 90), ('180', 180), ('270', 270)], default=ROTATION//90, onchange=set_rotate)
@@ -1012,6 +1012,10 @@ def set_freeplay(_, setting_value):
 
 def set_training(_, setting_value):
     globals()["ENABLE_TRAINING"] = setting_value
+    if setting_value == 1:
+        globals()["SLOTS"][1] = (17, 219)
+    else:
+        globals()["SLOTS"][1] = (34, 226)
 
 def set_splash(_, setting_value):
     globals()["SHOW_SPLASHSCREEN"] = setting_value
@@ -1707,6 +1711,7 @@ def stage_check(warp=False, door=-1):
                 _g.stage = door
                 _g.ready = False
                 animate_jumpman("r")
+                play_sound_effect("door.mp3")
                 _g.lastdoor = pygame.time.get_ticks()
         if ARCH == "win64" or not _g.stage in WIN64_ONLY_STAGES:
             break

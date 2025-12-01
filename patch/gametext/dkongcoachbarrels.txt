@@ -1,0 +1,18 @@
+Donkey Kong Barrels Coach
+
+This coach will help you to master the barrel stage.
+
+The coach visualises safe zones in green - where 
+Jumpman is safe from wild barrels. 
+Warnings appear when DK releases a wild barrel. 
+The barrel control probability is displayed.
+Ladders are highlighted when steering is recommended
+to divert barrels away from your current position.
+A visible hammer countdown timer appears.
+Jumpman is repositioned on the 2nd girder as a 
+starting point as it is easily reached. Your coaching 
+is focussed on the difficult girders.
+
+Good luck!
+
+Hack Developed by Jon Wilson (10yard)

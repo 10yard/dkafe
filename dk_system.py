@@ -55,6 +55,8 @@ def load_game_texts():
 def read_romlist(specific_romlist_file=None):
     # read romlists and return info about available roms (and shell scripts)
     count_dk, count_other = 0, 0
+    training_slot_start = SLOTS_PER_STAGE[-1][0]
+
     romlists = {}
     usedslots, usedsubs, usedunique = [], [], []
     romlist_files = ROMLIST_FILES if not specific_romlist_file else [specific_romlist_file, '']
@@ -72,9 +74,11 @@ def read_romlist(specific_romlist_file=None):
                         if not slot:
                             slot = "9999"
 
+                        is_training = training_slot_start <= int(slot) < 9999
+
                         _shell = sub == "shell"
-                        if _shell or sub not in usedsubs:
-                            if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")):
+                        if _shell or sub not in usedsubs or is_training:
+                            if not _shell and not os.path.exists(os.path.join(ROM_DIR, sub, name + ".zip")) and not os.path.exists(os.path.join(ROM_DIR, sub, "dkong.zip")) and not name.startswith("trainerstage"):
                                 # Skip over roms when files are not found
                                 continue
                             if ARCH != "win64" and name.split("_")[0] in WIN64_ONLY_SYSTEMS:
@@ -94,7 +98,8 @@ def read_romlist(specific_romlist_file=None):
                             des = des.replace("BK ", "^ ").replace("BK", "^ ")
                             des = des.replace("ZK ", "² ").replace("ZK", "² ")
                             des = des.replace("JR ", "³ ").replace("JR", "³ ")
-                            des = des.replace("1/2", "{  ").replace("1/4", "}  ")
+                            if not is_training:
+                                des = des.replace("1/2", "{  ").replace("1/4", "}  ")
 
                             alt = alt.replace("00", "№")  # Single character 00
 
@@ -128,7 +133,7 @@ def read_romlist(specific_romlist_file=None):
                                 if name != "empty":
                                     # is this an add-on rom
                                     add = sub == "shell" and name.split("_")[0].replace("-", "_") in RECOGNISED_SYSTEMS
-                                    if name + "|" + sub not in usedunique:
+                                    if name + "|" + sub not in usedunique or is_training:
                                         romlists[i].append((name, sub, des, alt, slot, icx, icy, int(emu), int(rec), int(unlock), st3, st2, st1, add))
                                         usedunique.append(name + "|" + sub)
                                         if int(emu) < 3:

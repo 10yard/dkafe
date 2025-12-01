@@ -1,0 +1,18 @@
+Donkey Kong Trainer
+
+This trainer plays just like normal Donkey Kong, but 
+adds extra information to the game's display and
+includes features and functions to help with practice
+and training.
+
+- Both your total score and board score are shown
+- Points that could be earned leaching Kong is shown
+- The game speed (selectable between 20% and 150%)
+- Points earned from jumps and hammer smashes is shown
+- Internal difficulty is shown
+- Remaining hammer time is shown
+- Information about bouncing springs is shown
+
+and much more...
+
+ROM Developed by John Kowalski (SockMaster)

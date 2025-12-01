@@ -86,7 +86,7 @@ ENABLE_ADDONS = 1              # Enable add-on packs.  Set to 0 to disable previ
 INACTIVE_TIME = 20             # Screensaver with game instructions after period in seconds of inactivity. Integer
 SHOW_SPLASHSCREEN = 1          # Show the DKAFE splash screen and animation on startup
 SHOW_GAMETEXT = 1              # Show the game text description when Jumpman faces an arcade machine
-ENABLE_TRAINING = 1            # Enable training stage.  A warp door appears in front of the oilcan on the 1st screen.
+ENABLE_TRAINING = 1            # Enable practice room.  A warp door appears in front of the oilcan on the 1st screen.
 ENABLE_HAMMERS = 1             # Show hammers and enable teleport between hammers in the frontend
 ENABLE_SHUTDOWN = 0            # Allow system shutdown from menu
 ENABLE_PLAYLIST = 1            # Play background music from playlist folder
@@ -412,7 +412,7 @@ BRIGHTRED = (238, 75, 43)
 FADE_LEVEL = 40
 
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
-SLOTS = (
+SLOTS = [
     (2, 226), (17, 219), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
     (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
     (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
@@ -476,11 +476,13 @@ SLOTS = (
     (194, 63), (178, 63), (162, 62), (146, 62), (112, 62), (92, 62), (2, 62),
     (90, 34),
 
-    (17, 219), (34, 226), (50, 226), (66, 226)
-)
+    (17, 219), (38, 226), (54, 226), (70, 226), (86,226), (116,226), (136, 226), (156, 226), (174, 226), (192, 226),
+    (26, 186), (42, 186), (58, 186), (82, 186), (114, 186), (130, 186), (154, 186), (170, 186), (186, 186),
+    (44, 146), (60, 146), (82, 146), (106, 146), (130, 146), (154, 146), (170,146)
+]
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 367), (367, 371)
+SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 367), (367, 393)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (

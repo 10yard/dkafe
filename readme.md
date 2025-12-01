@@ -64,6 +64,7 @@ The console add-on pack adds up to 5 extra stages and is packed out with hundred
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
  - A built in music playlist that features 16 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
+ - A training room,  where you can improve your Donkey Kong playing skills.
  - An optional console add-on pack featuring over 300 ports, clones and hacks for 60 classic gaming systems, and a bonus arcade stage.
 
 ### The frontend does not include:
@@ -320,7 +321,7 @@ An optional add-on pack includes over 300 Donkey Kong ports and hacks for the fo
  - Watara Supervision
  
 
-The Donkey Kong console games will appear on 4 extra stages (*Crazy Kong and Big Kong stages are exclusive to Windows x64 platform).  There is also a bonus arcade stage.
+The Donkey Kong console games will appear on 4 extra stages (*Crazy Kong and Big Kong stages are exclusive to Windows x64 platform).  There is also a bonus arcade stage and a training room.
 In unlock mode,  you must play for a given amount of time to win coins instead of reaching a target score  e.g. Play 2 minutes for 3rd prize,  4 minutes for 2nd prize and 8 minutes for first prize.
 
 The default controls for these games have been configured to work with arcade controls.  Typically press "P1 Start" or "Jump" to start.
@@ -463,6 +464,9 @@ Rotates the screen for the duration of your DKAFE session.  Set to 0, 90, 180 or
 
 `SHOW_GAMETEXT = 1`
 1 to show the game text descriptions when Jumpman faces an arcade machine.  0 to hide the game descriptions.
+
+`ENABLE_TRAINING = 0`
+1 to enable the training room which is accessed via a door on the 1st stage.  0 to hide the training room.
 
 `SPEED_ADJUST = 0`
 Increase the frontend speed.  0 is normal.  If frontend is running slow then try incrementing by 1 until desired speed is achieved.
@@ -669,7 +673,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ### Music Playlist
 
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
-14 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3**, **.ogg** or **.wav** format. 
+17 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3**, **.ogg** or **.wav** format. 
 
 The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key) or it can be toggle on/off by pressing the CONTROL_PLAYLIST key (p).
 When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).

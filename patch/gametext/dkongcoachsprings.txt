@@ -1,0 +1,20 @@
+Donkey Kong Barrels Coach
+
+This coach will help you to master the springs.
+
+The coach visualises the safe zones and danger zones
+on DK's girder. 
+Information about generated springs helps you make 
+quick decisions on when to make a run and when to 
+sit tight or retreat back to safety.
+All generated springs are assigned a "spring type" of
+between 0 and 15 depending on their length. The 
+shortest spring has type 0, the longest has type 15.
+Jumpman is repositioned at the top of the screen ready
+to climb the ladder up to DK's girder. This ensures 
+your coaching is focussed on the most difficult part
+of the stage.
+
+Good luck!
+
+Hack Developed by Jon Wilson (10yard)
