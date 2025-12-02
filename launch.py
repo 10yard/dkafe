@@ -708,7 +708,7 @@ def build_menus(initial=False):
         _g.menu = pymenu.Menu(DISPLAY[1], DISPLAY[0], QUESTION, mouse_visible=False, mouse_enabled=False, theme=dkafe_theme_left, onclose=close_menu)
         _g.menu.add_vertical_margin(4)
 
-        _lastname, _lastsystem = "", ""
+        _lastname, _lastsystem, _lastsub = "", "", ""
         _count = 0
         _unlocked = 0
         for name, sub, desc, alt, slot, icx, icy, emu, rec, unlock, st3, st2, st1, add in _g.romlist:
@@ -723,7 +723,7 @@ def build_menus(initial=False):
                         alt = alt.split(":")[1].strip()
                     if not initial and ENABLE_ADDONS and not UNLOCK_MODE:
                         write_text(f"Generating game list..", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
-                    if not name.startswith("trainerstage"):
+                    if not name.startswith("trainerstage") and not (name == _lastname and sub == _lastsub):
                         # Played games use a grey font
                         _color = LIGHTGREY if sub+name in _g.played else PINK
                         try:
@@ -734,7 +734,7 @@ def build_menus(initial=False):
                         _unlocked += 1
             if initial and int(icx) >= 0 and int(icy) >= 0:
                 _g.icons.append((int(icx), int(icy), name, sub, desc, alt, slot, emu, rec, unlock, st3, st2, st1))
-            _lastname = name
+            _lastname, _lastsub = name, sub
             _count += 1
 
         _g.menu.add_vertical_margin(6)

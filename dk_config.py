@@ -213,7 +213,7 @@ ARCADE_CRAZY = "ckong", "ckongpt2", "ckongpt2a", "ckongpt2b", "ckongs", "ckongg"
 ARCADE_BIG = "bigkong", "bigkonggx"
 ARCADE_LOGGER = "logger", "loggerr2"
 ARCADE_TRAINERS = ("dkongtrn", "dkongpace", "dkongbcc", "dkongsprites", "dkongbarrelboss", "dkongsprfin", "dkongst2",
-                   "dkongcoach", "dkongcoachsprings", "dkongl05")
+                   "dkongcoach", "dkongcoachsprings", "dkongcoachbarrels", "dkongl05")
 ARCADE_2PLAYER = "dkongduel", "pc_dkbros"
 ARCADE_CORE_ORDER = "Donkey Kong", "Donkey Kong Junior", "Donkey Kong 3", "PC: DK Bros.", "Crazy Kong (Part I)", "Crazy Kong (Part II)", "Big Kong"
 SYSTEM_CORE_ORDER = "Arcade (Donkey Kong)", "Arcade (Donkey Kong Junior)", "Arcade (Donkey Kong 3)", "Arcade (Crazy Kong)", "Arcade (Big Kong)", "Arcade (Logger)", "Arcade (Two Players)", "Arcade (Practice)", "Arcade (Other)"
@@ -250,6 +250,7 @@ PLUGINS = (
     ("dkongjrgala", "galakong"),
     ("dkongcoach","dkcoach"),
     ("dkongcoachsprings","dkcoach"),
+    ("dkongcoachbarrels","dkcoach"),
     ("dkongjrfree", "dkfree"),
     ("dkong3free", "dkfree"),
     ("dkongjrlavapanic", "dklavapanic"),
@@ -351,7 +352,7 @@ CONTINUE_FRIENDLY = ("dkong", "dkongjr", "dkongd2k", "dkongjapan", "dkongpauline
                      "pacman", "mspacman", "pacplus", "pacmanf", "mspacmnf", "mspacmat", "qbert", "frogger", "invaders",
                      "galaga", "galaxian")
 SHOOT_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongpies", "dkongrivets", "dkongpacmancross", "dkonginsanity",
-                  "dkonglongtime")
+                  "dkonglongtime", "dkong2nut")
 START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspooky", "dkongwizardry", "dkong40",
                    "dkongspringy", "dkonglava", "dkongwho", "ckongpt2", "dkongitd", "dkongxmas", "dkongvector",
                    "dkongjrgala", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
@@ -361,7 +362,7 @@ START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
                    "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b", "dkongpacmancross",
                    "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild", "dkongdizzy", "dkongvectorgala",
-                   "dkongtv", "dkongvectortv", "dkonggalatv")
+                   "dkongtv", "dkongvectortv", "dkonggalatv", "dkongsprites")
 STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
@@ -369,12 +370,12 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
                   "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00",
-                  "dkongtv", "dkonggalatv")
+                  "dkongtv", "dkonggalatv", "dkongsprites")
 DKTV_FRIENDLY =  ("dkong", "dkongpies", "dkongwizardry", "dkong40", "dkongspringy", "dkongitd",
                   "dkongvector", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
                   "dkonghrthnt", "dkongd2k", "dkongrev", "dkongcb", "dkongkana", "dkongrndmzr", "dkongnoluck",
                   "dkongwbh", "dkongpauline", "dkongjapan", "dkongpac", "dkongbarrels", "dkonghrd", "dkongchorus",
-                  "dkongrainbow", "dkongcontinue", "dkongksfix", "dkongbcc", "dkongbarrelboss", "dkongsprfin",
+                  "dkongrainbow", "dkongcontinue", "dkongksfix", "dkongbcc",
                   "dkongpacmancross", "dkongwobble", "dkongvectorwild", "dkonggalakong", "dkongspooky", "dkonglava",
                   "dkongwho", "dkonginsanity", "dkongxmas", "dkongbarpal", "dkongoctomonkey", "dkongxgalakong",
                   "dkongd2k", "dkongrdemo", "dkong2nut", "dkongallen", "dkonghalf", "dkongquarter", "dkongl22",
