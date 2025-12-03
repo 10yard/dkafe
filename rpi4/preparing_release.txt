@@ -24,6 +24,7 @@ S ls /boot
 
 If all OK we can now remove the sources
 
+$ cd ..
 $ sudo rm -r /home/pi/dkafe
 
 You can stop here and reboot to test the build works - but then have to start steps again from the top before continuing.
