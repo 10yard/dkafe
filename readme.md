@@ -472,7 +472,7 @@ Increase the frontend speed.  0 is normal.  If frontend is running slow then try
 How difficult are the target scores.  1 (Beginner) to 10 (Expert).
 
 `START_STAGE = 0`
-The stage to start the frontend on.  0 is barrels stage, 1 is rivets stage, 2 is pie factory stage, 3 is springs stage, 4 is crazy kong stage, 5 is big kong stage.
+The stage to start the frontend on.  0 is barrels, 1 is rivets, 2 is remix, 3 is pies, 4 is springs, 5 is crazy kong, 6 is big kong, 7 is arcade and 8 is the training room 
 
 `HIGH_SCORE_SAVE = 1`
 Save your high score tables for each game.

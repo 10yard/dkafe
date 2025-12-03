@@ -100,8 +100,8 @@ ckongpt2,ckongpt2_l22,CK KS,CK KillScreen 22,122,1,2,91000,1000,2000,3000
 bigkong,bigkong_l22,BK KS,BK KillScreen 22,123,1,2,92000,4000,7000,10000
 dkong,dkongksfix,KSFix,DK Killscreen Fix,124,1,2,93000,10000,25000,40000
 ckongdks,ckongdks,CKSpanishBootleg,CK Spanish Bootleg,125,1,2,94000,10000,25000,40000
-trainerstage0,,Exit,Exit Training Room,368,,,,,,
-dkong,dkongbarrels,Bar,DK Barrels Only,369,1,2,,,,
+dkong,dkongbarrels,Bar,DK Barrels Only,368,1,2,,,,
+trainerstage0,,Exit,Exit Training Room,369,,,,,,
 dkong,dkongpies,Pie,DK Pies Only,370,1,2,,,,
 dkong,dkongspringy,Spr,DK Springs Only,371,1,2,,,,
 dkong,dkongrivets,Riv,DK Rivets Only,372,1,2,,,,

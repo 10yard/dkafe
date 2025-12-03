@@ -444,8 +444,12 @@ def display_icons(detect_only=False, with_background=False, below_y=None, above_
 
     # Display icons and return icon that is near to Jumpman
     for _x, _y, name, sub, des, alt, slot, emu, rec, unlock, st3, st2, st1 in _g.icons:
-        if not ENABLE_TRAINING and name.startswith("trainerstage"):
-            continue
+
+        if name.startswith("trainerstage"):
+            _y -= 7 # Offset the larger icon
+            if not ENABLE_TRAINING and name.startswith("trainerstage8"):
+                # Hide door to training room
+                continue
 
         if int(slot) - 1 in range(*SLOTS_PER_STAGE[_g.stage]):
             p_des = alt.replace("№","00") if alt.strip() else des
@@ -1009,12 +1013,10 @@ def set_unlock(_, setting_value):
 def set_freeplay(_, setting_value):
     globals()["FREE_PLAY"] = setting_value
 
+
 def set_training(_, setting_value):
     globals()["ENABLE_TRAINING"] = setting_value
-    if setting_value == 1:
-        globals()["SLOTS"][1] = (17, 219)
-    else:
-        globals()["SLOTS"][1] = (34, 226)
+
 
 def set_splash(_, setting_value):
     globals()["SHOW_SPLASHSCREEN"] = setting_value
