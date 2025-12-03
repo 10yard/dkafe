@@ -337,7 +337,7 @@ PARAMETER_PLUGINS = "dkongend1", "dkongend3", "dkonglava1", "dkonglava2", "dkong
 CUSTOM_BEZELS = "dkongtv",
 
 # Roms that are compatible with my plugins
-COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong", "dkonglongtime")
+COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong", "dkonglongtime", "dkongsprfin")
 COACH_L5_FRIENDLY = ("dkongspringy", "dkongbarrels")
 CHORUS_FRIENDLY = ("dkong", "dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkongrivets", "dkongrnd",
                    "dkongwbh", "dkongpies", "dkongjapan", "dkongpauline", "dkongfr", "dkongl05", "dkongce", "dkongrev",
