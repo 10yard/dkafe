@@ -138,16 +138,19 @@ def check_patches_available():
             write_text(f"APPLYING {str(len(applied_patches))} ARCADE PATCHES", font=dk_font, y=0, fg=RED)
             x_offset, y_offset = 0, 10
             _stripe = WHITE
+            _newline_stripe = _stripe
             for i, patch in enumerate(applied_patches):
                 _patch = patch.upper().replace("_","")
                 _width = (len(_patch) * 4) + 3
                 if x_offset + _width > 223:
+                    _newline_stripe = PINK if _newline_stripe == WHITE else WHITE
+                    _stripe = _newline_stripe
                     x_offset = 0
                     y_offset += 6
                 write_text(_patch, font=pl_font7, x=x_offset, y=y_offset, fg=_stripe)
                 _stripe = PINK if _stripe == WHITE else WHITE
                 x_offset += _width
-                update_screen(delay_ms=20)
+                update_screen(delay_ms=10)
         if installed_addons:
             if not applied_patches:
                 # Do we need a heading?

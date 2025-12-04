@@ -16,7 +16,7 @@ from pathlib import Path
 import shutil
 import hashlib
 import zipfile
-from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, FIX_MD5, ARCH, DISPLAY, ROOT_DIR
+from dk_config import ROM_DIR, PATCH_DIR, DKONG_ZIP, DKONGJR_ZIP, DKONG3_ZIP, DKONG_MD5, ARCH, DISPLAY, ROOT_DIR, ROM_CONTENTS
 from dk_system import is_pi, copy
 
 
@@ -25,10 +25,13 @@ def validate_rom():
     if os.path.exists(DKONG_ZIP):
         buffer = open(DKONG_ZIP, 'rb').read()
         md5 = hashlib.md5(buffer).hexdigest()
+        ips = os.path.join(PATCH_DIR, f"fix_{md5}.ips")  # in case we need to patch the base rom
+
         if md5 == DKONG_MD5:
             # ZIP is verified
             return True
-        elif md5 in FIX_MD5:
+
+        elif os.path.exists(ips):
             # ZIP has a recognised MD5 and can be converted using a "fix" patch file
             alt_zip = os.path.join(ROM_DIR, f"dkong_{md5}.zip")
             shutil.copy(DKONG_ZIP, alt_zip)
@@ -36,24 +39,15 @@ def validate_rom():
                 # Read the alternative ZIP binary
                 with open(alt_zip, 'rb') as f_in:
                     alt_binary = f_in.read()
-                ips = os.path.join(PATCH_DIR, f"fix_{md5}.ips")
                 if os.path.exists(ips):
                     # Apply patch and write the fixed DKONG.ZIP to roms
                     patch = Patch.load(ips)
                     with open(DKONG_ZIP, 'w+b') as f_out:
                         f_out.write(patch.apply(alt_binary))
-                    return True
+                    # Verify MD5 after patching
+                    buffer = open(DKONG_ZIP, 'rb').read()
+                    return DKONG_MD5 == hashlib.md5(buffer).hexdigest()
             return False
-        else:
-            # ZIP not recognised - a patch file was not found.
-            return False
-            # 09/06/2024 Removed last resort code.  Trying to patch an unrecognisd ZIP is most likely going to fail
-            ## Last resort. Check the ZIP contains all the required files
-            #z = zipfile.ZipFile(DKONG_ZIP)
-            #for filename in ROM_CONTENTS:
-            #    if filename not in z.namelist():
-            #        return False
-            #return True
     else:
         # No rom file so a verification error is not returned
         return True

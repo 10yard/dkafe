@@ -397,7 +397,7 @@ The application requires settings.txt and romlist.csv to be present in the insta
 The settings.txt contains the emulator, rom path, controls and other configuration.  See [Frontend Settings](#frontend-settings) section below.
 
 The romlist.csv contains information about the roms, which game slot they should appear in and how they can be unlocked and launched in the frontend.  See [How to use romlist.csv](#how-to-use-romlist-csv) below.
-There are 367 configurable game slots in total. 
+There are 393 configurable game slots in total. 
 
 
 ![DKAFE slots](https://github.com/10yard/dkafe/blob/master/artwork/about/slots.png)

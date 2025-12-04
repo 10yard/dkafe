@@ -364,7 +364,7 @@ START5_FRIENDLY = ("dkong", "dkongjr", "dkongpies", "dkonggalakong", "dkongspook
                    "dkongjrcontinue", "ckongs", "ckongg", "ckongmc", "dkongksfix", "dkongbcc", "dkongbarrelboss",
                    "dkongsprfin", "bigkonggx", "ckongdks", "ckongpt2_117", "ckongpt2b", "dkongpacmancross",
                    "ckongpt2a_2023", "ckongpt2_dk", "dkongwobble", "dkongvectorwild", "dkongdizzy", "dkongvectorgala",
-                   "dkongtv", "dkongvectortv", "dkonggalatv", "dkongsprites")
+                   "dkongtv", "dkongvectortv", "dkonggalatv", "dkongsprites", "dkonginsanity")
 STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40", "dkonglava", "dkongwho", "dkongfr",
                   "dkongaccelerate", "ckongpt2", "dkongitd", "dkongjrgala", "dkong2600", "dkongtj", "dkongfoundry",
                   "dkongotr", "dkonghrthnt", "dkongxgalakong", "bigkong", "dkongd2k", "dkongrev", "dkongkana",
@@ -599,11 +599,8 @@ ROM_CONTENTS = ["c_5at_g.bin", "c_5bt_g.bin", "c_5ct_g.bin", "c_5et_g.bin", "c-2
                 "l_4n_b.bin", "l_4r_b.bin", "l_4s_b.bin", "s_3i_b.bin", "s_3j_b.bin", "v_3pt.bin", "v_5h_b.bin",
                 "v-5e.bpr"]
 
-# MD5 checksum of expected DK base rom and various fixes/patches to align the provided rom with the expected rom.
+# MD5 checksum of expected DK base rom.  This is validated at startup - see dk_patch.py
 DKONG_MD5 = "a13e81d6ef342d763dc897fe03893392"
-FIX_MD5 = ("f116efa820a7cedd64bcc66513be389d", "d57b26931fc953933ee2458a9552541e", "aa282b72ac409793b36780c99b26d07b",
-           "e883b4225a76a79f38cf1db7c340aa8e", "eb6571036ff25e8e5db5289f5524ab76", "5897e79286e19c91eb3eca657a8c574c",
-           "480d0f113e8c7069b50ba807cf4b2a24", "394a7d367c9926c1d151dd87814c77f4")
 
 INVALID_ROM_MESSAGE = [
     "ERROR WITH DONKEY KONG ROM", "",
