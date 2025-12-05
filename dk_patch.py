@@ -39,14 +39,13 @@ def validate_rom():
                 # Read the alternative ZIP binary
                 with open(alt_zip, 'rb') as f_in:
                     alt_binary = f_in.read()
-                if os.path.exists(ips):
-                    # Apply patch and write the fixed DKONG.ZIP to roms
-                    patch = Patch.load(ips)
-                    with open(DKONG_ZIP, 'w+b') as f_out:
-                        f_out.write(patch.apply(alt_binary))
-                    # Verify MD5 after patching
-                    buffer = open(DKONG_ZIP, 'rb').read()
-                    return DKONG_MD5 == hashlib.md5(buffer).hexdigest()
+                # Apply patch and write the fixed DKONG.ZIP to roms
+                patch = Patch.load(ips)
+                with open(DKONG_ZIP, 'w+b') as f_out:
+                    f_out.write(patch.apply(alt_binary))
+                # Verify MD5 after patching
+                buffer = open(DKONG_ZIP, 'rb').read()
+                return DKONG_MD5 == hashlib.md5(buffer).hexdigest()
             return False
     else:
         # No rom file so a verification error is not returned
