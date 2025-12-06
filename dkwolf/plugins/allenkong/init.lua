@@ -15,6 +15,8 @@ exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
 local allenkong = exports
 
+global_id_allenkong = true
+
 package.path = package.path .. ";plugins/allenkong/resources.lua"
 require("resources")
 
@@ -290,7 +292,12 @@ function allenkong.startplugin()
 						end
 					end
 					if frame < get("finger") + 120 then
-						draw_graphic(pic_finger, 156, 80)
+						if global_id_dktv then
+							-- Position finger higher up the screen when using the DKTV plugin
+							draw_graphic(pic_finger, 200, 80)
+						else
+							draw_graphic(pic_finger, 156, 80)
+						end
 					end
 				end
 				-- reposition Jumpman on stage completion

@@ -1,0 +1,13 @@
+<mamelayout version="2">
+	<element name="bezel">
+		<image file="overlay.png" />
+	</element>
+	<view name="Camera Overlay">
+		<screen index="0">
+			<bounds x="0" y="0" width="224" height="256" />
+		</screen>
+		<element ref="bezel">
+			<bounds x="0" y="0" width="224" height="256" />
+		</element>
+	</view>
+</mamelayout>

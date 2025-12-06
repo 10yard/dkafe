@@ -278,6 +278,7 @@ PLUGINS = (
     ("dkongdizzy", "dizzykong"),
     ("dkongdizzylava", "dizzykong,dklavapanic"),
     ("dkongallenl22","allenkong:22"),
+    ("dkongallentv","allenkong,dktv"),
     ("dkongwobble", "wobblekong"),
     ("dkongallen", "allenkong"),
     ("dkongchorus", "dkchorus"),
@@ -334,7 +335,7 @@ PLUGINS = (
 # Above plugin is launched with parameters and can compete (unlike a menu launch plugin).
 PARAMETER_PLUGINS = "dkongend1", "dkongend3", "dkonglava1", "dkonglava2", "dkonglava3", "dkonglava4"
 
-CUSTOM_BEZELS = "dkongtv",
+CUSTOM_BEZELS = "dkongtv", "dkongallentv"
 
 # Roms that are compatible with my plugins
 COACH_FRIENDLY = ("dkongspringy", "dkongbarrels", "dkongcb", "dkonghrd", "dkong", "dkonglongtime", "dkongsprfin")
@@ -718,15 +719,15 @@ Feedback and feature ideas:
 
 Playlist music:
   LeviR.star's Music,
-  Nintega Dario,
-  MyNameIsBanks,
-  SanHolo,
+  Nintega Dario, SanHolo,
+  MyNameIsBanks, Bad-Atom,
+  RetroKid, DaGrahamCraka,
   MotionRide Music,
   Buckner & Garcia,
-  Sascha Zeidler,
+  Sascha Zeidler
   Mitchel Gatzke,
-  Chiptunema,
-  RetroKid and Pringles
+  Chiptunema, Pringles
+    
 """
 
 # Console Addon Specific

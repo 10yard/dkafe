@@ -62,7 +62,7 @@ The console add-on pack adds up to 5 extra stages and is packed out with hundred
  - Several Donkey Kong hacks and plugins made by me specifically for use with this frontend.
  - A custom lightweight version of WolfMAME built specifically for Donkey Kong, and it's clones and bootlegs.
  - MAME plugins and scripts that interface with the frontend to add cool features such as score targets, stage practice and a coaching mode.
- - A built in music playlist that features 16 fantastic Donkey Kong remix tracks by default.
+ - A built in music playlist that features 19 fantastic Donkey Kong remix tracks by default.
  - Extensive configuration options.
  - An optional console add-on pack featuring over 300 ports, clones and hacks for 60 classic gaming systems, and a bonus arcade stage.
  - A training room,  where you can work on improving your Donkey Kong playing skills.
@@ -92,20 +92,15 @@ Credit is given to the original authors below.
  - DK Who and the Daleks
  - Donkey Kong Insanity
  - DK TV
- - OctoMonkey
- - Half Kong
- - Quarter Kong
+ - OctoMonkey, Half Kong and Quarter Kong
  - 2NUT Kong
- - NoLuck Kong
  - Konkey Dong
+ - NoLuck Kong
  - Attract Mode Play Only
  - Donkey Kong Barrels, Pies, Springs, Rivets
  - Donkey Kong Long Time
  - Donkey Kong Killscreen
- - Donkey Kong Coach
- - Donkey Kong Chorus
- - Donkey Kong Continue
- - Donkey Kong Ends
+ - Donkey Kong Coach, Chorus and Continue
  
 ### By Paul Goes - https://donkeykonghacks.net/
  - Donkey Kong Crazy Barrels Edition
@@ -670,7 +665,7 @@ dtoverlay=gpio-key,gpio=26,keycode=1,label="KEY_ESC"
 ### Music Playlist
 
 You can override the default Donkey Kong background music by setting `ENABLE_PLAYLIST = 1` in the settings.txt file.
-17 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3**, **.ogg** or **.wav** format. 
+19 Donkey Kong music remixes are included by default for your enjoyment - see thank you section below for a list of the included tracks and their creators.  These files can be removed and replaced with your own favourite music tracks in **.mp3**, **.ogg** or **.wav** format. 
 
 The "Music Playlist" can also be activated via the frontend settings menu (by pressing the TAB key) or it can be toggle on/off by pressing the CONTROL_PLAYLIST key (p).
 When music is playing you can skip to the next track by pressing the CONTROL_SKIP key (s).
@@ -804,6 +799,13 @@ https://www.youtube.com/watch?v=_CnkT5VcVhI
 
 Donkey Kong/Junior Smash Remix 64 by Pringles
 https://www.youtube.com/watch?v=8_GX3iviLYU&list=RD8_GX3iviLYU
+
+Donkey Kong Game Remix by Bad-Atom
+https://www.newgrounds.com/audio/listen/52646
+
+Donkey Kong Title Song Remix by DaGrahamCraka
+https://www.newgrounds.com/audio/listen/63637
+
 
 ![Thanks](https://github.com/10yard/dkafe/blob/master/artwork/about/thanks.png)
 

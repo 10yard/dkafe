@@ -14,6 +14,8 @@ local exports = {
 
 local dktv = exports
 
+global_id_dktv = true
+
 function dktv.startplugin()
 	local mame_version, mac, cpu, mem, scr	
 	local x, y, h, mode1, mode2, zoom_level
@@ -71,7 +73,7 @@ function dktv.startplugin()
 					x, y = 126, 190
 					zoom_level = 0.85
 				end
-				
+
 				if (mode1 == 1 and (mode2 >= 2 and mode2 <= 4)) or (mode1 == 3 and (mode2 >= 11 and mode2 <= 13)) or (complete and stage < 4) then				
 					-- Get Jumpman's position
 					if mode2 == 11 then
@@ -144,13 +146,23 @@ function dktv.startplugin()
 				scr:draw_box(256, 0, 224, 80, 0xff000000, 0xff000000)
 				scr:draw_box(256, 160, 200, 224, 0xff000000, 0xff000000)
 			end
+
+			if global_id_allenkong and mode1 == 3 and mode2 == 7 then
+				-- Don't zoom into the level selection when using with AllenKong plugin
+				con.xoffset = 0
+				con.yoffset = 0
+				con.xscale = 1
+				con.yscale = 1
+			end
 		end
 	end
 			
 	function write_rom_message(start_addr, text)
 		-- write characters of message to ROM
-		for key=1, string.len(text) do
-			mem:write_direct_u8(start_addr + (key - 1), string.find(characters, string.sub(text, key, key)) - 1)
+		if mem then
+			for key=1, string.len(text) do
+				mem:write_direct_u8(start_addr + (key - 1), string.find(characters, string.sub(text, key, key)) - 1)
+			end
 		end
 	end
 			
