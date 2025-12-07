@@ -250,6 +250,7 @@ PLUGINS = (
     ("dkonggalakong4", "dkstart5:4"),
     ("dkongxgalakong", "galakong"),
     ("dkongjrgala", "galakong"),
+    ("dkong2nut", "dk2nutplus"),
     ("dkongcoach","dkcoach"),
     ("dkongcoachsprings","dkcoach"),
     ("dkongcoachbarrels","dkcoach"),
