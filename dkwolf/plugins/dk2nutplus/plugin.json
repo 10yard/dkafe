@@ -1,0 +1,10 @@
+{
+"plugin": {
+"name": "dk2nutplus",
+"description": "Better speeds up that delay between restarts",
+"version": "0.1",
+"author": "Jon Wilson (10yard)",
+"type": "plugin",
+"start": "false"
+}
+}
