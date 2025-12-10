@@ -1,4 +1,4 @@
-Donkey Kong Barrels Coach
+Donkey Kong Springs Coach
 
 This coach will help you to master the springs.
 

@@ -164,20 +164,25 @@ function allenkong.startplugin()
 			end
 
 			-- level selection screen --------------------------------------------------------------------------------
-			if mode1 == 3 and mode2 == 7 and not(level_22) then
+			if mode1 == 3 and mode2 == 7 then
 				if get("mode2") ~= 7 then selected = false end
 
-				draw_level_selection()
-				input = read(0x6011)  -- 1=right, 2=left, 4=up, 8=down, 16=jump
+				if not level_22 then
+					draw_level_selection()
+					input = read(0x6011)  -- 1=right, 2=left, 4=up, 8=down, 16=jump
 
-				if not selected and input ~= get("input") then
-					if level_lookup[input] then
-						level_select = level_lookup[input]
-						play("c"..tostring(level_select))
-						store("input", input)
+					if not selected and input ~= get("input") then
+						if level_lookup[input] then
+							level_select = level_lookup[input]
+							play("c"..tostring(level_select))
+							store("input", input)
+						end
 					end
+					write_ram_message(0x74c3, string.format("%02d", level_select))
+				else
+					level_select = 22
+					input = 16
 				end
-				write_ram_message(0x74c3, string.format("%02d", level_select))
 
 				local _adds, _data, _start, _y, _x
 				if read(0x600d, 0) then _adds = {0x7781, 0x60b2} else _adds = {0x7521, 0x60b5} end  -- p1/p2 scores
@@ -188,7 +193,9 @@ function allenkong.startplugin()
 				set_score_segment(_adds[2]+2, string.sub(_start,1,2))
 				set_score_segment(_adds[2]+1, string.sub(_start,3,4))
 				set_score_segment(_adds[2]+0, string.sub(_start,5,6))
-				selection_box(_y, _x)
+				if input ~= 16 then
+					selection_box(_y, _x)
+				end
 
 				if input == 16 then
 					write(0x6229, level_select)

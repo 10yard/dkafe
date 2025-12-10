@@ -101,3 +101,4 @@ achievements = {}
 
 # Play history
 played = []
+lastegg = 0

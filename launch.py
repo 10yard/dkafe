@@ -1588,6 +1588,16 @@ def process_interrupts():
             _g.lastwarpready = ticks
             if pygame.time.get_ticks() % 550 < 275:
                 _g.screen.blit(get_image(f"artwork/sprite/down.png"), WARP_ARROW_POSXY[_g.stage])
+    if _g.stage == 8:
+        # Do we trigger the killscreen easter egg?
+        if _g.ypos < 73 and not _g.lastegg:
+            _g.lastegg = _g.timer.duration
+            play_from_tracklist(os.path.join(ROOT_DIR, "sounds", "killscreen.mp3"))
+        if _g.lastegg and _g.timer.duration - _g.lastegg < 15:
+            write_text("DK killscreen coming up!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA,
+                       fg=PINK, bubble=True)
+            _g.screen.blit(get_image(f"artwork/sprite/killscreen.png"), (0, 256 - ((_g.timer.duration - _g.lastegg) * 40)))
+
 
 
 def get_prize_placing(awarded):
@@ -1752,12 +1762,15 @@ def teleport_between_hammers():
             write_text("Teleport Jump!", x=108 + _g.psx, y=38 + _g.psy, bg=MAGENTA, fg=PINK, bubble=True)
 
 
-def play_from_tracklist():
+def play_from_tracklist(specific_track=None):
     #  Play a random track from the track list.  Remember the last played tracks - history holds 1/2 available tracks.
     #  If there's more than 1 track available then we don't repeat play.
-    if _g.tracklist:
+    if _g.tracklist or specific_track:
         while True:
-            track = sample(_g.tracklist, 1)[0]
+            if specific_track:
+                track = specific_track
+            else:
+                track = sample(_g.tracklist, 1)[0]
             if track not in _g.trackhistory or len(_g.tracklist) == 1:
                 playlist.load(track)
                 playlist.play()

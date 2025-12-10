@@ -1071,11 +1071,13 @@ function galakong.startplugin()
 	
 	function write_rom_message(start_address, text)
 		-- write characters of message to DK's ROM
-		local _len = string.len
-		local _sub = string.sub
-		local _table = char_table
-		for key=1, _len(text) do
-			mem:write_direct_u8(start_address + (key - 1), _table[_sub(text, key, key)])
+		if mem then
+			local _len = string.len
+			local _sub = string.sub
+			local _table = char_table
+			for key=1, _len(text) do
+				mem:write_direct_u8(start_address + (key - 1), _table[_sub(text, key, key)])
+			end
 		end
 	end
 	

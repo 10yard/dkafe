@@ -130,12 +130,14 @@ ckongpt2,ckongpt2_barrels,CK Barrels,CK Barrels Only,9999,1,2,9000,10000,25000,4
 ckongpt2,ckongpt2_rivets,CK Rivets,CK Rivets Only,9999,1,2,9000,10000,25000,40000
 ckongpt2,ckongpt2_l00,CK Zero,CK Zero Sense,9999,1,2,9000,10000,25000,40000
 congo,,Congo Bongo,Bonus: Congo Bongo,9999,1,2,3000,,,
+dkong,dkonginsanitygala,InsanityGalakong,DK Insanity Galakong,9999,1,2,20000,2000,4000,8000
 dkong,dkongattract,DK Attract,DK Attract Mode Play,9999,1,2,33000,,,
 dkong,dkongwobble,WobbleKong,DK Wobble Kong,9999,1,2,38000,10000,20000,40000
 dkong,dkongend4,DK End L4,DK Ends at L=04,9999,1,2,66000,10000,25000,40000
 dkong,dkongbcc,DK Barrel Control,,9999,1,2,,,,
+dkong,dkongallenl22tv,DK Allen TV KS,~Bonus AllenTV Killscreen,9999,1,2,40000,,,
 dkong,dkongduel,DK Duel,DK Duel,9999,1,2,33000,5000,6500,8000
-dkong,dkongallenl22,DK Allen KS,DK Allen's Killscreen,9999,1,2,33000,,,
+dkong,dkongallenl22,DK Allen KS,~Bonus Allen's Killscreen,9999,1,2,33000,,,
 dkong,dkongcoach,DK Coach,DK Coach,9999,1,2,,,,
 dkong,dkongshorttime,DK ShortTime,DK ShortTime,9999,1,2,47000,4000,7500,10000
 dkong3,dkong3continue,DK3 Continue,DK3 Continue,9999,1,2,30000,,,

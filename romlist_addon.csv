@@ -223,6 +223,7 @@ a2600_KittenQuest,shell,Kittens Quest,2600: Kittens Quest,9999,,,96000,2,4,8
 a2600_kookley_kong,shell,Kookley Kong,2600: Kookley Kong,9999,,,96000,2,4,8
 a2600_luigi_vs_bowser,shell,Luigi vs Bowser,2600: Luigi vs Bowser,9999,,,96000,2,4,8
 a2600_mario_vs_bowser,shell,Mario vs Bowser,2600: Mario vs Bowser,9999,,,96000,2,4,8
+a2600_pac_kong,shell,PacKong,2600: Pac-Kong,9999,,,96000,2,4,8
 a2600_RobotnikKong,shell,Robotnik Kong,2600: Robotnik Kong,9999,,,96000,2,4,8
 a2600_young_plumber_lcd,shell,Young Plumber,2600: Young Plumber LCD,9999,,,96000,2,4,8
 a5200_dk_jr_arcade,shell,DK JR Arcade,5200: Donkey Kong Jr. Arcade,9999,,,96000,2,4,8
@@ -419,7 +420,6 @@ x1_dk3_counter_attack,shell,DK3 CounterAttack,X1: DK3 Great Counter Attack,9999,
 zx81_crazykong,shell,CK,ZX81: Crazy Kong,9999,,,96000,2,4,8
 zx81_sultans_tower,shell,SultansTower,ZX81: Sultan's Tower,9999,,,96000,2,4,8
 zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,96000,2,4,8
-##a2600_pac_kong,shell,**Not DK enough,2600: Pac-Kong,####,,,0,2,4,8
 ##a2600_spider_kong,shell,**Not DK enough,2600: Spider Kong,####,,,0,2,4,8
 ##apfimag_dk2,shell,**key map issue,APF: Donkey Kong 2,####,,,0,2,4,8
 ##c64_barrel_bunger,shell,**Not playable,C64: Barrel Bunger (Preview),####,,,0,2,4,8

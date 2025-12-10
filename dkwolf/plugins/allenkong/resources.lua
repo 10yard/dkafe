@@ -548,6 +548,7 @@ function define_level_data()
 	data[5]  = {"100000",136,001}
 	data[12] = {"471000",136,145}
 	data[17] = {"736000",096,073}
+	data[22] = {"992200",176,073}
 	return data
 end
 

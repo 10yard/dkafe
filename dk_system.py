@@ -297,13 +297,14 @@ def build_launch_command(info, basic_mode=False, high_score_save=False, refocus=
             # Parameter plugins are not subject to competing and highscore restrictions
             launch_plugin = parameter_plugin
         if launch_plugin:
-            # Are there any parameters for the plugin?
-            if ":" in launch_plugin:
-                launch_plugin, parameter, *_ = launch_plugin.split(":")
-                os.environ[launch_plugin.upper() + "_PARAMETER"] = parameter
-            else:
-                os.environ[launch_plugin.upper() + "_PARAMETER"] = ""
-            launch_command = add_plugin(launch_command, launch_plugin)
+            for _lp in launch_plugin.split(","):
+                # Are there any parameters for the plugin?
+                if ":" in _lp:
+                    _lp, parameter, *_ = launch_plugin.split(":")
+                    os.environ[_lp.upper() + "_PARAMETER"] = parameter
+                else:
+                    os.environ[_lp.upper() + "_PARAMETER"] = ""
+                launch_command = add_plugin(launch_command, _lp)
         if parameter_plugin:
             # Clear launch plugin so the following restrictions are not applied
             launch_plugin = None
