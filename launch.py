@@ -344,26 +344,30 @@ def check_for_input(force_exit=False, continue_only=False):
                     _g.up = event.value < -0.5
                     _g.down = event.value > 0.5
             if event.type == pygame.JOYHATMOTION:
+                _g.lastmove = _g.timer.duration
                 _g.left = event.value[0] == -1
                 _g.right = event.value[0] == 1
                 _g.up = event.value[1] == 1
                 _g.down = event.value[1] == -1
             if event.type == pygame.JOYBUTTONDOWN:
-                button = event.button if event.joy == 0 else event.button + 20
+                _g.lastmove = _g.timer.duration
+                button = event.button + 1 if event.joy == 0 else event.button + 21
                 _g.jump = button == BUTTON_JUMP
                 _g.start = button == BUTTON_P1
                 if button == BUTTON_EXIT:
                     exit_program(confirm=CONFIRM_EXIT and not force_exit)
-                if button == BUTTON_P2 and ENABLE_MENU:
+                if button == BUTTON_TAB and not continue_only:
+                    open_settings_menu()
+                if button == BUTTON_P2 and ENABLE_MENU and not continue_only:
                     build_menus()
                     open_menu(_g.menu, remember_selection=True)
-                if button == BUTTON_COIN:
+                if button == BUTTON_COIN and not continue_only:
                     if _g.ready:
                         globals()["SHOW_GAMETEXT"] = 1 if SHOW_GAMETEXT == 0 else 0
                         set_gametext(None, SHOW_GAMETEXT, external=True)  # Fix pygamemenu issue
                     else:
                         _g.showinfo = not _g.showinfo
-                if button == BUTTON_ACTION:
+                if button == BUTTON_ACTION and not continue_only:
                     _g.showslots = not _g.showslots
         if event.type == pygame.QUIT:
             exit_program()

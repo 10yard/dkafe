@@ -64,15 +64,16 @@ CONTROL_PAGEDOWN = pygame.K_PAGEDOWN
 CONTROL_DEBUG_DROP = pygame.K_HOME
 
 # Joystick Options and Button Assignments
-USE_JOYSTICK = 0
+USE_JOYSTICK = 1
 # Note: DPAD and first analog axis are automatically mapped to directions
-# Device 1 buttons start from 0,  Device 2 buttons start from 20
-BUTTON_JUMP = 0
-BUTTON_ACTION = 1
-BUTTON_P1 = 9
-BUTTON_P2 = 29
-BUTTON_EXIT = 3
-BUTTON_COIN = 7
+# Device 1 buttons start from 1,  Device 2 buttons start from 21
+BUTTON_JUMP = 1
+BUTTON_ACTION = 2
+BUTTON_P1 = 3
+BUTTON_P2 = 4
+BUTTON_EXIT = 7
+BUTTON_COIN = 8
+BUTTON_TAB = 9
 
 # Options
 CONFIRM_EXIT = 1
@@ -1013,7 +1014,8 @@ dkafe_theme_left.widget_alignment = pymenu.locals.ALIGN_LEFT
 # Override default pygame-menu keys
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
-pymenu.controls.JOY_BUTTON_BACK = BUTTON_EXIT
+pymenu.controls.JOY_BUTTON_SELECT = BUTTON_JUMP - 1
+pymenu.controls.JOY_BUTTON_BACK = BUTTON_EXIT - 1
 
 
 if ARCH == "win32" or ARCH == "win64":

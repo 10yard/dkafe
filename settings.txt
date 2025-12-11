@@ -66,14 +66,15 @@ CONTROL_SETTINGS = tab
 
 # Optional Joystick and Button Assignments
 # Note: DPAD and first analog axis are automatically mapped to directions
-# Device 1 buttons start from 0,  Device 2 buttons start from 20
+# Device 1 buttons start from 1,  Device 2 buttons start from 1
 USE_JOYSTICK = 1
-BUTTON_JUMP = 0
-BUTTON_ACTION = 1
-BUTTON_P1 = 2
-BUTTON_P2 = 3
-BUTTON_EXIT = 6
-BUTTON_COIN = 7
+BUTTON_JUMP = 1
+BUTTON_ACTION = 2
+BUTTON_P1 = 3
+BUTTON_P2 = 4
+BUTTON_EXIT = 7
+BUTTON_COIN = 8
+BUTTON_TAB = 9
 
 #
 # For a complete list of settings visit - https://github.com/10yard/dkafe#frontend-settings

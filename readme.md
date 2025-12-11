@@ -611,34 +611,34 @@ IMPORTANT NOTE: The controls configured in the frontend do not apply to the emul
 Joystick controls are enabled by default.  Set `USE_JOYSTICK = 0` to disable joystick controls.
 The up, down, left, right controls are automatically mapped from the DPAD and first detected joystick axis.
 Buttons can be customised in the settings.txt file as per the following example.  
-Button numbers 0-19 relate to the first joystick and 20-39 relate to the second joystick.
+Button numbers 1-20 relate to the first joystick and 21-40 relate to the second joystick.
 
 ```
 USE_JOYSTICK = 1
-BUTTON_JUMP = 0
-BUTTON_ACTION = 1
-BUTTON_P1 = 2
-BUTTON_P2 = 3
-BUTTON_EXIT = 6
-BUTTON_COIN = 7
+BUTTON_JUMP = 1
+BUTTON_ACTION = 2
+BUTTON_P1 = 3
+BUTTON_P2 = 4
+BUTTON_EXIT = 7
+BUTTON_COIN = 8
+BUTTON_TAB = 9
 ```
 
 You can get button numbers from any connected controller on Windows using the "Setup USB Game Controllers" utility in Control Panel.  
 Click on the "Properties" for you controller and then you will see button numbers light up when you press them.  
-You will need to subtract 1 from that number shown in the Windows test since DKAFE starts at 0 and Windows starts at 1.
 
 For example,  the common buttons available to DKAFE from the Xbox One controller are as follows.
 
-Button 0: A
-Button 1: B
-Button 2: X
-Button 3: Y
-Button 4: Left Bumper
-Button 5: Right Bumper
-Button 6: View
-Button 7: Menu
-Button 8: Left Thumb
-Button 9: Right Thumb
+Button 1: A
+Button 2: B
+Button 3: X
+Button 4: Y
+Button 5: Left Bumper
+Button 6: Right Bumper
+Button 7: View
+Button 8: Menu
+Button 9: Left Thumb
+Button 10: Right Thumb
 
 
 #### GPIO Inputs
