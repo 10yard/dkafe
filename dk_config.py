@@ -1015,6 +1015,7 @@ dkafe_theme_left.widget_alignment = pymenu.locals.ALIGN_LEFT
 pymenu.controls.KEY_APPLY = CONTROL_JUMP
 pymenu.controls.KEY_CLOSE_MENU = CONTROL_EXIT
 pymenu.controls.JOY_BUTTON_BACK = BUTTON_EXIT
+pymenu.controls.JOY_BUTTON_SELECT = BUTTON_JUMP
 
 
 if ARCH == "win32" or ARCH == "win64":
