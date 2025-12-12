@@ -350,8 +350,7 @@ def check_for_input(force_exit=False, continue_only=False):
                 _g.up = event.value[1] == 1
                 _g.down = event.value[1] == -1
             if event.type == pygame.JOYBUTTONDOWN:
-                _g.lastmove = _g.timer.duration
-                button = event.button + 1 if event.joy == 0 else event.button + 21
+                button = event.button if event.joy == 0 else event.button + 20
                 _g.jump = button == BUTTON_JUMP
                 _g.start = button == BUTTON_P1
                 if button == BUTTON_EXIT:
