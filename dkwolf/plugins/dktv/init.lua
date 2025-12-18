@@ -159,7 +159,7 @@ function dktv.startplugin()
 			
 	function write_rom_message(start_addr, text)
 		-- write characters of message to ROM
-		if mem then
+		if mem and text and start_addr then
 			for key=1, string.len(text) do
 				mem:write_direct_u8(start_addr + (key - 1), string.find(characters, string.sub(text, key, key)) - 1)
 			end

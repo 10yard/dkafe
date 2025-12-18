@@ -28,7 +28,7 @@ else:
 
 def exit_program(confirm=False):
     """Exit and prompt for confirmation if required."""
-    if since_last_exit() <= 0 or since_last_exit() > 0.5:
+    if since_last_exit() <= 0 or since_last_exit() > 0.7:
         if confirm:
             open_menu(_g.exitmenu)
         else:
@@ -350,6 +350,7 @@ def check_for_input(force_exit=False, continue_only=False):
                 _g.up = event.value[1] == 1
                 _g.down = event.value[1] == -1
             if event.type == pygame.JOYBUTTONDOWN:
+                _g.lastmove = _g.timer.duration
                 button = event.button if event.joy == 0 else event.button + 20
                 _g.jump = button == BUTTON_JUMP
                 _g.start = button == BUTTON_P1
@@ -1277,7 +1278,7 @@ def launch_rom(info, launch_plugin=None, override_emu=None):
                         os.remove(os.path.join(dirname, file))
 
             time_end = _s.time()
-            _s.debounce()
+            #_s.debounce()
             _g.lastexit = _g.timer.duration
 
             os.chdir(ROOT_DIR)

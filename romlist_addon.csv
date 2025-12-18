@@ -180,7 +180,7 @@ btimem,,BurgerTime,Burger Time,358,3,4,271000,2,4,8
 nibbler,,Nibbler,,361,3,4,272000,2,4,8
 pengo,,Pengo,,363,3,4,273000,2,4,8
 mappy,,Mappy,,364,3,4,274000,2,4,8
-mrdobl,,MrDo,Mr. Do!,365,3,4,275000,2,4,8
+mrdo,,MrDo,Mr. Do!,365,3,4,275000,2,4,8
 invaders,,Invaders,Space Invaders,366,3,4,276000,2,4,8
 bombjack,,BombJack,Bomb Jack,367,3,4,276000,2,4,8
 10yardj,,10Yard,10 Yard Fight,9999,3,4,277000,2,4,8
@@ -273,6 +273,7 @@ dos_heroman,shell,Hero Man,DOS: Hero Man,9999,,,96000,2,4,8
 dos_willy,shell,WillyWorm,DOS: Willy the Worm,9999,,,96000,2,4,8
 fds_dk_japan,shell,DK,FDS: Donkey Kong (Original),9999,,,96000,2,4,8
 fds_dk_jr_japan,shell,DK Junior,FDS: Donkey Kong Junior,9999,,,96000,2,4,8
+gbcolor_de22,shell,DE22,GBC: DE '22,9999,,,96000,2,4,8
 gbcolor_dk_4stage,shell,DK 4 Levels,GBC: Donkey Kong 4 Level Hack,9999,,,96000,2,4,8
 gbcolor_dk_arcade,shell,GB Arcade,GBC: Donkey Kong Arcade,9999,,,96000,2,4,8
 gbcolor_dk_summer,shell,DK Summer,GBC: Donkey Kong Summer Hack,9999,,,96000,2,4,8
@@ -381,7 +382,7 @@ pc_trs80_dk_junior2,shell,DK Junior 2,TRS80: Donkey Kong Junior 2,9999,,,96000,2
 pc_trs80_dk_reloaded,shell,DK Reloaded,TRS80: Donkey Kong Reloaded,9999,,,96000,2,4,8
 pc_trs80_dk_reloaded_again,shell,DK Reloaded Again,TRS80: Donkey Kong Reloaded Again,9999,,,96000,2,4,8
 pc_trs80_skyscraper,shell,Skyscraper,TRS80: Skyscraper,9999,,,96000,2,4,8
-pc_uzebox_dkong,shell,Kong,UZEBOX: DonkeyKong,9999,,,96000,2,4,8
+pc_uzebox_dkong,shell,Kong,UZEBOX: Donkey Kong,9999,,,96000,2,4,8
 pc_wildmanjump_gnw,shell,WildMan,G&W: Wild Man Jump,9999,,,96000,2,4,8
 pet4032_dk_junior,shell,DK Junior,G&W: Donkey Kong Junior (G&W),9999,,,96000,2,4,8
 plus4_crazyjump,shell,CrazyJumpman,C16/+4: Crazy Jump,9999,,,96000,2,4,8
@@ -437,6 +438,7 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,96000,2,4,8
 ##pc_atarist_platform,shell,**Joystick map issue,ST: Platform Capers,####,,,0,2,4,8
 ##pc_atom_crazykongcity2,shell,**Not DK enough,ATOM: Crazy Kong City 2,####,,,0,2,4,8
 ##pc_exl100_monkeykong,shell,**Poor game and map,EXL100: Monkey Kong,####,,,0,2,4,8
+pc_m2000_monkeykong,shell,MonkeyKong,M2000: Monkey Kong  ,9999,,,96000,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##spectrum_eskimo_eddie,shell,**DK not first level,SPEC48K: Eskimo Eddie,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8

@@ -18,7 +18,7 @@ function define_allen_big()
 	palette["."] = 0xff91b691
 	palette["/"] = 0xffff917f
 	palette["0"] = 0xffb691b6
-	
+
 	local data = {
 		"             ! #######!               ",
 		"      !   #!X^!!###X##XX#             ",
@@ -103,10 +103,94 @@ function define_allen_small()
 	return {data, palette}
 end
 
+function define_stimpy()
+	palette = {}
+	palette["X"] = 0xff520000
+	palette["!"] = 0xffffff00
+	palette["#"] = 0xffacaaac
+	palette["$"] = 0xffac0000
+	palette["%"] = 0xffffffff
+	palette["&"] = 0xff000000
+	palette["'"] = 0xff525552
+	palette["("] = 0xffffaaac
+	palette[")"] = 0xff0055ac
+	palette["*"] = 0xff5255ff
+	palette["+"] = 0xffdede62
+
+	data = {
+		"   X     XXXXX XXXXX    ",
+		"   XX  XXX!!!!XX!##!X   ",
+		"   XXX$X!!!!!#!!#%%#!X  ",
+		"   XX$X!!!!!#%#!#%%%#!X ",
+		"   XX$X!!!!#%%%##&'%%#X ",
+		"   X$(((!!#%&'%##&&%%#X ",
+		"  X$(%%%(!#%&&%##&&%%#X ",
+		"  X(%%%%%(#%&&%##%%%%#! ",
+		" X$(&&&%%(#%%%#!!####!! ",
+		" X(&%%&%%%(###!!!!!!!!  ",
+		" ('%%&%%%%(!))))))))!   ",
+		" ('%%&%%%()))))))*)))(  ",
+		" ('%%&%%()))))))*%*)))( ",
+		" ('%%&%%())))))))*))))( ",
+		" ('%%&%%()))))))))))))( ",
+		" ('%%%&%%()))))))))))(( ",
+		"&X('%%%&%%(()))))))((((&",
+		"&X$('%%%&&%%(((&&(((((&&",
+		"&X&X('%%%%&&&&&%%&&&&&&&",
+		"&X&X(%''%%%%%%%%%%'(&&&&",
+		"&X&XX(%%''%%%%%%%%'(&&&&",
+		"&X&XXX(%%%''''''''(&&&&&",
+		"&X&XXXX((%%%%%%%%(&&&&&&",
+		"&&&$XXX(%(((((((((&&&&&&",
+		"&&&$XXXX(%%%%%(((&&&&&&&",
+		"&&&X$XXX((%%%%%(&&&&&&&&",
+		"&&&&X$XXX(((((&&&&&&&&&&",
+		"&&&&&X$&&&(((&&&&&&&&&&&",
+		"&&&&XX$&++&&&&&&&&&&&&&&",
+		"&&&XX$$$$$XXXX$$$&&&&&&&",
+		"&&XXXXX$$$$$XXXXX$$&&&&&",
+		"&&XXXXXXXXXXXXXXXXX$&&&&"}
+	return {data, palette}
+end
+
+function define_ren()
+	palette = {}
+	palette["X"] = 0xffac0000
+	palette["!"] = 0xffffaaac
+	palette["#"] = 0xffff5552
+	palette["$"] = 0xffffffff
+	palette["%"] = 0xff000000
+	palette["&"] = 0xffacaaac
+
+	local data = {
+		"  X!!!        !!!! ",
+		" X####!     XX####!",
+		"X#####!    X######!",
+		"X####!    X#####!! ",
+		"X###!    X#!!!!!   ",
+		" X#!    X#!        ",
+		" X#!   #####       ",
+		"  X#!##!!!!!# ###  ",
+		"  X##!!####!!#$$$# ",
+		"   X!!#$$$$#!!###$#",
+		"  #!!#$###$$X!#%#$#",
+		"  #!!X$#%#$$X!!##$X",
+		"  #!!X$###$$X!!#$X ",
+		"  #!!!X$$$$X!!!XX  ",
+		"  #!##!XXXX!!!#    ",
+		"   #!#$!!!!!XXX!#  ",
+		"    #!$$$!!!!!##   ",
+		"    #!&$$$$$$$     ",
+		"    #!$&&$$$$      ",
+		"      !$$&&&       ",
+		"       !!$$        "}
+	return {data, palette}
+end
+
 function define_fack_left()
 	palette = {}
 	palette["!"] = 0xffffffff
-	
+
 	local data = {
 		"                                     !!!!!!!!!!!!!!!!!",
 		"                                  !!!!!!!!!!!!!!!!!!!!!!!",
@@ -188,7 +272,7 @@ end
 function define_fack_right()
 	palette = {}
 	palette["!"] = 0xffffffff
-	
+
 	data = {
 		"                                     !!!!!!!!!!!!!!!!!",
 		"                                  !!!!!!!!!!!!!!!!!!!!!!!",
@@ -267,7 +351,7 @@ end
 
 function define_finger()
 	palette = {}
-	palette["!"] = 0xffffffff	
+	palette["!"] = 0xffffffff
 
 	data = {
 		"                       !!!!!!!!!                              ",
@@ -356,7 +440,7 @@ function define_restricted()
 	local palette = {}
 	palette["!"] = 0xffff0000
 	palette["+"] = 0xffffffff
-	
+
 	local data = {
 		"                       !!!                                                        ",
 		"                      !!!!!                                                       ",
@@ -417,7 +501,7 @@ function define_restricted()
 		"  ++  ++  ++          ++    ++    ++  ++    ++    ++  ++    ++    ++      ++  ++  ",
 		"  ++  ++  ++++++   ++++     ++    ++  ++  ++++++   ++++     ++    ++++++  +++++   "}
 		return {data, palette}
-end		
+end
 
 function define_balloon()
 	local palette = {}
@@ -563,8 +647,8 @@ function define_sounds()
 
 	data["logo"] = {
 		"bullshitgame", "best_romhack", "inthegame", "called_allenkong", "exciting_game", "easports", "playthegame",
-		"gallopingghosts", "welcome_musclefitness", "get_the_wr", "fullgrownman", "changes_color", "renstimpy",
-		"boomerang", "mammamia", "im_allen", "true_champ", "goodhighscore", "thisisdonkeykong"
+		"gallopingghosts", "welcome_musclefitness", "get_the_wr", "fullgrownman", "changes_color", "boomerang",
+		"mammamia", "im_allen", "true_champ", "goodhighscore", "thisisdonkeykong", "renstimpy", "renstimpy"
 	}
 
 	data["ambient"] = {
@@ -576,15 +660,16 @@ function define_sounds()
 		"fart1", "fart2", "fart3", "fart4", "fart5","fart6", "fart7", "fart8",
 		"burp1", "burp2", "burp3", "burp4", "burp5", "burp6",
 		"continue", "positive", "gimmethatknife", "manamana", "major_tom", "major_tom_2",
-		"letsgo", "btch_tit", "wakeup_brian", "machine_on_fire", "brian_looking", "thistime",
-		"bumpbadump", "dodododo", "good_ong", "hey_buddy", "polish_knob", "crocodile_dundee",
-		"that_aint_a_knife", "yes_i_love", "own_kongoff", "sometune", "lukey_legend",
+		"btch_tit", "wakeup_brian", "machine_on_fire", "brian_looking", "thistime", "doodedoo", "siren", "shesadk",
+		"bumpbadump", "dodododo", "good_ong", "hey_buddy", "polish_knob", "crocodile_dundee", "dkcup",
+		"that_aint_a_knife", "yes_i_love", "own_kongoff", "sometune", "lukey_legend", "cornchips", "syphilis",
 		"dkmorningnight", "play_dk_song", "royschultz", "itssteve", "wes_believe", "row_jcb", "looneytunes",
 		"blueberryhill", "c_hair_song", "lalalala", "play_properly", "yogi", "koalabear", "bangor", "yellowriver",
 		"jcb", "shananana", "drop_doritos", "come_see_me_play", "phil_pretender", "jcb_shake", "missile_command",
-		"what_can_i_do", "canwegetamillion", "inthebeginning", "getoutofhere", "mario_doreme", "pissing",
+		"what_can_i_do", "canwegetamillion", "inthebeginning", "getoutofhere", "mario_doreme", "pissing", "fartjcb",
 		"ijustwannahavefun", "getoutofhere", "mrmayagi", "want1m", "igotmuscleandfitness", "skypein", "aliendust",
-		"restaurant", "girlfriend", "watchthegame"
+		"restaurant", "girlfriend", "watchthegame", "looloo", "thatyou", "learnnothing", "forthefans", "422", "5dollar",
+		"renstimpy",
 	}
 
 	data["complete"] = {
@@ -593,14 +678,16 @@ function define_sounds()
 		"lookatthepace", "lick_it_allen", "pauline_inthegame", "save_pauline", "george", "arrr_whoo", "dirty",
 		"conqueror", "goodscore_noworries", "roadhog", "i_can_get_more", "porkypig", "facking_whr", "rowrowkong",
 		"my_and_wes_way", "itsmagic2", "omg_balls", "head", "trying_highscore", "ks_everygame", "something_right",
-		"haaarhah", "lickmy", "recordbook", "pro"
+		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart"
 	}
 
 	data["grab"] = {
 		"dush_dush", "here_chick_chick", "yeheee", "love_it", "something2", "hey", "suckemin",
 		"cometopapa", "cometopapa2", "dush_dush2", "yepyep", "allenkongbaby", "yehbuddy", "lookathat", "whoo_cmon",
-		"come_on_baby_1m", "lookatemall", "come_lovelies", "duke_suckemin", "the_duke", "come_on_fs",
-		"fernando", "suck", "yeppew", "horse", "hunting_fireballs", "hammer_me", "cmon_fireballs", "yipyipyipyipyip"
+		"come_on_baby_1m", "lookatemall", "come_lovelies", "duke_suckemin", "the_duke", "come_on_fs", "forthefans",
+		"fernando", "suck", "yeppew", "horse", "hunting_fireballs", "hammer_me", "cmon_fireballs", "yipyipyipyipyip",
+		"renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy",
+		"waaahaha"
 	}
 
 	data["highscore"] = {
@@ -610,7 +697,7 @@ function define_sounds()
 
 	data["bonus800"]= {
 		"unbelieveable", "omg_loveit", "bigbigbig", "nice", "yes", "lick_on_that", "lick_it", "ohyeah_ohyeah", "wow800",
-		"whoopiedo", "take_that", "lick_that", "woohoo", "800baby"
+		"whoopiedo", "take_that", "lick_that", "woohoo", "800baby", "wooo"
 	}
 
 	data["jump800"] = {
@@ -618,36 +705,45 @@ function define_sounds()
 		"serphy_brother", "like_it_matt", "like_a_glove", "readwellphil", "serphy", "lakeman_luck", "oh800", "wow800",
 		"lickthatlakeman", "ohrobby", "spaceylovesit", "onpaper", "dukey_loves_it", "hehe_hank", "woohoo", "fack_jump",
 		"ninja", "love_it_wes", "8_straight", "steerlikewieby", "heineken_manouevre", "sheer_magic", "lickthatlakeman2",
-		"philcream"
+		"philcream", "wooo"
 	}
 
 	data["jumpdouble"] = {
 		"lakeman", "lukey", "likeserph", "practising", "deserves_million", "phil_loves_it", "lukey_loves",
 		"serphy_brother", "like_it_matt", "like_a_glove", "readwellphil", "serphy", "lakeman_luck", "sckthat",
 		"lick_bit", "bong", "lickthatlakeman", "ohrobby", "spaceylovesit", "onpaper", "dukey_loves_it", "hehe_hank",
-		"woohoo", "fack_jump", "ninja", "love_it_wes", "heineken_manouevre", "sheer_magic", "lickthatlakeman2"
+		"woohoo", "fack_jump", "ninja", "love_it_wes", "heineken_manouevre", "sheer_magic", "lickthatlakeman2", "wooo"
 	}
 
 	data["bonus"] = {
-		"haha", "oh_yeah", "whoo", "nice", "goodlick", "hahaha", "yes", "wow", "farout", "whey", "dididi"
+		"haha", "oh_yeah", "whoo", "nice", "goodlick", "hahaha", "yes", "wow", "farout", "whey", "dididi", "galaga"
 	}
 
 	data["bonus300"] = {
-		"300", "300whatever", "poo", "300_suck", "shithaha"
+		"300", "300whatever", "poo", "300_suck", "shithaha", "winatrick"
+	}
+
+	data["bonus500"] = {
+		"500", "nice"
+	}
+
+	data["dead"] = {
+		"single_fack", "single_fack2", "fack_this_game"
 	}
 
 	data["lastmandead"] = {
-		"fack", "rage", "sonofa", "unluckiest"
+		"fack", "rage", "sonofa", "unluckiest", "getstuffed", "crying", "canubelieve", "fcs", "fsagain",
+		"nogoodatanygame"
 	}
 
 	data["gameover"] = {
 		"game_for_me", "sackthisgameoff", "rotten_luck", "anyway", "bullshitgame2", "never_do_it", "jinxed",
 		"dean_for_a_day", "chromasome", "play_properly", "thats_all_folks", "cant_do_sht", "not_get_1m",
-		"thnk_about_game", "notmeantfor1m"
+		"thnk_about_game", "notmeantfor1m", "backlater"
 	}
 
 	data["hesitated"] = {
-		"hesitated", "short_springs", "got_stuck_fack", "typical"
+		"hesitated", "short_springs", "got_stuck_fack", "typical", "crying", "canubelieve", "fsagain"
 	}
 
 	data["shitscore"] = {

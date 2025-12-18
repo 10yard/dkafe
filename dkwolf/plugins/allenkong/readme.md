@@ -1,7 +1,5 @@
 # AllenKong:  It's a screwed up version on Donkey Kong were you take control of Allen and help him to reach his dream 1 Million points
 
-Tested with latest MAME version 0.250
-
 Fully compatible with all MAME versions from 0.196
 
 A very screwed up version of Donkey Kong were you take control of Allen and help him to reach his dream 1 Million points.  

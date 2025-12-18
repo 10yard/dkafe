@@ -9,7 +9,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "allenkong"
-exports.version = "1.3"
+exports.version = "1.4"
 exports.description = "Allen Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -25,10 +25,12 @@ function allenkong.startplugin()
 	local pic_big, pic_small = define_allen_big(), define_allen_small()
 	local pic_fack_l, pic_fack_r = define_fack_left(), define_fack_right()
 	local pic_10yard, pic_lukey = define_10yard(), define_lukey()
+	local pic_ren, pic_stimpy = define_ren(), define_stimpy()
 	local level_lookup, level_data = define_level_lookup(), define_level_data()
 	local pic_finger = define_finger()
 	local pic_restrict = define_restricted()
 	local pic_balloon = define_balloon()
+	local pic_allen = pic_small
 
 	-- Load characters
 	local char_table = define_chars()
@@ -48,6 +50,8 @@ function allenkong.startplugin()
 	local celebrating, lukey, selected = false, false, false
 	local level_select = 17
 	local level_22 = false
+	local last_clip
+	local rs_mode = false
 
 	function allen_initialize()
 		mame_version = tonumber(emu.app_version())
@@ -59,9 +63,11 @@ function allenkong.startplugin()
 				if type(manager.machine) == "userdata" then
 					mac = manager.machine
 					vid = mac.video
+					ports = mac.ioport.ports
 				else
 					mac =  manager:machine()
 					vid = mac:video()
+					ports = mac:ioport().ports
 				end
 			else
 				print("ERROR: The allenkong plugin requires MAME version 0.196 or greater.")
@@ -129,21 +135,28 @@ function allenkong.startplugin()
 			if mode1 ~= 3 then
 				if frame > 120 and mode2 >= 6 and mode2 <= 7 then
 					scr:draw_box(48, 80, 88, 144, 0xff000000, 0xff000000)
-					draw_graphic(pic_big, 86, 96, true)
+
+					-- Does Allen becomes Stimpy
+					if rs_mode or last_clip == "renstimpy" then
+						draw_graphic(pic_stimpy, 78, 100, true)
+					else
+						draw_graphic(pic_big, 86, 96, true)
+					end
 				end
 				if mode2 == 7 then
 					if get("mode2") ~= 7 and frame - get("logo") >= 120 then
-						random_play("logo")
+						last_clip = random_play("logo")
 						store("logo")
 						random_index = math.random(1, #texts)
 					end
-					write_ram_message(0x777c, "         []2022         ")
+					write_ram_message(0x777c, "         []2025         ")
 					write_ram_message(0x777d, texts[random_index])
 				end
 			end
 
 			-- high score screen -------------------------------------------------------------------------------------
 			if mode2 == 1 then
+				last_clip = nil
 				write_ram_message(0x77be, " VERS "..exports.version)
 				if read(0x6007) == 1 then   -- no credits inserted
 					if get("mode2") ~= 1 and frame > get("dead") + 540 then
@@ -230,6 +243,16 @@ function allenkong.startplugin()
 				random_play("gameover")
 			end
 
+			-- Toggle Ren and Stimpy mode
+			if to_bits(read(0x7d00))[4] == 1 and frame > get("rs_mode") + 60 then
+				rs_mode = not(rs_mode)
+				if rs_mode then
+					play("renstimpy")
+				end
+				store("rs_mode")
+			end
+
+
 			-- announce points --------------------------------------------------------------------------------------
 			local _bonus_sprite, _bonus_timer = read(0x6a31), read(0x6341)
 			if _bonus_timer == 15 and _bonus_sprite >= 123 and _bonus_sprite <= 127 then
@@ -257,6 +280,8 @@ function allenkong.startplugin()
 					elseif _bonus_sprite == 125 or _bonus_sprite == 126 then -- 300, 500
 						if _bonus_sprite == 125 and math.random(1, 2) == 1 then
 							random_play("bonus300")
+						elseif _bonus_sprite == 126 and math.random(1, 2) == 1 then
+							random_play("bonus500")
 						else
 							random_play("bonus")
 						end
@@ -321,10 +346,15 @@ function allenkong.startplugin()
 						jumpx = jumpx + 1
 						write(0x694d, 120)
 
+						pic_allen = pic_small
+						if rs_mode or last_clip == "renstimpy" then
+							pic_allen = pic_ren  -- Allen becomes Ren
+						end
+
 						if jumpx <= 150 then
-							draw_graphic(pic_small, 274 - jumpy, jumpx - 26) -- facing right
+							draw_graphic(pic_allen, 274 - jumpy, jumpx - 26) -- facing right
 						else
-							draw_graphic(pic_small, 274 - jumpy, jumpx - 25, true) -- facing left
+							draw_graphic(pic_allen, 274 - jumpy, jumpx - 25, true) -- facing left
 						end
 
 						if frame > get("dead") + 300 then
@@ -338,7 +368,7 @@ function allenkong.startplugin()
 								if mode1 == 3 and read(0x6228, 1) then
 									random_play("lastmandead")
 								else
-									play("single_fack")
+									random_play("dead")
 								end
 							end
 							store("dead")
@@ -352,11 +382,16 @@ function allenkong.startplugin()
 							end
 						end
 					else
+						pic_allen = pic_small
+						if rs_mode or last_clip == "renstimpy" then
+							pic_allen = pic_ren  -- Allen becomes Ren
+						end
+
 						-- Allen faces the right way
 						if facing >= 128 then
-							draw_graphic(pic_small, 274 - jumpy, jumpx - 24) -- facing right
+							draw_graphic(pic_allen, 274 - jumpy, jumpx - 24) -- facing right
 						else
-							draw_graphic(pic_small, 274 - jumpy, jumpx - 23, true)  -- facing left
+							draw_graphic(pic_allen, 274 - jumpy, jumpx - 23, true)  -- facing left
 						end
 
 						-- freezer mode
@@ -386,7 +421,7 @@ function allenkong.startplugin()
 							if stage == 4 and jumpx < 50 and read(0x6210,255) and math.random(1,3) == 1 then
 								play("manoeuvre")
 							else
-								random_play("grab")
+								last_clip = random_play("grab")
 							end
 							store("manoeuvre")
 						end
@@ -399,8 +434,13 @@ function allenkong.startplugin()
 					end
 
 					-- If it's been a while since allen said something then we should say something random
-					if frame - get("sound") > 900 then
-						random_play("ambient")
+					if frame - get("sound") > 450 then
+						last_clip = random_play("ambient")
+					end
+
+					-- Does Pauleen becomes Stimpy
+					if rs_mode or last_clip == "renstimpy" then
+						draw_graphic(pic_stimpy, 232, 88)
 					end
 
 					-- If ticking over at 1M or KS then it's party time!
@@ -603,8 +643,13 @@ function allenkong.startplugin()
 		if celebrating and not uninterrupted then
 			return
 		end
+
+		if get("renstimpy") > 0 and frame < get("renstimpy") + 240 then
+			return
+		end
+		if sound == "renstimpy" then store("renstimpy") end
+
 		if is_pi then
-			--io.popen("pkill mpg321 &")
 			io.popen("mpg321 -q plugins/allenkong/sounds/"..sound..".mp3 &")
 		else
 			if uninterrupted then
@@ -625,7 +670,9 @@ function allenkong.startplugin()
 
 	function random_play(sound_table)
 		-- play random clip from a provided table
-		play(sounds[sound_table][math.random(1, #sounds[sound_table])])
+		local _clip = sounds[sound_table][math.random(1, #sounds[sound_table])]
+		play(_clip)
+		return _clip
 	end
 
 	function file_exists(filename)
@@ -660,6 +707,17 @@ function allenkong.startplugin()
 		if frame - get("starfield") > 10 then
 			store("starfield")
 		end
+	end
+
+	function to_bits(num)
+		--return a table of bits, least significant first
+		local _t={}
+		while num>0 do
+			rest=math.fmod(num,2)
+			_t[#_t+1]=rest
+			num=(num-rest)/2
+		end
+		return _t
 	end
 
 	emu.register_start(function()

@@ -583,7 +583,7 @@ JUMP_SHORTEN = 1.25
 # In game messages and instructions
 QUESTION = "WHAT GAME WILL YOU PLAY ?"
 COIN_INFO = ["Hey Jumpman!", '', "You must collect coins..", "to unlock more games", "", "Push COIN for game info", ""]
-FREE_INFO = ["Hey Jumpman!", '', "All arcades are free to play", "", "Push COIN to for game info", ""]
+FREE_INFO = ["Hey Jumpman!", '', "All arcades are free play", "", "Push COIN for game info", ""]
 TEXT_INFO = ["", "Push 'JUMP' to play or 'P1 START' for game options"]
 DOOR_INFO = ["", "Push 'JUMP' to go through the door"]
 INSTALL_INFO = ["Hey, we're installing everything now", "Hang tight while we sort it all out", "It shouldn't take too much longer"]
@@ -780,6 +780,7 @@ RECOGNISED_SYSTEMS = {
     "laser310":"VTech Laser-VZ",
     "lcd":"LCD and Handheld Games",
     "lowresnx":"LowRes NX Fantasy Console",
+    "m2000":"Philips M2000",
     "mc10":"Tandy MC10",
     "mo5":"Thomson MO5",
     "mz700":"Sharp MZ-700",
@@ -924,6 +925,7 @@ KEYBOARD_REMAP = {
     "pc_ecv_monster_mansion": "left>a|right>d|ctrl>h|1>e|esc>forcequit|maximize>?PD777",
     "pc_exl100_kong":"ctrl>space|1>space,alt+enter|esc>forcequit|maximize>KONG pour Windows",
     "pc_exl100_monkeykong":"5>n|2>n|alt>n|ctrl>space|esc>forcequit",
+    "pc_m2000_monkeykong":"ctrl>space|1>1+enter|esc>forcequit:M2000.exe|maximize>M2000",
     "pc_jumpman_rtx":"num 1>enter|num 5>enter|ctrl>space|esc>forcequit|delayenter>8.25",
     "pc_hbf900a_congo":"1>space|ctrl>space|esc>forcequit:zesarux.exe",
     "pc_lowresnx_denis_kogne":"ctrl>z",
