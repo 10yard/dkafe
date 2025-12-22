@@ -248,7 +248,7 @@ function allenkong.startplugin()
 			end
 
 			-- Toggle Ren and Stimpy mode
-			if to_bits(read(0x7d00))[4] == 1 and frame > get("rs_mode") + 60 then
+			if mode1 == 3 and mode2 > 7 and to_bits(read(0x7d00))[4] == 1 and frame > get("rs_mode") + 60 then
 				rs_mode = not(rs_mode)
 				if rs_mode then
 					play("renstimpy")

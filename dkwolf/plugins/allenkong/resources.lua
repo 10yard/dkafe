@@ -742,7 +742,8 @@ function define_sounds()
 		"ijustwannahavefun", "getoutofhere", "mrmayagi", "want1m", "igotmuscleandfitness", "skypein", "aliendust",
 		"restaurant", "girlfriend", "watchthegame", "looloo", "thatyou", "learnnothing", "forthefans", "422", "5dollar",
 		"renstimpy", "affiliate", "dkrock", "ohhbrian", "steve", "showerchair", "forachange", "getthemil", "notsure",
-		"ben", "benlovesit", "fartlick", "900k"
+		"ben", "benlovesit", "fartlick", "900k", "everheard", "getofftable", "rugs", "mariorug", "burpyipyip",
+		"phoenix", "20viewers", "jinglebells"
 	}
 
 	data["complete"] = {
@@ -807,7 +808,7 @@ function define_sounds()
 
 	data["lastmandead"] = {
 		"fack", "rage", "sonofa", "unluckiest", "getstuffed", "crying", "canubelieve", "fcs", "fsagain",
-		"nogoodatanygame", "neverfails", "nogood"
+		"nogoodatanygame", "neverfails", "nogood", "omfg"
 	}
 
 	data["gameover"] = {
@@ -818,7 +819,7 @@ function define_sounds()
 
 	data["hesitated"] = {
 		"hesitated", "short_springs", "got_stuck_fack", "typical", "crying", "canubelieve", "fsagain", "neverfails",
-		"beatcs", "nogood"
+		"beatcs", "nogood", "omfg"
 	}
 
 	data["shitscore"] = {
