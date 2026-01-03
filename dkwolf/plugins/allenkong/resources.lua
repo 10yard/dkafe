@@ -743,7 +743,7 @@ function define_sounds()
 		"restaurant", "girlfriend", "watchthegame", "looloo", "thatyou", "learnnothing", "forthefans", "422", "5dollar",
 		"renstimpy", "affiliate", "dkrock", "ohhbrian", "steve", "showerchair", "forachange", "getthemil", "notsure",
 		"ben", "benlovesit", "fartlick", "900k", "everheard", "getofftable", "rugs", "mariorug", "burpyipyip",
-		"phoenix", "20viewers", "jinglebells"
+		"phoenix", "20viewers", "jinglebells", "zenstate", "zenstate2", "letsgowalter", "joystick"
 	}
 
 	data["complete"] = {
@@ -752,7 +752,7 @@ function define_sounds()
 		"lookatthepace", "lick_it_allen", "pauline_inthegame", "save_pauline", "george", "arrr_whoo", "dirty",
 		"conqueror", "goodscore_noworries", "roadhog", "i_can_get_more", "porkypig", "facking_whr", "rowrowkong",
 		"my_and_wes_way", "itsmagic2", "omg_balls", "head", "trying_highscore", "ks_everygame", "something_right",
-		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart"
+		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart", "batman", "didyouseethat"
 	}
 
 	data["grab"] = {
@@ -761,7 +761,7 @@ function define_sounds()
 		"come_on_baby_1m", "lookatemall", "come_lovelies", "duke_suckemin", "the_duke", "come_on_fs", "forthefans",
 		"fernando", "suck", "yeppew", "horse", "hunting_fireballs", "hammer_me", "cmon_fireballs", "yipyipyipyipyip",
 		"renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy", "imbilly",
-		"waaahaha", "bebebe"
+		"waaahaha", "bebebe", "couldbeepic"
 	}
 
 	data["highscore"] = {
@@ -771,7 +771,7 @@ function define_sounds()
 
 	data["bonus800"]= {
 		"unbelieveable", "omg_loveit", "bigbigbig", "nice", "yes", "lick_on_that", "lick_it", "ohyeah_ohyeah", "wow800",
-		"whoopiedo", "take_that", "lick_that", "woohoo", "800baby", "wooo", "howmillion"
+		"whoopiedo", "take_that", "lick_that", "woohoo", "800baby", "wooo", "howmillion", "yehbilly", "wooyeh"
 	}
 
 	data["jump800"] = {
@@ -779,7 +779,8 @@ function define_sounds()
 		"serphy_brother", "like_it_matt", "like_a_glove", "readwellphil", "serphy", "lakeman_luck", "oh800", "wow800",
 		"lickthatlakeman", "ohrobby", "spaceylovesit", "onpaper", "dukey_loves_it", "hehe_hank", "woohoo", "fack_jump",
 		"ninja", "love_it_wes", "8_straight", "steerlikewieby", "heineken_manouevre", "sheer_magic", "lickthatlakeman2",
-		"philcream", "wooo", "howyouplay", "howmillion", "howmillion", "laughs"
+		"philcream", "wooo", "howyouplay", "howmillion", "howmillion", "laughs", "couldbeepic", "tothebatcave",
+		"yehbilly", "wooyeh", "kingbill"
 	}
 
 	data["jumpdouble"] = {
@@ -787,7 +788,7 @@ function define_sounds()
 		"serphy_brother", "like_it_matt", "like_a_glove", "readwellphil", "serphy", "lakeman_luck", "sckthat",
 		"lick_bit", "bong", "lickthatlakeman", "ohrobby", "spaceylovesit", "onpaper", "dukey_loves_it", "hehe_hank",
 		"woohoo", "fack_jump", "ninja", "love_it_wes", "heineken_manouevre", "sheer_magic", "lickthatlakeman2", "wooo",
-		"howyouplay", "howmillion", "laughs"
+		"howyouplay", "howmillion", "laughs", "tothebatcave", "yehbilly", "wooyeh", "kingbill"
 	}
 
 	data["bonus"] = {
@@ -803,7 +804,7 @@ function define_sounds()
 	}
 
 	data["dead"] = {
-		"single_fack", "single_fack2", "fack_this_game", "facofac"
+		"single_fack", "single_fack2", "fack_this_game", "facofac", "everydamntimefac", "fachadit"
 	}
 
 	data["lastmandead"] = {
@@ -819,7 +820,7 @@ function define_sounds()
 
 	data["hesitated"] = {
 		"hesitated", "short_springs", "got_stuck_fack", "typical", "crying", "canubelieve", "fsagain", "neverfails",
-		"beatcs", "nogood", "omfg"
+		"beatcs", "nogood", "omfg", "ohfg"
 	}
 
 	data["shitscore"] = {

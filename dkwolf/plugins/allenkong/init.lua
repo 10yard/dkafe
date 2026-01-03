@@ -8,7 +8,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "allenkong"
-exports.version = "1.5"
+exports.version = "1.6"
 exports.description = "Allen Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -223,7 +223,7 @@ function allenkong.startplugin()
 
 			-- how high screen --------------------------------------------------------------------------------------
 			if mode1 == 3 and mode2 == 8 and get("mode2") ~= 8 then
-				if frame > get("hesitated") + 500 and math.random(1, 4) == 1 then
+				if frame > get("hesitated") + 500 and math.random(1, 5) == 1 then
 					play("fackyou")
 				end
 				-- restore the game startup logic
@@ -450,7 +450,7 @@ function allenkong.startplugin()
 						store("countdown")					end
 
 					-- If it's been a while since allen said something then we should say something random
-					if frame - get("sound") > 575 then
+					if frame - get("sound") > 600 then
 						last_clip = random_play("ambient")
 					end
 
@@ -689,8 +689,13 @@ function allenkong.startplugin()
 	end
 
 	function random_play(sound_table)
+		local _st = sound_table
 		-- play random clip from a provided table
-		local _clip = sounds[sound_table][math.random(1, #sounds[sound_table])]
+		if (string.sub(_st, 1, 5) == "bonus" or string.sub(_st, 1, 4) == "jump") and get("sound") > 0 and scr:frame_number() < get("sound") + 180 then
+			-- don't interrupt a potentially playing sound with something trivial
+			return
+		end
+		local _clip = sounds[_st][math.random(1, #sounds[_st])]
 		play(_clip)
 		return _clip
 	end

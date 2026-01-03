@@ -1,4 +1,6 @@
-# AllenKong:  It's a screwed up version on Donkey Kong were you take control of Allen and help him to reach his dream 1 Million points
+![Allen Kong Marquee](allenkong.png)
+
+It's a screwed up version on Donkey Kong were you take control of Allen and help him to reach his dream 1 Million points
 
 Fully compatible with all MAME versions from 0.196
 

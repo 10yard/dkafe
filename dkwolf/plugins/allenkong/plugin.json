@@ -2,7 +2,7 @@
 "plugin": {
 "name": "allenkong",
 "description": "Allen Kong",
-"version": "1.5",
+"version": "1.6",
 "author": "Jon Wilson (10yard)",
 "type": "plugin",
 "start": "false"
