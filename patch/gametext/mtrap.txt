@@ -17,9 +17,5 @@ dog. Only the mid-screen "IN" field stops the hawk,
 by causing it to move randomly instead of chasing the
 player, but this will beam the mouse into one of the 
 four corners. 
-There is a 10,000 point bonus for clearing the board
-of all cheese. 
-A player who ends a stage as a dog will begin the next
-stage in that form.
 
 Developed by Exidy

@@ -1,0 +1,17 @@
+Mario Bros.
+
+The plot of Mario Bros. is simple but compelling. 
+Set in the sewers of New York City, Mario (and Luigi) 
+work as plumbers tasked with defeating various 
+creatures that emerge from the pipes. Players can work
+together to clear each stage, defeat enemies, and 
+advance to the next level. 
+
+The primary mechanics involve jumping to knock over 
+enemies and flipping them upside down, then kicking
+them off the screen to earn points. The game features
+a variety of quirky enemies, such as the pesky 
+Shellcreepers, Sidestepers, and the dangerous 
+Fireball-spewing Fuzzballs.
+
+Developed By Nintendo

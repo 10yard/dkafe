@@ -155,8 +155,8 @@ pacplus,,PacPlus,Pac-Man Plus,311,3,4,246000,2,4,8
 pacnpal,,Pac&Pal,Pac & Pal,313,3,4,247000,2,4,8
 jrpacman,,JrPac,Jr. Pac-Man,315,3,4,248000,2,4,8
 superpacm,,SuperPac,Super Pac-Man,317,3,4,249000,2,4,8
-lnc,,Lock&Chase,Lock n Chase,319,3,4,250000,2,4,8
-mtrap,,MouseTrap,Mouse Trap,321,3,4,251000,2,4,8
+mario,,MarioBros.,Mario Bros.,319,3,4,250000,2,4,8
+rbtapper,,Tapper,Tapper (Root Beer),321,3,4,251000,2,4,8
 ladybug,,LadyBug,Lady Bug,323,3,4,252000,2,4,8
 eyes,,Eyes,,324,3,4,253000,2,4,8
 mpatrol,,MoonPatrol,Moon Patrol,327,3,4,254000,2,4,8
@@ -166,7 +166,7 @@ rallyx,,RallyX,Rally-X,331,3,4,257000,2,4,8
 congo,,CongoBongo,Congo Bongo,332,3,4,258000,2,4,8
 qbert,,Q*Bert,,334,3,4,259000,2,4,8
 popeye,,Popeye,,336,3,4,260000,2,4,8
-rbtapper,,Tapper,Tapper (Root Beer),338,3,4,261000,2,4,8
+mtrap,,MouseTrap,Mouse Trap,338,3,4,261000,2,4,8
 galaga,,Galaga,,340,3,4,262000,2,4,8
 galaxian,,Galaxian,,342,3,4,263000,2,4,8
 gaplus,,Gaplus,,344,3,4,264000,2,4,8
@@ -183,7 +183,7 @@ mappy,,Mappy,,364,3,4,274000,2,4,8
 mrdo,,MrDo,Mr. Do!,365,3,4,275000,2,4,8
 invaders,,Invaders,Space Invaders,366,3,4,276000,2,4,8
 bombjack,,BombJack,Bomb Jack,367,3,4,276000,2,4,8
-10yardj,,10Yard,10 Yard Fight,9999,3,4,277000,2,4,8
+10yardj,,10Yard,10 Yard Fight,9999,3,4,276000,2,4,8
 a2600_alien_1979,shell,Alien,2600: Alien 1979,9999,,,96000,2,4,8
 a2600_artificial_lifeform,shell,Artifical Lifeform,2600: Artifical Lifeform,9999,,,96000,2,4,8
 a2600_big_mario,shell,Big Mario,2600: Big Mario,9999,,,96000,2,4,8
@@ -288,6 +288,7 @@ intv_beautybeast,shell,BeautyBeast,INTV: Beauty and the Beast,9999,,,96000,2,4,8
 intv_dk_junior,shell,DK Junior,INTV: Donkey Kong Junior,9999,,,96000,2,4,8
 intv_monkey,shell,Monkey,INTV: Monkey Moon,9999,,,96000,2,4,8
 laser310_ladder,shell,Ladder,VZ: Ladder Challenge,9999,,,96000,2,4,8
+lnc,,Lock&Chase,Lock n Chase,9999,3,4,276000,2,4,8
 mspacmnf,,MsSpeed,Ms. Pac-Man Speedup Hack,9999,3,4,243000,2,4,8
 mz700_crazykong,shell,MZCK,SHARP: Crazy Kong,9999,,,96000,2,4,8
 nes_clintonkong,shell,ClintonKong,NES: Clinton Kong,9999,,,96000,2,4,8
@@ -359,6 +360,7 @@ pc_exl100_kong,shell,Kong,EXL100: Kong,9999,,,96000,2,4,8
 pc_fixitfelix3,shell,FixItFelix3,PC: Fix-It Felix 3,9999,,,96000,2,4,8
 pc_hbf900a_congo,shell,Congo,MSX: Congo,9999,,,96000,2,4,8
 pc_kidnappers_inc,shell,Kidnappers Inc,PC: Kidnappers Inc.,9999,,,96000,2,4,8
+pc_m2000_monkeykong,shell,MonkeyKong,M2000: Monkey Kong  ,9999,,,96000,2,4,8
 pc_mc10_kong,shell,Kong,MC10: Kong,9999,,,96000,2,4,8
 pc_monkeyjump_gnw,shell,Monkey,G&W: Monkey Jump,9999,,,96000,2,4,8
 pc_nds_dk2,shell,DS DK 2,NDS: Donkey Kong II,9999,,,96000,2,4,8
@@ -438,7 +440,6 @@ zx81_zonkeykong,shell,ZonkeyKong,ZX81: Zonkey Kong,9999,,,96000,2,4,8
 ##pc_atarist_platform,shell,**Joystick map issue,ST: Platform Capers,####,,,0,2,4,8
 ##pc_atom_crazykongcity2,shell,**Not DK enough,ATOM: Crazy Kong City 2,####,,,0,2,4,8
 ##pc_exl100_monkeykong,shell,**Poor game and map,EXL100: Monkey Kong,####,,,0,2,4,8
-pc_m2000_monkeykong,shell,MonkeyKong,M2000: Monkey Kong  ,9999,,,96000,2,4,8
 ##plus4_larrymonkey,shell,**Graphics issues,C16/+4: Larry Monkey,####,,,0,2,4,8
 ##spectrum_eskimo_eddie,shell,**DK not first level,SPEC48K: Eskimo Eddie,####,,,0,2,4,8
 ##vic20_cannonball,shell,**Doesnt start,VIC20: Cannonball Blitz,####,,,0,2,4,8
