@@ -898,7 +898,7 @@ KEYBOARD_REMAP = {
     "dos_dkpc": "ctrl>space,f1|1>f1|2>f2|3>f3|esc>forcequit:dosbox-x.exe",
     "dos_kong": "num 1>enter|tab>esc|esc>forcequit:dosbox-x.exe",  # TAB to access and save in-game settings
     "dos_kongsrev": "esc>forcequit:dosbox-x.exe",
-    "dos_mamedk": "num 5>num 3|num 2>enter",
+    "dos_mamedk": "5>num 3|delayenter>1|delayenter>2",
     "dos_willy": "num 1>enter|ctrl>space",
     "pc_arduboy_kong":"ctrl>a|alt>b|p>s|1>a|2>b|esc>forcequit:projectabe.exe",
     "pc_arduboy_kong2":"ctrl>a|alt>b|p>s|1>a|2>b|esc>forcequit:projectabe.exe",
