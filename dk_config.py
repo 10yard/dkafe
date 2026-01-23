@@ -386,7 +386,7 @@ DKTV_FRIENDLY =  ("dkong", "dkongpies", "dkongwizardry", "dkong40", "dkongspring
                   "dkongpacmancross", "dkongwobble", "dkongvectorwild", "dkonggalakong", "dkongspooky", "dkonglava",
                   "dkongwho", "dkonginsanity", "dkongxmas", "dkongbarpal", "dkongoctomonkey", "dkongxgalakong",
                   "dkongd2k", "dkongrdemo", "dkong2nut", "dkongallen", "dkonghalf", "dkongquarter", "dkongl22",
-                  "dkongl00", "dkonglongtime")
+                  "dkongl00", "dkonglongtime", "dkongbowser")
 PACTRAINER_FRIENDLY = ("pacman", "puckman")
 
 # Roms that are not fully compatible
@@ -422,7 +422,7 @@ FADE_LEVEL = 40
 # Sequential list of arcade machine slot locations (x, y) starting with location 1.
 SLOTS = [
     (2, 226), (34, 226), (50, 226), (94, 226), (114, 225), (130, 224), (146, 223), (162, 222), (210, 219),
-    (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (2, 186),
+    (194, 198), (146, 195), (130, 194), (114, 193), (82, 191), (66, 190), (50, 189), (18, 187), (2, 186),
     (18, 165), (50, 163), (82, 161), (130, 158), (146, 157), (162, 156), (210, 153),
     (194, 132), (146, 129), (130, 128), (98, 126), (82, 125), (50, 123), (18, 121), (2, 120),
     (50, 97), (98, 94), (114, 93), (130, 92), (146, 91), (162, 90), (210, 87),
@@ -490,7 +490,7 @@ SLOTS = [
 ]
 
 # Range of slots that appear on each stage
-SLOTS_PER_STAGE = (0, 46), (46, 81), (81, 125), (125, 169), (169, 213), (213, 259), (259, 306), (306, 367), (367, 393)
+SLOTS_PER_STAGE = (0, 47), (47, 82), (82, 126), (126, 170), (170, 214), (214, 260), (260, 307), (307, 368), (368, 394)
 
 # Control assignments. Links global variables to event data.  These shouldn't be changed.
 CONTROL_ASSIGNMENTS = (
