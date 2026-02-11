@@ -8,7 +8,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "allenkong"
-exports.version = "1.6"
+exports.version = "1.7"
 exports.description = "Allen Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -29,6 +29,7 @@ function allenkong.startplugin()
 	local pic_finger = define_finger()
 	local pic_restrict = define_restricted()
 	local pic_balloon = define_balloon()
+	local pic_fart = define_fart()
 	local pic_allen = pic_small
 
 	-- Load characters
@@ -212,7 +213,7 @@ function allenkong.startplugin()
 				if input == 16 then
 					write(0x6229, level_select)
 					selected = true
-					if read(0x6385, 5) then play("letsgostart") end
+					if read(0x6385, 5) then random_play("start") end
 					if level_select >= 5 then write(0x622a, 0x73) end  -- update level pattern to point to level 5+
 					write(0x6385, 7)  -- skip the climb scene
 				elseif not selected then
@@ -409,6 +410,14 @@ function allenkong.startplugin()
 							draw_graphic(pic_allen, 274 - jumpy, jumpx - 24) -- facing right
 						else
 							draw_graphic(pic_allen, 274 - jumpy, jumpx - 23, true)  -- facing left
+						end
+
+						if frame < get("fartcloud") + 60 then
+							if facing >= 128 then
+								draw_graphic(pic_fart, 266 - jumpy, jumpx - 52, true) -- facing right
+							else
+								draw_graphic(pic_fart, 266 - jumpy, jumpx - 6) -- facing right
+							end
 						end
 
 						-- freezer mode
@@ -647,15 +656,19 @@ function allenkong.startplugin()
 	function validate_sounds()
 		local _path
 		local _valid = true
+		local _count = 0
 		for _, sound_group in pairs(sounds) do
 			for _, sound in pairs(sound_group) do
 				_path = "plugins/allenkong/sounds/" .. sound .. ".mp3"
-				if not file_exists(_path) then
+				if file_exists(_path) then
+					_count = _count + 1
+				else
 					print("Error loading sound file: " .. _path )
 					_valid = false
 				end
 			end
 		end
+		--print(_count)
 		return _valid
 	end
 
@@ -668,6 +681,7 @@ function allenkong.startplugin()
 			return
 		end
 		if sound == "renstimpy" then store("renstimpy") end
+		if string.find(sound, "fart") then store("fartcloud") end
 
 		if is_pi then
 			io.popen("mpg321 -q plugins/allenkong/sounds/"..sound..".mp3 &")

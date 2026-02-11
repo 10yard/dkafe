@@ -377,7 +377,7 @@ STAGE_FRIENDLY = ("dkong", "dkongjr", "dkonggalakong", "dkongwizardry", "dkong40
                   "ckong", "ckongpt2b", "dkong2600", "dkongchorus", "dkongkonkey", "dkongrainbow", "ckongs", "ckongg",
                   "ckongmc", "dkongksfix", "bigkonggx", "ckongdks", "ckongpt2_117", "dkongpacmancross",
                   "ckongpt2a_2023", "ckongpt2_dk", "dkonginsanity", "dkong3", "logger", "loggerr2", "dkongl00",
-                  "dkongtv", "dkonggalatv", "dkongsprites")
+                  "dkongtv", "dkonggalatv", "dkongsprites", "dkongbowser")
 DKTV_FRIENDLY =  ("dkong", "dkongpies", "dkongwizardry", "dkong40", "dkongspringy", "dkongitd",
                   "dkongvector", "dkong2600", "dkongtj", "dkongfr", "dkongrivets", "dkongfoundry", "dkongotr",
                   "dkonghrthnt", "dkongd2k", "dkongrev", "dkongcb", "dkongkana", "dkongrndmzr", "dkongnoluck",

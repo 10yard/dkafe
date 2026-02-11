@@ -117,7 +117,7 @@ function define_allen_small()
 	palette["L"] = 0xffd48b55
 	palette["M"] = 0xff3f2e1c
 	palette["X"] = 0xff000000
-	
+
 	data = {
 		"      #$%&%     ",
 		"    !#$%&&%&    ",
@@ -256,6 +256,37 @@ function define_ren()
 		"    #!$&&$$$$      ",
 		"      !$$&&&       ",
 		"       !!$$        "}
+	return {data, palette}
+end
+
+function define_fart()
+	palette = {}
+	palette["*"] = 0xffffffff
+
+	local data = {
+		"                 *****    ",
+		"                *     **  ",
+		"               *        * ",
+		"               *        * ",
+		"               *        * ",
+		"                        * ",
+		"                       *  ",
+		"***************       *   ",
+		"                     ***  ",
+		"                        * ",
+		"                         *",
+		"    ************         *",
+		"                         *",
+		"                        * ",
+		"                   *****  ",
+		"  ************      *     ",
+		"                     *    ",
+		"                     *    ",
+		"                     *    ",
+		"             *      *     ",
+		"              *    *      ",
+		"               ****       "
+	}
 	return {data, palette}
 end
 
@@ -720,7 +751,8 @@ function define_sounds()
 	data["logo"] = {
 		"bullshitgame", "best_romhack", "inthegame", "called_allenkong", "exciting_game", "easports", "playthegame",
 		"gallopingghosts", "welcome_musclefitness", "get_the_wr", "fullgrownman", "changes_color", "boomerang",
-		"mammamia", "im_allen", "true_champ", "goodhighscore", "thisisdonkeykong", "renstimpy", "renstimpy"
+		"mammamia", "im_allen", "true_champ", "goodhighscore", "thisisdonkeykong", "renstimpy", "renstimpy",
+		"builtcabinaus2", "nohomo"
 	}
 
 	data["ambient"] = {
@@ -728,8 +760,8 @@ function define_sounds()
 		"hahahaha",	"hehehehe",	"errr",	"cat", "cough",	"blub",	"gotten_better", "cough2", "gunfight", "cough3",
 		"its_me_mario", "finkel", "2viewers", "bigmac", "smile", "hey_olives", "help_popeye", "hills",
 		"pogo_stick", "something", "alltheway", "zookeeper", "raidsomebody", "taxi", "dandruff", "everywhere",
-		"brianfart", "brianfart2", "brianfart3", "brianfart4", "brianfart5", "jcb_fart", "yeahfart",
-		"fart1", "fart2", "fart3", "fart4", "fart5","fart6", "fart7", "fart8", "fartbrian", "fartohyeah",
+		"brianfart", "brianfart2", "brianfart3", "brianfart4", "brianfart5", "jcb_fart", "yeahfart", "swisscheese",
+		"fart1", "fart2", "fart3", "fart4", "fart5","fart6", "fart7", "fart8", "fartbrian", "fartohyeah", "brianfart6",
 		"burp1", "burp2", "burp3", "burp4", "burp5", "burp6",
 		"continue", "positive", "gimmethatknife", "manamana", "major_tom", "major_tom_2",
 		"btch_tit", "wakeup_brian", "machine_on_fire", "brian_looking", "thistime", "doodedoo", "siren", "shesadk",
@@ -743,7 +775,11 @@ function define_sounds()
 		"restaurant", "girlfriend", "watchthegame", "looloo", "thatyou", "learnnothing", "forthefans", "422", "5dollar",
 		"renstimpy", "affiliate", "dkrock", "ohhbrian", "steve", "showerchair", "forachange", "getthemil", "notsure",
 		"ben", "benlovesit", "fartlick", "900k", "everheard", "getofftable", "rugs", "mariorug", "burpyipyip",
-		"phoenix", "20viewers", "jinglebells", "zenstate", "zenstate2", "letsgowalter", "joystick"
+		"phoenix", "20viewers", "jinglebells", "zenstate", "zenstate2", "letsgowalter", "joystick", "fartforthefans",
+		"fartforthefans2", "phil", "millionthattempt", "rumour", "firsttimeisaw", "firsttimeisaw2", "hahaloveit",
+		"donkeykongaroundtheclock", "staalshirts", "burpthankyou", "justks", "dksucksong", "stiffback", "glen",
+		"walljumps58", "lakemansong", "showerchairbaby", "reacharound", "howgoinghank", "alfromaus", "builtmycab",
+		"cupoftea", "fub", "hellos", "benny"
 	}
 
 	data["complete"] = {
@@ -752,7 +788,8 @@ function define_sounds()
 		"lookatthepace", "lick_it_allen", "pauline_inthegame", "save_pauline", "george", "arrr_whoo", "dirty",
 		"conqueror", "goodscore_noworries", "roadhog", "i_can_get_more", "porkypig", "facking_whr", "rowrowkong",
 		"my_and_wes_way", "itsmagic2", "omg_balls", "head", "trying_highscore", "ks_everygame", "something_right",
-		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart", "batman", "didyouseethat"
+		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart", "batman", "didyouseethat",
+		"likeglove_ballbag", "bowie", "wiggle", "reacharoundsong", "ross", "anthem", "nooneintheworld"
 	}
 
 	data["grab"] = {
@@ -766,7 +803,8 @@ function define_sounds()
 
 	data["highscore"] = {
 		"nohighscore", "notgoodenough", "new_wr", "nevergetit", "999999", "neverwill", "spreading_news",
-		"highscore_singit", "itsmagic", "today_score", "lookma", "notplayanymore"
+		"highscore_singit", "itsmagic", "today_score", "lookma", "notplayanymore", "proovenothing", "noworldrecord",
+		"walljumps52"
 	}
 
 	data["bonus800"]= {
@@ -804,12 +842,13 @@ function define_sounds()
 	}
 
 	data["dead"] = {
-		"single_fack", "single_fack2", "fack_this_game", "facofac", "everydamntimefac", "fachadit"
+		"single_fack", "single_fack2", "fack_this_game", "facofac", "everydamntimefac", "fachadit", "fackeverytime",
+		"fackran", "believethat", "swearmedley", "howmanytimes"
 	}
 
 	data["lastmandead"] = {
 		"fack", "rage", "sonofa", "unluckiest", "getstuffed", "crying", "canubelieve", "fcs", "fsagain",
-		"nogoodatanygame", "neverfails", "nogood", "omfg"
+		"nogoodatanygame", "neverfails", "nogood", "omfg", "fcsake"
 	}
 
 	data["gameover"] = {
@@ -827,6 +866,10 @@ function define_sounds()
 		"shitscore", "shitscore2"
 	}
 
+	data["start"] = {
+		"letsgostart", "onemoregame"
+	}
+
 	data["bye"] = {
 		"byefornow", "byefornow2"
 	}
@@ -837,7 +880,8 @@ end
 -- Allen Kong Texts
 function define_texts()
 	data = {
-		"1 MILLION FUCKING POINTS ", " IT'S A FUCKING CLASSIC! ", "BRIAN DOESN'T HAVE A ROM!"
+		"1 MILLION FUCKING POINTS ", " IT'S A FUCKING CLASSIC! ", "BRIAN DOESN'T HAVE A ROM!",
+		"OVER 500 SOUNDS AND FARTS!"
 	}
 	return data
 end
