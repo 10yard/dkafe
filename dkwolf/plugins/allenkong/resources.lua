@@ -760,7 +760,7 @@ function define_sounds()
 		"hahahaha",	"hehehehe",	"errr",	"cat", "cough",	"blub",	"gotten_better", "cough2", "gunfight", "cough3",
 		"its_me_mario", "finkel", "2viewers", "bigmac", "smile", "hey_olives", "help_popeye", "hills",
 		"pogo_stick", "something", "alltheway", "zookeeper", "raidsomebody", "taxi", "dandruff", "everywhere",
-		"brianfart", "brianfart2", "brianfart3", "brianfart4", "brianfart5", "jcb_fart", "yeahfart", "swisscheese",
+		"brianfart", "brianfart2", "brianfart3", "brianfart4", "brianfart5", "jcb_fart", "yeahfart",
 		"fart1", "fart2", "fart3", "fart4", "fart5","fart6", "fart7", "fart8", "fartbrian", "fartohyeah", "brianfart6",
 		"burp1", "burp2", "burp3", "burp4", "burp5", "burp6",
 		"continue", "positive", "gimmethatknife", "manamana", "major_tom", "major_tom_2",
@@ -779,7 +779,12 @@ function define_sounds()
 		"fartforthefans2", "phil", "millionthattempt", "rumour", "firsttimeisaw", "firsttimeisaw2", "hahaloveit",
 		"donkeykongaroundtheclock", "staalshirts", "burpthankyou", "justks", "dksucksong", "stiffback", "glen",
 		"walljumps58", "lakemansong", "showerchairbaby", "reacharound", "howgoinghank", "alfromaus", "builtmycab",
-		"cupoftea", "fub", "hellos", "benny"
+		"cupoftea", "fub", "hellos", "benny", "eggplants", "friendly", "fanseverywhere", "sensitive",
+		"reacharoundagain", "swisscheesefart", "swisscheesefart", "barra", "lovebriansong", "auskongoff"
+	}
+
+	data["register_fart"] = {
+		"swisscheesefart", "fartohyeah"
 	}
 
 	data["complete"] = {
@@ -789,7 +794,8 @@ function define_sounds()
 		"conqueror", "goodscore_noworries", "roadhog", "i_can_get_more", "porkypig", "facking_whr", "rowrowkong",
 		"my_and_wes_way", "itsmagic2", "omg_balls", "head", "trying_highscore", "ks_everygame", "something_right",
 		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart", "batman", "didyouseethat",
-		"likeglove_ballbag", "bowie", "wiggle", "reacharoundsong", "ross", "anthem", "nooneintheworld"
+		"likeglove_ballbag", "bowie", "wiggle", "reacharoundsong", "ross", "anthem", "nooneintheworld", "greatescape",
+		"jbc", "lickmebrian", "lookatthatclass"
 	}
 
 	data["grab"] = {
@@ -798,13 +804,13 @@ function define_sounds()
 		"come_on_baby_1m", "lookatemall", "come_lovelies", "duke_suckemin", "the_duke", "come_on_fs", "forthefans",
 		"fernando", "suck", "yeppew", "horse", "hunting_fireballs", "hammer_me", "cmon_fireballs", "yipyipyipyipyip",
 		"renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy", "imbilly",
-		"waaahaha", "bebebe", "couldbeepic"
+		"waaahaha", "bebebe", "couldbeepic", "pointpress"
 	}
 
 	data["highscore"] = {
 		"nohighscore", "notgoodenough", "new_wr", "nevergetit", "999999", "neverwill", "spreading_news",
 		"highscore_singit", "itsmagic", "today_score", "lookma", "notplayanymore", "proovenothing", "noworldrecord",
-		"walljumps52"
+		"walljumps52", "showboard", "epicgame"
 	}
 
 	data["bonus800"]= {
@@ -818,7 +824,7 @@ function define_sounds()
 		"lickthatlakeman", "ohrobby", "spaceylovesit", "onpaper", "dukey_loves_it", "hehe_hank", "woohoo", "fack_jump",
 		"ninja", "love_it_wes", "8_straight", "steerlikewieby", "heineken_manouevre", "sheer_magic", "lickthatlakeman2",
 		"philcream", "wooo", "howyouplay", "howmillion", "howmillion", "laughs", "couldbeepic", "tothebatcave",
-		"yehbilly", "wooyeh", "kingbill"
+		"yehbilly", "wooyeh", "kingbill", "thisisbull", "unfriend"
 	}
 
 	data["jumpdouble"] = {
@@ -834,7 +840,7 @@ function define_sounds()
 	}
 
 	data["bonus300"] = {
-		"300", "300whatever", "poo", "300_suck", "shithaha", "winatrick"
+		"300", "300whatever", "poo", "300_suck", "shithaha", "winatrick", "thisisbull"
 	}
 
 	data["bonus500"] = {
@@ -843,7 +849,7 @@ function define_sounds()
 
 	data["dead"] = {
 		"single_fack", "single_fack2", "fack_this_game", "facofac", "everydamntimefac", "fachadit", "fackeverytime",
-		"fackran", "believethat", "swearmedley", "howmanytimes"
+		"believethat", "swearmedley", "howmanytimes"
 	}
 
 	data["lastmandead"] = {
@@ -859,7 +865,7 @@ function define_sounds()
 
 	data["hesitated"] = {
 		"hesitated", "short_springs", "got_stuck_fack", "typical", "crying", "canubelieve", "fsagain", "neverfails",
-		"beatcs", "nogood", "omfg", "ohfg"
+		"beatcs", "nogood", "omfg", "ohfg", "wheregoing"
 	}
 
 	data["shitscore"] = {

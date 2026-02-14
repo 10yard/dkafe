@@ -76,6 +76,7 @@ function allenkong.startplugin()
 		if mac ~= nil then
 			if validate_sounds() then
 				scr = mac.screens[":screen"]
+				con = scr.container
 				cpu = mac.devices[":maincpu"]
 				mem = cpu.spaces["program"]
 				mem:write_direct_u32(0x01ea, 0x0000063e)  -- force game to start on the title screen
@@ -240,7 +241,7 @@ function allenkong.startplugin()
 
 			-- name/score saved -------------------------------------------------------------------------------------
 			if mode2 == 0x14 and get("mode2") ~= 0x14 then
-				play("fartohyeah")
+				random_play("register_fart")
 			end
 
 			-- game over --------------------------------------------------------------------------------------------
@@ -418,6 +419,11 @@ function allenkong.startplugin()
 							else
 								draw_graphic(pic_fart, 266 - jumpy, jumpx - 6) -- facing right
 							end
+							if not global_id_dktv then
+								con.yoffset = ((scr:frame_number() % 4) - 4) / 200
+							end
+						elseif not global_id_dktv then
+							con.yoffset = 0
 						end
 
 						-- freezer mode
