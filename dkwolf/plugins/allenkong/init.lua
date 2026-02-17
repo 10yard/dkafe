@@ -465,7 +465,7 @@ function allenkong.startplugin()
 						store("countdown")					end
 
 					-- If it's been a while since allen said something then we should say something random
-					if frame - get("sound") > 600 then
+					if frame - get("sound") > 850 then
 						last_clip = random_play("ambient")
 					end
 
