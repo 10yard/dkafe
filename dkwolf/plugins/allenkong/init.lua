@@ -382,7 +382,7 @@ function allenkong.startplugin()
 								random_play("hesitated")
 								store("hesitated")
 							elseif read(0x6215, 1) then
-								play("stuck_on_ladder")
+								random_play("ladder")
 							else
 								if mode1 == 3 and read(0x6228, 1) then
 									random_play("lastmandead")
@@ -674,7 +674,7 @@ function allenkong.startplugin()
 				end
 			end
 		end
-		--print(_count)
+		print(_count)
 		return _valid
 	end
 

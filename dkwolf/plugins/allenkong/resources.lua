@@ -762,6 +762,7 @@ function define_sounds()
 		"pogo_stick", "something", "alltheway", "zookeeper", "raidsomebody", "taxi", "dandruff", "everywhere",
 		"brianfart", "brianfart2", "brianfart3", "brianfart4", "brianfart5", "jcb_fart", "yeahfart",
 		"fart1", "fart2", "fart3", "fart4", "fart5","fart6", "fart7", "fart8", "fartbrian", "fartohyeah", "brianfart6",
+		"brianfart7",
 		"burp1", "burp2", "burp3", "burp4", "burp5", "burp6",
 		"continue", "positive", "gimmethatknife", "manamana", "major_tom", "major_tom_2",
 		"btch_tit", "wakeup_brian", "machine_on_fire", "brian_looking", "thistime", "doodedoo", "siren", "shesadk",
@@ -780,7 +781,8 @@ function define_sounds()
 		"donkeykongaroundtheclock", "staalshirts", "burpthankyou", "justks", "dksucksong", "stiffback", "glen",
 		"walljumps58", "lakemansong", "showerchairbaby", "reacharound", "howgoinghank", "alfromaus", "builtmycab",
 		"cupoftea", "fub", "hellos", "benny", "eggplants", "friendly", "fanseverywhere", "sensitive",
-		"reacharoundagain", "swisscheesefart", "swisscheesefart", "barra", "lovebriansong", "auskongoff"
+		"reacharoundagain", "swisscheesefart", "swisscheesefart", "barra", "lovebriansong", "auskongoff", "turtleshell",
+		"experts", "blindmice", "twingal", "stopswearing", "shitgame", "crispycreme", "whatchagonna"
 	}
 
 	data["register_fart"] = {
@@ -795,7 +797,8 @@ function define_sounds()
 		"my_and_wes_way", "itsmagic2", "omg_balls", "head", "trying_highscore", "ks_everygame", "something_right",
 		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart", "batman", "didyouseethat",
 		"likeglove_ballbag", "bowie", "wiggle", "reacharoundsong", "ross", "anthem", "nooneintheworld", "greatescape",
-		"jbc", "lickmebrian", "lookatthatclass"
+		"jbc", "lickmebrian", "lookatthatclass", "wuddawoowoo", "lovebrian", "paulinegame", "latergater",
+		"brianchinatown", "lakemanduke", "pinkbitsong"
 	}
 
 	data["grab"] = {
@@ -803,14 +806,14 @@ function define_sounds()
 		"cometopapa", "cometopapa2", "dush_dush2", "yepyep", "allenkongbaby", "yehbuddy", "lookathat", "whoo_cmon",
 		"come_on_baby_1m", "lookatemall", "come_lovelies", "duke_suckemin", "the_duke", "come_on_fs", "forthefans",
 		"fernando", "suck", "yeppew", "horse", "hunting_fireballs", "hammer_me", "cmon_fireballs", "yipyipyipyipyip",
-		"renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy", "renstimpy", "imbilly",
-		"waaahaha", "bebebe", "couldbeepic", "pointpress"
+		"renstimpy", "renstimpy", "renstimpy", "renstimpy", "imbilly",
+		"waaahaha", "bebebe", "couldbeepic", "pointpress", "spreadout"
 	}
 
 	data["highscore"] = {
 		"nohighscore", "notgoodenough", "new_wr", "nevergetit", "999999", "neverwill", "spreading_news",
 		"highscore_singit", "itsmagic", "today_score", "lookma", "notplayanymore", "proovenothing", "noworldrecord",
-		"walljumps52", "showboard", "epicgame"
+		"walljumps52", "showboard", "epicgame", "shitscore3"
 	}
 
 	data["bonus800"]= {
@@ -849,7 +852,7 @@ function define_sounds()
 
 	data["dead"] = {
 		"single_fack", "single_fack2", "fack_this_game", "facofac", "everydamntimefac", "fachadit", "fackeverytime",
-		"believethat", "swearmedley", "howmanytimes"
+		"believethat", "swearmedley", "howmanytimes", "foffidiot"
 	}
 
 	data["lastmandead"] = {
@@ -860,7 +863,7 @@ function define_sounds()
 	data["gameover"] = {
 		"game_for_me", "sackthisgameoff", "rotten_luck", "anyway", "bullshitgame2", "never_do_it", "jinxed",
 		"dean_for_a_day", "chromasome", "play_properly", "thats_all_folks", "cant_do_sht", "not_get_1m",
-		"thnk_about_game", "notmeantfor1m", "backlater"
+		"thnk_about_game", "notmeantfor1m", "backlater", "thatsall"
 	}
 
 	data["hesitated"] = {
@@ -868,12 +871,16 @@ function define_sounds()
 		"beatcs", "nogood", "omfg", "ohfg", "wheregoing"
 	}
 
+	data["ladder"] = {
+		"stuck_on_ladder", "stuckonfence"
+	}
+
 	data["shitscore"] = {
-		"shitscore", "shitscore2"
+		"shitscore", "shitscore2", "shitscore3"
 	}
 
 	data["start"] = {
-		"letsgostart", "onemoregame"
+		"letsgostart", "onemoregame", "letsgodh"
 	}
 
 	data["bye"] = {
