@@ -141,7 +141,8 @@ def check_patches_available():
             _newline_stripe = _stripe
             for i, patch in enumerate(applied_patches):
                 _patch = patch.upper().replace("_","")
-                _width = (len(_patch) * 4) + 3
+                _patch = _patch.replace("DKONG", "DK").replace("CKONG", "CK")
+                _width = (len(_patch) * 4) + 6
                 if x_offset + _width > 223:
                     _newline_stripe = PINK if _newline_stripe == WHITE else WHITE
                     _stripe = _newline_stripe
