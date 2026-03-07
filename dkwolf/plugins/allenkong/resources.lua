@@ -1,4 +1,5 @@
--- Allen Kong Graphics
+-- Allen Kong Graphics and sounds
+-- Sounds are normalized at -3db
 
 function define_allen_big()
 	local palette = {}
@@ -129,7 +130,7 @@ function define_allen_small()
 		"%##!82220666009 ",
 		"$(%#02222122229 ",
 		"$4:#;222<-#=2>4%",
-		" >?:622.@#A:=#AA",
+		" >?:666.@#A:=#AA",
 		" >6=0226:#B?34:C",
 		" $>=222266>02=D ",
 		"  #:322EE93;F3D ",
@@ -752,7 +753,7 @@ function define_sounds()
 		"bullshitgame", "best_romhack", "inthegame", "called_allenkong", "exciting_game", "easports", "playthegame",
 		"gallopingghosts", "welcome_musclefitness", "get_the_wr", "fullgrownman", "changes_color", "boomerang",
 		"mammamia", "im_allen", "true_champ", "goodhighscore", "thisisdonkeykong", "renstimpy", "renstimpy",
-		"builtcabinaus2", "nohomo"
+		"builtcabinaus2", "nohomo", "swisscheesefart"
 	}
 
 	data["ambient"] = {
@@ -782,7 +783,8 @@ function define_sounds()
 		"walljumps58", "lakemansong", "showerchairbaby", "reacharound", "howgoinghank", "alfromaus", "builtmycab",
 		"cupoftea", "fub", "hellos", "benny", "eggplants", "friendly", "fanseverywhere", "sensitive",
 		"reacharoundagain", "swisscheesefart", "swisscheesefart", "barra", "lovebriansong", "auskongoff", "turtleshell",
-		"experts", "blindmice", "twingal", "stopswearing", "shitgame", "crispycreme", "whatchagonna"
+		"experts", "blindmice", "twingal", "stopswearing", "shitgame", "crispycreme", "whatchagonna", "chairfall",
+		"dingdong"
 	}
 
 	data["register_fart"] = {
@@ -798,7 +800,7 @@ function define_sounds()
 		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart", "batman", "didyouseethat",
 		"likeglove_ballbag", "bowie", "wiggle", "reacharoundsong", "ross", "anthem", "nooneintheworld", "greatescape",
 		"jbc", "lickmebrian", "lookatthatclass", "wuddawoowoo", "lovebrian", "paulinegame", "latergater",
-		"brianchinatown", "lakemanduke", "pinkbitsong"
+		"brianchinatown", "lakemanduke", "pinkbitsong", "comeandseebrian", "shrekislove"
 	}
 
 	data["grab"] = {
@@ -807,7 +809,7 @@ function define_sounds()
 		"come_on_baby_1m", "lookatemall", "come_lovelies", "duke_suckemin", "the_duke", "come_on_fs", "forthefans",
 		"fernando", "suck", "yeppew", "horse", "hunting_fireballs", "hammer_me", "cmon_fireballs", "yipyipyipyipyip",
 		"renstimpy", "renstimpy", "renstimpy", "renstimpy", "imbilly",
-		"waaahaha", "bebebe", "couldbeepic", "pointpress", "spreadout"
+		"waaahaha", "bebebe", "couldbeepic", "pointpress", "spreadout", "gotemphil"
 	}
 
 	data["highscore"] = {
@@ -838,6 +840,7 @@ function define_sounds()
 		"howyouplay", "howmillion", "laughs", "tothebatcave", "yehbilly", "wooyeh", "kingbill"
 	}
 
+
 	data["bonus"] = {
 		"haha", "oh_yeah", "whoo", "nice", "goodlick", "hahaha", "yes", "wow", "farout", "whey", "dididi", "galaga"
 	}
@@ -857,13 +860,13 @@ function define_sounds()
 
 	data["lastmandead"] = {
 		"fack", "rage", "sonofa", "unluckiest", "getstuffed", "crying", "canubelieve", "fcs", "fsagain",
-		"nogoodatanygame", "neverfails", "nogood", "omfg", "fcsake"
+		"nogoodatanygame", "neverfails", "nogood", "omfg", "fcsake", "axe"
 	}
 
 	data["gameover"] = {
 		"game_for_me", "sackthisgameoff", "rotten_luck", "anyway", "bullshitgame2", "never_do_it", "jinxed",
 		"dean_for_a_day", "chromasome", "play_properly", "thats_all_folks", "cant_do_sht", "not_get_1m",
-		"thnk_about_game", "notmeantfor1m", "backlater", "thatsall"
+		"thnk_about_game", "notmeantfor1m", "backlater", "thatsall", "same", "jbcbetter"
 	}
 
 	data["hesitated"] = {
