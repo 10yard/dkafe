@@ -8,7 +8,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "allenkong"
-exports.version = "1.8"
+exports.version = "1.9"
 exports.description = "Allen Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -373,9 +373,9 @@ function allenkong.startplugin()
 						end
 
 						if jumpx <= 150 then
-							draw_graphic(pic_allen, 274 - jumpy, jumpx - 26) -- facing right
+							draw_graphic(pic_allen, 276 - jumpy, jumpx - 28) -- facing right
 						else
-							draw_graphic(pic_allen, 274 - jumpy, jumpx - 25, true) -- facing left
+							draw_graphic(pic_allen, 276 - jumpy, jumpx - 26, true) -- facing left
 						end
 
 						if frame > get("dead") + 300 then
@@ -410,9 +410,9 @@ function allenkong.startplugin()
 
 						-- Allen faces the right way
 						if facing >= 128 then
-							draw_graphic(pic_allen, 274 - jumpy, jumpx - 24) -- facing right
+							draw_graphic(pic_allen, 276 - jumpy, jumpx - 26) -- facing right
 						else
-							draw_graphic(pic_allen, 274 - jumpy, jumpx - 23, true)  -- facing left
+							draw_graphic(pic_allen, 276 - jumpy, jumpx - 24, true)  -- facing left
 						end
 
 						if frame < get("fartcloud") + 60 then

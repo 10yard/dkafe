@@ -72,6 +72,58 @@ function define_allen_big()
 end
 
 function define_allen_small()
+	local palette = {}
+    palette["Q"] = 0xff550000
+
+    palette["5"] = 0xff131619
+    palette["!"] = 0xff131825
+    palette["#"] = 0xff2d2224
+    palette["$"] = 0xff694132
+    palette["%"] = 0xff9c604d
+    palette["&"] = 0xff331918
+    palette["'"] = 0xff5b2d22
+    palette["("] = 0xffd16652
+    palette[")"] = 0xffe39768
+    palette["*"] = 0xfff8be8d
+    palette["+"] = 0xffcf6947
+    palette[","] = 0xffeb9365
+    palette["-"] = 0xfff7c18e
+    palette["."] = 0xffcf643c
+    palette["/"] = 0xffc55738
+    palette["0"] = 0xffb44d31
+    palette["1"] = 0xffebd8ca
+    palette["2"] = 0xffa4371e
+    palette["3"] = 0xff912a13
+
+	data = {
+        "     5!5#!5!5!!     ",
+        "     $$%%%%%%%%!    ",
+        "    5$&&&''''''%5   ",
+        "   #$&())*)))))#$!  ",
+        " #'$$&,,-------*+&& ",
+        " #''$.,,)*----**-,& ",
+        " 5''$.,,*----***-*& ",
+        " #&&&+,,,,)*-*))*-& ",
+        " &#'&+,/0,,),,+-**& ",
+        " #$&5555555%...!55!!",
+        "'++&'.50++(&5!5/00 !",
+        "&((&++5)1515//&1!) !",
+        "&(,2/.!,,))5..&,)) !",
+        "#(///+/!!!5(..,5!!! ",
+        " #$..+))))(02.,3,,3 ",
+        "   '3.+,,2,+,32/,,3 ",
+        "    3.+,,+,,,,,,(,3 ",
+        "     ++,+)555550(,3 ",
+        "     .+,.,300//0(,3 ",
+        "     2.+,)),,,,,(2  ",
+        "      3/.,,0///,3   ",
+        "       33.,,,,,.3   ",
+        "         333333     "}
+	return {data, palette}
+end
+
+
+function define_allen_small_old()
 	palette = {}
 	palette["!"] = 0xff3f4500
 	palette["#"] = 0xff3f2e00
@@ -144,7 +196,7 @@ function define_allen_small()
 end
 
 
-function define_allen_small_old()
+function define_allen_small_old2()
 	palette = {}
 	palette["!"] = 0xff20130d
 	palette["#"] = 0xff4f2412
@@ -784,7 +836,8 @@ function define_sounds()
 		"cupoftea", "fub", "hellos", "benny", "eggplants", "friendly", "fanseverywhere", "sensitive",
 		"reacharoundagain", "swisscheesefart", "swisscheesefart", "barra", "lovebriansong", "auskongoff", "turtleshell",
 		"experts", "blindmice", "twingal", "stopswearing", "shitgame", "crispycreme", "whatchagonna", "chairfall",
-		"dingdong"
+		"dingdong", "kibbey", "notnow", "caughtalight", "ohrobbie", "lickem", "nameisbrian", "eric", "jase", "hotcock",
+		"different", "bigfartbrianallen"
 	}
 
 	data["register_fart"] = {
@@ -800,7 +853,8 @@ function define_sounds()
 		"haaarhah", "lickmy", "recordbook", "pro", "xmas", "groundconfart", "batman", "didyouseethat",
 		"likeglove_ballbag", "bowie", "wiggle", "reacharoundsong", "ross", "anthem", "nooneintheworld", "greatescape",
 		"jbc", "lickmebrian", "lookatthatclass", "wuddawoowoo", "lovebrian", "paulinegame", "latergater",
-		"brianchinatown", "lakemanduke", "pinkbitsong", "comeandseebrian", "shrekislove"
+		"brianchinatown", "lakemanduke", "pinkbitsong", "comeandseebrian", "shrekislove", "emergency", "vegimite",
+		"spark", "brianfire", "whataload", "likeagloveeeh", "brianlickmy", "brianalien", "onlybrian", "harddayskong"
 	}
 
 	data["grab"] = {
@@ -808,14 +862,14 @@ function define_sounds()
 		"cometopapa", "cometopapa2", "dush_dush2", "yepyep", "allenkongbaby", "yehbuddy", "lookathat", "whoo_cmon",
 		"come_on_baby_1m", "lookatemall", "come_lovelies", "duke_suckemin", "the_duke", "come_on_fs", "forthefans",
 		"fernando", "suck", "yeppew", "horse", "hunting_fireballs", "hammer_me", "cmon_fireballs", "yipyipyipyipyip",
-		"renstimpy", "renstimpy", "renstimpy", "renstimpy", "imbilly",
+		"renstimpy", "renstimpy", "renstimpy", "imbilly",
 		"waaahaha", "bebebe", "couldbeepic", "pointpress", "spreadout", "gotemphil"
 	}
 
 	data["highscore"] = {
 		"nohighscore", "notgoodenough", "new_wr", "nevergetit", "999999", "neverwill", "spreading_news",
 		"highscore_singit", "itsmagic", "today_score", "lookma", "notplayanymore", "proovenothing", "noworldrecord",
-		"walljumps52", "showboard", "epicgame", "shitscore3"
+		"walljumps52", "showboard", "epicgame", "shitscore3", "cantbeatscore", "highinhouse", "uselessscore"
 	}
 
 	data["bonus800"]= {
@@ -883,7 +937,7 @@ function define_sounds()
 	}
 
 	data["start"] = {
-		"letsgostart", "onemoregame", "letsgodh"
+		"letsgostart", "onemoregame", "letsgodh", "900beyond", "showroad"
 	}
 
 	data["bye"] = {
