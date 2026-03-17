@@ -373,7 +373,7 @@ function allenkong.startplugin()
 						end
 
 						if jumpx <= 150 then
-							draw_graphic(pic_allen, 273 - jumpy, jumpx - 24) -- facing right
+							draw_graphic(pic_allen, 273 - jumpy, jumpx - 23) -- facing right
 						else
 							draw_graphic(pic_allen, 273 - jumpy, jumpx - 25, true) -- facing left
 						end
@@ -410,7 +410,7 @@ function allenkong.startplugin()
 
 						-- Allen faces the right way
 						if facing >= 128 then
-							draw_graphic(pic_allen, 273 - jumpy, jumpx - 22) -- facing right
+							draw_graphic(pic_allen, 273 - jumpy, jumpx - 23) -- facing right
 						else
 							draw_graphic(pic_allen, 273 - jumpy, jumpx - 23, true)  -- facing left
 						end
