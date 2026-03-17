@@ -73,161 +73,110 @@ end
 
 function define_allen_small()
 	local palette = {}
-    palette["Q"] = 0xff550000
-
-    palette["5"] = 0xff131619
-    palette["!"] = 0xff131825
-    palette["#"] = 0xff2d2224
-    palette["$"] = 0xff694132
-    palette["%"] = 0xff9c604d
-    palette["&"] = 0xff331918
-    palette["'"] = 0xff5b2d22
-    palette["("] = 0xffd16652
-    palette[")"] = 0xffe39768
-    palette["*"] = 0xfff8be8d
-    palette["+"] = 0xffcf6947
-    palette[","] = 0xffeb9365
-    palette["-"] = 0xfff7c18e
-    palette["."] = 0xffcf643c
-    palette["/"] = 0xffc55738
-    palette["0"] = 0xffb44d31
-    palette["1"] = 0xffebd8ca
-    palette["2"] = 0xffa4371e
-    palette["3"] = 0xff912a13
-
+    palette["A"] = 0xff372b11
+    palette["!"] = 0xff291300
+    palette["#"] = 0xff130700
+    palette["$"] = 0xff4e3013
+    palette["%"] = 0xff6c3a27
+    palette["&"] = 0xff98664e
+    palette["'"] = 0xff934e3a
+    palette["("] = 0xff9e3a27
+    palette[")"] = 0xfffa976d
+    palette["*"] = 0xffd7894e
+    palette["+"] = 0xffce754e
+    palette[","] = 0xffc86a3a
+    palette["-"] = 0xff632a0e
+    palette["."] = 0xff4e3a27
+    palette["/"] = 0xffd4966f
+    palette["0"] = 0xfffdb073
+    palette["1"] = 0xffffc475
+    palette["2"] = 0xff893a13
+    palette["3"] = 0xff594e27
+    palette["4"] = 0xff89623a
+    palette["5"] = 0xffffc68c
+    palette["6"] = 0xfff18f4e
+    palette["7"] = 0xffeb893a
+    palette["8"] = 0xfffcb08b
+    palette["9"] = 0xfffd9c89
+    palette[":"] = 0xffffc4b0
+    palette[";"] = 0xffffb0b0
+    palette["<"] = 0xffffc4c4
+    palette["="] = 0xffeb754e
+    palette[">"] = 0xffff7562
+    palette["?"] = 0xffd76c6c
 	data = {
-        "     5!5#!5!5!!     ",
-        "     $$%%%%%%%%!    ",
-        "    5$&&&''''''%5   ",
-        "   #$&())*)))))#$!  ",
-        " #'$$&,,-------*+&& ",
-        " #''$.,,)*----**-,& ",
-        " 5''$.,,*----***-*& ",
-        " #&&&+,,,,)*-*))*-& ",
-        " &#'&+,/0,,),,+-**& ",
-        " #$&5555555%...!55!!",
-        "'++&'.50++(&5!5/00 !",
-        "&((&++5)1515//&1!) !",
-        "&(,2/.!,,))5..&,)) !",
-        "#(///+/!!!5(..,5!!! ",
-        " #$..+))))(02.,3,,3 ",
-        "   '3.+,,2,+,32/,,3 ",
-        "    3.+,,+,,,,,,(,3 ",
-        "     ++,+)555550(,3 ",
-        "     .+,.,300//0(,3 ",
-        "     2.+,)),,,,,(2  ",
-        "      3/.,,0///,3   ",
-        "       33.,,,,,.3   ",
-        "         333333     "}
+        "   A!!!#!!A$   ",
+        " ##!!%&'%$$!#  ",
+        " #!A()))*+,,-! ",
+        "AA.$/001000)+2 ",
+        "A.345551100067 ",
+        "!$3/5555510))6,",
+        "#.&055555000)6,",
+        "'&&/55551050))*",
+        ")8//05550608)6,",
+        "))80050,&,65/2 ",
+        "995805500,8:9, ",
+        "9;50085888:<8, ",
+        " 6)00000589;:= ",
+        "  8000080))>)= ",
+        "  850005))8)=  ",
+        "   800056(2$>  ",
+        "    )00))9??)  ",
+        "     )8))9)6   ",
+        "      9899))   "}
 	return {data, palette}
 end
-
 
 function define_allen_small_old()
-	palette = {}
-	palette["!"] = 0xff3f4500
-	palette["#"] = 0xff3f2e00
-	palette["$"] = 0xff151700
-	palette["%"] = 0xff2a1700
-	palette["&"] = 0xff2a2e00
-	palette["'"] = 0xff554500
-	palette["("] = 0xff150000
-	palette[")"] = 0xff6a451c
-	palette["*"] = 0xff945c38
-	palette["+"] = 0xffaa8b38
-	palette[","] = 0xffaa7355
-	palette["-"] = 0xff55451c
-	palette["."] = 0xff3f1700
-	palette["/"] = 0xffbf8b38
-	palette["0"] = 0xffe9a271
-	palette["1"] = 0xffffa28d
-	palette["2"] = 0xffffb98d
-	palette["3"] = 0xffd4a271
-	palette["4"] = 0xff3f451c
-	palette["5"] = 0xffbfa28d
-	palette["6"] = 0xffbf8b55
-	palette["7"] = 0xffe9b9aa
-	palette["8"] = 0xffe9a255
-	palette["9"] = 0xffffb9aa
-	palette[":"] = 0xff6a4538
-	palette[";"] = 0xffaa5c38
-	palette["<"] = 0xffbfa271
-	palette["="] = 0xffaa7338
-	palette[">"] = 0xffaa8b55
-	palette["?"] = 0xff944538
-	palette["@"] = 0xff554538
-	palette["A"] = 0xff3f4538
-	palette["B"] = 0xff947371
-	palette["C"] = 0xff2a2e1c
-	palette["D"] = 0xffd4a28d
-	palette["E"] = 0xffffd0aa
-	palette["F"] = 0xffe9a28d
-	palette["G"] = 0xff552e1c
-	palette["H"] = 0xffbf7355
-	palette["I"] = 0xffaa4538
-	palette["J"] = 0xffbf7338
-	palette["K"] = 0xffffa271
-	palette["L"] = 0xffd48b55
-	palette["M"] = 0xff3f2e1c
-	palette["X"] = 0xff000000
-
+	local palette = {}
+    palette["A"] = 0xff6a4538
+    palette["!"] = 0xff3f4511
+    palette["#"] = 0xff150700
+    palette["$"] = 0xff301700
+    palette["%"] = 0xff3f2e00
+    palette["&"] = 0xff554538
+    palette["'"] = 0xff947371
+    palette["("] = 0xff552e1c
+    palette[")"] = 0xff554515
+    palette["*"] = 0xff6a451c
+    palette["+"] = 0xff945438
+    palette[","] = 0xffb58b38
+    palette["-"] = 0xffb57355
+    palette["."] = 0xffeca271
+    palette["/"] = 0xfffeb68d
+    palette["0"] = 0xffd4a271
+    palette["1"] = 0xffd4a28d
+    palette["2"] = 0xffb88b55
+    palette["3"] = 0xfffab9aa
+    palette["4"] = 0xffe29b55
+    palette["5"] = 0xff3f4538
+    palette["6"] = 0xffac7338
+    palette["7"] = 0xffffd0aa
+    palette["8"] = 0xffaa5738
 	data = {
-		"      #$%&%     ",
-		"    !#$%&&%&    ",
-		"  $%%%##!'#%%   ",
-		" %%((#'))*+,-$  ",
-		" !.%%/012222234 ",
-		"!''#-2222222225 ",
-		"##'#/2222066607 ",
-		"%##!82220666009 ",
-		"$(%#02222122229 ",
-		"$4:#;222<-#=2>4%",
-		" >?:666.@#A:=#AA",
-		" >6=0226:#B?34:C",
-		" $>=222266>02=D ",
-		"  #:322EE93;F3D ",
-		"   %>222E2+))=D ",
-		" XX%=222216*@->X",
-		"    02222;GG.=  ",
-		"    -20011HI::  ",
-		"     *8JKKF>*.  ",
-		"      *;==FL>   "}
+        "    $!#$%!&$    ",
+        "  &$$$%%!!%$$   ",
+        " ($##%)**+,-)#  ",
+        " !$$$,.//////0' ",
+        "())%)/////////1 ",
+        ")%)%,////.222.3 ",
+        "%%%!4///.222..3 ",
+        "$#$%./////////3 ",
+        "$5A%))))))%6/2!'",
+        "&2+A2//%&%5A)%55",
+        " 226.//2A%'+0!A'",
+        " !26////222./61 ",
+        "  %A0//77308101 ",
+        "  5$2///7/,**61 ",
+        "   (6/////2+&)2 ",
+        "    .////8((%6  ",
+        "    &/..//-8AA  ",
+        "     64,../-+'  ",
+        "      -866142   ",
+        "       '%%$&'   "}
 	return {data, palette}
 end
 
-
-function define_allen_small_old2()
-	palette = {}
-	palette["!"] = 0xff20130d
-	palette["#"] = 0xff4f2412
-	palette["+"] = 0xff6a3e29
-	palette["*"] = 0xff8e5a41
-	palette["&"] = 0xffad7e67
-	palette["'"] = 0xffc59f8b
-	palette["("] = 0xffddc2b4
-
-	data = {
-		"   !!#+#+#!     ",
-		"  !******++#    ",
-		" !++*&'''''&#!  ",
-		" #++'(((((((&#  ",
-		"!*#*(((((((((*! ",
-		"###&((((((((('+ ",
-		"*##&((((((((((+ ",
-		"*##&''''&#+*'*# ",
-		"*##+#######**+**",
-		"+*++'''*&'&&''''",
-		"+*&+&((((''''(&!",
-		"!&&*'(((('(&'(* ",
-		"!*'''(((('&***! ",
-		" #*''((((''&**! ",
-		"  #*''((('&+*+! ",
-		"    &'((('''''# ",
-		"    !''(('''''+ ",
-		"     #+'(''((&! ",
-		"       !+&&&*!  "}
-	return {data, palette}
-end
 
 function define_stimpy()
 	palette = {}
