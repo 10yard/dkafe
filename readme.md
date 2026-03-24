@@ -824,8 +824,8 @@ It is licensed under GNU GPLv3.
 
 #### How do I set up DKAFE to play non-Donkey Kong arcade games?
 
-  - Please refer to this ![guide](https://github.com/user-attachments/files/26214267/DKAFE.-.Non.Donkey.Kong.Game.Setup.pdf)
-  - and ![issue number 3](https://github.com/10yard/dkafe/issues/3)
+  - Please refer to this [setup guide](https://github.com/user-attachments/files/26214267/DKAFE.-.Non.Donkey.Kong.Game.Setup.pdf)
+  - and [issue number 3](https://github.com/10yard/dkafe/issues/3)
   
 
 ## Troubleshooting
