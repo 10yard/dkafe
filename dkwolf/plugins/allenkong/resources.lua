@@ -758,7 +758,7 @@ function define_sounds()
 	}
 
 	data["ambient"] = {
-		"hello_anyone_there", "hottubclassic", "classic", "ownvideogame", "thefans", "bigfartbrian",
+		"hello_anyone_there", "classic", "ownvideogame", "thefans", "bigfartbrian",
 		"hahahaha",	"hehehehe",	"errr",	"cat", "cough",	"blub",	"gotten_better", "cough2", "gunfight", "cough3",
 		"its_me_mario", "finkel", "2viewers", "bigmac", "smile", "hey_olives", "help_popeye", "hills",
 		"pogo_stick", "something", "alltheway", "zookeeper", "raidsomebody", "taxi", "dandruff", "everywhere",
@@ -786,7 +786,7 @@ function define_sounds()
 		"reacharoundagain", "swisscheesefart", "swisscheesefart", "barra", "lovebriansong", "auskongoff", "turtleshell",
 		"experts", "blindmice", "twingal", "stopswearing", "shitgame", "crispycreme", "whatchagonna", "chairfall",
 		"dingdong", "kibbey", "notnow", "caughtalight", "ohrobbie", "lickem", "nameisbrian", "eric", "jase", "hotcock",
-		"different", "bigfartbrianallen"
+		"different", "bigfartbrianallen", "floridatime", "brifart", "filth"
 	}
 
 	data["register_fart"] = {
@@ -803,7 +803,8 @@ function define_sounds()
 		"likeglove_ballbag", "bowie", "wiggle", "reacharoundsong", "ross", "anthem", "nooneintheworld", "greatescape",
 		"jbc", "lickmebrian", "lookatthatclass", "wuddawoowoo", "lovebrian", "paulinegame", "latergater",
 		"brianchinatown", "lakemanduke", "pinkbitsong", "comeandseebrian", "shrekislove", "emergency", "vegimite",
-		"spark", "brianfire", "whataload", "likeagloveeeh", "brianlickmy", "brianalien", "onlybrian", "harddayskong"
+		"spark", "brianfire", "whataload", "likeagloveeeh", "brianlickmy", "brianalien", "onlybrian", "harddayskong",
+		"greece"
 	}
 
 	data["grab"] = {
@@ -818,7 +819,8 @@ function define_sounds()
 	data["highscore"] = {
 		"nohighscore", "notgoodenough", "new_wr", "nevergetit", "999999", "neverwill", "spreading_news",
 		"highscore_singit", "itsmagic", "today_score", "lookma", "notplayanymore", "proovenothing", "noworldrecord",
-		"walljumps52", "showboard", "epicgame", "shitscore3", "cantbeatscore", "highinhouse", "uselessscore"
+		"walljumps52", "showboard", "epicgame", "shitscore3", "cantbeatscore", "highinhouse", "uselessscore",
+		"goodgreatgame"
 	}
 
 	data["bonus800"]= {
@@ -863,22 +865,24 @@ function define_sounds()
 
 	data["lastmandead"] = {
 		"fack", "rage", "sonofa", "unluckiest", "getstuffed", "crying", "canubelieve", "fcs", "fsagain",
-		"nogoodatanygame", "neverfails", "nogood", "omfg", "fcsake", "axe"
-	}
-
-	data["gameover"] = {
+		"nogoodatanygame", "neverfails", "nogood", "omfg", "fcsake", "ksmf", "jsfc",
 		"game_for_me", "sackthisgameoff", "rotten_luck", "anyway", "bullshitgame2", "never_do_it", "jinxed",
-		"dean_for_a_day", "chromasome", "play_properly", "thats_all_folks", "cant_do_sht", "not_get_1m",
+		"dean_for_a_day", "play_properly", "thats_all_folks", "cant_do_sht", "not_get_1m",
 		"thnk_about_game", "notmeantfor1m", "backlater", "thatsall", "same", "jbcbetter"
 	}
+	--data["gameover"] = {
+	--	"game_for_me", "sackthisgameoff", "rotten_luck", "anyway", "bullshitgame2", "never_do_it", "jinxed",
+	--	"dean_for_a_day", "chromasome", "play_properly", "thats_all_folks", "cant_do_sht", "not_get_1m",
+	--	"thnk_about_game", "notmeantfor1m", "backlater", "thatsall", "same", "jbcbetter"
+	--}
 
 	data["hesitated"] = {
-		"hesitated", "short_springs", "got_stuck_fack", "typical", "crying", "canubelieve", "fsagain", "neverfails",
-		"beatcs", "nogood", "omfg", "ohfg", "wheregoing"
+		"hesitated", "short_springs", "typical", "crying", "canubelieve", "fsagain", "neverfails",
+		"beatcs", "nogood", "omfg", "ohfg", "wheregoing", "arrgh", "axe", "chromasome"
 	}
 
 	data["ladder"] = {
-		"stuck_on_ladder", "stuckonfence"
+		"stuck_on_ladder", "stuckonfence", "got_stuck_fack"
 	}
 
 	data["shitscore"] = {
@@ -886,7 +890,7 @@ function define_sounds()
 	}
 
 	data["start"] = {
-		"letsgostart", "onemoregame", "letsgodh", "900beyond", "showroad"
+		"letsgostart", "onemoregame", "letsgodh", "900beyond", "showroad", "ohyehletsgo", "rumble"
 	}
 
 	data["bye"] = {

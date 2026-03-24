@@ -820,6 +820,14 @@ DKAFE is a free, open source, cross-platform front-end for emulators.
 It is licensed under GNU GPLv3. 
 
 
+## FAQ's
+
+#### How do I set up DKAFE to play non-Donkey Kong arcade games?
+
+  - Please refer to this ![guide](https://github.com/user-attachments/files/26214267/DKAFE.-.Non.Donkey.Kong.Game.Setup.pdf)
+  - and !{issue number 3](https://github.com/10yard/dkafe/issues/3)
+  
+
 ## Troubleshooting
 
 #### I have a multiple monitor setup.  How do I make MAME appear on a specific monitor?
@@ -852,6 +860,8 @@ OPTIONS = -rompath "<ROM_DIR>" -view "Screen 0 Pixel Aspect (7:8)" -nofilter -vi
  - In the settings.txt file,  change emulator `OPTIONS` to use `-video gdi` instead of `-video opengl`
 
  - Ensure the DKAFE folder is granted full access permissions.
+
+
 
 
 ## Feedback
