@@ -786,11 +786,11 @@ function define_sounds()
 		"reacharoundagain", "swisscheesefart", "swisscheesefart", "barra", "lovebriansong", "auskongoff", "turtleshell",
 		"experts", "blindmice", "twingal", "stopswearing", "shitgame", "crispycreme", "whatchagonna", "chairfall",
 		"dingdong", "kibbey", "notnow", "caughtalight", "ohrobbie", "lickem", "nameisbrian", "eric", "jase", "hotcock",
-		"different", "bigfartbrianallen", "floridatime", "brifart", "filth"
+		"different", "bigfartbrianallen", "floridatime", "brifart", "filth", "ringerstingerfart"
 	}
 
 	data["register_fart"] = {
-		"swisscheesefart", "fartohyeah"
+		"swisscheesefart", "fartohyeah", "ringerstingerfart"
 	}
 
 	data["complete"] = {

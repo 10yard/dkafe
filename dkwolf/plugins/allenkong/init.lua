@@ -8,7 +8,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "allenkong"
-exports.version = "1.92"
+exports.version = "2.0"
 exports.description = "Allen Kong"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }

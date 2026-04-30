@@ -12,9 +12,9 @@
 -- Jumpman can control the ship independently when he is on a ladder .
 --
 -- There is also a 2 player co-op mode where a 2nd player controls the ship using separate controls.
--- 		P1 Start = Left
---      P2 Start = Right
---      Coin     = Fire
+-- 		Left -  P1 Start or Key A
+--      Right - P2 Start or Key D
+--      Fire  - Coin or Key Space
 --
 -- The hack features a scrolling starfield background and animated explosions.
 -- You can disable some features by setting environmental variables before you launch MAME.
@@ -28,7 +28,7 @@
 -----------------------------------------------------------------------------------------
 local exports = {}
 exports.name = "galakong"
-exports.version = "1.5"
+exports.version = "1.6"
 exports.description = "GalaKong: A Galaga Themed Shoot 'Em Up Plugin for Donkey Kong (and Donkey Kong Junior)"
 exports.license = "GNU GPLv3"
 exports.author = { name = "Jon Wilson (10yard)" }
@@ -418,6 +418,7 @@ function galakong.startplugin()
 		if mac ~= nil then
 			scr = mac.screens[":screen"]
 			cpu = mac.devices[":maincpu"]
+			inp = mac.input
 			mem = cpu.spaces["program"]
 			s_cpu = mac.devices[":soundcpu"]
 			s_mem = s_cpu.spaces["data"]
@@ -455,6 +456,11 @@ function galakong.startplugin()
 			
 			--Add more delay to the GAME OVER screen
 			mem:write_direct_u8(0x132f, 0xff)
+
+			--Remove the P1 and P2 button text
+			mem:write_direct_u8(0x36e6, 0x3f)
+			mem:write_direct_u8(0x36fd, 0x3f)
+
 						
 			-- Donkey Kong Junior specific initialisation
 			if emu.romname() == "dkongjr" then
@@ -533,6 +539,10 @@ function galakong.startplugin()
 				end
 				draw_graphic(yard_logo_table, 19, 175)
 				write_ram_message(0x77be, " VERSION "..exports.version)
+
+				-- Display 1- Solo Mode,  2- Co-Op Mode
+				write_ram_message(0x772b, "BUTTON 1) SOLO PLAY")
+				write_ram_message(0x772d, "BUTTON 2) CO-OP MODE")
 
 				if extreme then
 					draw_graphic(extreme_logo_table, 224, 59)
@@ -870,20 +880,29 @@ function galakong.startplugin()
 			end
 		end
 	end
+	
+	function is_pressed(keycode)
+		return inp:code_pressed(inp:code_from_token(keycode))
+	end	
 
 	function get_inputs()
 		local _left, _right, _fire = false, false, false
 		local _input = 0
+
 		if play_mode == 2 then
+		    if is_pressed("A") or is_pressed("D") then
+				print("L key pressed")
+			end
+		
 			_input = mem:read_u8(0xc7d00) - input_adjust
-			if _input >= 128 then
+			if _input >= 128 or is_pressed("KEYCODE_SPACE") then
 				_fire = true
 				_input = _input - 128
 			end
-			if _input == 4 then
+			if _input == 4 or is_pressed("KEYCODE_A") then
 				_left = true
 			end
-			if _input == 8 then
+			if _input == 8 or is_pressed("KEYCODE_D") then
 				_right = true
 			end
 		else
